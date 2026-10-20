@@ -1,0 +1,39 @@
+TAP version 13
+# node:fs:1734
+#   const stats = binding.stat(
+#                         ^
+# Error: ENOENT: no such file or directory, stat 'D:\\WSCodex\\REA\\research\\samples\\Prototyping%20Basics.rp'
+#     at statSync (node:fs:1734:25)
+#     at inspectRpFile (file:///D:/WSCodex/REA/research/scripts/read-rp-container.mjs:117:7)
+#     at inspectRpObjects (file:///D:/WSCodex/REA/research/scripts/read-rp-objects.mjs:70:21)
+#     at file:///D:/WSCodex/REA/research/scripts/read-rp-rotate.test.mjs:2:12
+#     at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+#     at async node:internal/modules/esm/loader:643:26
+#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+#   errno: -4058,
+#   code: 'ENOENT',
+#   syscall: 'stat',
+#   path: 'D:\\\\WSCodex\\\\REA\\\\research\\\\samples\\\\Prototyping%20Basics.rp'
+# }
+# Node.js v24.18.0
+# Subtest: research\\scripts\\read-rp-rotate.test.mjs
+not ok 1 - research\\scripts\\read-rp-rotate.test.mjs
+  ---
+  duration_ms: 260.7769
+  type: 'test'
+  location: 'D:\\WSCodex\\REA\\research\\scripts\\read-rp-rotate.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 268.1094

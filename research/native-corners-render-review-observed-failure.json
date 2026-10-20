@@ -1,0 +1,23 @@
+{
+  "id": "NC-REVIEW-01",
+  "kind": "Actual ad-hoc current-product module execution before the parent correction; copied from retained tool result without inventing a missing source hash.",
+  "toolOutput": {"chunkId": "175216", "exitCode": 0},
+  "sourceHashAtFailure": null,
+  "sourceHashLimitation": "The source bytes were read earlier and the helper was executed, but a hash was not captured at the failure instant. The parent corrected the code before the formal review probe first ran. No rollback/reconstructed red execution was performed.",
+  "input": {
+    "type": "box", "width": 200, "height": 100,
+    "style": {"radius": 90, "strokeWidth": 10, "cornerVisibility": [true,false,false,false]},
+    "vectorPath": {"fillRule":"nonzero","commands":[{"op":"M","x":0,"y":0.9},{"op":"C","x1":0,"y1":0.396,"x2":0.198,"y2":0,"x":0.45,"y":0},{"op":"L","x":1,"y":0},{"op":"L","x":1,"y":1},{"op":"L","x":0,"y":1},{"op":"L","x":0,"y":0.9},{"op":"Z"}]}
+  },
+  "observed": {
+    "supports": false,
+    "vectorRectangle": "undefined (omitted by JSON.stringify)",
+    "base": {
+      "strokeD": "M 90 5 L 195 5 L 195 95 L 5 95 L 5 90 C 5 42.4 42.4 5 90 5 Z",
+      "fillD": "M 0 90 C 0 39.6 39.6 0 90 0 L 200 0 L 200 100 L 0 100 L 0 90 Z",
+      "radii": [90,0,0,0]
+    }
+  },
+  "expected": {"supports": true, "vectorRectangleRadii": [90,0,0,0]},
+  "currentCorrectionRun": "research/native-corners-render-review.json"
+}

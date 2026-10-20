@@ -1,0 +1,1185 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "ab-document",
+  "name": "Adaptive behavior runtime",
+  "pages": [
+    {
+      "id": "ab-main",
+      "name": "Shared set · first page",
+      "width": 1200,
+      "height": 760,
+      "background": "#f7f9fc",
+      "widgets": [
+        {
+          "id": "ab-heading",
+          "type": "text",
+          "name": "ab-heading",
+          "text": "Adaptive behavior",
+          "notes": "",
+          "x": 20,
+          "y": 12,
+          "rotation": 0,
+          "width": 340,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#667788",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 26,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "ab-child",
+          "type": "button",
+          "name": "ab-child",
+          "text": "Child",
+          "notes": "",
+          "x": 20,
+          "y": 70,
+          "rotation": 0,
+          "width": 112,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e6edf5",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ab-child-first-case",
+              "event": "click",
+              "name": "ab-child-first",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-child-first-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'Child:before|')]]"
+                },
+                {
+                  "id": "ab-child-first-action-1",
+                  "type": "setAdaptiveView",
+                  "adaptiveView": {
+                    "kind": "view",
+                    "viewId": "ab-child-view"
+                  }
+                },
+                {
+                  "id": "ab-child-first-action-2",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'BAD-successor|')]]"
+                }
+              ]
+            },
+            {
+              "id": "ab-child-else-case",
+              "event": "click",
+              "name": "ab-child-else",
+              "enabled": true,
+              "isNewIfGroup": false,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-child-else-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'BAD-else|')]]"
+                }
+              ]
+            },
+            {
+              "id": "ab-child-independent-case",
+              "event": "click",
+              "name": "ab-child-independent",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-child-independent-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'Child:after|')]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab-base",
+          "type": "button",
+          "name": "ab-base",
+          "text": "Base",
+          "notes": "",
+          "x": 140,
+          "y": 70,
+          "rotation": 0,
+          "width": 112,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e6edf5",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ab-base-first-case",
+              "event": "click",
+              "name": "ab-base-first",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-base-first-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'Base:before|')]]"
+                },
+                {
+                  "id": "ab-base-first-action-1",
+                  "type": "setAdaptiveView",
+                  "adaptiveView": {
+                    "kind": "base"
+                  }
+                },
+                {
+                  "id": "ab-base-first-action-2",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'BAD-successor|')]]"
+                }
+              ]
+            },
+            {
+              "id": "ab-base-else-case",
+              "event": "click",
+              "name": "ab-base-else",
+              "enabled": true,
+              "isNewIfGroup": false,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-base-else-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'BAD-else|')]]"
+                }
+              ]
+            },
+            {
+              "id": "ab-base-independent-case",
+              "event": "click",
+              "name": "ab-base-independent",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-base-independent-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'Base:after|')]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab-auto",
+          "type": "button",
+          "name": "ab-auto",
+          "text": "Auto",
+          "notes": "",
+          "x": 260,
+          "y": 70,
+          "rotation": 0,
+          "width": 112,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e6edf5",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ab-auto-first-case",
+              "event": "click",
+              "name": "ab-auto-first",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-auto-first-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'Auto:before|')]]"
+                },
+                {
+                  "id": "ab-auto-first-action-1",
+                  "type": "setAdaptiveView",
+                  "adaptiveView": {
+                    "kind": "auto"
+                  }
+                },
+                {
+                  "id": "ab-auto-first-action-2",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'BAD-successor|')]]"
+                }
+              ]
+            },
+            {
+              "id": "ab-auto-else-case",
+              "event": "click",
+              "name": "ab-auto-else",
+              "enabled": true,
+              "isNewIfGroup": false,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-auto-else-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'BAD-else|')]]"
+                }
+              ]
+            },
+            {
+              "id": "ab-auto-independent-case",
+              "event": "click",
+              "name": "ab-auto-independent",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-auto-independent-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'Auto:after|')]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab-marker",
+          "type": "box",
+          "name": "ab-marker",
+          "text": "Authored marker",
+          "notes": "",
+          "x": 20,
+          "y": 132,
+          "rotation": 0,
+          "width": 180,
+          "height": 54,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [],
+          "selected": true,
+          "selectedStyle": {
+            "fill": "#228855"
+          }
+        },
+        {
+          "id": "ab-focus",
+          "type": "input",
+          "name": "ab-focus",
+          "text": "",
+          "notes": "",
+          "x": 20,
+          "y": 220,
+          "rotation": 0,
+          "width": 240,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [],
+          "focusedStyle": {
+            "stroke": "#0000ff"
+          }
+        },
+        {
+          "id": "ab-mutate",
+          "type": "button",
+          "name": "ab-mutate",
+          "text": "Mutate",
+          "notes": "",
+          "x": 20,
+          "y": 280,
+          "rotation": 0,
+          "width": 112,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e6edf5",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ab-mutate-case",
+              "event": "click",
+              "name": "ab-mutate",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-mutate-action-0",
+                  "type": "resize",
+                  "targetId": "ab-marker",
+                  "x": 300,
+                  "y": 54
+                },
+                {
+                  "id": "ab-mutate-action-1",
+                  "type": "setStyle",
+                  "targetId": "ab-marker",
+                  "style": {
+                    "opacity": 0.4
+                  }
+                },
+                {
+                  "id": "ab-mutate-action-2",
+                  "type": "setText",
+                  "targetId": "ab-marker",
+                  "value": "Runtime marker"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab-second",
+          "type": "button",
+          "name": "ab-second",
+          "text": "Second page",
+          "notes": "",
+          "x": 140,
+          "y": 280,
+          "rotation": 0,
+          "width": 112,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e6edf5",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ab-second-case",
+              "event": "click",
+              "name": "ab-second",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-second-action-0",
+                  "type": "openPage",
+                  "targetId": "ab-second-page"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab-frames",
+          "type": "button",
+          "name": "ab-frames",
+          "text": "Frame page",
+          "notes": "",
+          "x": 260,
+          "y": 280,
+          "rotation": 0,
+          "width": 112,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e6edf5",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ab-frames-case",
+              "event": "click",
+              "name": "ab-frames",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-frames-action-0",
+                  "type": "openPage",
+                  "targetId": "ab-frame-page"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab-trace",
+          "type": "text",
+          "name": "ab-trace",
+          "text": "[[Trace]]",
+          "notes": "",
+          "x": 20,
+          "y": 340,
+          "rotation": 0,
+          "width": 350,
+          "height": 150,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#667788",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "ab-changes",
+          "type": "text",
+          "name": "ab-changes",
+          "text": "Changes: [[Changes]]",
+          "notes": "",
+          "x": 20,
+          "y": 510,
+          "rotation": 0,
+          "width": 320,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#667788",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "ab-note",
+          "type": "text",
+          "name": "ab-note",
+          "text": "Child has an empty state map. The focused input still suppresses hover because its ancestor declares Focused.",
+          "notes": "",
+          "x": 20,
+          "y": 580,
+          "rotation": 0,
+          "width": 350,
+          "height": 100,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#667788",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [
+        {
+          "id": "ab-main-changed-case",
+          "event": "adaptiveViewChange",
+          "name": "ab-main-changed",
+          "enabled": true,
+          "conditions": [],
+          "conditionMode": "all",
+          "actions": [
+            {
+              "id": "ab-main-changed-action-0",
+              "type": "setVariable",
+              "targetId": "Changes",
+              "value": "[[number(Changes)+1]]"
+            }
+          ]
+        }
+      ],
+      "adaptiveViewSetId": "ab-set",
+      "adaptiveViews": [],
+      "adaptiveOverrides": {
+        "ab-parent-view": {
+          "ab-marker": {
+            "width": 210,
+            "style": {
+              "color": "#13579b"
+            },
+            "stateStyles": {
+              "selected": {
+                "fill": "#ff9900"
+              }
+            }
+          },
+          "ab-focus": {
+            "stateStyles": {
+              "focused": {},
+              "mouseOver": {
+                "fill": "#ff0000"
+              }
+            }
+          }
+        },
+        "ab-child-view": {
+          "ab-marker": {
+            "width": 240,
+            "stateStyles": {}
+          },
+          "ab-focus": {
+            "stateStyles": {
+              "mouseOver": {
+                "fill": "#00aa55"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ab-second-page",
+      "name": "Shared set · second page",
+      "width": 1200,
+      "height": 760,
+      "background": "#f7f9fc",
+      "widgets": [
+        {
+          "id": "ab-second-child",
+          "type": "button",
+          "name": "ab-second-child",
+          "text": "Child",
+          "notes": "",
+          "x": 20,
+          "y": 70,
+          "rotation": 0,
+          "width": 112,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e6edf5",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ab-second-child-first-case",
+              "event": "click",
+              "name": "ab-second-child-first",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-second-child-first-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'Child:before|')]]"
+                },
+                {
+                  "id": "ab-second-child-first-action-1",
+                  "type": "setAdaptiveView",
+                  "adaptiveView": {
+                    "kind": "view",
+                    "viewId": "ab-child-view"
+                  }
+                },
+                {
+                  "id": "ab-second-child-first-action-2",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'BAD-successor|')]]"
+                }
+              ]
+            },
+            {
+              "id": "ab-second-child-else-case",
+              "event": "click",
+              "name": "ab-second-child-else",
+              "enabled": true,
+              "isNewIfGroup": false,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-second-child-else-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'BAD-else|')]]"
+                }
+              ]
+            },
+            {
+              "id": "ab-second-child-independent-case",
+              "event": "click",
+              "name": "ab-second-child-independent",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-second-child-independent-action-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'Child:after|')]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab-back",
+          "type": "button",
+          "name": "ab-back",
+          "text": "First page",
+          "notes": "",
+          "x": 140,
+          "y": 70,
+          "rotation": 0,
+          "width": 112,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e6edf5",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ab-back-case",
+              "event": "click",
+              "name": "ab-back",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-back-action-0",
+                  "type": "openPage",
+                  "targetId": "ab-main"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab-second-marker",
+          "type": "box",
+          "name": "ab-second-marker",
+          "text": "Second page state",
+          "notes": "",
+          "x": 20,
+          "y": 132,
+          "rotation": 0,
+          "width": 180,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [],
+          "selected": true,
+          "selectedStyle": {
+            "fill": "#8844aa"
+          }
+        }
+      ],
+      "notes": "",
+      "interactions": [
+        {
+          "id": "ab-second-page-changed-case",
+          "event": "adaptiveViewChange",
+          "name": "ab-second-page-changed",
+          "enabled": true,
+          "conditions": [],
+          "conditionMode": "all",
+          "actions": [
+            {
+              "id": "ab-second-page-changed-action-0",
+              "type": "setVariable",
+              "targetId": "Changes",
+              "value": "[[number(Changes)+1]]"
+            }
+          ]
+        }
+      ],
+      "adaptiveViewSetId": "ab-set",
+      "adaptiveViews": [],
+      "adaptiveOverrides": {
+        "ab-parent-view": {
+          "ab-second-marker": {
+            "width": 210,
+            "stateStyles": {
+              "selected": {
+                "fill": "#ffff00"
+              }
+            }
+          }
+        },
+        "ab-child-view": {
+          "ab-second-marker": {
+            "width": 240,
+            "stateStyles": {
+              "selected": {
+                "fill": "#3366ff"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ab-frame-page",
+      "name": "Independent embedded session",
+      "width": 1200,
+      "height": 850,
+      "background": "#f7f9fc",
+      "widgets": [
+        {
+          "id": "ab-frame-reload",
+          "type": "button",
+          "name": "ab-frame-reload",
+          "text": "Reload frame",
+          "notes": "",
+          "x": 20,
+          "y": 20,
+          "rotation": 0,
+          "width": 112,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e6edf5",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ab-frame-reload-case",
+              "event": "click",
+              "name": "ab-frame-reload",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab-frame-reload-action-0",
+                  "type": "openLinkInFrame",
+                  "targetId": "ab-frame",
+                  "frameScope": "widget",
+                  "frameTarget": {
+                    "kind": "page",
+                    "pageId": "ab-main"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab-outer-trace",
+          "type": "text",
+          "name": "ab-outer-trace",
+          "text": "[[Trace]]",
+          "notes": "",
+          "x": 20,
+          "y": 60,
+          "rotation": 0,
+          "width": 1100,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "ab-frame",
+          "type": "inlineFrame",
+          "name": "ab-frame",
+          "text": "",
+          "notes": "",
+          "inlineFrame": {
+            "hideBorders": true,
+            "scrolling": "auto",
+            "preview": {
+              "kind": "none"
+            },
+            "target": {
+              "kind": "page",
+              "pageId": "ab-main"
+            }
+          },
+          "x": 20,
+          "y": 110,
+          "rotation": 0,
+          "width": 390,
+          "height": 680,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#667788",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              4,
+              6,
+              4,
+              6
+            ],
+            "verticalAlign": "top",
+            "color": "#123456",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "adaptiveViewSets": [
+    {
+      "id": "ab-set",
+      "name": "Shared responsive set",
+      "baseSize": {
+        "width": 1200,
+        "height": 0
+      },
+      "views": [
+        {
+          "id": "ab-parent-view",
+          "name": "Parent",
+          "width": 390,
+          "height": 0
+        },
+        {
+          "id": "ab-child-view",
+          "name": "Child",
+          "width": 768,
+          "height": 0,
+          "baseViewId": "ab-parent-view"
+        }
+      ]
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {
+    "Trace": "",
+    "Changes": "0"
+  },
+  "styles": []
+}

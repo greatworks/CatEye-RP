@@ -1,0 +1,375 @@
+{
+  "capturedAt": "2026-10-20T07:00:59.684Z",
+  "kind": "Original _addMove -> _getMoveLoc -> public moveBy -> MoveWidget/PrepareForMove, with original queue inside the existing in-memory NodeVM facade.",
+  "correction": "The earlier direct MoveWidget(to=true) result is not the Move To action result. Original Layer action first converts To into one delta and invokes moveBy; member movement information therefore shares that delta. No implementation bug is established by the direct-API case.",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.js",
+      "sha256": "f5a2eaeef5c65135a580b6ed6fa3cc59ac0fc291ea2e0801070ae21e4a5d5330",
+      "bytes": 18687
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "bytes": 79505
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\move.js",
+      "sha256": "c823954b5ed5862d56176b8984837e8f26588540ee4768d4483d68a399b95644",
+      "bytes": 22052
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\math.js",
+      "sha256": "f56ab4a6c3f6e91aaba9bebf2e81485965fc82bca63af0c606593d580c1de883",
+      "bytes": 16141
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53",
+      "bytes": 66834
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "bytes": 122627
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c",
+      "bytes": 130698
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3",
+      "bytes": 101724
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1",
+      "bytes": 41976
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\adaptive.js",
+      "sha256": "e141ea07bb973b6007f2ad7d7205516a041a801ec97e410467352c27af3b2928",
+      "bytes": 32653
+    }
+  ],
+  "ranges": [
+    {
+      "file": "action.js",
+      "first": 2,
+      "last": 349,
+      "sha256": "7fd8f379875dfb13e813b6cd02a235d83965561ce7a6635707ecdf7fb200b33f"
+    },
+    {
+      "file": "action.js",
+      "first": 756,
+      "last": 1042,
+      "sha256": "48ed7f333fc7f6cbc967cf7204a77ec8d478240378b4c886db5f257ca9c12c82"
+    }
+  ],
+  "script": {
+    "path": "research/native-layers-runtime-move-action-probe.mjs",
+    "sha256": "ab060bd4d087649d76baf4b97088d3fdd5db4d571bdc4011994290ecc6a957c8"
+  },
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0
+  },
+  "results": [
+    {
+      "mode": "location",
+      "x": "130",
+      "y": "120",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "body": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "g": {
+            "left": 100,
+            "top": 100,
+            "width": 120,
+            "height": 60,
+            "display": "block"
+          },
+          "a": {
+            "left": 130,
+            "top": 120,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          },
+          "b": {
+            "left": 170,
+            "top": 120,
+            "width": 40,
+            "height": 30,
+            "display": "block"
+          },
+          "temp1": {
+            "left": 130,
+            "top": 120,
+            "width": 120,
+            "height": 60,
+            "display": "block"
+          }
+        },
+        "moved": {
+          "g": {
+            "left": 130,
+            "top": 120
+          },
+          "a": {
+            "left": 130,
+            "top": 120
+          },
+          "b": {
+            "left": 170,
+            "top": 120
+          }
+        },
+        "resized": {},
+        "resizing": {},
+        "calls": [
+          {
+            "kind": "evaluate",
+            "value": "130",
+            "target": "g",
+            "source": "g"
+          },
+          {
+            "kind": "evaluate",
+            "value": "120",
+            "target": "g",
+            "source": "g"
+          },
+          {
+            "kind": "moveBy",
+            "id": "g",
+            "x": 30,
+            "y": 20,
+            "options": {
+              "easing": "none",
+              "duration": 0
+            }
+          },
+          {
+            "kind": "drag-log",
+            "id": "g"
+          },
+          {
+            "kind": "fit",
+            "id": "g"
+          },
+          {
+            "kind": "event",
+            "id": "g",
+            "event": "onMove"
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "event": "onMove"
+          },
+          {
+            "kind": "event",
+            "id": "b",
+            "event": "onMove"
+          }
+        ],
+        "containerCount": {
+          "g": 0
+        },
+        "moveInfo": {
+          "g": {
+            "x": 30,
+            "y": 20,
+            "options": {
+              "easing": "none",
+              "duration": 500
+            }
+          },
+          "a": {
+            "x": 30,
+            "y": 20,
+            "options": {
+              "easing": "none",
+              "duration": 500
+            }
+          },
+          "b": {
+            "x": 30,
+            "y": 20,
+            "options": {
+              "easing": "none",
+              "duration": 500
+            }
+          }
+        }
+      }
+    },
+    {
+      "mode": "delta",
+      "x": "30",
+      "y": "20",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "body": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "g": {
+            "left": 100,
+            "top": 100,
+            "width": 120,
+            "height": 60,
+            "display": "block"
+          },
+          "a": {
+            "left": 130,
+            "top": 120,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          },
+          "b": {
+            "left": 170,
+            "top": 120,
+            "width": 40,
+            "height": 30,
+            "display": "block"
+          },
+          "temp1": {
+            "left": 130,
+            "top": 120,
+            "width": 120,
+            "height": 60,
+            "display": "block"
+          }
+        },
+        "moved": {
+          "g": {
+            "left": 130,
+            "top": 120
+          },
+          "a": {
+            "left": 130,
+            "top": 120
+          },
+          "b": {
+            "left": 170,
+            "top": 120
+          }
+        },
+        "resized": {},
+        "resizing": {},
+        "calls": [
+          {
+            "kind": "evaluate",
+            "value": "30",
+            "target": "g",
+            "source": "g"
+          },
+          {
+            "kind": "evaluate",
+            "value": "20",
+            "target": "g",
+            "source": "g"
+          },
+          {
+            "kind": "moveBy",
+            "id": "g",
+            "x": 30,
+            "y": 20,
+            "options": {
+              "easing": "none",
+              "duration": 0
+            }
+          },
+          {
+            "kind": "drag-log",
+            "id": "g"
+          },
+          {
+            "kind": "fit",
+            "id": "g"
+          },
+          {
+            "kind": "event",
+            "id": "g",
+            "event": "onMove"
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "event": "onMove"
+          },
+          {
+            "kind": "event",
+            "id": "b",
+            "event": "onMove"
+          }
+        ],
+        "containerCount": {
+          "g": 0
+        },
+        "moveInfo": {
+          "g": {
+            "x": 30,
+            "y": 20,
+            "options": {
+              "easing": "none",
+              "duration": 500
+            }
+          },
+          "a": {
+            "x": 30,
+            "y": 20,
+            "options": {
+              "easing": "none",
+              "duration": 500
+            }
+          },
+          "b": {
+            "x": 30,
+            "y": 20,
+            "options": {
+              "easing": "none",
+              "duration": 500
+            }
+          }
+        }
+      }
+    }
+  ]
+}

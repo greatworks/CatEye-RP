@@ -1,0 +1,1050 @@
+{
+  "timestamp": "2026-10-13T17:59:10.429Z",
+  "method": "Bounded original style/text function slices with real jQuery and standards DOM; visual shape/geometry endpoints stubbed",
+  "browser": "155.0.4283.45",
+  "files": [
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "file": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "file": "../jquery-3.7.1.min.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85"
+    }
+  ],
+  "sourceSlices": [
+    {
+      "file": "style.js",
+      "first": 75,
+      "last": 166,
+      "source": "    var _widgetHasState = function(id, state) {\n        if($ax.style.getElementImageOverride(id, state)) return true;\n        var diagramObject = $ax.getObjectFromElementId(id);\n\n        //var adaptiveIdChain = $ax.adaptive.getAdaptiveIdChain($ax.adaptive.currentViewId);\n        var adaptiveIdChain = $ax.style.getViewIdChain($ax.adaptive.currentViewId, id, diagramObject);\n\n        for(var i = 0; i < adaptiveIdChain.length; i++) {\n            var viewId = adaptiveIdChain[i];\n            var adaptiveStyle = diagramObject.adaptiveStyles[viewId];\n            if(adaptiveStyle && adaptiveStyle.stateStyles && adaptiveStyle.stateStyles[state]) return true;\n        }\n\n        if(diagramObject.style.stateStyles) {\n            var stateStyle = diagramObject.style.stateStyles[state];\n            if(!stateStyle) return false;\n            return !$.isEmptyObject(stateStyle);\n        }\n\n        return false;\n    };\n\n    $ax.style.SetWidgetHover = function(id, value) {\n        if(!_widgetHasState(id, MOUSE_OVER)) return;\n\n        var valToSet = value || _isRolloverOverride(id);\n        const state = _generateFullState(id, undefined, undefined, undefined, undefined, valToSet);\n        _applyImageAndTextJson(id, state);\n        _updateElementIdImageStyle(id, state);\n    };\n\n    var _rolloverOverrides = [];\n    var _isRolloverOverride = function(id) {\n        return _rolloverOverrides.indexOf(id) != -1;\n    };\n\n    $ax.style.AddRolloverOverride = function(id) {\n        if(_isRolloverOverride(id)) return;\n        _rolloverOverrides[_rolloverOverrides.length] = id;\n        if($ax.event.mouseOverIds.indexOf(id) == -1) $ax.style.SetWidgetHover(id, true);\n    };\n\n    $ax.style.RemoveRolloverOverride = function(id) {\n        var index = _rolloverOverrides.indexOf(id);\n        if(index == -1) return;\n        $ax.splice(_rolloverOverrides, index, 1);\n        if($ax.event.mouseOverIds.indexOf(id) == -1) $ax.style.SetWidgetHover(id, false);\n    };\n\n    $ax.style.ObjHasMouseDown = function (id) {\n        return _widgetHasState(id, MOUSE_DOWN);\n    };\n\n    // checkMouseOver is used for applying style effects to everything in a group\n    $ax.style.SetWidgetMouseDown = function(id, value, checkMouseOver) {\n        if($ax.style.IsWidgetDisabled(id)) return;\n        if(!_widgetHasState(id, MOUSE_DOWN)) return;\n        const state = _generateFullState(id, undefined, undefined, undefined, undefined, !checkMouseOver ? true : undefined, value);\n        _applyImageAndTextJson(id, state);\n        _updateElementIdImageStyle(id, state);\n    };\n\n    var _generateFullState = function (id, forceFocused, forceSelected, forceDisabled, forceError, forceMouseOver, forceMouseDown) {\n        let state = $ax.style.ShowingHint(id) ? HINT : '';\n        if (forceError === true || forceError !== false && _style.IsWidgetError(id)) {\n            state = _compoundStates(state, ERROR);\n        }\n        if (forceSelected === true || forceSelected !== false && _style.IsWidgetSelected(id)) {\n            state = _compoundStates(state, SELECTED);\n        }\n        if (forceDisabled === true || forceDisabled !== false && _isWidgetDisabled(id)) {\n            return _compoundStates(DISABLED, state);\n        }\n        if (forceFocused === true || forceFocused !== false && _hasAnyFocusedClass(id)) {\n            return _compoundStates(state, FOCUSED);\n        }\n        if (forceMouseDown === true || forceMouseDown !== false && $ax.event.mouseDownObjectId == id) {\n            state = _compoundStates(state, MOUSE_DOWN);\n        }\n        if (forceMouseOver === true || forceMouseOver !== false &&\n            ($ax.event.mouseOverIds.indexOf(id) !== -1 && _widgetHasState(id, MOUSE_OVER) || _isRolloverOverride(id))) {\n            return _compoundStates(state, MOUSE_OVER);\n        }\n        return state.length > 0 ? state : NORMAL;\n    };\n\n    var _compoundStates = function (current, baseState) {\n        if (current.length < 1) return baseState;\n        if (baseState.length < 1) return current;\n        const capital = current.charAt(0).toUpperCase() + current.slice(1);\n        return baseState + capital;\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 1647,
+      "last": 1714,
+      "source": "    var _applyImageAndTextJson = function (id, event, blockTransition) {\n        var hasNotrs;\n        if(!blockTransition) hasNotrs = _enableStateTransitions(id);\n\n        const textId = $ax.GetTextPanelId(id);\n        if(textId) _resetTextJson(id, textId);\n\n        var fullStyle = _computeFullStyle(id, event, $ax.adaptive.currentViewId);\n        if (_idToAppliedStyles[id] && _idToAppliedStyles[id].style) {\n            $.extend(fullStyle, _idToAppliedStyles[id].style);\n        }\n\n        if($ax.public.fn.IsImageBox($obj(id).type)) {\n            const imageUrl = $ax.adaptive.getImageForStateAndView(id, event);\n            if(imageUrl) {\n                _applyImage(id, imageUrl, event);\n            }\n        } else _applySvg(id, event, fullStyle);\n\n        if (textId) {\n            const overridedStyle = _computeAllOverrides(id, undefined, event, $ax.adaptive.currentViewId);\n            var borderElement = document.getElementById(id + '_div');\n            if($(borderElement).hasClass(\"bgImg\")) borderElement = undefined;\n            var textElement = document.getElementById(textId);\n            if (!$.isEmptyObject(overridedStyle)) {\n                var diagramObject = $ax.getObjectFromElementId(id);\n                //var fullStyle = _computeFullStyle(id, event, $ax.adaptive.currentViewId, overridedStyle);\n                var padding = { top: 0, right: 0, bottom: 0, left: 0 };\n                if (fullStyle.paddingTop) padding.top = +fullStyle.paddingTop;\n                if (fullStyle.paddingBottom) padding.bottom = +fullStyle.paddingBottom;\n                if (fullStyle.paddingLeft) padding.left = +fullStyle.paddingLeft;\n                if (fullStyle.paddingRight) padding.right = +fullStyle.paddingRight;\n                var newSize = _applyTextStyle(textId, overridedStyle, padding);\n                if (borderElement && textElement && (diagramObject.autoFitHeight || diagramObject.autoFitWidth)) {\n                    if (diagramObject.autoFitHeight) {\n                        var height = newSize.height;\n                        borderElement.style.height = height + 'px';\n                        textElement.style.top = 0;\n                    }\n                    if (diagramObject.autoFitWidth) {\n                        var width = newSize.width;\n                        borderElement.style.width = width + 'px';\n                        textElement.style.left = 0;\n                    }\n                }\n            } else if (borderElement && textElement) {\n                var parentElement = document.getElementById(id);\n                if (parentElement) {\n                    borderElement.style.height = parentElement.style.height;\n                    borderElement.style.width = parentElement.style.width;\n                }\n                textElement.style.top = '';\n                textElement.style.left = '';\n            }\n        }\n\n        _updateStateClasses(\n            [\n                id,\n                $ax.repeater.applySuffixToElementId(id, '_div'),\n                $ax.repeater.applySuffixToElementId(id, '_input')\n            ], event, false\n        );\n\n        _updateCornersForBorders(id, fullStyle);\n\n        if(!blockTransition && hasNotrs) disableStateTransitionsOnEnd(id, fullStyle.transition);\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 18,
+      "last": 73,
+      "source": "    var _setLinkStyle = function(id, styleName) {\n        var parentId = $ax.GetParentIdFromLink(id);\n        var style = _computeAllOverrides(id, parentId, styleName, $ax.adaptive.currentViewId);\n\n        var textId = $ax.GetTextPanelId(parentId);\n        if(!_originalTextCache[textId]) {\n            $ax.style.CacheOriginalText(textId);\n        }\n        if($.isEmptyObject(style)) return;\n\n        var textCache = _originalTextCache[textId].styleCache;\n\n        _transformTextWithVerticalAlignment(textId, function() {\n            var cssProps = _getCssStyleProperties(style);\n            $('#' + id).find('*').addBack().each(function(index, element) {\n                element.setAttribute('style', textCache[element.id]);\n                _applyCssProps(element, cssProps);\n            });\n        });\n    };\n\n    var _resetLinkStyle = function(id) {\n        var textId = $ax.GetTextPanelId($ax.GetParentIdFromLink(id));\n        var textCache = _originalTextCache[textId].styleCache;\n\n        _transformTextWithVerticalAlignment(textId, function() {\n            $('#' + id).find('*').addBack().each(function(index, element) {\n                element.style.cssText = textCache[element.id];\n            });\n        });\n        if($ax.event.mouseDownObjectId) {\n            $ax.style.SetWidgetMouseDown($ax.event.mouseDownObjectId, true);\n        } else if($ax.event.mouseOverObjectId) {\n            $ax.style.SetWidgetHover($ax.event.mouseOverObjectId, true);\n        }\n    };\n\n    $ax.style.SetLinkHover = function(id) {\n        _setLinkStyle(id, MOUSE_OVER);\n    };\n\n    $ax.style.SetLinkNotHover = function(id) {\n        _resetLinkStyle(id);\n    };\n\n    $ax.style.SetLinkMouseDown = function(id) {\n        _setLinkStyle(id, MOUSE_DOWN);\n    };\n\n    $ax.style.SetLinkNotMouseDown = function(id) {\n        _resetLinkStyle(id);\n        var style = _computeAllOverrides(id, $ax.event.mouseOverObjectId, MOUSE_OVER, $ax.adaptive.currentViewId);\n\n        if(!$.isEmptyObject(style)) $ax.style.SetLinkHover(id);\n        //we dont do anything here because the widget not mouse down has taken over here\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 349,
+      "last": 592,
+      "source": "    // these camel case state names match up to generated\n    // javascript properties such as keys for compound state images\n\n    var NORMAL = 'normal';\n    var MOUSE_OVER = 'mouseOver';\n    var MOUSE_DOWN = 'mouseDown';\n    var SELECTED = 'selected';\n    var DISABLED = 'disabled';\n    var ERROR = 'error';\n    var HINT = 'hint';\n    var FOCUSED = 'focused';\n\n    var SELECTED_ERROR = 'selectedError';\n    var SELECTED_HINT = 'selectedHint';\n    var SELECTED_ERROR_HINT = 'selectedErrorHint';\n    var ERROR_HINT = 'errorHint';\n\n    var MOUSE_OVER_MOUSE_DOWN = 'mouseOverMouseDown';\n    var MOUSE_OVER_SELECTED = 'mouseOverSelected';\n    var MOUSE_OVER_ERROR = 'mouseOverError';\n    var MOUSE_OVER_HINT = 'mouseOverHint';\n\n    var MOUSE_OVER_SELECTED_ERROR = 'mouseOverSelectedError';\n    var MOUSE_OVER_SELECTED_HINT = 'mouseOverSelectedHint';\n    var MOUSE_OVER_SELECTED_ERROR_HINT = 'mouseOverSelectedErrorHint';\n    var MOUSE_OVER_ERROR_HINT = 'mouseOverErrorHint';\n\n    var MOUSE_DOWN_SELECTED = 'mouseDownSelected';\n    var MOUSE_DOWN_ERROR = 'mouseDownError';\n    var MOUSE_DOWN_HINT = 'mouseDownHint';\n\n    var MOUSE_DOWN_SELECTED_ERROR = 'mouseDownSelectedError';\n    var MOUSE_DOWN_SELECTED_HINT = 'mouseDownSelectedHint';\n    var MOUSE_DOWN_SELECTED_ERROR_HINT = 'mouseDownSelectedErrorHint';\n    var MOUSE_DOWN_ERROR_HINT = 'mouseDownErrorHint';\n\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED = 'mouseOverMouseDownSelected';\n    var MOUSE_OVER_MOUSE_DOWN_ERROR = 'mouseOverMouseDownError';\n    var MOUSE_OVER_MOUSE_DOWN_HINT = 'MouseOverMouseDownHint';\n\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR = 'mouseOverMouseDownSelectedError';\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT = 'mouseOverMouseDownSelectedHint';\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT = 'mouseOverMouseDownSelectedErrorHint';\n    var MOUSE_OVER_MOUSE_DOWN_ERROR_HINT = 'mouseOverMouseDownErrorHint';\n\n    var FOCUSED_SELECTED = 'focusedSelected';\n    var FOCUSED_ERROR = 'focusedError';\n    var FOCUSED_HINT = 'focusedHint';\n\n    var FOCUSED_SELECTED_ERROR = 'focusedSelectedError';\n    var FOCUSED_SELECTED_HINT = 'focusedSelectedHint';\n    var FOCUSED_SELECTED_ERROR_HINT = 'focusedSelectedErrorHint';\n    var FOCUSED_ERROR_HINT = 'focusedErrorHint';\n\n    var HINT_DISABLED = 'hintDisabled';\n    var SELECTED_DISABLED = 'selectedDisabled';\n    var ERROR_DISABLED = 'errorDisabled';\n    var SELECTED_HINT_DISABLED = 'selectedHintDisabled';\n    var ERROR_HINT_DISABLED = 'errorHintDisabled';\n    var SELECTED_ERROR_DISABLED = 'selectedErrorDisabled';\n    var SELECTED_ERROR_HINT_DISABLED = 'selectedErrorHintDisabled';\n\n    // Compound states are applied with multiple classes\n    // #u0.mouseOver.mouseDown.Selected.Error in .css\n    // class=\"mouseOver mouseDown selected error\" in .html\n    var ALL_STATES_WITH_CSS_CLASS = [\n        MOUSE_OVER,\n        MOUSE_DOWN,\n        SELECTED,\n        DISABLED,\n        ERROR,\n        HINT,\n        FOCUSED\n    ];\n\n    var _stateHasFocused = function (state) {\n        return state == FOCUSED\n            || state == FOCUSED_SELECTED\n            || state == FOCUSED_ERROR\n            || state == FOCUSED_HINT\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT;\n    };\n\n    var _hasAnyFocusedClass = _style.HasAnyFocusedClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(FOCUSED);\n    };\n\n    var _stateHasHint = function (state) {\n        return state == HINT\n            || state == SELECTED_HINT\n            || state == SELECTED_ERROR_HINT\n            || state == ERROR_HINT\n            || state == MOUSE_OVER_HINT\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_DOWN_HINT\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT\n            || state == FOCUSED_HINT\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT\n            || state == HINT_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _stateHasError = function (state) {\n        return state == ERROR\n            || state == SELECTED_ERROR\n            || state == SELECTED_ERROR_HINT\n            || state == ERROR_HINT\n            || state == MOUSE_OVER_ERROR\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT\n            || state == FOCUSED_ERROR\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT\n            || state == ERROR_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnyErrorClass = _style.HasAnyErrorClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(ERROR);\n    };\n\n    var _stateHasDisabled = _style.StateHasDisabled = function (state) {\n        return state == DISABLED\n            || state == HINT_DISABLED\n            || state == SELECTED_DISABLED\n            || state == ERROR_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnyDisabledClass = _style.HasAnyDisabledClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(DISABLED);\n    };\n\n    var _stateHasSelected = _style.StateHasSelected = function (state) {\n        return state == SELECTED\n            || state == SELECTED_ERROR\n            || state == SELECTED_HINT\n            || state == SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_SELECTED\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_SELECTED\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == FOCUSED_SELECTED\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == SELECTED_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnySelectedClass = _style.HasAnySelectedClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(SELECTED);\n    };\n\n    var _removeAnySelectedClass = _style.RemoveAnySelectedClass = function (id) {\n        const jobj = $('#' + id);\n        jobj.removeClass(SELECTED);\n    };\n\n    var _stateHasMouseOver = function (state) {\n        return state == MOUSE_OVER\n            || state == MOUSE_OVER_MOUSE_DOWN\n            || state == MOUSE_OVER_SELECTED\n            || state == MOUSE_OVER_ERROR\n            || state == MOUSE_OVER_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT;\n    };\n\n    var _stateHasMouseDown = function (state) {\n        return state == MOUSE_DOWN\n            || state == MOUSE_OVER_MOUSE_DOWN\n            || state == MOUSE_DOWN_SELECTED\n            || state == MOUSE_DOWN_ERROR\n            || state == MOUSE_DOWN_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT;\n    };\n\n    var _generateState = _style.generateState = function (id) {\n        return _generateFullState(id);\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 1763,
+      "last": 1915,
+      "source": "    var FONT_PROPS = {\n        'typeface': true,\n        'fontName': true,\n        'fontWeight': true,\n        'fontStyle': true,\n        'fontStretch': true,\n        'fontSize': true,\n        'underline': true,\n        'foreGroundFill': true,\n        'horizontalAlignment': true,\n        'letterCase': true,\n        'strikethrough': true\n    };\n\n    var _getViewIdChain = $ax.style.getViewIdChain = function(currentViewId, id, diagramObject) {\n        var viewIdChain;\n        if (diagramObject.owner.type == 'Axure:Master' || diagramObject.owner.type == 'referenceDiagramObject') {\n            //set viewIdChain to the chain from the parent RDO\n            var parentRdoId;\n            if (diagramObject.owner.type == 'referenceDiagramObject') parentRdoId = diagramObject.owner.scriptIds[0];\n            if (!parentRdoId) parentRdoId = $ax('#' + id).getParents(true, ['rdo'])[0][0];\n            var rdoState = $ax.style.generateState(parentRdoId);\n            var rdoStyle = $ax.style.computeFullStyle(parentRdoId, rdoState, currentViewId);\n            var viewOverride = rdoStyle.viewOverride;\n            viewIdChain = $ax.adaptive.getMasterAdaptiveIdChain(diagramObject.owner.type == 'referenceDiagramObject' ? diagramObject.owner.masterId : diagramObject.owner.packageId, viewOverride);\n        } else {\n            viewIdChain = $ax.adaptive.getAdaptiveIdChain(currentViewId);\n        }\n        return viewIdChain;\n    }\n\n    var _computeAllOverrides = $ax.style.computeAllOverrides = function(id, parentId, state, currentViewId) {\n        var computedStyle = {};\n        if(parentId) computedStyle = _computeAllOverrides(parentId, null, state, currentViewId);\n\n        var diagramObject = $ax.getObjectFromElementId(id);\n\n        var viewIdChain = _getViewIdChain(currentViewId, id, diagramObject);\n        var excludeFont = _shapesWithSetRichText[id];\n        for(var i = 0; i < viewIdChain.length; i++) {\n            var viewId = viewIdChain[i];\n            var style = diagramObject.adaptiveStyles[viewId];\n            if(style) {\n                // we want to exclude the normal font style for shapes where the rich text has been set with an interaction\n                // so we copy the style so we don't modify the original, then delete all the font props.\n                if(excludeFont) {\n                    style = $ax.deepCopy(style);\n                    for(var prop in FONT_PROPS) delete style[prop];\n                }\n\n                if(style) {\n                    var customStyle = style.baseStyle && $ax.document.stylesheet.stylesById[style.baseStyle];\n                    //make sure not to extend the customStyle this can mutate it for future use\n                    $.extend(computedStyle, customStyle);\n                }\n                $.extend(computedStyle, style);\n            }\n        }\n\n        // order matters so higher priority styles override lower priority\n        $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, NORMAL, viewIdChain, true));\n        if (_stateHasMouseOver(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_OVER, viewIdChain, true));\n        }\n        if (_stateHasMouseDown(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_DOWN, viewIdChain, true));\n        }\n        if (_stateHasFocused(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, FOCUSED, viewIdChain, true));\n        }\n        if (_stateHasSelected(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, SELECTED, viewIdChain, true));\n        }\n        if (_stateHasError(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, ERROR, viewIdChain, true));\n        }\n        if (_stateHasHint(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, HINT, viewIdChain, true));\n        }\n        if (_stateHasDisabled(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, DISABLED, viewIdChain, true));\n        }\n\n        return _removeUnsupportedProperties(computedStyle, diagramObject);\n    };\n\n    var _computeStateStyleForViewChain = function(diagramObject, state, viewIdChain, excludeNormal) {\n        var styleObject = diagramObject;\n        while(styleObject.isContained) styleObject = styleObject.parent;\n\n        var adaptiveStyles = styleObject.adaptiveStyles;\n\n        for(var i = viewIdChain.length - 1; i >= 0; i--) {\n            var viewId = viewIdChain[i];\n            var viewStyle = adaptiveStyles[viewId];\n            var stateStyle = viewStyle && _getFullStateStyle(viewStyle, state, excludeNormal);\n            if (stateStyle) return $.extend({}, stateStyle);\n            else if (viewStyle && viewStyle.stateStyles) return {}; //stateStyles are overriden but states could be null\n        }\n\n        // we dont want to actually include the object style because those are not overrides, hence the true for \"excludeNormal\" and not passing the val through\n        var stateStyleFromDefault = _getFullStateStyle(styleObject.style, state, true);\n        return $.extend({}, stateStyleFromDefault);\n    };\n\n    // returns the full effective style for an object in a state state and view\n    var _computeFullStyle = $ax.style.computeFullStyle = function(id, state, currentViewId, overrides) {\n        var obj = $obj(id);\n        if (!overrides) overrides = _computeAllOverrides(id, undefined, state, currentViewId);\n        // get style for current state\n        var dynamicPanelStyle = _getCurrentPanelDiagramStyle(id);\n\n        // todo: account for image box\n        var objStyle = obj.style;\n        var customStyle = objStyle.baseStyle && $ax.document.stylesheet.stylesById[objStyle.baseStyle];\n        var returnVal = $.extend({}, $ax.document.stylesheet.defaultStyle, customStyle, objStyle, dynamicPanelStyle, overrides);\n        return _removeUnsupportedProperties(returnVal, obj);\n    };\n\n    var _getCurrentPanelDiagramStyle = function (id) {\n        var diagramObj = $ax.visibility.GetCurrentPanelDiagram(id);\n        if (diagramObj) {\n            return diagramObj.style;\n        }\n        return {};\n    };\n\n    var _removeUnsupportedProperties = function(style, object) {\n        // for now all we need to do is remove padding from checkboxes and radio buttons\n        //if ($ax.public.fn.IsRadioButton(object.type) || $ax.public.fn.IsCheckBox(object.type)) {\n        //    style.paddingTop = 0;\n        //    style.paddingLeft = 0;\n        //    style.paddingRight = 0;\n        //    style.paddingBottom = 0;\n        //}\n        //if ($ax.public.fn.IsTextBox(object.type) || $ax.public.fn.IsTextArea(object.type) || $ax.public.fn.IsButton(object.type)\n        //    || $ax.public.fn.IsListBox(object.type) || $ax.public.fn.IsComboBox(object.type)) {\n        //    if (object.images && style.fill) delete style['fill'];\n        //}\n\n        return style;\n    };\n\n    var _getFullStateStyle = function(style, state, excludeNormal) {\n        //'normal' is needed because now DiagramObjects get their image from the Style and unapplying a rollover needs the image\n        var stateStyle = state == NORMAL && !excludeNormal ? style : style && style.stateStyles && style.stateStyles[state];\n        if(stateStyle) {\n            var customStyle = stateStyle.baseStyle && $ax.document.stylesheet.stylesById[stateStyle.baseStyle];\n            //make sure not to extend the customStyle this can mutate it for future use\n            return $.extend({}, customStyle, stateStyle);\n        }\n        return undefined;\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2028,
+      "last": 2042,
+      "source": "    var _resetTextJson = function(id, textid) {\n        // reset the opacity\n        $jobj(id).children().css('opacity', '');\n\n        var cacheObject = _originalTextCache[textid];\n        if(cacheObject) {\n            _transformTextWithVerticalAlignment(textid, function() {\n                var styleCache = cacheObject.styleCache;\n                var textQuery = $('#' + textid);\n                textQuery.find('*').each(function(index, element) {\n                    element.style.cssText = styleCache[element.id];\n                });\n            });\n        }\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2076,
+      "last": 2094,
+      "source": "    var _transformTextWithVerticalAlignment = $ax.style.transformTextWithVerticalAlignment = function(textId, transformFn) {\n        if(!_originalTextCache[textId]) {\n            $ax.style.CacheOriginalText(textId);\n        }\n\n        var rtfElement = window.document.getElementById(textId);\n        if(!rtfElement) return;\n\n        return transformFn();\n\n        //_storeIdToAlignProps(textId);\n\n        //if (_suspendTextAlignment) {\n        //    _suspendedTextIds.push(textId);\n        //    return;\n        //}\n\n        //$ax.style.setTextAlignment([textId]);\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2377,
+      "last": 2416,
+      "source": "    $ax.style.setAdaptiveStyle = function(shapeId, style, state) {\n        _adaptiveStyledWidgets[$ax.repeater.getScriptIdFromElementId(shapeId)] = style;\n\n        var textId = $ax.GetTextPanelId(shapeId);\n        if(textId) _applyTextStyle(textId, style);\n\n        const svgContainerId = shapeId + \"_img\";\n        const container = document.getElementById(svgContainerId);\n        if(container && container.tagName.toLowerCase() == \"svg\") {\n            _applySvg(shapeId, state ?? NORMAL);\n\n            if(style.size) {\n                if($obj(shapeId).friendlyType == \"Rectangle\") {\n                    $(container).css({ 'width': style.size.width, 'height': style.size.height });\n                } else {\n                    var baseStyle = _computeFullStyle(shapeId, NORMAL, \"\");\n                    var oldSize = baseStyle.size;\n                    var oldWidth = oldSize.width;\n                    var oldHeight = oldSize.height;\n\n                    container.style.transformOrigin = 'top left';\n                    var oldTransformMatrix = new WebKitCSSMatrix(window.getComputedStyle(container).transform);\n                    var oldScaleX = oldTransformMatrix.m11;\n                    var oldScaleY = oldTransformMatrix.m22;\n                    var scaleX = (style.size.width / oldWidth) * oldScaleX;\n                    var scaleY = (style.size.height / oldHeight) * oldScaleY;\n                    if(oldScaleX !== scaleX || oldScaleY !== scaleY) {\n                        container.style.transform = 'Scale(' + scaleX + ', ' + scaleY + ')';\n                    }\n                }\n            }\n        }\n        $ax.placeholderManager.refreshPlaceholder(shapeId);\n\n        // removing this for now\n        //        if(style.location) {\n        //            $jobj(shapeId).css('top', style.location.x + \"px\")\n        //                .css('left', style.location.y + \"px\");\n        //        }\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2427,
+      "last": 2532,
+      "source": "    var _applyTextStyle = function (id, style, padding = {top:0, right: 0, bottom: 0, left: 0}) {\n        return _transformTextWithVerticalAlignment(id, function() {\n            var styleProperties = _getCssStyleProperties(style);\n            var container = $('#' + id);\n            var newSize = { width: container[0].offsetWidth, height: container[0].offsetHeight };\n            var hasLineHeight = !!container.css('line-height');\n            container.find('*').each(function(index, element) {\n                _applyCssProps(element, styleProperties);\n                var width = element.offsetWidth + padding.left + padding.right;\n                var height = element.offsetHeight + padding.top + padding.bottom;\n                if(width > newSize.width) newSize.width = width;\n                if(!hasLineHeight && height > newSize.height) newSize.height = height;\n            });\n            return newSize;\n        });\n    };\n\n    var _applyCssProps = function(element, styleProperties, applyAllStyle) {\n        if(applyAllStyle) {\n            var allProps = styleProperties.allProps;\n            for(var prop in allProps) element.style[prop] = allProps[prop];\n        } else {\n            var nodeName = element.nodeName.toLowerCase();\n            if(nodeName == 'p') {\n                var parProps = styleProperties.parProps;\n                for(prop in parProps) element.style[prop] = parProps[prop];\n            } else if(nodeName != 'a') {\n                var runProps = styleProperties.runProps;\n                for(prop in runProps) element.style[prop] = runProps[prop];\n            }\n        }\n    };\n\n    var _getCssShadow = function(shadow) {\n        return !shadow.on ? \"none\"\n            : shadow.offsetX + \"px \" + shadow.offsetY + \"px \" + shadow.blurRadius + \"px \" + _getCssColor(shadow.color);\n    };\n\n    var _getCssStyleProperties = function(style) {\n        var toApply = {};\n        toApply.runProps = {};\n        toApply.parProps = {};\n        toApply.allProps = {};\n\n        if(style.fontName) toApply.allProps.fontFamily = toApply.runProps.fontFamily = style.fontName;\n        // we need to set font size on both runs and pars because otherwise it well mess up the measure and thereby vertical alignment\n        if(style.fontSize) toApply.allProps.fontSize = toApply.runProps.fontSize = toApply.parProps.fontSize = style.fontSize;\n        if(style.fontWeight !== undefined) toApply.allProps.fontWeight = toApply.runProps.fontWeight = style.fontWeight;\n        if(style.fontStyle !== undefined) toApply.allProps.fontStyle = toApply.runProps.fontStyle = style.fontStyle;\n\n        var textDecoration = [];\n        if(style.underline !== undefined) textDecoration[0] = style.underline ? 'underline ' : 'none';\n        if(style.strikethrough !== undefined) {\n            var index = textDecoration.length;\n            if(style.strikethrough) textDecoration[index] ='line-through';\n            else if(index == 0) textDecoration[0] = 'none';\n        } \n        if (textDecoration.length > 0) {\n            var decorationLineUp = \"\";\n            for (var l = 0; l < textDecoration.length; l++) {\n                decorationLineUp = decorationLineUp + textDecoration[l];\n            }\n            toApply.allProps.textDecoration = toApply.runProps.textDecoration = decorationLineUp;\n        }\n        if(style.foreGroundFill) {\n            toApply.allProps.color = toApply.runProps.color = _getColorFromFill(style.foreGroundFill);\n            //if(style.foreGroundFill.opacity) toApply.allProps.opacity = toApply.runProps.opacity = style.foreGroundFill.opacity;\n        }\n        if(style.horizontalAlignment) toApply.allProps.textAlign = toApply.parProps.textAlign = toApply.runProps.textAlign = style.horizontalAlignment;\n        if(style.lineSpacing) toApply.allProps.lineHeight = toApply.parProps.lineHeight = style.lineSpacing;\n        if(style.textShadow) toApply.allProps.textShadow = toApply.parProps.textShadow = _getCssShadow(style.textShadow);\n        if (style.letterCase) toApply.allProps.textTransform = toApply.parProps.textTransform = style.letterCase;\n        if (style.characterSpacing) toApply.allProps.letterSpacing = toApply.runProps.letterSpacing = style.characterSpacing;\n\n        return toApply;\n    };\n\n    var _getColorFromFill = function(fill) {\n        //var fillString = '00000' + fill.color.toString(16);\n        //return '#' + fillString.substring(fillString.length - 6);\n        var val = fill.color;\n        var color = {};\n        color.b = val % 256;\n        val = Math.floor(val / 256);\n        color.g = val % 256;\n        val = Math.floor(val / 256);\n        color.r = val % 256;\n        color.a = typeof (fill.opacity) == 'number' ? fill.opacity : 1;\n        return _getCssColor(color);\n    };\n\n    var _getColorFromArgbColorProp = function (val) {\n        var color = {};\n        color.b = val % 256;\n        val = Math.floor(val / 256);\n        color.g = val % 256;\n        val = Math.floor(val / 256);\n        color.r = val % 256;\n        val = Math.floor(val / 256);\n        color.a = (val % 256) / 255;\n        return _getCssColor(color);\n    };\n\n    var _getCssColor = function(rgbaObj) {\n        return \"rgba(\" + rgbaObj.r + \", \" + rgbaObj.g + \", \" + rgbaObj.b + \", \" + rgbaObj.a + \")\";\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2590,
+      "last": 2618,
+      "source": "    var CACHE_COUNTER = 0;\n\n    $ax.style.CacheOriginalText = function(textId, hasRichTextBeenSet) {\n        var rtfQuery = $('#' + textId);\n        if(rtfQuery.length > 0) {\n\n            var styleCache = {};\n            rtfQuery.find('*').each(function(index, element) {\n                var elementId = element.id;\n                if(!elementId) element.id = elementId = 'cache' + CACHE_COUNTER++;\n                styleCache[elementId] = element.style.cssText;\n            });\n\n            _originalTextCache[textId] = {\n                styleCache: styleCache\n            };\n            if(hasRichTextBeenSet) {\n                var shapeId = $ax.GetShapeIdFromText(textId);\n                _shapesWithSetRichText[shapeId] = true;\n            }\n        }\n    };\n\n    $ax.style.ClearCacheForRepeater = function(repeaterId) {\n        for(var elementId in _originalTextCache) {\n            var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n            if($ax.getParentRepeaterFromScriptId(scriptId) == repeaterId) delete _originalTextCache[elementId];\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 316,
+      "last": 385,
+      "source": "    _exprFunctions.SetWidgetRichText = function(ids, value, plain) {\n        // Converts dates, widgetinfo, and the like to strings.\n        value = _exprFunctions.ToString(value);\n\n        //Replace any newlines with line breaks\n        var finalValue = value.replace(/\\r\\n/g, '<br>').replace(/\\n/g, '<br>');\n\n        for(var i = 0; i < ids.length; i++) {\n            var id = ids[i];\n\n            // If calling this on button shape, get the id of the rich text panel inside instead\n            if($obj(id).type !== $ax.constants.LINK_TYPE) id = $ax.GetTextPanelId(id, true);\n\n            var element = window.document.getElementById(id);\n            $ax.visibility.SetVisible(element, value != '');\n\n            $ax.style.transformTextWithVerticalAlignment(id, function() {\n                var spans = $jobj(id).find('span');\n                if(plain) {\n                    // Can't set value as text because '<br/>' doesn't actually do a line break\n                    // Can't set vaule as html because it doesn't like '<' and ignores all after it\n                    // Create tags yourself\n                    var lines = value.split(/\\r\\n|\\n/);\n                    //if we are dealing with only one line, just reuse the old one\n                    if(spans.length === 1 && lines.length === 1) {\n                        $(spans[0]).text(value);\n                        return;\n                    }\n\n                    // Wrap in span and p, style them accordingly.\n                    var span = $('<span></span>');\n                    if(spans.length > 0) {\n                        span.attr('style', $(spans[0]).attr('style'));\n                        span.attr('id', $(spans[0]).attr('id'));\n                    }\n\n                    if(lines.length == 1) span.text(value);\n                    else {\n                        for(var i = 0; i < lines.length; i++) {\n                            if(i != 0) span.append($('<br />'));\n                            var line = lines[i];\n                            if(line.length == 0) continue;\n\n                            var subSpan = $('<span />');\n                            subSpan.text(line);\n                            span.append(subSpan);\n                        }\n                    }\n\n                    var ps = $jobj(id).find('p');\n                    if(ps && ps.length) {\n                        ps[0].innerHTML = $('<div></div>').append(span).html();;\n                        if(ps.length > 1) {\n                            for(var i = 1; i < ps.length; i++) {\n                                $(ps[i]).remove();\n                            }\n                        }\n                    } else {\n                        var p = $('<p></p>');\n                        p.append(span);\n                        element.innerHTML = $('<div></div>').append(p).html();\n                    }\n                } else element.innerHTML = finalValue;\n            });\n\n            if(!plain) $ax.style.CacheOriginalText(id, true);\n\n            autofitWidget(ids[i]);\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 753,
+      "last": 758,
+      "source": "    _exprFunctions.ToString = function(value) {\n        if(value.isWidget) {\n            return value.text;\n        }\n        return String(value);\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 883,
+      "last": 924,
+      "source": "    var getWidgetText = function(id) {\n        var idQuery = $jobj(id);\n        var inputQuery = $jobj($ax.INPUT(id));\n        if(inputQuery.length) idQuery = inputQuery;\n\n        if (idQuery.is('input') && ($ax.public.fn.IsCheckBox(idQuery.attr('type')) || idQuery.attr('type') == 'radio')) {\n            idQuery = idQuery.parent().find('label').find('div');\n        }\n\n        if(idQuery.is('div')) {\n            var $rtfObj = idQuery.hasClass('text') ? idQuery : idQuery.find('.text');\n            if($rtfObj.length == 0) return '';\n\n            var textOut = '';\n            $rtfObj.children('p,ul,ol').each(function(index) {\n                if(index != 0) textOut += '\\n';\n\n                //var htmlContent = $(this).html();\n                //if(isSoloBr(htmlContent)) return; // It has a solo br, then it was just put in for a newline, and paragraph already added the new line.\n                if (isSoloBr($(this).children())) return;\n\n                var htmlContent = $(this).html();            \n                //Replace line breaks (set in SetWidgetRichText) with newlines and nbsp's with regular spaces.\n                htmlContent = htmlContent.replace(/<br[^>]*>/ig, '\\n').replace(/&nbsp;/ig, ' ');\n                textOut += $(htmlContent).text();\n                //textOut += htmlContent.replace(/<[^>]*>/g, '');\n            });\n\n            return textOut;\n        } else {\n            var val = idQuery.val();\n            return val == undefined ? '' : val;\n        }\n    };\n\n    var isSoloBr = function($html) {\n        //html = $(html);\n        // Html needs one and only one span\n        var spanChildren = $html.length == 1 && $html.is('span') ? $html.children() : false;\n        // Span children needs exactly one br and no text in the span\n        return spanChildren && spanChildren.length == 1 && spanChildren.is('br') && spanChildren.text().trim() == '';\n    };"
+    }
+  ],
+  "cases": [
+    {
+      "name": "normal link style and parent base are excluded from overrides",
+      "result": {
+        "overrides": {},
+        "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\"><span id=\"linkrun\" style=\"text-decoration:underline\">Link</span></a></p>"
+      },
+      "passed": true
+    },
+    {
+      "name": "parent hover then link enter applies parent hover and link hover, leave restores parent paint",
+      "result": {
+        "parent": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: line-through;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: line-through;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            }
+          ]
+        },
+        "enter": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: line-through;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: underline line-through;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "underline line-through",
+              "computed": "underline line-through",
+              "css": "text-decoration: underline line-through;"
+            }
+          ]
+        },
+        "leave": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: line-through;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: line-through;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [
+            {
+              "kind": "parentHover",
+              "id": "w",
+              "v": true
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "parent selected repaint removes current link hover; new link hover ignores selected",
+      "result": {
+        "enter": {
+          "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: none;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "none",
+              "computed": "none",
+              "css": "text-decoration: none;"
+            }
+          ]
+        },
+        "selected": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: line-through;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: line-through;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            }
+          ]
+        },
+        "enterAgain": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: line-through;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: none;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "none",
+              "computed": "none",
+              "css": "text-decoration: none;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "parent error repaint removes link hover",
+      "result": {
+        "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: line-through;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: line-through;\">Link</span></a></p>",
+        "text": "OutsideLink",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "OutsideLink",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "outside",
+            "text": "Outside",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          },
+          {
+            "tag": "A",
+            "id": "link",
+            "text": "Link",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "linkrun",
+            "text": "Link",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "link adaptive fields override parent hover fields before link hover",
+      "result": {
+        "overrides": {
+          "fontWeight": 900,
+          "foreGroundFill": {
+            "color": 4478310
+          }
+        },
+        "snapshot": {
+          "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: underline; font-weight: 900; color: rgb(68, 85, 102);\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "underline",
+              "computed": "underline",
+              "css": "text-decoration: underline; font-weight: 900; color: rgb(68, 85, 102);"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "link mousedown requests parent mousedown only, not its hover state",
+      "result": {
+        "overrides": {
+          "foreGroundFill": {
+            "color": 1122867
+          },
+          "underline": false
+        },
+        "snapshot": {
+          "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: none; color: rgb(17, 34, 51);\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "none",
+              "computed": "none",
+              "css": "text-decoration: none; color: rgb(17, 34, 51);"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "link mouseup reapplies link hover after parent reset",
+      "result": {
+        "down": {
+          "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: none;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "none",
+              "computed": "none",
+              "css": "text-decoration: none;"
+            }
+          ]
+        },
+        "up": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: line-through;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: underline line-through;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "underline line-through",
+              "computed": "underline line-through",
+              "css": "text-decoration: underline line-through;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "parent adaptive text application replaces link hover until next link styling call",
+      "result": {
+        "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: line-through;\">Link</span></a></p>",
+        "text": "OutsideLink",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "OutsideLink",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "outside",
+            "text": "Outside",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          },
+          {
+            "tag": "A",
+            "id": "link",
+            "text": "Link",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "linkrun",
+            "text": "Link",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "plain SetText mixed span parent drops hyperlink and retains first ordinary span style",
+      "result": {
+        "snapshot": {
+          "html": "<p id=\"cache0\"><span style=\"text-decoration:line-through\" id=\"outside\">Replacement</span></p>",
+          "text": "Replacement",
+          "rich": false,
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Replacement",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Replacement",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            }
+          ]
+        },
+        "links": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "plain SetText parent sole one span nested in link keeps link wrapper and event",
+      "result": {
+        "links": 1,
+        "clicks": 1,
+        "snapshot": {
+          "html": "<p id=\"cache0\"><a id=\"link\"><span id=\"linkrun\" style=\"text-decoration:underline\">Replacement</span></a></p>",
+          "text": "Replacement",
+          "rich": false,
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Replacement",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Replacement",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Replacement",
+              "inline": "underline",
+              "computed": "underline",
+              "css": "text-decoration: underline;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "plain multiline parent replacement drops even sole hyperlink",
+      "result": {
+        "links": 0,
+        "snapshot": {
+          "html": "<p id=\"cache0\"><span style=\"text-decoration:underline\" id=\"linkrun\"><span>First</span><br><span>Second</span></span></p>",
+          "text": "First\nSecond",
+          "rich": false,
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "FirstSecond",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "FirstSecond",
+              "inline": "underline",
+              "computed": "underline",
+              "css": "text-decoration: underline;"
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "text": "First",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "BR",
+              "id": "",
+              "text": "",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "text": "Second",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "SetText addressed to link retains its outer identity and handler",
+      "result": {
+        "links": 1,
+        "clicks": 1,
+        "snapshot": {
+          "html": "<p><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"visibility: visible;\"><span id=\"linkrun\" style=\"text-decoration:underline\">Replaced</span></a></p>",
+          "text": "OutsideReplaced",
+          "rich": false,
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "link",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "link"
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "",
+              "text": "OutsideReplaced",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Replaced",
+              "inline": "",
+              "computed": "none",
+              "css": "visibility: visible;"
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Replaced",
+              "inline": "underline",
+              "computed": "underline",
+              "css": "text-decoration: underline;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "native link leave without parent hover style does not restore selected paint",
+      "result": {
+        "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: line-through;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: underline;\">Link</span></a></p>",
+        "text": "OutsideLink",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "OutsideLink",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "outside",
+            "text": "Outside",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          },
+          {
+            "tag": "A",
+            "id": "link",
+            "text": "Link",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "linkrun",
+            "text": "Link",
+            "inline": "underline",
+            "computed": "underline",
+            "css": "text-decoration: underline;"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "native link leave with parent hover style restores full selected plus hover paint",
+      "result": {
+        "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: line-through; font-weight: 500;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: line-through; font-weight: 500;\">Link</span></a></p>",
+        "text": "OutsideLink",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "OutsideLink",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "outside",
+            "text": "Outside",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through; font-weight: 500;"
+          },
+          {
+            "tag": "A",
+            "id": "link",
+            "text": "Link",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "linkrun",
+            "text": "Link",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through; font-weight: 500;"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "native link leave while pressed asks guarded full parent mousedown paint",
+      "result": {
+        "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: underline line-through;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: underline line-through;\">Link</span></a></p>",
+        "text": "OutsideLink",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "OutsideLink",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "outside",
+            "text": "Outside",
+            "inline": "underline line-through",
+            "computed": "underline line-through",
+            "css": "text-decoration: underline line-through;"
+          },
+          {
+            "tag": "A",
+            "id": "link",
+            "text": "Link",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "linkrun",
+            "text": "Link",
+            "inline": "underline line-through",
+            "computed": "underline line-through",
+            "css": "text-decoration: underline line-through;"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "empty link hover override leaves previous parent selected paint unchanged",
+      "result": {
+        "html": "<p id=\"cache0\" style=\"\"><span id=\"outside\" style=\"text-decoration: line-through;\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: line-through;\">Link</span></a></p>",
+        "text": "OutsideLink",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "OutsideLink",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "outside",
+            "text": "Outside",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          },
+          {
+            "tag": "A",
+            "id": "link",
+            "text": "Link",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "linkrun",
+            "text": "Link",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          }
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "network": [],
+  "pageErrors": [],
+  "limits": [
+    "Parent state argument supplied explicitly; native state determination remains separately retained evidence",
+    "Geometry/autofit/image/state-class side effects are stubs",
+    "Fixture anchors do not establish original generated tag/href/tabindex"
+  ]
+}

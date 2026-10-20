@@ -1,0 +1,127 @@
+// Independent structured reading of mNwa, checked against original CIL replay.
+// This is research code only, not copied into the product.
+export function axisPin({ oldPos, oldSize, newPos, newSize, originalPos, originalSize,
+  projectedPos, projectedSize, pin, fixed, handleNear, handleFar }) {
+  const oldEnd = oldPos + oldSize, newEnd = newPos + newSize;
+  let pos = projectedPos, size = fixed ? originalSize : projectedSize;
+  if (pin === 'none') {
+    pos += handleFar ? newPos - oldPos : handleNear ? newEnd - oldEnd : ((newPos - oldPos) + (newEnd - oldEnd)) / 2;
+  } else if (pin === 'both') {
+    pos = newPos + originalPos - oldPos;
+    size = originalSize + newSize - oldSize;
+  } else if (pin === 'center') {
+    pos = newPos + newSize / 2 + (originalPos + originalSize / 2 - oldPos - oldSize / 2) - size / 2;
+  } else if (pin === 'near') {
+    const margin = originalPos - oldPos;
+    if (fixed) pos = newPos + margin;
+    else if (handleNear) {
+      const ratio = (originalPos + originalSize) / oldEnd;
+      pos = Math.min(newPos + margin, newEnd);
+      size = Math.max(1, Math.min(ratio * newEnd - pos, newSize));
+    } else {
+      size = Math.max(1, Math.min(size, newSize));
+      pos = newPos + margin;
+    }
+  } else if (pin === 'far') {
+    const margin = oldEnd - originalPos - originalSize;
+    if (fixed || !handleFar) pos = newEnd - margin - size;
+    else {
+      const denominator = Math.abs(projectedSize - originalSize) + Math.abs(projectedPos - originalPos);
+      if (denominator !== 0) {
+        const delta = newEnd - margin - (pos + size);
+        size = Math.max(size + Math.abs((originalSize - size) / denominator) * delta, 0);
+        pos = Math.max(pos + Math.abs((originalPos - pos) / denominator) * delta, newPos);
+      }
+    }
+  }
+  return { pos, size };
+}
+export function pinFormula(pin, original, projected, anchor) {
+  const o = pin.oldParent, n = pin.newParent;
+  const result = { ...projected };
+  for (const [axis, sizeKey, bitNear, bitFar, key, fixedKey, pinNames] of [
+    ['x', 'width', 1, 4, 'h', 'fixedWidth', {0:'none',1:'near',4:'far',5:'both',256:'center'}],
+    ['y', 'height', 2, 8, 'v', 'fixedHeight', {0:'none',2:'near',8:'far',10:'both',512:'center'}],
+  ]) {
+    const out = axisPin({oldPos:o[axis],oldSize:o[sizeKey],newPos:n[axis],newSize:n[sizeKey],
+      originalPos:original[axis],originalSize:original[sizeKey],projectedPos:projected[axis],projectedSize:projected[sizeKey],
+      pin:pinNames[pin[key]], fixed:pin[fixedKey],handleNear:!!(anchor&bitNear),handleFar:!!(anchor&bitFar)});
+    result[axis]=out.pos; result[sizeKey]=out.size;
+  }
+  return result;
+}
+export const opposite = a => ((a&1)?4:0)|((a&4)?1:0)|((a&2)?8:0)|((a&8)?2:0);
+const flip = (p,a) => ({x:(a&4)?-p.x:p.x,y:(a&8)?-p.y:p.y});
+const anchorPoint = (r,a) => ({x:(a&1)?r.x:(a&4)?r.x+r.width:r.x+r.width/2,y:(a&2)?r.y:(a&8)?r.y+r.height:r.y+r.height/2});
+const plusSize = (r,d,a) => {
+  const next={...r,width:r.width+d.x,height:r.height+d.y},p=anchorPoint(r,a),q=anchorPoint(next,a);
+  return {...next,x:next.x+p.x-q.x,y:next.y+p.y-q.y};
+};
+export function aspectFormula(d,p,freedom,orientation) {
+  d={...d};
+  if ((freedom&3)===3) {
+    if (orientation===0) {d.y=d.x*p.height/p.width;d.x=d.y*p.width/p.height;}
+    else if (orientation===1) {d.x=d.y*p.width/p.height;d.y=d.x*p.height/p.width;}
+    else {const y=d.x*p.height/p.width;if(y>d.y)d.y=y;else d.x=d.y*p.width/p.height;}
+  } else if (freedom&1) d.y=d.x*p.height/p.width;
+  else if (freedom&2) d.x=d.y*p.width/p.height;
+  return d;
+}
+export function projectionFormula(parent,original,delta,anchor,freedom=3,bypass=false) {
+  let scaled={x:delta.x*original.width/parent.width,y:delta.y*original.height/parent.height};
+  if(!bypass){if(!(freedom&1))scaled.x=0;if(!(freedom&2))scaled.y=0;}
+  scaled=flip(scaled,opposite(anchor));
+  let result=plusSize(original,scaled,opposite(anchor));
+  const pdelta={x:(freedom&1)?((anchor&1)?-delta.x:delta.x):0,y:(freedom&2)?((anchor&2)?-delta.y:delta.y):0};
+  const pnew=plusSize(parent,pdelta,opposite(anchor));
+  result={...result,x:(original.x-parent.x)/parent.width*pnew.width+pnew.x,y:(original.y-parent.y)/parent.height*pnew.height+pnew.y};
+  return {value:result,scaledDelta:scaled};
+}
+export function trigFormula(angle) {
+  const mod=angle%360,eps=1e-5;
+  if(Math.abs(mod)<eps)return {s:0,c:1};
+  if(Math.abs(mod-90)<eps)return {s:1,c:0};
+  if(Math.abs(mod-180)<eps)return {s:0,c:-1};
+  if(Math.abs(mod-270)<eps)return {s:-1,c:0};
+  const r=angle*Math.PI/180;return {s:Math.sin(r),c:Math.cos(r)};
+}
+export function boundsFormula(r,angle) {
+  // Exact retained get_BoundingRect calls pbxZ(angle,1e-5), a near-one predicate.
+  // This unusual branch is retained here, not rewritten as a near-zero test.
+  if(Math.abs(angle-1)<1e-5)return {...r};
+  if(Math.abs(angle%360)<1e-5) return {x:Math.min(r.x,r.x+r.width),y:Math.min(r.y,r.y+r.height),width:Math.abs(r.width),height:Math.abs(r.height)};
+  const {s,c}=trigFormula(angle),cx=r.x+r.width/2,cy=r.y+r.height/2;
+  const points=[[r.x,r.y],[r.x+r.width,r.y],[r.x+r.width,r.y+r.height],[r.x,r.y+r.height]].map(([x,y])=>({x:cx+(x-cx)*c-(y-cy)*s,y:cy+(x-cx)*s+(y-cy)*c}));
+  const xs=points.map(p=>p.x),ys=points.map(p=>p.y),x=Math.min(...xs),y=Math.min(...ys);
+  return {x,y,width:Math.max(...xs)-x,height:Math.max(...ys)-y};
+}
+function rotateHandle(handle,angle) {
+  const list=[3,2,6,4,12,8,9,1], normalized=((angle%360)+360)%360;
+  return list[(list.indexOf(handle)+Math.trunc(Math.trunc(normalized+22.5)/45))%8];
+}
+function orientationForHandle(a) { return (a===1||a===4)?0:(a===2||a===8)?1:2; }
+export function evaluatorFormula({original,bbox,delta,parent,anchor,freedom=3,preserveAspect=false,orientation=3,pin=null,angle=0}) {
+  if(preserveAspect) {
+    freedom=3;
+    const oppositeHandle=opposite(anchor);
+    delta=flip(aspectFormula(flip(delta,oppositeHandle),parent,freedom,orientation===3?orientationForHandle(anchor):orientation),oppositeHandle);
+  }
+  const projection=projectionFormula(parent,bbox,delta,anchor,freedom,preserveAspect);
+  let desired=pin?pinFormula(pin,bbox,projection.value,anchor):projection.value;
+  if(angle%90===0)return boundsFormula(desired,-angle);
+  const {s,c}=trigFormula(angle),localHandle=opposite(rotateHandle(anchor,-angle));
+  let localDelta={x:projection.scaledDelta.x*c+projection.scaledDelta.y*s,y:-projection.scaledDelta.x*s+projection.scaledDelta.y*c};
+  localDelta=flip(localDelta,localHandle);
+  const pb=boundsFormula(parent,angle);
+  const ratio=(original.width+localDelta.x/pb.width)/(original.height+localDelta.y/pb.height);
+  let height=desired.height/(Math.abs(ratio*s)+Math.abs(c)),width=ratio*height;
+  let candidate=boundsFormula({x:0,y:0,width,height},angle);
+  if(candidate.width>desired.width) {
+    width=desired.width/(Math.abs(s/ratio)+Math.abs(c));height=width/ratio;
+    candidate=boundsFormula({x:0,y:0,width,height},angle);
+  }
+  let x=desired.x-candidate.x,y=desired.y-candidate.y;
+  if(anchor&1)x+=desired.width-candidate.width;
+  if(anchor&2)y+=desired.height-candidate.height;
+  return {x,y,width,height};
+}

@@ -1,0 +1,1403 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "861fc3f1-80a3-4e42-8262-8768ca826501",
+  "name": "Empty repeater lifecycle",
+  "pages": [
+    {
+      "id": "e8eb7f6f-9435-46df-a831-49f721fad887",
+      "name": "Page 1",
+      "width": 1080,
+      "height": 1000,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "357dd6ec-5a83-4b64-83b4-692e29cfd4cc",
+          "type": "text",
+          "name": "Instructions",
+          "text": "Empty rows: callback order, refresh guards, and visible template targets",
+          "notes": "",
+          "x": 40,
+          "y": 24,
+          "rotation": 0,
+          "width": 1000,
+          "height": 55,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 21,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "936c96c1-8ff2-4574-b6e3-79776aa354d3",
+          "type": "text",
+          "name": "Main empty state",
+          "text": "Waiting for initial rows",
+          "notes": "",
+          "x": 40,
+          "y": 100,
+          "rotation": 0,
+          "width": 480,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "01662a1e-064d-4422-9654-33e0c1295dc8",
+          "type": "text",
+          "name": "Main empty callbacks",
+          "text": "Empty loads: 0",
+          "notes": "",
+          "x": 40,
+          "y": 145,
+          "rotation": 0,
+          "width": 480,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "61c6cd8d-b51a-4937-ae48-122a4b10dc1c",
+          "type": "text",
+          "name": "Paged title",
+          "text": "Three rows, two per page",
+          "notes": "",
+          "x": 570,
+          "y": 100,
+          "rotation": 0,
+          "width": 480,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "a73b2e04-ee0b-4117-8065-fea43aaf548c",
+          "type": "text",
+          "name": "Paged callbacks",
+          "text": "Item callbacks: 0; empty callbacks: 0",
+          "notes": "",
+          "x": 570,
+          "y": 145,
+          "rotation": 0,
+          "width": 480,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+          "type": "repeater",
+          "name": "Unlimited records",
+          "text": "",
+          "notes": "",
+          "x": 40,
+          "y": 200,
+          "rotation": 0,
+          "width": 460,
+          "height": 180,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "82a1ecd0-fc19-415d-a8f4-78b9340fb463",
+              "event": "itemLoad",
+              "name": "itemLoad",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "4b94e969-b0f2-43d3-b9d3-31dd7f93f30e",
+                  "type": "setVariable",
+                  "targetId": "MainIsEmpty",
+                  "value": "[[This.itemCount == 0]]"
+                },
+                {
+                  "id": "25d1983c-4e0f-4e75-a94f-134837881d57",
+                  "type": "setText",
+                  "targetId": "936c96c1-8ff2-4574-b6e3-79776aa354d3",
+                  "value": "[[if(This.itemCount == 0, \"No results\", \"Rows available\")]]"
+                },
+                {
+                  "id": "58a79975-3bee-479e-9167-51a329fe968b",
+                  "type": "setVariable",
+                  "targetId": "MainEmpty",
+                  "value": "[[MainEmpty + if(This.itemCount == 0, 1, 0)]]"
+                },
+                {
+                  "id": "8c9d8058-0ad2-42b9-9e05-eb4e92729ec4",
+                  "type": "setText",
+                  "targetId": "01662a1e-064d-4422-9654-33e0c1295dc8",
+                  "value": "Empty loads: [[MainEmpty]]"
+                },
+                {
+                  "id": "1ce3de93-498d-4730-83a2-2a8d2ed0d547",
+                  "type": "setVariable",
+                  "targetId": "MainTrace",
+                  "value": "[[MainTrace]]I[[This.itemCount]]|"
+                },
+                {
+                  "id": "a89df31b-26b6-4d98-b31d-dd819e277b2d",
+                  "type": "setText",
+                  "targetId": "22bfc0fe-c173-4996-916f-4442f36dab35",
+                  "value": "[[MainTrace]]"
+                }
+              ]
+            },
+            {
+              "id": "0d579f71-e559-44b4-9d5c-a5bbb0102490",
+              "event": "itemLoad",
+              "name": "Try synchronous add during empty refresh",
+              "enabled": true,
+              "conditions": [
+                {
+                  "source": "variable",
+                  "key": "MainIsEmpty",
+                  "operator": "equals",
+                  "value": "true"
+                },
+                {
+                  "source": "variable",
+                  "key": "GuardMode",
+                  "operator": "equals",
+                  "value": "sync"
+                }
+              ],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "a0c37fee-9f4f-435d-b8f5-19612d53dde5",
+                  "type": "setVariable",
+                  "targetId": "MainTrace",
+                  "value": "[[MainTrace]]S|"
+                },
+                {
+                  "id": "818416d6-c449-4421-8493-b9d0807f7da9",
+                  "type": "setText",
+                  "targetId": "22bfc0fe-c173-4996-916f-4442f36dab35",
+                  "value": "[[MainTrace]]"
+                },
+                {
+                  "id": "a58110a9-3375-4187-b224-9f8fe9ed0912",
+                  "type": "addRow",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "{\"Name\":\"Synchronous add must be skipped\"}"
+                }
+              ]
+            },
+            {
+              "id": "f08b92cc-5fda-40c7-8c05-fb82039eefa2",
+              "event": "itemLoad",
+              "name": "Add after empty refresh releases its guard",
+              "enabled": true,
+              "conditions": [
+                {
+                  "source": "variable",
+                  "key": "MainIsEmpty",
+                  "operator": "equals",
+                  "value": "true"
+                },
+                {
+                  "source": "variable",
+                  "key": "GuardMode",
+                  "operator": "equals",
+                  "value": "wait"
+                }
+              ],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "e138912e-be17-4f7e-9d7b-39a3aefe4119",
+                  "type": "setVariable",
+                  "targetId": "GuardMode",
+                  "value": "off"
+                },
+                {
+                  "id": "d60d1e54-d578-4640-883f-55582fa38f14",
+                  "type": "setVariable",
+                  "targetId": "MainTrace",
+                  "value": "[[MainTrace]]W|"
+                },
+                {
+                  "id": "70406db4-0e7f-4665-a0df-7a680375fe0c",
+                  "type": "setText",
+                  "targetId": "22bfc0fe-c173-4996-916f-4442f36dab35",
+                  "value": "[[MainTrace]]"
+                },
+                {
+                  "id": "f57ec5fe-78f5-4763-ab4e-4f97d6717e53",
+                  "type": "wait",
+                  "duration": 0
+                },
+                {
+                  "id": "eb270d26-626c-424c-851e-c09eecc65887",
+                  "type": "addRow",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "{\"Name\":\"Recovered after Wait 0\"}"
+                },
+                {
+                  "id": "bab06d59-3f18-4ec8-bb15-27acad09f2b6",
+                  "type": "setVariable",
+                  "targetId": "MainTrace",
+                  "value": "[[MainTrace]]A|"
+                },
+                {
+                  "id": "9b64a3c9-b34a-4a19-a3ad-7b964da9a6e3",
+                  "type": "setText",
+                  "targetId": "22bfc0fe-c173-4996-916f-4442f36dab35",
+                  "value": "[[MainTrace]]"
+                }
+              ]
+            }
+          ],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              },
+              {
+                "Name": "B"
+              },
+              {
+                "Name": "C"
+              }
+            ],
+            "template": [
+              {
+                "id": "bc84c056-e2b1-4637-8138-03c436ec0620",
+                "type": "text",
+                "name": "Main row",
+                "text": "[[Item.Name]]",
+                "notes": "",
+                "x": 12,
+                "y": 8,
+                "rotation": 0,
+                "width": 420,
+                "height": 36,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "4848b75b-f6db-463f-976b-7ba811bf4528",
+                    "event": "load",
+                    "name": "load",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "d6571f01-19b1-4370-a348-a81388e6b994",
+                        "type": "setVariable",
+                        "targetId": "MainTrace",
+                        "value": "[[MainTrace]]L|"
+                      },
+                      {
+                        "id": "97d297fb-6023-48ca-bff2-4a218c85c220",
+                        "type": "setText",
+                        "targetId": "22bfc0fe-c173-4996-916f-4442f36dab35",
+                        "value": "[[MainTrace]]"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "itemHeight": 52,
+            "gap": 4
+          }
+        },
+        {
+          "id": "5b3c24a8-4627-47c5-8064-2ab7a9f32e78",
+          "type": "repeater",
+          "name": "Paged records",
+          "text": "",
+          "notes": "",
+          "x": 570,
+          "y": 200,
+          "rotation": 0,
+          "width": 460,
+          "height": 180,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "197e34de-ce64-4344-b733-449b89b5ad00",
+              "event": "itemLoad",
+              "name": "itemLoad",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "e3c63ada-a0a1-4cb8-a85d-c2d2c1489103",
+                  "type": "setVariable",
+                  "targetId": "PagedLoads",
+                  "value": "[[PagedLoads + 1]]"
+                },
+                {
+                  "id": "dfcf22d9-6cd5-4b4d-b735-517bf6ce3cd0",
+                  "type": "setVariable",
+                  "targetId": "PagedEmpty",
+                  "value": "[[PagedEmpty + if(This.itemCount == 0, 1, 0)]]"
+                },
+                {
+                  "id": "db0b05a2-5b6d-4f2f-b5dd-839ff15a5a7b",
+                  "type": "setText",
+                  "targetId": "a73b2e04-ee0b-4117-8065-fea43aaf548c",
+                  "value": "Item callbacks: [[PagedLoads]]; empty callbacks: [[PagedEmpty]]"
+                },
+                {
+                  "id": "5779daeb-35ca-4e02-9e1c-0ccd4e9ead0d",
+                  "type": "setVariable",
+                  "targetId": "PagedTrace",
+                  "value": "[[PagedTrace]]I[[This.itemCount]]|"
+                },
+                {
+                  "id": "8b667b91-e616-415d-bd4d-94117eb6d614",
+                  "type": "setText",
+                  "targetId": "57be030e-ed26-4310-a862-678dbb34db2b",
+                  "value": "[[PagedTrace]]"
+                }
+              ]
+            }
+          ],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              },
+              {
+                "Name": "B"
+              },
+              {
+                "Name": "C"
+              }
+            ],
+            "template": [
+              {
+                "id": "7c79f4f4-ab7b-4a61-97d8-a6d530f6d83c",
+                "type": "text",
+                "name": "Paged row",
+                "text": "[[Item.Name]]",
+                "notes": "",
+                "x": 12,
+                "y": 8,
+                "rotation": 0,
+                "width": 350,
+                "height": 36,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "e0b36b16-33ca-4c34-bc3d-39cf5677c22e",
+                    "event": "load",
+                    "name": "load",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "64b0c3a6-c267-4015-8e98-4c898cbc0e8f",
+                        "type": "setVariable",
+                        "targetId": "PagedTrace",
+                        "value": "[[PagedTrace]]L|"
+                      },
+                      {
+                        "id": "b16f6b44-6794-4fac-baf4-b390a2af263e",
+                        "type": "setText",
+                        "targetId": "57be030e-ed26-4310-a862-678dbb34db2b",
+                        "value": "[[PagedTrace]]"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "7f21744c-9839-4142-922d-2e10e3a004fe",
+                "type": "checkbox",
+                "name": "Paged target checkbox",
+                "text": "",
+                "notes": "",
+                "x": 410,
+                "y": 8,
+                "rotation": 0,
+                "width": 36,
+                "height": 36,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "777828df-1a98-4390-8b75-fdd088de321f",
+                    "event": "select",
+                    "name": "select",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "c31f73ff-0eee-44e4-b52a-1d2eab91142e",
+                        "type": "setVariable",
+                        "targetId": "TouchedRows",
+                        "value": "[[TouchedRows]][[Item.Name]]|"
+                      },
+                      {
+                        "id": "809787f2-4580-47ba-9c26-f1696e13bc42",
+                        "type": "setText",
+                        "targetId": "316dcb5d-1f8a-4864-893f-130ffd0600bb",
+                        "value": "Selected targets: [[TouchedRows]]"
+                      }
+                    ]
+                  }
+                ],
+                "checked": false
+              }
+            ],
+            "itemHeight": 52,
+            "gap": 4,
+            "pagination": {
+              "itemsPerPage": 2,
+              "startPage": 1
+            }
+          }
+        },
+        {
+          "id": "19e1e191-150c-4caa-a749-921bb474df42",
+          "type": "button",
+          "name": "Filter none",
+          "text": "Filter none",
+          "notes": "",
+          "x": 40,
+          "y": 410,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "0feae5b1-dcd4-458d-a404-85e62d612a8d",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "eba82740-94ae-4dcf-a3eb-5680a70d8e81",
+                  "type": "addFilter",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "{\"name\":\"empty\",\"expression\":\"[[false]]\",\"mode\":\"smart\",\"removeOthers\":false}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "31f7d8b5-374c-4fc4-9f44-a6e46ca5dda3",
+          "type": "button",
+          "name": "Clear filter",
+          "text": "Clear filter",
+          "notes": "",
+          "x": 280,
+          "y": 410,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "4fc1dc5c-76f9-4712-93ee-68233d2c35c9",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "e657b28d-3445-42c6-804c-0b13b7ac212d",
+                  "type": "removeFilter",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "{\"all\":true}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2a92b082-dd68-432c-95ef-7e402a26e53f",
+          "type": "button",
+          "name": "Touch main rows",
+          "text": "Touch main rows",
+          "notes": "",
+          "x": 40,
+          "y": 470,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "d5b7b75d-ee39-4015-8724-72ccd5909e64",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "8f88f040-a2d4-405d-95f0-3922994b9d7c",
+                  "type": "setText",
+                  "targetId": "bc84c056-e2b1-4637-8138-03c436ec0620",
+                  "value": "Touched [[TargetItem.Name]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f66128f9-8f82-4d07-a9b7-13b8cc4b97cd",
+          "type": "button",
+          "name": "Try synchronous add",
+          "text": "Try synchronous add",
+          "notes": "",
+          "x": 280,
+          "y": 470,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "d8f9f12f-7403-4aef-b272-be45080e6900",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "900df0e2-dfdc-4812-9764-8dad5f2ced66",
+                  "type": "setVariable",
+                  "targetId": "GuardMode",
+                  "value": "sync"
+                },
+                {
+                  "id": "2d560bfe-be97-481f-987b-1815a5f1006d",
+                  "type": "deleteRow",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "all"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "27c70bdf-4405-480f-8a92-da031fe3311b",
+          "type": "button",
+          "name": "Restore three rows",
+          "text": "Restore three rows",
+          "notes": "",
+          "x": 40,
+          "y": 530,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ad36cf71-9dfd-49a4-952d-26ec05a4a255",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "edfccdb0-9f89-40f8-b3d8-d79731a5ced6",
+                  "type": "setVariable",
+                  "targetId": "GuardMode",
+                  "value": "off"
+                },
+                {
+                  "id": "629aed31-26d2-4e9e-a2d1-1a327dd03cc1",
+                  "type": "removeFilter",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "{\"all\":true}"
+                },
+                {
+                  "id": "5f8b8bbd-3ae4-4730-a474-f73edc075027",
+                  "type": "addRow",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "{\"Name\":\"A\"}"
+                },
+                {
+                  "id": "d175ddcb-3d74-44c7-ae8a-09ab8e711c33",
+                  "type": "addRow",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "{\"Name\":\"B\"}"
+                },
+                {
+                  "id": "63cd0b4d-0f4c-44e2-8c45-8d6479180b97",
+                  "type": "addRow",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "{\"Name\":\"C\"}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "09e5d563-7fd7-4ad9-bc56-b3bb71e1a141",
+          "type": "button",
+          "name": "Delete then Wait 0 add",
+          "text": "Delete then Wait 0 add",
+          "notes": "",
+          "x": 280,
+          "y": 530,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "7f36270d-e55c-450d-b0f7-688ece2fad0e",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "06c938ed-9400-4504-87e5-2206f51489bc",
+                  "type": "setVariable",
+                  "targetId": "GuardMode",
+                  "value": "wait"
+                },
+                {
+                  "id": "fcc24f5f-8549-4cc1-a0de-37bca6f2116d",
+                  "type": "deleteRow",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "all"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "9a174434-eaf5-4948-986b-a8931505bdd5",
+          "type": "button",
+          "name": "Refresh main rows",
+          "text": "Refresh main rows",
+          "notes": "",
+          "x": 40,
+          "y": 590,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "9f8551db-ee6d-45ee-b9e6-e8f774cdae5f",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ca4f385e-decb-4ad4-b17d-48919f305833",
+                  "type": "removeFilter",
+                  "targetId": "4072b8b0-c03f-4a6b-90b1-89cb7c9b8513",
+                  "value": "{\"name\":\"absent\"}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "60bf93da-ae11-4c87-b61c-9cb79d32cf80",
+          "type": "button",
+          "name": "Touch page rows",
+          "text": "Touch page rows",
+          "notes": "",
+          "x": 570,
+          "y": 410,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "6020aa64-2e73-411d-b439-58c4574f6d37",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ef8692c4-a068-4f75-874d-0b9472ff77c1",
+                  "type": "setText",
+                  "targetId": "7c79f4f4-ab7b-4a61-97d8-a6d530f6d83c",
+                  "value": "Touched [[TargetItem.Name]]"
+                },
+                {
+                  "id": "6eb318f7-c094-41e3-9639-eb9938a791fd",
+                  "type": "setSelected",
+                  "targetId": "7f21744c-9839-4142-922d-2e10e3a004fe",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ae0fab83-d4ed-45f7-bc99-00a901f6fe2a",
+          "type": "button",
+          "name": "Next page",
+          "text": "Next page",
+          "notes": "",
+          "x": 810,
+          "y": 410,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "1ebc26de-6d80-4202-a537-906e1a00c3a2",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ab7af288-6e61-46a2-869a-c3bd546dac4f",
+                  "type": "setRepeaterPage",
+                  "targetId": "5b3c24a8-4627-47c5-8064-2ab7a9f32e78",
+                  "value": "next"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4a867c7f-5cb1-4127-b5c4-2b369bae7792",
+          "type": "button",
+          "name": "First page",
+          "text": "First page",
+          "notes": "",
+          "x": 570,
+          "y": 470,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "a43d97d0-ca2f-430e-bb49-35a0e7b1f0d8",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "415b1558-e971-4424-9f56-d715eac7c361",
+                  "type": "setRepeaterPage",
+                  "targetId": "5b3c24a8-4627-47c5-8064-2ab7a9f32e78",
+                  "value": "first"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "8b55d50b-aa8e-44ad-8df2-7dcee015d4ef",
+          "type": "button",
+          "name": "Delete paged rows",
+          "text": "Delete paged rows",
+          "notes": "",
+          "x": 810,
+          "y": 470,
+          "rotation": 0,
+          "width": 220,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "4591f568-ca05-402f-8dc8-9d90e8bfafad",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "2049fe9c-73c0-4b10-bcdd-3476de682c09",
+                  "type": "deleteRow",
+                  "targetId": "5b3c24a8-4627-47c5-8064-2ab7a9f32e78",
+                  "value": "all"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "316dcb5d-1f8a-4864-893f-130ffd0600bb",
+          "type": "text",
+          "name": "Visible template targets",
+          "text": "Selected targets: ",
+          "notes": "",
+          "x": 570,
+          "y": 535,
+          "rotation": 0,
+          "width": 460,
+          "height": 75,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "e7fc88cb-1bad-4f0d-b415-9ed2bdf0178c",
+          "type": "text",
+          "name": "Main log title",
+          "text": "Main log — I<count>: Item Loaded; L: template Loaded; S: synchronous attempt; W/A: wait/add",
+          "notes": "",
+          "x": 40,
+          "y": 675,
+          "rotation": 0,
+          "width": 990,
+          "height": 35,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "22bfc0fe-c173-4996-916f-4442f36dab35",
+          "type": "text",
+          "name": "Main lifecycle log",
+          "text": "",
+          "notes": "",
+          "x": 40,
+          "y": 710,
+          "rotation": 0,
+          "width": 990,
+          "height": 65,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "6923f2ea-26cd-4dc0-850c-1ac238787d11",
+          "type": "text",
+          "name": "Paged log title",
+          "text": "Paged log — deleting all rows on the last page adds no empty callback",
+          "notes": "",
+          "x": 40,
+          "y": 775,
+          "rotation": 0,
+          "width": 990,
+          "height": 35,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "57be030e-ed26-4310-a862-678dbb34db2b",
+          "type": "text",
+          "name": "Paged lifecycle log",
+          "text": "",
+          "notes": "",
+          "x": 40,
+          "y": 810,
+          "rotation": 0,
+          "width": 990,
+          "height": 65,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "37c76e3f-cc82-4710-8f9f-ec190e14a259",
+          "type": "text",
+          "name": "Scope note",
+          "text": "External template actions address visible rows. Empty data creates no placeholder row. Use preview restart to reset the demo.",
+          "notes": "",
+          "x": 40,
+          "y": 915,
+          "rotation": 0,
+          "width": 990,
+          "height": 55,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {
+    "MainTrace": "",
+    "MainEmpty": "0",
+    "MainIsEmpty": "false",
+    "GuardMode": "off",
+    "PagedTrace": "",
+    "PagedLoads": "0",
+    "PagedEmpty": "0",
+    "TouchedRows": ""
+  },
+  "styles": []
+}

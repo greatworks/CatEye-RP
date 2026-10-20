@@ -1,0 +1,1357 @@
+{
+  "timestamp": "2026-10-13T14:38:35.189Z",
+  "targetVersion": "11.0.0.4150",
+  "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "packageSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "browser": "155.0.4283.45",
+  "files": [
+    {
+      "file": "action.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3"
+    },
+    {
+      "file": "events.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "file": "doc.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1"
+    },
+    {
+      "file": "repeater.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b"
+    },
+    {
+      "file": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "file": "../jquery-3.7.1.min.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85"
+    }
+  ],
+  "sourceSlices": [
+    {
+      "file": "action.js",
+      "first": 2071,
+      "last": 2093,
+      "mode": "executed",
+      "source": "    _actionHandlers.setFocusOnWidget = function(eventInfo, actions, index) {\n        var action = actions[index];\n        if(action.objectPaths.length > 0) {\n            var elementIds = $ax.getElementIdsFromPath(action.objectPaths[0], eventInfo);\n            if(elementIds.length > 0) {\n                $ax('#' + elementIds[0]).focus();\n                //if select text and not in placeholder mode, then select all text\n                if(action.selectText && !$ax.placeholderManager.isActive(elementIds[0])) {\n                    var elementChildren = document.getElementById(elementIds[0]).children;\n                    //find the input or textarea element\n                    for(var i = 0; i < elementChildren.length; i++) {\n                        if (elementChildren[i].id.indexOf('_input') == -1) continue;\n                        var elementTagName = elementChildren[i].tagName;\n                        if(elementTagName && (elementTagName.toLowerCase() == \"input\" || elementTagName.toLowerCase() == \"textarea\")) {\n                            elementChildren[i].select();\n                        }\n                    }\n                }\n            }\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 1257,
+      "last": 1266,
+      "mode": "executed",
+      "source": "    $ax.public.fn.focus = function() {\n        var firstId = this.getElementIds()[0];\n        var focusableId = $ax.event.getFocusableWidgetOrChildId(firstId);\n        // This will scroll but not focus\n        $('#' + focusableId).triggerHandler(\"focus\");\n        // This will focus but does not call our custom scroll so will not animate scroll\n        $('#' + focusableId).focus();\n\n        return this;\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 693,
+      "last": 710,
+      "mode": "executed",
+      "source": "    $ax.event.getFocusableWidgetOrChildId = function (elementId) {\n        var mappedId = _layerRdoToFocusableWidget[elementId];\n        if (mappedId) elementId = mappedId;\n\n        var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');\n        var inputQuery = $jobj(inputId);\n        if(inputQuery.length > 0) return inputId;\n\n        var imgId = $ax.repeater.applySuffixToElementId(elementId, '_img');\n        var imgQuery = $jobj(imgId);\n        if (imgQuery.length > 0) return imgId;\n\n        var divId = $ax.repeater.applySuffixToElementId(elementId, '_div');\n        var divQuery = $jobj(divId);\n        if (divQuery.length > 0) return divId;\n\n        return elementId;\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 605,
+      "last": 618,
+      "mode": "executed",
+      "source": "    var _attachDefaultObjectEvent = function(elementIdQuery, elementId, eventName, fn) {\n        var func = function (e) {\n            var inputIndex = elementId.indexOf('_input');\n            if (inputIndex == -1) {\n                if ($ax.style.IsWidgetDisabled(elementId) || _shouldIgnoreLabelClickFromCheckboxOrRadioButton(e)) return true;\n            } else {\n                if ($ax.style.IsWidgetDisabled(elementId.substring(0, inputIndex)) || _shouldIgnoreLabelClickFromCheckboxOrRadioButton(e)) return false;\n            }\n            return fn.apply(this, arguments);\n        };\n        var bind = !elementIdQuery[eventName];\n        if(bind) elementIdQuery.bind(eventName, func);\n        else elementIdQuery[eventName](func);\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 778,
+      "last": 784,
+      "mode": "executed",
+      "source": "                focusObj.focus(function() {\n                    window.lastFocusedControl = elementId;\n                    $ax.style.SetWidgetFocused(elementId, true);\n                });\n                focusObj.blur(function() {\n                    $ax.style.SetWidgetFocused(elementId, false);\n                });"
+    },
+    {
+      "file": "events.js",
+      "first": 935,
+      "last": 959,
+      "mode": "executed",
+      "source": "            // Initialize assigned submit buttons\n            if(dObj.submitButton) {\n                $element.keyup(function(e) {\n                    if(e.keyCode == '13') {\n                        var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n                        var path = $ax.deepCopy(dObj.submitButton.path);\n                        path[path.length] = dObj.submitButton.id;\n                        var itemNum = $ax.repeater.getItemIdFromElementId(elementId);\n                        var submitId = $ax.getScriptIdFromPath(path, scriptId);\n\n                        if(itemNum && $ax.getParentRepeaterFromScriptId(submitId) == $ax.getParentRepeaterFromScriptId(scriptId)) {\n                            submitId = $ax.repeater.createElementId(submitId, itemNum);\n                        }\n                        var inputId = $ax.INPUT(submitId);\n                        if($jobj(inputId).length) submitId = inputId;\n\n                        $ax.setjBrowserEvent(e);\n                        $ax.event.fireClick(submitId);\n                    }\n                }).keydown(function(e) {\n                    if(e.keyCode == '13') {\n                        e.preventDefault();\n                    }\n                });\n            }"
+    },
+    {
+      "file": "events.js",
+      "first": 1629,
+      "last": 1635,
+      "mode": "executed",
+      "source": "        _event.fireClick = function(elementId) {\n            if(!$ax.features.supports.mobile) {\n                $('#' + elementId).click();\n                return;\n            }\n            _raiseSyntheticEvent(elementId, 'onClick', false, undefined, true);\n        };"
+    },
+    {
+      "file": "doc.js",
+      "first": 221,
+      "last": 244,
+      "mode": "executed",
+      "source": "        var _getElementsIdFromEventAndScriptId = function(eventInfo, scriptId) {\n            var itemId = eventInfo && $ax.repeater.getItemIdFromElementId(eventInfo.srcElement);\n            var target = false;\n            // Try to get itemId from target if you can't get it from source.\n            if(!itemId) {\n                itemId = eventInfo && eventInfo.targetElement && $ax.repeater.getItemIdFromElementId(eventInfo.targetElement);\n                if(itemId) target = true;\n            }\n\n            var parentRepeater = $ax.getParentRepeaterFromScriptId(scriptId);\n            if(parentRepeater && scriptId != parentRepeater) {\n                if(itemId && (!eventInfo || parentRepeater == $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(target ? eventInfo.targetElement : eventInfo.srcElement)))) {\n                    return [$ax.repeater.createElementId(scriptId, itemId)];\n                }\n                var elementIds = [];\n                var itemIds = $ax.getItemIdsForRepeater(parentRepeater);\n                if(!itemIds) return [];\n\n                for(var i = 0; i < itemIds.length; i++) elementIds[i] = $ax.repeater.createElementId(scriptId, itemIds[i]);\n                return elementIds;\n            }\n            return [scriptId];\n        };\n        $ax.getElementIdsFromEventAndScriptId = _getElementsIdFromEventAndScriptId;"
+    },
+    {
+      "file": "repeater.js",
+      "first": 1483,
+      "last": 1490,
+      "mode": "executed",
+      "source": "    var _createElementId = function(scriptId, itemId) {\n        if(!itemId) return scriptId;\n        var i = scriptId.indexOf('_');\n        var sections = i > -1 ? [scriptId.substring(0, i), scriptId.substring(i + 1)] : [scriptId];\n        var retval = sections[0] + '-' + itemId;\n        return sections.length > 1 ? retval + '_' + sections[1] : retval;\n    };\n    _repeaterManager.createElementId = _createElementId;"
+    },
+    {
+      "file": "repeater.js",
+      "first": 1503,
+      "last": 1526,
+      "mode": "executed",
+      "source": "    var _getScriptIdFromElementId = function(elementId) {\n        if(!elementId) return elementId;\n        var sections = elementId.split('-');\n        var retval = sections[0];\n        if(sections.length <= 1) return retval;\n        sections = sections[1].split('_');\n        return sections.length > 1 ? retval + '_' + sections[1] : retval;\n    };\n    _repeaterManager.getScriptIdFromElementId = _getScriptIdFromElementId;\n\n    var _getItemIdFromElementId = function(elementId) {\n        var sections = elementId.split('-');\n        if(sections.length < 2) return '';\n        sections = sections[1].split('_');\n        return sections[0];\n    };\n    _repeaterManager.getItemIdFromElementId = _getItemIdFromElementId;\n\n    // TODO: Just inline this if we keep it this way.\n    var _applySuffixToElementId = function(id, suffix) {\n        return id + suffix;\n        //        return _createElementId(_getScriptIdFromElementId(id) + suffix, _getItemIdFromElementId(id));\n    };\n    _repeaterManager.applySuffixToElementId = _applySuffixToElementId;"
+    },
+    {
+      "file": "expr.js",
+      "first": 289,
+      "last": 300,
+      "mode": "executed",
+      "source": "    _exprFunctions.SetWidgetFormText = function(elementIds, value) {\n        for(var i = 0; i < elementIds.length; i++) {\n            var elementId = elementIds[i];\n            var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');\n\n            var obj = $jobj(inputId);\n            if(obj.val() == value || (value == '' && $ax.placeholderManager.isActive(elementId))) return;\n            obj.val(value);\n            $ax.placeholderManager.updatePlaceholder(elementId, !value);\n            if($ax.event.HasTextChanged($ax.getObjectFromElementId(elementId))) $ax.event.TryFireTextChanged(elementId);\n        }\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 217,
+      "last": 226,
+      "mode": "executed",
+      "source": "    var _notAllowedInvisible = function (id) {\n        var type = $ax.getTypeFromElementId(id);\n        if ($ax.public.fn.IsReferenceDiagramObject(type) || $ax.public.fn.IsLayer(type)) return false;\n        return !($ax.public.fn.IsVector(type) && _hasCompoundImage(id)); \n    }\n\n    var _hasCompoundImage = function (id) {\n        var query = $jobj(id);\n        return $ax.public.fn.isCompoundVectorHtml(query[0]);\n    }"
+    },
+    {
+      "file": "events.js",
+      "first": 281,
+      "last": 415,
+      "mode": "executed",
+      "source": "    var _handleEvent = $ax.event.handleEvent = function (elementId, eventInfo, axEventObject, skipShowDescriptions, synthetic) {\n        var eventType = axEventObject.eventType;\n        if(_enteredWidgets[elementId] && eventType == 'OnMouseEnter') return; // Suppress entering a widget when already in widget (ie only)\n        if(_isSuppressedEvent(elementId, eventType)) {\n            _removeSuppressedEvent(elementId, eventType);\n            return;\n        }\n\n        if(axEventObject.proxy) {\n            var firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                var firingObj = $obj(firingId);\n                var nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                eventInfo = $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), false, firingId);\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n//        var x = JSON.stringify(eventInfo);\n//        var y = JSON.stringify(axEventObject);\n\n        var fireTime = new Date().getTime();\n\n        if(fireTime - eventNestingTime > 100) {\n            eventNestingTime = fireTime;\n            eventNesting = 0;\n        }\n\n        if(eventNesting === 0) {\n            $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, fireTime);\n        }\n\n        eventNesting += 1;\n\n        if (!synthetic && !_getCanClick() && (eventType == 'OnClick' || eventType == 'OnPageClick')) return;\n        // If you are supposed to suppress, do that right away.\n        if(suppressedEventStatus[eventType]) {\n            return;\n        }\n\n        var currentEvent = $ax.getjBrowserEvent();\n        if(!synthetic && currentEvent && currentEvent.originalEvent && currentEvent.originalEvent.handled && !eventInfo.isMasterEvent) return;\n        if(!synthetic && elementId && !$ax.style.getObjVisible(elementId) && _notAllowedInvisible(elementId)) return;\n\n        //if debug\n        var axObj = $obj(elementId);\n        var axObjLabel = axObj ? axObj.label : eventInfo.label;\n        var axObjType = axObj ? axObj.friendlyType : eventInfo.friendlyType;\n        if (!skipShowDescriptions || eventType == 'OnPageLoad') postMessage('axEvent', { 'label': axObjLabel, 'type': axObjType, 'event': axEventObject, 'elementId': $ax.repeater.getScriptIdFromElementId(elementId) });\n\n        var bubble = true;\n        var showCaseDescriptions = !skipShowDescriptions && _shouldShowCaseDescriptions(axEventObject);\n        if(!showCaseDescriptions) {\n            //handle case descriptions\n            var caseGroups = [];\n            var currentCaseGroup = [];\n            caseGroups[0] = currentCaseGroup;\n\n            // Those refreshes not after a wait\n            var guaranteedRefreshes = {};\n\n            var caseGroupIndex = 0;\n            for(var i = 0; i < axEventObject.cases.length; i++) {\n                var currentCase = axEventObject.cases[i];\n                if(currentCase.isNewIfGroup && i != 0) {\n                    caseGroupIndex++;\n                    currentCaseGroup = [];\n                    caseGroups[caseGroups.length] = currentCaseGroup;\n                    // Joon: Isn't caseGroups.length always equal to caseGroupIndex?\n                }\n                currentCaseGroup[currentCaseGroup.length] = currentCase;\n\n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    var action = currentCase.actions[j];\n                    if(action.action == 'wait') break;\n                    if(action.action != 'refreshRepeater') continue;\n                    for(var k = 0; k < action.repeatersToRefresh.length; k++) {\n                        var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[k], eventInfo)[0];\n                        if(id) guaranteedRefreshes[id] = caseGroupIndex;\n                    }\n                }\n            }\n\n            for(var i = 0; i < caseGroups.length; i++) {\n                var groupRefreshes = [];\n                for(var key in guaranteedRefreshes) {\n                    if(guaranteedRefreshes[key] == i) groupRefreshes[groupRefreshes.length] = key;\n                }\n                bubble = _handleCaseGroup(eventInfo, caseGroups[i], groupRefreshes) && bubble;\n            }\n        } else {\n            _showCaseDescriptions(elementId, eventInfo, axEventObject, synthetic);\n            bubble = false;\n        }\n\n        // If not handled, synthetically bubble if you can\n        if(bubble && _widgetToFocusParent[elementId]) {\n            firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                firingObj = $obj(firingId);\n                nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n\n        // Only trigger a supression if it handled this event\n        if(!bubble && suppressingEvents[eventType]) {\n            suppressedEventStatus[suppressingEvents[eventType]] = true;\n        }\n\n        $ax.action.flushAllResizeMoveActions(eventInfo);\n\n        // This should not be needed anymore. All refreshes should be inserted, or handled earlier.\n        var repeaters = $ax.deepCopy($ax.action.repeatersToRefresh);\n        while($ax.action.repeatersToRefresh.length) $ax.action.repeatersToRefresh.pop();\n        for(i = 0; i < repeaters.length; i++) $ax.repeater.refreshRepeater(repeaters[i], eventInfo);\n\n        if(currentEvent && currentEvent.originalEvent) {\n            currentEvent.originalEvent.handled = !synthetic && !bubble && allowBubble.indexOf(eventType) == -1;\n            //currentEvent.originalEvent.donotdrag = currentEvent.donotdrag || (!bubble && eventDescription == 'OnMouseDown');\n\n            // Prevent default if necessary\n            if (currentEvent.originalEvent.handled && preventDefaultEvents.indexOf(eventType) != -1) {\n                currentEvent.preventDefault();\n            }\n        }\n\n        eventNesting -= 1;\n\n        if(!showCaseDescriptions) postMessage('axEventComplete');\n\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 1214,
+      "last": 1251,
+      "mode": "executed",
+      "source": "            if ($ax.public.fn.IsCheckBox(dObj.type) || $ax.public.fn.IsRadioButton(dObj.type)) {\n                var input = $jobj($ax.INPUT(elementId));\n                if($ax.public.fn.IsRadioButton(dObj.type)) {\n                    var radioGroupName = input.attr('name');\n                    if(input.prop('selected')) {\n                        $ax.updateRadioButtonSelected(radioGroupName, elementId);\n                    }\n                    var selected = $ax.style.IsWidgetSelected(elementId);\n                    if (selected) $ax.style.SetWidgetSelected(elementId, selected, true);\n\n                    var onClick = function(e) {\n                        if ($ax.style.IsWidgetDisabled(elementId)) return;\n                        if(radioGroupName !== elementId) {\n                            var radioGroup = $(\"input[name='\" + radioGroupName + \"']\").parent();\n                            for(var i = 0; i < radioGroup.length; i++) {\n                                $ax.style.SetWidgetSelected(radioGroup[i].id, false, true);\n                            }\n                        }\n                        $ax.style.SetWidgetSelected(elementId, true, true);\n                        e.originalEvent.handled = true;\n                    };\n                } else {\n                    var selected = $ax.style.IsWidgetSelected(elementId);\n                    if (selected) $ax.style.SetWidgetSelected(elementId, selected, true);\n\n                    onClick = function(e) {\n                        $ax.style.SetWidgetSelected(elementId, !$ax.style.IsWidgetSelected(elementId), true);\n                        if(!$ax.style.IsWidgetDisabled(elementId)) e.originalEvent.handled = true;\n                    };\n                }\n                input.click(onClick);\n\n                //$element.bind('change', function(e) {\n                //    $ax.setjBrowserEvent(e);\n                //    var eTarget = e.target || e.srcElement;\n                //    _tryFireCheckedChanged(elementId, eTarget.selected);\n                //});\n            };"
+    },
+    {
+      "file": "style.js",
+      "first": 186,
+      "last": 257,
+      "mode": "executed",
+      "source": "    $ax.style.SetWidgetSelected = function(id, value, alwaysApply) {\n        if(_isWidgetDisabled(id)) return;\n        //NOTE: not firing select events if state didn't change\n        const raiseSelectedEvents = $ax.style.IsWidgetSelected(id) != value;\n\n        if(value) {\n            var group = $('#' + id).attr('selectiongroup');\n            if(group) {\n                $(\"[selectiongroup='\" + group + \"']\").each(function() {\n                    var otherId = this.id;\n                    if(otherId == id) return;\n                    if ($ax.visibility.isScriptIdLimbo($ax.repeater.getScriptIdFromElementId(otherId))) return;\n                    $ax.style.SetWidgetSelected(otherId, false, alwaysApply);\n                });\n            }\n        }\n        var obj = $obj(id);\n        if(obj) {\n            // Lets remove 'selected' css class independently of object type (dynamic panel, layer or simple rectangle). See RP-1559\n            if (!value) $jobj(id).removeClass(SELECTED);\n\n            var actionId = id;\n            if ($ax.public.fn.IsDynamicPanel(obj.type) || $ax.public.fn.IsLayerOrRdo(obj.type)) {\n                var children = $axure('#' + id).getChildren()[0].children;\n                var skipIds = new Set();\n                for(var i = 0; i < children.length; i++) {\n                    var childId = children[i];\n                    // only set one member of selection group in children selected since subsequent calls\n                    // will unselect the previous one anyway\n                    if(value) {\n                        if(skipIds.has(childId)) continue;\n                        var group = $('#' + childId).attr('selectiongroup');\n                        if(group) for (var item of $(\"[selectiongroup='\" + group + \"']\")) skipIds.add(item.id);\n                    }\n                    // Special case for trees\n                    var childObj = $jobj(childId);\n                    if(childObj.hasClass('treeroot')) {\n                        var treenodes = childObj.find('.treenode');\n                        for(var j = 0; j < treenodes.length; j++) {\n                            $axure('#' + treenodes[j].id).selected(value);\n                        }\n                    } else $axure('#' + childId).selected(value);\n                }\n            } else {\n                const widgetHasSelectedState = _widgetHasState(id, SELECTED);\n                while(obj.isContained && !widgetHasSelectedState) obj = obj.parent;\n                var itemId = $ax.repeater.getItemIdFromElementId(id);\n                var path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(id));\n                path[path.length - 1] = obj.id;\n                actionId = $ax.getElementIdFromPath(path, { itemNum: itemId });\n                if(alwaysApply || widgetHasSelectedState) {\n                    const state = _generateFullState(actionId, undefined, value);\n                    _applyImageAndTextJson(actionId, state);\n                    _updateElementIdImageStyle(actionId, state);\n                }\n                //added actionId and this hacky logic because we set style state on child, but interaction on parent\n                //then the id saved in _selectedWidgets would be depended on widgetHasSelectedState... more see case 1818143\n                while(obj.isContained && !$ax.getObjectFromElementId(id).interactionMap) obj = obj.parent;\n                path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(id));\n                path[path.length - 1] = obj.id;\n                actionId = $ax.getElementIdFromPath(path, { itemNum: itemId });\n            }\n        }\n\n        //    ApplyImageAndTextJson(id, value ? 'selected' : 'normal');\n        _selectedWidgets[id] = value;\n        if(raiseSelectedEvents) $ax.event.raiseSelectedEvents(actionId, value);\n    };\n\n    $ax.style.IsWidgetSelected = function(id) {\n        return Boolean(_selectedWidgets[id] || _hasAnySelectedClass(id));\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 1688,
+      "last": 1693,
+      "mode": "executed",
+      "source": "    var _raiseSelectedEvents = function(elementId, value) {\n        $ax.event.raiseSyntheticEvent(elementId, 'onSelectedChange');\n        if(value) $ax.event.raiseSyntheticEvent(elementId, 'onSelect');\n        else $ax.event.raiseSyntheticEvent(elementId, 'onUnselect');\n    };\n    $ax.event.raiseSelectedEvents = _raiseSelectedEvents;"
+    },
+    {
+      "file": "events.js",
+      "first": 100,
+      "last": 129,
+      "mode": "static-only",
+      "source": "    for(var i = 0; i < EVENT_NAMES.length; i++) {\n        var eventName = EVENT_NAMES[i];\n        //we need the function here to circumvent closure modifying eventName\n        _event[eventName] = (function(event_Name) {\n            return function(elementId, fn) {\n                var elementIdQuery = $jobj(elementId);\n                var type = $ax.getTypeFromElementId(elementId);\n\n                //we need specially track link events so we can enable and disable them along with\n                //their parent widgets\n                if(elementIdQuery.is('a')) _attachCustomObjectEvent(elementId, event_Name, fn);\n                //see notes below\n                else if($ax.IsTreeNodeObject(type)) _attachTreeNodeEvent(elementId, event_Name, fn);\n                else if ($ax.IsImageFocusable(type) && (event_Name == 'focus' || event_Name == 'blur')) {\n                    var suitableChild;\n                    var imgChild = $ax.repeater.applySuffixToElementId(elementId, '_img');\n                    var divChild = $ax.repeater.applySuffixToElementId(elementId, '_div');\n\n                    for (var j = 0; j < elementIdQuery[0].children.length; j++) {\n                        if (elementIdQuery[0].children[j].id == imgChild) suitableChild = imgChild;\n                        if (!suitableChild && elementIdQuery[0].children[j].id == divChild) suitableChild = divChild;\n                    }\n                    if(!suitableChild) suitableChild = imgChild;\n                    _attachDefaultObjectEvent($jobj(suitableChild), elementId, event_Name, fn);\n                } else {\n                    var inputId = $ax.INPUT(elementId);\n                    var isInput = $jobj(inputId).length != 0;\n                    var id = isInput && (event_Name == 'focus' || event_Name == 'blur') ? inputId : elementId;\n                    _attachDefaultObjectEvent($jobj(id), elementId, event_Name, fn);\n                }"
+    },
+    {
+      "file": "events.js",
+      "first": 154,
+      "last": 185,
+      "mode": "static-only",
+      "source": "    var _attachEvents = function (diagramObject, elementId, doMouseEnterGuard) {\n\n        var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');\n        var id = $jobj(inputId).length ? inputId : elementId;\n\n        for(var eventName in diagramObject.interactionMap) {\n            var jQueryEventName = AXURE_TO_JQUERY_EVENT_NAMES[eventName];\n            if(!jQueryEventName) continue;\n\n            _event[jQueryEventName](id,\n            //this is needed to escape closure\n                (function(axEventObject) {\n                    return function (e) {\n                        if(e.type == 'mouseenter' && doMouseEnterGuard) {\n                            if(mouseEnterGuard[elementId]) return;\n                            else mouseEnterGuard[elementId] = true;\n                        }\n\n                        $ax.setjBrowserEvent(e);\n                        //                        console.log(axEventObject.description);\n                        var eventInfo = $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), false, elementId);\n                        _handleEvent(elementId, eventInfo, axEventObject);\n                    };\n                })(diagramObject.interactionMap[eventName])\n            );\n\n            if(jQueryEventName.toLowerCase() == 'mouseenter' && doMouseEnterGuard) {\n                $jobj(elementId).on('mouseleave touchend', function() {\n                    mouseEnterGuard[elementId] = false;\n                });\n            }\n        }"
+    },
+    {
+      "file": "events.js",
+      "first": 217,
+      "last": 226,
+      "mode": "static-only",
+      "source": "    var _notAllowedInvisible = function (id) {\n        var type = $ax.getTypeFromElementId(id);\n        if ($ax.public.fn.IsReferenceDiagramObject(type) || $ax.public.fn.IsLayer(type)) return false;\n        return !($ax.public.fn.IsVector(type) && _hasCompoundImage(id)); \n    }\n\n    var _hasCompoundImage = function (id) {\n        var query = $jobj(id);\n        return $ax.public.fn.isCompoundVectorHtml(query[0]);\n    }"
+    },
+    {
+      "file": "events.js",
+      "first": 281,
+      "last": 324,
+      "mode": "static-only",
+      "source": "    var _handleEvent = $ax.event.handleEvent = function (elementId, eventInfo, axEventObject, skipShowDescriptions, synthetic) {\n        var eventType = axEventObject.eventType;\n        if(_enteredWidgets[elementId] && eventType == 'OnMouseEnter') return; // Suppress entering a widget when already in widget (ie only)\n        if(_isSuppressedEvent(elementId, eventType)) {\n            _removeSuppressedEvent(elementId, eventType);\n            return;\n        }\n\n        if(axEventObject.proxy) {\n            var firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                var firingObj = $obj(firingId);\n                var nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                eventInfo = $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), false, firingId);\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n//        var x = JSON.stringify(eventInfo);\n//        var y = JSON.stringify(axEventObject);\n\n        var fireTime = new Date().getTime();\n\n        if(fireTime - eventNestingTime > 100) {\n            eventNestingTime = fireTime;\n            eventNesting = 0;\n        }\n\n        if(eventNesting === 0) {\n            $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, fireTime);\n        }\n\n        eventNesting += 1;\n\n        if (!synthetic && !_getCanClick() && (eventType == 'OnClick' || eventType == 'OnPageClick')) return;\n        // If you are supposed to suppress, do that right away.\n        if(suppressedEventStatus[eventType]) {\n            return;\n        }\n\n        var currentEvent = $ax.getjBrowserEvent();\n        if(!synthetic && currentEvent && currentEvent.originalEvent && currentEvent.originalEvent.handled && !eventInfo.isMasterEvent) return;\n        if(!synthetic && elementId && !$ax.style.getObjVisible(elementId) && _notAllowedInvisible(elementId)) return;"
+    },
+    {
+      "file": "events.js",
+      "first": 650,
+      "last": 669,
+      "mode": "static-only",
+      "source": "    var _layerRdoToFocusableWidget = {};\n    var _widgetToFocusParent = {};\n    _event.layerRdoMapFocus = function(layerOrRdo, elementId) {\n        var mainObj = $ax.public.fn.IsLayer2(layerOrRdo.type) ? layerOrRdo.objs[0] : $obj($ax.model.idsInRdoToHideOrLimbo(elementId)[0]);\n        // If first child non existant return\n        if (!mainObj) return;\n\n        var mainId = $ax.getElementIdFromPath([mainObj.id], { relativeTo: elementId });\n        _widgetToFocusParent[mainId] = elementId;\n\n        // If first child is a layer, call recursively\n        if ($ax.public.fn.IsLayerOrRdo(mainObj.type)) {\n            _event.layerRdoMapFocus(mainObj, mainId);\n            var baseId = _layerRdoToFocusableWidget[mainId];\n            if(baseId) _layerRdoToFocusableWidget[elementId] = baseId;\n            return;\n        }\n\n        _layerRdoToFocusableWidget[elementId] = mainId;\n    }"
+    },
+    {
+      "file": "events.js",
+      "first": 759,
+      "last": 790,
+      "mode": "static-only",
+      "source": "            if(dObj.tabbable) {\n                if($ax.public.fn.IsLayerOrRdo(dObj.type)) _event.layerRdoMapFocus(dObj, elementId);\n                var focusableId = _event.getFocusableWidgetOrChildId(elementId);\n                var $focusable = $('#' + focusableId);\n                $focusable.attr(\"tabIndex\", 0);\n                if($focusable.is('div') || $focusable.is('img')) {\n                    $focusable.bind($ax.features.eventNames.mouseDownName, function () {\n                        window.shouldOutline = false;\n                    });\n                    _attachFocusAndBlur($focusable);\n                }\n            }\n\n            // Focus has to be done before on focus fires\n            // Set up focus\n            if ($ax.public.fn.IsTextArea(dObj.type) || $ax.public.fn.IsTextBox(dObj.type) || $ax.public.fn.IsCheckBox(dObj.type) || $ax.public.fn.IsRadioButton(dObj.type) ||\n                $ax.public.fn.IsListBox(dObj.type) || $ax.public.fn.IsComboBox(dObj.type) || $ax.public.fn.IsButton(dObj.type) ||\n                (dObj.tabbable && ($ax.public.fn.IsImageBox(dObj.type) || $ax.public.fn.IsVector(dObj.type) || $ax.IsTreeNodeObject(dObj.type) || $ax.public.fn.IsTableCell(dObj.type)))) {\n                var focusObj = $jobj($ax.event.getFocusableWidgetOrChildId(elementId));\n                focusObj.focus(function() {\n                    window.lastFocusedControl = elementId;\n                    $ax.style.SetWidgetFocused(elementId, true);\n                });\n                focusObj.blur(function() {\n                    $ax.style.SetWidgetFocused(elementId, false);\n                });\n            }\n            // [MAS: Supressing events were here]\n            _createProxies(dObj, elementId);\n            var isDynamicPanel = $ax.public.fn.IsDynamicPanel(dObj.type);\n            if(dObj.interactionMap) {\n                _attachEvents(dObj, elementId, isDynamicPanel);"
+    },
+    {
+      "file": "events.js",
+      "first": 846,
+      "last": 959,
+      "mode": "static-only",
+      "source": "            const isInput = $ax.public.fn.IsTextArea(dObj.type) || $ax.public.fn.IsTextBox(dObj.type);\n            if(isInput) {\n                var inputJobj = $jobj($ax.INPUT(elementId));\n                inputJobj.bind('keyup', function(e) {\n                    //prevents triggering player shortcuts\n                    e.preventDefault();\n                });\n            }\n\n            const clearPlaceholderTextIfNeeded = function(elementId) {\n                if(!dObj.HideHintOnFocused) {\n                    var inputIndex = elementId.indexOf('_input');\n                    if(inputIndex == -1) return;\n                    var inputId = elementId.substring(0, inputIndex);\n                    if(!$ax.placeholderManager.isActive(inputId)) return;\n                    $ax.placeholderManager.updatePlaceholder(inputId, false, true);\n                }\n            }\n\n            // Initialize Placeholders. Right now this is text boxes and text areas.\n            // Also, the assuption is being made that these widgets with the placeholder, have no other styles (this may change...)\n            var hasPlaceholder = dObj.placeholderText == '' ? true : Boolean(dObj.placeholderText);\n            if(isInput && hasPlaceholder) {\n                // This is needed to initialize the placeholder state\n                inputJobj.on('focus', function () {\n                    if(dObj.HideHintOnFocused) {\n                        var id = this.id;\n                        var inputIndex = id.indexOf('_input');\n                        if (inputIndex == -1) return;\n                        var inputId = id.substring(0, inputIndex);\n\n                        if (!$ax.placeholderManager.isActive(inputId)) return;\n                        $ax.placeholderManager.updatePlaceholder(inputId, false, true);\n                    }\n                    $ax.placeholderManager.moveCaret(this.id);\n                }).on('mouseup', function() {\n                    $ax.placeholderManager.moveCaret(this.id);\n                }).on('blur', function() {\n                    var id = this.id;\n                    var inputIndex = id.indexOf('_input');\n                    if(inputIndex == -1) return;\n                    var inputId = id.substring(0, inputIndex);\n                    var $input = $jobj(id);\n                    var invalidInput = !$input[0].validity.valid;\n                    if($input.val() || invalidInput) return;\n                    $ax.placeholderManager.updatePlaceholder(inputId, true);\n                });\n\n                inputJobj.on('input', function () {\n                    if (!dObj.HideHintOnFocused) { //hide on type\n                        var id = this.id;\n                        var inputIndex = id.indexOf('_input');\n                        if(inputIndex == -1) return;\n                        var inputId = id.substring(0, inputIndex);\n\n                        var $input = $jobj(id);\n                        var emptyInputValue = !$input.val();\n                        var validInput = $input[0].validity.valid;\n                        if ($ax.placeholderManager.isActive(inputId)) {\n                            // clear text if emptyInputValue is true and input is valid;\n                            $ax.placeholderManager.updatePlaceholder(inputId, false, emptyInputValue && validInput);\n                        }\n                        else if (emptyInputValue && validInput) {\n                            $ax.placeholderManager.updatePlaceholder(inputId, true);\n                            $ax.placeholderManager.moveCaret(id, 0);\n                        }\n                    };\n                });\n\n                inputJobj.on('keydown', function () {\n                    clearPlaceholderTextIfNeeded(this.id);\n                }).on('beforeinput', function () {\n                    clearPlaceholderTextIfNeeded(this.id);\n                }).on('paste', function () {\n                    clearPlaceholderTextIfNeeded(this.id);\n                });\n\n                $ax.placeholderManager.registerPlaceholder(elementId, dObj.placeholderText, inputJobj.attr('type') == 'password');\n\n                // Reset placeholders when the \"Back/next to previous page\" browser event was fired.\n                // It's need because we use input value with some style and js hacks as placeholder\n                // And browsers save values of input elements in their history.\n                // More info - RP-2077\n                if (!$ax.placeholderManager.isActive(elementId) && inputJobj.val() === dObj.placeholderText) {\n                    inputJobj.val('');\n                }\n                $ax.placeholderManager.updatePlaceholder(elementId, !inputJobj.val());\n            }\n\n            // Initialize assigned submit buttons\n            if(dObj.submitButton) {\n                $element.keyup(function(e) {\n                    if(e.keyCode == '13') {\n                        var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n                        var path = $ax.deepCopy(dObj.submitButton.path);\n                        path[path.length] = dObj.submitButton.id;\n                        var itemNum = $ax.repeater.getItemIdFromElementId(elementId);\n                        var submitId = $ax.getScriptIdFromPath(path, scriptId);\n\n                        if(itemNum && $ax.getParentRepeaterFromScriptId(submitId) == $ax.getParentRepeaterFromScriptId(scriptId)) {\n                            submitId = $ax.repeater.createElementId(submitId, itemNum);\n                        }\n                        var inputId = $ax.INPUT(submitId);\n                        if($jobj(inputId).length) submitId = inputId;\n\n                        $ax.setjBrowserEvent(e);\n                        $ax.event.fireClick(submitId);\n                    }\n                }).keydown(function(e) {\n                    if(e.keyCode == '13') {\n                        e.preventDefault();\n                    }\n                });\n            }"
+    },
+    {
+      "file": "events.js",
+      "first": 1195,
+      "last": 1213,
+      "mode": "static-only",
+      "source": "            // Attach synthetic onTextChange event to textbox and textarea elements\n            if ($ax.event.HasTextChanged(dObj)) {\n                var element = $jobj($ax.INPUT(elementId));\n                $ax.updateElementText(elementId, element.val());\n                //Key down needed because when holding a key down, key up only fires once, but keydown fires repeatedly.\n                //Key up because last mouse down will only show the state before the last character.\n                element.on('keydown', function(e) {\n                    $ax.setjBrowserEvent(e);\n                    $ax.event.TryFireTextChanged(elementId);\n                }).on('keyup', function(e) {\n                    $ax.setjBrowserEvent(e);\n                    $ax.event.TryFireTextChanged(elementId);\n                }).on('input', function(e) {\n                    $ax.setjBrowserEvent(e);\n                    $ax.event.TryFireTextChanged(elementId);\n                });\n            };\n\n            // Attach synthetic onCheckedChange event to radiobutton and checkbox elements"
+    },
+    {
+      "file": "doc.js",
+      "first": 175,
+      "last": 207,
+      "mode": "static-only",
+      "source": "        var _getScriptIdFromPath = function(path, relativeTo, includeLimbo) {\n            var relativePath = [];\n            var includeMasterInPath = false;\n            if(relativeTo) {\n                var relativeToScriptId;\n                if(relativeTo.srcElement) { //this is eventInfo\n                    relativeToScriptId = $ax.repeater.getScriptIdFromElementId(relativeTo.srcElement);\n                    includeMasterInPath = relativeTo.isMasterEvent;\n                } else if(typeof relativeTo === 'string') { //this is an element id\n                    relativeToScriptId = relativeTo;\n                    if($ax.public.fn.IsReferenceDiagramObject($obj(relativeToScriptId).type)) includeMasterInPath = true;\n                }\n\n                if(relativeToScriptId) {\n                    relativePath = $ax.getPathFromScriptId(relativeToScriptId);\n                    if(!includeMasterInPath) relativePath = relativePath.slice(0, relativePath.length - 1);\n                } else if(relativeTo instanceof Array) { //this is a path\n                    relativePath = relativeTo;\n                }\n            }\n            var fullPath = relativePath.concat(path);\n            var scriptId = _getScriptIdFromFullPath(fullPath);\n            return (includeLimbo || !$ax.visibility.isScriptIdLimbo(scriptId)) && scriptId;\n        };\n        $ax.getScriptIdFromPath = _getScriptIdFromPath;\n\n        var _getElementIdsFromPath = function(path, eventInfo) {\n            var scriptId = _getScriptIdFromPath(path, eventInfo);\n            if(!scriptId) return [];\n            // Don't need placed check hear. If unplaced, scriptId will be undefined and exit out before here.\n            return $ax.getElementIdsFromEventAndScriptId(eventInfo, scriptId);\n        };\n        $ax.getElementIdsFromPath = _getElementIdsFromPath;"
+    }
+  ],
+  "cases": [
+    {
+      "name": "fresh target: synthetic focus handlers, old blur, real focus handlers, continuation",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "w"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "old_input",
+            "synthetic": true
+          },
+          {
+            "kind": "style",
+            "id": "old",
+            "value": false
+          },
+          {
+            "kind": "user",
+            "id": "old",
+            "event": "blur",
+            "active": "",
+            "synthetic": false
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "w_input",
+        "selection": [
+          3,
+          3
+        ],
+        "value": "abc"
+      },
+      "passed": true
+    },
+    {
+      "name": "already focused target still has two jQuery focus dispatches",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "w"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "w_input",
+        "selection": [
+          3,
+          3
+        ],
+        "value": "abc"
+      },
+      "passed": true
+    },
+    {
+      "name": "only first object path and first mapped row are focused",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "row"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "row-3",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "row-3",
+            "event": "focus",
+            "active": "",
+            "synthetic": true
+          },
+          {
+            "kind": "style",
+            "id": "row-3",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "row-3",
+            "event": "focus",
+            "active": "row-3_input",
+            "synthetic": true
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "row-3_input",
+        "selection": [
+          0,
+          3
+        ],
+        "value": "abc"
+      },
+      "passed": true
+    },
+    {
+      "name": "same repeater source binds its own row before focus",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "row"
+            ],
+            "source": "source-1"
+          },
+          {
+            "kind": "style",
+            "id": "row-1",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "row-1",
+            "event": "focus",
+            "active": "",
+            "synthetic": true
+          },
+          {
+            "kind": "style",
+            "id": "row-1",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "row-1",
+            "event": "focus",
+            "active": "row-1_input",
+            "synthetic": true
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "row-1_input",
+        "selection": [
+          3,
+          3
+        ],
+        "value": "abc"
+      },
+      "passed": true
+    },
+    {
+      "name": "selectText false leaves an existing caret unchanged",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "w"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "w_input",
+        "selection": [
+          1,
+          1
+        ],
+        "value": "abc"
+      },
+      "passed": true
+    },
+    {
+      "name": "active typing-mode hint prevents text selection",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "w"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "",
+            "synthetic": true
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "w_input",
+        "selection": [
+          0,
+          0
+        ],
+        "value": "Hint"
+      },
+      "passed": true
+    },
+    {
+      "name": "selection checks hint after focus handler changes active state",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "w"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "",
+            "synthetic": true
+          },
+          {
+            "kind": "hintFocus",
+            "id": "w"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "hintFocus",
+            "id": "w"
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "w_input",
+        "selection": [
+          0,
+          4
+        ],
+        "value": "Hint"
+      },
+      "passed": true
+    },
+    {
+      "name": "readonly fields focus and select normally",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "w"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "",
+            "synthetic": true
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "w_input",
+        "selection": [
+          0,
+          3
+        ],
+        "value": "abc"
+      },
+      "passed": true
+    },
+    {
+      "name": "disabled native control rejects actual focus and guarded user callbacks; select still runs",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "w"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "old_input",
+        "selection": [
+          0,
+          3
+        ],
+        "value": "abc"
+      },
+      "passed": true
+    },
+    {
+      "name": "hidden control: raw handler invocation differs from actual focus acceptance",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "w"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "old_input",
+            "synthetic": true
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "old_input",
+            "synthetic": true
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "old_input",
+        "selection": [
+          0,
+          3
+        ],
+        "value": "abc"
+      },
+      "passed": true
+    },
+    {
+      "name": "layer mapped child focuses but root-only select scan does not find nested input",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "layer"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "child",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "child",
+            "event": "focus",
+            "active": "",
+            "synthetic": true
+          },
+          {
+            "kind": "style",
+            "id": "child",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "child",
+            "event": "focus",
+            "active": "child_input",
+            "synthetic": true
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "child_input",
+        "selection": [
+          1,
+          1
+        ],
+        "value": "abc"
+      },
+      "passed": true
+    },
+    {
+      "name": "ordinary non-tabbable panel does not recursively choose a form descendant",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "panel"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "",
+        "selection": [
+          3,
+          3
+        ],
+        "value": "abc"
+      },
+      "passed": true
+    },
+    {
+      "name": "empty paths and absent mapped rows both continue without focus",
+      "result": {
+        "trace": [
+          {
+            "kind": "continue",
+            "index": 1
+          },
+          {
+            "kind": "path",
+            "path": [
+              "row"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "native dispatcher allows both visible Focus cases and rejects hidden Focus cases",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "w"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "",
+            "synthetic": true
+          },
+          {
+            "kind": "browserEvent"
+          },
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "focus"
+          },
+          {
+            "kind": "style",
+            "id": "w",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "w",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "browserEvent"
+          },
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "focus"
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          },
+          {
+            "kind": "path",
+            "path": [
+              "hidden"
+            ],
+            "source": "outside"
+          },
+          {
+            "kind": "style",
+            "id": "hidden",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "hidden",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "browserEvent"
+          },
+          {
+            "kind": "style",
+            "id": "hidden",
+            "value": true
+          },
+          {
+            "kind": "user",
+            "id": "hidden",
+            "event": "focus",
+            "active": "w_input",
+            "synthetic": true
+          },
+          {
+            "kind": "browserEvent"
+          },
+          {
+            "kind": "continue",
+            "index": 1
+          }
+        ],
+        "active": "w_input"
+      },
+      "passed": true
+    },
+    {
+      "name": "submit Enter keydown prevents default, keyup fires desktop click",
+      "result": {
+        "prevented": true,
+        "before": [],
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "button"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          },
+          {
+            "kind": "click",
+            "id": "button"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "submit does not check Shift/Ctrl/Alt or composition flags",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "button"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          },
+          {
+            "kind": "click",
+            "id": "button"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "submit non-Enter neither prevents nor clicks",
+      "result": {
+        "prevented": false,
+        "trace": []
+      },
+      "passed": true
+    },
+    {
+      "name": "submit repeat keyups each click and source remains focused",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "button"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          },
+          {
+            "kind": "click",
+            "id": "button"
+          },
+          {
+            "kind": "path",
+            "path": [
+              "button"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          },
+          {
+            "kind": "click",
+            "id": "button"
+          }
+        ],
+        "active": "source_input"
+      },
+      "passed": true
+    },
+    {
+      "name": "submit same repeater row and input-child preference",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "button"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          },
+          {
+            "kind": "click",
+            "id": "button-2_input"
+          }
+        ],
+        "checked": true
+      },
+      "passed": true
+    },
+    {
+      "name": "submit cross-repeater does not expand target into all rows",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "button"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "mobile submit uses synthetic onClick rather than jQuery click",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "button"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          },
+          {
+            "kind": "synthetic",
+            "id": "button",
+            "event": "onClick"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "native submit checkbox: Click case precedes selected change and select callbacks",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "check"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          },
+          {
+            "kind": "browserEvent"
+          },
+          {
+            "kind": "case",
+            "id": "check",
+            "event": "click"
+          },
+          {
+            "kind": "synthetic",
+            "id": "check",
+            "event": "onSelectedChange"
+          },
+          {
+            "kind": "synthetic",
+            "id": "check",
+            "event": "onSelect"
+          },
+          {
+            "kind": "browserEvent"
+          },
+          {
+            "kind": "case",
+            "id": "check",
+            "event": "click"
+          },
+          {
+            "kind": "synthetic",
+            "id": "check",
+            "event": "onSelectedChange"
+          },
+          {
+            "kind": "synthetic",
+            "id": "check",
+            "event": "onUnselect"
+          },
+          {
+            "kind": "thrown",
+            "name": "TypeError",
+            "message": "Cannot set properties of undefined (setting 'handled')"
+          }
+        ],
+        "checked": true,
+        "selected": false
+      },
+      "passed": true
+    },
+    {
+      "name": "native submit hidden checkbox skips Click case but changes checked and emits selection callbacks",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "check"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          },
+          {
+            "kind": "browserEvent"
+          },
+          {
+            "kind": "synthetic",
+            "id": "check",
+            "event": "onSelectedChange"
+          },
+          {
+            "kind": "synthetic",
+            "id": "check",
+            "event": "onSelect"
+          },
+          {
+            "kind": "browserEvent"
+          },
+          {
+            "kind": "synthetic",
+            "id": "check",
+            "event": "onSelectedChange"
+          },
+          {
+            "kind": "synthetic",
+            "id": "check",
+            "event": "onUnselect"
+          },
+          {
+            "kind": "thrown",
+            "name": "TypeError",
+            "message": "Cannot set properties of undefined (setting 'handled')"
+          }
+        ],
+        "checked": true,
+        "selected": false
+      },
+      "passed": true
+    },
+    {
+      "name": "native submit disabled checkbox does not change checked or emit guarded callbacks",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "check"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          }
+        ],
+        "checked": false,
+        "selected": false
+      },
+      "passed": true
+    },
+    {
+      "name": "native submit radio Click case precedes group unselect and target select callbacks",
+      "result": {
+        "trace": [
+          {
+            "kind": "path",
+            "path": [
+              "b"
+            ],
+            "source": "source"
+          },
+          {
+            "kind": "browserEvent",
+            "keyCode": 13
+          },
+          {
+            "kind": "browserEvent"
+          },
+          {
+            "kind": "case",
+            "id": "b",
+            "event": "click"
+          },
+          {
+            "kind": "synthetic",
+            "id": "a",
+            "event": "onSelectedChange"
+          },
+          {
+            "kind": "synthetic",
+            "id": "a",
+            "event": "onUnselect"
+          },
+          {
+            "kind": "synthetic",
+            "id": "b",
+            "event": "onSelectedChange"
+          },
+          {
+            "kind": "synthetic",
+            "id": "b",
+            "event": "onSelect"
+          },
+          {
+            "kind": "browserEvent"
+          },
+          {
+            "kind": "case",
+            "id": "b",
+            "event": "click"
+          },
+          {
+            "kind": "synthetic",
+            "id": "b",
+            "event": "onSelectedChange"
+          },
+          {
+            "kind": "synthetic",
+            "id": "b",
+            "event": "onUnselect"
+          },
+          {
+            "kind": "synthetic",
+            "id": "b",
+            "event": "onSelectedChange"
+          },
+          {
+            "kind": "synthetic",
+            "id": "b",
+            "event": "onSelect"
+          },
+          {
+            "kind": "thrown",
+            "name": "TypeError",
+            "message": "Cannot set properties of undefined (setting 'handled')"
+          }
+        ],
+        "a": false,
+        "b": true
+      },
+      "passed": true
+    },
+    {
+      "name": "HTML readonly prevents actual keyboard editing",
+      "result": "abc",
+      "passed": true,
+      "boundary": "Harness-supplied native HTML attribute, not compiler output"
+    },
+    {
+      "name": "HTML maxlength stops actual keyboard editing",
+      "result": "abc",
+      "passed": true,
+      "boundary": "Harness-supplied native HTML attribute, not compiler output"
+    },
+    {
+      "name": "original SetWidgetFormText bypasses readonly and maxlength",
+      "result": {
+        "readonly": "abcdef",
+        "limited": "abcdef",
+        "trace": [
+          {
+            "kind": "hintUpdate",
+            "id": "readonly",
+            "active": false
+          },
+          {
+            "kind": "textChangedAttempt",
+            "id": "readonly"
+          },
+          {
+            "kind": "hintUpdate",
+            "id": "limited",
+            "active": false
+          },
+          {
+            "kind": "textChangedAttempt",
+            "id": "limited"
+          }
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "networkRequests": [],
+  "pageErrors": [
+    "Cannot set properties of undefined (setting 'handled')",
+    "Cannot set properties of undefined (setting 'handled')",
+    "Cannot set properties of undefined (setting 'handled')"
+  ],
+  "limits": [
+    "No original GUI/compiler or full vendor app executed",
+    "Raw-focus cases trace after the actual disabled guard; additional cases execute full native handleEvent with its case-group endpoint instrumented and logical visibility fixture supplied",
+    "Focus style endpoint is a trace adapter, not full native style paint",
+    "Hint active flag and post-focus mutation are supplied fixtures, not a re-run of the separate Hint manager probes",
+    "ReadOnly/maxlength HTML attributes are supplied by harness until separate generator/CIL evidence confirms output",
+    "Layer mapping table is supplied; native layer mapping construction is static-only",
+    "Mobile submit is a branch probe on desktop Edge, not a mobile-device observation",
+    "Native checkbox/radio binding in this isolated jQuery host causes a second synthetic click pass and an originalEvent.handled TypeError, explicitly caught and retained; do not assume a complete generated page has this same partial-host anomaly"
+  ]
+}

@@ -1,0 +1,464 @@
+{
+  "stage": "native-layers-format",
+  "originalAssemblyExecuted": false,
+  "originalAxureGuiCompared": false,
+  "sources": [
+    {
+      "file": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/AxureRP11.dll",
+      "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+    },
+    {
+      "file": "research/native-layers-format-import-audit.mjs",
+      "sha256": "3db0c9364cb0a08ba2d12ce181e12daa15e03c8e938e75c6967d986329632717"
+    },
+    {
+      "file": "research/native-layers-format-census.json",
+      "sha256": "44c19c3c0c3a2a1362ecb82211aa893b82acd03d2721bd9bfdf13206c18946d4"
+    },
+    {
+      "file": "research/scripts/read-rp-semantics.mjs",
+      "sha256": "318fdd8114562844c8c2e99925dd2047e3f73df9cc5d0a4d2a4ef18f0ab02852"
+    },
+    {
+      "file": "research/scripts/read-rp-interactions.mjs",
+      "sha256": "9cad13789fe618def273457f1f61584489ef2d0818224cdd0bd1f3cd7285290b"
+    },
+    {
+      "file": "src/model/types.ts",
+      "sha256": "0515ee7828fe633c896b6c8503367a18f8a30ccb4b14ee9d5c37487ee6ffed36"
+    },
+    {
+      "file": "src/model/shadow-color.ts",
+      "sha256": "5125d7eeaeddb613f2d4ec6d97bd8965a7848436a45f1a6c65f4b7c35b43f093"
+    },
+    {
+      "file": "src/model/vector.ts",
+      "sha256": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147"
+    },
+    {
+      "file": "src/model/page-tree-core.ts",
+      "sha256": "29997e6044176b33a42cb011a1fb382da5025c110655513a821b7553f7c32792"
+    },
+    {
+      "file": "src/model/rich-text.ts",
+      "sha256": "01fa723e9e158cb16125753c5993fd2e86a370133b0a246cccced8d578d6863f"
+    },
+    {
+      "file": "src/model/table.ts",
+      "sha256": "3c28bb0868dc5ebdc55558bd3fe89f1921e0a8f7c90165fd089e658b0e0354f3"
+    },
+    {
+      "file": "src/model/menu.ts",
+      "sha256": "536f29ca2c82d999b14edb0debeec703e403c32c535d7f32789f04b2ca3cd0ae"
+    },
+    {
+      "file": "src/model/tree-widget.ts",
+      "sha256": "165d8ca98cfb41d80af907b274a36a54328905d851d5df579bb5c50ad6e1dd02"
+    },
+    {
+      "file": "src/model/inline-frame.ts",
+      "sha256": "6354cafc01f1719fd5783f7c5ab00ea24598d0b34c59c83ba0fb09372bbe4760"
+    },
+    {
+      "file": "src/model/widget-structure.ts",
+      "sha256": "5e53d1b2dd26c3b4ae559a981c969aa6c9482d7ff46383eb9e202c813b731aae"
+    },
+    {
+      "file": "src/model/layer-geometry.ts",
+      "sha256": "97298a9f5dd5fabb21ca94f3140cb3360ca66fde57e52c96bd7bb1e509479959"
+    },
+    {
+      "file": "src/model/document.ts",
+      "sha256": "c6d40e9cf5f0db6550be870242fcf87bd374e7b88c38bb6b9cd97f2bc519dd39"
+    },
+    {
+      "file": "src/model/line-style.ts",
+      "sha256": "87ae321c7ad2ae5125ca3ce3fd9f7c721e81e8a61aea93221f9e930f8d74e93b"
+    },
+    {
+      "file": "src/model/import-rp-adaptive.ts",
+      "sha256": "f9ae36e93f0cee480a03ecfe647d27199076dbb39b3f6812b58c771e6b14ff97"
+    },
+    {
+      "file": "src/model/import-rp.ts",
+      "sha256": "6e869c4512fc375ef3bb36354f5bad2c24a963fd21fda40a10a95e979e3b3186"
+    },
+    {
+      "file": "research/scripts/read-rp-layer.test.mjs",
+      "sha256": "f471f211aa48990d99c2ae2967aab0a959eea026a5378fadc245b7ada9d6ad3b"
+    },
+    {
+      "file": "tests/import-rp-layer.test.ts",
+      "sha256": "1d25e461ffc09b9546f6e890c409d6461f6e33d46fcea335a28158f8b2783414"
+    },
+    {
+      "file": "tests/import-rp-dropdown.test.ts",
+      "sha256": "55827a00b5c0d29cf16b3cf94f036c54a8823d2bffa6b359e5614a4c3a62c34f"
+    },
+    {
+      "file": "tests/import-rp-input-types.test.ts",
+      "sha256": "98d90a0d8b8a09ec554aee46c2375b35b5be6ef0c7cb5092b7f31e891394a1d6"
+    },
+    {
+      "file": "tests/import-rp-error-hint.test.ts",
+      "sha256": "e4932d79faf15229cc7f2f2903e73ca161f9f27ab4289e5ad98f21cd43529761"
+    },
+    {
+      "file": "tests/import-rp-interaction-styles.test.ts",
+      "sha256": "fb2b50234850148d6d2316a88ea63690b02ad84cb8dabb726b898e167d456df9"
+    },
+    {
+      "file": "tests/import-rp-native-caption.test.ts",
+      "sha256": "af736f4f040d104ec1d7fcf39012a0820f6f6ea2aa4b8f1393f816b6f539843b"
+    },
+    {
+      "file": "tests/import-rp-native-pills.test.ts",
+      "sha256": "f7ab5e5a8c59f8ce244204ed1081f7357a4ca8c711c12b3e852a57fd3a46e220"
+    },
+    {
+      "file": "tests/import-rp-rotation.test.ts",
+      "sha256": "7d3692bcd4920cab8aa6b67b89a6dea5543e3df9bb7ae933d83250ba42e86b01"
+    },
+    {
+      "file": "tests/import-rp-vectors.test.ts",
+      "sha256": "5383008a3a0cd757e6358b71f96c7e4e18a1b1393c212466da2532f1bb952449"
+    },
+    {
+      "file": "research/native-layers-runtime-evidence.md",
+      "sha256": "6c0315526111512cdcb8e98bbcf6f4197d9f869b5d3f01bebb70f0c86b4722f2"
+    },
+    {
+      "file": "research/native-layers-runtime-evidence.json",
+      "sha256": "d89900b9c13f9198d351fb969258f3dfb65e8e1ae1b0206eaa27954dce80aaf3"
+    },
+    {
+      "file": "research/native-layers-runtime-import-events-review.json",
+      "sha256": "b5bf5029dbf4dd18b19a376d1095667091248881336ee7379b724013dad8371d"
+    }
+  ],
+  "samples": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+      "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Flow.rplib",
+      "sha256": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Icons.rplib",
+      "sha256": "83f450088f81f6047dfb196919fff3a4aae2f3adb56668da4d4c8cfd3b813bda"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Quick Win.rp",
+      "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+      "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72"
+    },
+    {
+      "file": "research/samples/the-basics-tab-menu.rp",
+      "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4"
+    },
+    {
+      "file": "research/samples/complex-interactions-required-fields.rp",
+      "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c"
+    }
+  ],
+  "files": [
+    {
+      "file": "research/native-layers-format-admission.log",
+      "sha256": "a038171698686d674bc8dd3da71d34372d3ea7342d29445beab60da243cfaca9"
+    },
+    {
+      "file": "research/native-layers-format-admission.mjs",
+      "sha256": "a4864506ac4b4b2c3cb73216a37ca7509e2092e681436597d2875a106e850d0e"
+    },
+    {
+      "file": "research/native-layers-format-base-cil.json",
+      "sha256": "81aef5968444ca154bd6ffb354541eb2c1bd263c5bad1bd54130d119295768f5"
+    },
+    {
+      "file": "research/native-layers-format-baseline.json",
+      "sha256": "6c3d57be6751f463b0c96ba975f304ac4f4630b4c0a10d1510dc492d9ead88d2"
+    },
+    {
+      "file": "research/native-layers-format-bounds-cil.json",
+      "sha256": "da6fb4edc144aea58c2e55166a1a42cf53169e6b32fde4bba2839974a73da84f"
+    },
+    {
+      "file": "research/native-layers-format-bounds-dispatch-cil.json",
+      "sha256": "eb529731dc443610ef0897085115ebe0466f993767b8692e5ea7cdf6d0e9623e"
+    },
+    {
+      "file": "research/native-layers-format-bounds-lambdas-cil.json",
+      "sha256": "1616382f564eeec00b1514ef1e5dcc4ea70d78b7625dc3274631290164176580"
+    },
+    {
+      "file": "research/native-layers-format-bounds-select-cil.json",
+      "sha256": "c3361125b63916ce18ac6e29b1c849cc4a6e199f91609eb978e3b3e58255373f"
+    },
+    {
+      "file": "research/native-layers-format-census.json",
+      "sha256": "44c19c3c0c3a2a1362ecb82211aa893b82acd03d2721bd9bfdf13206c18946d4"
+    },
+    {
+      "file": "research/native-layers-format-census.log",
+      "sha256": "d4820fb0ec867c07266de765d060573f3505d154a3b109c327ed56e9641abeee"
+    },
+    {
+      "file": "research/native-layers-format-census.mjs",
+      "sha256": "e4e7d0010b5ec0a7c60ed64c6b0c94247130772700009a5103cf569fe8daafb5"
+    },
+    {
+      "file": "research/native-layers-format-enclosing-lambda-cil.json",
+      "sha256": "4c93606f4f453545ce45581e109f2a2232f6640a26807fdbea29362d538e221c"
+    },
+    {
+      "file": "research/native-layers-format-evidence.json",
+      "sha256": "408c15a31ca26bed648cace81644c479f1f0779160bc0f670caec751a983f952"
+    },
+    {
+      "file": "research/native-layers-format-evidence.md",
+      "sha256": "3bf85c42a827baeaba65bf3f70cbc22c6fa882631dfe694f37a977e351ad43af"
+    },
+    {
+      "file": "research/native-layers-format-extract.ps1",
+      "sha256": "d0feede67954313ba1f620fa16812437c70a031ffc82a952c0355fc1fc1b64b8"
+    },
+    {
+      "file": "research/native-layers-format-freeze.mjs",
+      "sha256": "8b57c766bfeae856902d0824531ea37c43c87c96732d7c83be9bad4a3c3b770f"
+    },
+    {
+      "file": "research/native-layers-format-generator-cil.json",
+      "sha256": "51e17516a13973e8aa53d907f715f24c7189f1385d4ea84bfa6f33b00cd92568"
+    },
+    {
+      "file": "research/native-layers-format-geometry-cil.json",
+      "sha256": "621f377d6c9c0fdb7566ec44e0b62dd141795b4cf8d7d66ebedffe1ffb5c07a7"
+    },
+    {
+      "file": "research/native-layers-format-import-audit-duplicate.log",
+      "sha256": "58d6599e45a8cfe239c7338e32cf3854359db75443034458d48e433afcd0bd1a"
+    },
+    {
+      "file": "research/native-layers-format-import-audit-first.log",
+      "sha256": "c1f50bcb77cbd2d2c93d14c4d0337836399d58f450c5b84535c3efaed3036e65"
+    },
+    {
+      "file": "research/native-layers-format-import-audit.json",
+      "sha256": "b1ab89fd1e1a90d3e55f4971a36d45728544fffa014fd3c019710a1ed36a9a07"
+    },
+    {
+      "file": "research/native-layers-format-import-audit.log",
+      "sha256": "40e7f3c81655705edd0948c9417b57a88e9fd4c5d9b2da8794e8019e4a2b372c"
+    },
+    {
+      "file": "research/native-layers-format-import-audit.mjs",
+      "sha256": "3db0c9364cb0a08ba2d12ce181e12daa15e03c8e938e75c6967d986329632717"
+    },
+    {
+      "file": "research/native-layers-format-import-expanded-second.json",
+      "sha256": "41f3089005ea9b569592e3f2ac082fea1d739cb54be24676c62f8386b122e3c4"
+    },
+    {
+      "file": "research/native-layers-format-import-expanded-second.log",
+      "sha256": "c00e7c83816a13b8bd60a6c11b9b3ce3b7ee768b9f8b7b9b5f6ac68f190c094b"
+    },
+    {
+      "file": "research/native-layers-format-import-expanded.json",
+      "sha256": "660a489a1dee550b5e7fa7c5a66ce50205078b3152a4b26c4950dfad35fb50c6"
+    },
+    {
+      "file": "research/native-layers-format-import-expanded.log",
+      "sha256": "97a1bedfd7fbc638016f9ade6c3f688e5354c6af58214c4e9da36806de11fd0b"
+    },
+    {
+      "file": "research/native-layers-format-import-final.json",
+      "sha256": "23ef1a9179a7a8a536bf2fdaabc205f1b14feccc33351ed148fd62d2afc36cb7"
+    },
+    {
+      "file": "research/native-layers-format-import-final.log",
+      "sha256": "de4bd1c7b16c42ae88786268271e4df49994615b9871e4c6eaa12a12ae508de9"
+    },
+    {
+      "file": "research/native-layers-format-import-first-green.json",
+      "sha256": "badfcdc4bf68e16d804532efe520406b7b10d701c4b74bf42207f75b58271bb3"
+    },
+    {
+      "file": "research/native-layers-format-import-first-green.log",
+      "sha256": "283dcd716ad368381faae8df9f977311c2bc9eea6140a9cc5ce9c4cf40724ccf"
+    },
+    {
+      "file": "research/native-layers-format-import-green.json",
+      "sha256": "e7d3f703158bd40e6e6620ab7f6cb32633a980d38a6ab381919815c78272929e"
+    },
+    {
+      "file": "research/native-layers-format-import-green.log",
+      "sha256": "077dfdcdfec7988c3353436948d549551f6cb7aa6113f25c02902a59fad3295d"
+    },
+    {
+      "file": "research/native-layers-format-import-red.json",
+      "sha256": "5707bbbe26dcb4cca9371ad72fe4e892606068d6bda95a6f34527f98356c1ca8"
+    },
+    {
+      "file": "research/native-layers-format-import-red.log",
+      "sha256": "8b0669b85e1c250012aefafc9030a81ebc6546f03adb151e8714b4e902823e6f"
+    },
+    {
+      "file": "research/native-layers-format-leaf-bounds-cil.json",
+      "sha256": "54d0959fd516b1ddc35b964bc7b764385d957eac2f8d7a5638e9b72713603f2c"
+    },
+    {
+      "file": "research/native-layers-format-leaf-iterator-cil.json",
+      "sha256": "66cc86f2f7c6e40bcde0594f9107dd7f624cfe21481be4a7eb4c26eb26718d9b"
+    },
+    {
+      "file": "research/native-layers-format-legacy-first-green-attempt.json",
+      "sha256": "31d7f0248bbde95e2193ce349db3c57b272c96f0d3b0bdbf2593d1a214ec621d"
+    },
+    {
+      "file": "research/native-layers-format-legacy-green.json",
+      "sha256": "ea28bde2f8795235a86dd28522a6fe1614644e5478501d7db3b0077193813668"
+    },
+    {
+      "file": "research/native-layers-format-legacy-green.log",
+      "sha256": "779498bd40cd493f67b27cd03b954f05973a7f1b2cb2b853ca6927d93ee2d083"
+    },
+    {
+      "file": "research/native-layers-format-legacy-red.json",
+      "sha256": "3a11f310e653fba0cc3742f0d4d93db506f4e48894cbe8f3f182ac739b1aefdb"
+    },
+    {
+      "file": "research/native-layers-format-legacy-red.log",
+      "sha256": "d7153184b2a2258c2bdf92d2b70b927ac08588311138d8c243efecbb7b305390"
+    },
+    {
+      "file": "research/native-layers-format-literals.json",
+      "sha256": "9f56cc4cf29b9b0a69ef65eeae55f5872171ae5dd0110141152bdade9d533610"
+    },
+    {
+      "file": "research/native-layers-format-literals.log",
+      "sha256": "6027b37392b9f6a906df788087074ca03ebc104c2aae199840b6651f69b1ba29"
+    },
+    {
+      "file": "research/native-layers-format-literals.mjs",
+      "sha256": "c2532d42a3e5f4e3e4cefb91f634ce8571e77e12bd7e85ae8941ada74935acc6"
+    },
+    {
+      "file": "research/native-layers-format-metadata.json",
+      "sha256": "332279968d8e8e7798d209cba904a3dd0d72c3f0125bbb7a25360abb21d0eecf"
+    },
+    {
+      "file": "research/native-layers-format-metadata.ps1",
+      "sha256": "42434a832535c0b812377182334583d7635108c5a46599371246130bf008a779"
+    },
+    {
+      "file": "research/native-layers-format-object-cil.json",
+      "sha256": "f5d85c4c51f7af4e6d90b0dd8b0dba584333e1ae71588c28d3996305ec115118"
+    },
+    {
+      "file": "research/native-layers-format-reader-expanded.tap",
+      "sha256": "a81f73dcf00912322f75ef5621921e0a4e8fcee8878912e5e3dac71e09319f66"
+    },
+    {
+      "file": "research/native-layers-format-reader-final.tap",
+      "sha256": "2eb41b12d7973b08d9fc8969bb2e37fd32ebbc9d5ac49c00ee3c1443def36a9f"
+    },
+    {
+      "file": "research/native-layers-format-reader-first-implementation.tap",
+      "sha256": "e81e720c0c21b5692b15f2b25712a29104babec122071bc65a383cf62a8d9518"
+    },
+    {
+      "file": "research/native-layers-format-reader-green.tap",
+      "sha256": "39225fbf71439d6e4c0d613dc54d42d513c0f9d7b3795b8fb5688b9264354bb4"
+    },
+    {
+      "file": "research/native-layers-format-reader-red.tap",
+      "sha256": "7a43d28e08318f14195966ebdd08ab2d365f56b25e8c7bee3122d43df27747f1"
+    },
+    {
+      "file": "research/native-layers-format-rect-union-cil.json",
+      "sha256": "e54ec20445a7afb92a1cf66549bfea84784977477d5e9678ef4bd813a124b1dc"
+    },
+    {
+      "file": "research/native-layers-format-typecheck.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217"
+    },
+    {
+      "file": "research/scripts/read-rp-layer.test.mjs",
+      "sha256": "f471f211aa48990d99c2ae2967aab0a959eea026a5378fadc245b7ada9d6ad3b"
+    },
+    {
+      "file": "tests/import-rp-dropdown.test.ts",
+      "sha256": "55827a00b5c0d29cf16b3cf94f036c54a8823d2bffa6b359e5614a4c3a62c34f"
+    },
+    {
+      "file": "tests/import-rp-error-hint.test.ts",
+      "sha256": "e4932d79faf15229cc7f2f2903e73ca161f9f27ab4289e5ad98f21cd43529761"
+    },
+    {
+      "file": "tests/import-rp-input-types.test.ts",
+      "sha256": "98d90a0d8b8a09ec554aee46c2375b35b5be6ef0c7cb5092b7f31e891394a1d6"
+    },
+    {
+      "file": "tests/import-rp-interaction-styles.test.ts",
+      "sha256": "fb2b50234850148d6d2316a88ea63690b02ad84cb8dabb726b898e167d456df9"
+    },
+    {
+      "file": "tests/import-rp-layer.test.ts",
+      "sha256": "1d25e461ffc09b9546f6e890c409d6461f6e33d46fcea335a28158f8b2783414"
+    },
+    {
+      "file": "tests/import-rp-native-caption.test.ts",
+      "sha256": "af736f4f040d104ec1d7fcf39012a0820f6f6ea2aa4b8f1393f816b6f539843b"
+    },
+    {
+      "file": "tests/import-rp-native-pills.test.ts",
+      "sha256": "f7ab5e5a8c59f8ce244204ed1081f7357a4ca8c711c12b3e852a57fd3a46e220"
+    },
+    {
+      "file": "tests/import-rp-rotation.test.ts",
+      "sha256": "7d3692bcd4920cab8aa6b67b89a6dea5543e3df9bb7ae933d83250ba42e86b01"
+    },
+    {
+      "file": "tests/import-rp-vectors.test.ts",
+      "sha256": "5383008a3a0cd757e6358b71f96c7e4e18a1b1393c212466da2532f1bb952449"
+    }
+  ],
+  "checks": {
+    "reader": 23,
+    "newMapper": 26,
+    "relatedMapper": 83,
+    "legacyMapper": 153,
+    "typecheck": 0
+  },
+  "admission": {
+    "samples": 11,
+    "admitted": 10,
+    "layers": 182,
+    "lost": 0,
+    "unexpectedAdded": 0,
+    "changed": 0,
+    "addedEvents": 13,
+    "maxCompactBytes": 28926107
+  }
+}

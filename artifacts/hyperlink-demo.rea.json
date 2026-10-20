@@ -1,0 +1,962 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "f6bb1903-3e95-493e-bda3-0f020a5da374",
+  "name": "Hyperlinks · text, events and destinations",
+  "pages": [
+    {
+      "id": "3394c457-4a2f-4ffe-b0be-932db914338f",
+      "name": "Page 1",
+      "width": 1080,
+      "height": 820,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "link-heading",
+          "type": "text",
+          "name": "link-heading",
+          "text": "Text links with their own interactions",
+          "notes": "",
+          "x": 30,
+          "y": 22,
+          "rotation": 0,
+          "width": 1000,
+          "height": 60,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#172554",
+            "fontSize": 31,
+            "fontFamily": "Roboto",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "link-caption",
+          "type": "text",
+          "name": "link-caption",
+          "text": "Hover, press and click. Link cases run before the parent widget.",
+          "notes": "",
+          "x": 30,
+          "y": 83,
+          "rotation": 0,
+          "width": 990,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#172554",
+            "fontSize": 17,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "link-mixed",
+          "type": "text",
+          "name": "link-mixed",
+          "text": "Read Rich link or click the surrounding text.",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "Read "
+                  },
+                  {
+                    "text": "Rich ",
+                    "style": {
+                      "color": "#2563eb",
+                      "underline": true,
+                      "strikethrough": false
+                    },
+                    "linkId": "link-mixed-link"
+                  },
+                  {
+                    "text": "link",
+                    "style": {
+                      "color": "#0e7490",
+                      "fontStyle": "italic",
+                      "underline": true
+                    },
+                    "linkId": "link-mixed-link"
+                  },
+                  {
+                    "text": " or click the surrounding text."
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "link-mixed-link",
+                "name": "Rich link",
+                "interactions": [
+                  {
+                    "id": "link-mixed-click",
+                    "event": "click",
+                    "name": "Follow link",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "link-mixed-click-action-0",
+                        "type": "setText",
+                        "targetId": "link-status",
+                        "value": "Link begins"
+                      },
+                      {
+                        "id": "link-mixed-click-action-1",
+                        "type": "wait",
+                        "duration": 0
+                      },
+                      {
+                        "id": "link-mixed-click-action-2",
+                        "type": "setText",
+                        "targetId": "link-status",
+                        "value": "Link finished"
+                      }
+                    ]
+                  }
+                ],
+                "mouseOverStyle": {
+                  "strikethrough": true
+                },
+                "mouseDownStyle": {
+                  "fontWeight": 700
+                }
+              }
+            ],
+            "expressionMode": "literal"
+          },
+          "x": 30,
+          "y": 153,
+          "rotation": 0,
+          "width": 600,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#172554",
+            "fontSize": 20,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "link-mixed-parent",
+              "event": "click",
+              "name": "Parent click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "link-mixed-parent-action-0",
+                  "type": "setText",
+                  "targetId": "link-status",
+                  "value": "Parent clicked"
+                }
+              ]
+            }
+          ],
+          "mouseOverStyle": {
+            "color": "#7c3aed"
+          },
+          "mouseDownStyle": {
+            "color": "#be123c"
+          }
+        },
+        {
+          "id": "link-fallback",
+          "type": "text",
+          "name": "link-fallback",
+          "text": "Unmatched link → parent",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "Unmatched link → parent",
+                    "style": {
+                      "color": "#2563eb",
+                      "underline": true,
+                      "strikethrough": false
+                    },
+                    "linkId": "link-fallback-link"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "link-fallback-link",
+                "name": "Unmatched link → parent",
+                "interactions": [
+                  {
+                    "id": "link-fallback-click",
+                    "event": "click",
+                    "name": "Follow link",
+                    "enabled": true,
+                    "conditions": [
+                      {
+                        "source": "widgetText",
+                        "key": "link-status",
+                        "operator": "equals",
+                        "value": "Never matches"
+                      }
+                    ],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "link-fallback-click-action-0",
+                        "type": "setText",
+                        "targetId": "link-status",
+                        "value": "Should not run"
+                      }
+                    ]
+                  }
+                ],
+                "mouseOverStyle": {
+                  "strikethrough": true
+                },
+                "mouseDownStyle": {
+                  "fontWeight": 700
+                }
+              }
+            ],
+            "expressionMode": "literal"
+          },
+          "x": 30,
+          "y": 220,
+          "rotation": 0,
+          "width": 600,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#172554",
+            "fontSize": 20,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "link-fallback-parent",
+              "event": "click",
+              "name": "Parent fallback",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "link-fallback-parent-action-0",
+                  "type": "setText",
+                  "targetId": "link-status",
+                  "value": "Fallback reached parent"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "link-menu",
+          "type": "text",
+          "name": "link-menu",
+          "text": "Choose a link case",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "Choose a link case",
+                    "style": {
+                      "color": "#2563eb",
+                      "underline": true,
+                      "strikethrough": false
+                    },
+                    "linkId": "link-menu-link"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "link-menu-link",
+                "name": "Choose a link case",
+                "interactions": [
+                  {
+                    "id": "link-menu-one",
+                    "event": "click",
+                    "name": "First link case",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "link-menu-one-action-0",
+                        "type": "setText",
+                        "targetId": "link-status",
+                        "value": "First chosen"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "link-menu-two",
+                    "event": "click",
+                    "name": "Second link case",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "link-menu-two-action-0",
+                        "type": "wait",
+                        "duration": 0
+                      },
+                      {
+                        "id": "link-menu-two-action-1",
+                        "type": "setText",
+                        "targetId": "link-status",
+                        "value": "Second chosen"
+                      }
+                    ]
+                  }
+                ],
+                "mouseOverStyle": {
+                  "strikethrough": true
+                },
+                "mouseDownStyle": {
+                  "fontWeight": 700
+                }
+              }
+            ],
+            "expressionMode": "literal"
+          },
+          "x": 30,
+          "y": 285,
+          "rotation": 0,
+          "width": 600,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#172554",
+            "fontSize": 20,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "link-menu-parent",
+              "event": "click",
+              "name": "Must stay suppressed",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "link-menu-parent-action-0",
+                  "type": "setText",
+                  "targetId": "link-status",
+                  "value": "Incorrect parent"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "link-solo",
+          "type": "text",
+          "name": "link-solo",
+          "text": "Replaceable link",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "Replaceable link",
+                    "style": {
+                      "color": "#2563eb",
+                      "underline": true,
+                      "strikethrough": false
+                    },
+                    "linkId": "link-solo-link"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "link-solo-link",
+                "name": "Replaceable link",
+                "interactions": [
+                  {
+                    "id": "link-solo-click",
+                    "event": "click",
+                    "name": "Follow link",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "link-solo-click-action-0",
+                        "type": "setText",
+                        "targetId": "link-status",
+                        "value": "Retained link clicked"
+                      }
+                    ]
+                  }
+                ],
+                "mouseOverStyle": {
+                  "strikethrough": true
+                },
+                "mouseDownStyle": {
+                  "fontWeight": 700
+                }
+              }
+            ],
+            "expressionMode": "literal"
+          },
+          "x": 30,
+          "y": 351,
+          "rotation": 0,
+          "width": 600,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#172554",
+            "fontSize": 20,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "link-replace",
+          "type": "button",
+          "name": "Replace linked text",
+          "text": "Replace linked text",
+          "notes": "",
+          "x": 680,
+          "y": 351,
+          "rotation": 0,
+          "width": 290,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "link-replace-case",
+              "event": "click",
+              "name": "Change text",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "link-replace-case-action-0",
+                  "type": "setText",
+                  "targetId": "link-solo",
+                  "value": "Link survives Set Text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "link-repeater",
+          "type": "repeater",
+          "name": "Linked rows",
+          "text": "",
+          "notes": "",
+          "x": 30,
+          "y": 418,
+          "rotation": 0,
+          "width": 600,
+          "height": 118,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "Alpha"
+              },
+              {
+                "Name": "Beta"
+              }
+            ],
+            "template": [
+              {
+                "id": "link-row",
+                "type": "text",
+                "name": "link-row",
+                "text": "[[Item.Name]]",
+                "notes": "",
+                "richText": {
+                  "paragraphs": [
+                    {
+                      "runs": [
+                        {
+                          "text": "[[Item.Name]]",
+                          "style": {
+                            "color": "#2563eb",
+                            "underline": true,
+                            "strikethrough": false
+                          },
+                          "linkId": "link-row-link"
+                        }
+                      ]
+                    }
+                  ],
+                  "links": [
+                    {
+                      "id": "link-row-link",
+                      "name": "[[Item.Name]]",
+                      "interactions": [
+                        {
+                          "id": "link-row-click",
+                          "event": "click",
+                          "name": "Follow link",
+                          "enabled": true,
+                          "conditions": [],
+                          "conditionMode": "all",
+                          "actions": [
+                            {
+                              "id": "link-row-click-action-0",
+                              "type": "setText",
+                              "targetId": "link-status",
+                              "value": "Row [[Item.Name]] clicked"
+                            }
+                          ]
+                        }
+                      ],
+                      "mouseOverStyle": {
+                        "strikethrough": true
+                      },
+                      "mouseDownStyle": {
+                        "fontWeight": 700
+                      }
+                    }
+                  ]
+                },
+                "x": 10,
+                "y": 8,
+                "rotation": 0,
+                "width": 270,
+                "height": 46,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#172554",
+                  "fontSize": 20,
+                  "fontFamily": "Roboto",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": []
+              }
+            ],
+            "itemHeight": 50,
+            "gap": 5
+          }
+        },
+        {
+          "id": "link-disabled",
+          "type": "text",
+          "name": "link-disabled",
+          "text": "Disabled owner",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "Disabled owner",
+                    "style": {
+                      "color": "#2563eb",
+                      "underline": true,
+                      "strikethrough": false
+                    },
+                    "linkId": "link-disabled-link"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "link-disabled-link",
+                "name": "Disabled owner",
+                "interactions": [
+                  {
+                    "id": "link-disabled-click",
+                    "event": "click",
+                    "name": "Follow link",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "link-disabled-click-action-0",
+                        "type": "setText",
+                        "targetId": "link-status",
+                        "value": "Incorrect disabled click"
+                      }
+                    ]
+                  }
+                ],
+                "mouseOverStyle": {
+                  "strikethrough": true
+                },
+                "mouseDownStyle": {
+                  "fontWeight": 700
+                }
+              }
+            ],
+            "expressionMode": "literal"
+          },
+          "x": 680,
+          "y": 418,
+          "rotation": 0,
+          "width": 290,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": true,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#172554",
+            "fontSize": 20,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "link-current",
+          "type": "text",
+          "name": "link-current",
+          "text": "Open destination · current",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "Open destination · current",
+                    "style": {
+                      "color": "#2563eb",
+                      "underline": true,
+                      "strikethrough": false
+                    },
+                    "linkId": "link-current-link"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "link-current-link",
+                "name": "Open destination · current",
+                "interactions": [
+                  {
+                    "id": "link-current-click",
+                    "event": "click",
+                    "name": "Follow link",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "link-current-click-action-0",
+                        "type": "openUrl",
+                        "value": "https://example.test/current",
+                        "windowTarget": "current"
+                      },
+                      {
+                        "id": "link-current-click-action-1",
+                        "type": "setText",
+                        "targetId": "link-status",
+                        "value": "Current destination requested"
+                      }
+                    ]
+                  }
+                ],
+                "mouseOverStyle": {
+                  "strikethrough": true
+                },
+                "mouseDownStyle": {
+                  "fontWeight": 700
+                }
+              }
+            ],
+            "expressionMode": "literal"
+          },
+          "x": 30,
+          "y": 562,
+          "rotation": 0,
+          "width": 540,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#172554",
+            "fontSize": 20,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "link-new",
+          "type": "text",
+          "name": "link-new",
+          "text": "Open destination · new",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "Open destination · new",
+                    "style": {
+                      "color": "#2563eb",
+                      "underline": true,
+                      "strikethrough": false
+                    },
+                    "linkId": "link-new-link"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "link-new-link",
+                "name": "Open destination · new",
+                "interactions": [
+                  {
+                    "id": "link-new-click",
+                    "event": "click",
+                    "name": "Follow link",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "link-new-click-action-0",
+                        "type": "openUrl",
+                        "value": "https://example.test/new",
+                        "windowTarget": "new"
+                      },
+                      {
+                        "id": "link-new-click-action-1",
+                        "type": "setText",
+                        "targetId": "link-status",
+                        "value": "New destination requested"
+                      }
+                    ]
+                  }
+                ],
+                "mouseOverStyle": {
+                  "strikethrough": true
+                },
+                "mouseDownStyle": {
+                  "fontWeight": 700
+                }
+              }
+            ],
+            "expressionMode": "literal"
+          },
+          "x": 590,
+          "y": 562,
+          "rotation": 0,
+          "width": 450,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#172554",
+            "fontSize": 20,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "link-note",
+          "type": "text",
+          "name": "link-note",
+          "text": "Destination links use a reserved test domain. Replace their URLs for your prototype.",
+          "notes": "",
+          "x": 30,
+          "y": 620,
+          "rotation": 0,
+          "width": 1000,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#64748b",
+            "fontSize": 16,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "link-status",
+          "type": "text",
+          "name": "link-status",
+          "text": "Ready",
+          "notes": "",
+          "x": 30,
+          "y": 677,
+          "rotation": 0,
+          "width": 980,
+          "height": 55,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#eef2ff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              12,
+              14,
+              12,
+              14
+            ],
+            "color": "#172554",
+            "fontSize": 20,
+            "fontFamily": "Roboto",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "auto",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

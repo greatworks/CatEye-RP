@@ -1,0 +1,10 @@
+param([string]$AssemblyPath='C:\Users\Administrator\AppData\Local\Temp\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\Axure RP 11\AxureRP11.dll')
+# Read metadata only. Never loads the target assembly.
+$stream=[IO.File]::OpenRead($AssemblyPath);$pe=[System.Reflection.PortableExecutable.PEReader]::new($stream)
+try {
+ $md=[System.Reflection.Metadata.PEReaderExtensions]::GetMetadataReader($pe)
+ function Name([System.Reflection.Metadata.EntityHandle]$h) {if($h.IsNil){return $null};if($h.Kind.ToString() -eq 'TypeDefinition'){$t=$md.GetTypeDefinition([System.Reflection.Metadata.TypeDefinitionHandle]$h)}elseif($h.Kind.ToString() -eq 'TypeReference'){$t=$md.GetTypeReference([System.Reflection.Metadata.TypeReferenceHandle]$h)}else{return $h.Kind.ToString()};return $md.GetString($t.Namespace)+'.'+$md.GetString($t.Name)}
+ $wanted=@('VectorShape','TextRectObject','RichTextObject','DiagramObjectContainer','TableCell','Table','Repeater','TextBox','TextArea','SelectablePlainTextObject','PlainTextObject','SelectionButton','ImageBox','TreeNodeObject','EbOh','bHSN')
+ $types=foreach($h in $md.TypeDefinitions){$t=$md.GetTypeDefinition($h);$n=$md.GetString($t.Name);$b=Name $t.BaseType;if($n -notin $wanted -and $b -ne 'NbOa.EbOh'){continue};$methods=foreach($mh in $t.GetMethods()){$m=$md.GetMethodDefinition($mh);$mn=$md.GetString($m.Name);if($mn -notin @('TITl','tITy','get_AutoFitWidth','get_AutoFitHeight')){continue};[pscustomobject]@{name=$mn;token=[System.Reflection.Metadata.Ecma335.MetadataTokens]::GetToken([System.Reflection.Metadata.EntityHandle]$mh);signature=[Convert]::ToHexString($md.GetBlobBytes($m.Signature));attributes=$m.Attributes.ToString();rva=$m.RelativeVirtualAddress}};[pscustomobject]@{name=(Name $h);token=[System.Reflection.Metadata.Ecma335.MetadataTokens]::GetToken([System.Reflection.Metadata.EntityHandle]$h);base=$b;methods=@($methods)}}
+ [pscustomobject]@{method='Static metadata only';path=$AssemblyPath;sha256=(Get-FileHash -LiteralPath $AssemblyPath -Algorithm SHA256).Hash.ToLowerInvariant();types=@($types)}|ConvertTo-Json -Depth 8
+}finally{$pe.Dispose();$stream.Dispose()}

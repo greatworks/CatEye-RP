@@ -1,0 +1,127 @@
+{
+  "stage": "native-point-contours",
+  "reviewedAt": "2026-10-17T11:30:20.947Z",
+  "blockingFindings": [],
+  "modifiedProduct": [
+    {
+      "path": "src/model/vector-commit.ts",
+      "sha256": "056eb17a8fdf60dc819a12b6b59c116b167a883acea75607dd8a8affce3a8fcc"
+    }
+  ],
+  "addedProduct": [
+    {
+      "path": "src/model/vector-contours.ts",
+      "sha256": "0fe9ab8aceb1bfcfefcf79de872e0726e86633873e4d72a120176c4ad600fafa"
+    }
+  ],
+  "references": [
+    {
+      "path": "research/native-point-contours-rotation-evidence.json",
+      "sha256": "6e8d853fe6f70a77a78214b909025a68a0c024d70c5de65655f4656ea65a94bc"
+    },
+    {
+      "path": "research/native-point-contours-rotation-fixtures.json",
+      "sha256": "c87b4729c83d542f13385870c827104264cbba5fc3c882043ac21d487cd3e0d3"
+    },
+    {
+      "path": "research/native-point-contours-rotation-review.json",
+      "sha256": "d4a86b878348daab5553405e006ff1335857aedc02993821809597884e0cdf9d"
+    },
+    {
+      "path": "research/native-point-contours-topology-manifest.json",
+      "sha256": "2ab95dad4766403d9eeaa0e36a2b1d711b1b132e7d58acfc70084d6386d36615"
+    },
+    {
+      "path": "research/native-point-contours-topology-evidence.json",
+      "sha256": "084fc5f6c49484aded6f05b594e4f9956bcafbfb75a59b832b85f395b3237f79"
+    },
+    {
+      "path": "research/native-point-contours-topology-review.json",
+      "sha256": "d44b1f8f0662eb5949d870610488231dd0f32701f34491a1a9efb8b23bdfe0fc"
+    },
+    {
+      "path": "research/native-point-contours-authoring-analysis.json",
+      "sha256": "b9285289fd29983d3ebd89af762c794d9bd7da5b9f2ea253cfb9f89d71352dbd"
+    },
+    {
+      "path": "research/native-point-contours-authoring-implementation.json",
+      "sha256": "2646e2e62d9daf06f3781a01027d265584f59e63ca58ae4a11a3ca644ae04bcb"
+    }
+  ],
+  "referenceManifests": [
+    "research/native-point-contours-rotation-evidence.json",
+    "research/native-point-contours-rotation-fixtures.json",
+    "research/native-point-contours-rotation-review.json",
+    "research/native-point-contours-topology-manifest.json",
+    "research/native-point-contours-topology-evidence.json",
+    "research/native-point-contours-topology-review.json",
+    "research/native-point-contours-authoring-analysis.json",
+    "research/native-point-contours-authoring-implementation.json"
+  ],
+  "independentChecks": {
+    "retainedCilRotation": 126,
+    "retainedCilTopology": 65,
+    "independentRotationModel": 69,
+    "boundedArithmeticOrder": 231,
+    "independentTopologyModel": 71
+  },
+  "implementation": {
+    "boundsOnlyContourProjection": true,
+    "storedCommandsAndHandlesPreserved": true,
+    "strictPhysicalManhattanDegeneracy": true,
+    "unrotatedParticipationFiltering": true,
+    "rotatedAllRetainedCurves": true,
+    "globalFirstAnchorFallback": true,
+    "firstAnchorFallbackSkipsOutwardRounding": true,
+    "rotatedZeroUnionFallback": true,
+    "sizingFrameBeforeWorldMapping": true,
+    "rawRotationPreserved": true,
+    "wholeTurnDispatchPreserved": true,
+    "currentViewGeometryOnly": true,
+    "autoFitPreserved": true,
+    "atomicUndo": true,
+    "continuousPointSelection": true
+  },
+  "resolvedFindings": [
+    {
+      "id": "first-anchor-fallback-premature-rounding",
+      "count": 1,
+      "redInputs": 10,
+      "redPassed": 61,
+      "total": 71,
+      "oldHelperSha256": "0ce4ebd2a375d2ab46bfdd61630fa89c34b8b53c8fe766dc4ae7f490f9098565",
+      "newHelperSha256": "056eb17a8fdf60dc819a12b6b59c116b167a883acea75607dd8a8affce3a8fcc",
+      "nativeMethod": 100702690,
+      "nativeIL": "0x56-0x77 -> 0xB6 skips Y5uk at 0xB0",
+      "example": {
+        "worldAnchor": {
+          "x": 12.25,
+          "y": 30.75
+        },
+        "stroke": 1,
+        "expectedOwner": {
+          "x": 11,
+          "y": 30,
+          "width": 1,
+          "height": 1
+        },
+        "oldOwner": {
+          "x": 12,
+          "y": 30,
+          "width": 1,
+          "height": 1
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Original editor screenshot capture and one recovery retry timed out; original canvas interactions and pixels were not compared.",
+    "M/L/C/Z maps to an explicit subset of native topology; arbitrary inactive endpoint handles and interior native segment flags are not represented.",
+    "General transforms, provider/cache angle precedence and complete CLR floating-point operation order remain outside coverage.",
+    "Empty command arrays remain rejected by the document schema; direct empty-list native geometry is not an editor feature.",
+    "Other native operations such as RN4I, partial-border/independent-corner point entry, native RP writeback, collaboration and full Axure parity remain incomplete."
+  ],
+  "originalDllMethodsInvokedByProbe": false,
+  "originalAppLaunchAttempted": true,
+  "originalGuiCompared": false
+}

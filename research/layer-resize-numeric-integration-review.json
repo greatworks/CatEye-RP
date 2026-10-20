@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent read-only numeric/controller integration review",
+  "findings": [],
+  "conclusion": "No actionable discrepancy found in the reviewed supported branch.",
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "summary": {
+    "total": 83,
+    "passed": 83,
+    "failed": 0
+  },
+  "sourceStable": true,
+  "sources": [
+    {
+      "path": "research/layer-resize-controller-planner-oracle.mjs",
+      "sha256": "c237e035138f5cb55e05bae4d9a4d0f0f923cc1e7880226a6546330aa56887f6",
+      "unchanged": true
+    },
+    {
+      "path": "research/layer-resize-controller-probe.mjs",
+      "sha256": "ca81115b3d6a92aabbe751b21c5427ebc7e0fe2093fe0265e988ba26c2416800",
+      "unchanged": true
+    },
+    {
+      "path": "research/layer-resize-numeric-replay.mjs",
+      "sha256": "5c7de39285e87c7ea4492666b38decf096873a8c0d9ce23898a8174027d6a20f",
+      "unchanged": true
+    },
+    {
+      "path": "research/layer-resize-controller-manifest.json",
+      "sha256": "f248078274cb16687b244e2a2ca977c76ab0bc3d8da304752d90b5729b559c0b",
+      "unchanged": true
+    },
+    {
+      "path": "research/layer-resize-numeric-manifest.json",
+      "sha256": "e9ce3242c3f32bfacf3ccc007f0e1a26bf732eac042b08e783b200cc0fc24948",
+      "unchanged": true
+    },
+    {
+      "path": "research/layer-resize-capability-evidence.json",
+      "sha256": "3051a79480a0e5071231aa89e565474cfcf8565659eaa91395b767a2b094e0c6"
+    },
+    {
+      "path": "research/adaptive-all-views-position-cil.json",
+      "sha256": "b61233793fefd0d7fa9f4a34a749517803ace9e9de3db48d1a6e042524d925d4"
+    },
+    {
+      "path": "research/adaptive-all-views-size-cil.json",
+      "sha256": "59b186faf30ccd979d79c02fe9658477950803d12fed5ca6264a753c2b3868f1"
+    },
+    {
+      "path": "research/native-point-commit-format-evidence.md",
+      "sha256": "829e81389bdf32fe84fe2acb899c17124d7870f30c2d14104dc56d5fb0681c18"
+    }
+  ],
+  "implementation": [
+    {
+      "path": "src/model/author-layer-resize.ts",
+      "sha256": "642b075a7a3f86a030588a14f1775b20356c9a5ea24115d59dae29999a9b6f04",
+      "unchanged": true
+    },
+    {
+      "path": "src/model/author-resize-solver.ts",
+      "sha256": "95d2b05236c850976cc2f1230319ad6bd23b468b6de7fb4fffb2b7ed2bb6fb10",
+      "unchanged": true
+    },
+    {
+      "path": "src/model/layer-geometry.ts",
+      "sha256": "3d5e5638d0956cbcb80f201b9714823cfe2a9c3cbe152708f06550c669d46994",
+      "unchanged": true
+    },
+    {
+      "path": "src/model/resize-pins.ts",
+      "sha256": "40b464deec19c57547b0d8caa16a58900f4701742891c2bcb093e801ce2371c0",
+      "unchanged": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/layer-resize-numeric-integration-review.md",
+      "sha256": "3e6baf88f6ac9aa71ea7ebe2a3780d3abe3e6eb629abdeb4b1d56a78e87d6163"
+    },
+    {
+      "path": "research/layer-resize-numeric-integration-review-probe.mjs",
+      "sha256": "7dc254085f8f60b0ddb9cecd8f23afaa47e531bb8a3203346bea655c441c34db"
+    },
+    {
+      "path": "research/layer-resize-numeric-integration-review-probes.json",
+      "sha256": "3495286cd9aec4eca5653e65025620752c59dd8670dd7cbadd66d64c143c1e7f"
+    },
+    {
+      "path": "research/layer-resize-numeric-integration-review-642b075a7a3f.ts.txt",
+      "sha256": "642b075a7a3f86a030588a14f1775b20356c9a5ea24115d59dae29999a9b6f04"
+    }
+  ],
+  "reviewedSnapshot": {
+    "originalPath": "src/model/author-layer-resize.ts",
+    "path": "research/layer-resize-numeric-integration-review-642b075a7a3f.ts.txt",
+    "sha256": "642b075a7a3f86a030588a14f1775b20356c9a5ea24115d59dae29999a9b6f04"
+  },
+  "tests": [],
+  "screenshots": [],
+  "coverage": {
+    "epsilonFitAndModifiers": 63,
+    "nestedOriginAndRotation": 16,
+    "lockBackground": 4,
+    "sourcePinOriginCorrection": 16,
+    "fitFlagChangedCases": 55
+  },
+  "limits": [
+    "Reuses the controller adapter prefix only; no existing evidence file is regenerated.",
+    "Numeric INw2/mNwa execute retained CIL records, not the product solver.",
+    "Positive nonempty union, collections, style/provider/capability facts and final setter effects are declared facade boundaries.",
+    "Post-setter equality uses the independently retained per-pair strict 1e-5 predicate.",
+    "Vite middleware mode loads product modules without a listening browser server; no browser/artifact suite runs."
+  ],
+  "productPolicy": [
+    "Atomic rejection of nonfinite, zero or out-of-range geometry",
+    "Unsupported compound descendants rejected before publishing mutations"
+  ],
+  "remainingUnproved": [
+    "Complete native history and notification subsystem",
+    "Panel pinned recursion and compound virtual setters",
+    "Image FitToImage storage absent from current model",
+    "Original CLR and GUI numerical/rendering equivalence"
+  ]
+}

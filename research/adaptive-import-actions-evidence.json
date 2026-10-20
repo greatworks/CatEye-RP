@@ -1,0 +1,168 @@
+{
+  "schema": "adaptive-import-actions-evidence-v1",
+  "capturedAt": "2026-10-15T10:41:02.135Z",
+  "target": {
+    "version": "Axure RP 11.0.0.4150",
+    "assemblySha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+  },
+  "sources": [
+    {
+      "path": "research/scripts/read-rp-interactions.mjs",
+      "sha256": "2e6efca388f2bfe2b779ec8b3a041060e9481a32073c94b53bc5796b121d5274",
+      "bytes": 22148
+    },
+    {
+      "path": "research/scripts/read-rp-adaptive-actions.test.mjs",
+      "sha256": "f1f001c4f170e1ea56ebb640d3cb63116e2a2b2a9746349ebad17fdaf2565771",
+      "bytes": 11900
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "research/scripts/read-rp-objects.mjs",
+      "sha256": "6e94582d21efacec6e75cfcf41953cc02913fa68031056637387df34f6cb59b9",
+      "bytes": 6577
+    },
+    {
+      "path": "research/scripts/read-rp-interactions.test.mjs",
+      "sha256": "6fd0537940b92ce7b9af85ee11fe5729e7891bd4d663f686d6ee47d33e9d6ba9",
+      "bytes": 20037
+    },
+    {
+      "path": "research/adaptive-behavior-format-action-cil.json",
+      "sha256": "873fa14d9abb78ed64d447d4a5cbc0bd9a41267d13f5213e4e041cd61044860d",
+      "bytes": 107725
+    },
+    {
+      "path": "research/adaptive-behavior-format-action-writer-cil.json",
+      "sha256": "891f8cc3c17594db4d880d3cb07863cc12fc13d2bdbb39604f03d59abfaf6b82",
+      "bytes": 29238
+    },
+    {
+      "path": "research/adaptive-behavior-format-generated-action-cil.json",
+      "sha256": "3665ea0e98acfc7f0138b29568bdce65904d7a737759f94aca5921a88003cac3",
+      "bytes": 13599
+    },
+    {
+      "path": "research/adaptive-behavior-format-evidence.json",
+      "sha256": "0e3a2a5a4be0fdca53374d9220243b5db298ebec08a95e141bbafe3b91743882",
+      "bytes": 9893
+    },
+    {
+      "path": "research/adaptive-behavior-format-census.json",
+      "sha256": "34606a80fb56dd68eb2b877547122b452215a8b024aefb25979ecfc5b2e670a2",
+      "bytes": 4064978
+    },
+    {
+      "path": "research/adaptive-behavior-case-groups-probe.mjs",
+      "sha256": "dbaaacc133e9b2cc46f776daec6f6048c567fdab7aacdbfd50d2b01980000304",
+      "bytes": 13867
+    },
+    {
+      "path": "research/adaptive-behavior-case-groups-probe.json",
+      "sha256": "7e3eda1053531bdf911885b91c14fe6b600e9bd93c39f26cd777441b4ab92f69",
+      "bytes": 17641
+    }
+  ],
+  "report": {
+    "path": "research/adaptive-import-actions-evidence.md",
+    "sha256": "3e610ebc6effd169f58f9ac500571fca4641600c05860deff3a5fe8299d5e581",
+    "bytes": 5366
+  },
+  "logs": [
+    {
+      "path": ".build/adaptive-import-actions-red.log",
+      "sha256": "ea4d9ddff3751536276d31bbb7331f25769d1946d0714a16362b2f56ca837151",
+      "bytes": 27308
+    },
+    {
+      "path": ".build/adaptive-import-actions-green.log",
+      "sha256": "b2dd1d41ca3e804c3bdedff6f4cdedcaf2d07ac71b3478f2cb2e63d3f3947119",
+      "bytes": 2237
+    },
+    {
+      "path": ".build/adaptive-import-actions-focused.log",
+      "sha256": "e512ce738bff35448337fe7a2c21a85502d399fc1d58cead71229986ac38d593",
+      "bytes": 4927
+    }
+  ],
+  "protocol": {
+    "actionType": "setAdaptiveView",
+    "targetField": "adaptiveView",
+    "targets": [
+      {
+        "kind": "auto"
+      },
+      {
+        "kind": "base"
+      },
+      {
+        "kind": "nativeGuid",
+        "guid": "32 lowercase hexadecimal digits"
+      }
+    ],
+    "event": {
+      "native": 338,
+      "mapped": "adaptiveViewChange",
+      "owner": "Axure:Page"
+    },
+    "nativeGuidResolution": "Importer owns lookup in the importing Page set; zero/unresolved IDs are preserved here, not rebound or silently removed.",
+    "disabledAction": "Reject whole event; existing disabled event/case representation unchanged."
+  },
+  "validation": {
+    "before": {
+      "command": "node --test research/scripts/read-rp-adaptive-actions.test.mjs",
+      "total": 24,
+      "passed": 1,
+      "failed": 23
+    },
+    "after": {
+      "command": "node --test research/scripts/read-rp-adaptive-actions.test.mjs",
+      "total": 24,
+      "passed": 24,
+      "failed": 0
+    },
+    "regression": {
+      "command": "node --test research/scripts/read-rp-interactions.test.mjs research/scripts/read-rp-adaptive-actions.test.mjs",
+      "total": 48,
+      "passed": 48,
+      "failed": 0
+    },
+    "syntaxChecks": [
+      {
+        "command": "node --check research/scripts/read-rp-interactions.mjs",
+        "passed": true
+      },
+      {
+        "command": "node --check research/scripts/read-rp-adaptive-actions.test.mjs",
+        "passed": true
+      }
+    ]
+  },
+  "boundaries": {
+    "positiveFixture": "Independent synthetic object graphs and three independently encoded binary object packages; not original application output or acceptance.",
+    "retainedCorpus": {
+      "files": 11,
+      "objects": 41662,
+      "adaptiveActions": 0,
+      "event338": 0,
+      "freshFullScan": false
+    },
+    "notRun": [
+      "original DLL",
+      "original GUI",
+      "browser",
+      "full suite",
+      "build",
+      "package"
+    ],
+    "unchangedAreas": [
+      "semantics reader",
+      "set parser",
+      "importer",
+      "model",
+      "runtime",
+      "hosts"
+    ]
+  }
+}

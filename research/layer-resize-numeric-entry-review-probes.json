@@ -1,0 +1,7601 @@
+{
+  "schemaVersion": 1,
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "kind": "Original CbNX Resize clamp slice + original jbNm/numeric CIL with supplied multi-root selection facade",
+  "entry": {
+    "token": 100686248,
+    "firstOffset": 786,
+    "lastOffset": 905,
+    "thenRootsCallOffset": 963
+  },
+  "planner": {
+    "path": "src/model/author-layer-resize.ts",
+    "sha256": "642b075a7a3f86a030588a14f1775b20356c9a5ea24115d59dae29999a9b6f04",
+    "unchanged": true,
+    "retainedPath": "research/layer-resize-numeric-entry-review-642b075a7a3f.ts.txt"
+  },
+  "sources": [
+    {
+      "path": ".build/next-layer-authoring/resize-propagation-cil.json",
+      "sha256": "f32e834763dd14c7b67042db9eb84d6c99337d2ebc104e2d1d4dc3bef40d04ca"
+    },
+    {
+      "path": "research/layer-resize-controller-probe.mjs",
+      "sha256": "ca81115b3d6a92aabbe751b21c5427ebc7e0fe2093fe0265e988ba26c2416800"
+    },
+    {
+      "path": "research/layer-resize-controller-planner-oracle.mjs",
+      "sha256": "c237e035138f5cb55e05bae4d9a4d0f0f923cc1e7880226a6546330aa56887f6"
+    },
+    {
+      "path": "research/layer-resize-numeric-replay.mjs",
+      "sha256": "5c7de39285e87c7ea4492666b38decf096873a8c0d9ce23898a8174027d6a20f"
+    }
+  ],
+  "summary": {
+    "total": 16,
+    "different": 16,
+    "same": 0
+  },
+  "limits": [
+    "Selected roots and selection frame are supplied; upstream locked-selection membership is not executed.",
+    "All supplied roots are Layers, so the source sizing-frame rotation is zero.",
+    "Root enumeration is an explicit loop following the retained CbNX call site; only its clamp instructions and downstream consumers execute.",
+    "The product comparison intentionally uses the original per-root call signature, documenting the integration gap rather than claiming a fixed shared-selection API was tested."
+  ],
+  "results": [
+    {
+      "name": "shared-root 1/100/40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 1,
+        "delta": {
+          "x": 100,
+          "y": 40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": 100,
+          "y": 40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 100,
+              "y": -20,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 325,
+              "y": -20,
+              "width": 75,
+              "height": 140
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 100,
+              "y": -20,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 325,
+              "y": -20,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [],
+      "ownFrameErrors": [
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "left"
+          ]
+        },
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "right"
+          ]
+        }
+      ],
+      "equal": false
+    },
+    {
+      "name": "shared-root 1/-100/-40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 1,
+        "delta": {
+          "x": -100,
+          "y": -40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": -100,
+          "y": -40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": -100,
+              "y": 20,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 275,
+              "y": 20,
+              "width": 125,
+              "height": 60
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": -100,
+              "y": 20,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 275,
+              "y": 20,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 1,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [
+        {
+          "id": "a",
+          "x": -100,
+          "y": 20,
+          "width": 200,
+          "height": 60
+        },
+        {
+          "id": "b",
+          "x": 200,
+          "y": 20,
+          "width": 200,
+          "height": 60
+        }
+      ],
+      "ownFrameErrors": [],
+      "equal": false
+    },
+    {
+      "name": "shared-root 2/100/40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 2,
+        "delta": {
+          "x": 100,
+          "y": 40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": 100,
+          "y": 40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": -50,
+              "y": 40,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 325,
+              "y": 40,
+              "width": 125,
+              "height": 60
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": -50,
+              "y": 40,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 325,
+              "y": 40,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [
+        {
+          "id": "a",
+          "x": -50,
+          "y": 40,
+          "width": 200,
+          "height": 60
+        },
+        {
+          "id": "b",
+          "x": 250,
+          "y": 40,
+          "width": 200,
+          "height": 60
+        }
+      ],
+      "ownFrameErrors": [],
+      "equal": false
+    },
+    {
+      "name": "shared-root 2/-100/-40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 2,
+        "delta": {
+          "x": -100,
+          "y": -40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": -100,
+          "y": -40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 50,
+              "y": -40,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 275,
+              "y": -40,
+              "width": 75,
+              "height": 140
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 50,
+              "y": -40,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 275,
+              "y": -40,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 2,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [],
+      "ownFrameErrors": [
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "left"
+          ]
+        },
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "right"
+          ]
+        }
+      ],
+      "equal": false
+    },
+    {
+      "name": "shared-root 3/100/40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 3,
+        "delta": {
+          "x": 100,
+          "y": 40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": 100,
+          "y": 40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 100,
+              "y": 40,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 325,
+              "y": 40,
+              "width": 75,
+              "height": 60
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 100,
+              "y": 40,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 325,
+              "y": 40,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [],
+      "ownFrameErrors": [
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "left"
+          ]
+        },
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "right"
+          ]
+        }
+      ],
+      "equal": false
+    },
+    {
+      "name": "shared-root 3/-100/-40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 3,
+        "delta": {
+          "x": -100,
+          "y": -40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": -100,
+          "y": -40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": -100,
+              "y": -40,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 275,
+              "y": -40,
+              "width": 125,
+              "height": 140
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": -100,
+              "y": -40,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 275,
+              "y": -40,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 3,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [
+        {
+          "id": "a",
+          "x": -100,
+          "y": -40,
+          "width": 200,
+          "height": 140
+        },
+        {
+          "id": "b",
+          "x": 200,
+          "y": -40,
+          "width": 200,
+          "height": 140
+        }
+      ],
+      "ownFrameErrors": [],
+      "equal": false
+    },
+    {
+      "name": "shared-root 4/100/40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 4,
+        "delta": {
+          "x": 100,
+          "y": 40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": 100,
+          "y": 40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": -20,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 375,
+              "y": -20,
+              "width": 125,
+              "height": 140
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 0,
+              "y": -20,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 375,
+              "y": -20,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [
+        {
+          "id": "a",
+          "x": 0,
+          "y": -20,
+          "width": 200,
+          "height": 140
+        },
+        {
+          "id": "b",
+          "x": 300,
+          "y": -20,
+          "width": 200,
+          "height": 140
+        }
+      ],
+      "ownFrameErrors": [],
+      "equal": false
+    },
+    {
+      "name": "shared-root 4/-100/-40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 4,
+        "delta": {
+          "x": -100,
+          "y": -40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": -100,
+          "y": -40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 20,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 225,
+              "y": 20,
+              "width": 75,
+              "height": 60
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 0,
+              "y": 20,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 225,
+              "y": 20,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 4,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [],
+      "ownFrameErrors": [
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "left"
+          ]
+        },
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "right"
+          ]
+        }
+      ],
+      "equal": false
+    },
+    {
+      "name": "shared-root 6/100/40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 6,
+        "delta": {
+          "x": 100,
+          "y": 40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": 100,
+          "y": 40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 40,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 375,
+              "y": 40,
+              "width": 125,
+              "height": 60
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 0,
+              "y": 40,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 375,
+              "y": 40,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [
+        {
+          "id": "a",
+          "x": 0,
+          "y": 40,
+          "width": 200,
+          "height": 60
+        },
+        {
+          "id": "b",
+          "x": 300,
+          "y": 40,
+          "width": 200,
+          "height": 60
+        }
+      ],
+      "ownFrameErrors": [],
+      "equal": false
+    },
+    {
+      "name": "shared-root 6/-100/-40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 6,
+        "delta": {
+          "x": -100,
+          "y": -40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": -100,
+          "y": -40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": -40,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 225,
+              "y": -40,
+              "width": 75,
+              "height": 140
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 0,
+              "y": -40,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 225,
+              "y": -40,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 6,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [],
+      "ownFrameErrors": [
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "left"
+          ]
+        },
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "right"
+          ]
+        }
+      ],
+      "equal": false
+    },
+    {
+      "name": "shared-root 8/100/40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 8,
+        "delta": {
+          "x": 100,
+          "y": 40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": 100,
+          "y": 40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": -50,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 325,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": -50,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 325,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [
+        {
+          "id": "a",
+          "x": -50,
+          "y": 0,
+          "width": 200,
+          "height": 140
+        },
+        {
+          "id": "b",
+          "x": 250,
+          "y": 0,
+          "width": 200,
+          "height": 140
+        }
+      ],
+      "ownFrameErrors": [],
+      "equal": false
+    },
+    {
+      "name": "shared-root 8/-100/-40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 8,
+        "delta": {
+          "x": -100,
+          "y": -40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": -100,
+          "y": -40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 50,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 275,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 50,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 275,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 8,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [],
+      "ownFrameErrors": [
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "left"
+          ]
+        },
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "right"
+          ]
+        }
+      ],
+      "equal": false
+    },
+    {
+      "name": "shared-root 9/100/40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 9,
+        "delta": {
+          "x": 100,
+          "y": 40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": 100,
+          "y": 40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 100,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 325,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 100,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 325,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 140
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [],
+      "ownFrameErrors": [
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "left"
+          ]
+        },
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "right"
+          ]
+        }
+      ],
+      "equal": false
+    },
+    {
+      "name": "shared-root 9/-100/-40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 9,
+        "delta": {
+          "x": -100,
+          "y": -40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": -100,
+          "y": -40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": -100,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 275,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": -100,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 275,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 9,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 60
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [
+        {
+          "id": "a",
+          "x": -100,
+          "y": 0,
+          "width": 200,
+          "height": 60
+        },
+        {
+          "id": "b",
+          "x": 200,
+          "y": 0,
+          "width": 200,
+          "height": 60
+        }
+      ],
+      "ownFrameErrors": [],
+      "equal": false
+    },
+    {
+      "name": "shared-root 12/100/40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 12,
+        "delta": {
+          "x": 100,
+          "y": 40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": 100,
+          "y": 40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 375,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 100,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 375,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": 25,
+              "y": 40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 125,
+                "height": 140
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 125,
+              "height": 140
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [
+        {
+          "id": "a",
+          "x": 0,
+          "y": 0,
+          "width": 200,
+          "height": 140
+        },
+        {
+          "id": "b",
+          "x": 300,
+          "y": 0,
+          "width": 200,
+          "height": 140
+        }
+      ],
+      "ownFrameErrors": [],
+      "equal": false
+    },
+    {
+      "name": "shared-root 12/-100/-40",
+      "input": {
+        "roots": [
+          {
+            "id": "left",
+            "children": [
+              {
+                "id": "a",
+                "rect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          },
+          {
+            "id": "right",
+            "children": [
+              {
+                "id": "b",
+                "rect": {
+                  "x": 300,
+                  "y": 0,
+                  "width": 100,
+                  "height": 100
+                }
+              }
+            ]
+          }
+        ],
+        "handle": 12,
+        "delta": {
+          "x": -100,
+          "y": -40
+        }
+      },
+      "expected": {
+        "rootFrame": {
+          "__struct": "rect",
+          "x": 0,
+          "y": 0,
+          "width": 400,
+          "height": 100
+        },
+        "clampedDelta": {
+          "x": -100,
+          "y": -40
+        },
+        "commits": [
+          {
+            "id": "a",
+            "rect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "id": "b",
+            "rect": {
+              "__struct": "rect",
+              "x": 225,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          }
+        ],
+        "effects": [],
+        "calls": [
+          {
+            "method": "INw2",
+            "id": "left",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "a"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "a",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "right",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 300,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -100,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 400,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": null,
+            "answer": {
+              "x": 225,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "ubNp",
+            "ids": [
+              "b"
+            ],
+            "oldParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "newParent": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          },
+          {
+            "method": "INw2",
+            "id": "b",
+            "oldRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "oldAabb": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "delta": {
+              "__struct": "point",
+              "x": -25,
+              "y": -40
+            },
+            "parentRect": {
+              "__struct": "rect",
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 100
+            },
+            "handle": 12,
+            "freedom": 3,
+            "scaling": false,
+            "orientation": 3,
+            "pin": {
+              "pinHorizontal": 0,
+              "pinVertical": 0,
+              "fixedWidth": false,
+              "fixedHeight": false,
+              "oldParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              },
+              "newParent": {
+                "__struct": "rect",
+                "x": 0,
+                "y": 0,
+                "width": 75,
+                "height": 60
+              }
+            },
+            "answer": {
+              "x": 0,
+              "y": 0,
+              "width": 75,
+              "height": 60
+            }
+          }
+        ],
+        "finalFit": [
+          {
+            "id": "a",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          },
+          {
+            "id": "b",
+            "autoFitWidth": false,
+            "autoFitHeight": false
+          }
+        ],
+        "scalingRestored": true
+      },
+      "ownFrameGeometry": [],
+      "ownFrameErrors": [
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "left"
+          ]
+        },
+        {
+          "ok": false,
+          "code": "invalid-result",
+          "reason": "The resize would produce a zero, nonfinite or out-of-range member frame.",
+          "widgetIds": [
+            "right"
+          ]
+        }
+      ],
+      "equal": false
+    }
+  ]
+}

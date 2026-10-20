@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-20T04:28:33.659Z",
+  "kind": "independent current product factory in NodeVM with deterministic timer; no vendor code, GUI, browser, or build executed",
+  "sources": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "ab3a963fd308acdffd8438b5ce90a7c25b2e608b0c3e8b46b2902b64fdb1403e"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "976ecdd306aedb50e29dde60dc274d84e75433cd7379ffd7a8f55b0d0edf10cc"
+    },
+    {
+      "path": "tests/runtime-rotate.test.ts",
+      "sha256": "fa99af53292f3a2c57ecb36d02434e002a69d96de3669b6336ad73bf9457eed6"
+    }
+  ],
+  "sourceStableDuringRun": true,
+  "probe": {
+    "path": "D:\\WSCodex\\REA\\research\\runtime-rotate-motion-integration-review-probe.mjs",
+    "sha256": "f718536bf864a5992924a3151687651c7e3ea7419cbb671d1a3aa1485537fefe"
+  },
+  "evidence": [
+    {
+      "path": "research/runtime-rotate-motion-evidence.json",
+      "sha256": "17d148d2efab657b6e1d9366645dfafe0a036fe39aa66509042081115ecfd63e"
+    },
+    {
+      "path": "research/runtime-rotate-motion-probes.json",
+      "sha256": "4175a7ba6360103caaba3dd4083b90cee8f1f2aa0b47ba344417038fdce2fa37"
+    }
+  ],
+  "checks": {
+    "total": 3,
+    "passed": 0,
+    "failed": 3
+  },
+  "results": [
+    {
+      "name": "independent queued-start failure rejects its owner, not prior completed motion",
+      "passed": false,
+      "error": "TypeError: Cannot read properties of undefined (reading 'reduce')\n    at chooseView (evalmachine.<anonymous>:578:81)\n    at Object.createOfflineRuntime (evalmachine.<anonymous>:613:22)\n    at clockRuntime (file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:34:27)\n    at file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:43:63\n    at check (file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:40:58)\n    at file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:42:7\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "group logical angle is rolled back with a failed transaction",
+      "passed": false,
+      "error": "TypeError: Cannot read properties of undefined (reading 'reduce')\n    at chooseView (evalmachine.<anonymous>:578:81)\n    at Object.createOfflineRuntime (evalmachine.<anonymous>:613:22)\n    at clockRuntime (file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:34:27)\n    at file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:52:25\n    at check (file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:40:58)\n    at file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:50:7"
+    },
+    {
+      "name": "selected shadow is used for initial orbit geometry",
+      "passed": false,
+      "error": "TypeError: Cannot read properties of undefined (reading 'reduce')\n    at chooseView (evalmachine.<anonymous>:578:81)\n    at Object.createOfflineRuntime (evalmachine.<anonymous>:613:22)\n    at clockRuntime (file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:34:27)\n    at file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:60:25\n    at check (file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:40:58)\n    at file:///D:/WSCodex/REA/research/runtime-rotate-motion-integration-review-probe.mjs:58:7"
+    }
+  ],
+  "limits": [
+    "Failure rollback is product policy, not an observed vendor transaction contract.",
+    "Flat sibling group support is an independent compatibility mapping.",
+    "Selected-shadow case only checks one instantaneous step; multi-step cache topology needs separate exact-source composition."
+  ]
+}

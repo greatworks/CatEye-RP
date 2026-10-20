@@ -1,0 +1,160 @@
+{
+  "status": "complete-frozen",
+  "generatedAt": "2026-10-13T23:06:39.408Z",
+  "report": "research/rotation-authoring-audit.md",
+  "scope": "Existing center-origin rotation authoring resize and marquee corrections; no native parser/schema/runtime changes.",
+  "originalGuiCompared": false,
+  "owned": [
+    {
+      "file": "src/App.tsx",
+      "sha256": "1cf5a533ce63700623c5a1fd95bc18c54311a31bc71206a89de246169bd29d4a"
+    },
+    {
+      "file": "src/model/rotation-geometry.ts",
+      "sha256": "8749f3fb6ef037b1a75d59e848096be8312ce985b32ba583aea77c85ca587334"
+    },
+    {
+      "file": "tests/rotation-authoring.test.ts",
+      "sha256": "3370232ad6b438c6138d0cb3adc18a2eb98bef2277eb06a8a37b31bdfbb562d8"
+    },
+    {
+      "file": "tests/e2e/rotation-authoring.spec.ts",
+      "sha256": "4fcab3c9bbfa6022a1bcd049a9826fca2d6b414d5c92294a913ad431e0cfa09f"
+    }
+  ],
+  "readOnlyAudited": [
+    {
+      "file": "src/components/WidgetView.tsx",
+      "sha256": "e7063d98001558315b95b1e5c1e9efde6974ef52ae1d9706e938836793174d7c"
+    },
+    {
+      "file": "src/components/Preview.tsx",
+      "sha256": "100c03a2427582c006b75006b4560894a6aa2eba4bbed65aa544dd9a44506c06"
+    },
+    {
+      "file": "src/runtime/export-runtime.ts",
+      "sha256": "ec7493630031f8aba45e1282ffe104f8b51a901e6eec00b9c49205b0e3f48746"
+    },
+    {
+      "file": "src/runtime/frame-player.ts",
+      "sha256": "9b67b180890f7c49d378b7bc6f6d7c1257e9da2561258466a2bacb5885dd6104"
+    },
+    {
+      "file": "src/components/TableEditor.tsx",
+      "sha256": "bf334c2c382bda299dc6760d79a8f9622c3a7ac168c0114e347f80e0481ed731"
+    },
+    {
+      "file": "src/components/CanvasVectorTools.tsx",
+      "sha256": "22bce24a12fd63cea6edead6dc1f87cce3fa0c33106b003034defe0bcf8a6734"
+    },
+    {
+      "file": "src/model/vector-editing.ts",
+      "sha256": "5beb656467c33b73b6a0425bb003a78f2325127f6f4c4c2a7e3bc4b9b028512d"
+    }
+  ],
+  "logs": [
+    {
+      "file": ".build/rotation-authoring-before.log",
+      "sha256": "16b0ccf51769e68f9ed66b387cef7277f36ea0f87d725d1ee70859ca0e0116e2"
+    },
+    {
+      "file": ".build/rotation-authoring-unit.log",
+      "sha256": "5eaa36489ed1134e42ab39d6ab26a7ba80f5f7eab9f149a381eefaec29c3209f"
+    },
+    {
+      "file": ".build/rotation-authoring-after.log",
+      "sha256": "7414051b141aa9767147a8eefd17dda12e37efdd06f9eb259c85e0f858d9e43a"
+    },
+    {
+      "file": ".build/rotation-authoring-untouched-before.log",
+      "sha256": "f2e0dd5d257d4f512563f930522279c01961ab3e785c262972d2f11fa395eb5d"
+    },
+    {
+      "file": ".build/rotation-authoring-untouched-after.log",
+      "sha256": "c43fa9b01d2e42630442d3c2c79a65f93aebeebb350ef359a981ecf4096acf1a"
+    },
+    {
+      "file": ".build/rotation-authoring-untouched-browser.log",
+      "sha256": "2188603322a0c03a8bdf044ab43a96c65f67f4e3b48d6edd8e689b971ad7be58"
+    }
+  ],
+  "verification": {
+    "baseline": {
+      "failed": 2,
+      "reason": "Confirmed rotated resize axis and marquee intersection defects",
+      "output": "test-results/rotation-authoring-before"
+    },
+    "unit": {
+      "passed": 67,
+      "failed": 0
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "browser": {
+      "passed": 2,
+      "failed": 0,
+      "durationSeconds": 14.6,
+      "exitCode": 0,
+      "runnerExited": true,
+      "output": "test-results/rotation-authoring-untouched-after"
+    },
+    "untouchedAxisBaseline": {
+      "failed": 12,
+      "skipped": 55,
+      "reason": "E/W changed native height6/7 to8; N/S rounded fractional width to74 at0/37degrees"
+    }
+  },
+  "limitations": [
+    "No original editor gesture parity is asserted.",
+    "Native P50/P1401 import and matrix/pivot contract are parent-owned.",
+    "Selection tests transformed layout rectangles, not painted alpha or arbitrary vector contours.",
+    "No full suite, build, package or frame-specific browser workflow was run by this subtask."
+  ],
+  "revisions": [
+    {
+      "reason": "Untouched-axis preservation follow-up",
+      "previousOwned": [
+        {
+          "file": "src/App.tsx",
+          "sha256": "77e7055bc10a79f30aa582b4b7c880820e0ba87d38ff117fa7d73a38496b0194"
+        },
+        {
+          "file": "src/model/rotation-geometry.ts",
+          "sha256": "90c85c47077ef0670400be257fd23a5a013e9249f9364aca63257a0a4a5d9998"
+        },
+        {
+          "file": "tests/rotation-authoring.test.ts",
+          "sha256": "328c123134a349201da4d8aa24affce61304851d68647a8e5565059c1d7480e4"
+        },
+        {
+          "file": "tests/e2e/rotation-authoring.spec.ts",
+          "sha256": "4fcab3c9bbfa6022a1bcd049a9826fca2d6b414d5c92294a913ad431e0cfa09f"
+        }
+      ],
+      "previousVerification": {
+        "baseline": {
+          "failed": 2,
+          "reason": "Confirmed rotated resize axis and marquee intersection defects",
+          "output": "test-results/rotation-authoring-before"
+        },
+        "unit": {
+          "passed": 55,
+          "failed": 0
+        },
+        "typecheck": {
+          "exitCode": 0
+        },
+        "browser": {
+          "passed": 4,
+          "failed": 0,
+          "durationSeconds": 22.1,
+          "exitCode": 0,
+          "runnerExited": true,
+          "output": "test-results/rotation-authoring-after"
+        }
+      }
+    }
+  ],
+  "finishedAt": "2026-10-13T23:08:21.065Z"
+}

@@ -1,0 +1,462 @@
+✖ real Layer retains ordered references in the same flat diagram without fabricated local geometry (334.7679ms)
+✖ stored Layer location is source evidence, not a child-coordinate translation (305.9371ms)
+✖ Layer rejects wrong key without editing flat members (369.1146ms)
+✖ Layer rejects missing child without editing flat members (317.0718ms)
+✖ Layer rejects duplicate child without editing flat members (320.4754ms)
+✖ Layer rejects wrong ref tag without editing flat members (364.7919ms)
+✖ Layer rejects noncontained member without editing flat members (349.7847ms)
+✖ Layer rejects self cycle without editing flat members (381.3243ms)
+✖ Layer rejects different scope without editing flat members (374.2423ms)
+✖ Layer rejects duplicate scope member without editing flat members (413.8452ms)
+✖ Layer rejects duplicate parent without editing flat members (374.4059ms)
+✖ Layer rejects order mismatch without editing flat members (347.243ms)
+✖ Layer rejects unknown field without editing flat members (316.5814ms)
+✖ Layer rejects unknown style without editing flat members (378.8703ms)
+✖ Layer rejects adaptive local without editing flat members (370.2668ms)
+✖ Layer rejects named style without editing flat members (469.6914ms)
+✖ Layer rejects invalid pin without editing flat members (462.2625ms)
+✖ Layer rejects old version without editing flat members (477.3904ms)
+✖ empty literal Layer is an explicit zero-member group, not a missing membership field (329.1303ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 0
+ℹ fail 19
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7696.7925
+
+✖ failing tests:
+
+test at research\scripts\read-rp-layer.test.mjs:9:1
+✖ real Layer retains ordered references in the same flat diagram without fabricated local geometry (334.7679ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'supported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:9:178)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'supported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:10:1
+✖ stored Layer location is source evidence, not a child-coordinate translation (305.9371ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'supported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:10:241)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'supported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects wrong key without editing flat members (369.1146ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects missing child without editing flat members (317.0718ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects duplicate child without editing flat members (320.4754ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects wrong ref tag without editing flat members (364.7919ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects noncontained member without editing flat members (349.7847ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects self cycle without editing flat members (381.3243ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects different scope without editing flat members (374.2423ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects duplicate scope member without editing flat members (413.8452ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects duplicate parent without editing flat members (374.4059ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects order mismatch without editing flat members (347.243ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects unknown field without editing flat members (316.5814ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects unknown style without editing flat members (378.8703ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects adaptive local without editing flat members (370.2668ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects named style without editing flat members (469.6914ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects invalid pin without editing flat members (462.2625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects old version without editing flat members (477.3904ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-layer.test.mjs:18:1
+✖ empty literal Layer is an explicit zero-member group, not a missing membership field (329.1303ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  
+  undefined !== []
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:18:226)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

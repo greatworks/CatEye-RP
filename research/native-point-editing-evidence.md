@@ -1,0 +1,49 @@
+# Native parameter shapes and point editing
+
+This investigation uses the retained Axure RP 11.0.0.4150 assembly and previous source records. It **does not load or execute the target DLL, operate the original GUI, or generate an original page**. The new numerical evidence is 21 bounded CIL control-flow replays with explicit external sinks and 384 bounded managed-coordinate replays. These are static instruction interpretation, not native application execution. Original GUI input, no-op click, Escape and complete history behavior remain unobserved.
+
+## Confirmed source contract
+
+`VectorShape.LN4g` (100702676, IL0007–002B) distinguishes parameter shapes from Shape300. For non300 it calls `jN4k(null, offset)` and stores the resulting controls through `DN4W`; for300 it returns the stored `cN89` controls. This distinction is identity-based, not a test that a free path happens to resemble a rectangle.
+
+`VectorShape.jN4k` (100702679) uses the owner's current `SizingRect` if no rectangle is supplied. It reads effective uniform radius through `KJm7.hJOT`, first caps it by both dimensions, and passes shape, radius, border width plus offset, line pattern, smart controls, border mask and corner mask to `L5vW.w5Qk` (100722530). P71 and P81 are separate source properties. It is not a call to the shipped HTML `style.js` inset stroke path. The new replay records the exact factory arguments, including a no-line pattern and independent corner/border masks; the geometry factory is an explicit sink in that control-flow case.
+
+For a full-border Shape0 rectangle, the retained `i5vf` (100722498) coordinate builder constructs the **outer-boundary** normalized controls. In all 384 new cases its offset becomes0, including supplied offsets0,0.5,2 and every corner mask. The cases cover 240×60/r18, horizontal and vertical capsules, a square, oversized radius, fractional dimensions, radius0 and a tiny positive radius. A 240×60/r18 full-corner rectangle starts at physical `(0,18)`, then curves to `(18,0)` with controls `(0,7.92)` and `(7.92,0)`.
+
+The eligible corners are P81's TL/TR/BR/BL bits1/2/4/8. With all border sides visible, the radius ceiling is half-height if TL+BL or TR+BR are enabled, otherwise full height; and half-width if TL+TR or BL+BR are enabled, otherwise full width. Use the minimum of both ceilings and requested radius. Disabled corners have zero radius. Thus the all-corner capsule uses half the short axis, while a single or diagonal corner may be larger. The binary retained coefficient is `0.43999999999999995`; the independent renderer's0.44 arithmetic agrees within1e-12 normalized coordinates.
+
+`m5vw` (100722500) and `P5vT` (100722499) merge coincident anchors only when the connecting higher/lower handles are missing or degenerate. The normalized point test is strict axis distance `< 0.00001`. The merged point retains the second anchor, first lower handle, second higher handle and second outgoing-segment flag. The closing seam is considered first. Full rounded capsules therefore have six anchors and the square full-round case has four.
+
+The enlarged matrix exposes a precise restart detail beyond the previous pill cases: after a merge, `m5vw` recursively resumes with index `i-1`, **but initializes its comparison value from entry0**, not entry `i-1`. Some oversized single-corner cases consequently retain a zero-length straight segment. For 200×100/requested180/mask2, the replay retains two `(1,1)` anchors. The new helper preserves this output; it does not silently simplify all coincident anchors. Frozen pill reports/results were not rewritten.
+
+Partial borders take the separate `b5QE` (100722529) route, which can construct distinct stroke/fill contours. The full-border results do not prove that either dynamic SVG `strokeD` or `fillD` is the correct point-edit source for this route. This stage therefore does not derive partial-border edit geometry. Initial managed controls, dynamic HTML repaint, and an authoring overlay are separate stages.
+
+## Conversion and history boundaries
+
+The point-editor conversion helper is `AjIh.FjI4` (100685401). Its retained control flow:
+
+1. Checks the owner's Shape using `cSqL.DSO4` (100708406, exact comparison with300). An existing Shape300 returnsfalse without creating a conversion edit.
+2. For another shape, calls `VectorShapeEdit.YN45(owner,300,true)` and stores the returned edit in `wjkD.ijkv`.
+3. If its Boolean argument istrue and a preceding `gjg7` edit exists, it stores a `pS1H` composite containing the preceding edit followed by the conversion edit. Otherwise it stores just the conversion edit.
+
+All eight shape/prior-edit/flag combinations are replayed. The edit factory and history objects are explicit sinks; these tests do not invoke the original undo manager.
+
+`YN45` (100702637) wraps a single owner and delegates to `JN4H` (100702638). `JN4H` constructs a `VectorShapeEdit` snapshot, obtains each owner's saved `VectorShapeState.iS26`, then calls `qNnT(newShape, savedPoints)`. `VectorShapeState` constructor100702643 captures Shape, `LN4g(0)` controls, a `GScr` geometry/style state and copied smart controls. Its `Apply`100702644 restores Shape, controls, geometry/style state, smart controls, then notifies `PointsEdited`. The two new snapshot tests execute this instruction sequence with the geometry/style object, cloning and notifications explicitly stubbed. They prove the direct capture/restore order, not the internals of every nested snapshot.
+
+`qNnT` (100702809, retained name ChangeShapeTo) sets Shape, invokes `jN4i` for old and new shape, and clears nearest-curve cache. The two `jN4i` calls are line-family adjustments. Replays for input/current Shapes0 and300 return without property writes; their line predicate accepts only29/30. `set_Shape`100702790 also updates capabilities, replaces the final default-style-chain member for the new shape type, regenerates/normalizes controls when converting to300, and sends change notifications. **No P71/P81 removal is established by this chain.** It would also be wrong to promise that every final effective style is invariant, because the default-style-chain member changes and external callbacks were not exhaustively executed.
+
+The companion format evidence finds actual Shape300 objects that still carry local P71, including a custom Form path with P71=2. This supports preserving these stored fields rather than deleting them, but is not a before/after editing history. See `native-point-editing-format-evidence.md` and its exact raw inventory.
+
+The conversion helper is called by anchor and handle update overrides (`hbbp.hInw`100685553 / `XbJ5.hInw`100685587), by `hbbp.yI8Q`100685561, and by point-operation wrapper `XbbP.rbb7`100685514. Static callers of that wrapper include the explicitly named `AjIh.DeleteSelectedPoints`100685466 and several other point commands. The four wrapper flag combinations are replayed. `AjIh` constructor100685390 creates overlays and subscribes to point/shape events; it does not call the conversion helper or YN45. This supports distinguishing editor construction from point modification, but **does not close the full GUI double-click/menu entry dispatch or prove every zero-motion/cancel boundary**.
+
+The native commit-like `VectorShapeEdit.RN4I`100702640 has further effects: `hN4K` derives normalized controls/bounds, AutoFitHeight and AutoFitWidth are setfalse, controls are stored, and geometry/rotation is updated in a scoped edit. `TN46`100702684 similarly normalizes and writes location+size+controls; it does **not** itself set Shape. The current independent point editor retains its existing owner-bounds policy; complete native rebounding, rotation preservation under rebounding, AutoFit side effects and every history grouping remain limits unless separately implemented and tested.
+
+## Independent implementation delivered in this stage
+
+The new `src/model/vector-authoring.ts` exports `resolveVectorEditPath(widget)` and `vectorEditPathUnsupportedReason(widget)`. It derives a new normalized path only for an existing path with typebox, explicit native corner mask, strict clockwise rectangle-family validation, uniform radius and all border sides visible. It uses current effective normal dimensions/parameters without modifying the widget. No path yieldsundefined; genuine custom/legacy geometry is preserved by reference. A new returned path identifies the proven parameter-derived branch even when its coordinates are numerically unchanged.
+
+The reason API prevents a misleading fallback: when the actual renderer would reconstruct a parameterized display but this stage cannot derive the editing path, it returns `partial-border` or `independent-corners`. Callers must block point editing for these cases. This includes recognized legacy hidden-side reconstruction. Arbitrarily changed controls cease to qualify for parametric reconstruction and retain their explicit path.
+
+The caller's use of normal adaptive style, excluding selected/error/effect-preview paint, is a bounded product choice: this investigation has not traced every native author-style context. Entry-only derivation, first actual edit committing a path identity, unchanged-entry/cancel behavior, and retention of all independent project styles are likewise explicit transactional design, not claims of a fully observed native GUI flow.
+
+Validation is6 focused geometry tests, including all384 CIL coordinate cases, plus the existing vector and point-editing tests (see bound JSON report). The first stub implementation produced three real red tests; the first geometric implementation exposed the coalescer restart detail; a separate unsupported-entry test was red before the reason API was implemented. Final focused tests and TypeScript pass. No original GUI or browser suite was run by this research/helper task. The JSON binds source artifacts, executable probes, implementation and red/green evidence.

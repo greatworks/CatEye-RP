@@ -1,0 +1,190 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "07d9eefa-6c83-4c81-bd73-e6b01742bb06",
+  "name": "Page organization demo",
+  "pages": [
+    {
+      "id": "9888b6f5-4fb7-4068-a0b3-1fe78f70e03b",
+      "name": "Release notes",
+      "width": 960,
+      "height": 640,
+      "background": "#f7f8fc",
+      "widgets": [
+        {
+          "id": "860272fd-f241-4723-8319-4137c327bd0c",
+          "type": "text",
+          "name": "Release notes heading",
+          "text": "Page organization is part of the prototype.",
+          "notes": "",
+          "x": 56,
+          "y": 64,
+          "rotation": 0,
+          "width": 820,
+          "height": 100,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#bcc4d2",
+            "strokeWidth": 0,
+            "radius": 6,
+            "color": "#263348",
+            "fontSize": 30,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    },
+    {
+      "id": "08d31a62-9e44-4f5a-b190-e70bd3661f6b",
+      "name": "Project overview",
+      "parentId": "e69730ca-08d6-4b9c-8683-8575d32607b5",
+      "width": 960,
+      "height": 640,
+      "background": "#f7f8fc",
+      "widgets": [
+        {
+          "id": "e56b7132-60af-4273-b01a-aede8b904780",
+          "type": "text",
+          "name": "Project overview heading",
+          "text": "A connected prototype",
+          "notes": "",
+          "x": 56,
+          "y": 64,
+          "rotation": 0,
+          "width": 820,
+          "height": 100,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#bcc4d2",
+            "strokeWidth": 0,
+            "radius": 6,
+            "color": "#263348",
+            "fontSize": 30,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "7e005677-e9f5-4060-a6a3-112ab0343cbd",
+          "type": "button",
+          "name": "Open checklist",
+          "text": "Open review checklist →",
+          "notes": "",
+          "x": 56,
+          "y": 220,
+          "rotation": 0,
+          "width": 280,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#bcc4d2",
+            "strokeWidth": 0,
+            "radius": 6,
+            "color": "#ffffff",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "920d11f3-5147-4c3e-8dc6-a281add7e4fd",
+              "event": "click",
+              "name": "Open the nested review page",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "4640dde8-416b-4a03-8b27-231985d1787a",
+                  "type": "openPage",
+                  "targetId": "37a03bdb-b782-4b57-afa7-5c2a1d76fcf8"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    },
+    {
+      "id": "37a03bdb-b782-4b57-afa7-5c2a1d76fcf8",
+      "name": "Review checklist",
+      "parentId": "08d31a62-9e44-4f5a-b190-e70bd3661f6b",
+      "width": 960,
+      "height": 640,
+      "background": "#f7f8fc",
+      "widgets": [
+        {
+          "id": "e22abe61-5d81-4eab-b45c-a73d94f1e367",
+          "type": "text",
+          "name": "Review checklist heading",
+          "text": "Review the flow, then share your feedback.",
+          "notes": "",
+          "x": 56,
+          "y": 64,
+          "rotation": 0,
+          "width": 820,
+          "height": 100,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#bcc4d2",
+            "strokeWidth": 0,
+            "radius": 6,
+            "color": "#263348",
+            "fontSize": 30,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "pageFolders": [
+    {
+      "id": "e69730ca-08d6-4b9c-8683-8575d32607b5",
+      "name": "Product prototype"
+    }
+  ],
+  "pageOrder": [
+    "9888b6f5-4fb7-4068-a0b3-1fe78f70e03b",
+    "e69730ca-08d6-4b9c-8683-8575d32607b5",
+    "08d31a62-9e44-4f5a-b190-e70bd3661f6b",
+    "37a03bdb-b782-4b57-afa7-5c2a1d76fcf8"
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

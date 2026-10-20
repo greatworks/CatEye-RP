@@ -1,0 +1,443 @@
+{
+  "capturedAt": "2026-10-20T06:42:01.945Z",
+  "stage": "native-layers",
+  "kind": "read-only architecture and implementation interface analysis",
+  "productionEdited": false,
+  "testsExecuted": [],
+  "originalTargetExecuted": false,
+  "originalGuiCompared": false,
+  "fullAxureParity": false,
+  "sources": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "0515ee7828fe633c896b6c8503367a18f8a30ccb4b14ee9d5c37487ee6ffed36",
+      "bytes": 21667
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "5b524db5e8d137a23ac246295d38b721d1df70e5f37d70f32b774d3d5f748b8e",
+      "bytes": 104573
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "b6ad359478286e201469fcf26cc698076f0ecd08bf4dc386ca57b6ba96611da0",
+      "bytes": 40119
+    },
+    {
+      "path": "src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309",
+      "bytes": 13234
+    },
+    {
+      "path": "src/model/components.ts",
+      "sha256": "b3f1119dbd80d735eac9c4ca4648fd035753895855458141878ac5287035101e",
+      "bytes": 9673
+    },
+    {
+      "path": "src/model/rotation-geometry.ts",
+      "sha256": "8749f3fb6ef037b1a75d59e848096be8312ce985b32ba583aea77c85ca587334",
+      "bytes": 3316
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c204576a681ad3e5bf8c9fe1f8d2ea0d36f4dd59be5b9118571744c307ecd109",
+      "bytes": 89438
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "7bc0130fd6f9a3f23ff4b00efd7f813baac86dd784f844c091e79560c6470eae",
+      "bytes": 109665
+    },
+    {
+      "path": "src/components/WidgetView.tsx",
+      "sha256": "1d20650b830c03fb9dc0dda93553ef9054ee05fa94306030a1e181a269b52544",
+      "bytes": 31112
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "86772c6fae80365c7178141ccdd0e990176ab9843b63ffd1a43c73eeed8ce4c5",
+      "bytes": 24989
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "db4ff9b6e2784405b29f3000fdfc1037151d33b1e3dd2db0623899fcc57f4fed",
+      "bytes": 300641
+    },
+    {
+      "path": "src/runtime/engine.ts",
+      "sha256": "1e622020f33846906e30f229048e1cd0cab62e01a9416a34efd255fbc7a672be",
+      "bytes": 7316
+    },
+    {
+      "path": "src/runtime/export.ts",
+      "sha256": "356d83a02a40ebe8fd3be88345d7fc969a49f784b0ee85cacbf8386f9448f871",
+      "bytes": 8079
+    },
+    {
+      "path": "src/runtime/frame-player.ts",
+      "sha256": "7fdd714c8c5b300028549320337d0d2612fe15f7439a0750ecac66cfcb01b17b",
+      "bytes": 2662
+    },
+    {
+      "path": "src/runtime/inline-frame-runtime.ts",
+      "sha256": "8eb9867e54705d0000ec5b6a61394816e1ec52b035ef24a029036253b7970d1b",
+      "bytes": 11033
+    },
+    {
+      "path": "src/runtime/embedded-fonts.ts",
+      "sha256": "45238fd538ee53f67882f81896948cd50d78166193cf9d2964771902efe732d8",
+      "bytes": 9241
+    }
+  ],
+  "existingTests": [
+    {
+      "path": "tests/document.test.ts",
+      "sha256": "e0dcb0bef89afda6e7343edf7514ffac3fed6942d4d9ec97e16e3e7bc26218c0",
+      "bytes": 11725
+    },
+    {
+      "path": "tests/components.test.ts",
+      "sha256": "c65f9dfbd2a7da2951a4fdbfee89242eeb50ffb50943dd8953e6377fe9c4d0f1",
+      "bytes": 15050
+    },
+    {
+      "path": "tests/adaptive-component-sync.test.ts",
+      "sha256": "7184a0cfaaa789f1b95c00ddf91818bd0a4f42e17937356ca87d2977a345ee8a",
+      "bytes": 1651
+    },
+    {
+      "path": "tests/adaptive-placement-authoring.test.ts",
+      "sha256": "e39659394f95d48f69ab2e84739a1d5be1c86ef28a925e824e571167c057aab9",
+      "bytes": 12826
+    },
+    {
+      "path": "tests/adaptive-all-views-authoring.test.ts",
+      "sha256": "3501389a9b4076ac108c98607e29229b2652ed423b7d2044bf9f99bc76afd8cd",
+      "bytes": 23772
+    },
+    {
+      "path": "tests/rotation-authoring.test.ts",
+      "sha256": "3370232ad6b438c6138d0cb3adc18a2eb98bef2277eb06a8a37b31bdfbb562d8",
+      "bytes": 4892
+    },
+    {
+      "path": "tests/runtime-rotate.test.ts",
+      "sha256": "8e8ebc639d3e99fa776f64478cf07a99eb46935ae9a5d450641dfbefc774c129",
+      "bytes": 24515
+    },
+    {
+      "path": "tests/runtime-transform-core.test.ts",
+      "sha256": "1ba4758efd4e7c325f6358b23d9dd815aad2bb61f19901764f3ad0e342ed0fdc",
+      "bytes": 9758
+    },
+    {
+      "path": "tests/runtime-transform-core-matrix.test.ts",
+      "sha256": "2da80ce0acd02ca60e5de6534e8c3fe16ee8ab48d9f5406b0573f66c88520531",
+      "bytes": 6602
+    },
+    {
+      "path": "tests/runtime-transform-core-consumers.test.ts",
+      "sha256": "a811c381e167df5234d6e3cd6df9b383953d3fbc69bf4a420b857f599bb0de39",
+      "bytes": 11229
+    },
+    {
+      "path": "tests/runtime-transform-core-special.test.ts",
+      "sha256": "491fdec0d530e632855c1c2de6ae2bb1739f303a02d6617ba99edc89c3226771",
+      "bytes": 10340
+    },
+    {
+      "path": "tests/runtime-transform-core-lifecycle.test.ts",
+      "sha256": "2bb774b1e85115025dda74f524161acdbad9f35bc4cabc8c6bc08e3fbe1c310a",
+      "bytes": 13393
+    },
+    {
+      "path": "tests/repeater-lifecycle.test.ts",
+      "sha256": "70b59e6f59f3154a4497f9f8a2abc30c43320e74e7c4865b6701153119f06f22",
+      "bytes": 7909
+    },
+    {
+      "path": "tests/repeater-row-geometry.test.ts",
+      "sha256": "76283e4d2725fbfca0307f636f4e7e31a110499923b357c318d86a7ce9dcf066",
+      "bytes": 11731
+    },
+    {
+      "path": "tests/runtime-text-autofit-lifecycle.test.ts",
+      "sha256": "af92219624237ca1befabfcf1a0c7240e359ac2e843b9f6170e6c56583177624",
+      "bytes": 20586
+    },
+    {
+      "path": "tests/runtime-rotate-snapshot-projection.test.ts",
+      "sha256": "a9d92377ba443735c347ba0144b23df47570e22944f0aad9a813e21527f70234",
+      "bytes": 1592
+    },
+    {
+      "path": "tests/export.test.ts",
+      "sha256": "ded7ae67252db06bf1d7c8983ab30771ac17572b6c6135dfb391763200df3530",
+      "bytes": 12532
+    },
+    {
+      "path": "tests/open-sans-fonts.test.ts",
+      "sha256": "d2dba5f3ecb4b708a09375369cd35bf18b4e2cce5eb60b5c24208fdc1c81a201",
+      "bytes": 13132
+    },
+    {
+      "path": "tests/inline-frame-player-build.test.ts",
+      "sha256": "86305cd95671f5318cb8aa7ec30382bc06958d6160bbce081adf47f83ce014db",
+      "bytes": 2859
+    }
+  ],
+  "references": [
+    {
+      "id": "legacy-flat-group",
+      "path": "src/model/document.ts",
+      "lineStart": 269,
+      "lineEnd": 291,
+      "claim": "Tags have group identifiers but no Widget identity; copies remap all graph identifiers.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "author-selection",
+      "path": "src/App.tsx",
+      "lineStart": 390,
+      "lineEnd": 425,
+      "claim": "Group writes tags; canvas expands same-scope tagged selection and mutates individual frames.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "author-scope",
+      "path": "src/App.tsx",
+      "lineStart": 78,
+      "lineEnd": 95,
+      "claim": "Current scope selects panel state or repeater template; no Layer scope.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "author-commit",
+      "path": "src/App.tsx",
+      "lineStart": 136,
+      "lineEnd": 146,
+      "claim": "Whole effective list reconstructed by panel/repeater-specific replacement before adaptive edit.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "target-picker",
+      "path": "src/components/Inspector.tsx",
+      "lineStart": 83,
+      "lineEnd": 96,
+      "claim": "Independent explicit containment traversal; rotation group choice requires identical sibling list.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "runtime-index",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 190,
+      "lineEnd": 286,
+      "claim": "Source widgets/page, structural containers and repeater-only owners are separate indices.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "runtime-instance",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 337,
+      "lineEnd": 350,
+      "claim": "Runtime identity includes stable full repeater row context.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "geometry-kinds",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 807,
+      "lineEnd": 814,
+      "claim": "Public geometry reads cache distinct from paint; no arbitrary Layer frame inference.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "rotation-bounds",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 1538,
+      "lineEnd": 1570,
+      "claim": "Shadow and final-angle bounds separate from logical and painted frames.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "flat-group-rotation",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 1815,
+      "lineEnd": 1891,
+      "claim": "Existing union/orbit/angle compatibility branch and member channel reservations.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "planner",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 1319,
+      "lineEnd": 1535,
+      "claim": "Event lists/slices distinct from per-instance reservations and tween lifetime.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "motion-targets",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 1987,
+      "lineEnd": 2052,
+      "claim": "Structured Move/Resize rejects flat groups; Rotate checks same coordinate container.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "compression",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 1952,
+      "lineEnd": 1984,
+      "claim": "Current sibling consumer does not implement native Layer recursion.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "fit",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 2447,
+      "lineEnd": 2496,
+      "claim": "Panel/repeater ancestor fitting; new Layer cache/event branch required.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "visibility",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 2778,
+      "lineEnd": 2794,
+      "claim": "Structural ancestry already affects visibility/disabled; adding Layer needs explicit policy.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "event-dispatch",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 2924,
+      "lineEnd": 2941,
+      "claim": "Tree and table/menu special dispatch is not generic container bubbling.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "adaptive-reset",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 2952,
+      "lineEnd": 3008,
+      "claim": "Geometry clears, repeater refreshes, legacy group angle persists.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "style-wrapper",
+      "path": "src/components/WidgetView.tsx",
+      "lineStart": 71,
+      "lineEnd": 79,
+      "claim": "Ordinary absolute/rotate/paint/clipping defaults inappropriate to assume for Layer.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "live-react",
+      "path": "src/components/Preview.tsx",
+      "lineStart": 131,
+      "lineEnd": 194,
+      "claim": "Runtime render/event/row and iframe recursion needs explicit Layer branch.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "portable-mount",
+      "path": "src/runtime/export-runtime.ts",
+      "lineStart": 3375,
+      "lineEnd": 3656,
+      "claim": "Persistent DOM and renderer dispatch needs identical coordinate policy.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "serialization",
+      "path": "src/runtime/export.ts",
+      "lineStart": 41,
+      "lineEnd": 58,
+      "claim": "Bare function serialization requires self-contained runtime/mount helpers.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "component",
+      "path": "src/model/components.ts",
+      "lineStart": 23,
+      "lineEnd": 61,
+      "claim": "Definitions normalize top-level positions; instances materialized in one panel state.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "adaptive-model",
+      "path": "src/model/adaptive.ts",
+      "lineStart": 173,
+      "lineEnd": 185,
+      "claim": "Composite restrictions and recursive sparse override application.",
+      "evidence": "current product source, read only"
+    },
+    {
+      "id": "source-budget",
+      "path": "src/model/document.ts",
+      "lineStart": 840,
+      "lineEnd": 883,
+      "claim": "Strict widget parse, identities and depth/total budgets.",
+      "evidence": "current product source, read only"
+    }
+  ],
+  "modelContractFromParent": {
+    "widgetType": "layer",
+    "field": "layer",
+    "widgets": "ordered Widget[]",
+    "propagate": "optional boolean; explicit source values retained; omission default/semantics require source closure",
+    "legacy": "groupId preserved; no automatic migration",
+    "coordinates": "children remain enclosing page/state/item coordinates; skip Layer as coordinate parent",
+    "frame": "x/y/width/height derived bounds; rotation separate Layer degree, not wrapper transform"
+  },
+  "provisionalNativeFindings": [
+    {
+      "from": "feature worker message, original JS chain; final probes pending",
+      "claim": "Temporary relative container for Move; child coordinates do not accumulate Layer location; operation-specific hidden/limbo enumeration; child fit updates size then location."
+    },
+    {
+      "from": "format worker census; getter tracing in progress",
+      "claim": "276 Layer, 1048 direct memberships, 125 nested Layers; DiagramObjects duplicate enclosing enumeration; surveyed IsContained false; Location/Size derive BoundingRect."
+    }
+  ],
+  "suggestedInterfaces": [
+    "widgetChildCollections(widget)",
+    "replaceWidgetChildCollection(widget,edge,children)",
+    "structuralParent/coordinateParent/page/repeaterOwners indices",
+    "dedicated create/ungroup/reparent Layer author transactions",
+    "resolveMotionTarget(id,context)",
+    "collectLayerMembers(layer,context,purpose)",
+    "layerBounds(layer,context,purpose)"
+  ],
+  "ownership": {
+    "parent": [
+      "model/types/document/traversal/adaptive/components",
+      "App/Inspector/WidgetView authoring",
+      "integration/release"
+    ],
+    "editor_core": [
+      "export-runtime core and mount",
+      "engine",
+      "Preview",
+      "export/frame-player/inline-frame-runtime",
+      "new runtime tests"
+    ],
+    "format": [
+      "reader/import-rp"
+    ]
+  },
+  "unresolved": [
+    "exact native Layer union/default/empty behavior",
+    "Propagate default and event/state semantics",
+    "author Group/Ungroup and adaptive coordinate transaction",
+    "per-operation member eligibility/recursion stops",
+    "nested Layer channel reservation/release and temporal membership",
+    "Resize/Rotate mixed Layer consumers and cache lifetime",
+    "temporary-container rollback/cancellation",
+    "real original GUI parity"
+  ],
+  "report": {
+    "path": "research/native-layers-core-analysis.md",
+    "sha256": "0f5d6ebd6f4704f4c7887fe6820209c1370a211743dc585c7ce64ae553c05d9d",
+    "bytes": 23995
+  }
+}

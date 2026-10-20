@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-10-13T18:01:27.115Z",
+  "target": "Axure RP 11.0.0.4150",
+  "distributionSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "artifacts": [
+    {
+      "path": "research/hyperlink-runtime-evidence.md",
+      "bytes": 16462,
+      "sha256": "15e42bf5004d079d64875dffb3cf159080005da252479e0dd0aea06cb5c92449"
+    },
+    {
+      "path": "research/hyperlink-runtime-style-probe.json",
+      "bytes": 74365,
+      "sha256": "bf6f69071a35de24d5c671077365112fd9545a7cde7ffaaae75fee69fcd68d50"
+    },
+    {
+      "path": "research/hyperlink-runtime-event-probe.json",
+      "bytes": 72668,
+      "sha256": "ad511c55fca95fd96b9b477f45806767aa86a3d670f5933653d737ee2b56b392"
+    },
+    {
+      "path": "research/hyperlink-runtime-navigation-probe.json",
+      "bytes": 4735,
+      "sha256": "4f4881ac6ba61ddee5c6c1086c53b17a25d79a8c54a21e0a7959603014e04d2f"
+    },
+    {
+      "path": "research/scripts/probe-hyperlink-runtime-style.mjs",
+      "bytes": 15776,
+      "sha256": "561ddf65d42267daefb1d6309bd8022dc28a0de74574e49ad01e265a0d0db89b"
+    },
+    {
+      "path": "research/scripts/probe-hyperlink-runtime-events.mjs",
+      "bytes": 10567,
+      "sha256": "6b5ec123b3d92bfe89c48670cdf39168b880e79003ffea3c40e22b127e948cc3"
+    },
+    {
+      "path": "research/scripts/probe-hyperlink-runtime-navigation.mjs",
+      "bytes": 2629,
+      "sha256": "b02aae36a07c84403121776ca4a8e946d8c20ebfd369c6c66e5b0ee8f0a66261"
+    }
+  ],
+  "results": {
+    "styleText": 16,
+    "eventWaitMenu": 13,
+    "navigation": 5,
+    "total": 34,
+    "networkRequests": 0,
+    "pageErrors": 0
+  },
+  "contract": {
+    "baseline": "original leaf CSS, not ordinary link MyStyle live overlay",
+    "paint": "last operation; parent repaint replaces link paint, link repaint requests literal state for both parent and link",
+    "leave": "restore baseline then guarded parent down-or-hover full-state repaint",
+    "handled": "enabled matching case or pending menu; independent of asynchronous completion",
+    "navigation": "current window location or window.open(url, empty name)",
+    "plainSetText": "single-span/single-line preserves wrapper; replacement branch drops inner links"
+  },
+  "limits": [
+    "No original GUI or full generated page",
+    "No URL opened or visited",
+    "Generator tag/href/tabbable unresolved",
+    "Authoring typing semantics unverified",
+    "SetStyle reconstruction API not equated to original named primitive"
+  ]
+}

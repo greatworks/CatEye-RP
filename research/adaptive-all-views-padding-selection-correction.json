@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "stage": "adaptive-all-views-padding-selection-correction",
+  "status": "source-and-focused-tests-frozen",
+  "createdAt": "2026-10-15T13:05:46.2348586Z",
+  "originalFrozenManifest": {
+    "path": "research/adaptive-all-views-authoring-implementation.json",
+    "sha256": "147b8917b0c7ae4e1641521d114f32f6ab5535eb8b29b0cbcf09fbf74df92d0f"
+  },
+  "report": {
+    "path": "research/adaptive-all-views-padding-selection-correction.md",
+    "sha256": "aa733e8093853c271f8ed402d90176327bcb0415fdc57cd21d373b1a8e277d65"
+  },
+  "changes": [
+    {
+      "path": "src/App.tsx",
+      "added": false,
+      "afterSha256": "18d59af41c498e0072374cb5aa14c5f94c2d7409b1714976f524329400440d4c",
+      "before": {
+        "path": ".build/adaptive-all-views-before-multiselect/src/App.tsx",
+        "sha256": "95dc9856f96c9acf9820ab00748a7e4d7acf40ca18dbd0bf629abe30c1310636"
+      }
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "added": false,
+      "afterSha256": "406eb50c3a634067e111a56d8fee7b7dc7cf94067b9d5a4a1f67eac54b2f0725",
+      "before": {
+        "path": ".build/adaptive-all-views-before-multiselect/src/components/Inspector.tsx",
+        "sha256": "0c61ec33304adf181149893c4b242cc4bd8139124f61c245b855cfc2d8c8e87f"
+      }
+    },
+    {
+      "path": "src/components/widget-style-command.ts",
+      "added": true,
+      "afterSha256": "73500ccf8ab80c0977f397051dd0ba1cec89e3b45eba00fe684d977a9d71c356"
+    },
+    {
+      "path": "tests/adaptive-all-views-padding-selection.test.ts",
+      "added": true,
+      "afterSha256": "88a0e94a91b9cea734a5baeb5b62fac388ca7e012267eff317ccea34cdbb05d8"
+    }
+  ],
+  "tests": {
+    "red": {
+      "total": 11,
+      "failed": 10,
+      "passed": 1,
+      "scope": "New resolver initially returns unchanged full patch, reproducing previous App command semantics; parent owns actual browser red."
+    },
+    "initialCorrection": {
+      "total": 11,
+      "failed": 1,
+      "passed": 10,
+      "remaining": "Current-view model returns serialized-equal copy; final assertion uses exact saved bytes and existing App commit guard, while All Views still checks reference identity."
+    },
+    "final": {
+      "total": 186,
+      "passed": 186,
+      "failed": 0,
+      "newTests": 15,
+      "existingTests": 171,
+      "files": 9
+    },
+    "typecheckExit": 0
+  },
+  "evidence": [
+    {
+      "path": ".build/adaptive-all-views-padding-selection-red.json",
+      "sha256": "8d6f7f053c3ef4a7d0b29c0576d938f878b28508bca6e65465b833e04140c2c8"
+    },
+    {
+      "path": ".build/adaptive-all-views-padding-selection-red.log",
+      "sha256": "fba0a2e3c2813b9f8c19abef83cd8b29f73d9db89efadd5d806bfa53bdc5f5d4"
+    },
+    {
+      "path": ".build/adaptive-all-views-padding-selection-green.json",
+      "sha256": "d873db64ef267c9b6752275f41d35b4b5425d3deac75cbd7482b4e7063c6c991"
+    },
+    {
+      "path": ".build/adaptive-all-views-padding-selection-green.log",
+      "sha256": "911795054f58ab11ba38b2011b953919b80488fbea75a7dff612986a1a60584c"
+    },
+    {
+      "path": ".build/adaptive-all-views-padding-selection-focused-final.json",
+      "sha256": "acdde88e2d9d87001b806294c2b6aab0bf0c725d22814cad222373b08fba8019"
+    },
+    {
+      "path": ".build/adaptive-all-views-padding-selection-focused-final.log",
+      "sha256": "9d75c07917273c80efb3b9ff283e022806eed58f5c13e8e10452780179211cbf"
+    },
+    {
+      "path": ".build/adaptive-all-views-padding-selection-typecheck-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "blockingFindings": [],
+  "limits": [
+    "No browser, full suite, build or package was run by this agent.",
+    "Whole-tuple commands retain previous semantics; new intent applies only to single-edge controls.",
+    "No runtime, schema, model implementation, earlier manifest or existing test was modified."
+  ]
+}

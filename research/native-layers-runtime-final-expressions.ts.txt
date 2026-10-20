@@ -1,0 +1,282 @@
+/**
+ * A bounded interpreter, not JavaScript evaluation. Keep every runtime dependency inside this
+ * function: offline prototypes serialize this exact function with Function#toString.
+ */
+export function evaluateExpression(expression: string, read: (name: string) => string | number | boolean | undefined, mode?: 'errorState' | 'motion'): string {
+  const MAX_INPUT = 4096, MAX_TOKENS = 1024, MAX_DEPTH = 32, MAX_OUTPUT = 100_000, MAX_WORK = 1_000_000;
+  type Value = string | number | boolean | undefined;
+  type Token = { kind: 'number' | 'string' | 'name' | 'operator' | 'end'; value: string; position: number };
+  type Node = { kind: 'literal'; value: Value } | { kind: 'variable'; name: string }
+    | { kind: 'unary'; operator: string; operand: Node }
+    | { kind: 'binary'; operator: string; left: Node; right: Node }
+    | { kind: 'call'; name: string; args: Node[] }
+    | { kind: 'fixed'; operand: Node; precision: Node };
+  const mathNames = ['abs', 'round', 'floor', 'ceil', 'min', 'max', 'sqrt', 'pow'];
+  const blockedNames = new Set(['constructor', 'prototype', '__proto__', 'globalThis', 'global', 'window', 'document', 'process', 'require', 'eval', 'Function', 'import', 'this', 'new', 'arguments']);
+  const functions: Record<string, [number, number]> = {
+    len: [1, 1], upper: [1, 1], lower: [1, 1], trim: [1, 1], contains: [2, 2], startsWith: [2, 2], endsWith: [2, 2],
+    concat: [1, 64], substring: [2, 3], replace: [3, 3], number: [1, 1], string: [1, 1], value: [1, 1], if: [3, 3],
+    abs: [1, 1], round: [1, 2], floor: [1, 1], ceil: [1, 1], min: [1, 64], max: [1, 64], sqrt: [1, 1], pow: [2, 2],
+  };
+  const numeric = /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i;
+  const plainName = /^[\p{L}_$][\p{L}\p{N}_$]*$/u;
+  const itemPath = /^(?:Item|TargetItem)\.[\p{L}\p{N}_$]+$/u;
+  const repeaterPath = /^(?:Item|TargetItem|This)\.Repeater\.(?:dataCount|itemCount|visibleItemCount|pageCount|pageIndex)$/;
+  const thisPath = /^(?:This\.(?:text|dataCount|itemCount|visibleItemCount|pageCount|pageIndex)|(?:This|Target)\.(?:widthchange|heightchange|rotation))$/;
+  const geometryPath = /^(?:(?:This|Target)(?:\.Repeater)?|(?:Item|TargetItem)\.Repeater)\.(?:x|y|width|height|left|right|top|bottom)$/;
+  const widgetPath = /^Widget\.[a-zA-Z0-9_-]+\.text$/;
+  const motionPath = /^[\p{L}_$][\p{L}\p{N}_$]*\.(?:x|y|width|height|left|right|top|bottom|widthchange|heightchange|rotation|text)$/iu;
+  const fail = (message: string, position?: number): never => {
+    const error = new Error(`Expression error${position === undefined ? '' : ` at ${position + 1}`}: ${message}`);
+    error.name = 'ExpressionError'; throw error;
+  };
+  const motionFailure = (message: string): never => {
+    const error = new Error(`Motion expression evaluation failed: ${message}`);
+    error.name = 'MotionEvaluationError'; throw error;
+  };
+  if (typeof expression !== 'string' || expression.length > MAX_INPUT) fail(`input is limited to ${MAX_INPUT} characters`);
+  const source = expression.trim();
+  if (!source) return '';
+  let work = 0;
+  const bounded = (value: Value): Value => {
+    if (mode !== 'motion' && typeof value === 'number' && !Number.isFinite(value)) fail('numeric result must be finite');
+    if (typeof value === 'string') {
+      if (value.length > MAX_OUTPUT) fail(`output is limited to ${MAX_OUTPUT} characters`);
+      work += value.length; if (work > MAX_WORK) fail('string processing budget exceeded');
+    }
+    return value;
+  };
+  function permittedName(name: string, escaped = false): void {
+    if (!name || name.length > 256 || /[\u0000-\u001f\u007f]/.test(name)) fail('invalid variable name');
+    if (name.split(/[^\p{L}\p{N}_$]+/u).some((part, index) => blockedNames.has(part)
+      && !(mode === 'motion' && index === 0 && ['this', 'window'].includes(part) && motionPath.test(name)))) fail(`forbidden variable name "${name}"`);
+    if (!escaped && !plainName.test(name) && !itemPath.test(name) && !repeaterPath.test(name) && !thisPath.test(name) && !geometryPath.test(name) && !widgetPath.test(name) && !(mode === 'motion' && motionPath.test(name))) fail(`unsupported variable path "${name}"`);
+  }
+  function rawVariable(name: string, escaped = false): Value {
+    permittedName(name, escaped);
+    const value = read(name);
+    if (typeof value !== 'string' && value !== undefined && !(mode === 'motion' && (typeof value === 'number' || typeof value === 'boolean'))) fail(`variable "${name}" must resolve to a string or undefined`);
+    return bounded(value);
+  }
+  function typedVariable(name: string): Value {
+    const value = rawVariable(name);
+    if (value === undefined) return undefined;
+    if (mode === 'motion') return value;
+    // Error coercion distinguishes native numeric/boolean providers from
+    // global variables, row cells and widget text, whose values are strings.
+    if (mode === 'errorState' && !geometryPath.test(name) && !repeaterPath.test(name)
+      && !/^This\.(?:dataCount|itemCount|visibleItemCount|pageCount|pageIndex)$/.test(name)
+      && !/^(?:Item|TargetItem)\.(?:index|valid|isFirst|isLast|isEven|isOdd|isMarked|isVisible)$/.test(name)) return value;
+    const trimmed = (value as string).trim();
+    if (trimmed === 'true') return true;
+    if (trimmed === 'false') return false;
+    if (numeric.test(trimmed)) return bounded(Number(trimmed));
+    return value;
+  }
+
+  const tokens: Token[] = [];
+  let offset = 0;
+  const push = (kind: Token['kind'], value: string, position: number) => {
+    if (tokens.length >= MAX_TOKENS) fail(`token count is limited to ${MAX_TOKENS}`);
+    tokens.push({ kind, value, position });
+  };
+  while (offset < source.length) {
+    if (/\s/.test(source[offset])) { offset++; continue; }
+    const start = offset, char = source[offset];
+    if (char === '"' || char === "'") {
+      offset++; let value = '', closed = false;
+      while (offset < source.length) {
+        const current = source[offset++];
+        if (current === char) { closed = true; break; }
+        if (current === '\n' || current === '\r') fail('a string literal cannot contain an unescaped newline', offset - 1);
+        if (current !== '\\') { value += current; continue; }
+        if (offset >= source.length) fail('unfinished string escape', offset - 1);
+        const escaped = source[offset++];
+        const escapes: Record<string, string> = { n: '\n', r: '\r', t: '\t', b: '\b', f: '\f', v: '\v', '\\': '\\', '"': '"', "'": "'", '/': '/' };
+        if (Object.hasOwn(escapes, escaped)) value += escapes[escaped];
+        else if (escaped === 'u' || escaped === 'x') {
+          const count = escaped === 'u' ? 4 : 2, hex = source.slice(offset, offset + count);
+          if (hex.length !== count || !/^[a-fA-F0-9]+$/.test(hex)) fail('invalid hexadecimal string escape', offset);
+          value += String.fromCharCode(Number.parseInt(hex, 16)); offset += count;
+        } else fail(`unsupported string escape \\${escaped}`, offset - 1);
+      }
+      if (!closed) fail('unterminated string literal', start);
+      push('string', value, start); continue;
+    }
+    const rest = source.slice(offset);
+    const widget = /^Widget\.[a-zA-Z0-9_-]+\.text(?![\p{L}\p{N}_$.])/u.exec(rest);
+    if (widget) { push('name', widget[0], start); offset += widget[0].length; continue; }
+    const number = /^(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?/i.exec(rest);
+    if (number) { push('number', number[0], start); offset += number[0].length; continue; }
+    const name = /^[\p{L}_$][\p{L}\p{N}_$]*(?:\.[\p{L}\p{N}_$]+)*/u.exec(rest);
+    if (name) { push('name', name[0], start); offset += name[0].length; continue; }
+    const operator = /^(?:===|!==|==|!=|<=|>=|&&|\|\||\*\*|[+\-*/%<>()!,.])/.exec(rest);
+    if (operator) { push('operator', operator[0], start); offset += operator[0].length; continue; }
+    fail(`unsupported character "${char}"`, start);
+  }
+  tokens.push({ kind: 'end', value: '', position: source.length });
+  const precedence: Record<string, number> = { '||': 1, '&&': 2, '==': 3, '!=': 3, '===': 3, '!==': 3, '<': 4, '<=': 4, '>': 4, '>=': 4, '+': 5, '-': 5, '*': 6, '/': 6, '%': 6, '**': 8 };
+  let cursor = 0;
+  const peek = () => tokens[cursor];
+  const take = () => tokens[cursor++];
+  function expect(value: string): void {
+    if (peek().value !== value) fail(`expected "${value}"`, peek().position);
+    take();
+  }
+  function expressionNode(minimum = 0, depth = 0): Node {
+    if (depth > MAX_DEPTH) fail(`nesting is limited to ${MAX_DEPTH} levels`);
+    const token = take(); let left: Node;
+    if (token.kind === 'number') left = { kind: 'literal', value: bounded(Number(token.value)) };
+    else if (token.kind === 'string') left = { kind: 'literal', value: token.value };
+    else if (token.value === '(') { left = expressionNode(0, depth + 1); expect(')'); }
+    else if (['+', '-', '!'].includes(token.value)) left = { kind: 'unary', operator: token.value, operand: expressionNode(7, depth + 1) };
+    else if (token.kind === 'name') {
+      if (peek().value === '(') {
+        const fixedBase = mode === 'motion' && token.value.endsWith('.toFixed') ? token.value.slice(0, -8) : undefined;
+        if (fixedBase !== undefined) permittedName(fixedBase);
+        const name = token.value.startsWith('Math.') && mathNames.includes(token.value.slice(5)) ? token.value.slice(5) : token.value;
+        if (fixedBase === undefined && !Object.hasOwn(functions, name)) fail(`unknown function "${token.value}"`, token.position);
+        take(); const args: Node[] = [];
+        if (peek().value !== ')') {
+          do { args.push(expressionNode(0, depth + 1)); if (peek().value !== ',') break; take(); } while (true);
+        }
+        expect(')');
+        const [min, max] = fixedBase === undefined ? functions[name] : [0, 1];
+        if (args.length < min || args.length > max) fail(`function ${token.value} expects ${min === max ? min : `${min}–${max}`} argument(s)`, token.position);
+        left = fixedBase === undefined ? { kind: 'call', name, args }
+          : { kind: 'fixed', operand: { kind: 'variable', name: fixedBase }, precision: args[0] ?? { kind: 'literal', value: 0 } };
+      } else if (token.value === 'true' || token.value === 'false') left = { kind: 'literal', value: token.value === 'true' };
+      else { permittedName(token.value); left = { kind: 'variable', name: token.value }; }
+    } else return fail('expected a value', token.position);
+    while (mode === 'motion' && peek().value === '.') {
+      take(); const method = take();
+      if (method.kind !== 'name' || method.value !== 'toFixed') fail('only numeric toFixed is supported on a computed value', method.position);
+      expect('('); const precision: Node = peek().value === ')' ? { kind: 'literal', value: 0 } : expressionNode(0, depth + 1);
+      expect(')'); left = { kind: 'fixed', operand: left, precision };
+    }
+    while (peek().kind === 'operator' && Object.hasOwn(precedence, peek().value) && precedence[peek().value] >= minimum) {
+      const operator = take().value, priority = precedence[operator];
+      left = { kind: 'binary', operator, left, right: expressionNode(operator === '**' ? priority : priority + 1, depth + 1) };
+    }
+    return left;
+  }
+  const tree = expressionNode();
+  if (peek().kind !== 'end') fail(`unexpected token "${peek().value}"`, peek().position);
+  // Bare lookups preserve formatting (e.g. 0012), whitespace and literal [[...]] payloads.
+  if (tree.kind === 'variable' && mode !== 'errorState') return asString(rawVariable(tree.name));
+
+  function asNumber(value: Value): number {
+    if (mode === 'motion') return Number(value);
+    if (value === undefined) return fail('operation requires a numeric value');
+    if (typeof value === 'boolean') return value ? 1 : 0;
+    if (typeof value === 'number') return value;
+    const text = value.trim();
+    if (!numeric.test(text)) fail('operation requires a numeric value');
+    return bounded(Number(text)) as number;
+  }
+  function asString(value: Value): string { return typeof value === 'string' ? value : String(value); }
+  function nativeBoolean(value: Value): Value {
+    if (value === undefined) motionFailure('boolean coercion requires a defined value');
+    const normalized = typeof value === 'string' ? value.toLowerCase() : value;
+    return normalized == 'false' ? false : normalized == 'true' ? true : value;
+  }
+  function truthy(value: Value): boolean { return mode === 'motion' ? Boolean(nativeBoolean(value)) : typeof value === 'string' ? value.length > 0 : Boolean(value); }
+  function looseEqual(left: Value, right: Value): boolean {
+    if (mode === 'motion') return nativeBoolean(left) == nativeBoolean(right);
+    if (typeof left === typeof right) return left === right;
+    if (left === undefined || right === undefined) return false;
+    const l = typeof left === 'string' ? left.trim() : left, r = typeof right === 'string' ? right.trim() : right;
+    if ((typeof l === 'string' && !numeric.test(l)) || (typeof r === 'string' && !numeric.test(r))) return false;
+    return asNumber(l) === asNumber(r);
+  }
+  function join(parts: string[]): string {
+    if (parts.reduce((length, part) => length + part.length, 0) > MAX_OUTPUT) fail(`output is limited to ${MAX_OUTPUT} characters`);
+    return parts.join('');
+  }
+  function evaluate(node: Node, depth = 0): Value {
+    if (depth > MAX_DEPTH) fail(`evaluation depth is limited to ${MAX_DEPTH} levels`);
+    if (node.kind === 'literal') return bounded(node.value);
+    if (node.kind === 'variable') return typedVariable(node.name);
+    if (node.kind === 'fixed') {
+      const value = evaluate(node.operand, depth + 1), precision = asNumber(evaluate(node.precision, depth + 1));
+      if (typeof value !== 'number') motionFailure('toFixed requires a numeric receiver');
+      const digits = Number.isNaN(precision) ? 0 : Math.trunc(precision);
+      if (digits < 0 || digits > 100 || !Number.isFinite(digits)) motionFailure('toFixed precision must be between 0 and 100');
+      return bounded((value as number).toFixed(digits));
+    }
+    if (node.kind === 'unary') {
+      const value = evaluate(node.operand, depth + 1);
+      return node.operator === '!' ? !truthy(value) : bounded(node.operator === '-' ? -asNumber(value) : asNumber(value));
+    }
+    if (node.kind === 'binary') {
+      const left = evaluate(node.left, depth + 1);
+      if (mode !== 'motion' && node.operator === '&&') return truthy(left) ? evaluate(node.right, depth + 1) : left;
+      if (mode !== 'motion' && node.operator === '||') return truthy(left) ? left : evaluate(node.right, depth + 1);
+      const right = evaluate(node.right, depth + 1);
+      switch (node.operator) {
+        case '+': {
+          if (mode === 'motion') { const total = Number(left) + Number(right); return bounded(Number.isNaN(total) ? join([asString(left), asString(right)]) : total); }
+          return bounded(typeof left === 'string' || typeof right === 'string' ? join([asString(left), asString(right)]) : asNumber(left) + asNumber(right));
+        }
+        case '-': return bounded(asNumber(left) - asNumber(right));
+        case '*': return bounded(asNumber(left) * asNumber(right));
+        case '/': if (mode !== 'motion' && asNumber(right) === 0) fail('division by zero'); return bounded(asNumber(left) / asNumber(right));
+        case '%': if (mode !== 'motion' && asNumber(right) === 0) fail('remainder by zero'); return bounded(asNumber(left) % asNumber(right));
+        case '**': return bounded(Math.pow(asNumber(left), asNumber(right)));
+        case '==': return looseEqual(left, right);
+        case '!=': return !looseEqual(left, right);
+        case '===': return left === right;
+        case '!==': return left !== right;
+        case '&&': return nativeBoolean(left) && nativeBoolean(right);
+        case '||': return nativeBoolean(left) || nativeBoolean(right);
+        case '<': case '<=': case '>': case '>=': {
+          const l = mode !== 'motion' && typeof left === 'string' && typeof right === 'string' ? left : asNumber(left);
+          const r = mode !== 'motion' && typeof left === 'string' && typeof right === 'string' ? right : asNumber(right);
+          return node.operator === '<' ? l < r : node.operator === '<=' ? l <= r : node.operator === '>' ? l > r : l >= r;
+        }
+        default: return fail('unsupported operator');
+      }
+    }
+    if (node.name === 'if') return evaluate(truthy(evaluate(node.args[0], depth + 1)) ? node.args[1] : node.args[2], depth + 1);
+    const args = node.args.map(arg => evaluate(arg, depth + 1));
+    const text = (index: number) => asString(args[index]), number = (index: number) => asNumber(args[index]);
+    let result: Value;
+    switch (node.name) {
+      case 'value': result = rawVariable(text(0), true); break;
+      case 'number': result = number(0); break;
+      case 'string': result = text(0); break;
+      case 'len': result = text(0).length; break;
+      case 'upper': result = text(0).toUpperCase(); break;
+      case 'lower': result = text(0).toLowerCase(); break;
+      case 'trim': result = text(0).trim(); break;
+      case 'contains': result = text(0).includes(text(1)); break;
+      case 'startsWith': result = text(0).startsWith(text(1)); break;
+      case 'endsWith': result = text(0).endsWith(text(1)); break;
+      case 'concat': result = join(args.map(asString)); break;
+      case 'substring': result = text(0).substring(number(1), args.length === 3 ? number(2) : undefined); break;
+      case 'replace': {
+        const input = text(0), needle = text(1), replacement = text(2), at = input.indexOf(needle);
+        result = at < 0 ? input : join([input.slice(0, at), replacement, input.slice(at + needle.length)]); break;
+      }
+      case 'abs': result = Math.abs(number(0)); break;
+      case 'floor': result = Math.floor(number(0)); break;
+      case 'ceil': result = Math.ceil(number(0)); break;
+      case 'sqrt': result = Math.sqrt(number(0)); break;
+      case 'pow': result = Math.pow(number(0), number(1)); break;
+      case 'min': result = Math.min(...args.map(asNumber)); break;
+      case 'max': result = Math.max(...args.map(asNumber)); break;
+      case 'round': {
+        const precision = args.length === 2 ? number(1) : 0;
+        if (!Number.isInteger(precision) || precision < -12 || precision > 12) fail('round precision must be an integer between -12 and 12');
+        const factor = Math.pow(10, precision); result = Math.round(number(0) * factor) / factor; break;
+      }
+      default: return fail('unsupported function');
+    }
+    return bounded(result);
+  }
+  const result = evaluate(tree);
+  // Preserve primitive types until native Error coercion; numeric zero and
+  // the string "0" must not acquire the same truth value through formatting.
+  if (mode === 'errorState') return result === 'toggle' ? 'toggle' : String(Boolean(result) && result != 'false');
+  return bounded(asString(result)) as string;
+}

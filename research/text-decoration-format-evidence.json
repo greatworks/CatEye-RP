@@ -1,0 +1,338 @@
+{
+  "capturedAt": "2026-10-13T17:37:15.788Z",
+  "method": "Static original package/CIL evidence plus self-written parser/importer focused verification; no original DLL or GUI execution",
+  "originalAssemblySha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+  "mappings": {
+    "underline": {
+      "pName": 5,
+      "type": "Boolean",
+      "getterToken": 100707831,
+      "serializeToken": 100707862,
+      "serializeIL": "0x190..0x19A"
+    },
+    "strikethrough": {
+      "pName": 95,
+      "type": "Boolean",
+      "getterToken": 100707833,
+      "serializeToken": 100707862,
+      "serializeIL": "0x252..0x25C"
+    },
+    "characterSpacing": {
+      "pName": 91,
+      "type": "Double",
+      "getterToken": 100707837,
+      "acceptedValue": 0,
+      "nonzeroNumericConversion": "Math.Round(value * 96 / 72, 3, enum1); final CSS string unit unresolved",
+      "numericTokens": [
+        100699324,
+        100719575,
+        100688822
+      ]
+    },
+    "baseline": {
+      "pName": 92,
+      "enum": {
+        "Normal": 0,
+        "Super": 1,
+        "Sub": 2
+      },
+      "getterToken": 100707839,
+      "cssMapperToken": 100699316,
+      "acceptedValue": 0,
+      "cssLiteralMapping": "unresolved"
+    }
+  },
+  "cssWriter": {
+    "token": 100699319,
+    "signature": "000301151281AD020E0E0202",
+    "underlineBranch": "0xD..0x2F",
+    "strikethroughBranch": "0x35..0x57",
+    "baseCallGuard": {
+      "token": 100699318,
+      "IL": "0x80..0x8B",
+      "predicate": "underline || strikethrough"
+    },
+    "stateBooleanWriter": {
+      "token": 100694323,
+      "IL": "0x283..0x2AC",
+      "localFilter": "Overridden && !Indeterminate"
+    }
+  },
+  "protocol": {
+    "runStyleSchemaVersion": 2,
+    "requiredRunStyleFields": [
+      "fontFamily",
+      "fontSize",
+      "fontWeight",
+      "fontStyle",
+      "color",
+      "underline",
+      "strikethrough"
+    ]
+  },
+  "sampleCounts": {
+    "runs": 2862,
+    "runValues": {
+      "Underline": {
+        "false": 2860,
+        "true": 2
+      },
+      "Strikethrough": {
+        "false": 2862
+      },
+      "CharacterSpacing": {
+        "0": 2726,
+        "0.3": 130,
+        "0.113": 4,
+        "0.6": 2
+      },
+      "Baseline": {
+        "0": 2862
+      }
+    },
+    "properties": 8207,
+    "propertyValues": {
+      "underline": {
+        "false": 1350,
+        "true": 650
+      },
+      "characterSpacing": {
+        "0": 1990,
+        "0.3": 231,
+        "0.112": 4,
+        "0.6": 2
+      },
+      "baseline": {
+        "0": 1990
+      },
+      "strikethrough": {
+        "false": 1353,
+        "true": 637
+      }
+    },
+    "stateValues": {
+      "underline:inactive": {
+        "false": 4,
+        "true": 359
+      },
+      "characterSpacing:inactive": {
+        "0": 359
+      },
+      "baseline:inactive": {
+        "0": 359
+      },
+      "strikethrough:inactive": {
+        "true": 359
+      }
+    }
+  },
+  "importTotals": {
+    "richWidgets": 632,
+    "richRuns": 2095,
+    "mixedOwners": 49,
+    "addedWidgets": 0,
+    "lostWidgets": 0,
+    "addedEvents": 0,
+    "addedRichOwners": 0,
+    "lostRichOwners": 0,
+    "baseUnderlineTrue": 0,
+    "baseStrikethroughTrue": 0,
+    "runUnderlineTrue": 0,
+    "runStrikethroughTrue": 0,
+    "decorationStates": 0
+  },
+  "samples": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+      "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Flow.rplib",
+      "sha256": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Icons.rplib",
+      "sha256": "83f450088f81f6047dfb196919fff3a4aae2f3adb56668da4d4c8cfd3b813bda"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Quick Win.rp",
+      "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+      "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72"
+    },
+    {
+      "file": "research/samples/the-basics-tab-menu.rp",
+      "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4"
+    },
+    {
+      "file": "research/samples/complex-interactions-required-fields.rp",
+      "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c"
+    }
+  ],
+  "underlinedRuns": [
+    {
+      "sample": "Sample UI patterns.rplib",
+      "sourceSha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b",
+      "packageId": "27f59a68aaf249d298b4edbb44f8e2ae",
+      "sourcePartSha256": "cc2b3da179954b69e2823a357d04fae6e4b57f9d3d4a7742aa24e9f91e6999b3",
+      "objectId": "14ea8a9456d14c888e8e483e64492173",
+      "objectType": "Axure:DiagramObject:VectorShape",
+      "where": "properties.RichTextBlock.attributed-string.Paragraphs[10].Inlines[0].Inlines[0]",
+      "text": "Learn more about Repeaters",
+      "Underline": true,
+      "Strikethrough": false,
+      "CharacterSpacing": 0,
+      "Baseline": 0,
+      "wholeRichRecovery": "unsupported due to AxHyperlink carrier"
+    },
+    {
+      "sample": "Prototyping Basics.rp",
+      "sourceSha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7",
+      "packageId": "8165e87159f34c58a974459d9e910e34",
+      "sourcePartSha256": "59276e6a79af545e322ff655c4bfbaf60ddfd5cb6de0cd68fcf5b78357dd8459",
+      "objectId": "4f4e187b657a4108aa50438dd7d0fca8",
+      "objectType": "Axure:DiagramObject:VectorShape",
+      "where": "properties.RichTextBlock.attributed-string.Paragraphs[3].Inlines[0].Inlines[0]",
+      "text": "www.axure.com/support",
+      "Underline": true,
+      "Strikethrough": false,
+      "CharacterSpacing": 0,
+      "Baseline": 0,
+      "wholeRichRecovery": "unsupported due to AxHyperlink carrier"
+    }
+  ],
+  "verification": {
+    "newNode": 6,
+    "relatedRichNode": 6,
+    "relatedStateNode": 39,
+    "newVitest": 21,
+    "relatedRichVitest": 16,
+    "typecheck": true,
+    "corpusAuditFiles": 11,
+    "originalGuiVerified": false,
+    "fullSuiteRunByThisAgent": false
+  },
+  "boundaries": [
+    "Both real underline=true runs belong to unsupported AxHyperlink inlines; no hyperlink flattening",
+    "No observed true strikethrough or OD-active decoration state in corpus",
+    "Nonzero CharacterSpacing/Baseline and nondefault Stretch remain unsupported",
+    "Base/run field independence does not imply naive state CSS merge equivalence",
+    "Legacy saved rich documents accept optional decoration; native worker protocol v1 is rejected"
+  ],
+  "sources": [
+    {
+      "file": "research/text-decoration-format-evidence.md",
+      "sha256": "e5cb1845c6fe260e21e9263aa498bbdd8496915a546f4ba136a28798fc1f1110"
+    },
+    {
+      "file": "research/text-decoration-format-evidence.mjs",
+      "sha256": "26b276e6d2e2404a6f9104299027d340f49e3f0b864dc05b80b0ccdaebfd590a"
+    },
+    {
+      "file": "research/text-decoration-census.mjs",
+      "sha256": "26ae316197cb9e964efbbc09d35f306c747ef956ed93c6d1a308ed2e5e5cb55a"
+    },
+    {
+      "file": "research/text-decoration-census.json",
+      "sha256": "c7fac6bf0f76364889072a593eac8b148c32c3d3a6b0a0e8ca48bf8fd26b4991"
+    },
+    {
+      "file": "research/text-decoration-import-audit.mjs",
+      "sha256": "347231e6be7b67adf127c119dbd33982d1f7020160d81cf2edd9990233d3ab6b"
+    },
+    {
+      "file": "research/text-decoration-import-audit.json",
+      "sha256": "65a31d90dc6adc40c42e40f37b80ecc1e1fe61b6bbe36350c4189ed5197a41a3"
+    },
+    {
+      "file": "research/samples/metadata-PName.json",
+      "sha256": "5e1d62e67789cdc9f2c53d0e0ac918feef892f3f4d8afc291f8986931797f0a4"
+    },
+    {
+      "file": "research/font-style-format-run-base-cil.json",
+      "sha256": "20c0cbf19ce5f082baaa4401c19b09b6bfcb021db599e4713d119586b83679b0"
+    },
+    {
+      "file": "research/font-style-format-conversion-cil.json",
+      "sha256": "3ef34bb66ace13bb9f7abbf04817043109e2b6b77e9726802675381d9edcde92"
+    },
+    {
+      "file": "research/rich-text-format-metadata.json",
+      "sha256": "1136197b92f5e09c56bf9b59377e10d04004b24bd95976c4cd732f67bda17c41"
+    },
+    {
+      "file": "research/rich-text-format-html-style-cil.json",
+      "sha256": "7154bd739ca659d3f00bd74023531f9124b54e73bbf96d4e85ce72e8c8800396"
+    },
+    {
+      "file": "research/text-decoration-css-cil.json",
+      "sha256": "e4e70c5d6f50e851086a4bf744f4fdf006aa83ec96150cec9444febd90822930"
+    },
+    {
+      "file": "research/text-decoration-json-keys-cil.json",
+      "sha256": "d065c4c55c4137a3c9bf1ebce936d82f1a9b88607863299e7ba2c2cf37c79847"
+    },
+    {
+      "file": "research/text-decoration-property-names-cil.json",
+      "sha256": "2dc8b51a094a1eea87f2be390a36d9a24022631f0deb8c5cc0b87e2d53a548d1"
+    },
+    {
+      "file": "research/text-decoration-character-units-cil.json",
+      "sha256": "eab98d7146c668c97b4a3e9fa5adcf05447a517beae1dc70d6daa7f228016f83"
+    },
+    {
+      "file": "research/text-decoration-rounding-cil.json",
+      "sha256": "e237d4566483d6c29125685feb4bafd7e307a4a51bd0e1a772596b7276589008"
+    },
+    {
+      "file": "research/selected-style-filter-json-entry.json",
+      "sha256": "16f4db126c8078c7237bf31ff91794df4e2eb519c56ffe7081b246ab8b306618"
+    },
+    {
+      "file": "research/selected-style-filter-evidence.md",
+      "sha256": "b3a31c2030b89e71f96fce3cf1c5408464a85a3648dd3cfcf15a33568eff2dff"
+    },
+    {
+      "file": "research/scripts/read-rp-semantics.mjs",
+      "sha256": "a216e01359b90ac46a05d660d6872c32cb7c210f6a140cdd6c0890c949c9b4e3"
+    },
+    {
+      "file": "src/model/import-rp.ts",
+      "sha256": "26344ee60cc207bc4ff67c360e760e303de1365965f987b4ed03c21b5c84f123"
+    },
+    {
+      "file": "research/scripts/read-rp-text-decoration.test.mjs",
+      "sha256": "9138fd142cb1c15b18f39d24c32e7929bcf8bde61c034142fb808ad49734a9a9"
+    },
+    {
+      "file": "research/scripts/read-rp-rich-text.test.mjs",
+      "sha256": "af6a96a238891736560eace987282116078295d0c757c2ac34ccb7c8f93a246d"
+    },
+    {
+      "file": "tests/import-rp-text-decoration.test.ts",
+      "sha256": "11b3d383c0fc8f5e56bc4ec2987c33bb3a1dc36b83ee0a0ad3f082e54edca698"
+    },
+    {
+      "file": "tests/import-rp-rich-text.test.ts",
+      "sha256": "74eaa5ba81dbec7752c7ee1bb5a04b9c4cc93da1a7054f0c93520860316c9598"
+    }
+  ]
+}

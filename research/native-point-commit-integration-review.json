@@ -1,0 +1,165 @@
+{
+  "reviewedAt": "2026-10-15T18:25:57.597Z",
+  "blockingFindings": [],
+  "productionChanges": [
+    {
+      "file": "src/App.tsx",
+      "sha256": "c204576a681ad3e5bf8c9fe1f8d2ea0d36f4dd59be5b9118571744c307ecd109",
+      "before": {
+        "path": ".build/before-native-point-commit/src/App.tsx",
+        "sha256": "8bd415064cfbe7a237473e0e8eb3e83cfc5a0eb3573a0939a0d2654b0a9fc092"
+      }
+    },
+    {
+      "file": "src/components/CanvasVectorTools.tsx",
+      "sha256": "ce1af980044c8adb9f90b38c4da7b428bdb7adaaebf83662132af50b18096a27",
+      "before": {
+        "path": ".build/before-native-point-commit/src/components/CanvasVectorTools.tsx",
+        "sha256": "1236da274e59e765ff247cdb0e5a3131f3eeb78c9c34ac55dbe1c2ed7d547225"
+      }
+    },
+    {
+      "file": "src/components/Inspector.tsx",
+      "sha256": "c55baefbda6d61e6a6b880f5e306ed83298fccf1dfb5ecd43ea182340fe504d6",
+      "before": {
+        "path": ".build/before-native-point-commit/src/components/Inspector.tsx",
+        "sha256": "0a96d36e485ca5e3a47b09326c68f9e4709f7e8ecf1400178588fe90ba0b4d88"
+      }
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "b6ad359478286e201469fcf26cc698076f0ecd08bf4dc386ca57b6ba96611da0",
+      "before": {
+        "path": ".build/before-native-point-commit/src/model/adaptive.ts",
+        "sha256": "0581444169bd91244d6ab56dd2ad2850675fc54734f4b4b33ffbe8de8ec16a82"
+      }
+    },
+    {
+      "file": "src/model/vector-commit.ts",
+      "sha256": "ce5e8218b83d672762efbe7de861d175a40dbb21313d827e5b2d7ebf35e058bd",
+      "before": null
+    }
+  ],
+  "findings": [
+    "Five production files implement actual curve extrema, native rounding/minimum dimensions, center rotation and normalized geometry in one point-edit command, including numeric field synchronization. Runtime/renderers and native readers are unchanged.",
+    "The actual point-mode TN46 entry writes only changed current-view Location/Size pairs. Shared type/path persist; AutoFit and other view declarations are retained. Affect All Views does not change this entry.",
+    "RN4I belongs to separate operations. Early RN4I-based AutoFit/all-view hypotheses and their red tests are retained as superseded evidence, not claimed as ordinary point-edit regressions.",
+    "Native AxKeys metadata establishes D1 sharp and D2 round. The previous inverse binding was corrected; broader modifier-dispatch parity remains unverified.",
+    "Own point commits retain logical anchor selection; external context/frame changes cancel gestures. Entry/no-op/cancel and numeric editor are independent product transaction policies, not native GUI observations.",
+    "Visual inspection found the numeric draft retaining -25 after normalization back to 0. A failing browser assertion established the defect; only point-coordinate fields opt into resetting their draft at commit. The revised build was tested separately.",
+    "The tested executable and archived package are verified by hashes; old artifact bytes and reports remain preserved."
+  ],
+  "limitations": [
+    "Partial-border and independent-corner parameter editing remains gated.",
+    "Empty participating segment lists, native general transforms and separate RN4I whole-object commands are not reproduced.",
+    "Tiny nonzero rotation dispatch at the retained hN4K 1e-5 threshold is not covered; the current helper uses center rotation for every nonzero angle.",
+    "Original UI screenshot capture times out; original pixel/interaction parity is unverified.",
+    "Full Axure parity remains incomplete."
+  ],
+  "sources": [
+    {
+      "path": "research/native-point-commit-evidence.json",
+      "sha256": "cc4a11b191a1711b40ab4434619a28d52f8dcf578e09a17e3afa0d4e3a955eb1"
+    },
+    {
+      "path": "research/native-point-commit-format-manifest.json",
+      "sha256": "58210917bd7f7cd77bcf5e2d60bd1cc7c958872cdabf8174704872980c61c690"
+    },
+    {
+      "path": "research/native-point-commit-final-review.json",
+      "sha256": "7ab24dcd3a2a4622de7c120a98c9eda1f460ec534ad84235daf74f09f3dc0b9b"
+    },
+    {
+      "path": "research/native-point-commit-authoring-implementation.json",
+      "sha256": "8a4112cbf659271cd4f0a85a2cccfc9ffbbd2e786eeb6674c7d14deb975b1714"
+    },
+    {
+      "path": "research/native-point-commit-implementation.md",
+      "sha256": "9cae3140cfc2128d472622df76dce49a9e76f392e050edcb19b281482355dd21"
+    },
+    {
+      "path": ".build/native-point-commit-unit-final.json",
+      "sha256": "774fdbbdf3bcbf871278ce7bf04d7199520b21b65f621ee2b1fde0fdefd4d9e8"
+    },
+    {
+      "path": ".build/native-point-commit-parser-final.log",
+      "sha256": "e3d1184b16df163f1794a7be9f8b3516ae6c0eafaaa0326cb82cd172232a06cf"
+    },
+    {
+      "path": ".build/native-point-commit-typecheck-run.json",
+      "sha256": "3142adae27e5f065a8fb719e8da8f6ef2028faebea60db72260b24b1155129e8"
+    },
+    {
+      "path": ".build/native-point-commit-validated-e2e.json",
+      "sha256": "5181ce4b640afa17be18380fb62d2c47ebe67849be58e56c59f95741b5a84e2b"
+    },
+    {
+      "path": ".build/native-point-commit-release-e2e.json",
+      "sha256": "ed6375c9a1dfdd716380246adaca358600a7c544ae7911d03b64bb702d9df856"
+    },
+    {
+      "path": ".build/native-point-commit-desktop-audit.json",
+      "sha256": "245b0df5a26ce4b627d5424c190e1c93a017f0de9ed2075e38ee9678c23d26be"
+    },
+    {
+      "path": ".build/native-point-commit-smoke-runs.json",
+      "sha256": "4a0b7c4a48677184e936685f99259dec5a572128c831c4c6689b798bb7d57405"
+    },
+    {
+      "path": ".build/native-point-commit-bundle-audit.json",
+      "sha256": "285d17fc8b0f09237976d38f13426ace9c0f1f66616eca61acf09f682ac465b9"
+    },
+    {
+      "path": ".build/native-point-commit-visual-review.json",
+      "sha256": "3fe60c0b56400cca922c4b173fbc892626f970ad5596f6da42455a023cfbe1da"
+    },
+    {
+      "path": ".build/native-point-commit-unit-fixture-final.json",
+      "sha256": "42889b2586c8b5dadbf4dddcedda822dc8a229acfe0c9b67d4c02c70eb448764"
+    },
+    {
+      "path": ".build/native-point-commit-unit-fixture-final-run.json",
+      "sha256": "baf94c58e7b214e7cfb0ca5b8a18b32afa26da88e1c49076fcb073864f37837e"
+    },
+    {
+      "path": ".build/native-point-commit-typecheck-integration-run.json",
+      "sha256": "8e627bc607e10ac1e1bd212d6adf4ab634cc50c53d061d59b19e2bce08f815cb"
+    },
+    {
+      "path": ".build/native-point-commit-typecheck-vector-run.json",
+      "sha256": "008fcee2615d97e98df51183823e311f0211e53cce3e634c4f28c74e3871696d"
+    },
+    {
+      "path": ".build/native-point-commit-vector-final-e2e.json",
+      "sha256": "0c89f7e90f8b81a3fdb51ffedde8febad40d0b019f70f7f8237a31181e9f4d20"
+    },
+    {
+      "path": ".build/native-point-commit-browser-coverage.json",
+      "sha256": "118aaa4b87f8857b711c49b24a62f0b184d883a291dee7411bfe1d7e49635661"
+    },
+    {
+      "path": ".build/native-point-commit-field-unit-final.json",
+      "sha256": "4e4d13967e942894aab196b21ce02d2b107c074f86cf03a187ee0feb793a706a"
+    },
+    {
+      "path": ".build/native-point-commit-typecheck-field-run.json",
+      "sha256": "c7a0031b465968b5c455d5521212d472ea45472bd9476cdd5e51511c799a8884"
+    },
+    {
+      "path": ".build/native-point-commit-release-final-e2e.json",
+      "sha256": "8f4c960d9c2f2e32d56819d9e7c92e642cbd7441ae5e33941535d410245756dd"
+    },
+    {
+      "path": ".build/native-point-commit-field-focused-e2e.json",
+      "sha256": "3e7aa074d74d46369d4079500d93ad69fc9c93e07229839def8e076a97bbd781"
+    },
+    {
+      "path": ".build/native-point-commit-field-red-e2e.json",
+      "sha256": "4157188d2e0cfa7f05d669558e54dc24ae62d009fdf8f988e222e6654eebf838"
+    },
+    {
+      "path": "research/native-point-commit-inspector-review.json",
+      "sha256": "3547d98db3ec8db125e3c00b429c3d015c0dd21eae7db5b349e1dfae77e21317"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "kind": "read-only source review, not browser or original GUI verification",
+  "timestamp": "2026-10-15T10:09:15.306Z",
+  "files": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "71f2ff770f0ec62e6a766ca20855e211ed2894970399907828d21ec5664a0271"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "c83cbc5244449dbe668fe339e0867fb51a931fe848e9c3ab011a9f7672126163"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "57fc932baf61dedd3964d6395490a7b7a4434be1ea0374a2259440dfa3160297"
+    },
+    {
+      "path": "src/model/adaptive-view-sets.ts",
+      "sha256": "4f5f427f13f088a84215646fc21ea978de2e109792a77b25d5832420b475e056"
+    },
+    {
+      "path": "src/model/components.ts",
+      "sha256": "b3f1119dbd80d735eac9c4ca4648fd035753895855458141878ac5287035101e"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "94864367925b23e6562851c93cd09cca0afe76fece5ee5d72d342677d8724b31"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "0c61ec33304adf181149893c4b242cc4bd8139124f61c245b855cfc2d8c8e87f"
+    },
+    {
+      "path": "src/components/AdaptiveSetControls.tsx",
+      "sha256": "76819991c0170f142da9247ac9f1075030658ba8476754da3afe53db6dd7bec4"
+    },
+    {
+      "path": "src/runtime/embedded-fonts.ts",
+      "sha256": "45238fd538ee53f67882f81896948cd50d78166193cf9d2964771902efe732d8"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "3e75d0a582f9a5382ad3f29f604349df07e57701749fb2e7ed95fa7e2a8fc415"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "124881297e6197d0078c37f005b45c0b602c3a1fffb1ad971976443bb24ee5e6"
+    }
+  ],
+  "findings": [],
+  "reviewed": [
+    "effective shared page metadata is projected for editing, and commitAdaptivePage restores sparse shared storage",
+    "active and inactive page maps prune removed widget identities during commit; component synchronization separately fixed and tested by parent",
+    "nearest complete seven-state map replaces Base flat fields without leaking stateStyles metadata into Widget",
+    "focused presence tests current ancestor chain separately from nearest effective state paint",
+    "action type change clears adaptiveView/frame destination/widget target/value/style payloads",
+    "embedded fonts scan normal and seven-state styles in active and inactive adaptive maps",
+    "validated page view-set definitions and page-local state maps remain distinct through save serialization"
+  ],
+  "limits": [
+    "No full suite, product build, native GUI, or browser run performed for this review",
+    "Native contained/master/image override and original focused-class typo quirks remain the documented model boundaries",
+    "Non-form keyboard tab eligibility remains tied to rendered focused style; native independent tabbable generation was not proved, so no parity claim is made",
+    "Concurrent source may change after these hashes; new integration fixture is prepared for parent production execution"
+  ],
+  "preparedTests": [
+    "scripts/adaptive-behavior-scenario.mjs",
+    "tests/e2e/adaptive-behavior-runtime.spec.ts",
+    "scripts/smoke-adaptive-behavior.mjs"
+  ],
+  "staticValidation": {
+    "nodeCheck": true,
+    "playwrightList": 2,
+    "typecheckExit": 0,
+    "browserExecuted": false,
+    "desktopExecuted": false
+  }
+}

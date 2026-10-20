@@ -1,0 +1,1053 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "8eed7e72-ef70-442a-9083-4c6c09067097",
+  "name": "Gradients — points, axes and color stops",
+  "pages": [
+    {
+      "id": "gradient-page",
+      "name": "Gradient studio",
+      "width": 1100,
+      "height": 850,
+      "background": "#f5f7fc",
+      "widgets": [
+        {
+          "id": "gradient-heading",
+          "type": "text",
+          "name": "Color follows points and axes",
+          "text": "Color follows points and axes",
+          "notes": "",
+          "x": 40,
+          "y": 25,
+          "rotation": 0,
+          "width": 960,
+          "height": 55,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#172744",
+            "fontSize": 30,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "gradient-subtitle",
+          "type": "text",
+          "name": "Linear and radial fills, ordered stops, transparent colors, and independent repeated instances.",
+          "text": "Linear and radial fills, ordered stops, transparent colors, and independent repeated instances.",
+          "notes": "",
+          "x": 40,
+          "y": 85,
+          "rotation": 0,
+          "width": 990,
+          "height": 45,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#536785",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "gradient-linear",
+          "type": "box",
+          "name": "Linear fill",
+          "text": "Linear fill",
+          "notes": "",
+          "x": 45,
+          "y": 150,
+          "rotation": 0,
+          "width": 305,
+          "height": 155,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "fillGradient": {
+              "type": "linear",
+              "start": {
+                "x": 0,
+                "y": 0.5
+              },
+              "end": {
+                "x": 1,
+                "y": 0.5
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#2668ec"
+                },
+                {
+                  "offset": 0.45,
+                  "color": "#8057d8"
+                },
+                {
+                  "offset": 1,
+                  "color": "#f29cab"
+                }
+              ]
+            },
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 18,
+            "color": "#ffffff",
+            "fontSize": 24,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "gradient-radial",
+          "type": "ellipse",
+          "name": "Two radial axes",
+          "text": "Two radial axes",
+          "notes": "",
+          "x": 390,
+          "y": 145,
+          "rotation": 0,
+          "width": 305,
+          "height": 170,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "fillGradient": {
+              "type": "radial",
+              "center": {
+                "x": 0.4,
+                "y": 0.5
+              },
+              "axis1": {
+                "x": 0.8,
+                "y": 0.8
+              },
+              "axis2": {
+                "x": 0.2,
+                "y": 0.85
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#fff2b0"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#fbb96b"
+                },
+                {
+                  "offset": 1,
+                  "color": "#ef6b92"
+                }
+              ]
+            },
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#5e2242",
+            "fontSize": 23,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "gradient-hard",
+          "type": "box",
+          "name": "Hard transition",
+          "text": "Hard transition",
+          "notes": "",
+          "x": 735,
+          "y": 150,
+          "rotation": 0,
+          "width": 315,
+          "height": 155,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "fillGradient": {
+              "type": "linear",
+              "start": {
+                "x": 0,
+                "y": 0
+              },
+              "end": {
+                "x": 1,
+                "y": 1
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#125065"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#125065"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#4b9b91"
+                },
+                {
+                  "offset": 1,
+                  "color": "#4b9b91"
+                }
+              ]
+            },
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 18,
+            "color": "#ffffff",
+            "fontSize": 22,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "gradient-vector",
+          "type": "path",
+          "name": "Path fill",
+          "text": "Path fill",
+          "notes": "",
+          "x": 60,
+          "y": 355,
+          "rotation": 0,
+          "width": 270,
+          "height": 175,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "fillGradient": {
+              "type": "linear",
+              "start": {
+                "x": 0,
+                "y": 0.5
+              },
+              "end": {
+                "x": 1,
+                "y": 0.5
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#2668ec"
+                },
+                {
+                  "offset": 0.45,
+                  "color": "#8057d8"
+                },
+                {
+                  "offset": 1,
+                  "color": "#f29cab"
+                }
+              ]
+            },
+            "stroke": "#254780",
+            "strokeWidth": 2,
+            "radius": 0,
+            "color": "white",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1,
+            "outerShadow": {
+              "on": true,
+              "offsetX": 5,
+              "offsetY": 7,
+              "blurRadius": 4,
+              "color": "#24395840"
+            }
+          },
+          "interactions": [],
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0.5,
+                "y": 0
+              },
+              {
+                "op": "L",
+                "x": 1,
+                "y": 1
+              },
+              {
+                "op": "L",
+                "x": 0,
+                "y": 1
+              },
+              {
+                "op": "Z"
+              }
+            ]
+          }
+        },
+        {
+          "id": "gradient-transparent",
+          "type": "box",
+          "name": "Transparent stops",
+          "text": "Transparent stops",
+          "notes": "",
+          "x": 390,
+          "y": 370,
+          "rotation": 0,
+          "width": 305,
+          "height": 145,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ff00ff",
+            "fillGradient": {
+              "type": "linear",
+              "start": {
+                "x": 0,
+                "y": 0
+              },
+              "end": {
+                "x": 1,
+                "y": 0
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#4e6fde00"
+                },
+                {
+                  "offset": 1,
+                  "color": "#4e6fdeff"
+                }
+              ]
+            },
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 12,
+            "color": "#183365",
+            "fontSize": 21,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "gradient-parent",
+          "type": "panel",
+          "name": "Gradient panel",
+          "text": "Gradient panel",
+          "notes": "",
+          "x": 735,
+          "y": 365,
+          "rotation": 0,
+          "width": 315,
+          "height": 160,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "fillGradient": {
+              "type": "radial",
+              "center": {
+                "x": 0.4,
+                "y": 0.5
+              },
+              "axis1": {
+                "x": 0.8,
+                "y": 0.8
+              },
+              "axis2": {
+                "x": 0.2,
+                "y": 0.85
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#fff2b0"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#fbb96b"
+                },
+                {
+                  "offset": 1,
+                  "color": "#ef6b92"
+                }
+              ]
+            },
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 18,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "activeStateId": "693933ee-bf46-41d1-a378-c63eac85f087",
+          "states": [
+            {
+              "id": "693933ee-bf46-41d1-a378-c63eac85f087",
+              "name": "State 1",
+              "widgets": [
+                {
+                  "id": "gradient-child",
+                  "type": "box",
+                  "name": "Independent child fill",
+                  "text": "Independent child fill",
+                  "notes": "",
+                  "x": 24,
+                  "y": 47,
+                  "rotation": 0,
+                  "width": 267,
+                  "height": 65,
+                  "hidden": false,
+                  "locked": false,
+                  "disabled": false,
+                  "style": {
+                    "fill": "#ffffff",
+                    "stroke": "#b8bdc7",
+                    "strokeWidth": 0,
+                    "radius": 10,
+                    "color": "#263348",
+                    "fontSize": 19,
+                    "fontFamily": "Arial",
+                    "fontWeight": 400,
+                    "textAlign": "center",
+                    "opacity": 1
+                  },
+                  "interactions": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gradient-repeater",
+          "type": "repeater",
+          "name": "Gradient rows",
+          "text": "Gradient rows",
+          "notes": "",
+          "x": 45,
+          "y": 600,
+          "rotation": 0,
+          "width": 285,
+          "height": 125,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              },
+              {
+                "Name": "B"
+              }
+            ],
+            "template": [
+              {
+                "id": "gradient-row",
+                "type": "path",
+                "name": "Row [[Item.Name]]",
+                "text": "Row [[Item.Name]]",
+                "notes": "",
+                "x": 10,
+                "y": 4,
+                "rotation": 0,
+                "width": 265,
+                "height": 46,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff",
+                  "fillGradient": {
+                    "type": "linear",
+                    "start": {
+                      "x": 0,
+                      "y": 0.5
+                    },
+                    "end": {
+                      "x": 1,
+                      "y": 0.5
+                    },
+                    "stops": [
+                      {
+                        "offset": 0,
+                        "color": "#2668ec"
+                      },
+                      {
+                        "offset": 0.45,
+                        "color": "#8057d8"
+                      },
+                      {
+                        "offset": 1,
+                        "color": "#f29cab"
+                      }
+                    ]
+                  },
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "white",
+                  "fontSize": 19,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [],
+                "vectorPath": {
+                  "fillRule": "nonzero",
+                  "commands": [
+                    {
+                      "op": "M",
+                      "x": 0.08,
+                      "y": 0
+                    },
+                    {
+                      "op": "L",
+                      "x": 1,
+                      "y": 0
+                    },
+                    {
+                      "op": "L",
+                      "x": 0.92,
+                      "y": 1
+                    },
+                    {
+                      "op": "L",
+                      "x": 0,
+                      "y": 1
+                    },
+                    {
+                      "op": "Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "itemHeight": 58,
+            "gap": 4,
+            "itemWidth": 285,
+            "layout": "vertical",
+            "fitToContent": false
+          }
+        },
+        {
+          "id": "gradient-solid",
+          "type": "button",
+          "name": "Switch to solid fills",
+          "text": "Switch to solid fills",
+          "notes": "",
+          "x": 390,
+          "y": 600,
+          "rotation": 0,
+          "width": 260,
+          "height": 48,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "06897fa3-9e92-4e23-90a8-4a530d8514a0",
+              "event": "click",
+              "name": "Switch to solid fills",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "10e055b6-bbc5-443a-b290-c36221b6ecd6",
+                  "type": "setStyle",
+                  "targetId": "gradient-linear",
+                  "style": {
+                    "fill": "#d9e2f2"
+                  }
+                },
+                {
+                  "id": "01fe356c-3e98-4ee8-a8cd-475c5a929061",
+                  "type": "setStyle",
+                  "targetId": "gradient-radial",
+                  "style": {
+                    "fill": "#d9e2f2"
+                  }
+                },
+                {
+                  "id": "4cd8486f-cde8-484c-8b10-9a2208346566",
+                  "type": "setStyle",
+                  "targetId": "gradient-hard",
+                  "style": {
+                    "fill": "#d9e2f2"
+                  }
+                },
+                {
+                  "id": "769c7bf9-e7bc-4ae2-8e19-9410f5679382",
+                  "type": "setStyle",
+                  "targetId": "gradient-vector",
+                  "style": {
+                    "fill": "#d9e2f2"
+                  }
+                },
+                {
+                  "id": "384d2e0a-5f04-445f-8a9a-8a2a13824e52",
+                  "type": "setStyle",
+                  "targetId": "gradient-transparent",
+                  "style": {
+                    "fill": "#d9e2f2"
+                  }
+                },
+                {
+                  "id": "debaecc6-509f-4888-a9af-e7bd08b4c1a5",
+                  "type": "setStyle",
+                  "targetId": "gradient-parent",
+                  "style": {
+                    "fill": "#d9e2f2"
+                  }
+                },
+                {
+                  "id": "7814946d-14f9-494e-b7ee-0bd8879cba3d",
+                  "type": "setStyle",
+                  "targetId": "gradient-row",
+                  "style": {
+                    "fill": "#d9e2f2"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gradient-restore",
+          "type": "button",
+          "name": "Restore gradients",
+          "text": "Restore gradients",
+          "notes": "",
+          "x": 735,
+          "y": 600,
+          "rotation": 0,
+          "width": 260,
+          "height": 48,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ec9f7fc8-c2df-4682-98ae-18c2b297870a",
+              "event": "click",
+              "name": "Restore gradients",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "08d96727-3a78-4e52-92c5-ac4cbe4699ea",
+                  "type": "setStyle",
+                  "targetId": "gradient-linear",
+                  "style": {
+                    "fillGradient": {
+                      "type": "linear",
+                      "start": {
+                        "x": 0,
+                        "y": 0.5
+                      },
+                      "end": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "stops": [
+                        {
+                          "offset": 0,
+                          "color": "#2668ec"
+                        },
+                        {
+                          "offset": 0.45,
+                          "color": "#8057d8"
+                        },
+                        {
+                          "offset": 1,
+                          "color": "#f29cab"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "a74f3e73-6a51-49a5-b4f5-c35dd113663c",
+                  "type": "setStyle",
+                  "targetId": "gradient-radial",
+                  "style": {
+                    "fillGradient": {
+                      "type": "radial",
+                      "center": {
+                        "x": 0.4,
+                        "y": 0.5
+                      },
+                      "axis1": {
+                        "x": 0.8,
+                        "y": 0.8
+                      },
+                      "axis2": {
+                        "x": 0.2,
+                        "y": 0.85
+                      },
+                      "stops": [
+                        {
+                          "offset": 0,
+                          "color": "#fff2b0"
+                        },
+                        {
+                          "offset": 0.5,
+                          "color": "#fbb96b"
+                        },
+                        {
+                          "offset": 1,
+                          "color": "#ef6b92"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "41b07a80-1963-45d2-b52e-792bb4157f1f",
+                  "type": "setStyle",
+                  "targetId": "gradient-hard",
+                  "style": {
+                    "fillGradient": {
+                      "type": "linear",
+                      "start": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "end": {
+                        "x": 1,
+                        "y": 1
+                      },
+                      "stops": [
+                        {
+                          "offset": 0,
+                          "color": "#125065"
+                        },
+                        {
+                          "offset": 0.5,
+                          "color": "#125065"
+                        },
+                        {
+                          "offset": 0.5,
+                          "color": "#4b9b91"
+                        },
+                        {
+                          "offset": 1,
+                          "color": "#4b9b91"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "a9934c09-e70e-433a-b424-db87b59d2df8",
+                  "type": "setStyle",
+                  "targetId": "gradient-vector",
+                  "style": {
+                    "fillGradient": {
+                      "type": "linear",
+                      "start": {
+                        "x": 0,
+                        "y": 0.5
+                      },
+                      "end": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "stops": [
+                        {
+                          "offset": 0,
+                          "color": "#2668ec"
+                        },
+                        {
+                          "offset": 0.45,
+                          "color": "#8057d8"
+                        },
+                        {
+                          "offset": 1,
+                          "color": "#f29cab"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "b7b0fd5e-f7e6-4d28-b0c6-d42f35c81662",
+                  "type": "setStyle",
+                  "targetId": "gradient-transparent",
+                  "style": {
+                    "fillGradient": {
+                      "type": "linear",
+                      "start": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "end": {
+                        "x": 1,
+                        "y": 0
+                      },
+                      "stops": [
+                        {
+                          "offset": 0,
+                          "color": "#4e6fde00"
+                        },
+                        {
+                          "offset": 1,
+                          "color": "#4e6fdeff"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "8f527fd6-2582-4d1b-bd51-e6efba49ed57",
+                  "type": "setStyle",
+                  "targetId": "gradient-parent",
+                  "style": {
+                    "fillGradient": {
+                      "type": "radial",
+                      "center": {
+                        "x": 0.4,
+                        "y": 0.5
+                      },
+                      "axis1": {
+                        "x": 0.8,
+                        "y": 0.8
+                      },
+                      "axis2": {
+                        "x": 0.2,
+                        "y": 0.85
+                      },
+                      "stops": [
+                        {
+                          "offset": 0,
+                          "color": "#fff2b0"
+                        },
+                        {
+                          "offset": 0.5,
+                          "color": "#fbb96b"
+                        },
+                        {
+                          "offset": 1,
+                          "color": "#ef6b92"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "e024ceca-10c9-465d-9c3a-5a89e2e59c77",
+                  "type": "setStyle",
+                  "targetId": "gradient-row",
+                  "style": {
+                    "fillGradient": {
+                      "type": "linear",
+                      "start": {
+                        "x": 0,
+                        "y": 0.5
+                      },
+                      "end": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "stops": [
+                        {
+                          "offset": 0,
+                          "color": "#2668ec"
+                        },
+                        {
+                          "offset": 0.45,
+                          "color": "#8057d8"
+                        },
+                        {
+                          "offset": 1,
+                          "color": "#f29cab"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gradient-note",
+          "type": "text",
+          "name": "Switch to a solid fill, then restore the saved gradient. Painting never changes the stored geometry.",
+          "text": "Switch to a solid fill, then restore the saved gradient. Painting never changes the stored geometry.",
+          "notes": "",
+          "x": 390,
+          "y": 675,
+          "rotation": 0,
+          "width": 650,
+          "height": 68,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#536785",
+            "fontSize": 18,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    },
+    {
+      "id": "gradient-frame-page",
+      "name": "Embedded comparison",
+      "width": 1180,
+      "height": 910,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "gradient-frame",
+          "type": "inlineFrame",
+          "name": "Gradient frame",
+          "text": "",
+          "notes": "",
+          "inlineFrame": {
+            "hideBorders": false,
+            "scrolling": "auto",
+            "preview": {
+              "kind": "none"
+            },
+            "target": {
+              "kind": "page",
+              "pageId": "gradient-page"
+            }
+          },
+          "x": 15,
+          "y": 15,
+          "rotation": 0,
+          "width": 1140,
+          "height": 870,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

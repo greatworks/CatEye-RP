@@ -1,0 +1,867 @@
+{
+  "schema": "adaptive-style-reset-probe-v1",
+  "capturedAt": "2026-10-15T06:41:34.485Z",
+  "kind": "Exact retained JavaScript slices in Node VM; DOM/CSS, state-style recomputation, visibility writes, repeater refresh and final measurement are explicit sinks. Current product core executed separately without DOM. Not native GUI or original generated-page pixels.",
+  "artifact": {
+    "distributionSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+    "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7"
+  },
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\adaptive.js",
+      "sha256": "e141ea07bb973b6007f2ad7d7205516a041a801ec97e410467352c27af3b2928"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "adaptive.js",
+      "first": 48,
+      "last": 159,
+      "label": "_switchView",
+      "sha256": "95efcdb46e07996d53293f092214a07df6a3fc54ded37634543715b811e54315"
+    },
+    {
+      "file": "adaptive.js",
+      "first": 245,
+      "last": 269,
+      "label": "_applyView",
+      "sha256": "09852952fbccdc1d298d6a6608b75e268b6c9d02f21fcddcbd724c1339f824b3"
+    },
+    {
+      "file": "adaptive.js",
+      "first": 271,
+      "last": 317,
+      "label": "_applyAdaptiveViewOnObject",
+      "sha256": "ff573de6d3bf004ecc1f611fed3dbb88a23f40ee939d06835312ec6a3f0b3e54"
+    },
+    {
+      "file": "visibility.js",
+      "first": 1267,
+      "last": 1325,
+      "label": "_addLimboAndHiddenIds",
+      "sha256": "3643edd3f503e7ad97e87b8a5c40e1b12605b52238108607613b392d7cc7f796"
+    },
+    {
+      "file": "style.js",
+      "first": 964,
+      "last": 989,
+      "label": "_clearWidgetAppliedStyles",
+      "sha256": "50f7c5e94509ce3c507380793cef56568dc0c5507048804ed1998b5ca0e78fae"
+    }
+  ],
+  "product": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "b4ee6cb2275f63636a75e8476bd217ca92588d6fc3c22ecc5e18ed8107d77b83"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "6df81f82a3dc6f8cb8a4d2c349b32094bf470c5379977a2967878c11ab899c19"
+    },
+    {
+      "path": ".build/load-ts.mjs",
+      "sha256": "f027d29e8fadf3df545a82e534e9e58d7bbe4fd416c4062847a740bb58e2df25"
+    }
+  ],
+  "originalCases": 6,
+  "productComparisons": 3,
+  "results": [
+    {
+      "name": "action-hide-then-base-to-visible-mobile",
+      "parameters": {
+        "previous": "",
+        "next": "mobile",
+        "baseHidden": false,
+        "viewHidden": false,
+        "actualHidden": true,
+        "opacity": 0.25,
+        "applied": true,
+        "contained": false
+      },
+      "before": {
+        "hidden": true,
+        "ownerOpacity": 0.25,
+        "classes": [
+          "action-style"
+        ],
+        "applied": {
+          "w": {
+            "classList": [
+              "action-style"
+            ],
+            "style": {
+              "fill": "red",
+              "opacity": 0.25
+            }
+          }
+        }
+      },
+      "after": {
+        "hidden": false,
+        "ownerOpacity": "",
+        "classes": [],
+        "applied": {}
+      },
+      "trace": [
+        {
+          "kind": "inline-reset",
+          "id": "w",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "children-inline-reset",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "resetFixedPanel"
+        },
+        {
+          "kind": "resetAdaptivePercentPanel"
+        },
+        {
+          "kind": "reselect-sink"
+        },
+        {
+          "kind": "clear-geometry-sink"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w",
+          "name": "action-style"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_div",
+          "name": "action-style"
+        },
+        {
+          "kind": "clear-corner-classes-sink"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_text",
+          "name": "action-style"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_input",
+          "name": "action-style"
+        },
+        {
+          "kind": "view-class",
+          "name": "mobile"
+        },
+        {
+          "kind": "adaptive-style-sink",
+          "style": {
+            "visible": true
+          }
+        },
+        {
+          "kind": "visibility-write-sink",
+          "id": "w",
+          "options": {
+            "value": true,
+            "noContainer": true
+          }
+        },
+        {
+          "kind": "updatePercentPanelCache"
+        },
+        {
+          "kind": "refresh-repeaters"
+        },
+        {
+          "kind": "updateAllLayerSizeCaches"
+        },
+        {
+          "kind": "updateParentsOfNonDefaultFitPanels"
+        },
+        {
+          "kind": "remeasure-sink"
+        },
+        {
+          "kind": "viewChanged"
+        }
+      ]
+    },
+    {
+      "name": "action-show-then-return-to-hidden-base",
+      "parameters": {
+        "previous": "mobile",
+        "next": "",
+        "baseHidden": true,
+        "viewHidden": true,
+        "actualHidden": false,
+        "opacity": 0.25,
+        "applied": true,
+        "contained": false
+      },
+      "before": {
+        "hidden": false,
+        "ownerOpacity": 0.25,
+        "classes": [
+          "action-style"
+        ],
+        "applied": {
+          "w": {
+            "classList": [
+              "action-style"
+            ],
+            "style": {
+              "fill": "red",
+              "opacity": 0.25
+            }
+          }
+        }
+      },
+      "after": {
+        "hidden": true,
+        "ownerOpacity": "",
+        "classes": [],
+        "applied": {}
+      },
+      "trace": [
+        {
+          "kind": "inline-reset",
+          "id": "w",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "children-inline-reset",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "resetFixedPanel"
+        },
+        {
+          "kind": "resetAdaptivePercentPanel"
+        },
+        {
+          "kind": "clear-adaptive-styles-sink"
+        },
+        {
+          "kind": "remove-view-class",
+          "name": "mobile"
+        },
+        {
+          "kind": "visibility-write-sink",
+          "id": "w",
+          "options": {
+            "value": false,
+            "noContainer": true
+          }
+        },
+        {
+          "kind": "clear-geometry-sink"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w",
+          "name": "action-style"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_div",
+          "name": "action-style"
+        },
+        {
+          "kind": "clear-corner-classes-sink"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_text",
+          "name": "action-style"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_input",
+          "name": "action-style"
+        },
+        {
+          "kind": "refresh-repeaters"
+        },
+        {
+          "kind": "updateParentsOfNonDefaultFitPanels"
+        },
+        {
+          "kind": "updatePercentPanelCache"
+        },
+        {
+          "kind": "remeasure-sink"
+        },
+        {
+          "kind": "viewChanged"
+        }
+      ]
+    },
+    {
+      "name": "action-show-then-switch-to-hidden-mobile",
+      "parameters": {
+        "previous": "",
+        "next": "mobile",
+        "baseHidden": true,
+        "viewHidden": true,
+        "actualHidden": false,
+        "opacity": 0.25,
+        "applied": true,
+        "contained": false
+      },
+      "before": {
+        "hidden": false,
+        "ownerOpacity": 0.25,
+        "classes": [
+          "action-style"
+        ],
+        "applied": {
+          "w": {
+            "classList": [
+              "action-style"
+            ],
+            "style": {
+              "fill": "red",
+              "opacity": 0.25
+            }
+          }
+        }
+      },
+      "after": {
+        "hidden": true,
+        "ownerOpacity": "",
+        "classes": [],
+        "applied": {}
+      },
+      "trace": [
+        {
+          "kind": "inline-reset",
+          "id": "w",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "children-inline-reset",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "resetFixedPanel"
+        },
+        {
+          "kind": "resetAdaptivePercentPanel"
+        },
+        {
+          "kind": "reselect-sink"
+        },
+        {
+          "kind": "clear-geometry-sink"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w",
+          "name": "action-style"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_div",
+          "name": "action-style"
+        },
+        {
+          "kind": "clear-corner-classes-sink"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_text",
+          "name": "action-style"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_input",
+          "name": "action-style"
+        },
+        {
+          "kind": "view-class",
+          "name": "mobile"
+        },
+        {
+          "kind": "adaptive-style-sink",
+          "style": {
+            "visible": false
+          }
+        },
+        {
+          "kind": "visibility-write-sink",
+          "id": "w",
+          "options": {
+            "value": false,
+            "noContainer": true
+          }
+        },
+        {
+          "kind": "updatePercentPanelCache"
+        },
+        {
+          "kind": "refresh-repeaters"
+        },
+        {
+          "kind": "updateAllLayerSizeCaches"
+        },
+        {
+          "kind": "updateParentsOfNonDefaultFitPanels"
+        },
+        {
+          "kind": "remeasure-sink"
+        },
+        {
+          "kind": "viewChanged"
+        }
+      ]
+    },
+    {
+      "name": "same-view-preserves-actions",
+      "parameters": {
+        "previous": "mobile",
+        "next": "mobile",
+        "baseHidden": false,
+        "viewHidden": false,
+        "actualHidden": true,
+        "opacity": 0.25,
+        "applied": true,
+        "contained": false
+      },
+      "before": {
+        "hidden": true,
+        "ownerOpacity": 0.25,
+        "classes": [
+          "action-style"
+        ],
+        "applied": {
+          "w": {
+            "classList": [
+              "action-style"
+            ],
+            "style": {
+              "fill": "red",
+              "opacity": 0.25
+            }
+          }
+        }
+      },
+      "after": {
+        "hidden": true,
+        "ownerOpacity": 0.25,
+        "classes": [
+          "action-style"
+        ],
+        "applied": {
+          "w": {
+            "classList": [
+              "action-style"
+            ],
+            "style": {
+              "fill": "red",
+              "opacity": 0.25
+            }
+          }
+        }
+      },
+      "trace": []
+    },
+    {
+      "name": "opacity-and-applied-style-cleared-before-named-view",
+      "parameters": {
+        "previous": "",
+        "next": "mobile",
+        "baseHidden": false,
+        "viewHidden": false,
+        "actualHidden": false,
+        "opacity": 0.25,
+        "applied": true,
+        "contained": false
+      },
+      "before": {
+        "hidden": false,
+        "ownerOpacity": 0.25,
+        "classes": [
+          "action-style"
+        ],
+        "applied": {
+          "w": {
+            "classList": [
+              "action-style"
+            ],
+            "style": {
+              "fill": "red",
+              "opacity": 0.25
+            }
+          }
+        }
+      },
+      "after": {
+        "hidden": false,
+        "ownerOpacity": "",
+        "classes": [],
+        "applied": {}
+      },
+      "trace": [
+        {
+          "kind": "inline-reset",
+          "id": "w",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "children-inline-reset",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "resetFixedPanel"
+        },
+        {
+          "kind": "resetAdaptivePercentPanel"
+        },
+        {
+          "kind": "reselect-sink"
+        },
+        {
+          "kind": "clear-geometry-sink"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w",
+          "name": "action-style"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_div",
+          "name": "action-style"
+        },
+        {
+          "kind": "clear-corner-classes-sink"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_text",
+          "name": "action-style"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_input",
+          "name": "action-style"
+        },
+        {
+          "kind": "view-class",
+          "name": "mobile"
+        },
+        {
+          "kind": "adaptive-style-sink",
+          "style": {
+            "visible": true
+          }
+        },
+        {
+          "kind": "updatePercentPanelCache"
+        },
+        {
+          "kind": "refresh-repeaters"
+        },
+        {
+          "kind": "updateAllLayerSizeCaches"
+        },
+        {
+          "kind": "updateParentsOfNonDefaultFitPanels"
+        },
+        {
+          "kind": "remeasure-sink"
+        },
+        {
+          "kind": "viewChanged"
+        }
+      ]
+    },
+    {
+      "name": "contained-visibility-and-inline-reset-are-not-generalized",
+      "parameters": {
+        "previous": "",
+        "next": "mobile",
+        "baseHidden": false,
+        "viewHidden": false,
+        "actualHidden": true,
+        "opacity": 0.25,
+        "applied": true,
+        "contained": true
+      },
+      "before": {
+        "hidden": true,
+        "ownerOpacity": 0.25,
+        "classes": [
+          "action-style"
+        ],
+        "applied": {
+          "w": {
+            "classList": [
+              "action-style"
+            ],
+            "style": {
+              "fill": "red",
+              "opacity": 0.25
+            }
+          }
+        }
+      },
+      "after": {
+        "hidden": true,
+        "ownerOpacity": 0.25,
+        "classes": [],
+        "applied": {}
+      },
+      "trace": [
+        {
+          "kind": "reselect-sink"
+        },
+        {
+          "kind": "clear-geometry-sink"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w",
+          "name": "action-style"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_div",
+          "name": "action-style"
+        },
+        {
+          "kind": "clear-corner-classes-sink"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_text",
+          "name": "action-style"
+        },
+        {
+          "kind": "remove-class",
+          "id": "w_input",
+          "name": "action-style"
+        },
+        {
+          "kind": "view-class",
+          "name": "mobile"
+        },
+        {
+          "kind": "updatePercentPanelCache"
+        },
+        {
+          "kind": "refresh-repeaters"
+        },
+        {
+          "kind": "updateAllLayerSizeCaches"
+        },
+        {
+          "kind": "updateParentsOfNonDefaultFitPanels"
+        },
+        {
+          "kind": "remeasure-sink"
+        },
+        {
+          "kind": "viewChanged"
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "name": "action-hide-then-base-to-visible-mobile",
+      "nativeHidden": false,
+      "product": {
+        "hidden": true,
+        "opacity": 0.25,
+        "fill": "#ff0000"
+      },
+      "overrides": {
+        "hidden": true,
+        "style": {
+          "fill": "#ff0000",
+          "stroke": "#b8bdc7",
+          "strokeWidth": 1,
+          "radius": 0,
+          "color": "#263348",
+          "fontSize": 14,
+          "fontFamily": "Arial",
+          "fontWeight": 400,
+          "textAlign": "center",
+          "opacity": 0.25,
+          "textPadding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "verticalAlign": "top"
+        }
+      }
+    },
+    {
+      "name": "action-show-then-return-to-hidden-base",
+      "nativeHidden": true,
+      "product": {
+        "hidden": false,
+        "opacity": 0.25,
+        "fill": "#ff0000"
+      },
+      "overrides": {
+        "hidden": false,
+        "style": {
+          "fill": "#ff0000",
+          "stroke": "#b8bdc7",
+          "strokeWidth": 1,
+          "radius": 0,
+          "color": "#263348",
+          "fontSize": 14,
+          "fontFamily": "Arial",
+          "fontWeight": 400,
+          "textAlign": "center",
+          "opacity": 0.25,
+          "textPadding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "verticalAlign": "top"
+        }
+      }
+    },
+    {
+      "name": "action-show-then-switch-to-hidden-mobile",
+      "nativeHidden": true,
+      "product": {
+        "hidden": false,
+        "opacity": 0.25,
+        "fill": "#ff0000"
+      },
+      "overrides": {
+        "hidden": false,
+        "style": {
+          "fill": "#ff0000",
+          "stroke": "#b8bdc7",
+          "strokeWidth": 1,
+          "radius": 0,
+          "color": "#263348",
+          "fontSize": 14,
+          "fontFamily": "Arial",
+          "fontWeight": 400,
+          "textAlign": "center",
+          "opacity": 0.25,
+          "textPadding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "verticalAlign": "top"
+        }
+      }
+    }
+  ],
+  "boundaries": [
+    "Single normal-state ordinary shape, plus one isContained exclusion control.",
+    "Visibility decision is actual retained code; _setWidgetVisibility is a recording sink, so Show/Hide event dispatch is not inferred.",
+    "Applied-style class removals and dictionary clearing are exact; SVG repaint, text-cache restoration, selected/disabled style recomputation and full CSS cascade are not replayed.",
+    "Opacity reset proves removal of inline action value, not a particular final stylesheet opacity.",
+    "Repeaters, masters, submenu and panel branches require their own cases before generalizing."
+  ]
+}

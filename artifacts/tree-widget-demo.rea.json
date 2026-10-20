@@ -1,0 +1,1475 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "tree-widget-doc",
+  "name": "Tree widgets · hierarchy and interactions",
+  "pages": [
+    {
+      "id": "tree-widget-page",
+      "name": "Trees",
+      "width": 1120,
+      "height": 1180,
+      "background": "#f7f8fc",
+      "widgets": [
+        {
+          "id": "tree-heading",
+          "type": "text",
+          "name": "tree-heading",
+          "text": "A hierarchy with independent node actions",
+          "notes": "",
+          "x": 44,
+          "y": 30,
+          "rotation": 0,
+          "width": 1000,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 28,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "tree-caption",
+          "type": "text",
+          "name": "tree-caption",
+          "text": "Click labels to select. Expand icons reveal descendants without running node click actions.",
+          "notes": "",
+          "x": 44,
+          "y": 90,
+          "rotation": 0,
+          "width": 1000,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "tree-main",
+          "type": "tree",
+          "name": "Project browser",
+          "text": "",
+          "notes": "",
+          "x": 44,
+          "y": 150,
+          "rotation": 0,
+          "width": 250,
+          "height": 224,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff00",
+            "stroke": "#797979",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "verticalAlign": "middle",
+            "lineHeight": "normal",
+            "color": "#333333",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "fontStyle": "normal",
+            "underline": false,
+            "strikethrough": false,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [],
+          "tree": {
+            "nodes": [
+              {
+                "id": "tree-workspace",
+                "type": "treeNode",
+                "name": "Workspace",
+                "text": "",
+                "notes": "",
+                "x": 0,
+                "y": 0,
+                "rotation": 0,
+                "width": 210,
+                "height": 32,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff00",
+                  "stroke": "#797979",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "textPadding": [
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "verticalAlign": "middle",
+                  "lineHeight": "normal",
+                  "color": "#333333",
+                  "fontSize": 13,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "fontStyle": "normal",
+                  "underline": false,
+                  "strikethrough": false,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "tw-case-11",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "tw-action-12",
+                        "type": "setText",
+                        "targetId": "tree-status",
+                        "value": "Opened Workspace"
+                      }
+                    ]
+                  }
+                ],
+                "treeNode": {
+                  "label": {
+                    "id": "tree-workspace-label",
+                    "type": "text",
+                    "name": "Workspace label",
+                    "text": "Workspace",
+                    "notes": "",
+                    "x": 22,
+                    "y": 0,
+                    "rotation": 0,
+                    "width": 188,
+                    "height": 32,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "#ffffff00",
+                      "stroke": "#797979",
+                      "strokeWidth": 0,
+                      "radius": 0,
+                      "textPadding": [
+                        6,
+                        8,
+                        6,
+                        4
+                      ],
+                      "verticalAlign": "middle",
+                      "lineHeight": "normal",
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "fontStyle": "normal",
+                      "underline": false,
+                      "strikethrough": false,
+                      "textAlign": "left",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "selectedStyle": {
+                      "fill": "#e0e7ff",
+                      "color": "#3730a3"
+                    }
+                  },
+                  "children": [
+                    {
+                      "id": "tree-pages",
+                      "type": "treeNode",
+                      "name": "Pages",
+                      "text": "",
+                      "notes": "",
+                      "x": 20,
+                      "y": 32,
+                      "rotation": 0,
+                      "width": 210,
+                      "height": 32,
+                      "hidden": false,
+                      "locked": false,
+                      "disabled": false,
+                      "style": {
+                        "fill": "#ffffff00",
+                        "stroke": "#797979",
+                        "strokeWidth": 0,
+                        "radius": 0,
+                        "textPadding": [
+                          2,
+                          2,
+                          2,
+                          2
+                        ],
+                        "verticalAlign": "middle",
+                        "lineHeight": "normal",
+                        "color": "#333333",
+                        "fontSize": 13,
+                        "fontFamily": "Arial",
+                        "fontWeight": 400,
+                        "fontStyle": "normal",
+                        "underline": false,
+                        "strikethrough": false,
+                        "textAlign": "left",
+                        "opacity": 1
+                      },
+                      "interactions": [
+                        {
+                          "id": "tw-case-5",
+                          "event": "click",
+                          "name": "click",
+                          "enabled": true,
+                          "conditions": [],
+                          "conditionMode": "all",
+                          "actions": [
+                            {
+                              "id": "tw-action-6",
+                              "type": "setText",
+                              "targetId": "tree-status",
+                              "value": "Opened Pages"
+                            }
+                          ]
+                        }
+                      ],
+                      "treeNode": {
+                        "label": {
+                          "id": "tree-pages-label",
+                          "type": "text",
+                          "name": "Pages label",
+                          "text": "Pages",
+                          "notes": "",
+                          "x": 22,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 188,
+                          "height": 32,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff00",
+                            "stroke": "#797979",
+                            "strokeWidth": 0,
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              8,
+                              6,
+                              4
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "selectedStyle": {
+                            "fill": "#e0e7ff",
+                            "color": "#3730a3"
+                          }
+                        },
+                        "children": [
+                          {
+                            "id": "tree-home",
+                            "type": "treeNode",
+                            "name": "Home page",
+                            "text": "",
+                            "notes": "",
+                            "x": 20,
+                            "y": 32,
+                            "rotation": 0,
+                            "width": 210,
+                            "height": 32,
+                            "hidden": false,
+                            "locked": false,
+                            "disabled": false,
+                            "style": {
+                              "fill": "#ffffff00",
+                              "stroke": "#797979",
+                              "strokeWidth": 0,
+                              "radius": 0,
+                              "textPadding": [
+                                2,
+                                2,
+                                2,
+                                2
+                              ],
+                              "verticalAlign": "middle",
+                              "lineHeight": "normal",
+                              "color": "#333333",
+                              "fontSize": 13,
+                              "fontFamily": "Arial",
+                              "fontWeight": 400,
+                              "fontStyle": "normal",
+                              "underline": false,
+                              "strikethrough": false,
+                              "textAlign": "left",
+                              "opacity": 1
+                            },
+                            "interactions": [
+                              {
+                                "id": "tw-case-1",
+                                "event": "click",
+                                "name": "click",
+                                "enabled": true,
+                                "conditions": [],
+                                "conditionMode": "all",
+                                "actions": [
+                                  {
+                                    "id": "tw-action-2",
+                                    "type": "setText",
+                                    "targetId": "tree-status",
+                                    "value": "Opened Home page"
+                                  }
+                                ]
+                              }
+                            ],
+                            "treeNode": {
+                              "label": {
+                                "id": "tree-home-label",
+                                "type": "text",
+                                "name": "Home page label",
+                                "text": "Home page",
+                                "notes": "",
+                                "x": 22,
+                                "y": 0,
+                                "rotation": 0,
+                                "width": 188,
+                                "height": 32,
+                                "hidden": false,
+                                "locked": false,
+                                "disabled": false,
+                                "style": {
+                                  "fill": "#ffffff00",
+                                  "stroke": "#797979",
+                                  "strokeWidth": 0,
+                                  "radius": 0,
+                                  "textPadding": [
+                                    6,
+                                    8,
+                                    6,
+                                    4
+                                  ],
+                                  "verticalAlign": "middle",
+                                  "lineHeight": "normal",
+                                  "color": "#263348",
+                                  "fontSize": 14,
+                                  "fontFamily": "Arial",
+                                  "fontWeight": 400,
+                                  "fontStyle": "normal",
+                                  "underline": false,
+                                  "strikethrough": false,
+                                  "textAlign": "left",
+                                  "opacity": 1
+                                },
+                                "interactions": [],
+                                "selectedStyle": {
+                                  "fill": "#e0e7ff",
+                                  "color": "#3730a3"
+                                }
+                              },
+                              "children": [],
+                              "expanded": true
+                            }
+                          },
+                          {
+                            "id": "tree-settings",
+                            "type": "treeNode",
+                            "name": "Settings page",
+                            "text": "",
+                            "notes": "",
+                            "x": 20,
+                            "y": 64,
+                            "rotation": 0,
+                            "width": 210,
+                            "height": 32,
+                            "hidden": false,
+                            "locked": false,
+                            "disabled": false,
+                            "style": {
+                              "fill": "#ffffff00",
+                              "stroke": "#797979",
+                              "strokeWidth": 0,
+                              "radius": 0,
+                              "textPadding": [
+                                2,
+                                2,
+                                2,
+                                2
+                              ],
+                              "verticalAlign": "middle",
+                              "lineHeight": "normal",
+                              "color": "#333333",
+                              "fontSize": 13,
+                              "fontFamily": "Arial",
+                              "fontWeight": 400,
+                              "fontStyle": "normal",
+                              "underline": false,
+                              "strikethrough": false,
+                              "textAlign": "left",
+                              "opacity": 1
+                            },
+                            "interactions": [
+                              {
+                                "id": "tw-case-3",
+                                "event": "click",
+                                "name": "click",
+                                "enabled": true,
+                                "conditions": [],
+                                "conditionMode": "all",
+                                "actions": [
+                                  {
+                                    "id": "tw-action-4",
+                                    "type": "setText",
+                                    "targetId": "tree-status",
+                                    "value": "Opened Settings page"
+                                  }
+                                ]
+                              }
+                            ],
+                            "treeNode": {
+                              "label": {
+                                "id": "tree-settings-label",
+                                "type": "text",
+                                "name": "Settings page label",
+                                "text": "Settings page",
+                                "notes": "",
+                                "x": 22,
+                                "y": 0,
+                                "rotation": 0,
+                                "width": 188,
+                                "height": 32,
+                                "hidden": false,
+                                "locked": false,
+                                "disabled": false,
+                                "style": {
+                                  "fill": "#ffffff00",
+                                  "stroke": "#797979",
+                                  "strokeWidth": 0,
+                                  "radius": 0,
+                                  "textPadding": [
+                                    6,
+                                    8,
+                                    6,
+                                    4
+                                  ],
+                                  "verticalAlign": "middle",
+                                  "lineHeight": "normal",
+                                  "color": "#263348",
+                                  "fontSize": 14,
+                                  "fontFamily": "Arial",
+                                  "fontWeight": 400,
+                                  "fontStyle": "normal",
+                                  "underline": false,
+                                  "strikethrough": false,
+                                  "textAlign": "left",
+                                  "opacity": 1
+                                },
+                                "interactions": [],
+                                "selectedStyle": {
+                                  "fill": "#e0e7ff",
+                                  "color": "#3730a3"
+                                }
+                              },
+                              "children": [],
+                              "expanded": true
+                            }
+                          }
+                        ],
+                        "expanded": true
+                      }
+                    },
+                    {
+                      "id": "tree-assets",
+                      "type": "treeNode",
+                      "name": "Assets",
+                      "text": "",
+                      "notes": "",
+                      "x": 20,
+                      "y": 128,
+                      "rotation": 0,
+                      "width": 210,
+                      "height": 32,
+                      "hidden": false,
+                      "locked": false,
+                      "disabled": false,
+                      "style": {
+                        "fill": "#ffffff00",
+                        "stroke": "#797979",
+                        "strokeWidth": 0,
+                        "radius": 0,
+                        "textPadding": [
+                          2,
+                          2,
+                          2,
+                          2
+                        ],
+                        "verticalAlign": "middle",
+                        "lineHeight": "normal",
+                        "color": "#333333",
+                        "fontSize": 13,
+                        "fontFamily": "Arial",
+                        "fontWeight": 400,
+                        "fontStyle": "normal",
+                        "underline": false,
+                        "strikethrough": false,
+                        "textAlign": "left",
+                        "opacity": 1
+                      },
+                      "interactions": [
+                        {
+                          "id": "tw-case-7",
+                          "event": "click",
+                          "name": "click",
+                          "enabled": true,
+                          "conditions": [],
+                          "conditionMode": "all",
+                          "actions": [
+                            {
+                              "id": "tw-action-8",
+                              "type": "setText",
+                              "targetId": "tree-status",
+                              "value": "Opened Assets"
+                            }
+                          ]
+                        }
+                      ],
+                      "treeNode": {
+                        "label": {
+                          "id": "tree-assets-label",
+                          "type": "text",
+                          "name": "Assets label",
+                          "text": "Assets",
+                          "notes": "",
+                          "x": 22,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 188,
+                          "height": 32,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff00",
+                            "stroke": "#797979",
+                            "strokeWidth": 0,
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              8,
+                              6,
+                              4
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "selectedStyle": {
+                            "fill": "#e0e7ff",
+                            "color": "#3730a3"
+                          }
+                        },
+                        "children": [],
+                        "expanded": true
+                      }
+                    },
+                    {
+                      "id": "tree-guides",
+                      "type": "treeNode",
+                      "name": "Guides",
+                      "text": "",
+                      "notes": "",
+                      "x": 20,
+                      "y": 160,
+                      "rotation": 0,
+                      "width": 210,
+                      "height": 32,
+                      "hidden": false,
+                      "locked": false,
+                      "disabled": false,
+                      "style": {
+                        "fill": "#ffffff00",
+                        "stroke": "#797979",
+                        "strokeWidth": 0,
+                        "radius": 0,
+                        "textPadding": [
+                          2,
+                          2,
+                          2,
+                          2
+                        ],
+                        "verticalAlign": "middle",
+                        "lineHeight": "normal",
+                        "color": "#333333",
+                        "fontSize": 13,
+                        "fontFamily": "Arial",
+                        "fontWeight": 400,
+                        "fontStyle": "normal",
+                        "underline": false,
+                        "strikethrough": false,
+                        "textAlign": "left",
+                        "opacity": 1
+                      },
+                      "interactions": [
+                        {
+                          "id": "tw-case-9",
+                          "event": "click",
+                          "name": "click",
+                          "enabled": true,
+                          "conditions": [],
+                          "conditionMode": "all",
+                          "actions": [
+                            {
+                              "id": "tw-action-10",
+                              "type": "setText",
+                              "targetId": "tree-status",
+                              "value": "Opened Guides"
+                            }
+                          ]
+                        }
+                      ],
+                      "treeNode": {
+                        "label": {
+                          "id": "tree-guides-label",
+                          "type": "text",
+                          "name": "Guides label",
+                          "text": "Guides",
+                          "notes": "",
+                          "x": 22,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 188,
+                          "height": 32,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff00",
+                            "stroke": "#797979",
+                            "strokeWidth": 0,
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              8,
+                              6,
+                              4
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "selectedStyle": {
+                            "fill": "#e0e7ff",
+                            "color": "#3730a3"
+                          }
+                        },
+                        "children": [],
+                        "expanded": true
+                      }
+                    }
+                  ],
+                  "expanded": true
+                }
+              },
+              {
+                "id": "tree-archive",
+                "type": "treeNode",
+                "name": "Archive",
+                "text": "",
+                "notes": "",
+                "x": 0,
+                "y": 192,
+                "rotation": 0,
+                "width": 210,
+                "height": 32,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff00",
+                  "stroke": "#797979",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "textPadding": [
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "verticalAlign": "middle",
+                  "lineHeight": "normal",
+                  "color": "#333333",
+                  "fontSize": 13,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "fontStyle": "normal",
+                  "underline": false,
+                  "strikethrough": false,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "tw-case-13",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "tw-action-14",
+                        "type": "setText",
+                        "targetId": "tree-status",
+                        "value": "Opened Archive"
+                      }
+                    ]
+                  }
+                ],
+                "treeNode": {
+                  "label": {
+                    "id": "tree-archive-label",
+                    "type": "text",
+                    "name": "Archive label",
+                    "text": "Archive",
+                    "notes": "",
+                    "x": 22,
+                    "y": 0,
+                    "rotation": 0,
+                    "width": 188,
+                    "height": 32,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "#ffffff00",
+                      "stroke": "#797979",
+                      "strokeWidth": 0,
+                      "radius": 0,
+                      "textPadding": [
+                        6,
+                        8,
+                        6,
+                        4
+                      ],
+                      "verticalAlign": "middle",
+                      "lineHeight": "normal",
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "fontStyle": "normal",
+                      "underline": false,
+                      "strikethrough": false,
+                      "textAlign": "left",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "selectedStyle": {
+                      "fill": "#e0e7ff",
+                      "color": "#3730a3"
+                    }
+                  },
+                  "children": [],
+                  "expanded": true
+                }
+              }
+            ],
+            "indent": 20,
+            "showExpandIcons": true,
+            "showIcons": false,
+            "iconStyle": "triangle"
+          }
+        },
+        {
+          "id": "tree-status",
+          "type": "text",
+          "name": "tree-status",
+          "text": "Ready — choose a node or use an expand icon.",
+          "notes": "",
+          "x": 400,
+          "y": 150,
+          "rotation": 0,
+          "width": 650,
+          "height": 200,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#eeedff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              18,
+              18,
+              18,
+              18
+            ],
+            "color": "#263348",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "tree-collapse",
+          "type": "button",
+          "name": "Collapse Workspace",
+          "text": "Collapse Workspace",
+          "notes": "",
+          "x": 400,
+          "y": 374,
+          "rotation": 0,
+          "width": 204,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "tw-case-15",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "tw-action-16",
+                  "type": "collapseTreeNode",
+                  "targetId": "tree-workspace"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tree-expand",
+          "type": "button",
+          "name": "Expand Workspace",
+          "text": "Expand Workspace",
+          "notes": "",
+          "x": 628,
+          "y": 374,
+          "rotation": 0,
+          "width": 204,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "tw-case-17",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "tw-action-18",
+                  "type": "expandTreeNode",
+                  "targetId": "tree-workspace"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tree-toggle",
+          "type": "button",
+          "name": "Toggle Pages",
+          "text": "Toggle Pages",
+          "notes": "",
+          "x": 400,
+          "y": 432,
+          "rotation": 0,
+          "width": 204,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "tw-case-19",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "tw-action-20",
+                  "type": "toggleTreeNode",
+                  "targetId": "tree-pages"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tree-read",
+          "type": "button",
+          "name": "Read all tree text",
+          "text": "Read all tree text",
+          "notes": "",
+          "x": 628,
+          "y": 432,
+          "rotation": 0,
+          "width": 204,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "tw-case-21",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "tw-action-22",
+                  "type": "setText",
+                  "targetId": "tree-status",
+                  "value": "[[Widget.tree-workspace.text]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tree-note",
+          "type": "text",
+          "name": "tree-note",
+          "text": "Collapse a branch, then read its text: hidden descendants are included.",
+          "notes": "",
+          "x": 400,
+          "y": 500,
+          "rotation": 0,
+          "width": 630,
+          "height": 70,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "tree-row-heading",
+          "type": "text",
+          "name": "tree-row-heading",
+          "text": "The same tree in two independent data rows",
+          "notes": "",
+          "x": 44,
+          "y": 650,
+          "rotation": 0,
+          "width": 1000,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 22,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "tree-repeater",
+          "type": "repeater",
+          "name": "Independent repeated trees",
+          "text": "",
+          "notes": "",
+          "x": 44,
+          "y": 718,
+          "rotation": 0,
+          "width": 980,
+          "height": 216,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "Alpha"
+              },
+              {
+                "Name": "Beta"
+              }
+            ],
+            "template": [
+              {
+                "id": "tree-row",
+                "type": "tree",
+                "name": "Tree",
+                "text": "",
+                "notes": "",
+                "x": 0,
+                "y": 0,
+                "rotation": 0,
+                "width": 230,
+                "height": 64,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff00",
+                  "stroke": "#797979",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "textPadding": [
+                    2,
+                    2,
+                    2,
+                    2
+                  ],
+                  "verticalAlign": "middle",
+                  "lineHeight": "normal",
+                  "color": "#333333",
+                  "fontSize": 13,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "fontStyle": "normal",
+                  "underline": false,
+                  "strikethrough": false,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": [],
+                "tree": {
+                  "nodes": [
+                    {
+                      "id": "tree-row-parent",
+                      "type": "treeNode",
+                      "name": "[[Item.Name]]",
+                      "text": "",
+                      "notes": "",
+                      "x": 0,
+                      "y": 0,
+                      "rotation": 0,
+                      "width": 210,
+                      "height": 32,
+                      "hidden": false,
+                      "locked": false,
+                      "disabled": false,
+                      "style": {
+                        "fill": "#ffffff00",
+                        "stroke": "#797979",
+                        "strokeWidth": 0,
+                        "radius": 0,
+                        "textPadding": [
+                          2,
+                          2,
+                          2,
+                          2
+                        ],
+                        "verticalAlign": "middle",
+                        "lineHeight": "normal",
+                        "color": "#333333",
+                        "fontSize": 13,
+                        "fontFamily": "Arial",
+                        "fontWeight": 400,
+                        "fontStyle": "normal",
+                        "underline": false,
+                        "strikethrough": false,
+                        "textAlign": "left",
+                        "opacity": 1
+                      },
+                      "interactions": [
+                        {
+                          "id": "tw-case-25",
+                          "event": "click",
+                          "name": "click",
+                          "enabled": true,
+                          "conditions": [],
+                          "conditionMode": "all",
+                          "actions": [
+                            {
+                              "id": "tw-action-26",
+                              "type": "setText",
+                              "targetId": "tree-status",
+                              "value": "Opened [[Item.Name]]"
+                            }
+                          ]
+                        }
+                      ],
+                      "treeNode": {
+                        "label": {
+                          "id": "tree-row-parent-label",
+                          "type": "text",
+                          "name": "[[Item.Name]] label",
+                          "text": "[[Item.Name]]",
+                          "notes": "",
+                          "x": 22,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 188,
+                          "height": 32,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff00",
+                            "stroke": "#797979",
+                            "strokeWidth": 0,
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              8,
+                              6,
+                              4
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "selectedStyle": {
+                            "fill": "#e0e7ff",
+                            "color": "#3730a3"
+                          }
+                        },
+                        "children": [
+                          {
+                            "id": "tree-row-child",
+                            "type": "treeNode",
+                            "name": "Details",
+                            "text": "",
+                            "notes": "",
+                            "x": 20,
+                            "y": 32,
+                            "rotation": 0,
+                            "width": 210,
+                            "height": 32,
+                            "hidden": false,
+                            "locked": false,
+                            "disabled": false,
+                            "style": {
+                              "fill": "#ffffff00",
+                              "stroke": "#797979",
+                              "strokeWidth": 0,
+                              "radius": 0,
+                              "textPadding": [
+                                2,
+                                2,
+                                2,
+                                2
+                              ],
+                              "verticalAlign": "middle",
+                              "lineHeight": "normal",
+                              "color": "#333333",
+                              "fontSize": 13,
+                              "fontFamily": "Arial",
+                              "fontWeight": 400,
+                              "fontStyle": "normal",
+                              "underline": false,
+                              "strikethrough": false,
+                              "textAlign": "left",
+                              "opacity": 1
+                            },
+                            "interactions": [
+                              {
+                                "id": "tw-case-27",
+                                "event": "click",
+                                "name": "click",
+                                "enabled": true,
+                                "conditions": [],
+                                "conditionMode": "all",
+                                "actions": [
+                                  {
+                                    "id": "tw-action-28",
+                                    "type": "setText",
+                                    "targetId": "tree-row-result",
+                                    "value": "Opened [[Item.Name]] details"
+                                  }
+                                ]
+                              }
+                            ],
+                            "treeNode": {
+                              "label": {
+                                "id": "tree-row-child-label",
+                                "type": "text",
+                                "name": "Details label",
+                                "text": "Details",
+                                "notes": "",
+                                "x": 22,
+                                "y": 0,
+                                "rotation": 0,
+                                "width": 188,
+                                "height": 32,
+                                "hidden": false,
+                                "locked": false,
+                                "disabled": false,
+                                "style": {
+                                  "fill": "#ffffff00",
+                                  "stroke": "#797979",
+                                  "strokeWidth": 0,
+                                  "radius": 0,
+                                  "textPadding": [
+                                    6,
+                                    8,
+                                    6,
+                                    4
+                                  ],
+                                  "verticalAlign": "middle",
+                                  "lineHeight": "normal",
+                                  "color": "#263348",
+                                  "fontSize": 14,
+                                  "fontFamily": "Arial",
+                                  "fontWeight": 400,
+                                  "fontStyle": "normal",
+                                  "underline": false,
+                                  "strikethrough": false,
+                                  "textAlign": "left",
+                                  "opacity": 1
+                                },
+                                "interactions": [],
+                                "selectedStyle": {
+                                  "fill": "#e0e7ff",
+                                  "color": "#3730a3"
+                                }
+                              },
+                              "children": [],
+                              "expanded": true
+                            }
+                          }
+                        ],
+                        "expanded": true
+                      }
+                    }
+                  ],
+                  "indent": 20,
+                  "showExpandIcons": true,
+                  "showIcons": false,
+                  "iconStyle": "triangle"
+                }
+              },
+              {
+                "id": "tree-row-result",
+                "type": "text",
+                "name": "tree-row-result",
+                "text": "No row action yet",
+                "notes": "",
+                "x": 310,
+                "y": 0,
+                "rotation": 0,
+                "width": 560,
+                "height": 34,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": []
+              }
+            ],
+            "itemHeight": 100,
+            "gap": 16,
+            "itemWidth": 980,
+            "layout": "vertical",
+            "fitToContent": false
+          }
+        },
+        {
+          "id": "tree-footer",
+          "type": "text",
+          "name": "tree-footer",
+          "text": "Tree node contents and styling are shared across adaptive views.",
+          "notes": "",
+          "x": 44,
+          "y": 1000,
+          "rotation": 0,
+          "width": 1000,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

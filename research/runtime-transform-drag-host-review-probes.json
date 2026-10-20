@@ -1,0 +1,468 @@
+{
+  "capturedAt": "2026-10-20T05:52:39.853Z",
+  "kind": "Independent current-product bridge + exact extracted current host subscribe callbacks + current core runtime; Node event surface, not browser",
+  "sourcesBefore": [
+    {
+      "path": "src/runtime/drag-input.ts",
+      "sha256": "41f8088036694bc99a2f4b0b27a078e63cf90af576341025ec09b4fe09e64767"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "86772c6fae80365c7178141ccdd0e990176ab9843b63ffd1a43c73eeed8ce4c5"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "5c1dbbf0b21762b9e3eb3878129b3df01d156c134cc72a3f66b68c10e99dba18"
+    }
+  ],
+  "sourcesAfter": [
+    {
+      "path": "src/runtime/drag-input.ts",
+      "sha256": "41f8088036694bc99a2f4b0b27a078e63cf90af576341025ec09b4fe09e64767"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "86772c6fae80365c7178141ccdd0e990176ab9843b63ffd1a43c73eeed8ce4c5"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "8d8f318ebab90d39c67428037879516362e45072e2b33fd5e4c138f7c3d348ca"
+    }
+  ],
+  "sourceDrift": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "5c1dbbf0b21762b9e3eb3878129b3df01d156c134cc72a3f66b68c10e99dba18"
+    }
+  ],
+  "hookSources": [
+    {
+      "path": "src/components/Preview.tsx",
+      "text": "    session.subscribe(()=>{if(drag.hasActiveDrag()&&!session.state().motionState?.drag?.started)drag.cancel();setRuntime(structuredClone(session.state()))});",
+      "sha256": "f68740de27d670cbf256ed773fedf1fb93971ea105e8f2fe8c2f0292ce66f40d"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "text": "  const schedule = () => { if (drag?.hasActiveDrag() && !runtime.state().motionState?.drag?.started) drag.cancel(); if (!renderPending) { renderPending = true; queueMicrotask(safeRender); } };",
+      "sha256": "5edf40a42e62dee36d41e23d9af31f07d289e63a6119b2efddddb521ac7190db"
+    }
+  ],
+  "script": {
+    "path": "research/runtime-transform-drag-host-review-probe.mjs",
+    "sha256": "32492a72fb46ba057cf3da0c649445e301faaa02ed62e198f4c33da3af30b8f1"
+  },
+  "summary": {
+    "total": 20,
+    "passed": 16,
+    "failed": 4
+  },
+  "results": [
+    {
+      "name": "preview/module completed drag keeps click suppression through idle notify",
+      "passed": true,
+      "observed": {
+        "beforeClick": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "click",
+            "mousemove",
+            "touchcancel"
+          ],
+          "pageId": "d93dccf6-452f-4344-8598-7f47af8af208",
+          "errors": []
+        },
+        "clickPrevented": true,
+        "after": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "d93dccf6-452f-4344-8598-7f47af8af208",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "preview/module page navigation cancels active bridge and permits next source",
+      "passed": true,
+      "observed": {
+        "navigated": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "f8e0227b-2261-4164-b304-273a082e37d1",
+          "errors": []
+        },
+        "nextStarted": {
+          "active": true,
+          "runtimeStarted": true,
+          "cursor": "auto",
+          "listeners": [
+            "mousemove",
+            "mouseup",
+            "touchcancel"
+          ],
+          "pageId": "f8e0227b-2261-4164-b304-273a082e37d1",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "preview/module row removal cancels active bridge without Drop",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:51:416\n    at async check (file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:45:75)\n    at async file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:51:3"
+    },
+    {
+      "name": "preview/module touch cancel removes touch listeners and restores cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "871fc945-0589-46b4-b460-b80d3e27b9a1",
+        "errors": []
+      }
+    },
+    {
+      "name": "preview/module detached source during Drop does not leak cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "click",
+          "mousemove",
+          "touchcancel"
+        ],
+        "pageId": "7f7f3ae4-844b-430f-ae61-e82310f89dca",
+        "errors": []
+      }
+    },
+    {
+      "name": "preview/serialized completed drag keeps click suppression through idle notify",
+      "passed": true,
+      "observed": {
+        "beforeClick": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "click",
+            "mousemove",
+            "touchcancel"
+          ],
+          "pageId": "07398ff8-b19f-4db1-865d-c23302e26fc1",
+          "errors": []
+        },
+        "clickPrevented": true,
+        "after": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "07398ff8-b19f-4db1-865d-c23302e26fc1",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "preview/serialized page navigation cancels active bridge and permits next source",
+      "passed": true,
+      "observed": {
+        "navigated": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "db6f300a-482c-4ce7-999d-50cada16cbaf",
+          "errors": []
+        },
+        "nextStarted": {
+          "active": true,
+          "runtimeStarted": true,
+          "cursor": "auto",
+          "listeners": [
+            "mousemove",
+            "mouseup",
+            "touchcancel"
+          ],
+          "pageId": "db6f300a-482c-4ce7-999d-50cada16cbaf",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "preview/serialized row removal cancels active bridge without Drop",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:51:416\n    at async check (file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:45:75)\n    at async file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:51:3"
+    },
+    {
+      "name": "preview/serialized touch cancel removes touch listeners and restores cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "4cb0486e-db83-4648-a5af-da5729c8f6af",
+        "errors": []
+      }
+    },
+    {
+      "name": "preview/serialized detached source during Drop does not leak cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "click",
+          "mousemove",
+          "touchcancel"
+        ],
+        "pageId": "104dc0ec-fd39-4e7c-9408-8d44bf976915",
+        "errors": []
+      }
+    },
+    {
+      "name": "offline/module completed drag keeps click suppression through idle notify",
+      "passed": true,
+      "observed": {
+        "beforeClick": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "click",
+            "mousemove",
+            "touchcancel"
+          ],
+          "pageId": "8fd4811d-8959-46cf-9bf6-744bbc92e393",
+          "errors": []
+        },
+        "clickPrevented": true,
+        "after": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "8fd4811d-8959-46cf-9bf6-744bbc92e393",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "offline/module page navigation cancels active bridge and permits next source",
+      "passed": true,
+      "observed": {
+        "navigated": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "e286948d-c550-46c2-86bf-aa98796a3abe",
+          "errors": []
+        },
+        "nextStarted": {
+          "active": true,
+          "runtimeStarted": true,
+          "cursor": "auto",
+          "listeners": [
+            "mousemove",
+            "mouseup",
+            "touchcancel"
+          ],
+          "pageId": "e286948d-c550-46c2-86bf-aa98796a3abe",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "offline/module row removal cancels active bridge without Drop",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:51:416\n    at async check (file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:45:75)\n    at async file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:51:3"
+    },
+    {
+      "name": "offline/module touch cancel removes touch listeners and restores cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "dc2a8a3f-c491-4cb6-a099-a00f761f6335",
+        "errors": []
+      }
+    },
+    {
+      "name": "offline/module detached source during Drop does not leak cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "click",
+          "mousemove",
+          "touchcancel"
+        ],
+        "pageId": "3b8f2f0c-a187-423b-8cb3-580b262fc5ce",
+        "errors": []
+      }
+    },
+    {
+      "name": "offline/serialized completed drag keeps click suppression through idle notify",
+      "passed": true,
+      "observed": {
+        "beforeClick": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "click",
+            "mousemove",
+            "touchcancel"
+          ],
+          "pageId": "28317493-e8ff-43aa-a3ab-18042562a008",
+          "errors": []
+        },
+        "clickPrevented": true,
+        "after": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "28317493-e8ff-43aa-a3ab-18042562a008",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "offline/serialized page navigation cancels active bridge and permits next source",
+      "passed": true,
+      "observed": {
+        "navigated": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "38ce6627-8873-4e6c-bc05-3edd4977842d",
+          "errors": []
+        },
+        "nextStarted": {
+          "active": true,
+          "runtimeStarted": true,
+          "cursor": "auto",
+          "listeners": [
+            "mousemove",
+            "mouseup",
+            "touchcancel"
+          ],
+          "pageId": "38ce6627-8873-4e6c-bc05-3edd4977842d",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "offline/serialized row removal cancels active bridge without Drop",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:51:416\n    at async check (file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:45:75)\n    at async file:///D:/WSCodex/REA/research/runtime-transform-drag-host-review-probe.mjs:51:3"
+    },
+    {
+      "name": "offline/serialized touch cancel removes touch listeners and restores cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "4bf6e5ff-e047-4eb7-8649-2241c82a7d27",
+        "errors": []
+      }
+    },
+    {
+      "name": "offline/serialized detached source during Drop does not leak cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "click",
+          "mousemove",
+          "touchcancel"
+        ],
+        "pageId": "e1dee02b-bd9c-4c10-95ea-203aa9110dfb",
+        "errors": []
+      }
+    }
+  ],
+  "boundaries": [
+    {
+      "host": "preview",
+      "name": "controlled persisted pagehide/pageshow",
+      "afterHide": {
+        "active": true,
+        "runtimeStarted": true,
+        "cursor": "move",
+        "listeners": [
+          "mousemove",
+          "mouseup",
+          "touchcancel"
+        ],
+        "pageId": "b39cdcc1-8e21-4068-8fcc-77102c91446d",
+        "errors": []
+      },
+      "canStartAfterShow": false,
+      "interpretation": "No pagehide listener: active bridge remains without unmount/blur."
+    },
+    {
+      "host": "offline",
+      "name": "controlled persisted pagehide/pageshow",
+      "afterHide": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [],
+        "pageId": "16d6f199-5c6c-4ddd-861a-475d6f4defd5",
+        "errors": []
+      },
+      "canStartAfterShow": false,
+      "interpretation": "Mount disposes controller permanently on pagehide; pageshow does not recreate it. Browser BFCache eligibility was not exercised."
+    }
+  ],
+  "limitations": [
+    "DOM event dispatch and cursor style are controlled surfaces; no browser click/touch ordering/BFCache eligibility proof.",
+    "Both current host subscribe callback expressions execute as read, but React mounting/offline rendering are not executed.",
+    "Core source is being edited independently; whole-file drift is recorded and only reviewed hook hashes are stable assertions."
+  ]
+}

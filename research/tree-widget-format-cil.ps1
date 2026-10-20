@@ -1,0 +1,4 @@
+$dll=(Get-Content research/tree-widget-format-metadata.json -Raw|ConvertFrom-Json).assembly
+# Only static ECMA-335 metadata and CIL; never loads the original assembly.
+& research/scripts/inspect-rp-serialization.ps1 -AssemblyPath $dll -TypeName TreeNodeObject -MethodNames @('get_RootShowPlusMinus','get_ShowPlusMinus','get_ShowIcon','get_RootShowIcon','get_ParentNode','get_RootNode','get_IsTreeRoot','get_IsExpanded','set_IsExpanded','.ctor','WNY7','get_ChildNodesBoundingRectangle','qNY2','xNYh','TNYa','uNYq','MNYd','get_VectorShape','get_ChildNodes','get_AttributedString','NIwY','oIw4','oIwv','TIsm','MIue','GIuC','pIsp','kIs0') > research/tree-widget-format-object-cil.json
+& research/scripts/inspect-rp-serialization.ps1 -AssemblyPath $dll -TypeName wJe6 -MethodNames @('jJeK') > research/tree-widget-format-json-cil.json

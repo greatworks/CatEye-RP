@@ -1,0 +1,1066 @@
+{
+  "capturedAt": "2026-10-20T05:59:21.371Z",
+  "kind": "Independent current module/serialized consumers against frozen exact-source special fixtures; no browser",
+  "sourcesBefore": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "8d8f318ebab90d39c67428037879516362e45072e2b33fd5e4c138f7c3d348ca"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "d6c76c2ab5ad69595ef55f947143e47afbbbee0415845843efac009b5ae9f0b1"
+    },
+    {
+      "path": "tests/runtime-transform-core-special.test.ts",
+      "sha256": "e8af5a0532e3914b10307dd30eb1a1af107905c8c3f789ce987cb3181a201baf"
+    },
+    {
+      "path": "tests/runtime-transform-core-consumers.test.ts",
+      "sha256": "a811c381e167df5234d6e3cd6df9b383953d3fbc69bf4a420b857f599bb0de39"
+    }
+  ],
+  "sourcesAfter": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "8d8f318ebab90d39c67428037879516362e45072e2b33fd5e4c138f7c3d348ca"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "d6c76c2ab5ad69595ef55f947143e47afbbbee0415845843efac009b5ae9f0b1"
+    },
+    {
+      "path": "tests/runtime-transform-core-special.test.ts",
+      "sha256": "e8af5a0532e3914b10307dd30eb1a1af107905c8c3f789ce987cb3181a201baf"
+    },
+    {
+      "path": "tests/runtime-transform-core-consumers.test.ts",
+      "sha256": "a811c381e167df5234d6e3cd6df9b383953d3fbc69bf4a420b857f599bb0de39"
+    }
+  ],
+  "sourceDrift": [],
+  "originalProbe": {
+    "path": "research/runtime-transform-special-final-probes.json",
+    "sha256": "7b3aeca3a038741402a254d129b4ff21a97631450de19d5f1519f5f2b8cb114d"
+  },
+  "script": {
+    "path": "research/runtime-transform-special-integration-review-probe.mjs",
+    "sha256": "653c4fdf7eae8eb732ff5c7fd4c89ee2f6b1d44373260bf3ad61b4a0c876de20"
+  },
+  "summary": {
+    "total": 48,
+    "passed": 48,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "module/grow inferred",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 230
+        },
+        "observed": {
+          "x": 110,
+          "y": 230
+        }
+      }
+    },
+    {
+      "name": "module/shrink inferred",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 170
+        },
+        "observed": {
+          "x": 110,
+          "y": 170
+        }
+      }
+    },
+    {
+      "name": "module/grow explicit",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 212
+        },
+        "observed": {
+          "x": 110,
+          "y": 212
+        }
+      }
+    },
+    {
+      "name": "module/shrink explicit",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 188
+        },
+        "observed": {
+          "x": 110,
+          "y": 188
+        }
+      }
+    },
+    {
+      "name": "module/same explicit",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 200
+        },
+        "observed": {
+          "x": 110,
+          "y": 200
+        }
+      }
+    },
+    {
+      "name": "module/same inferred",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 200
+        },
+        "observed": {
+          "x": 110,
+          "y": 200
+        }
+      }
+    },
+    {
+      "name": "module/negative supplied grow",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 188
+        },
+        "observed": {
+          "x": 110,
+          "y": 188
+        }
+      }
+    },
+    {
+      "name": "module/negative supplied shrink",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 212
+        },
+        "observed": {
+          "x": 110,
+          "y": 212
+        }
+      }
+    },
+    {
+      "name": "module/strict cross overlap 100/10/150",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 100,
+          "y": 160
+        },
+        "expected": {
+          "left": 100,
+          "top": 160,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "module/strict cross overlap 199/10/150",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 199,
+          "y": 160
+        },
+        "expected": {
+          "left": 199,
+          "top": 160,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "module/strict cross overlap 200/10/150",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 200,
+          "y": 150
+        },
+        "expected": {
+          "left": 200,
+          "top": 150,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "module/strict cross overlap 90/10/150",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 90,
+          "y": 150
+        },
+        "expected": {
+          "left": 90,
+          "top": 150,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "module/strict cross overlap 90/11/150",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 90,
+          "y": 160
+        },
+        "expected": {
+          "left": 90,
+          "top": 160,
+          "width": 11,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "module/strict cross overlap 100/10/149.999",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 100,
+          "y": 149.999
+        },
+        "expected": {
+          "left": 100,
+          "top": 149.999,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "module/strict cross overlap 100/10/150.001",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 100,
+          "y": 160.001
+        },
+        "expected": {
+          "left": 100,
+          "top": 160.001,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "module/strict cross overlap 100/0/160",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 100,
+          "y": 160
+        },
+        "expected": {
+          "left": 100,
+          "top": 160,
+          "width": 0,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "module/thisItem full consumer resizes row and pushes following rows once",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 20,
+            "width": 120,
+            "height": 35
+          },
+          {
+            "x": 0,
+            "y": 55,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "thisItem full consumer resizes row and pushes following rows once"
+      }
+    },
+    {
+      "name": "module/thisItem equal dimensions does not emit resize",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 40,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 0,
+        "nativeFixture": "thisItem equal dimensions does not emit resize"
+      }
+    },
+    {
+      "name": "module/horizontal row layout shifts only later items primary axis",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 0,
+            "width": 130,
+            "height": 40
+          },
+          {
+            "x": 230,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "horizontal row layout shifts only later items primary axis"
+      }
+    },
+    {
+      "name": "module/wrapped vertical primary growth pushes later same-column items",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 35
+          },
+          {
+            "x": 0,
+            "y": 35,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "wrapped vertical primary growth pushes later same-column items"
+      }
+    },
+    {
+      "name": "module/wrapped vertical secondary growth shifts all later columns",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 130,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 130,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 130,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "wrapped vertical secondary growth shifts all later columns"
+      }
+    },
+    {
+      "name": "module/wrapped secondary shrink below peer maximum keeps later columns",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 80,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "wrapped secondary shrink below peer maximum keeps later columns"
+      }
+    },
+    {
+      "name": "module/wrapped shorter primary column does not shrink maximum repeater height",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 0,
+            "width": 100,
+            "height": 10
+          },
+          {
+            "x": 100,
+            "y": 10,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "wrapped shorter primary column does not shrink maximum repeater height"
+      }
+    },
+    {
+      "name": "module/wrapped horizontal secondary growth shifts all later rows",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 35
+          },
+          {
+            "x": 100,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 35,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 35,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "wrapped horizontal secondary growth shifts all later rows"
+      }
+    },
+    {
+      "name": "serialized/grow inferred",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 230
+        },
+        "observed": {
+          "x": 110,
+          "y": 230
+        }
+      }
+    },
+    {
+      "name": "serialized/shrink inferred",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 170
+        },
+        "observed": {
+          "x": 110,
+          "y": 170
+        }
+      }
+    },
+    {
+      "name": "serialized/grow explicit",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 212
+        },
+        "observed": {
+          "x": 110,
+          "y": 212
+        }
+      }
+    },
+    {
+      "name": "serialized/shrink explicit",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 188
+        },
+        "observed": {
+          "x": 110,
+          "y": 188
+        }
+      }
+    },
+    {
+      "name": "serialized/same explicit",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 200
+        },
+        "observed": {
+          "x": 110,
+          "y": 200
+        }
+      }
+    },
+    {
+      "name": "serialized/same inferred",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 200
+        },
+        "observed": {
+          "x": 110,
+          "y": 200
+        }
+      }
+    },
+    {
+      "name": "serialized/negative supplied grow",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 188
+        },
+        "observed": {
+          "x": 110,
+          "y": 188
+        }
+      }
+    },
+    {
+      "name": "serialized/negative supplied shrink",
+      "passed": true,
+      "observed": {
+        "expected": {
+          "x": 110,
+          "y": 212
+        },
+        "observed": {
+          "x": 110,
+          "y": 212
+        }
+      }
+    },
+    {
+      "name": "serialized/strict cross overlap 100/10/150",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 100,
+          "y": 160
+        },
+        "expected": {
+          "left": 100,
+          "top": 160,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "serialized/strict cross overlap 199/10/150",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 199,
+          "y": 160
+        },
+        "expected": {
+          "left": 199,
+          "top": 160,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "serialized/strict cross overlap 200/10/150",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 200,
+          "y": 150
+        },
+        "expected": {
+          "left": 200,
+          "top": 150,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "serialized/strict cross overlap 90/10/150",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 90,
+          "y": 150
+        },
+        "expected": {
+          "left": 90,
+          "top": 150,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "serialized/strict cross overlap 90/11/150",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 90,
+          "y": 160
+        },
+        "expected": {
+          "left": 90,
+          "top": 160,
+          "width": 11,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "serialized/strict cross overlap 100/10/149.999",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 100,
+          "y": 149.999
+        },
+        "expected": {
+          "left": 100,
+          "top": 149.999,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "serialized/strict cross overlap 100/10/150.001",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 100,
+          "y": 160.001
+        },
+        "expected": {
+          "left": 100,
+          "top": 160.001,
+          "width": 10,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "serialized/strict cross overlap 100/0/160",
+      "passed": true,
+      "observed": {
+        "observed": {
+          "x": 100,
+          "y": 160
+        },
+        "expected": {
+          "left": 100,
+          "top": 160,
+          "width": 0,
+          "height": 20,
+          "display": "block"
+        }
+      }
+    },
+    {
+      "name": "serialized/thisItem full consumer resizes row and pushes following rows once",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 20,
+            "width": 120,
+            "height": 35
+          },
+          {
+            "x": 0,
+            "y": 55,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "thisItem full consumer resizes row and pushes following rows once"
+      }
+    },
+    {
+      "name": "serialized/thisItem equal dimensions does not emit resize",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 40,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 0,
+        "nativeFixture": "thisItem equal dimensions does not emit resize"
+      }
+    },
+    {
+      "name": "serialized/horizontal row layout shifts only later items primary axis",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 0,
+            "width": 130,
+            "height": 40
+          },
+          {
+            "x": 230,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "horizontal row layout shifts only later items primary axis"
+      }
+    },
+    {
+      "name": "serialized/wrapped vertical primary growth pushes later same-column items",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 35
+          },
+          {
+            "x": 0,
+            "y": 35,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "wrapped vertical primary growth pushes later same-column items"
+      }
+    },
+    {
+      "name": "serialized/wrapped vertical secondary growth shifts all later columns",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 130,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 130,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 130,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "wrapped vertical secondary growth shifts all later columns"
+      }
+    },
+    {
+      "name": "serialized/wrapped secondary shrink below peer maximum keeps later columns",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 80,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "wrapped secondary shrink below peer maximum keeps later columns"
+      }
+    },
+    {
+      "name": "serialized/wrapped shorter primary column does not shrink maximum repeater height",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 20,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 0,
+            "width": 100,
+            "height": 10
+          },
+          {
+            "x": 100,
+            "y": 10,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "wrapped shorter primary column does not shrink maximum repeater height"
+      }
+    },
+    {
+      "name": "serialized/wrapped horizontal secondary growth shifts all later rows",
+      "passed": true,
+      "observed": {
+        "rows": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 35
+          },
+          {
+            "x": 100,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 0,
+            "y": 35,
+            "width": 100,
+            "height": 20
+          },
+          {
+            "x": 100,
+            "y": 35,
+            "width": 100,
+            "height": 20
+          }
+        ],
+        "itemResizeCount": 1,
+        "nativeFixture": "wrapped horizontal secondary growth shifts all later rows"
+      }
+    }
+  ],
+  "limitations": [
+    "Minimal independent document records bypass parser and browser box model; all tested borders are zero.",
+    "Direct sibling and thisItem scopes only. Native Layer/fixed, independent panel state dimensions and parent fit are not asserted.",
+    "Arc8 source samples are independently run by the companion focused existing tests; this new48-case matrix concentrates on unanimated predicates and actual row reflow.",
+    "No native-source harness or old frozen evidence modified."
+  ]
+}

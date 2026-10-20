@@ -1,0 +1,240 @@
+✖ synthetic Move retains exact text, canonical binding, This and one ordered action (3.2779ms)
+✖ synthetic Set Size uses independent width/height scope and exact anchor (0.3243ms)
+✖ target order and duplicate identities remain inside a single native action (0.3214ms)
+✖ all9 source Move modes and all3 trajectories retain their numeric enum identity (0.2445ms)
+✖ boundary preserves mixed AND/OR tree, direction and all four comparison operators (0.4036ms)
+✖ strict top>0 is retained as conditional boundary, not flattened into unconditional clamp (0.3063ms)
+✖ Move and Size with Rotate remain distinct in one ordered case (synthetic only) (0.3967ms)
+✔ synthetic strict whole-event rejection: unknown info (0.236ms)
+✔ synthetic strict whole-event rejection: wrong info type (0.3072ms)
+✔ synthetic strict whole-event rejection: mode string (0.2693ms)
+✔ synthetic strict whole-event rejection: mode outside enum (0.1983ms)
+✔ synthetic strict whole-event rejection: trajectory outside enum (0.1371ms)
+✔ synthetic strict whole-event rejection: negative duration (0.1466ms)
+✔ synthetic strict whole-event rejection: large duration (0.1894ms)
+✔ synthetic strict whole-event rejection: string duration (0.1346ms)
+✔ synthetic strict whole-event rejection: easing outside enum (0.206ms)
+✔ synthetic strict whole-event rejection: nonempty MoveInfo scope (0.2305ms)
+✔ synthetic strict whole-event rejection: missing MoveInfo scope (0.22ms)
+✔ synthetic strict whole-event rejection: legacy path mismatch (0.208ms)
+✔ synthetic strict whole-event rejection: missing info (0.1095ms)
+✔ synthetic strict whole-event rejection: disabled action (0.1623ms)
+✔ synthetic strict whole-event rejection: unresolved target (0.6166ms)
+✔ synthetic strict whole-event rejection: compound target (0.156ms)
+✔ synthetic strict whole-event rejection: dummy target (0.1765ms)
+✔ synthetic strict whole-event rejection: nonliteral expression (0.1188ms)
+✔ synthetic strict whole-event rejection: unknown literal field (0.1734ms)
+✔ synthetic strict whole-event rejection: unknown syntax (0.1581ms)
+✔ synthetic strict whole-event rejection: unbound name (0.0925ms)
+✔ synthetic strict whole-event rejection: property escape (0.0885ms)
+✔ synthetic strict whole-event rejection: nonzero literal scope (0.0919ms)
+✔ synthetic strict whole-event rejection: scope duplicate casing (0.1072ms)
+✔ synthetic strict whole-event rejection: reserved alias (0.099ms)
+✔ synthetic strict whole-event rejection: wrong binding call (0.1306ms)
+✔ synthetic strict whole-event rejection: identifier wrong backref (0.1509ms)
+✔ synthetic strict whole-event rejection: identifier TargetOverride (0.1369ms)
+✔ synthetic strict whole-event rejection: missing variable identity (0.1446ms)
+✔ synthetic strict whole-event rejection: unknown boundary operator (0.1598ms)
+✔ synthetic strict whole-event rejection: unknown boundary direction (0.1169ms)
+✔ synthetic strict whole-event rejection: cyclic boundary (0.1606ms)
+✔ synthetic strict whole-event rejection: unsupported event (0.0923ms)
+✔ synthetic strict whole-event rejection: page This (0.0972ms)
+✔ synthetic strict whole-event rejection: hyperlink This (0.0989ms)
+✔ synthetic strict whole-event rejection: unknown sibling (0.1369ms)
+✖ actual source corpus reader admits only complete known events; all6 mixed cases retain original rejection (292.1899ms)
+ℹ tests 44
+ℹ suites 0
+ℹ pass 36
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 624.1237
+
+✖ failing tests:
+
+test at research\scripts\read-rp-transform.test.mjs:37:1
+✖ synthetic Move retains exact text, canonical binding, This and one ordered action (3.2779ms)
+  AssertionError [ERR_ASSERTION]: Unsupported action type Axure:InteractionMoveWidgetAction
+  + actual - expected
+  
+  + 'unsupported-event'
+  - 'supported-event'
+  
+      at recovered (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:35:46)
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:37:168)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'unsupported-event',
+    expected: 'supported-event',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-transform.test.mjs:38:1
+✖ synthetic Set Size uses independent width/height scope and exact anchor (0.3243ms)
+  AssertionError [ERR_ASSERTION]: Unsupported action type Axure:InteractionSetWidgetSizeAction
+  + actual - expected
+  
+  + 'unsupported-event'
+  - 'supported-event'
+  
+      at recovered (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:35:46)
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:38:197)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'unsupported-event',
+    expected: 'supported-event',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-transform.test.mjs:39:1
+✖ target order and duplicate identities remain inside a single native action (0.3214ms)
+  AssertionError [ERR_ASSERTION]: Unsupported action type Axure:InteractionMoveWidgetAction
+  + actual - expected
+  
+  + 'unsupported-event'
+  - 'supported-event'
+  
+      at recovered (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:35:46)
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:39:365)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'unsupported-event',
+    expected: 'supported-event',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-transform.test.mjs:40:1
+✖ all9 source Move modes and all3 trajectories retain their numeric enum identity (0.2445ms)
+  AssertionError [ERR_ASSERTION]: Unsupported action type Axure:InteractionMoveWidgetAction
+  + actual - expected
+  
+  + 'unsupported-event'
+  - 'supported-event'
+  
+      at recovered (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:35:46)
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:40:364)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'unsupported-event',
+    expected: 'supported-event',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-transform.test.mjs:41:1
+✖ boundary preserves mixed AND/OR tree, direction and all four comparison operators (0.4036ms)
+  AssertionError [ERR_ASSERTION]: Unsupported action type Axure:InteractionMoveWidgetAction
+  + actual - expected
+  
+  + 'unsupported-event'
+  - 'supported-event'
+  
+      at recovered (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:35:46)
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:41:557)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'unsupported-event',
+    expected: 'supported-event',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-transform.test.mjs:42:1
+✖ strict top>0 is retained as conditional boundary, not flattened into unconditional clamp (0.3063ms)
+  AssertionError [ERR_ASSERTION]: Unsupported action type Axure:InteractionMoveWidgetAction
+  + actual - expected
+  
+  + 'unsupported-event'
+  - 'supported-event'
+  
+      at recovered (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:35:46)
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:42:235)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'unsupported-event',
+    expected: 'supported-event',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-transform.test.mjs:43:1
+✖ Move and Size with Rotate remain distinct in one ordered case (synthetic only) (0.3967ms)
+  AssertionError [ERR_ASSERTION]: Unsupported action type Axure:InteractionMoveWidgetAction
+  + actual - expected
+  
+  + 'unsupported-event'
+  - 'supported-event'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:43:933)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'unsupported-event',
+    expected: 'supported-event',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at research\scripts\read-rp-transform.test.mjs:67:1
+✖ actual source corpus reader admits only complete known events; all6 mixed cases retain original rejection (292.1899ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 10
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-transform.test.mjs:70:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 10,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

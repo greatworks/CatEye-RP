@@ -1,0 +1,2536 @@
+{
+  "timestamp": "2026-10-13T17:30:50.314Z",
+  "target": "Axure RP 11.0.0.4150",
+  "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "distributionSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "browser": "155.0.4283.45",
+  "files": [
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "file": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "file": "../jquery-3.7.1.min.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85"
+    }
+  ],
+  "sourceSlices": [
+    {
+      "file": "style.js",
+      "first": 18,
+      "last": 73,
+      "source": "    var _setLinkStyle = function(id, styleName) {\n        var parentId = $ax.GetParentIdFromLink(id);\n        var style = _computeAllOverrides(id, parentId, styleName, $ax.adaptive.currentViewId);\n\n        var textId = $ax.GetTextPanelId(parentId);\n        if(!_originalTextCache[textId]) {\n            $ax.style.CacheOriginalText(textId);\n        }\n        if($.isEmptyObject(style)) return;\n\n        var textCache = _originalTextCache[textId].styleCache;\n\n        _transformTextWithVerticalAlignment(textId, function() {\n            var cssProps = _getCssStyleProperties(style);\n            $('#' + id).find('*').addBack().each(function(index, element) {\n                element.setAttribute('style', textCache[element.id]);\n                _applyCssProps(element, cssProps);\n            });\n        });\n    };\n\n    var _resetLinkStyle = function(id) {\n        var textId = $ax.GetTextPanelId($ax.GetParentIdFromLink(id));\n        var textCache = _originalTextCache[textId].styleCache;\n\n        _transformTextWithVerticalAlignment(textId, function() {\n            $('#' + id).find('*').addBack().each(function(index, element) {\n                element.style.cssText = textCache[element.id];\n            });\n        });\n        if($ax.event.mouseDownObjectId) {\n            $ax.style.SetWidgetMouseDown($ax.event.mouseDownObjectId, true);\n        } else if($ax.event.mouseOverObjectId) {\n            $ax.style.SetWidgetHover($ax.event.mouseOverObjectId, true);\n        }\n    };\n\n    $ax.style.SetLinkHover = function(id) {\n        _setLinkStyle(id, MOUSE_OVER);\n    };\n\n    $ax.style.SetLinkNotHover = function(id) {\n        _resetLinkStyle(id);\n    };\n\n    $ax.style.SetLinkMouseDown = function(id) {\n        _setLinkStyle(id, MOUSE_DOWN);\n    };\n\n    $ax.style.SetLinkNotMouseDown = function(id) {\n        _resetLinkStyle(id);\n        var style = _computeAllOverrides(id, $ax.event.mouseOverObjectId, MOUSE_OVER, $ax.adaptive.currentViewId);\n\n        if(!$.isEmptyObject(style)) $ax.style.SetLinkHover(id);\n        //we dont do anything here because the widget not mouse down has taken over here\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 349,
+      "last": 592,
+      "source": "    // these camel case state names match up to generated\n    // javascript properties such as keys for compound state images\n\n    var NORMAL = 'normal';\n    var MOUSE_OVER = 'mouseOver';\n    var MOUSE_DOWN = 'mouseDown';\n    var SELECTED = 'selected';\n    var DISABLED = 'disabled';\n    var ERROR = 'error';\n    var HINT = 'hint';\n    var FOCUSED = 'focused';\n\n    var SELECTED_ERROR = 'selectedError';\n    var SELECTED_HINT = 'selectedHint';\n    var SELECTED_ERROR_HINT = 'selectedErrorHint';\n    var ERROR_HINT = 'errorHint';\n\n    var MOUSE_OVER_MOUSE_DOWN = 'mouseOverMouseDown';\n    var MOUSE_OVER_SELECTED = 'mouseOverSelected';\n    var MOUSE_OVER_ERROR = 'mouseOverError';\n    var MOUSE_OVER_HINT = 'mouseOverHint';\n\n    var MOUSE_OVER_SELECTED_ERROR = 'mouseOverSelectedError';\n    var MOUSE_OVER_SELECTED_HINT = 'mouseOverSelectedHint';\n    var MOUSE_OVER_SELECTED_ERROR_HINT = 'mouseOverSelectedErrorHint';\n    var MOUSE_OVER_ERROR_HINT = 'mouseOverErrorHint';\n\n    var MOUSE_DOWN_SELECTED = 'mouseDownSelected';\n    var MOUSE_DOWN_ERROR = 'mouseDownError';\n    var MOUSE_DOWN_HINT = 'mouseDownHint';\n\n    var MOUSE_DOWN_SELECTED_ERROR = 'mouseDownSelectedError';\n    var MOUSE_DOWN_SELECTED_HINT = 'mouseDownSelectedHint';\n    var MOUSE_DOWN_SELECTED_ERROR_HINT = 'mouseDownSelectedErrorHint';\n    var MOUSE_DOWN_ERROR_HINT = 'mouseDownErrorHint';\n\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED = 'mouseOverMouseDownSelected';\n    var MOUSE_OVER_MOUSE_DOWN_ERROR = 'mouseOverMouseDownError';\n    var MOUSE_OVER_MOUSE_DOWN_HINT = 'MouseOverMouseDownHint';\n\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR = 'mouseOverMouseDownSelectedError';\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT = 'mouseOverMouseDownSelectedHint';\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT = 'mouseOverMouseDownSelectedErrorHint';\n    var MOUSE_OVER_MOUSE_DOWN_ERROR_HINT = 'mouseOverMouseDownErrorHint';\n\n    var FOCUSED_SELECTED = 'focusedSelected';\n    var FOCUSED_ERROR = 'focusedError';\n    var FOCUSED_HINT = 'focusedHint';\n\n    var FOCUSED_SELECTED_ERROR = 'focusedSelectedError';\n    var FOCUSED_SELECTED_HINT = 'focusedSelectedHint';\n    var FOCUSED_SELECTED_ERROR_HINT = 'focusedSelectedErrorHint';\n    var FOCUSED_ERROR_HINT = 'focusedErrorHint';\n\n    var HINT_DISABLED = 'hintDisabled';\n    var SELECTED_DISABLED = 'selectedDisabled';\n    var ERROR_DISABLED = 'errorDisabled';\n    var SELECTED_HINT_DISABLED = 'selectedHintDisabled';\n    var ERROR_HINT_DISABLED = 'errorHintDisabled';\n    var SELECTED_ERROR_DISABLED = 'selectedErrorDisabled';\n    var SELECTED_ERROR_HINT_DISABLED = 'selectedErrorHintDisabled';\n\n    // Compound states are applied with multiple classes\n    // #u0.mouseOver.mouseDown.Selected.Error in .css\n    // class=\"mouseOver mouseDown selected error\" in .html\n    var ALL_STATES_WITH_CSS_CLASS = [\n        MOUSE_OVER,\n        MOUSE_DOWN,\n        SELECTED,\n        DISABLED,\n        ERROR,\n        HINT,\n        FOCUSED\n    ];\n\n    var _stateHasFocused = function (state) {\n        return state == FOCUSED\n            || state == FOCUSED_SELECTED\n            || state == FOCUSED_ERROR\n            || state == FOCUSED_HINT\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT;\n    };\n\n    var _hasAnyFocusedClass = _style.HasAnyFocusedClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(FOCUSED);\n    };\n\n    var _stateHasHint = function (state) {\n        return state == HINT\n            || state == SELECTED_HINT\n            || state == SELECTED_ERROR_HINT\n            || state == ERROR_HINT\n            || state == MOUSE_OVER_HINT\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_DOWN_HINT\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT\n            || state == FOCUSED_HINT\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT\n            || state == HINT_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _stateHasError = function (state) {\n        return state == ERROR\n            || state == SELECTED_ERROR\n            || state == SELECTED_ERROR_HINT\n            || state == ERROR_HINT\n            || state == MOUSE_OVER_ERROR\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT\n            || state == FOCUSED_ERROR\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT\n            || state == ERROR_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnyErrorClass = _style.HasAnyErrorClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(ERROR);\n    };\n\n    var _stateHasDisabled = _style.StateHasDisabled = function (state) {\n        return state == DISABLED\n            || state == HINT_DISABLED\n            || state == SELECTED_DISABLED\n            || state == ERROR_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnyDisabledClass = _style.HasAnyDisabledClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(DISABLED);\n    };\n\n    var _stateHasSelected = _style.StateHasSelected = function (state) {\n        return state == SELECTED\n            || state == SELECTED_ERROR\n            || state == SELECTED_HINT\n            || state == SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_SELECTED\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_SELECTED\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == FOCUSED_SELECTED\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == SELECTED_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnySelectedClass = _style.HasAnySelectedClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(SELECTED);\n    };\n\n    var _removeAnySelectedClass = _style.RemoveAnySelectedClass = function (id) {\n        const jobj = $('#' + id);\n        jobj.removeClass(SELECTED);\n    };\n\n    var _stateHasMouseOver = function (state) {\n        return state == MOUSE_OVER\n            || state == MOUSE_OVER_MOUSE_DOWN\n            || state == MOUSE_OVER_SELECTED\n            || state == MOUSE_OVER_ERROR\n            || state == MOUSE_OVER_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT;\n    };\n\n    var _stateHasMouseDown = function (state) {\n        return state == MOUSE_DOWN\n            || state == MOUSE_OVER_MOUSE_DOWN\n            || state == MOUSE_DOWN_SELECTED\n            || state == MOUSE_DOWN_ERROR\n            || state == MOUSE_DOWN_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT;\n    };\n\n    var _generateState = _style.generateState = function (id) {\n        return _generateFullState(id);\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 1763,
+      "last": 1915,
+      "source": "    var FONT_PROPS = {\n        'typeface': true,\n        'fontName': true,\n        'fontWeight': true,\n        'fontStyle': true,\n        'fontStretch': true,\n        'fontSize': true,\n        'underline': true,\n        'foreGroundFill': true,\n        'horizontalAlignment': true,\n        'letterCase': true,\n        'strikethrough': true\n    };\n\n    var _getViewIdChain = $ax.style.getViewIdChain = function(currentViewId, id, diagramObject) {\n        var viewIdChain;\n        if (diagramObject.owner.type == 'Axure:Master' || diagramObject.owner.type == 'referenceDiagramObject') {\n            //set viewIdChain to the chain from the parent RDO\n            var parentRdoId;\n            if (diagramObject.owner.type == 'referenceDiagramObject') parentRdoId = diagramObject.owner.scriptIds[0];\n            if (!parentRdoId) parentRdoId = $ax('#' + id).getParents(true, ['rdo'])[0][0];\n            var rdoState = $ax.style.generateState(parentRdoId);\n            var rdoStyle = $ax.style.computeFullStyle(parentRdoId, rdoState, currentViewId);\n            var viewOverride = rdoStyle.viewOverride;\n            viewIdChain = $ax.adaptive.getMasterAdaptiveIdChain(diagramObject.owner.type == 'referenceDiagramObject' ? diagramObject.owner.masterId : diagramObject.owner.packageId, viewOverride);\n        } else {\n            viewIdChain = $ax.adaptive.getAdaptiveIdChain(currentViewId);\n        }\n        return viewIdChain;\n    }\n\n    var _computeAllOverrides = $ax.style.computeAllOverrides = function(id, parentId, state, currentViewId) {\n        var computedStyle = {};\n        if(parentId) computedStyle = _computeAllOverrides(parentId, null, state, currentViewId);\n\n        var diagramObject = $ax.getObjectFromElementId(id);\n\n        var viewIdChain = _getViewIdChain(currentViewId, id, diagramObject);\n        var excludeFont = _shapesWithSetRichText[id];\n        for(var i = 0; i < viewIdChain.length; i++) {\n            var viewId = viewIdChain[i];\n            var style = diagramObject.adaptiveStyles[viewId];\n            if(style) {\n                // we want to exclude the normal font style for shapes where the rich text has been set with an interaction\n                // so we copy the style so we don't modify the original, then delete all the font props.\n                if(excludeFont) {\n                    style = $ax.deepCopy(style);\n                    for(var prop in FONT_PROPS) delete style[prop];\n                }\n\n                if(style) {\n                    var customStyle = style.baseStyle && $ax.document.stylesheet.stylesById[style.baseStyle];\n                    //make sure not to extend the customStyle this can mutate it for future use\n                    $.extend(computedStyle, customStyle);\n                }\n                $.extend(computedStyle, style);\n            }\n        }\n\n        // order matters so higher priority styles override lower priority\n        $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, NORMAL, viewIdChain, true));\n        if (_stateHasMouseOver(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_OVER, viewIdChain, true));\n        }\n        if (_stateHasMouseDown(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_DOWN, viewIdChain, true));\n        }\n        if (_stateHasFocused(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, FOCUSED, viewIdChain, true));\n        }\n        if (_stateHasSelected(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, SELECTED, viewIdChain, true));\n        }\n        if (_stateHasError(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, ERROR, viewIdChain, true));\n        }\n        if (_stateHasHint(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, HINT, viewIdChain, true));\n        }\n        if (_stateHasDisabled(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, DISABLED, viewIdChain, true));\n        }\n\n        return _removeUnsupportedProperties(computedStyle, diagramObject);\n    };\n\n    var _computeStateStyleForViewChain = function(diagramObject, state, viewIdChain, excludeNormal) {\n        var styleObject = diagramObject;\n        while(styleObject.isContained) styleObject = styleObject.parent;\n\n        var adaptiveStyles = styleObject.adaptiveStyles;\n\n        for(var i = viewIdChain.length - 1; i >= 0; i--) {\n            var viewId = viewIdChain[i];\n            var viewStyle = adaptiveStyles[viewId];\n            var stateStyle = viewStyle && _getFullStateStyle(viewStyle, state, excludeNormal);\n            if (stateStyle) return $.extend({}, stateStyle);\n            else if (viewStyle && viewStyle.stateStyles) return {}; //stateStyles are overriden but states could be null\n        }\n\n        // we dont want to actually include the object style because those are not overrides, hence the true for \"excludeNormal\" and not passing the val through\n        var stateStyleFromDefault = _getFullStateStyle(styleObject.style, state, true);\n        return $.extend({}, stateStyleFromDefault);\n    };\n\n    // returns the full effective style for an object in a state state and view\n    var _computeFullStyle = $ax.style.computeFullStyle = function(id, state, currentViewId, overrides) {\n        var obj = $obj(id);\n        if (!overrides) overrides = _computeAllOverrides(id, undefined, state, currentViewId);\n        // get style for current state\n        var dynamicPanelStyle = _getCurrentPanelDiagramStyle(id);\n\n        // todo: account for image box\n        var objStyle = obj.style;\n        var customStyle = objStyle.baseStyle && $ax.document.stylesheet.stylesById[objStyle.baseStyle];\n        var returnVal = $.extend({}, $ax.document.stylesheet.defaultStyle, customStyle, objStyle, dynamicPanelStyle, overrides);\n        return _removeUnsupportedProperties(returnVal, obj);\n    };\n\n    var _getCurrentPanelDiagramStyle = function (id) {\n        var diagramObj = $ax.visibility.GetCurrentPanelDiagram(id);\n        if (diagramObj) {\n            return diagramObj.style;\n        }\n        return {};\n    };\n\n    var _removeUnsupportedProperties = function(style, object) {\n        // for now all we need to do is remove padding from checkboxes and radio buttons\n        //if ($ax.public.fn.IsRadioButton(object.type) || $ax.public.fn.IsCheckBox(object.type)) {\n        //    style.paddingTop = 0;\n        //    style.paddingLeft = 0;\n        //    style.paddingRight = 0;\n        //    style.paddingBottom = 0;\n        //}\n        //if ($ax.public.fn.IsTextBox(object.type) || $ax.public.fn.IsTextArea(object.type) || $ax.public.fn.IsButton(object.type)\n        //    || $ax.public.fn.IsListBox(object.type) || $ax.public.fn.IsComboBox(object.type)) {\n        //    if (object.images && style.fill) delete style['fill'];\n        //}\n\n        return style;\n    };\n\n    var _getFullStateStyle = function(style, state, excludeNormal) {\n        //'normal' is needed because now DiagramObjects get their image from the Style and unapplying a rollover needs the image\n        var stateStyle = state == NORMAL && !excludeNormal ? style : style && style.stateStyles && style.stateStyles[state];\n        if(stateStyle) {\n            var customStyle = stateStyle.baseStyle && $ax.document.stylesheet.stylesById[stateStyle.baseStyle];\n            //make sure not to extend the customStyle this can mutate it for future use\n            return $.extend({}, customStyle, stateStyle);\n        }\n        return undefined;\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2028,
+      "last": 2042,
+      "source": "    var _resetTextJson = function(id, textid) {\n        // reset the opacity\n        $jobj(id).children().css('opacity', '');\n\n        var cacheObject = _originalTextCache[textid];\n        if(cacheObject) {\n            _transformTextWithVerticalAlignment(textid, function() {\n                var styleCache = cacheObject.styleCache;\n                var textQuery = $('#' + textid);\n                textQuery.find('*').each(function(index, element) {\n                    element.style.cssText = styleCache[element.id];\n                });\n            });\n        }\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2076,
+      "last": 2094,
+      "source": "    var _transformTextWithVerticalAlignment = $ax.style.transformTextWithVerticalAlignment = function(textId, transformFn) {\n        if(!_originalTextCache[textId]) {\n            $ax.style.CacheOriginalText(textId);\n        }\n\n        var rtfElement = window.document.getElementById(textId);\n        if(!rtfElement) return;\n\n        return transformFn();\n\n        //_storeIdToAlignProps(textId);\n\n        //if (_suspendTextAlignment) {\n        //    _suspendedTextIds.push(textId);\n        //    return;\n        //}\n\n        //$ax.style.setTextAlignment([textId]);\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2377,
+      "last": 2416,
+      "source": "    $ax.style.setAdaptiveStyle = function(shapeId, style, state) {\n        _adaptiveStyledWidgets[$ax.repeater.getScriptIdFromElementId(shapeId)] = style;\n\n        var textId = $ax.GetTextPanelId(shapeId);\n        if(textId) _applyTextStyle(textId, style);\n\n        const svgContainerId = shapeId + \"_img\";\n        const container = document.getElementById(svgContainerId);\n        if(container && container.tagName.toLowerCase() == \"svg\") {\n            _applySvg(shapeId, state ?? NORMAL);\n\n            if(style.size) {\n                if($obj(shapeId).friendlyType == \"Rectangle\") {\n                    $(container).css({ 'width': style.size.width, 'height': style.size.height });\n                } else {\n                    var baseStyle = _computeFullStyle(shapeId, NORMAL, \"\");\n                    var oldSize = baseStyle.size;\n                    var oldWidth = oldSize.width;\n                    var oldHeight = oldSize.height;\n\n                    container.style.transformOrigin = 'top left';\n                    var oldTransformMatrix = new WebKitCSSMatrix(window.getComputedStyle(container).transform);\n                    var oldScaleX = oldTransformMatrix.m11;\n                    var oldScaleY = oldTransformMatrix.m22;\n                    var scaleX = (style.size.width / oldWidth) * oldScaleX;\n                    var scaleY = (style.size.height / oldHeight) * oldScaleY;\n                    if(oldScaleX !== scaleX || oldScaleY !== scaleY) {\n                        container.style.transform = 'Scale(' + scaleX + ', ' + scaleY + ')';\n                    }\n                }\n            }\n        }\n        $ax.placeholderManager.refreshPlaceholder(shapeId);\n\n        // removing this for now\n        //        if(style.location) {\n        //            $jobj(shapeId).css('top', style.location.x + \"px\")\n        //                .css('left', style.location.y + \"px\");\n        //        }\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2427,
+      "last": 2532,
+      "source": "    var _applyTextStyle = function (id, style, padding = {top:0, right: 0, bottom: 0, left: 0}) {\n        return _transformTextWithVerticalAlignment(id, function() {\n            var styleProperties = _getCssStyleProperties(style);\n            var container = $('#' + id);\n            var newSize = { width: container[0].offsetWidth, height: container[0].offsetHeight };\n            var hasLineHeight = !!container.css('line-height');\n            container.find('*').each(function(index, element) {\n                _applyCssProps(element, styleProperties);\n                var width = element.offsetWidth + padding.left + padding.right;\n                var height = element.offsetHeight + padding.top + padding.bottom;\n                if(width > newSize.width) newSize.width = width;\n                if(!hasLineHeight && height > newSize.height) newSize.height = height;\n            });\n            return newSize;\n        });\n    };\n\n    var _applyCssProps = function(element, styleProperties, applyAllStyle) {\n        if(applyAllStyle) {\n            var allProps = styleProperties.allProps;\n            for(var prop in allProps) element.style[prop] = allProps[prop];\n        } else {\n            var nodeName = element.nodeName.toLowerCase();\n            if(nodeName == 'p') {\n                var parProps = styleProperties.parProps;\n                for(prop in parProps) element.style[prop] = parProps[prop];\n            } else if(nodeName != 'a') {\n                var runProps = styleProperties.runProps;\n                for(prop in runProps) element.style[prop] = runProps[prop];\n            }\n        }\n    };\n\n    var _getCssShadow = function(shadow) {\n        return !shadow.on ? \"none\"\n            : shadow.offsetX + \"px \" + shadow.offsetY + \"px \" + shadow.blurRadius + \"px \" + _getCssColor(shadow.color);\n    };\n\n    var _getCssStyleProperties = function(style) {\n        var toApply = {};\n        toApply.runProps = {};\n        toApply.parProps = {};\n        toApply.allProps = {};\n\n        if(style.fontName) toApply.allProps.fontFamily = toApply.runProps.fontFamily = style.fontName;\n        // we need to set font size on both runs and pars because otherwise it well mess up the measure and thereby vertical alignment\n        if(style.fontSize) toApply.allProps.fontSize = toApply.runProps.fontSize = toApply.parProps.fontSize = style.fontSize;\n        if(style.fontWeight !== undefined) toApply.allProps.fontWeight = toApply.runProps.fontWeight = style.fontWeight;\n        if(style.fontStyle !== undefined) toApply.allProps.fontStyle = toApply.runProps.fontStyle = style.fontStyle;\n\n        var textDecoration = [];\n        if(style.underline !== undefined) textDecoration[0] = style.underline ? 'underline ' : 'none';\n        if(style.strikethrough !== undefined) {\n            var index = textDecoration.length;\n            if(style.strikethrough) textDecoration[index] ='line-through';\n            else if(index == 0) textDecoration[0] = 'none';\n        } \n        if (textDecoration.length > 0) {\n            var decorationLineUp = \"\";\n            for (var l = 0; l < textDecoration.length; l++) {\n                decorationLineUp = decorationLineUp + textDecoration[l];\n            }\n            toApply.allProps.textDecoration = toApply.runProps.textDecoration = decorationLineUp;\n        }\n        if(style.foreGroundFill) {\n            toApply.allProps.color = toApply.runProps.color = _getColorFromFill(style.foreGroundFill);\n            //if(style.foreGroundFill.opacity) toApply.allProps.opacity = toApply.runProps.opacity = style.foreGroundFill.opacity;\n        }\n        if(style.horizontalAlignment) toApply.allProps.textAlign = toApply.parProps.textAlign = toApply.runProps.textAlign = style.horizontalAlignment;\n        if(style.lineSpacing) toApply.allProps.lineHeight = toApply.parProps.lineHeight = style.lineSpacing;\n        if(style.textShadow) toApply.allProps.textShadow = toApply.parProps.textShadow = _getCssShadow(style.textShadow);\n        if (style.letterCase) toApply.allProps.textTransform = toApply.parProps.textTransform = style.letterCase;\n        if (style.characterSpacing) toApply.allProps.letterSpacing = toApply.runProps.letterSpacing = style.characterSpacing;\n\n        return toApply;\n    };\n\n    var _getColorFromFill = function(fill) {\n        //var fillString = '00000' + fill.color.toString(16);\n        //return '#' + fillString.substring(fillString.length - 6);\n        var val = fill.color;\n        var color = {};\n        color.b = val % 256;\n        val = Math.floor(val / 256);\n        color.g = val % 256;\n        val = Math.floor(val / 256);\n        color.r = val % 256;\n        color.a = typeof (fill.opacity) == 'number' ? fill.opacity : 1;\n        return _getCssColor(color);\n    };\n\n    var _getColorFromArgbColorProp = function (val) {\n        var color = {};\n        color.b = val % 256;\n        val = Math.floor(val / 256);\n        color.g = val % 256;\n        val = Math.floor(val / 256);\n        color.r = val % 256;\n        val = Math.floor(val / 256);\n        color.a = (val % 256) / 255;\n        return _getCssColor(color);\n    };\n\n    var _getCssColor = function(rgbaObj) {\n        return \"rgba(\" + rgbaObj.r + \", \" + rgbaObj.g + \", \" + rgbaObj.b + \", \" + rgbaObj.a + \")\";\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2590,
+      "last": 2618,
+      "source": "    var CACHE_COUNTER = 0;\n\n    $ax.style.CacheOriginalText = function(textId, hasRichTextBeenSet) {\n        var rtfQuery = $('#' + textId);\n        if(rtfQuery.length > 0) {\n\n            var styleCache = {};\n            rtfQuery.find('*').each(function(index, element) {\n                var elementId = element.id;\n                if(!elementId) element.id = elementId = 'cache' + CACHE_COUNTER++;\n                styleCache[elementId] = element.style.cssText;\n            });\n\n            _originalTextCache[textId] = {\n                styleCache: styleCache\n            };\n            if(hasRichTextBeenSet) {\n                var shapeId = $ax.GetShapeIdFromText(textId);\n                _shapesWithSetRichText[shapeId] = true;\n            }\n        }\n    };\n\n    $ax.style.ClearCacheForRepeater = function(repeaterId) {\n        for(var elementId in _originalTextCache) {\n            var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n            if($ax.getParentRepeaterFromScriptId(scriptId) == repeaterId) delete _originalTextCache[elementId];\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 316,
+      "last": 385,
+      "source": "    _exprFunctions.SetWidgetRichText = function(ids, value, plain) {\n        // Converts dates, widgetinfo, and the like to strings.\n        value = _exprFunctions.ToString(value);\n\n        //Replace any newlines with line breaks\n        var finalValue = value.replace(/\\r\\n/g, '<br>').replace(/\\n/g, '<br>');\n\n        for(var i = 0; i < ids.length; i++) {\n            var id = ids[i];\n\n            // If calling this on button shape, get the id of the rich text panel inside instead\n            if($obj(id).type !== $ax.constants.LINK_TYPE) id = $ax.GetTextPanelId(id, true);\n\n            var element = window.document.getElementById(id);\n            $ax.visibility.SetVisible(element, value != '');\n\n            $ax.style.transformTextWithVerticalAlignment(id, function() {\n                var spans = $jobj(id).find('span');\n                if(plain) {\n                    // Can't set value as text because '<br/>' doesn't actually do a line break\n                    // Can't set vaule as html because it doesn't like '<' and ignores all after it\n                    // Create tags yourself\n                    var lines = value.split(/\\r\\n|\\n/);\n                    //if we are dealing with only one line, just reuse the old one\n                    if(spans.length === 1 && lines.length === 1) {\n                        $(spans[0]).text(value);\n                        return;\n                    }\n\n                    // Wrap in span and p, style them accordingly.\n                    var span = $('<span></span>');\n                    if(spans.length > 0) {\n                        span.attr('style', $(spans[0]).attr('style'));\n                        span.attr('id', $(spans[0]).attr('id'));\n                    }\n\n                    if(lines.length == 1) span.text(value);\n                    else {\n                        for(var i = 0; i < lines.length; i++) {\n                            if(i != 0) span.append($('<br />'));\n                            var line = lines[i];\n                            if(line.length == 0) continue;\n\n                            var subSpan = $('<span />');\n                            subSpan.text(line);\n                            span.append(subSpan);\n                        }\n                    }\n\n                    var ps = $jobj(id).find('p');\n                    if(ps && ps.length) {\n                        ps[0].innerHTML = $('<div></div>').append(span).html();;\n                        if(ps.length > 1) {\n                            for(var i = 1; i < ps.length; i++) {\n                                $(ps[i]).remove();\n                            }\n                        }\n                    } else {\n                        var p = $('<p></p>');\n                        p.append(span);\n                        element.innerHTML = $('<div></div>').append(p).html();\n                    }\n                } else element.innerHTML = finalValue;\n            });\n\n            if(!plain) $ax.style.CacheOriginalText(id, true);\n\n            autofitWidget(ids[i]);\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 753,
+      "last": 758,
+      "source": "    _exprFunctions.ToString = function(value) {\n        if(value.isWidget) {\n            return value.text;\n        }\n        return String(value);\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 883,
+      "last": 924,
+      "source": "    var getWidgetText = function(id) {\n        var idQuery = $jobj(id);\n        var inputQuery = $jobj($ax.INPUT(id));\n        if(inputQuery.length) idQuery = inputQuery;\n\n        if (idQuery.is('input') && ($ax.public.fn.IsCheckBox(idQuery.attr('type')) || idQuery.attr('type') == 'radio')) {\n            idQuery = idQuery.parent().find('label').find('div');\n        }\n\n        if(idQuery.is('div')) {\n            var $rtfObj = idQuery.hasClass('text') ? idQuery : idQuery.find('.text');\n            if($rtfObj.length == 0) return '';\n\n            var textOut = '';\n            $rtfObj.children('p,ul,ol').each(function(index) {\n                if(index != 0) textOut += '\\n';\n\n                //var htmlContent = $(this).html();\n                //if(isSoloBr(htmlContent)) return; // It has a solo br, then it was just put in for a newline, and paragraph already added the new line.\n                if (isSoloBr($(this).children())) return;\n\n                var htmlContent = $(this).html();            \n                //Replace line breaks (set in SetWidgetRichText) with newlines and nbsp's with regular spaces.\n                htmlContent = htmlContent.replace(/<br[^>]*>/ig, '\\n').replace(/&nbsp;/ig, ' ');\n                textOut += $(htmlContent).text();\n                //textOut += htmlContent.replace(/<[^>]*>/g, '');\n            });\n\n            return textOut;\n        } else {\n            var val = idQuery.val();\n            return val == undefined ? '' : val;\n        }\n    };\n\n    var isSoloBr = function($html) {\n        //html = $(html);\n        // Html needs one and only one span\n        var spanChildren = $html.length == 1 && $html.is('span') ? $html.children() : false;\n        // Span children needs exactly one br and no text in the span\n        return spanChildren && spanChildren.length == 1 && spanChildren.is('br') && spanChildren.text().trim() == '';\n    };"
+    }
+  ],
+  "cases": [
+    {
+      "name": "original decoration conversion matrix {}",
+      "result": {
+        "props": {
+          "runProps": {},
+          "parProps": {},
+          "allProps": {}
+        },
+        "writes": [
+          {
+            "initial": "none",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "underline",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline",
+                "computed": "underline",
+                "css": "text-decoration: underline;"
+              }
+            ]
+          },
+          {
+            "initial": "line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "line-through",
+                "computed": "line-through",
+                "css": "text-decoration: line-through;"
+              }
+            ]
+          },
+          {
+            "initial": "underline line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline line-through",
+                "computed": "underline line-through",
+                "css": "text-decoration: underline line-through;"
+              }
+            ]
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "original decoration conversion matrix {\"underline\":false}",
+      "result": {
+        "props": {
+          "runProps": {
+            "textDecoration": "none"
+          },
+          "parProps": {},
+          "allProps": {
+            "textDecoration": "none"
+          }
+        },
+        "writes": [
+          {
+            "initial": "none",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "underline",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "underline line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "original decoration conversion matrix {\"underline\":true}",
+      "result": {
+        "props": {
+          "runProps": {
+            "textDecoration": "underline "
+          },
+          "parProps": {},
+          "allProps": {
+            "textDecoration": "underline "
+          }
+        },
+        "writes": [
+          {
+            "initial": "none",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline",
+                "computed": "underline",
+                "css": "text-decoration: underline;"
+              }
+            ]
+          },
+          {
+            "initial": "underline",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline",
+                "computed": "underline",
+                "css": "text-decoration: underline;"
+              }
+            ]
+          },
+          {
+            "initial": "line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline",
+                "computed": "underline",
+                "css": "text-decoration: underline;"
+              }
+            ]
+          },
+          {
+            "initial": "underline line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline",
+                "computed": "underline",
+                "css": "text-decoration: underline;"
+              }
+            ]
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "original decoration conversion matrix {\"strikethrough\":false}",
+      "result": {
+        "props": {
+          "runProps": {
+            "textDecoration": "none"
+          },
+          "parProps": {},
+          "allProps": {
+            "textDecoration": "none"
+          }
+        },
+        "writes": [
+          {
+            "initial": "none",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "underline",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "underline line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "original decoration conversion matrix {\"strikethrough\":true}",
+      "result": {
+        "props": {
+          "runProps": {
+            "textDecoration": "line-through"
+          },
+          "parProps": {},
+          "allProps": {
+            "textDecoration": "line-through"
+          }
+        },
+        "writes": [
+          {
+            "initial": "none",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "line-through",
+                "computed": "line-through",
+                "css": "text-decoration: line-through;"
+              }
+            ]
+          },
+          {
+            "initial": "underline",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "line-through",
+                "computed": "line-through",
+                "css": "text-decoration: line-through;"
+              }
+            ]
+          },
+          {
+            "initial": "line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "line-through",
+                "computed": "line-through",
+                "css": "text-decoration: line-through;"
+              }
+            ]
+          },
+          {
+            "initial": "underline line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "line-through",
+                "computed": "line-through",
+                "css": "text-decoration: line-through;"
+              }
+            ]
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "original decoration conversion matrix {\"underline\":false,\"strikethrough\":false}",
+      "result": {
+        "props": {
+          "runProps": {
+            "textDecoration": "none"
+          },
+          "parProps": {},
+          "allProps": {
+            "textDecoration": "none"
+          }
+        },
+        "writes": [
+          {
+            "initial": "none",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "underline",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "underline line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "original decoration conversion matrix {\"underline\":false,\"strikethrough\":true}",
+      "result": {
+        "props": {
+          "runProps": {
+            "textDecoration": "noneline-through"
+          },
+          "parProps": {},
+          "allProps": {
+            "textDecoration": "noneline-through"
+          }
+        },
+        "writes": [
+          {
+            "initial": "none",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "none",
+                "computed": "none",
+                "css": "text-decoration: none;"
+              }
+            ]
+          },
+          {
+            "initial": "underline",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline",
+                "computed": "underline",
+                "css": "text-decoration: underline;"
+              }
+            ]
+          },
+          {
+            "initial": "line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "line-through",
+                "computed": "line-through",
+                "css": "text-decoration: line-through;"
+              }
+            ]
+          },
+          {
+            "initial": "underline line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline line-through",
+                "computed": "underline line-through",
+                "css": "text-decoration: underline line-through;"
+              }
+            ]
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "original decoration conversion matrix {\"underline\":true,\"strikethrough\":false}",
+      "result": {
+        "props": {
+          "runProps": {
+            "textDecoration": "underline "
+          },
+          "parProps": {},
+          "allProps": {
+            "textDecoration": "underline "
+          }
+        },
+        "writes": [
+          {
+            "initial": "none",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline",
+                "computed": "underline",
+                "css": "text-decoration: underline;"
+              }
+            ]
+          },
+          {
+            "initial": "underline",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline",
+                "computed": "underline",
+                "css": "text-decoration: underline;"
+              }
+            ]
+          },
+          {
+            "initial": "line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline",
+                "computed": "underline",
+                "css": "text-decoration: underline;"
+              }
+            ]
+          },
+          {
+            "initial": "underline line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline",
+                "computed": "underline",
+                "css": "text-decoration: underline;"
+              }
+            ]
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "original decoration conversion matrix {\"underline\":true,\"strikethrough\":true}",
+      "result": {
+        "props": {
+          "runProps": {
+            "textDecoration": "underline line-through"
+          },
+          "parProps": {},
+          "allProps": {
+            "textDecoration": "underline line-through"
+          }
+        },
+        "writes": [
+          {
+            "initial": "none",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline line-through",
+                "computed": "underline line-through",
+                "css": "text-decoration: underline line-through;"
+              }
+            ]
+          },
+          {
+            "initial": "underline",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline line-through",
+                "computed": "underline line-through",
+                "css": "text-decoration: underline line-through;"
+              }
+            ]
+          },
+          {
+            "initial": "line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline line-through",
+                "computed": "underline line-through",
+                "css": "text-decoration: underline line-through;"
+              }
+            ]
+          },
+          {
+            "initial": "underline line-through",
+            "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline line-through;\">Old</span></p>",
+            "text": "Old",
+            "rich": false,
+            "trace": [],
+            "nodes": [
+              {
+                "tag": "P",
+                "id": "cache0",
+                "text": "Old",
+                "inline": "",
+                "computed": "none",
+                "css": ""
+              },
+              {
+                "tag": "SPAN",
+                "id": "run",
+                "text": "Old",
+                "inline": "underline line-through",
+                "computed": "underline line-through",
+                "css": "text-decoration: underline line-through;"
+              }
+            ]
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "color-only state keeps mixed decorations untouched",
+      "result": {
+        "html": "<p id=\"cache0\"><span style=\"text-decoration: underline; color: rgb(255, 0, 255);\" id=\"cache1\">A</span><span style=\"text-decoration: line-through; color: rgb(255, 0, 255);\" id=\"cache2\">B</span></p>",
+        "text": "AB",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "AB",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache1",
+            "text": "A",
+            "inline": "underline",
+            "computed": "underline",
+            "css": "text-decoration: underline; color: rgb(255, 0, 255);"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache2",
+            "text": "B",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through; color: rgb(255, 0, 255);"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "partial strike state replaces underline then normal restores cached underline",
+      "result": {
+        "active": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: line-through;\">Old</span></p>",
+          "text": "Old",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Old",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Old",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            }
+          ]
+        },
+        "normal": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+          "text": "Old",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Old",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Old",
+              "inline": "underline",
+              "computed": "underline",
+              "css": "text-decoration: underline;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "false reset clears both decorations then normal restores both",
+      "result": {
+        "active": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+          "text": "Old",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Old",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Old",
+              "inline": "none",
+              "computed": "none",
+              "css": "text-decoration: none;"
+            }
+          ]
+        },
+        "normal": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: underline line-through;\">Old</span></p>",
+          "text": "Old",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Old",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Old",
+              "inline": "underline line-through",
+              "computed": "underline line-through",
+              "css": "text-decoration: underline line-through;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "combined false underline true strike produces invalid CSS and retains reset baseline",
+      "result": {
+        "hover": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: line-through;\">Old</span></p>",
+          "text": "Old",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Old",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Old",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            }
+          ]
+        },
+        "overrides": {
+          "strikethrough": true,
+          "underline": false
+        },
+        "selected": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+          "text": "Old",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Old",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Old",
+              "inline": "underline",
+              "computed": "underline",
+              "css": "text-decoration: underline;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "both true state composes underline and strike",
+      "result": {
+        "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: underline line-through;\">Old</span></p>",
+        "text": "Old",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "Old",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "run",
+            "text": "Old",
+            "inline": "underline line-through",
+            "computed": "underline line-through",
+            "css": "text-decoration: underline line-through;"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "p and anchor decoration are excluded while descendant runs receive explicit none",
+      "result": {
+        "html": "<p style=\"text-decoration:underline\" id=\"cache0\"><a style=\"text-decoration:line-through\" id=\"cache1\"><span style=\"text-decoration: none;\" id=\"cache2\">A</span></a><span id=\"cache3\" style=\"text-decoration: none;\">B</span></p>",
+        "text": "AB",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "AB",
+            "inline": "underline",
+            "computed": "underline",
+            "css": "text-decoration: underline;"
+          },
+          {
+            "tag": "A",
+            "id": "cache1",
+            "text": "A",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache2",
+            "text": "A",
+            "inline": "none",
+            "computed": "none",
+            "css": "text-decoration: none;"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache3",
+            "text": "B",
+            "inline": "none",
+            "computed": "none",
+            "css": "text-decoration: none;"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "plain single-span replacement preserves both decorations and literal markup",
+      "result": {
+        "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: underline line-through;\">&lt;b&gt;&amp; literal</span></p>",
+        "text": "<b>& literal",
+        "rich": false,
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "<b>& literal",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "run",
+            "text": "<b>& literal",
+            "inline": "underline line-through",
+            "computed": "underline line-through",
+            "css": "text-decoration: underline line-through;"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "plain mixed replacement retains only first decorated span and multiline breaks",
+      "result": {
+        "html": "<p id=\"cache0\"><span style=\"text-decoration:line-through\" id=\"cache1\"><span>A</span><br><br><span>B</span></span></p>",
+        "text": "A\n\nB",
+        "rich": false,
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "AB",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache1",
+            "text": "AB",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "text": "A",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "BR",
+            "id": "",
+            "text": "",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "BR",
+            "id": "",
+            "text": "",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "text": "B",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "plain while active borrows current decoration but restoration keeps changed text",
+      "result": {
+        "active": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: line-through;\">Changed</span></p>",
+          "text": "Changed",
+          "rich": false,
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Changed",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Changed",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            }
+          ]
+        },
+        "normal": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: underline;\">Changed</span></p>",
+          "text": "Changed",
+          "rich": false,
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Changed",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Changed",
+              "inline": "underline",
+              "computed": "underline",
+              "css": "text-decoration: underline;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "rich replacement caches new decoration baseline and does not reapply active state immediately",
+      "result": {
+        "afterSet": {
+          "html": "<p id=\"cache1\"><span style=\"text-decoration:underline line-through\" id=\"cache2\">New</span></p>",
+          "text": "New",
+          "rich": true,
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache1",
+              "text": "New",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache2",
+              "text": "New",
+              "inline": "underline line-through",
+              "computed": "underline line-through",
+              "css": "text-decoration: underline line-through;"
+            }
+          ]
+        },
+        "active": {
+          "html": "<p id=\"cache1\" style=\"\"><span style=\"text-decoration: none;\" id=\"cache2\">New</span></p>",
+          "text": "New",
+          "rich": true,
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache1",
+              "text": "New",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache2",
+              "text": "New",
+              "inline": "none",
+              "computed": "none",
+              "css": "text-decoration: none;"
+            }
+          ]
+        },
+        "normal": {
+          "html": "<p id=\"cache1\" style=\"\"><span style=\"text-decoration: underline line-through;\" id=\"cache2\">New</span></p>",
+          "text": "New",
+          "rich": true,
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache1",
+              "text": "New",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache2",
+              "text": "New",
+              "inline": "underline line-through",
+              "computed": "underline line-through",
+              "css": "text-decoration: underline line-through;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "authored object and custom base decorations are excluded from text overrides",
+      "result": {
+        "overrides": {
+          "strikethrough": true
+        },
+        "snapshot": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: line-through;\">Old</span></p>",
+          "text": "Old",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Old",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Old",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "adaptive false is in the same override conversion as selected true and invalid result restores original not adaptive baseline",
+      "result": {
+        "normal": {
+          "html": "<p id=\"cache0\"><span id=\"run\" style=\"text-decoration: none;\">Old</span></p>",
+          "text": "Old",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Old",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Old",
+              "inline": "none",
+              "computed": "none",
+              "css": "text-decoration: none;"
+            }
+          ]
+        },
+        "overrides": {
+          "underline": false,
+          "strikethrough": true
+        },
+        "selected": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: underline;\">Old</span></p>",
+          "text": "Old",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Old",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Old",
+              "inline": "underline",
+              "computed": "underline",
+              "css": "text-decoration: underline;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "adaptive true combines with selected true before conversion",
+      "result": {
+        "overrides": {
+          "underline": true,
+          "strikethrough": true
+        },
+        "snapshot": {
+          "html": "<p id=\"cache0\" style=\"\"><span id=\"run\" style=\"text-decoration: underline line-through;\">Old</span></p>",
+          "text": "Old",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Old",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "run",
+              "text": "Old",
+              "inline": "underline line-through",
+              "computed": "underline line-through",
+              "css": "text-decoration: underline line-through;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "rich Set Text excludes direct adaptive decoration but preserves active state decoration",
+      "result": {
+        "overrides": {
+          "strikethrough": true
+        },
+        "snapshot": {
+          "html": "<p id=\"cache1\" style=\"\"><span style=\"text-decoration: line-through;\" id=\"cache2\">Rich</span></p>",
+          "text": "Rich",
+          "rich": true,
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache1",
+              "text": "Rich",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache2",
+              "text": "Rich",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "stacked mouseOver underline and selected strike full matrix resets from original run",
+      "result": [
+        {
+          "style": {},
+          "initial": "none",
+          "overrides": {},
+          "result": "none"
+        },
+        {
+          "style": {},
+          "initial": "underline",
+          "overrides": {},
+          "result": "underline"
+        },
+        {
+          "style": {},
+          "initial": "line-through",
+          "overrides": {},
+          "result": "line-through"
+        },
+        {
+          "style": {},
+          "initial": "underline line-through",
+          "overrides": {},
+          "result": "underline line-through"
+        },
+        {
+          "style": {
+            "underline": false
+          },
+          "initial": "none",
+          "overrides": {
+            "underline": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "underline": false
+          },
+          "initial": "underline",
+          "overrides": {
+            "underline": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "underline": false
+          },
+          "initial": "line-through",
+          "overrides": {
+            "underline": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "underline": false
+          },
+          "initial": "underline line-through",
+          "overrides": {
+            "underline": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "underline": true
+          },
+          "initial": "none",
+          "overrides": {
+            "underline": true
+          },
+          "result": "underline"
+        },
+        {
+          "style": {
+            "underline": true
+          },
+          "initial": "underline",
+          "overrides": {
+            "underline": true
+          },
+          "result": "underline"
+        },
+        {
+          "style": {
+            "underline": true
+          },
+          "initial": "line-through",
+          "overrides": {
+            "underline": true
+          },
+          "result": "underline"
+        },
+        {
+          "style": {
+            "underline": true
+          },
+          "initial": "underline line-through",
+          "overrides": {
+            "underline": true
+          },
+          "result": "underline"
+        },
+        {
+          "style": {
+            "strikethrough": false
+          },
+          "initial": "none",
+          "overrides": {
+            "strikethrough": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "strikethrough": false
+          },
+          "initial": "underline",
+          "overrides": {
+            "strikethrough": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "strikethrough": false
+          },
+          "initial": "line-through",
+          "overrides": {
+            "strikethrough": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "strikethrough": false
+          },
+          "initial": "underline line-through",
+          "overrides": {
+            "strikethrough": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "strikethrough": true
+          },
+          "initial": "none",
+          "overrides": {
+            "strikethrough": true
+          },
+          "result": "line-through"
+        },
+        {
+          "style": {
+            "strikethrough": true
+          },
+          "initial": "underline",
+          "overrides": {
+            "strikethrough": true
+          },
+          "result": "line-through"
+        },
+        {
+          "style": {
+            "strikethrough": true
+          },
+          "initial": "line-through",
+          "overrides": {
+            "strikethrough": true
+          },
+          "result": "line-through"
+        },
+        {
+          "style": {
+            "strikethrough": true
+          },
+          "initial": "underline line-through",
+          "overrides": {
+            "strikethrough": true
+          },
+          "result": "line-through"
+        },
+        {
+          "style": {
+            "underline": false,
+            "strikethrough": false
+          },
+          "initial": "none",
+          "overrides": {
+            "underline": false,
+            "strikethrough": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "underline": false,
+            "strikethrough": false
+          },
+          "initial": "underline",
+          "overrides": {
+            "underline": false,
+            "strikethrough": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "underline": false,
+            "strikethrough": false
+          },
+          "initial": "line-through",
+          "overrides": {
+            "underline": false,
+            "strikethrough": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "underline": false,
+            "strikethrough": false
+          },
+          "initial": "underline line-through",
+          "overrides": {
+            "underline": false,
+            "strikethrough": false
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "underline": false,
+            "strikethrough": true
+          },
+          "initial": "none",
+          "overrides": {
+            "underline": false,
+            "strikethrough": true
+          },
+          "result": "none"
+        },
+        {
+          "style": {
+            "underline": false,
+            "strikethrough": true
+          },
+          "initial": "underline",
+          "overrides": {
+            "underline": false,
+            "strikethrough": true
+          },
+          "result": "underline"
+        },
+        {
+          "style": {
+            "underline": false,
+            "strikethrough": true
+          },
+          "initial": "line-through",
+          "overrides": {
+            "underline": false,
+            "strikethrough": true
+          },
+          "result": "line-through"
+        },
+        {
+          "style": {
+            "underline": false,
+            "strikethrough": true
+          },
+          "initial": "underline line-through",
+          "overrides": {
+            "underline": false,
+            "strikethrough": true
+          },
+          "result": "underline line-through"
+        },
+        {
+          "style": {
+            "underline": true,
+            "strikethrough": false
+          },
+          "initial": "none",
+          "overrides": {
+            "underline": true,
+            "strikethrough": false
+          },
+          "result": "underline"
+        },
+        {
+          "style": {
+            "underline": true,
+            "strikethrough": false
+          },
+          "initial": "underline",
+          "overrides": {
+            "underline": true,
+            "strikethrough": false
+          },
+          "result": "underline"
+        },
+        {
+          "style": {
+            "underline": true,
+            "strikethrough": false
+          },
+          "initial": "line-through",
+          "overrides": {
+            "underline": true,
+            "strikethrough": false
+          },
+          "result": "underline"
+        },
+        {
+          "style": {
+            "underline": true,
+            "strikethrough": false
+          },
+          "initial": "underline line-through",
+          "overrides": {
+            "underline": true,
+            "strikethrough": false
+          },
+          "result": "underline"
+        },
+        {
+          "style": {
+            "underline": true,
+            "strikethrough": true
+          },
+          "initial": "none",
+          "overrides": {
+            "underline": true,
+            "strikethrough": true
+          },
+          "result": "underline line-through"
+        },
+        {
+          "style": {
+            "underline": true,
+            "strikethrough": true
+          },
+          "initial": "underline",
+          "overrides": {
+            "underline": true,
+            "strikethrough": true
+          },
+          "result": "underline line-through"
+        },
+        {
+          "style": {
+            "underline": true,
+            "strikethrough": true
+          },
+          "initial": "line-through",
+          "overrides": {
+            "underline": true,
+            "strikethrough": true
+          },
+          "result": "underline line-through"
+        },
+        {
+          "style": {
+            "underline": true,
+            "strikethrough": true
+          },
+          "initial": "underline line-through",
+          "overrides": {
+            "underline": true,
+            "strikethrough": true
+          },
+          "result": "underline line-through"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "hyperlink style affects link descendants only and restores its own cached underline",
+      "result": {
+        "active": {
+          "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: line-through;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            }
+          ]
+        },
+        "normal": {
+          "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: underline;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "underline",
+              "computed": "underline",
+              "css": "text-decoration: underline;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "hyperlink override composition includes parent then link state flags",
+      "result": {
+        "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: underline line-through;\">Link</span></a></p>",
+        "text": "OutsideLink",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "OutsideLink",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "outside",
+            "text": "Outside",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          },
+          {
+            "tag": "A",
+            "id": "link",
+            "text": "Link",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "linkrun",
+            "text": "Link",
+            "inline": "underline line-through",
+            "computed": "underline line-through",
+            "css": "text-decoration: underline line-through;"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "hyperlink invalid combined flags restore cached CSS before ignored write",
+      "result": {
+        "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: underline;\">Link</span></a></p>",
+        "text": "OutsideLink",
+        "rich": false,
+        "trace": [],
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "OutsideLink",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "outside",
+            "text": "Outside",
+            "inline": "line-through",
+            "computed": "line-through",
+            "css": "text-decoration: line-through;"
+          },
+          {
+            "tag": "A",
+            "id": "link",
+            "text": "Link",
+            "inline": "",
+            "computed": "none",
+            "css": ""
+          },
+          {
+            "tag": "SPAN",
+            "id": "linkrun",
+            "text": "Link",
+            "inline": "underline",
+            "computed": "underline",
+            "css": "text-decoration: underline;"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "hyperlink not-down resets and reapplies hover; parent style endpoint is invoked",
+      "result": {
+        "down": {
+          "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: underline line-through;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "underline line-through",
+              "computed": "underline line-through",
+              "css": "text-decoration: underline line-through;"
+            }
+          ]
+        },
+        "up": {
+          "html": "<p id=\"cache0\"><span id=\"outside\" style=\"text-decoration:line-through\">Outside</span><a id=\"link\" style=\"\"><span id=\"linkrun\" style=\"text-decoration: none;\">Link</span></a></p>",
+          "text": "OutsideLink",
+          "rich": false,
+          "trace": [
+            {
+              "kind": "parentHover",
+              "id": "w",
+              "value": true
+            }
+          ],
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "OutsideLink",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "outside",
+              "text": "Outside",
+              "inline": "line-through",
+              "computed": "line-through",
+              "css": "text-decoration: line-through;"
+            },
+            {
+              "tag": "A",
+              "id": "link",
+              "text": "Link",
+              "inline": "",
+              "computed": "none",
+              "css": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "linkrun",
+              "text": "Link",
+              "inline": "none",
+              "computed": "none",
+              "css": "text-decoration: none;"
+            }
+          ]
+        }
+      },
+      "passed": true
+    }
+  ],
+  "networkRequests": [],
+  "pageErrors": [],
+  "limits": [
+    "Bounded original JS slices with fixture object metadata and stubbed visibility/autofit; not original generated page or GUI",
+    "CSS property observation does not prove visual propagation cancellation from decorated ancestors",
+    "Initial rich-run HTML generator behavior is a separate native-format evidence question",
+    "No DLL execution, external URL navigation or vendor code added to product"
+  ]
+}

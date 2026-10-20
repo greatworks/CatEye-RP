@@ -1,0 +1,1201 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "6dd3a21c-8b90-4ffa-870c-618060db61d8",
+  "name": "Repeater borders, padding and live geometry",
+  "pages": [
+    {
+      "id": "35059e60-c9d0-4742-8f76-72316aa12133",
+      "name": "Page 1",
+      "width": 1140,
+      "height": 830,
+      "background": "#f4f7fb",
+      "widgets": [
+        {
+          "id": "f6e05e22-b5f2-4c1f-8c35-843d6b01c163",
+          "type": "box",
+          "name": "Row layout card",
+          "text": "",
+          "notes": "",
+          "x": 40,
+          "y": 132,
+          "rotation": 0,
+          "width": 525,
+          "height": 335,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#d9e1ed",
+            "strokeWidth": 1,
+            "radius": 12,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "64bf6a05-e1d9-4912-88d4-e9eae9e3fa13",
+          "type": "box",
+          "name": "Empty layout card",
+          "text": "",
+          "notes": "",
+          "x": 615,
+          "y": 132,
+          "rotation": 0,
+          "width": 485,
+          "height": 335,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#d9e1ed",
+            "strokeWidth": 1,
+            "radius": 12,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "248c08d9-a469-45c7-9064-5215d55c8980",
+          "type": "box",
+          "name": "Live geometry card",
+          "text": "",
+          "notes": "",
+          "x": 40,
+          "y": 496,
+          "rotation": 0,
+          "width": 1060,
+          "height": 305,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#d9e1ed",
+            "strokeWidth": 1,
+            "radius": 12,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "4fa71fb4-4a8b-491b-a528-444e7568b392",
+          "type": "text",
+          "name": "Heading",
+          "text": "Borders, padding and live geometry",
+          "notes": "",
+          "x": 40,
+          "y": 25,
+          "rotation": 0,
+          "width": 1060,
+          "height": 48,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 29,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "5400c036-1896-49cb-bc94-c2464a552d1c",
+          "type": "text",
+          "name": "Introduction",
+          "text": "Grow → reset keeps native border accumulation. Refresh restores the original box.",
+          "notes": "",
+          "x": 40,
+          "y": 84,
+          "rotation": 0,
+          "width": 1050,
+          "height": 30,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "487be545-2dfc-4e99-b96c-f13e06bcc147",
+          "type": "text",
+          "name": "Row title",
+          "text": "1. Row size and border accumulation",
+          "notes": "",
+          "x": 65,
+          "y": 150,
+          "rotation": 0,
+          "width": 480,
+          "height": 35,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 19,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "1d58f321-2326-47c5-9a70-d9efadb4ddc4",
+          "type": "text",
+          "name": "Row details",
+          "text": "Padding T7 R4 B9 L6 · Border T3 R5 B7 L2",
+          "notes": "",
+          "x": 65,
+          "y": 186,
+          "rotation": 0,
+          "width": 480,
+          "height": 28,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "906f72de-1caf-4e61-91b9-f811b51f2adf",
+          "type": "repeater",
+          "name": "Bordered records",
+          "text": "",
+          "notes": "",
+          "x": 80,
+          "y": 225,
+          "rotation": 0,
+          "width": 110,
+          "height": 36,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#eef4ff",
+            "stroke": "#3560a8",
+            "strokeWidth": 1,
+            "borderWidths": [
+              3,
+              5,
+              7,
+              2
+            ],
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "14f88168-2c6c-4198-9ab1-6f42ecb4a9ba",
+              "event": "itemLoad",
+              "name": "itemLoad",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "12b19fec-7459-4c40-9fa3-0461d7f2c7a0",
+                  "type": "setText",
+                  "targetId": "b9bf4754-3678-4be3-b387-1f4c6d0ca8f6",
+                  "value": "This row [[This.width]]×[[This.height]] | Item.Repeater [[Item.Repeater.width]]×[[Item.Repeater.height]]"
+                }
+              ]
+            },
+            {
+              "id": "0e6e4664-a02a-4615-b34a-c56d2c83d06a",
+              "event": "itemResize",
+              "name": "itemResize",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "21ecfd7d-ec1e-44c5-9c34-f46f0767c266",
+                  "type": "setVariable",
+                  "targetId": "ResizeEvents",
+                  "value": "[[ResizeEvents + 1]]"
+                },
+                {
+                  "id": "b9e20bb0-8246-4df0-ac49-2ee38d06ed85",
+                  "type": "setText",
+                  "targetId": "b9bf4754-3678-4be3-b387-1f4c6d0ca8f6",
+                  "value": "This row [[This.width]]×[[This.height]] | Item.Repeater [[Item.Repeater.width]]×[[Item.Repeater.height]]"
+                },
+                {
+                  "id": "fc445878-5915-4d68-abd1-99e3de2735be",
+                  "type": "setText",
+                  "targetId": "c53c0531-48d7-492e-b397-832f785f5ce4",
+                  "value": "Resize events: [[ResizeEvents]]"
+                }
+              ]
+            }
+          ],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              }
+            ],
+            "template": [
+              {
+                "id": "989daf39-495b-4fc5-aeab-e185f9af5ba3",
+                "type": "button",
+                "name": "Grow bordered row",
+                "text": "Grow",
+                "notes": "",
+                "x": 3,
+                "y": 2,
+                "rotation": 0,
+                "width": 42,
+                "height": 16,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#e7efff",
+                  "stroke": "#6c88be",
+                  "strokeWidth": 1,
+                  "radius": 2,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "lineHeight": "normal",
+                  "color": "#193b76",
+                  "fontSize": 10,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "00276e02-b79f-420a-bc02-f6c804b4111a",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "isNewIfGroup": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "55d75169-3dd8-46d8-ad3c-41557260f7c8",
+                        "type": "resizeItem",
+                        "targetId": "906f72de-1caf-4e61-91b9-f811b51f2adf",
+                        "x": 130,
+                        "y": 35
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "0d9fec86-92fc-4493-8e56-7b4e5dd6d6db",
+                "type": "button",
+                "name": "Reset bordered row",
+                "text": "Reset",
+                "notes": "",
+                "x": 53,
+                "y": 2,
+                "rotation": 0,
+                "width": 44,
+                "height": 16,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#e7efff",
+                  "stroke": "#6c88be",
+                  "strokeWidth": 1,
+                  "radius": 2,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "lineHeight": "normal",
+                  "color": "#193b76",
+                  "fontSize": 10,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "4e93adcb-f438-4bf2-a6c0-85116287e44d",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "isNewIfGroup": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "0743aa6b-0090-419a-9337-fc1b73177dea",
+                        "type": "resizeItem",
+                        "targetId": "906f72de-1caf-4e61-91b9-f811b51f2adf",
+                        "x": 100,
+                        "y": 20
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "itemHeight": 20,
+            "gap": 0,
+            "itemWidth": 100,
+            "horizontalGap": 8,
+            "verticalGap": 4,
+            "layout": "vertical",
+            "fitToContent": false,
+            "padding": [
+              7,
+              4,
+              9,
+              6
+            ]
+          }
+        },
+        {
+          "id": "300f5eb2-9161-4646-9cd4-46c8d8ca69e4",
+          "type": "text",
+          "name": "Row position",
+          "text": "Row origin: padding − computed border",
+          "notes": "",
+          "x": 245,
+          "y": 225,
+          "rotation": 0,
+          "width": 290,
+          "height": 50,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "b9bf4754-3678-4be3-b387-1f4c6d0ca8f6",
+          "type": "text",
+          "name": "This row log",
+          "text": "Waiting for row load",
+          "notes": "",
+          "x": 65,
+          "y": 310,
+          "rotation": 0,
+          "width": 480,
+          "height": 36,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "c53c0531-48d7-492e-b397-832f785f5ce4",
+          "type": "text",
+          "name": "Resize event log",
+          "text": "Resize events: 0",
+          "notes": "",
+          "x": 65,
+          "y": 352,
+          "rotation": 0,
+          "width": 460,
+          "height": 28,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "d0df1096-7989-4bc6-9ef4-f9f8e229ab35",
+          "type": "button",
+          "name": "Refresh bordered records",
+          "text": "Refresh and clear accumulation",
+          "notes": "",
+          "x": 65,
+          "y": 404,
+          "rotation": 0,
+          "width": 280,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e7efff",
+            "stroke": "#6c88be",
+            "strokeWidth": 1,
+            "radius": 5,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": "normal",
+            "color": "#193b76",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "88372720-9bd6-428a-bc2e-8201eda8f0c6",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "d42e6540-37dc-460c-8a84-8c8b22e904cb",
+                  "type": "removeFilter",
+                  "targetId": "906f72de-1caf-4e61-91b9-f811b51f2adf",
+                  "value": "{\"all\":true}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "37f83fc6-d88d-4e4a-bc1e-7a87439182ce",
+          "type": "text",
+          "name": "Empty title",
+          "text": "2. Empty raw size and visible box",
+          "notes": "",
+          "x": 640,
+          "y": 150,
+          "rotation": 0,
+          "width": 430,
+          "height": 35,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 19,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "c16f8cbc-8af5-4b73-8eb7-b4b2d61046d1",
+          "type": "text",
+          "name": "Empty details",
+          "text": "Wrapped, no rows · padding 1 · gaps 8 / 4",
+          "notes": "",
+          "x": 640,
+          "y": 186,
+          "rotation": 0,
+          "width": 440,
+          "height": 28,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "da623028-033a-44cd-a263-91a348e7f2e7",
+          "type": "repeater",
+          "name": "Empty bordered records",
+          "text": "",
+          "notes": "",
+          "x": 650,
+          "y": 225,
+          "rotation": 0,
+          "width": 110,
+          "height": 36,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#eef4ff",
+            "stroke": "#3560a8",
+            "strokeWidth": 1,
+            "borderWidths": [
+              3,
+              5,
+              7,
+              2
+            ],
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "750c88b9-9311-4d28-be7c-48ec4bbcfe0a",
+              "event": "load",
+              "name": "load",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "cc7fb232-b100-4c69-b09b-0b560790b070",
+                  "type": "setText",
+                  "targetId": "0bf5fad2-3dd5-417b-9eae-6ed7c33dc4ce",
+                  "value": "This raw [[This.width]]×[[This.height]] | no DOM rows"
+                }
+              ]
+            }
+          ],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [],
+            "template": [],
+            "itemHeight": 20,
+            "gap": 0,
+            "itemWidth": 100,
+            "horizontalGap": 8,
+            "verticalGap": 4,
+            "layout": "vertical",
+            "fitToContent": false,
+            "padding": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "wrap": 2
+          }
+        },
+        {
+          "id": "198f1849-c6e3-475d-aae5-3b4679816749",
+          "type": "text",
+          "name": "Empty explanation",
+          "text": "CSS box follows display scaling\nRaw geometry: −6 × −2",
+          "notes": "",
+          "x": 684,
+          "y": 218,
+          "rotation": 0,
+          "width": 360,
+          "height": 56,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "0bf5fad2-3dd5-417b-9eae-6ed7c33dc4ce",
+          "type": "text",
+          "name": "Empty This log",
+          "text": "Waiting for empty load",
+          "notes": "",
+          "x": 650,
+          "y": 288,
+          "rotation": 0,
+          "width": 420,
+          "height": 36,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "4370b394-21d9-4db7-b8a4-22e2e294a9ae",
+          "type": "text",
+          "name": "Target repeater log",
+          "text": "Inspect to read live repeater geometry",
+          "notes": "",
+          "x": 650,
+          "y": 334,
+          "rotation": 0,
+          "width": 420,
+          "height": 56,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "1973828a-ef5f-4ea6-8baa-0bae56ba6dea",
+          "type": "button",
+          "name": "Inspect repeater geometry",
+          "text": "Read Target repeater sizes",
+          "notes": "",
+          "x": 650,
+          "y": 404,
+          "rotation": 0,
+          "width": 280,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e7efff",
+            "stroke": "#6c88be",
+            "strokeWidth": 1,
+            "radius": 5,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": "normal",
+            "color": "#193b76",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "1408967f-4b32-468e-956e-5f21833e1f7b",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "c4fbffbc-5f22-4edb-96d9-0c24c7568fac",
+                  "type": "setText",
+                  "targetId": "906f72de-1caf-4e61-91b9-f811b51f2adf",
+                  "value": "Target root [[Target.width]]×[[Target.height]]"
+                },
+                {
+                  "id": "4969c9ce-e180-483c-9075-ce52429695f6",
+                  "type": "setText",
+                  "targetId": "da623028-033a-44cd-a263-91a348e7f2e7",
+                  "value": "Target empty [[Target.width]]×[[Target.height]]"
+                },
+                {
+                  "id": "aaf6d241-7cca-47b3-943d-d99adc301172",
+                  "type": "setText",
+                  "targetId": "4370b394-21d9-4db7-b8a4-22e2e294a9ae",
+                  "value": "[[Widget.906f72de-1caf-4e61-91b9-f811b51f2adf.text]] | [[Widget.da623028-033a-44cd-a263-91a348e7f2e7.text]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "934f5f46-0442-47ee-b178-2f71e4a9400f",
+          "type": "text",
+          "name": "Geometry title",
+          "text": "3. This and Target follow current position and size",
+          "notes": "",
+          "x": 65,
+          "y": 516,
+          "rotation": 0,
+          "width": 990,
+          "height": 35,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 19,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "334f5b2a-ea0b-4c7a-bf33-e6691c81344b",
+          "type": "text",
+          "name": "Geometry instructions",
+          "text": "Click the target, move + resize it, then click it again. The logs read live geometry.",
+          "notes": "",
+          "x": 65,
+          "y": 553,
+          "rotation": 0,
+          "width": 990,
+          "height": 26,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "2efbc397-7807-4ebb-b108-f38ef7c8668d",
+          "type": "button",
+          "name": "Live geometry target",
+          "text": "Read This geometry",
+          "notes": "",
+          "x": 65,
+          "y": 590,
+          "rotation": 0,
+          "width": 160,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e7efff",
+            "stroke": "#6c88be",
+            "strokeWidth": 1,
+            "radius": 5,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": "normal",
+            "color": "#193b76",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "0c98f6f6-f57f-422a-8f1b-d63ce05d0a73",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "24e64be2-467f-43b8-9a54-3bc1e1c02f20",
+                  "type": "setText",
+                  "targetId": "150fef44-0d27-460c-9eac-8c9d82929aa3",
+                  "value": "This x=[[This.x]], y=[[This.y]], width=[[This.width]], height=[[This.height]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "286adb73-2548-4c5c-b23c-8a043341450c",
+          "type": "button",
+          "name": "Move and resize geometry target",
+          "text": "Move + resize target",
+          "notes": "",
+          "x": 650,
+          "y": 590,
+          "rotation": 0,
+          "width": 230,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e7efff",
+            "stroke": "#6c88be",
+            "strokeWidth": 1,
+            "radius": 5,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": "normal",
+            "color": "#193b76",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "6cf6ed7d-e4b6-4582-a411-742eda679f57",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ca4553d3-904e-4844-846a-1c5ac19b86f3",
+                  "type": "move",
+                  "targetId": "2efbc397-7807-4ebb-b108-f38ef7c8668d",
+                  "x": 290,
+                  "y": 590
+                },
+                {
+                  "id": "abef36e4-1231-4c4e-8d34-ffc3e50351fc",
+                  "type": "resize",
+                  "targetId": "2efbc397-7807-4ebb-b108-f38ef7c8668d",
+                  "x": 190,
+                  "y": 64
+                },
+                {
+                  "id": "867a4e7c-0d1e-4560-85fc-a273f08ec780",
+                  "type": "setText",
+                  "targetId": "2efbc397-7807-4ebb-b108-f38ef7c8668d",
+                  "value": "Target x=[[Target.x]], y=[[Target.y]], width=[[Target.width]], height=[[Target.height]]"
+                },
+                {
+                  "id": "505f32cf-aad1-43bd-9886-78136803c5e9",
+                  "type": "setText",
+                  "targetId": "b1e90154-1a7d-406c-88e1-9c21131851ae",
+                  "value": "[[Widget.2efbc397-7807-4ebb-b108-f38ef7c8668d.text]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "150fef44-0d27-460c-9eac-8c9d82929aa3",
+          "type": "text",
+          "name": "This geometry log",
+          "text": "Click the target to read This geometry",
+          "notes": "",
+          "x": 65,
+          "y": 690,
+          "rotation": 0,
+          "width": 990,
+          "height": 32,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 15,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "b1e90154-1a7d-406c-88e1-9c21131851ae",
+          "type": "text",
+          "name": "Target geometry log",
+          "text": "Move + resize to read Target geometry",
+          "notes": "",
+          "x": 65,
+          "y": 734,
+          "rotation": 0,
+          "width": 990,
+          "height": 32,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.3,
+            "color": "#26334d",
+            "fontSize": 15,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {
+    "ResizeEvents": "0"
+  },
+  "styles": []
+}

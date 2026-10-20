@@ -1,0 +1,645 @@
+{
+  "timestamp": "2026-10-13T20:56:23.528Z",
+  "kind": "exact-source NodeVM functions with mocked DOM/style sinks; no browser pixels or original GUI in this stage",
+  "source": {
+    "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+    "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+  },
+  "extractionEvidence": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "ranges": [
+    {
+      "start": 349,
+      "end": 592,
+      "sha256": "1a53fd9ccecce185f790a7aa7b7affb0cb09af28668cd46706a6505fc0fa7e49"
+    },
+    {
+      "start": 706,
+      "end": 812,
+      "sha256": "3a122da2697384289f36c8414cc76c03f075758c3dc868d43caf958402f9201c"
+    },
+    {
+      "start": 1390,
+      "end": 1494,
+      "sha256": "d36934ee85aa1004d2709a8f368d30c554b686bd1b77647eded3d81dc201e6f6"
+    },
+    {
+      "start": 1763,
+      "end": 1915,
+      "sha256": "dc01c29c7c9dfef5e81290a3282d9e9e97d278580d8a3adac0a9467ebcb1dfc0"
+    },
+    {
+      "start": 2444,
+      "end": 2532,
+      "sha256": "135cf320bb2a1678f1a8d7e2808e12f35ef221a0a13d781c238621ce83576482"
+    }
+  ],
+  "results": [
+    {
+      "name": "text shadow uses raw signed fractional offsets and blur",
+      "observed": "-1.25px 2.5px 3.75px rgba(17, 34, 51, 0.4)",
+      "pass": true
+    },
+    {
+      "name": "text shadow explicit off is none",
+      "observed": "none",
+      "pass": true
+    },
+    {
+      "name": "zero blur and zero offsets remain valid shadow",
+      "observed": "0px 0px 0px rgba(17, 34, 51, 0.4)",
+      "pass": true
+    },
+    {
+      "name": "text shadow targets paragraph and applyAll but not runs",
+      "observed": {
+        "runProps": {},
+        "parProps": {
+          "textShadow": "3px -4px 6px rgba(17, 34, 51, 0.4)"
+        },
+        "allProps": {
+          "textShadow": "3px -4px 6px rgba(17, 34, 51, 0.4)"
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "absent text shadow emits no declaration",
+      "observed": {
+        "runProps": {},
+        "parProps": {},
+        "allProps": {}
+      },
+      "pass": true
+    },
+    {
+      "name": "paragraph shadow on and off apply while span and anchor remain untouched",
+      "observed": [
+        {
+          "nodeName": "P",
+          "style": {
+            "textShadow": "none"
+          }
+        },
+        {
+          "nodeName": "SPAN",
+          "style": {
+            "textShadow": "original"
+          }
+        },
+        {
+          "nodeName": "A",
+          "style": {
+            "textShadow": "original"
+          }
+        },
+        {
+          "nodeName": "INPUT",
+          "style": {
+            "textShadow": "none"
+          }
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "base shadow inherited when state does not mention it",
+      "observed": {
+        "on": true,
+        "offsetX": 3,
+        "offsetY": -4,
+        "blurRadius": 6,
+        "color": {
+          "r": 17,
+          "g": 34,
+          "b": 51,
+          "a": 0.4
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "state shadow is whole-object replacement, not nested merge",
+      "observed": {
+        "on": false
+      },
+      "pass": true
+    },
+    {
+      "name": "hover and selected combine different shadow families",
+      "observed": {
+        "outer": {
+          "on": true,
+          "offsetX": 3,
+          "offsetY": -4,
+          "blurRadius": 6,
+          "color": {
+            "r": 17,
+            "g": 34,
+            "b": 51,
+            "a": 0.4
+          }
+        },
+        "inner": {
+          "on": true,
+          "offsetX": 3,
+          "offsetY": -4,
+          "blurRadius": 6,
+          "color": {
+            "r": 17,
+            "g": 34,
+            "b": 51,
+            "a": 0.4
+          },
+          "spread": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "selected explicit off replaces active hover outer shadow",
+      "observed": {
+        "on": false,
+        "offsetX": 3,
+        "offsetY": -4,
+        "blurRadius": 6,
+        "color": {
+          "r": 17,
+          "g": 34,
+          "b": 51,
+          "a": 0.4
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "adaptive shadow replaces authored shadow",
+      "observed": {
+        "on": true,
+        "offsetX": 8,
+        "offsetY": 9,
+        "blurRadius": 10,
+        "color": {
+          "r": 17,
+          "g": 34,
+          "b": 51,
+          "a": 0.4
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "state replaces adaptive shadow",
+      "observed": {
+        "on": false,
+        "offsetX": 3,
+        "offsetY": -4,
+        "blurRadius": 6,
+        "color": {
+          "r": 17,
+          "g": 34,
+          "b": 51,
+          "a": 0.4
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "named state shadow local off wins atomically",
+      "observed": {
+        "on": false
+      },
+      "pass": true
+    },
+    {
+      "name": "SetRichText font exclusion retains adaptive text shadow",
+      "observed": {
+        "textShadow": {
+          "on": true,
+          "offsetX": 3,
+          "offsetY": -4,
+          "blurRadius": 6,
+          "color": {
+            "r": 17,
+            "g": 34,
+            "b": 51,
+            "a": 0.4
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "SVG outer uses drop-shadow unhalved blur",
+      "observed": {
+        "css": "#svg_row_1 { filter: drop-shadow(3px -4px 6px rgba(17, 34, 51, 0.4)); transition: all 0ms;} ",
+        "nodes": []
+      },
+      "pass": true
+    },
+    {
+      "name": "SVG outer off emits selector without filter",
+      "observed": {
+        "css": "#svg_row_1 { transition: all 0ms; } ",
+        "nodes": []
+      },
+      "pass": true
+    },
+    {
+      "name": "SVG inner primitive graph uses half blur plus border spread",
+      "observed": {
+        "css": "#svg_row_1 { transition: all 0ms; } #svg_row_1 .fill, #svg_row_1 .background-image { filter:url('#svg_row_1innerShadowFilter');} ",
+        "nodes": [
+          {
+            "name": "defs",
+            "attrs": {}
+          },
+          {
+            "name": "filter",
+            "attrs": {
+              "x": "-50%",
+              "y": "-50%",
+              "width": "200%",
+              "height": "200%",
+              "filterUnits": "objectBoundingBox",
+              "id": "svg_row_1innerShadowFilter"
+            }
+          },
+          {
+            "name": "feOffset",
+            "attrs": {
+              "dx": "3",
+              "dy": "-4",
+              "in": "SourceGraphic",
+              "result": "offset",
+              "id": "offset"
+            }
+          },
+          {
+            "name": "feMorphology",
+            "attrs": {
+              "radius": "6",
+              "operator": "erode",
+              "in": "offset",
+              "result": "morphology",
+              "id": "morphology"
+            }
+          },
+          {
+            "name": "feGaussianBlur",
+            "attrs": {
+              "stdDeviation": "3",
+              "in": "morphology",
+              "result": "blur",
+              "id": "blur"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "blur",
+              "operator": "out",
+              "in": "SourceGraphic",
+              "result": "inverse",
+              "id": "inverse"
+            }
+          },
+          {
+            "name": "feFlood",
+            "attrs": {
+              "flood-color": "rgba(17, 34, 51, 0.4)",
+              "in": "inverse",
+              "result": "color",
+              "id": "color"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "inverse",
+              "operator": "in",
+              "in": "color",
+              "result": "shadow",
+              "id": "shadow"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "SourceGraphic",
+              "operator": "over",
+              "in": "shadow"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "SVG inner update mutates existing graph without duplicate filter",
+      "observed": {
+        "css": "#svg_row_1 { transition: all 0ms; } #svg_row_1 .fill, #svg_row_1 .background-image { filter:url('#svg_row_1innerShadowFilter');} ",
+        "nodes": [
+          {
+            "name": "defs",
+            "attrs": {}
+          },
+          {
+            "name": "filter",
+            "attrs": {
+              "x": "-50%",
+              "y": "-50%",
+              "width": "200%",
+              "height": "200%",
+              "filterUnits": "objectBoundingBox",
+              "id": "svg_row_1innerShadowFilter"
+            }
+          },
+          {
+            "name": "feOffset",
+            "attrs": {
+              "dx": "-9",
+              "dy": "11",
+              "in": "SourceGraphic",
+              "result": "offset",
+              "id": "offset"
+            }
+          },
+          {
+            "name": "feMorphology",
+            "attrs": {
+              "radius": "4",
+              "operator": "erode",
+              "in": "offset",
+              "result": "morphology",
+              "id": "morphology"
+            }
+          },
+          {
+            "name": "feGaussianBlur",
+            "attrs": {
+              "stdDeviation": "4",
+              "in": "morphology",
+              "result": "blur",
+              "id": "blur"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "blur",
+              "operator": "out",
+              "in": "SourceGraphic",
+              "result": "inverse",
+              "id": "inverse"
+            }
+          },
+          {
+            "name": "feFlood",
+            "attrs": {
+              "flood-color": "rgba(17, 34, 51, 0.4)",
+              "in": "inverse",
+              "result": "color",
+              "id": "color"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "inverse",
+              "operator": "in",
+              "in": "color",
+              "result": "shadow",
+              "id": "shadow"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "SourceGraphic",
+              "operator": "over",
+              "in": "shadow"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "SVG inner off preserves unused graph but removes active reference",
+      "observed": {
+        "css": "#svg_row_1 { transition: all 0ms; } ",
+        "nodes": [
+          {
+            "name": "defs",
+            "attrs": {}
+          },
+          {
+            "name": "filter",
+            "attrs": {
+              "x": "-50%",
+              "y": "-50%",
+              "width": "200%",
+              "height": "200%",
+              "filterUnits": "objectBoundingBox",
+              "id": "svg_row_1innerShadowFilter"
+            }
+          },
+          {
+            "name": "feOffset",
+            "attrs": {
+              "dx": "3",
+              "dy": "-4",
+              "in": "SourceGraphic",
+              "result": "offset",
+              "id": "offset"
+            }
+          },
+          {
+            "name": "feMorphology",
+            "attrs": {
+              "radius": "0",
+              "operator": "erode",
+              "in": "offset",
+              "result": "morphology",
+              "id": "morphology"
+            }
+          },
+          {
+            "name": "feGaussianBlur",
+            "attrs": {
+              "stdDeviation": "3",
+              "in": "morphology",
+              "result": "blur",
+              "id": "blur"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "blur",
+              "operator": "out",
+              "in": "SourceGraphic",
+              "result": "inverse",
+              "id": "inverse"
+            }
+          },
+          {
+            "name": "feFlood",
+            "attrs": {
+              "flood-color": "rgba(17, 34, 51, 0.4)",
+              "in": "inverse",
+              "result": "color",
+              "id": "color"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "inverse",
+              "operator": "in",
+              "in": "color",
+              "result": "shadow",
+              "id": "shadow"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "SourceGraphic",
+              "operator": "over",
+              "in": "shadow"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "SVG inner zero blur spread and border preserved",
+      "observed": {
+        "css": "#svg_row_1 { transition: all 0ms; } #svg_row_1 .fill, #svg_row_1 .background-image { filter:url('#svg_row_1innerShadowFilter');} ",
+        "nodes": [
+          {
+            "name": "defs",
+            "attrs": {}
+          },
+          {
+            "name": "filter",
+            "attrs": {
+              "x": "-50%",
+              "y": "-50%",
+              "width": "200%",
+              "height": "200%",
+              "filterUnits": "objectBoundingBox",
+              "id": "svg_row_1innerShadowFilter"
+            }
+          },
+          {
+            "name": "feOffset",
+            "attrs": {
+              "dx": "0",
+              "dy": "0",
+              "in": "SourceGraphic",
+              "result": "offset",
+              "id": "offset"
+            }
+          },
+          {
+            "name": "feMorphology",
+            "attrs": {
+              "radius": "0",
+              "operator": "erode",
+              "in": "offset",
+              "result": "morphology",
+              "id": "morphology"
+            }
+          },
+          {
+            "name": "feGaussianBlur",
+            "attrs": {
+              "stdDeviation": "0",
+              "in": "morphology",
+              "result": "blur",
+              "id": "blur"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "blur",
+              "operator": "out",
+              "in": "SourceGraphic",
+              "result": "inverse",
+              "id": "inverse"
+            }
+          },
+          {
+            "name": "feFlood",
+            "attrs": {
+              "flood-color": "rgba(17, 34, 51, 0.4)",
+              "in": "inverse",
+              "result": "color",
+              "id": "color"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "inverse",
+              "operator": "in",
+              "in": "color",
+              "result": "shadow",
+              "id": "shadow"
+            }
+          },
+          {
+            "name": "feComposite",
+            "attrs": {
+              "in2": "SourceGraphic",
+              "operator": "over",
+              "in": "shadow"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "image outer CSS uses fixed zero spread regardless supplied spread",
+      "observed": {
+        "-moz-box-shadow": "3px -4px 6px 0px rgba(17,34,51,0.4)",
+        "-wibkit-box-shadow": "3px -4px 6px 0px rgba(17,34,51,0.4)",
+        "box-shadow": "3px -4px 6px 0px rgba(17,34,51,0.4)",
+        "left": "0px",
+        "top": "0px",
+        "width": 100,
+        "height": 40
+      },
+      "pass": true
+    },
+    {
+      "name": "image repaint clears old shadow when explicit off",
+      "observed": {
+        "width": 100,
+        "height": 40
+      },
+      "pass": true
+    },
+    {
+      "name": "image repaint clears old shadow when property absent",
+      "observed": {
+        "width": 100,
+        "height": 40
+      },
+      "pass": true
+    },
+    {
+      "name": "image inner shadow ignored by this runtime painter",
+      "observed": {
+        "width": 100,
+        "height": 40
+      },
+      "pass": true
+    }
+  ]
+}

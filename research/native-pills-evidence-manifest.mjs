@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+const hash=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const bind=p=>({path:p,sha256:hash(p)});
+const prior=JSON.parse(fs.readFileSync('research/native-corners-evidence.json','utf8'));
+const probes=JSON.parse(fs.readFileSync('research/native-pills-evidence-probes.json','utf8'));
+for(const source of prior.sources)if(hash(source.path)!==source.sha256)throw Error('Original source changed: '+source.path);
+for(const source of probes.sources)if(hash(source.path)!==source.sha256)throw Error('Probe dependency changed: '+source.path);
+const evidence=['research/native-pills-evidence.md','research/native-pills-evidence-probe.mjs','research/native-pills-evidence-probes.json','research/native-corners-evidence.json','research/native-corners-static-probes.json','research/native-corners-runtime-probes.json','research/rp-vector-path-vector-cil.json','research/native-pills-evidence-manifest.mjs'];
+const report={schema:'native-pills-evidence-v1',capturedAt:new Date().toISOString(),evidenceId:'native-pills-cil-coalescing-and-js-58',distributionSha256:prior.distributionSha256,extractionEvidence:prior.extractionEvidence,sources:prior.sources,evidence:[...new Map([...evidence.map(bind),...probes.sources].map(x=>[x.path,x])).values()],results:probes.summary,counts:{managedCoordinates:18,mergeGuards:6,rawPillJoins:28,exactJavaScriptVM:6},contract:{nativeShape:0,cornerMask:15,allSidesVisible:true,radius:'min(requested,width/2,height/2)',normalPointCounts:{roundedRectangle:8,horizontalPill:6,verticalPill:6,squareAtHalfRadius:4},quarterHandleCoefficient:0.44,coalescing:'same normalized anchor within strict per-axis 1e-5 plus degenerate joining handles; retain first lower / second higher / second segment',runtimeGate:'friendlyType Rectangle plus existing SVG plus effective nonempty style plus non-none linePattern plus truthy borderWidth'},limits:probes.limits};
+fs.writeFileSync('research/native-pills-evidence.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({path:'research/native-pills-evidence.json',sha256:hash('research/native-pills-evidence.json'),results:report.results}));

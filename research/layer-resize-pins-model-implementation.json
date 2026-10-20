@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "scope": "Author pin schema and independent adaptive declarations only",
+  "productionFrozen": true,
+  "product": [
+    {
+      "file": "src/model/types.ts",
+      "sha256": "226a7068ddf0626587494f2bb30577ab8268241a497ea5cc0b6298f8c18a702d",
+      "before": {
+        "file": ".build/layer-resize-capability-before-pins/src/model/types.ts",
+        "sha256": "0515ee7828fe633c896b6c8503367a18f8a30ccb4b14ee9d5c37487ee6ffed36"
+      }
+    },
+    {
+      "file": "src/model/document.ts",
+      "sha256": "91a2c145f801bee4e9a7130f37e93145eba812ae0842ca193f9165fc6b3ae1c3",
+      "before": {
+        "file": ".build/layer-resize-capability-before-pins/src/model/document.ts",
+        "sha256": "c6d40e9cf5f0db6550be870242fcf87bd374e7b88c38bb6b9cd97f2bc519dd39"
+      }
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "110ae6811273c8f074f2246f5cf67702d32879d122fe04ff57fdad8dd39ec8d5",
+      "before": {
+        "file": ".build/layer-resize-capability-before-pins/src/model/adaptive.ts",
+        "sha256": "cc122a5fc0923e990dfb5973cbef1b5042600b9d782625cc49c9571decf59c01"
+      }
+    },
+    {
+      "file": "src/model/resize-pins.ts",
+      "sha256": "40b464deec19c57547b0d8caa16a58900f4701742891c2bcb093e801ce2371c0",
+      "before": null
+    }
+  ],
+  "tests": [
+    {
+      "file": "tests/layer-resize-pins-model.test.ts",
+      "sha256": "777ff9f9712edb18b232e77abaf006248f9f1b7157271355d4d65238df806870"
+    }
+  ],
+  "verification": {
+    "final": {
+      "total": 197,
+      "passed": 197,
+      "failed": 0,
+      "newTests": 46,
+      "typecheckExitCode": 0
+    },
+    "command": "npx vitest run tests/layer-resize-pins-model.test.ts tests/adaptive.test.ts tests/adaptive-hierarchy.test.ts tests/adaptive-all-views-authoring.test.ts tests/adaptive-view-sets.test.ts tests/adaptive-state-styles.test.ts tests/native-layers-model.test.ts --maxWorkers=2 --reporter=json --outputFile=.build/layer-resize-capability-pins-model-green-final.json",
+    "typecheck": "npx tsc --noEmit",
+    "evidence": [
+      {
+        "file": ".build/layer-resize-capability-pins-model-red.json",
+        "sha256": "f2f0266f2f4c88c9fa08e6dce49b831beee2e35fb66cd3cfb259d7a30b66d02b",
+        "total": 37,
+        "passed": 17,
+        "failed": 20,
+        "pending": 0
+      },
+      {
+        "file": ".build/layer-resize-capability-pins-model-red-corrected.json",
+        "sha256": "65fd6909c8023493709cf7519ccddd4ffe1386710e59ae918ad3ed60d41ef421",
+        "total": 37,
+        "passed": 21,
+        "failed": 16,
+        "pending": 0
+      },
+      {
+        "file": ".build/layer-resize-capability-pins-model-green-first.json",
+        "sha256": "6e033f3a92705bf5966561e5bb5023222e953579f89618004bc113fcfd164eb8",
+        "total": 37,
+        "passed": 36,
+        "failed": 1,
+        "pending": 0
+      },
+      {
+        "file": ".build/layer-resize-capability-pins-model-green.json",
+        "sha256": "5dcf2cc8aed50f6112e70c6ec94451441689bbe092f62ef12d1bf32061aae562",
+        "total": 193,
+        "passed": 193,
+        "failed": 0,
+        "pending": 0
+      },
+      {
+        "file": ".build/layer-resize-capability-pins-default-noop-red.json",
+        "sha256": "e6093e63ffdfd73fe1b76e2aa03d902abcdd826c3b7fc506922183700a5192fc",
+        "total": 46,
+        "passed": 0,
+        "failed": 4,
+        "pending": 42
+      },
+      {
+        "file": ".build/layer-resize-capability-pins-model-green-final.json",
+        "sha256": "64dacdad66f9ee426962e3dfe9867e204b6e2df5d1dfbcc03febeb5c473115e9",
+        "total": 197,
+        "passed": 197,
+        "failed": 0,
+        "pending": 0
+      }
+    ],
+    "notes": [
+      "First red included four findWidget harness failures; corrected old-product red has 16 failures.",
+      "First green had one shared-set fixture metadata error; product validation was not weakened.",
+      "Four additional real default-omission no-op failures were corrected; pre-fix adaptive bytes retained.",
+      "First typecheck error was parent-owned test importing absent indexWidgets; later checks exit 0.",
+      "No full suite, browser, desktop or package executed."
+    ]
+  },
+  "capabilityEvidence": {
+    "file": "research/layer-resize-capability-manifest.json",
+    "sha256": "271d49ede2a4c8ab3a7a133f80fe29602c52cd81a8eccf5731b2624b79e93f2c"
+  },
+  "artifacts": [
+    {
+      "file": "src/model/types.ts",
+      "sha256": "226a7068ddf0626587494f2bb30577ab8268241a497ea5cc0b6298f8c18a702d"
+    },
+    {
+      "file": "src/model/document.ts",
+      "sha256": "91a2c145f801bee4e9a7130f37e93145eba812ae0842ca193f9165fc6b3ae1c3"
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "110ae6811273c8f074f2246f5cf67702d32879d122fe04ff57fdad8dd39ec8d5"
+    },
+    {
+      "file": "src/model/resize-pins.ts",
+      "sha256": "40b464deec19c57547b0d8caa16a58900f4701742891c2bcb093e801ce2371c0"
+    },
+    {
+      "file": "tests/layer-resize-pins-model.test.ts",
+      "sha256": "777ff9f9712edb18b232e77abaf006248f9f1b7157271355d4d65238df806870"
+    },
+    {
+      "file": ".build/layer-resize-capability-pins-model-red.log",
+      "sha256": "5819aaf9f86765fa4ade7102393e2cd0fb26bc3288e0284c66894737c770bb56"
+    },
+    {
+      "file": ".build/layer-resize-capability-pins-model-red-corrected.log",
+      "sha256": "93c15b22fc3101e9b8bb71bc3ea0443fba750f695c10387d7d04c5dad3eddab8"
+    },
+    {
+      "file": ".build/layer-resize-capability-pins-model-green-first.log",
+      "sha256": "722b0d02352fe5ba8eea39e5dfec4728941d5c5b6ee2dc5eb66de383c3076d14"
+    },
+    {
+      "file": ".build/layer-resize-capability-pins-model-green.log",
+      "sha256": "faf653f24da553df60d0fc0294f39d6d16101b3f8f9a3b08fe68d136d0e984aa"
+    },
+    {
+      "file": ".build/layer-resize-capability-pins-default-noop-red.log",
+      "sha256": "7d5e810182a91b25db3298d5dd554e7db6d611460d814a8006ddaddfdbe68e56"
+    },
+    {
+      "file": ".build/layer-resize-capability-pins-model-green-final.log",
+      "sha256": "f503ece5ce9436b6d3b4e69a63358936d352a1a5defc2ee5f57770ae5d3828f8"
+    },
+    {
+      "file": ".build/layer-resize-capability-pins-typecheck-first.log",
+      "sha256": "03483f766d8b40177ce4aaaa26be1f716a80e93ae30993f89fe4f6ef29fde9dc"
+    },
+    {
+      "file": ".build/layer-resize-capability-pins-typecheck-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": ".build/layer-resize-capability-pins-typecheck-final-corrected.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": ".build/layer-resize-capability-before-default-noop-adaptive.ts",
+      "sha256": "d2bce8e62395f77f479b138283e26e7ff661048f49d931d446260ffe8b9dc519"
+    },
+    {
+      "file": "research/layer-resize-pins-model-implementation.md",
+      "sha256": "562ac462cc6f01b778eff6dd8d2979ff57d8efe802166b085f0afce2b03e67c3"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "capturedAt": "2026-10-20T06:58:22.769Z",
+  "kind": "Exact adaptive initialize/switchView source in NodeVM; empty element enumeration and DOM/style/fit/repeater sinks. This proves control-flow calls, not complete page load geometry.",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\adaptive.js",
+      "sha256": "e141ea07bb973b6007f2ad7d7205516a041a801ec97e410467352c27af3b2928"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\init.temp.js",
+      "sha256": "0f6c77f52d3e1fcb5e3c8590b2d4be324af66832255a6d2385f7c01a5841a6bb"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "adaptive.js",
+      "first": 6,
+      "last": 43,
+      "sha256": "bacfe710b403d3f69dde18f854fa5fa69055c6bc2aab750bfcc595b827b2fcdc"
+    },
+    {
+      "file": "adaptive.js",
+      "first": 48,
+      "last": 159,
+      "sha256": "95efcdb46e07996d53293f092214a07df6a3fc54ded37634543715b811e54315"
+    },
+    {
+      "file": "adaptive.js",
+      "first": 715,
+      "last": 751,
+      "sha256": "7fffe7d1cf9de35b4a2c9333d7134189ffe4bd6fda59b652670dbf4019722be3"
+    },
+    {
+      "file": "init.temp.js",
+      "first": 238,
+      "last": 251,
+      "sha256": "345d834272ecad9993d1588e2383ee47bf9dc8720d8ba3bafe15d592cccb9f3c"
+    },
+    {
+      "file": "repeater.js",
+      "first": 1683,
+      "last": 1686,
+      "sha256": "cccfe4c4da458af09d51dbc91578d6b332d30966e51acd55a2028bf6a0d6f4f5"
+    }
+  ],
+  "staticSlices": {
+    "initSequence": "        $ax.annotation.initialize();\n\n        $ax.legacy.BringFixedToFront();\n        $ax.event.initialize();\n        $ax.style.initialize();\n        $ax.visibility.initialize();\n        $ax.repeater.initialize();\n        $ax.globalVariableProvider.load();\n        $ax.dynamicPanelManager.initialize(); //needs to be called after visibility is initialized\n        $ax.adaptive.initialize();\n        $ax.loadDynamicPanelsAndMasters();\n        $ax.adaptive.loadFinished();\n        var start = (new Date()).getTime();\n        $ax.repeater.initRefresh();",
+    "managerInit": "    _dynamicPanelManager.initialize = function() {\n        $axure.resize(_handleResize);\n        $(window).scroll(_handleScroll);\n    };"
+  },
+  "contract": "Initial Base/no named views does not invoke all-Layer cache refresh. Named-view entry does. Returning to Base clears moved/resized caches but does not invoke all-Layer refresh. Other fit/layout/action callbacks may separately update particular Layers.",
+  "script": {
+    "path": "research/native-layers-runtime-initial-bounds-probe.mjs",
+    "sha256": "f7962c85c26265c03849e5926ddd300c8ea76ee1335e9ce7184f0ac5a0de330f"
+  },
+  "summary": {
+    "total": 6,
+    "passed": 0,
+    "failed": 6
+  },
+  "results": [
+    {
+      "name": "initial no named views",
+      "views": [],
+      "calls": [],
+      "layerUpdates": 0,
+      "expected": 0,
+      "passed": false,
+      "error": "evalmachine.<anonymous>:187\n        _switchView(toViewId, \"auto\");\n                                      \n\nSyntaxError: Unexpected end of input\n    at new Script (node:vm:117:7)\n    at createScript (node:vm:269:10)\n    at Object.runInContext (node:vm:300:10)\n    at file:///D:/WSCodex/REA/research/native-layers-runtime-initial-bounds-probe.mjs:36:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "initial Base with named views",
+      "views": [
+        {
+          "id": "phone"
+        }
+      ],
+      "initial": "default",
+      "calls": [],
+      "layerUpdates": 0,
+      "expected": 0,
+      "passed": false,
+      "error": "evalmachine.<anonymous>:187\n        _switchView(toViewId, \"auto\");\n                                      \n\nSyntaxError: Unexpected end of input\n    at new Script (node:vm:117:7)\n    at createScript (node:vm:269:10)\n    at Object.runInContext (node:vm:300:10)\n    at file:///D:/WSCodex/REA/research/native-layers-runtime-initial-bounds-probe.mjs:36:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "initial named view",
+      "views": [
+        {
+          "id": "phone"
+        }
+      ],
+      "initial": "phone",
+      "calls": [],
+      "layerUpdates": 0,
+      "expected": 1,
+      "passed": false,
+      "error": "evalmachine.<anonymous>:187\n        _switchView(toViewId, \"auto\");\n                                      \n\nSyntaxError: Unexpected end of input\n    at new Script (node:vm:117:7)\n    at createScript (node:vm:269:10)\n    at Object.runInContext (node:vm:300:10)\n    at file:///D:/WSCodex/REA/research/native-layers-runtime-initial-bounds-probe.mjs:36:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "named to Base",
+      "previous": "phone",
+      "views": [],
+      "target": "",
+      "calls": [],
+      "layerUpdates": 0,
+      "expected": 0,
+      "passed": false,
+      "error": "evalmachine.<anonymous>:187\n        _switchView(toViewId, \"auto\");\n                                      \n\nSyntaxError: Unexpected end of input\n    at new Script (node:vm:117:7)\n    at createScript (node:vm:269:10)\n    at Object.runInContext (node:vm:300:10)\n    at file:///D:/WSCodex/REA/research/native-layers-runtime-initial-bounds-probe.mjs:36:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "Base to named",
+      "previous": "",
+      "views": [],
+      "target": "phone",
+      "calls": [],
+      "layerUpdates": 0,
+      "expected": 1,
+      "passed": false,
+      "error": "evalmachine.<anonymous>:187\n        _switchView(toViewId, \"auto\");\n                                      \n\nSyntaxError: Unexpected end of input\n    at new Script (node:vm:117:7)\n    at createScript (node:vm:269:10)\n    at Object.runInContext (node:vm:300:10)\n    at file:///D:/WSCodex/REA/research/native-layers-runtime-initial-bounds-probe.mjs:36:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "same named no-op",
+      "previous": "phone",
+      "views": [],
+      "target": "phone",
+      "calls": [],
+      "layerUpdates": 0,
+      "expected": 0,
+      "passed": false,
+      "error": "evalmachine.<anonymous>:187\n        _switchView(toViewId, \"auto\");\n                                      \n\nSyntaxError: Unexpected end of input\n    at new Script (node:vm:117:7)\n    at createScript (node:vm:269:10)\n    at Object.runInContext (node:vm:300:10)\n    at file:///D:/WSCodex/REA/research/native-layers-runtime-initial-bounds-probe.mjs:36:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    }
+  ]
+}

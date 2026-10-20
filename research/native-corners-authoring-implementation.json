@@ -1,0 +1,194 @@
+{
+  "schema": 1,
+  "stage": "native-corners-authoring",
+  "createdAt": "2026-10-15T14:36:10.9010215Z",
+  "status": "authoring-source-and-tests-frozen",
+  "report": {
+    "path": "research/native-corners-authoring-implementation.md",
+    "sha256": "c4e9e932b2e21cde92465a456dd52f21486cf0d74505a57d5d97367205ebd2d0",
+    "bytes": 6609
+  },
+  "production": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "0c8669d7778a150b2036b4b30125c85ac71d32836de5d240029d027e536a201e",
+      "bytes": 17238
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "b2bd73800782f5252c1042e94aba39dff48b8e39553b927cefd69a55b4a899fb",
+      "bytes": 96373
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "4be2be441f5c48e5753a16bda4c8d0a92f8030a0ab9b3a911b9885148238a2a6",
+      "bytes": 37682
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "0c403f7febd14ce1cffd89a295c6e4ab4afa9e433711e98d1f251b3c0b42f34a",
+      "bytes": 87475
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "2ab40ccd6d9be601e516cb4633e171a84318e29c28d1016aab11366f3defbf58",
+      "bytes": 105157
+    },
+    {
+      "path": "src/components/widget-style-command.ts",
+      "sha256": "7c258dae1c7b0b504705a9ca46be2a9558f775949ee9fbd201983627552a7e2e",
+      "bytes": 3784
+    },
+    {
+      "path": "src/components/CornerEditor.tsx",
+      "sha256": "8c180bb791b943ccd0286b0351e2fb285730a4b6fda11fec5b54e491c01d2b1b",
+      "bytes": 4538
+    },
+    {
+      "path": "src/components/CornerEditor.css",
+      "sha256": "aa8c829b90278d427db9ddd7271000b8c5900e56b74f4038ecd2248ae606276f",
+      "bytes": 287
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/native-corners-authoring.test.ts",
+      "sha256": "2bf4b18e6052a17c3bc6a16c456bd6d9b587f00ef0d412c8c3dd45cedb6d49e1",
+      "bytes": 9430
+    },
+    {
+      "path": "tests/native-corners-controls.test.ts",
+      "sha256": "39c6dfd70e5c4f1e2a3438139b65277f1342248d43af117b255677b7db4bcfd4",
+      "bytes": 11199
+    }
+  ],
+  "before": [
+    {
+      "path": ".build/native-corners-authoring-before/src/model/types.ts",
+      "sha256": "89f3bf1faa5732523915fbced601f620eb6bd4560496d81baa8fade397663512",
+      "bytes": 17085
+    },
+    {
+      "path": ".build/native-corners-authoring-before/src/model/document.ts",
+      "sha256": "0cf7ff741e2e188d4d093dd8073968a1e89035186a3187496ca5bcfd2dee9d84",
+      "bytes": 95989
+    },
+    {
+      "path": ".build/native-corners-authoring-before/src/model/adaptive.ts",
+      "sha256": "2cd738e8db66e70d534c76df7ee7b8889b2ed4747bbf1f8a6fa916ff82cbdbb7",
+      "bytes": 37207
+    },
+    {
+      "path": ".build/native-corners-authoring-before/src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309",
+      "bytes": 13234
+    },
+    {
+      "path": ".build/native-corners-authoring-before/src/App.tsx",
+      "sha256": "18d59af41c498e0072374cb5aa14c5f94c2d7409b1714976f524329400440d4c",
+      "bytes": 86115
+    },
+    {
+      "path": ".build/native-corners-authoring-before/src/components/Inspector.tsx",
+      "sha256": "406eb50c3a634067e111a56d8fee7b7dc7cf94067b9d5a4a1f67eac54b2f0725",
+      "bytes": 104333
+    },
+    {
+      "path": ".build/native-corners-authoring-before/src/components/widget-style-command.ts",
+      "sha256": "73500ccf8ab80c0977f397051dd0ba1cec89e3b45eba00fe684d977a9d71c356",
+      "bytes": 1159
+    }
+  ],
+  "unchangedReviewed": [
+    {
+      "path": "src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309",
+      "bytes": 13234
+    }
+  ],
+  "sharedDependencyObserved": {
+    "file": {
+      "path": "src/model/line-style.ts",
+      "sha256": "3915cc61def68759309f58d7c586ccfc15f800eeb3ed813545578794cc3f36d9",
+      "bytes": 19510
+    },
+    "owner": "parent",
+    "scope": "Capability helper only; parent may independently amend supportsSides. This is an observation, not an ownership freeze."
+  },
+  "validation": {
+    "red": {
+      "total": 19,
+      "passed": 15,
+      "failed": 4
+    },
+    "greenModel": {
+      "total": 19,
+      "passed": 19,
+      "failed": 0
+    },
+    "finalFocused": {
+      "files": 9,
+      "total": 198,
+      "passed": 198,
+      "failed": 0,
+      "newTests": 31,
+      "existingTests": 167
+    },
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "exitCode": 0
+    },
+    "browserRunByThisScope": false,
+    "fullSuiteRunByThisScope": false,
+    "buildOrPackageRunByThisScope": false
+  },
+  "evidence": [
+    {
+      "path": ".build/native-corners-authoring-model-red.json",
+      "sha256": "66c60d601deb8f18079538f3922bdcb744c601cc71afd5f0ba9ff91d767c2bbb",
+      "bytes": 11339
+    },
+    {
+      "path": ".build/native-corners-authoring-model-red.log",
+      "sha256": "ae8a4cda99f8a1584d3d9c5c697b69515cc6995c694f8eb195748585eca166bb",
+      "bytes": 432
+    },
+    {
+      "path": ".build/native-corners-authoring-model-green.json",
+      "sha256": "0cbac64a7dad723b6b8028f00442848089ded158e157907d10a01a8e68f3e613",
+      "bytes": 8185
+    },
+    {
+      "path": ".build/native-corners-authoring-model-green.log",
+      "sha256": "27f4614a5eed368b57c88f9e340c069fcaf69c5f45df451f18f2564bf3c672f5",
+      "bytes": 434
+    },
+    {
+      "path": ".build/native-corners-authoring-focused-final.json",
+      "sha256": "4a3bec77c3cb140bd1144a16129fbc53f3cf113a35857a561c3984d88552cc12",
+      "bytes": 80033
+    },
+    {
+      "path": ".build/native-corners-authoring-focused-final.log",
+      "sha256": "d3bba78e0609caa0e7ecff2b62ce891d75b639ba59e8ac87d5204e8ad00ab859",
+      "bytes": 436
+    },
+    {
+      "path": ".build/native-corners-authoring-typecheck-final.log",
+      "sha256": "345ec4e735743f36fe87311c770eb8dd881e775bab20e0b428ece365c04e155a",
+      "bytes": 228
+    },
+    {
+      "path": ".build/native-corners-authoring-typecheck-complete.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "limitations": [
+    "No original GUI observation or native pixel equivalence claim.",
+    "Old vector snapshots without explicit mask retain original geometry and have no new corner controls.",
+    "Legacy cornerRadii remains an independent product extension.",
+    "Parent owns renderer, native import, browser and final package verification."
+  ],
+  "blockingFindings": []
+}

@@ -1,0 +1,2587 @@
+{
+  "synthetic": true,
+  "originalAxureExecuted": false,
+  "originalSourceSha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4",
+  "carrierSha256": "1889bb1c2ee4a4c4dd10585cccdd2c3c1c1dd0ed83ff7cfede667aed89f56d7b",
+  "counts": {
+    "expectedCases": 47,
+    "assertedCases": 47,
+    "supported": 39,
+    "rejectedAtomically": 8,
+    "carrierCheck": 1
+  },
+  "sources": [
+    {
+      "file": "tests/import-rp-adaptive-property-matrix.test.ts",
+      "sha256": "91b80a5b73331a16fcd26628d59b358f05fd2fc43257cae391970193dbd4f400"
+    },
+    {
+      "file": "research/adaptive-import-property-matrix-decode.mjs",
+      "sha256": "b00cde731aef5796abb093b7a6cf0345a361003213f9599c1dfdf4bb95b56457"
+    },
+    {
+      "file": "scripts/synthetic-rp-adaptive-fixture.mjs",
+      "sha256": "d77b9a58664211e9817693673910c2d65660223d1bb7acc7e3343a77c8f3260d"
+    },
+    {
+      "file": "scripts/synthetic-rp-object-carrier.mjs",
+      "sha256": "ffe3afe7e3e77ebfdd92a5695661918b87abbe24473cb54eba72e4fac56fb2c5"
+    },
+    {
+      "file": "research/scripts/read-rp-container.mjs",
+      "sha256": "e9ec939defe3e926740096fa294510f27e026748e9e3effdfa8a2e27cdc461cc"
+    },
+    {
+      "file": "research/scripts/read-rp-objects.mjs",
+      "sha256": "6e94582d21efacec6e75cfcf41953cc02913fa68031056637387df34f6cb59b9"
+    },
+    {
+      "file": "research/scripts/read-rp-semantics.mjs",
+      "sha256": "d246e353bf36015213fb27ac468a279764d2d9fdb60e18f49066ca9e178580ec"
+    },
+    {
+      "file": "research/scripts/read-rp-adaptive.mjs",
+      "sha256": "b45176e0eab90d4c1d3c2c704a5e7b953344a3e58fdca1b7e3d88dbd59928220"
+    },
+    {
+      "file": "research/scripts/read-rp-interactions.mjs",
+      "sha256": "2e6efca388f2bfe2b779ec8b3a041060e9481a32073c94b53bc5796b121d5274"
+    },
+    {
+      "file": "src/model/import-rp.ts",
+      "sha256": "02454b55b5deee4e79f69e26dd464e48be922b3dae20f1a2f793d9e3b20a817f"
+    },
+    {
+      "file": "src/model/import-rp-adaptive.ts",
+      "sha256": "851ccaff2c8e987d9844afce66713e038df6844998fe5db6dcc80f51e6faa511"
+    },
+    {
+      "file": "src/model/document.ts",
+      "sha256": "c83cbc5244449dbe668fe339e0867fb51a931fe848e9c3ab011a9f7672126163"
+    },
+    {
+      "file": "src/model/types.ts",
+      "sha256": "71f2ff770f0ec62e6a766ca20855e211ed2894970399907828d21ec5664a0271"
+    }
+  ],
+  "cases": [
+    {
+      "name": "font family",
+      "outcome": "supported",
+      "rawSha256": "47662235465a477230498725b159156afb4a5c1cc65de575c068d80aff88dd70",
+      "rawBytes": 19142,
+      "input": {
+        "name": "font family",
+        "properties": [
+          {
+            "key": 1,
+            "value": "Open Sans"
+          }
+        ],
+        "expected": {
+          "style": {
+            "fontFamily": "Open Sans"
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "fontFamily": "Open Sans"
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "fontFamily": "Open Sans"
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "font point-to-pixel size",
+      "outcome": "supported",
+      "rawSha256": "fd335c4cef352a56bade1715c7368e4713bdbcccae7a632a87f3ef075086b4be",
+      "rawBytes": 19132,
+      "input": {
+        "name": "font point-to-pixel size",
+        "properties": [
+          {
+            "key": 2,
+            "value": 18
+          }
+        ],
+        "expected": {
+          "style": {
+            "fontSize": 24
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "fontSize": 24
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "fontSize": 24
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "font weight",
+      "outcome": "supported",
+      "rawSha256": "c215086ed83d6ee9eef61d00876922af87d41a9b33312dc5f8a12c90d0cb0711",
+      "rawBytes": 19136,
+      "input": {
+        "name": "font weight",
+        "properties": [
+          {
+            "key": 1001,
+            "value": 700
+          }
+        ],
+        "expected": {
+          "style": {
+            "fontWeight": 700
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "fontWeight": 700
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "fontWeight": 700
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "italic",
+      "outcome": "supported",
+      "rawSha256": "073b69e8896da719314248f783d892759d777136cca4732881a8b90660b16741",
+      "rawBytes": 19133,
+      "input": {
+        "name": "italic",
+        "properties": [
+          {
+            "key": 1002,
+            "value": 1
+          }
+        ],
+        "expected": {
+          "style": {
+            "fontStyle": "italic"
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "fontStyle": "italic"
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "fontStyle": "italic"
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "explicit normal reset",
+      "outcome": "supported",
+      "rawSha256": "1cb13a5960dd3e1a78012ba59219e814702631342454a704e8f2d1274445c861",
+      "rawBytes": 19132,
+      "input": {
+        "name": "explicit normal reset",
+        "properties": [
+          {
+            "key": 1002,
+            "value": 0
+          }
+        ],
+        "expected": {
+          "style": {
+            "fontStyle": "normal"
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "fontStyle": "normal"
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "fontStyle": "normal"
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "both text decorations",
+      "outcome": "supported",
+      "rawSha256": "d162db61ec0388e445b65d5b6bf1adc27f2906196a61b20ad5c03a65d170656f",
+      "rawBytes": 19144,
+      "input": {
+        "name": "both text decorations",
+        "properties": [
+          {
+            "key": 5,
+            "value": true
+          },
+          {
+            "key": 95,
+            "value": true
+          }
+        ],
+        "expected": {
+          "style": {
+            "underline": true,
+            "strikethrough": true
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "underline": true,
+          "strikethrough": true
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "underline": true,
+          "strikethrough": true
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "explicit decoration clears",
+      "outcome": "supported",
+      "rawSha256": "155ac7d6cbdd5ae8525f3f69f7166ad1be38237f7d5a961c2f53e471b988f424",
+      "rawBytes": 19140,
+      "input": {
+        "name": "explicit decoration clears",
+        "properties": [
+          {
+            "key": 5,
+            "value": false
+          },
+          {
+            "key": 95,
+            "value": false
+          }
+        ],
+        "expected": {
+          "style": {
+            "underline": false,
+            "strikethrough": false
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "underline": false,
+          "strikethrough": false
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "underline": false,
+          "strikethrough": false
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "ARGB text color",
+      "outcome": "supported",
+      "rawSha256": "703df6622d549d38aa2a9a5bfbaa05b5df7d11628e2ea603b11103c9a3a2a33e",
+      "rawBytes": 19142,
+      "input": {
+        "name": "ARGB text color",
+        "properties": [
+          {
+            "key": 6,
+            "value": {
+              "$map": [
+                [
+                  "fill-type",
+                  "solid"
+                ],
+                [
+                  "fill-color",
+                  2148676694
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "color": "#12345680"
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "color": "#12345680"
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "color": "#12345680"
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "solid fill",
+      "outcome": "supported",
+      "rawSha256": "a5e6da07818e6b0f95bbe3f1178446ae90afbf81155954fb02fd67e4f9d43735",
+      "rawBytes": 19127,
+      "input": {
+        "name": "solid fill",
+        "properties": [
+          {
+            "key": 7,
+            "value": {
+              "$map": [
+                [
+                  "fill-type",
+                  "solid"
+                ],
+                [
+                  "fill-color",
+                  -65536
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "fill": "#ff0000"
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "fill": "#ff0000"
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "fill": "#ff0000"
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "solid alpha stroke",
+      "outcome": "supported",
+      "rawSha256": "5460f4221ebf1d5055a653868291df357b54f6c442633173ca6381f5c63bac9f",
+      "rawBytes": 19141,
+      "input": {
+        "name": "solid alpha stroke",
+        "properties": [
+          {
+            "key": 8,
+            "value": {
+              "$map": [
+                [
+                  "fill-type",
+                  "solid"
+                ],
+                [
+                  "fill-color",
+                  2148676694
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "stroke": "#12345680"
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "stroke": "#12345680"
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "stroke": "#12345680"
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "linear fill keeps modern endpoints and duplicate stops",
+      "outcome": "supported",
+      "rawSha256": "000e1272a2153e81c9b4a624bf4e6e33d2e6db7c93ce9b9f464919fbc94b657e",
+      "rawBytes": 19256,
+      "input": {
+        "name": "linear fill keeps modern endpoints and duplicate stops",
+        "properties": [
+          {
+            "key": 7,
+            "value": {
+              "$map": [
+                [
+                  "fill-type",
+                  "linear-gradient"
+                ],
+                [
+                  "fill-center-point",
+                  {
+                    "$map": [
+                      [
+                        "X",
+                        0.2
+                      ],
+                      [
+                        "Y",
+                        0.3
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "fill-axis1",
+                  {
+                    "$map": [
+                      [
+                        "X",
+                        0.8
+                      ],
+                      [
+                        "Y",
+                        0.9
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "fill-angle",
+                  73
+                ],
+                [
+                  "fill-offsets",
+                  [
+                    0,
+                    0.5,
+                    0.5,
+                    1
+                  ]
+                ],
+                [
+                  "fill-colors",
+                  [
+                    -65536,
+                    1073807104,
+                    -16776961,
+                    -1
+                  ]
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "fillGradient": {
+              "type": "linear",
+              "start": {
+                "x": 0.2,
+                "y": 0.3
+              },
+              "end": {
+                "x": 0.8,
+                "y": 0.9
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#ff0000"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#00ff0040"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#0000ff"
+                },
+                {
+                  "offset": 1,
+                  "color": "#ffffff"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "fillGradient": {
+            "type": "linear",
+            "start": {
+              "x": 0.2,
+              "y": 0.3
+            },
+            "end": {
+              "x": 0.8,
+              "y": 0.9
+            },
+            "stops": [
+              {
+                "offset": 0,
+                "color": "#ff0000"
+              },
+              {
+                "offset": 0.5,
+                "color": "#00ff0040"
+              },
+              {
+                "offset": 0.5,
+                "color": "#0000ff"
+              },
+              {
+                "offset": 1,
+                "color": "#ffffff"
+              }
+            ]
+          }
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "fillGradient": {
+            "type": "linear",
+            "start": {
+              "x": 0.2,
+              "y": 0.3
+            },
+            "end": {
+              "x": 0.8,
+              "y": 0.9
+            },
+            "stops": [
+              {
+                "offset": 0,
+                "color": "#ff0000"
+              },
+              {
+                "offset": 0.5,
+                "color": "#00ff0040"
+              },
+              {
+                "offset": 0.5,
+                "color": "#0000ff"
+              },
+              {
+                "offset": 1,
+                "color": "#ffffff"
+              }
+            ]
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "radial fill keeps both axes",
+      "outcome": "supported",
+      "rawSha256": "4734036146e8ffae31db42f453504ea654e83ef32f4fab70b1a4523fee33e1c3",
+      "rawBytes": 19256,
+      "input": {
+        "name": "radial fill keeps both axes",
+        "properties": [
+          {
+            "key": 7,
+            "value": {
+              "$map": [
+                [
+                  "fill-type",
+                  "radial-gradient"
+                ],
+                [
+                  "fill-center-point",
+                  {
+                    "$map": [
+                      [
+                        "X",
+                        0.2
+                      ],
+                      [
+                        "Y",
+                        0.3
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "fill-axis1",
+                  {
+                    "$map": [
+                      [
+                        "X",
+                        0.8
+                      ],
+                      [
+                        "Y",
+                        0.9
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "fill-axis2",
+                  {
+                    "$map": [
+                      [
+                        "X",
+                        -0.2
+                      ],
+                      [
+                        "Y",
+                        0.8
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "fill-offsets",
+                  [
+                    0,
+                    0.5,
+                    0.5,
+                    1
+                  ]
+                ],
+                [
+                  "fill-colors",
+                  [
+                    -65536,
+                    1073807104,
+                    -16776961,
+                    -1
+                  ]
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "fillGradient": {
+              "type": "radial",
+              "center": {
+                "x": 0.2,
+                "y": 0.3
+              },
+              "axis1": {
+                "x": 0.8,
+                "y": 0.9
+              },
+              "axis2": {
+                "x": -0.2,
+                "y": 0.8
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#ff0000"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#00ff0040"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#0000ff"
+                },
+                {
+                  "offset": 1,
+                  "color": "#ffffff"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "fillGradient": {
+            "type": "radial",
+            "center": {
+              "x": 0.2,
+              "y": 0.3
+            },
+            "axis1": {
+              "x": 0.8,
+              "y": 0.9
+            },
+            "axis2": {
+              "x": -0.2,
+              "y": 0.8
+            },
+            "stops": [
+              {
+                "offset": 0,
+                "color": "#ff0000"
+              },
+              {
+                "offset": 0.5,
+                "color": "#00ff0040"
+              },
+              {
+                "offset": 0.5,
+                "color": "#0000ff"
+              },
+              {
+                "offset": 1,
+                "color": "#ffffff"
+              }
+            ]
+          }
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "fillGradient": {
+            "type": "radial",
+            "center": {
+              "x": 0.2,
+              "y": 0.3
+            },
+            "axis1": {
+              "x": 0.8,
+              "y": 0.9
+            },
+            "axis2": {
+              "x": -0.2,
+              "y": 0.8
+            },
+            "stops": [
+              {
+                "offset": 0,
+                "color": "#ff0000"
+              },
+              {
+                "offset": 0.5,
+                "color": "#00ff0040"
+              },
+              {
+                "offset": 0.5,
+                "color": "#0000ff"
+              },
+              {
+                "offset": 1,
+                "color": "#ffffff"
+              }
+            ]
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "linear stroke",
+      "outcome": "supported",
+      "rawSha256": "9a5b962f387b350c8b25477d352a224aae94626d042b887ffffcafce49b6cccc",
+      "rawBytes": 19259,
+      "input": {
+        "name": "linear stroke",
+        "properties": [
+          {
+            "key": 8,
+            "value": {
+              "$map": [
+                [
+                  "fill-type",
+                  "linear-gradient"
+                ],
+                [
+                  "fill-center-point",
+                  {
+                    "$map": [
+                      [
+                        "X",
+                        0.2
+                      ],
+                      [
+                        "Y",
+                        0.3
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "fill-axis1",
+                  {
+                    "$map": [
+                      [
+                        "X",
+                        0.8
+                      ],
+                      [
+                        "Y",
+                        0.9
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "fill-angle",
+                  73
+                ],
+                [
+                  "fill-offsets",
+                  [
+                    0,
+                    0.5,
+                    0.5,
+                    1
+                  ]
+                ],
+                [
+                  "fill-colors",
+                  [
+                    -65536,
+                    1073807104,
+                    -16776961,
+                    -1
+                  ]
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "strokeGradient": {
+              "type": "linear",
+              "start": {
+                "x": 0.2,
+                "y": 0.3
+              },
+              "end": {
+                "x": 0.8,
+                "y": 0.9
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#ff0000"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#00ff0040"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#0000ff"
+                },
+                {
+                  "offset": 1,
+                  "color": "#ffffff"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "strokeGradient": {
+            "type": "linear",
+            "start": {
+              "x": 0.2,
+              "y": 0.3
+            },
+            "end": {
+              "x": 0.8,
+              "y": 0.9
+            },
+            "stops": [
+              {
+                "offset": 0,
+                "color": "#ff0000"
+              },
+              {
+                "offset": 0.5,
+                "color": "#00ff0040"
+              },
+              {
+                "offset": 0.5,
+                "color": "#0000ff"
+              },
+              {
+                "offset": 1,
+                "color": "#ffffff"
+              }
+            ]
+          }
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "strokeGradient": {
+            "type": "linear",
+            "start": {
+              "x": 0.2,
+              "y": 0.3
+            },
+            "end": {
+              "x": 0.8,
+              "y": 0.9
+            },
+            "stops": [
+              {
+                "offset": 0,
+                "color": "#ff0000"
+              },
+              {
+                "offset": 0.5,
+                "color": "#00ff0040"
+              },
+              {
+                "offset": 0.5,
+                "color": "#0000ff"
+              },
+              {
+                "offset": 1,
+                "color": "#ffffff"
+              }
+            ]
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "radial stroke",
+      "outcome": "supported",
+      "rawSha256": "118f0ac148507fc429fb5b873fb6a5ed101ae3f3dcb25c39f24e13d9b8808eb5",
+      "rawBytes": 19259,
+      "input": {
+        "name": "radial stroke",
+        "properties": [
+          {
+            "key": 8,
+            "value": {
+              "$map": [
+                [
+                  "fill-type",
+                  "radial-gradient"
+                ],
+                [
+                  "fill-center-point",
+                  {
+                    "$map": [
+                      [
+                        "X",
+                        0.2
+                      ],
+                      [
+                        "Y",
+                        0.3
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "fill-axis1",
+                  {
+                    "$map": [
+                      [
+                        "X",
+                        0.8
+                      ],
+                      [
+                        "Y",
+                        0.9
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "fill-axis2",
+                  {
+                    "$map": [
+                      [
+                        "X",
+                        -0.2
+                      ],
+                      [
+                        "Y",
+                        0.8
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "fill-offsets",
+                  [
+                    0,
+                    0.5,
+                    0.5,
+                    1
+                  ]
+                ],
+                [
+                  "fill-colors",
+                  [
+                    -65536,
+                    1073807104,
+                    -16776961,
+                    -1
+                  ]
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "strokeGradient": {
+              "type": "radial",
+              "center": {
+                "x": 0.2,
+                "y": 0.3
+              },
+              "axis1": {
+                "x": 0.8,
+                "y": 0.9
+              },
+              "axis2": {
+                "x": -0.2,
+                "y": 0.8
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#ff0000"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#00ff0040"
+                },
+                {
+                  "offset": 0.5,
+                  "color": "#0000ff"
+                },
+                {
+                  "offset": 1,
+                  "color": "#ffffff"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "strokeGradient": {
+            "type": "radial",
+            "center": {
+              "x": 0.2,
+              "y": 0.3
+            },
+            "axis1": {
+              "x": 0.8,
+              "y": 0.9
+            },
+            "axis2": {
+              "x": -0.2,
+              "y": 0.8
+            },
+            "stops": [
+              {
+                "offset": 0,
+                "color": "#ff0000"
+              },
+              {
+                "offset": 0.5,
+                "color": "#00ff0040"
+              },
+              {
+                "offset": 0.5,
+                "color": "#0000ff"
+              },
+              {
+                "offset": 1,
+                "color": "#ffffff"
+              }
+            ]
+          }
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "strokeGradient": {
+            "type": "radial",
+            "center": {
+              "x": 0.2,
+              "y": 0.3
+            },
+            "axis1": {
+              "x": 0.8,
+              "y": 0.9
+            },
+            "axis2": {
+              "x": -0.2,
+              "y": 0.8
+            },
+            "stops": [
+              {
+                "offset": 0,
+                "color": "#ff0000"
+              },
+              {
+                "offset": 0.5,
+                "color": "#00ff0040"
+              },
+              {
+                "offset": 0.5,
+                "color": "#0000ff"
+              },
+              {
+                "offset": 1,
+                "color": "#ffffff"
+              }
+            ]
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "opacity",
+      "outcome": "supported",
+      "rawSha256": "aac9c6a55c39d5b481429e0cbe4672fed65959d9e9257a9d3fb9fa8ab3904bb5",
+      "rawBytes": 19140,
+      "input": {
+        "name": "opacity",
+        "properties": [
+          {
+            "key": 70,
+            "value": 0.35
+          }
+        ],
+        "expected": {
+          "style": {
+            "opacity": 0.35
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "opacity": 0.35
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "opacity": 0.35
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "fractional border width",
+      "outcome": "supported",
+      "rawSha256": "59e31d0d594367d703f61d9e6cc1840233818897c80c26447e622f1473334f80",
+      "rawBytes": 19136,
+      "input": {
+        "name": "fractional border width",
+        "properties": [
+          {
+            "key": 15,
+            "value": 2.5
+          }
+        ],
+        "expected": {
+          "style": {
+            "strokeWidth": 2.5
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "strokeWidth": 2.5
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "strokeWidth": 2.5
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "dash-dot-dot pattern",
+      "outcome": "supported",
+      "rawSha256": "6c217b4542169fd9563991d3c1263fddaa6a6a1061ec1df8c025a536af4a2ef5",
+      "rawBytes": 19133,
+      "input": {
+        "name": "dash-dot-dot pattern",
+        "properties": [
+          {
+            "key": 16,
+            "value": 6
+          }
+        ],
+        "expected": {
+          "style": {
+            "linePattern": "dash-dot-dot"
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "linePattern": "dash-dot-dot"
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "linePattern": "dash-dot-dot"
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "atomic start and end arrows",
+      "outcome": "supported",
+      "rawSha256": "d53834636117f2227024b14edbb1eb80a5122bc2a7cfa202984b5f8d9fda2f2a",
+      "rawBytes": 19138,
+      "input": {
+        "name": "atomic start and end arrows",
+        "properties": [
+          {
+            "key": 17,
+            "value": {
+              "$map": [
+                [
+                  "Start",
+                  3
+                ],
+                [
+                  "End",
+                  1
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "lineEnds": {
+              "start": "filled-triangle",
+              "end": "none"
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "lineEnds": {
+            "start": "filled-triangle",
+            "end": "none"
+          }
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "lineEnds": {
+            "start": "filled-triangle",
+            "end": "none"
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "four padding sides use TRBL order",
+      "outcome": "supported",
+      "rawSha256": "aba9358bd0638ad1c972ff633663c061492f76cd6abb46cc47ebeb66bbbc2bc0",
+      "rawBytes": 19144,
+      "input": {
+        "name": "four padding sides use TRBL order",
+        "properties": [
+          {
+            "key": 11,
+            "value": 4
+          },
+          {
+            "key": 12,
+            "value": 1
+          },
+          {
+            "key": 13,
+            "value": 2
+          },
+          {
+            "key": 14,
+            "value": 3
+          }
+        ],
+        "expected": {
+          "style": {
+            "textPadding": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "textPadding": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "textPadding": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "right and bottom alignment",
+      "outcome": "supported",
+      "rawSha256": "a4a2cdd040b28f088b54136d09d3c64e1d1396ef55866cf69b3c906c346f8b68",
+      "rawBytes": 19142,
+      "input": {
+        "name": "right and bottom alignment",
+        "properties": [
+          {
+            "key": 9,
+            "value": 2
+          },
+          {
+            "key": 10,
+            "value": 2
+          }
+        ],
+        "expected": {
+          "style": {
+            "textAlign": "right",
+            "verticalAlign": "bottom"
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "textAlign": "right",
+          "verticalAlign": "bottom"
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "verticalAlign": "bottom",
+          "textAlign": "right"
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "explicit left and top alignment",
+      "outcome": "supported",
+      "rawSha256": "a0a8841b97f42c6f323f9dd6dccc7820948e0f5e5fe886cbd24a0d3144d23445",
+      "rawBytes": 19143,
+      "input": {
+        "name": "explicit left and top alignment",
+        "properties": [
+          {
+            "key": 9,
+            "value": 0
+          },
+          {
+            "key": 10,
+            "value": 0
+          }
+        ],
+        "expected": {
+          "style": {
+            "textAlign": "left",
+            "verticalAlign": "top"
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "textAlign": "left",
+          "verticalAlign": "top"
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "verticalAlign": "top",
+          "textAlign": "left"
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "outer shadow",
+      "outcome": "supported",
+      "rawSha256": "6f48ad750903dcc1de46b66d1e63d62db73b22d84fdcf1cc3a9aed290e3b9f80",
+      "rawBytes": 19166,
+      "input": {
+        "name": "outer shadow",
+        "properties": [
+          {
+            "key": 72,
+            "value": {
+              "$map": [
+                [
+                  "On",
+                  true
+                ],
+                [
+                  "OffsetX",
+                  -3
+                ],
+                [
+                  "OffsetY",
+                  4
+                ],
+                [
+                  "BlurRadius",
+                  7
+                ],
+                [
+                  "Color",
+                  -2147418368
+                ],
+                [
+                  "Spread",
+                  0
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "outerShadow": {
+              "on": true,
+              "offsetX": -3,
+              "offsetY": 4,
+              "blurRadius": 7,
+              "color": "#00ff0080"
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "outerShadow": {
+            "on": true,
+            "offsetX": -3,
+            "offsetY": 4,
+            "blurRadius": 7,
+            "color": "#00ff0080"
+          }
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "outerShadow": {
+            "on": true,
+            "offsetX": -3,
+            "offsetY": 4,
+            "blurRadius": 7,
+            "color": "#00ff0080"
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "inner shadow with spread",
+      "outcome": "supported",
+      "rawSha256": "e2c10793e2dfd48b53cc2ba8b1e635053b55fd106c9e180717fde3cdc21fe93d",
+      "rawBytes": 19168,
+      "input": {
+        "name": "inner shadow with spread",
+        "properties": [
+          {
+            "key": 73,
+            "value": {
+              "$map": [
+                [
+                  "On",
+                  true
+                ],
+                [
+                  "OffsetX",
+                  -3
+                ],
+                [
+                  "OffsetY",
+                  4
+                ],
+                [
+                  "BlurRadius",
+                  7
+                ],
+                [
+                  "Color",
+                  -2147418368
+                ],
+                [
+                  "Spread",
+                  2
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "innerShadow": {
+              "on": true,
+              "offsetX": -3,
+              "offsetY": 4,
+              "blurRadius": 7,
+              "color": "#00ff0080",
+              "spread": 2
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "innerShadow": {
+            "on": true,
+            "offsetX": -3,
+            "offsetY": 4,
+            "blurRadius": 7,
+            "color": "#00ff0080",
+            "spread": 2
+          }
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "innerShadow": {
+            "on": true,
+            "offsetX": -3,
+            "offsetY": 4,
+            "blurRadius": 7,
+            "color": "#00ff0080",
+            "spread": 2
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "explicit text shadow off",
+      "outcome": "supported",
+      "rawSha256": "028c5014f95c334c77ef01eaa9268d9d20f941d3cfe9ce2e3725d7d4355ba9a0",
+      "rawBytes": 19161,
+      "input": {
+        "name": "explicit text shadow off",
+        "properties": [
+          {
+            "key": 74,
+            "value": {
+              "$map": [
+                [
+                  "On",
+                  false
+                ],
+                [
+                  "OffsetX",
+                  -3
+                ],
+                [
+                  "OffsetY",
+                  4
+                ],
+                [
+                  "BlurRadius",
+                  7
+                ],
+                [
+                  "Color",
+                  -2147418368
+                ],
+                [
+                  "Spread",
+                  0
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "style": {
+            "textShadow": {
+              "on": false,
+              "offsetX": -3,
+              "offsetY": 4,
+              "blurRadius": 7,
+              "color": "#00ff0080"
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "textShadow": {
+            "on": false,
+            "offsetX": -3,
+            "offsetY": 4,
+            "blurRadius": 7,
+            "color": "#00ff0080"
+          }
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "textShadow": {
+            "on": false,
+            "offsetX": -3,
+            "offsetY": 4,
+            "blurRadius": 7,
+            "color": "#00ff0080"
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "partial rectangle borders",
+      "outcome": "supported",
+      "rawSha256": "829bd2f837b10c36e94f3daa3ca368823368779946bcb4239e5efb1984cd5b0a",
+      "rawBytes": 19132,
+      "input": {
+        "name": "partial rectangle borders",
+        "properties": [
+          {
+            "key": 80,
+            "value": 10
+          }
+        ],
+        "expected": {
+          "style": {
+            "borderVisibility": [
+              true,
+              false,
+              true,
+              false
+            ]
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "borderVisibility": [
+            true,
+            false,
+            true,
+            false
+          ]
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "borderVisibility": [
+            true,
+            false,
+            true,
+            false
+          ]
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "all rectangle borders off preserves the declaration",
+      "outcome": "supported",
+      "rawSha256": "7c3ce027afe25a08cd8a868d9f91de3d19f36c8c8dac29a57502eaf95a832197",
+      "rawBytes": 19132,
+      "input": {
+        "name": "all rectangle borders off preserves the declaration",
+        "properties": [
+          {
+            "key": 80,
+            "value": 0
+          }
+        ],
+        "expected": {
+          "style": {
+            "borderVisibility": [
+              false,
+              false,
+              false,
+              false
+            ]
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "borderVisibility": [
+            false,
+            false,
+            false,
+            false
+          ]
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "borderVisibility": [
+            false,
+            false,
+            false,
+            false
+          ]
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "location and paired size",
+      "outcome": "supported",
+      "rawSha256": "e76464f94609d3cadc52d3cd933881b024bac3c7c470d80e6d43edc531578dd5",
+      "rawBytes": 19147,
+      "input": {
+        "name": "location and paired size",
+        "properties": [
+          {
+            "key": 101,
+            "value": {
+              "$map": [
+                [
+                  "X",
+                  0
+                ],
+                [
+                  "Y",
+                  -10
+                ]
+              ]
+            }
+          },
+          {
+            "key": 105,
+            "value": {
+              "$map": [
+                [
+                  "Width",
+                  123
+                ],
+                [
+                  "Height",
+                  45
+                ]
+              ]
+            }
+          }
+        ],
+        "expected": {
+          "x": 0,
+          "y": -10,
+          "width": 123,
+          "height": 45
+        }
+      },
+      "readerPatch": {
+        "x": 0,
+        "y": -10,
+        "width": 123,
+        "height": 45
+      },
+      "importedPatch": {
+        "x": 0,
+        "y": -10,
+        "width": 123,
+        "height": 45
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "visibility false means hidden",
+      "outcome": "supported",
+      "rawSha256": "e91c25bc5c8a22cf3a78792b5ea67ef3a8fc94d4a11c22e7ef6c9939d3b87cde",
+      "rawBytes": 19131,
+      "input": {
+        "name": "visibility false means hidden",
+        "properties": [
+          {
+            "key": 110,
+            "value": false
+          }
+        ],
+        "expected": {
+          "hidden": true
+        }
+      },
+      "readerPatch": {
+        "hidden": true
+      },
+      "importedPatch": {
+        "hidden": true
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "explicit visibility true",
+      "outcome": "supported",
+      "rawSha256": "784518688a93923fde06db5c10a648ad167231e316c56a9ae1ddaf29c4a930c8",
+      "rawBytes": 19132,
+      "input": {
+        "name": "explicit visibility true",
+        "properties": [
+          {
+            "key": 110,
+            "value": true
+          }
+        ],
+        "expected": {
+          "hidden": false
+        }
+      },
+      "readerPatch": {
+        "hidden": false
+      },
+      "importedPatch": {
+        "hidden": false
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "automatic line spacing with observed normal rich paragraphs",
+      "outcome": "supported",
+      "rawSha256": "405f127f6d000956469350d70b5fb2567a69f28168b2b08c28f4c63cbcbd0bee",
+      "rawBytes": 19132,
+      "input": {
+        "name": "automatic line spacing with observed normal rich paragraphs",
+        "properties": [
+          {
+            "key": 20,
+            "value": 0
+          }
+        ],
+        "expected": {
+          "style": {
+            "lineHeight": "normal"
+          }
+        }
+      },
+      "readerPatch": {
+        "style": {
+          "lineHeight": "normal"
+        }
+      },
+      "importedPatch": {
+        "style": {
+          "lineHeight": "normal"
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "empty whole state map remains a barrier",
+      "outcome": "supported",
+      "rawSha256": "33967806bbd859c89891a144ec5dda61aa4c4dfc8328ec49753f31ba1d0e294f",
+      "rawBytes": 19130,
+      "input": {
+        "name": "empty whole state map remains a barrier",
+        "properties": [],
+        "states": [],
+        "expected": {
+          "stateStyles": {}
+        }
+      },
+      "readerPatch": {
+        "stateStyles": {}
+      },
+      "importedPatch": {
+        "stateStyles": {}
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "MouseOver native state identity",
+      "outcome": "supported",
+      "rawSha256": "cf6fd8f4e5f68f6dc0b7b66850ef054ce67e01e5ba50024bf8431f9f63c5c5ad",
+      "rawBytes": 19143,
+      "input": {
+        "name": "MouseOver native state identity",
+        "properties": [],
+        "states": [
+          {
+            "name": "MouseOver",
+            "properties": [
+              {
+                "key": 7,
+                "value": {
+                  "$map": [
+                    [
+                      "fill-type",
+                      "solid"
+                    ],
+                    [
+                      "fill-color",
+                      -65536
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "expected": {
+          "stateStyles": {
+            "mouseOver": {
+              "fill": "#ff0000"
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "stateStyles": {
+          "mouseOver": {
+            "fill": "#ff0000"
+          }
+        }
+      },
+      "importedPatch": {
+        "stateStyles": {
+          "mouseOver": {
+            "fill": "#ff0000"
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "MouseDown explicit equal-base normal reset",
+      "outcome": "supported",
+      "rawSha256": "1084d12ada12f573c2764b756998aa05c95f037f98cde6c5b4fc3c4da81d2f1e",
+      "rawBytes": 19156,
+      "input": {
+        "name": "MouseDown explicit equal-base normal reset",
+        "properties": [],
+        "states": [
+          {
+            "name": "MouseDown",
+            "properties": [
+              {
+                "key": 1002,
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "expected": {
+          "stateStyles": {
+            "mouseDown": {
+              "fontStyle": "normal"
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "stateStyles": {
+          "mouseDown": {
+            "fontStyle": "normal"
+          }
+        }
+      },
+      "importedPatch": {
+        "stateStyles": {
+          "mouseDown": {
+            "fontStyle": "normal"
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "Focused explicit decoration clears",
+      "outcome": "supported",
+      "rawSha256": "2e4486afed9f2c2bf68f870f1bd9d931118b9e287df4f2c2d76eab7c6e1b76ed",
+      "rawBytes": 19166,
+      "input": {
+        "name": "Focused explicit decoration clears",
+        "properties": [],
+        "states": [
+          {
+            "name": "Focused",
+            "properties": [
+              {
+                "key": 5,
+                "value": false
+              },
+              {
+                "key": 95,
+                "value": false
+              }
+            ]
+          }
+        ],
+        "expected": {
+          "stateStyles": {
+            "focused": {
+              "underline": false,
+              "strikethrough": false
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "stateStyles": {
+          "focused": {
+            "underline": false,
+            "strikethrough": false
+          }
+        }
+      },
+      "importedPatch": {
+        "stateStyles": {
+          "focused": {
+            "underline": false,
+            "strikethrough": false
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "Selected border width",
+      "outcome": "supported",
+      "rawSha256": "bd5540358b562a88cca8b9e7586fed28b71ac2ba82ad2a8b7c3f666e2f909cf6",
+      "rawBytes": 19145,
+      "input": {
+        "name": "Selected border width",
+        "properties": [],
+        "states": [
+          {
+            "name": "Selected",
+            "properties": [
+              {
+                "key": 15,
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "expected": {
+          "stateStyles": {
+            "selected": {
+              "strokeWidth": 0
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "stateStyles": {
+          "selected": {
+            "strokeWidth": 0
+          }
+        }
+      },
+      "importedPatch": {
+        "stateStyles": {
+          "selected": {
+            "strokeWidth": 0
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "Error color",
+      "outcome": "supported",
+      "rawSha256": "12101fbf92cc4a1e1462cb6d6a70169bfd6e8f00ce575a0cbf105a944366970c",
+      "rawBytes": 19151,
+      "input": {
+        "name": "Error color",
+        "properties": [],
+        "states": [
+          {
+            "name": "Error",
+            "properties": [
+              {
+                "key": 6,
+                "value": {
+                  "$map": [
+                    [
+                      "fill-type",
+                      "solid"
+                    ],
+                    [
+                      "fill-color",
+                      -65536
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "expected": {
+          "stateStyles": {
+            "error": {
+              "color": "#ff0000"
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "stateStyles": {
+          "error": {
+            "color": "#ff0000"
+          }
+        }
+      },
+      "importedPatch": {
+        "stateStyles": {
+          "error": {
+            "color": "#ff0000"
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "Hint color",
+      "outcome": "supported",
+      "rawSha256": "89f9c247ada109315f99fe46ca45bf1b64c33f936cfa1d02e20ae7ef57eeef87",
+      "rawBytes": 19157,
+      "input": {
+        "name": "Hint color",
+        "properties": [],
+        "states": [
+          {
+            "name": "Hint",
+            "properties": [
+              {
+                "key": 6,
+                "value": {
+                  "$map": [
+                    [
+                      "fill-type",
+                      "solid"
+                    ],
+                    [
+                      "fill-color",
+                      -16711936
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "expected": {
+          "stateStyles": {
+            "hint": {
+              "color": "#00ff00"
+            }
+          }
+        }
+      },
+      "readerPatch": {
+        "stateStyles": {
+          "hint": {
+            "color": "#00ff00"
+          }
+        }
+      },
+      "importedPatch": {
+        "stateStyles": {
+          "hint": {
+            "color": "#00ff00"
+          }
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "Disabled explicit empty state",
+      "outcome": "supported",
+      "rawSha256": "b99648564dc74c6db191b7858f234c5a71990432482bdd4d254fbd27556f1b7d",
+      "rawBytes": 19142,
+      "input": {
+        "name": "Disabled explicit empty state",
+        "properties": [],
+        "states": [
+          {
+            "name": "Disabled",
+            "properties": []
+          }
+        ],
+        "expected": {
+          "stateStyles": {
+            "disabled": {}
+          }
+        }
+      },
+      "readerPatch": {
+        "stateStyles": {
+          "disabled": {}
+        }
+      },
+      "importedPatch": {
+        "stateStyles": {
+          "disabled": {}
+        }
+      },
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "inactive unsupported properties do not become local overrides",
+      "outcome": "supported",
+      "rawSha256": "22e956fe800d5eb41d54ee1547a6fe6a48820a9249f2ed83505f045f4cf2707c",
+      "rawBytes": 19167,
+      "input": {
+        "name": "inactive unsupported properties do not become local overrides",
+        "properties": [
+          {
+            "key": 5000,
+            "value": "inactive unknown",
+            "flags": 2
+          },
+          {
+            "key": 7,
+            "value": {
+              "$map": [
+                [
+                  "fill-type",
+                  "solid"
+                ],
+                [
+                  "fill-color",
+                  -65536
+                ]
+              ]
+            },
+            "flags": 1
+          }
+        ],
+        "expected": {}
+      },
+      "readerPatch": {},
+      "importedPatch": {},
+      "widgetsImported": 6,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "one padding side",
+      "outcome": "rejected-atomically",
+      "rawSha256": "1139020647550067c5068f18b8418cad5f49a5d78398e353e77c5ba2df96a644",
+      "rawBytes": 19132,
+      "input": {
+        "name": "one padding side",
+        "properties": [
+          {
+            "key": 11,
+            "value": 4
+          }
+        ],
+        "rejection": "Partial local adaptive padding"
+      },
+      "reason": "Partial local adaptive padding cannot be represented without freezing inherited sides",
+      "widgetsImported": 5,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "solid fill with extra field",
+      "outcome": "rejected-atomically",
+      "rawSha256": "1a5e2cfc1462c86d4c141cdf7a6e2d6d3b1cbca2d09fae9c39597b370346198a",
+      "rawBytes": 19149,
+      "input": {
+        "name": "solid fill with extra field",
+        "properties": [
+          {
+            "key": 7,
+            "value": {
+              "$map": [
+                [
+                  "fill-type",
+                  "solid"
+                ],
+                [
+                  "fill-color",
+                  -65536
+                ],
+                [
+                  "unknown",
+                  true
+                ]
+              ]
+            }
+          }
+        ],
+        "rejection": "Invalid local adaptive property map"
+      },
+      "reason": "Invalid local adaptive property map",
+      "widgetsImported": 5,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "unmapped transform even when identity",
+      "outcome": "rejected-atomically",
+      "rawSha256": "fa17d3178b4dada5204f14b8839b4a7c60793aa2d6ef1dd6b513dbd013233f7f",
+      "rawBytes": 19132,
+      "input": {
+        "name": "unmapped transform even when identity",
+        "properties": [
+          {
+            "key": 1401,
+            "value": {
+              "$map": [
+                [
+                  "ScaleX",
+                  1
+                ],
+                [
+                  "ScaleY",
+                  1
+                ],
+                [
+                  "TranslateX",
+                  0
+                ],
+                [
+                  "TranslateY",
+                  0
+                ],
+                [
+                  "Rotate",
+                  0
+                ]
+              ]
+            }
+          }
+        ],
+        "rejection": "Unsupported local adaptive visual property 1401"
+      },
+      "reason": "Unsupported local adaptive visual property 1401",
+      "widgetsImported": 5,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "unknown active property",
+      "outcome": "rejected-atomically",
+      "rawSha256": "e494a0c01b18a3d4765d6f55796bd3ed1457f963efb833a2b097b7428128cded",
+      "rawBytes": 19133,
+      "input": {
+        "name": "unknown active property",
+        "properties": [
+          {
+            "key": 5000,
+            "value": true
+          }
+        ],
+        "rejection": "Unsupported local adaptive visual property 5000"
+      },
+      "reason": "Unsupported local adaptive visual property 5000",
+      "widgetsImported": 5,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "incomplete paired size",
+      "outcome": "rejected-atomically",
+      "rawSha256": "21a85f24fa005393ac2313dcac494296798f24156d89bbfbf77e303aecf02f7e",
+      "rawBytes": 19135,
+      "input": {
+        "name": "incomplete paired size",
+        "properties": [
+          {
+            "key": 105,
+            "value": {
+              "$map": [
+                [
+                  "Width",
+                  123
+                ]
+              ]
+            }
+          }
+        ],
+        "rejection": "Invalid local adaptive property map"
+      },
+      "reason": "Invalid local adaptive property map",
+      "widgetsImported": 5,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "nonautomatic P20 spacing",
+      "outcome": "rejected-atomically",
+      "rawSha256": "ee4be589bb93cb8e83b64de1df6db26dd155ce965f7dd866f7a8947051c051e0",
+      "rawBytes": 19133,
+      "input": {
+        "name": "nonautomatic P20 spacing",
+        "properties": [
+          {
+            "key": 20,
+            "value": 1
+          }
+        ],
+        "rejection": "Unrepresentable local adaptive visual value 20"
+      },
+      "reason": "Unrepresentable local adaptive visual value 20",
+      "widgetsImported": 5,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "automatic P20 without normal source paragraphs",
+      "outcome": "rejected-atomically",
+      "rawSha256": "88e3e21b3d48c6a300bd97bc9bd35d13ecc668dc30472152758fd04bdb71bdb8",
+      "rawBytes": 19138,
+      "input": {
+        "name": "automatic P20 without normal source paragraphs",
+        "properties": [
+          {
+            "key": 20,
+            "value": 0
+          }
+        ],
+        "paragraphLineSpacing": 12,
+        "rejection": "Unrepresentable local adaptive visual value 20"
+      },
+      "reason": "Unrepresentable local adaptive visual value 20",
+      "widgetsImported": 5,
+      "eventsImported": 4,
+      "actionsImported": 3
+    },
+    {
+      "name": "unknown active state property rejects entire owner",
+      "outcome": "rejected-atomically",
+      "rawSha256": "89d7fbb13da95bfc81433b9f84bc95bdb01044a916e13c69c2a9a717ec48bcfb",
+      "rawBytes": 19148,
+      "input": {
+        "name": "unknown active state property rejects entire owner",
+        "properties": [],
+        "states": [
+          {
+            "name": "Selected",
+            "properties": [
+              {
+                "key": 5000,
+                "value": true
+              }
+            ]
+          }
+        ],
+        "rejection": "Unsupported local adaptive visual property 5000"
+      },
+      "reason": "Unsupported local adaptive visual property 5000",
+      "widgetsImported": 5,
+      "eventsImported": 4,
+      "actionsImported": 3
+    }
+  ]
+}

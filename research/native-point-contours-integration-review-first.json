@@ -1,0 +1,897 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-17T11:22:19.311Z",
+  "kind": "read-only Vite SSR product comparison; no original GUI/DLL execution",
+  "sourceHashes": [
+    {
+      "path": "src/model/vector-commit.ts",
+      "sha256": "0ce4ebd2a375d2ab46bfdd61630fa89c34b8b53c8fe766dc4ae7f490f9098565"
+    },
+    {
+      "path": "src/model/vector-contours.ts",
+      "sha256": "0fe9ab8aceb1bfcfefcf79de872e0726e86633873e4d72a120176c4ad600fafa"
+    },
+    {
+      "path": "src/model/vector-editing.ts",
+      "sha256": "5beb656467c33b73b6a0425bb003a78f2325127f6f4c4c2a7e3bc4b9b028512d"
+    },
+    {
+      "path": "src/model/vector.ts",
+      "sha256": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147"
+    },
+    {
+      "path": "src/model/vector-authoring.ts",
+      "sha256": "3a11a65829362183b40407adb5543dbc38dcf9560709578ee5d3f8dc19af697c"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "b6ad359478286e201469fcf26cc698076f0ecd08bf4dc386ca57b6ba96611da0"
+    },
+    {
+      "path": "src/components/CanvasVectorTools.tsx",
+      "sha256": "ce1af980044c8adb9f90b38c4da7b428bdb7adaaebf83662132af50b18096a27"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "c55baefbda6d61e6a6b880f5e306ed83298fccf1dfb5ecd43ea182340fe504d6"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c204576a681ad3e5bf8c9fe1f8d2ea0d36f4dd59be5b9118571744c307ecd109"
+    }
+  ],
+  "evidenceHashes": [
+    {
+      "path": "research/native-point-contours-rotation-evidence.json",
+      "sha256": "6e8d853fe6f70a77a78214b909025a68a0c024d70c5de65655f4656ea65a94bc"
+    },
+    {
+      "path": "research/native-point-contours-rotation-fixtures.json",
+      "sha256": "c87b4729c83d542f13385870c827104264cbba5fc3c882043ac21d487cd3e0d3"
+    },
+    {
+      "path": "research/native-point-contours-topology-probes.json",
+      "sha256": "00d22ad1bc821e33bde7ecef15ce3e7edb8a5d1daf89c29d96243f18ad82c1d6"
+    }
+  ],
+  "probe": {
+    "path": "research/native-point-contours-integration-review-probe.mjs",
+    "sha256": "43a84191786eeee0bd084adc173bcdcbb2c090c47c9b459bb187b208c5d386a7"
+  },
+  "sourceStableDuringRun": true,
+  "checks": {
+    "total": 69,
+    "passed": 69,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "rotation oracle polygon commit 0",
+      "passed": true,
+      "angle": 0,
+      "expectedRoute": "iN4x-unrotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -0",
+      "passed": true,
+      "angle": 0,
+      "expectedRoute": "iN4x-unrotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 1e-12",
+      "passed": true,
+      "angle": 1e-12,
+      "expectedRoute": "iN4x-unrotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -1e-12",
+      "passed": true,
+      "angle": -1e-12,
+      "expectedRoute": "iN4x-unrotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 0.000001",
+      "passed": true,
+      "angle": 0.000001,
+      "expectedRoute": "iN4x-unrotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -0.000001",
+      "passed": true,
+      "angle": -0.000001,
+      "expectedRoute": "iN4x-unrotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 0.000009999999",
+      "passed": true,
+      "angle": 0.000009999999,
+      "expectedRoute": "iN4x-unrotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -0.000009999999",
+      "passed": true,
+      "angle": -0.000009999999,
+      "expectedRoute": "iN4x-unrotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 0.00001",
+      "passed": true,
+      "angle": 0.00001,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 99.99999563667689,
+        "width": 250.00000000000034,
+        "height": 100.00000436332311
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -0.00001",
+      "passed": true,
+      "angle": -0.00001,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250.0000000000004,
+        "height": 100.00000436332314
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 0.000010000001",
+      "passed": true,
+      "angle": 0.000010000001,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 99.99999563667649,
+        "width": 250.0000000000004,
+        "height": 100.00000436332351
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -0.000010000001",
+      "passed": true,
+      "angle": -0.000010000001,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250.00000000000034,
+        "height": 100.00000436332357
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 0.00002",
+      "passed": true,
+      "angle": 0.00002,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 99.99999127335369,
+        "width": 250.00000000000153,
+        "height": 100.00000872664631
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -0.00002",
+      "passed": true,
+      "angle": -0.00002,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250.00000000000153,
+        "height": 100.00000872664629
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 360",
+      "passed": true,
+      "angle": 360,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -360",
+      "passed": true,
+      "angle": -360,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 720",
+      "passed": true,
+      "angle": 720,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -720",
+      "passed": true,
+      "angle": -720,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 359.999995",
+      "passed": true,
+      "angle": 359.999995,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 360.000005",
+      "passed": true,
+      "angle": 360.000005,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -359.999995",
+      "passed": true,
+      "angle": -359.999995,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 99.9999978183385,
+        "width": 250.0000000000001,
+        "height": 100.0000021816615
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -360.000005",
+      "passed": true,
+      "angle": -360.000005,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 359.99998",
+      "passed": true,
+      "angle": 359.99998,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250.00000000000153,
+        "height": 100.00000872664626
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 360.00002",
+      "passed": true,
+      "angle": 360.00002,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 99.99999127335374,
+        "width": 250.0000000000016,
+        "height": 100.00000872664626
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -359.99998",
+      "passed": true,
+      "angle": -359.99998,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 99.99999127335369,
+        "width": 250.00000000000153,
+        "height": 100.00000872664631
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -360.00002",
+      "passed": true,
+      "angle": -360.00002,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 50,
+        "y": 100,
+        "width": 250.0000000000016,
+        "height": 100.00000872664623
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 89.99998",
+      "passed": true,
+      "angle": 89.99998,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 74.99999127335374,
+        "y": 75,
+        "width": 250.00000872664626,
+        "height": 100.00000000000156
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 89.999995",
+      "passed": true,
+      "angle": 89.999995,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 75,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 90",
+      "passed": true,
+      "angle": 90,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 75,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 90.000005",
+      "passed": true,
+      "angle": 90.000005,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 75,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 90.00002",
+      "passed": true,
+      "angle": 90.00002,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 75,
+        "width": 250.00000872664629,
+        "height": 100.00000000000159
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 179.99998",
+      "passed": true,
+      "angle": 179.99998,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 99.99999999999845,
+        "y": 99.99999127335366,
+        "width": 250.00000000000153,
+        "height": 100.00000872664634
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 179.999995",
+      "passed": true,
+      "angle": 179.999995,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 100,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 180",
+      "passed": true,
+      "angle": 180,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 100,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 180.000005",
+      "passed": true,
+      "angle": 180.000005,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 100,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 180.00002",
+      "passed": true,
+      "angle": 180.00002,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 99.99999999999852,
+        "y": 100,
+        "width": 250.00000000000148,
+        "height": 100.00000872664626
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 269.99998",
+      "passed": true,
+      "angle": 269.99998,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 124.99999999999841,
+        "width": 250.00000872664623,
+        "height": 100.00000000000159
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 269.999995",
+      "passed": true,
+      "angle": 269.999995,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 125,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 270",
+      "passed": true,
+      "angle": 270,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 125,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 270.000005",
+      "passed": true,
+      "angle": 270.000005,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 125,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit 270.00002",
+      "passed": true,
+      "angle": 270.00002,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 74.99999127335371,
+        "y": 124.99999999999848,
+        "width": 250.00000872664629,
+        "height": 100.00000000000152
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -90.00002",
+      "passed": true,
+      "angle": -90.00002,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 124.99999999999841,
+        "width": 250.00000872664629,
+        "height": 100.00000000000159
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -90.000005",
+      "passed": true,
+      "angle": -90.000005,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 124.99999999999994,
+        "width": 250.00000218166156,
+        "height": 100.00000000000006
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -90",
+      "passed": true,
+      "angle": -90,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 125,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -89.999995",
+      "passed": true,
+      "angle": -89.999995,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 74.99999781833843,
+        "y": 124.99999999999994,
+        "width": 250.00000218166156,
+        "height": 100.00000000000006
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -89.99998",
+      "passed": true,
+      "angle": -89.99998,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 74.99999127335383,
+        "y": 124.99999999999842,
+        "width": 250.00000872664617,
+        "height": 100.00000000000158
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -180.00002",
+      "passed": true,
+      "angle": -180.00002,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 99.99999999999852,
+        "y": 99.99999127335374,
+        "width": 250.00000000000148,
+        "height": 100.00000872664626
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -180.000005",
+      "passed": true,
+      "angle": -180.000005,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 99.99999999999997,
+        "y": 99.99999781833844,
+        "width": 250.00000000000003,
+        "height": 100.00000218166156
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -180",
+      "passed": true,
+      "angle": -180,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 100,
+        "y": 100,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -179.999995",
+      "passed": true,
+      "angle": -179.999995,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 99.9999999999999,
+        "y": 100,
+        "width": 250.0000000000001,
+        "height": 100.00000218166156
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -179.99998",
+      "passed": true,
+      "angle": -179.99998,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 99.9999999999985,
+        "y": 100,
+        "width": 250.0000000000015,
+        "height": 100.00000872664631
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -270.00002",
+      "passed": true,
+      "angle": -270.00002,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 74.99999127335374,
+        "y": 75,
+        "width": 250.00000872664626,
+        "height": 100.00000000000159
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -270.000005",
+      "passed": true,
+      "angle": -270.000005,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 74.99999781833846,
+        "y": 75,
+        "width": 250.00000218166156,
+        "height": 100.00000000000009
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -270",
+      "passed": true,
+      "angle": -270,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 75,
+        "width": 250,
+        "height": 100
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -269.999995",
+      "passed": true,
+      "angle": -269.999995,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 75,
+        "width": 250.00000218166156,
+        "height": 100.00000000000011
+      }
+    },
+    {
+      "name": "rotation oracle polygon commit -269.99998",
+      "passed": true,
+      "angle": -269.99998,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 75,
+        "y": 75,
+        "width": 250.00000872664623,
+        "height": 100.00000000000156
+      }
+    },
+    {
+      "name": "rotation oracle cubic commit 0",
+      "passed": true,
+      "angle": 0,
+      "expectedRoute": "iN4x-unrotated",
+      "bounds": {
+        "x": 100,
+        "y": 58,
+        "width": 200,
+        "height": 142
+      }
+    },
+    {
+      "name": "rotation oracle cubic commit 0.000009999999",
+      "passed": true,
+      "angle": 0.000009999999,
+      "expectedRoute": "iN4x-unrotated",
+      "bounds": {
+        "x": 100,
+        "y": 58,
+        "width": 200,
+        "height": 142
+      }
+    },
+    {
+      "name": "rotation oracle cubic commit 0.00001",
+      "passed": true,
+      "angle": 0.00001,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 100,
+        "y": 58,
+        "width": 200.00000361469523,
+        "height": 142.00000000000028
+      }
+    },
+    {
+      "name": "rotation oracle cubic commit -0.00001",
+      "passed": true,
+      "angle": -0.00001,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 99.99999638530475,
+        "y": 58,
+        "width": 200.00000361469523,
+        "height": 142.0000000000003
+      }
+    },
+    {
+      "name": "rotation oracle cubic commit 360",
+      "passed": true,
+      "angle": 360,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 100,
+        "y": 58,
+        "width": 200,
+        "height": 142
+      }
+    },
+    {
+      "name": "rotation oracle cubic commit -360",
+      "passed": true,
+      "angle": -360,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 100,
+        "y": 58,
+        "width": 200,
+        "height": 142
+      }
+    },
+    {
+      "name": "rotation oracle cubic commit 359.999995",
+      "passed": true,
+      "angle": 359.999995,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 100,
+        "y": 58,
+        "width": 200,
+        "height": 142
+      }
+    },
+    {
+      "name": "rotation oracle cubic commit -359.999995",
+      "passed": true,
+      "angle": -359.999995,
+      "expectedRoute": "hN4K-rotated",
+      "bounds": {
+        "x": 100,
+        "y": 58,
+        "width": 200.00000180734764,
+        "height": 142.00000000000006
+      }
+    },
+    {
+      "name": "topology oracle main-and-tiny-line",
+      "passed": true,
+      "bounds": {
+        "x": 50,
+        "y": 80,
+        "width": 250,
+        "height": 100
+      },
+      "contours": 2
+    },
+    {
+      "name": "topology oracle only-tiny-line",
+      "passed": true,
+      "bounds": {
+        "x": 498,
+        "y": 278,
+        "width": 4,
+        "height": 4
+      },
+      "contours": 1
+    },
+    {
+      "name": "topology oracle only-move",
+      "passed": true,
+      "bounds": {
+        "x": 148,
+        "y": 103,
+        "width": 4,
+        "height": 4
+      },
+      "contours": 1
+    },
+    {
+      "name": "topology oracle duplicate-endpoint-close",
+      "passed": true,
+      "bounds": {
+        "x": 100,
+        "y": 80,
+        "width": 200,
+        "height": 100
+      },
+      "contours": 1
+    },
+    {
+      "name": "topology oracle loop-cubic",
+      "passed": true,
+      "bounds": {
+        "x": 100,
+        "y": 80,
+        "width": 89,
+        "height": 75
+      },
+      "contours": 1
+    }
+  ],
+  "limits": [
+    "Rotation fixture numbers are source-derived independent composition, not complete vendor transaction execution.",
+    "Topology fixtures use the declared product M/L/C/Z adapter; unavailable native inactive handles are not reconstructed.",
+    "This probe does not exercise browser pointer/history UI, runtime rendering, or general transform providers."
+  ]
+}

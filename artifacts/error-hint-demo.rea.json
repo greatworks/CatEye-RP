@@ -1,0 +1,819 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "error-hint-document",
+  "name": "Error and Hint",
+  "caseSelection": "never",
+  "pages": [
+    {
+      "id": "error-hint-page",
+      "name": "Forms and validation",
+      "width": 940,
+      "height": 780,
+      "background": "#f7f9fc",
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": [],
+      "widgets": [
+        {
+          "id": "Heading",
+          "type": "text",
+          "name": "Heading",
+          "text": "Error states & input hints",
+          "x": 40,
+          "y": 28,
+          "width": 810,
+          "height": 48,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 30,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Caption",
+          "type": "text",
+          "name": "Caption",
+          "text": "Independent prototype editor · literal hints, logical text and row-local state",
+          "x": 40,
+          "y": 80,
+          "width": 810,
+          "height": 34,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#68758a",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Typing hint",
+          "type": "input",
+          "name": "Typing hint",
+          "text": "",
+          "x": 40,
+          "y": 130,
+          "width": 300,
+          "height": 48,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "changed-event",
+              "event": "change",
+              "name": "changed",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "changed-0",
+                  "type": "setVariable",
+                  "targetId": "Changes",
+                  "value": "[[number(Changes)+1]]"
+                },
+                {
+                  "id": "changed-1",
+                  "type": "setVariable",
+                  "targetId": "LastText",
+                  "value": "[[This.text]]"
+                },
+                {
+                  "id": "changed-2",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[concat(Trace,'<',This.text,'>')]]"
+                }
+              ]
+            },
+            {
+              "id": "error-set-event",
+              "event": "errorSet",
+              "name": "error-set",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "error-set-0",
+                  "type": "setVariable",
+                  "targetId": "Errors",
+                  "value": "[[number(Errors)+1]]"
+                }
+              ]
+            },
+            {
+              "id": "error-remove-event",
+              "event": "errorRemoved",
+              "name": "error-remove",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "error-remove-0",
+                  "type": "setVariable",
+                  "targetId": "Removals",
+                  "value": "[[number(Removals)+1]]"
+                }
+              ]
+            }
+          ],
+          "hintText": "Email [[literal]]",
+          "hintStyle": {
+            "color": "#65758b"
+          },
+          "focusedStyle": {
+            "stroke": "#3e64bf"
+          },
+          "errorStyle": {
+            "stroke": "#dc2638",
+            "fontWeight": 700
+          }
+        },
+        {
+          "id": "Focus hint",
+          "type": "input",
+          "name": "Focus hint",
+          "text": "",
+          "x": 400,
+          "y": 130,
+          "width": 300,
+          "height": 48,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "hintText": "Search people",
+          "hintHideOn": "focus",
+          "hintStyle": {
+            "color": "#92714f"
+          },
+          "focusedStyle": {
+            "stroke": "#3e64bf"
+          }
+        },
+        {
+          "id": "Password hint",
+          "type": "input",
+          "name": "Password hint",
+          "text": "",
+          "x": 40,
+          "y": 290,
+          "width": 300,
+          "height": 48,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "inputType": "password",
+          "hintText": "Choose a password",
+          "hintStyle": {
+            "color": "#65758b"
+          }
+        },
+        {
+          "id": "Message hint",
+          "type": "textarea",
+          "name": "Message hint",
+          "text": "",
+          "x": 400,
+          "y": 290,
+          "width": 300,
+          "height": 90,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "hintText": "First line\n第二行提示",
+          "hintHideOn": "focus",
+          "hintStyle": {
+            "color": "#65758b"
+          }
+        },
+        {
+          "id": "Hint rows",
+          "type": "repeater",
+          "name": "Hint rows",
+          "text": "",
+          "x": 40,
+          "y": 510,
+          "width": 300,
+          "height": 145,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              },
+              {
+                "Name": "B"
+              }
+            ],
+            "template": [
+              {
+                "id": "Row input",
+                "type": "input",
+                "name": "Row input",
+                "text": "",
+                "x": 8,
+                "y": 8,
+                "width": 250,
+                "height": 48,
+                "rotation": 0,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#a6b0c2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#203048",
+                  "fontSize": 16,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1,
+                  "textPadding": [
+                    8,
+                    12,
+                    8,
+                    12
+                  ]
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": [
+                  {
+                    "id": "row-change-event",
+                    "event": "change",
+                    "name": "row-change",
+                    "enabled": true,
+                    "conditionMode": "all",
+                    "conditions": [],
+                    "actions": [
+                      {
+                        "id": "row-change-0",
+                        "type": "setError",
+                        "targetId": "Row input",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                ],
+                "hintText": "Row hint",
+                "errorStyle": {
+                  "stroke": "#dc2638"
+                }
+              }
+            ],
+            "itemHeight": 64,
+            "gap": 6
+          }
+        },
+        {
+          "id": "Set error",
+          "type": "button",
+          "name": "Set error",
+          "text": "Set error",
+          "x": 40,
+          "y": 196,
+          "width": 180,
+          "height": 48,
+          "rotation": 0,
+          "style": {
+            "fill": "#e8eef9",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "Set error-event",
+              "event": "click",
+              "name": "Set error",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "Set error-0",
+                  "type": "setError",
+                  "targetId": "Typing hint",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Remove error",
+          "type": "button",
+          "name": "Remove error",
+          "text": "Remove error",
+          "x": 238,
+          "y": 196,
+          "width": 180,
+          "height": 48,
+          "rotation": 0,
+          "style": {
+            "fill": "#e8eef9",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "Remove error-event",
+              "event": "click",
+              "name": "Remove error",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "Remove error-0",
+                  "type": "setError",
+                  "targetId": "Typing hint",
+                  "value": "false"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Clear focused field",
+          "type": "button",
+          "name": "Clear focused field",
+          "text": "Clear focused field",
+          "x": 438,
+          "y": 196,
+          "width": 180,
+          "height": 48,
+          "rotation": 0,
+          "style": {
+            "fill": "#e8eef9",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "Clear focused field-event",
+              "event": "click",
+              "name": "Clear focused field",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "Clear focused field-0",
+                  "type": "setText",
+                  "targetId": "Focus hint",
+                  "value": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Disable field",
+          "type": "button",
+          "name": "Disable field",
+          "text": "Disable field",
+          "x": 40,
+          "y": 402,
+          "width": 180,
+          "height": 48,
+          "rotation": 0,
+          "style": {
+            "fill": "#e8eef9",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "Disable field-event",
+              "event": "click",
+              "name": "Disable field",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "Disable field-0",
+                  "type": "disable",
+                  "targetId": "Typing hint"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Enable field",
+          "type": "button",
+          "name": "Enable field",
+          "text": "Enable field",
+          "x": 238,
+          "y": 402,
+          "width": 180,
+          "height": 48,
+          "rotation": 0,
+          "style": {
+            "fill": "#e8eef9",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "Enable field-event",
+              "event": "click",
+              "name": "Enable field",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "Enable field-0",
+                  "type": "enable",
+                  "targetId": "Typing hint"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Counters",
+          "type": "text",
+          "name": "Counters",
+          "text": "Set: [[Errors]] / Removed: [[Removals]] / Changes: [[Changes]]",
+          "x": 400,
+          "y": 505,
+          "width": 460,
+          "height": 42,
+          "rotation": 0,
+          "style": {
+            "fill": "#eef3fa",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Logical text",
+          "type": "text",
+          "name": "Logical text",
+          "text": "Logical text: «[[LastText]]»",
+          "x": 400,
+          "y": 560,
+          "width": 460,
+          "height": 48,
+          "rotation": 0,
+          "style": {
+            "fill": "#eef3fa",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Change trace",
+          "type": "text",
+          "name": "Change trace",
+          "text": "[[Trace]]",
+          "x": 400,
+          "y": 615,
+          "width": 460,
+          "height": 42,
+          "rotation": 0,
+          "style": {
+            "fill": "#eef3fa",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Footnote",
+          "type": "text",
+          "name": "Footnote",
+          "text": "Hint text is presentation state. Saving preserves the authored empty values.",
+          "x": 40,
+          "y": 685,
+          "width": 810,
+          "height": 40,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#68758a",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        }
+      ]
+    }
+  ],
+  "components": [],
+  "styles": [],
+  "variables": {
+    "Changes": "0",
+    "Errors": "0",
+    "Removals": "0",
+    "LastText": "",
+    "Trace": ""
+  }
+}

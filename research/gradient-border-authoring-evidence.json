@@ -1,0 +1,104 @@
+{
+  "milestone": "gradient-border-authoring",
+  "generatedAtUtc": "2026-10-13T21:59:22.8966621Z",
+  "status": "Own authoring files frozen; focused checks passed. No full suite, production build or package run by this task.",
+  "implementation": [
+    "src/components/FillEditor.tsx",
+    "src/components/Inspector.tsx",
+    "src/App.tsx"
+  ],
+  "tests": [
+    "tests/gradient-border-authoring.test.ts",
+    "tests/e2e/gradient-border-authoring.spec.ts"
+  ],
+  "interface": {
+    "reused": "Internal PaintEditor with FillEditor/FillOverrideEditor backwards-compatible exports; new StrokeEditor/StrokeOverrideEditor wrappers",
+    "labels": [
+      "Border",
+      "Border type",
+      "Edit Border gradient",
+      "Border Start X",
+      "Border Stop 1 offset",
+      "Border Stop 1 color",
+      "Apply Border gradient",
+      "Cancel Border gradient",
+      "Selected border",
+      "Selected border type",
+      "Override MouseOver border",
+      "Action 1 border type"
+    ],
+    "channelSemantics": "stroke-only clears strokeGradient; removing override removes both; width/radius/fill edits preserve independent border paint",
+    "imageBoundary": "Linear uses first stop with alpha; radial is transparent, stated in UI."
+  },
+  "checks": [
+    {
+      "command": "npx vitest run tests/gradient-border-authoring.test.ts tests/gradient-authoring.test.ts tests/selection-model.test.ts",
+      "exitCode": 0,
+      "passed": 27,
+      "newTests": 8,
+      "log": ".build/gradient-border-authoring-unit.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "log": ".build/gradient-border-authoring-typecheck.log"
+    },
+    {
+      "command": "npx playwright test tests/e2e/gradient-border-authoring.spec.ts tests/e2e/gradient-authoring.spec.ts tests/e2e/interaction-style-authoring.spec.ts --output=test-results/gradient-border-authoring-focused --reporter=list",
+      "exitCode": 1,
+      "passed": 9,
+      "failed": 1,
+      "log": ".build/gradient-border-authoring-focused.log",
+      "failure": "New test omitted a normal widget selection after switching adaptive view. Inspector correctly showed PAGE; selectOption Border type timed out. No product defect, assertion weakening or timeout increase."
+    },
+    {
+      "command": "npx playwright test tests/e2e/gradient-border-authoring.spec.ts --grep \"toolbar and same-color\" --output=test-results/gradient-border-authoring-adaptive-final --reporter=list",
+      "exitCode": 0,
+      "passed": 1,
+      "durationSeconds": 13.7,
+      "log": ".build/gradient-border-authoring-adaptive-final.log",
+      "correction": "Added normal box.click() before editing the adaptive border. All document identity, geometry, channel-isolation, save/reopen and undo assertions retained."
+    }
+  ],
+  "finalCoverage": {
+    "newAuthoringBrowser": 4,
+    "existingFillBrowser": 4,
+    "existingInteractionStyleBrowser": 2,
+    "allTenDistinctWorkflowsPassed": true,
+    "runnerExited": true,
+    "newModelAuthorTests": 8
+  },
+  "boundaries": [
+    "Author gesture/default point/stop-move conventions are product choices; no original GUI capture parity claim.",
+    "Only authoring verified here; runtime pixels, original-function probes, native import and final package checks belong to parent/runtime/format evidence.",
+    "Old Fill evidence files and existing tests were not edited.",
+    "Invalid draft values remain local; valid solid values preview immediately.",
+    "No full suite, build or packaging run by this task."
+  ],
+  "sourceHashes": [
+    {
+      "path": "src/components/FillEditor.tsx",
+      "sha256": "00b2b2560ff7489cf8a2063b50f4c5ef0e108a3a727342c07489d720f49352e7"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "376a14675b5495f94eb7226374231f7f9f92dd76b88c9d0b0da9a9d86e36a06d"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "df0440dc2006652d56f4857cd643efc4358e38bbca7c34e5a54ea7c040a34a2c"
+    },
+    {
+      "path": "tests/gradient-border-authoring.test.ts",
+      "sha256": "5dac906a5ffc79b1843b4234bb007754326b2bacb44f171caab0edab13ae4d94"
+    },
+    {
+      "path": "tests/e2e/gradient-border-authoring.spec.ts",
+      "sha256": "a25b6ce863a09c2f2922ec4d3af402d82fdea7f52d6748ba7037415b969df368"
+    },
+    {
+      "path": "research/gradient-border-authoring-evidence.md",
+      "sha256": "69fc4887eab783cecb39857d6cfd713a6abb1970b0311243d6480468c6c72d45"
+    }
+  ]
+}

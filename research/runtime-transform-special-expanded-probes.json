@@ -1,0 +1,4949 @@
+{
+  "capturedAt": "2026-10-20T05:41:39.398Z",
+  "target": "Axure RP 11.0.0.4150",
+  "execution": "Exact original action/compress/item sizing/public Move consumers + full original move/math in NodeVM. Geometry, collections, DOM writes and animation scheduling are declared facades.",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "bytes": 122627
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "bytes": 79505
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\move.js",
+      "sha256": "c823954b5ed5862d56176b8984837e8f26588540ee4768d4483d68a399b95644",
+      "bytes": 22052
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\math.js",
+      "sha256": "f56ab4a6c3f6e91aaba9bebf2e81485965fc82bca63af0c606593d580c1de883",
+      "bytes": 16141
+    }
+  ],
+  "ranges": [
+    {
+      "file": "axQuery.std.js",
+      "from": 457,
+      "through": 483,
+      "sha256": "3b705c92658c348356a3e44cc97cb6c605f6d65fa2acb10cf07f060581fb6446"
+    },
+    {
+      "file": "axQuery.std.js",
+      "from": 523,
+      "through": 540,
+      "sha256": "1fa00dc87a3ad75d958d5cdc69aed8ca46005bcf535ffd1c000c30912969a574"
+    },
+    {
+      "file": "repeater.js",
+      "from": 1483,
+      "through": 1538,
+      "sha256": "12ea64a642d0b1dddfbe450e9d7f8be2f33fd398e7099eaf6102985351b36cfd"
+    },
+    {
+      "file": "repeater.js",
+      "from": 1080,
+      "through": 1290,
+      "sha256": "8a70d7ca754c6ce79216f060099d1620e86049b2abeed7efd89d6a967822f180"
+    },
+    {
+      "file": "repeater.js",
+      "from": 1998,
+      "through": 2021,
+      "sha256": "ff5536bf7970fadb22622ee9120884ef644b4653186878a1f5cc48f1c5f625c0"
+    },
+    {
+      "file": "repeater.js",
+      "from": 2340,
+      "through": 2604,
+      "sha256": "713f4ebc7fc41237c73cf9f46cb89c89a34e505a564012dbed70534865ca5e0c"
+    },
+    {
+      "file": "action.js",
+      "from": 702,
+      "through": 742,
+      "sha256": "f1a2ee8bf72395c2b3567741c4443f67f4d2eb3782a89854c0d51acdbc0c431e"
+    },
+    {
+      "file": "action.js",
+      "from": 1258,
+      "through": 1284,
+      "sha256": "1c5fe58e4da21b75038ec83094b6863a838b02a2ddf8f468ac043085333391ed"
+    },
+    {
+      "file": "action.js",
+      "from": 1528,
+      "through": 1552,
+      "sha256": "bacad3b58778377bba1513c4ecd59127949a41dc65572d764c984a4807027051"
+    }
+  ],
+  "script": {
+    "path": "research/runtime-transform-special-probe.mjs",
+    "sha256": "c4c276a51b96a92380226b82922af743617c8caae93334ce0de54c7e703c4c86"
+  },
+  "summary": {
+    "total": 48,
+    "passed": 48,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "grow inferred",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 80,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 230,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 30,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 230
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 230
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "shrink inferred",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 170,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": -30,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 170
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 170
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "grow explicit",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 80,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 212,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 12,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 212
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 212
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "shrink explicit",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 188,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": -12,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 188
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 188
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "same explicit",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 200,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 0,
+            "options": {}
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {},
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "same inferred",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 200,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 0,
+            "options": {}
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {},
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "negative supplied grow",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 80,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 188,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": -12,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 188
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 188
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "negative supplied shrink",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 212,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 12,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 212
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 212
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "strict cross overlap 100/10/150",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 100,
+            "top": 160,
+            "width": 10,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 100,
+            "y": 160
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 100,
+            "top": 160
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "strict cross overlap 199/10/150",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 199,
+            "top": 160,
+            "width": 10,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 199,
+            "y": 160
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 199,
+            "top": 160
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "strict cross overlap 200/10/150",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 200,
+            "top": 150,
+            "width": 10,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {},
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "strict cross overlap 90/10/150",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 90,
+            "top": 150,
+            "width": 10,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {},
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "strict cross overlap 90/11/150",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 90,
+            "top": 160,
+            "width": 11,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 90,
+            "y": 160
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 90,
+            "top": 160
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "strict cross overlap 100/10/149.999",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 100,
+            "top": 149.999,
+            "width": 10,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {},
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "strict cross overlap 100/10/150.001",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 100,
+            "top": 160.001,
+            "width": 10,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 100,
+            "y": 160.001
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 100,
+            "top": 160.001
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "strict cross overlap 100/0/160",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 100,
+            "top": 160,
+            "width": 0,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {},
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "current cross origin with maximum old/current width",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 150,
+            "top": 100,
+            "width": 50,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 230,
+            "top": 170,
+            "width": 10,
+            "height": 10,
+            "display": "block"
+          },
+          "u3": {
+            "left": 110,
+            "top": 160,
+            "width": 10,
+            "height": 10,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 230,
+            "y": 170
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 230,
+            "top": 170
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "nonresize NaN means unit primary shift and NaN complementary zero",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 161,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 1,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 161
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 161
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "Right primary and complementary axis",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 215,
+            "top": 102,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 15,
+            "y": -8,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 215,
+            "y": 102
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 215,
+            "top": 102
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "DOM ordering, hidden and fixed eligibility",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u5": {
+            "left": 110,
+            "top": 170,
+            "width": 20,
+            "height": 20,
+            "display": "none"
+          },
+          "u3": {
+            "left": 110,
+            "top": 160,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          },
+          "u4": {
+            "left": 110,
+            "top": 170,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 170,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u5",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u5"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u5",
+            "x": 110,
+            "y": 170
+          },
+          {
+            "kind": "fit",
+            "id": "u5"
+          },
+          {
+            "kind": "release",
+            "id": "u5",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u5",
+            "event": "onMove"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u4",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u4"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u4",
+            "x": 110,
+            "y": 170
+          },
+          {
+            "kind": "fit",
+            "id": "u4"
+          },
+          {
+            "kind": "release",
+            "id": "u4",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u4",
+            "event": "onMove"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 170
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u5": {
+            "left": 110,
+            "top": 170
+          },
+          "u4": {
+            "left": 110,
+            "top": 170
+          },
+          "u2": {
+            "left": 110,
+            "top": 170
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "nested panel stays within state, does not move external sibling",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u9": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u9_state0": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 10,
+            "top": 60,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          },
+          "u3": {
+            "left": 10,
+            "top": 50,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "u9_state0"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 10,
+            "y": 60
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "u9_state0"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 10,
+            "top": 60
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "candidate panel uses shown state cross width not outer width",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 50,
+            "top": 160,
+            "width": 200,
+            "height": 30,
+            "display": "block"
+          },
+          "u2_state0": {
+            "left": 0,
+            "top": 0,
+            "width": 20,
+            "height": 30,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {},
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "animated primary-only keeps easing and releases after onMove",
+      "passed": true,
+      "observed": {
+        "before": {
+          "nodes": {
+            "base": {
+              "left": 0,
+              "top": 0,
+              "width": 0,
+              "height": 0,
+              "display": "block"
+            },
+            "u1": {
+              "left": 100,
+              "top": 100,
+              "width": 100,
+              "height": 50,
+              "display": "block"
+            },
+            "u2": {
+              "left": 110,
+              "top": 160,
+              "width": 20,
+              "height": 20,
+              "display": "block"
+            }
+          },
+          "calls": [
+            {
+              "kind": "hide",
+              "id": "base"
+            },
+            {
+              "kind": "moveBy",
+              "id": "u2",
+              "x": 0,
+              "y": 10,
+              "options": {
+                "duration": 70,
+                "easing": "linear"
+              }
+            },
+            {
+              "kind": "drag-log",
+              "id": "u2"
+            },
+            {
+              "kind": "cacheMove",
+              "id": "u2",
+              "x": 110,
+              "y": 170
+            },
+            {
+              "kind": "animate",
+              "id": "u2",
+              "props": {
+                "left": "+=0",
+                "top": "+=10"
+              },
+              "options": {
+                "duration": 70,
+                "easing": "linear",
+                "queue": false
+              }
+            },
+            {
+              "kind": "event",
+              "id": "u2",
+              "event": "onMove"
+            },
+            {
+              "kind": "show",
+              "id": "base"
+            },
+            {
+              "kind": "fit",
+              "id": "u2"
+            },
+            {
+              "kind": "release",
+              "id": "u2",
+              "type": "move"
+            }
+          ],
+          "moved": {
+            "u2": {
+              "left": 110,
+              "top": 170
+            }
+          },
+          "resized": {},
+          "sizes": {},
+          "pending": 1
+        },
+        "after": {
+          "nodes": {
+            "base": {
+              "left": 0,
+              "top": 0,
+              "width": 0,
+              "height": 0,
+              "display": "block"
+            },
+            "u1": {
+              "left": 100,
+              "top": 100,
+              "width": 100,
+              "height": 50,
+              "display": "block"
+            },
+            "u2": {
+              "left": 110,
+              "top": 170,
+              "width": 20,
+              "height": 20,
+              "display": "block"
+            }
+          },
+          "calls": [
+            {
+              "kind": "hide",
+              "id": "base"
+            },
+            {
+              "kind": "moveBy",
+              "id": "u2",
+              "x": 0,
+              "y": 10,
+              "options": {
+                "duration": 70,
+                "easing": "linear"
+              }
+            },
+            {
+              "kind": "drag-log",
+              "id": "u2"
+            },
+            {
+              "kind": "cacheMove",
+              "id": "u2",
+              "x": 110,
+              "y": 170
+            },
+            {
+              "kind": "animate",
+              "id": "u2",
+              "props": {
+                "left": "+=0",
+                "top": "+=10"
+              },
+              "options": {
+                "duration": 70,
+                "easing": "linear",
+                "queue": false
+              }
+            },
+            {
+              "kind": "event",
+              "id": "u2",
+              "event": "onMove"
+            },
+            {
+              "kind": "show",
+              "id": "base"
+            },
+            {
+              "kind": "fit",
+              "id": "u2"
+            },
+            {
+              "kind": "release",
+              "id": "u2",
+              "type": "move"
+            }
+          ],
+          "moved": {
+            "u2": {
+              "left": 110,
+              "top": 170
+            }
+          },
+          "resized": {},
+          "sizes": {},
+          "pending": 0
+        }
+      }
+    },
+    {
+      "name": "instant order fit then release then onMove",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 170,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 170
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 170
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "action consumer chooses old rectangle on Resize",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 80,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 185,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 30,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 185
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          },
+          {
+            "kind": "dispatch",
+            "index": 1
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 185
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "action ordinary event uses current threshold and unit inferred delta",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 80,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 155,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          },
+          "u3": {
+            "left": 110,
+            "top": 181,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u3",
+            "x": 0,
+            "y": 1,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u3"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u3",
+            "x": 110,
+            "y": 181
+          },
+          {
+            "kind": "fit",
+            "id": "u3"
+          },
+          {
+            "kind": "release",
+            "id": "u3",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u3",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          },
+          {
+            "kind": "dispatch",
+            "index": 1
+          }
+        ],
+        "moved": {
+          "u3": {
+            "left": 110,
+            "top": 181
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "thisItem full consumer resizes row and pushes following rows once",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 120,
+            "height": 75,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 0,
+            "top": 20,
+            "width": 120,
+            "height": 35,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 0,
+            "top": 55,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u1-2": {
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "evaluate",
+            "value": "120",
+            "source": "u1-2"
+          },
+          {
+            "kind": "evaluate",
+            "value": "35",
+            "source": "u1-2"
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100-2",
+            "width": 120,
+            "height": 20
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100",
+            "width": 120,
+            "height": 60
+          },
+          {
+            "kind": "fit",
+            "id": "u100"
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100-2",
+            "width": 120,
+            "height": 35
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100",
+            "width": 120,
+            "height": 75
+          },
+          {
+            "kind": "fit",
+            "id": "u100"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u100-3",
+            "x": 0,
+            "y": 55
+          },
+          {
+            "kind": "event",
+            "id": "u100-2",
+            "event": "onItemResize"
+          },
+          {
+            "kind": "dispatch",
+            "index": 1
+          }
+        ],
+        "moved": {
+          "u100-3": {
+            "left": 0,
+            "top": 55
+          }
+        },
+        "resized": {
+          "u100-2": {
+            "width": 120,
+            "height": 35
+          },
+          "u100": {
+            "width": 120,
+            "height": 75
+          }
+        },
+        "sizes": {
+          "u100": {
+            "vert": true,
+            "sizes": [
+              {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              {
+                "itemId": 2,
+                "width": 120,
+                "height": 35
+              },
+              {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              "2": {
+                "itemId": 2,
+                "width": 120,
+                "height": 35
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            },
+            "resized": true
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "thisItem equal dimensions does not emit resize",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 60,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 0,
+            "top": 20,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 0,
+            "top": 40,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u1-2": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "evaluate",
+            "value": "100",
+            "source": "u1-2"
+          },
+          {
+            "kind": "evaluate",
+            "value": "20",
+            "source": "u1-2"
+          },
+          {
+            "kind": "dispatch",
+            "index": 1
+          }
+        ],
+        "moved": {},
+        "resized": {},
+        "sizes": {
+          "u100": {
+            "vert": true,
+            "sizes": [
+              {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              "2": {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            }
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "thisItem blank and NaN preserve dimensions, negative clamps zero",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 40,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 0,
+            "top": 20,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 0,
+            "top": 20,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u1-2": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "evaluate",
+            "value": "x",
+            "source": "u1-2"
+          },
+          {
+            "kind": "evaluate",
+            "value": "",
+            "source": "u1-2"
+          },
+          {
+            "kind": "evaluate",
+            "value": "-2",
+            "source": "u1-2"
+          },
+          {
+            "kind": "evaluate",
+            "value": "-1",
+            "source": "u1-2"
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100-2",
+            "width": 0,
+            "height": 20
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100-2",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100",
+            "width": 100,
+            "height": 40
+          },
+          {
+            "kind": "fit",
+            "id": "u100"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u100-3",
+            "x": 0,
+            "y": 20
+          },
+          {
+            "kind": "event",
+            "id": "u100-2",
+            "event": "onItemResize"
+          },
+          {
+            "kind": "dispatch",
+            "index": 1
+          }
+        ],
+        "moved": {
+          "u100-3": {
+            "left": 0,
+            "top": 20
+          }
+        },
+        "resized": {
+          "u100-2": {
+            "width": 0,
+            "height": 0
+          },
+          "u100": {
+            "width": 100,
+            "height": 40
+          }
+        },
+        "sizes": {
+          "u100": {
+            "vert": true,
+            "sizes": [
+              {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              {
+                "itemId": 2,
+                "width": 0,
+                "height": 0
+              },
+              {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              "2": {
+                "itemId": 2,
+                "width": 0,
+                "height": 0
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            },
+            "resized": true
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "horizontal row layout shifts only later items primary axis",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 130,
+            "height": 80,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 100,
+            "top": 0,
+            "width": 130,
+            "height": 40,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 230,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "cacheSize",
+            "id": "u100-2",
+            "width": 130,
+            "height": 20
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100",
+            "width": 130,
+            "height": 60
+          },
+          {
+            "kind": "fit",
+            "id": "u100"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u100-3",
+            "x": 230,
+            "y": 0
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100-2",
+            "width": 130,
+            "height": 40
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100",
+            "width": 130,
+            "height": 80
+          },
+          {
+            "kind": "fit",
+            "id": "u100"
+          },
+          {
+            "kind": "event",
+            "id": "u100-2",
+            "event": "onItemResize"
+          }
+        ],
+        "moved": {
+          "u100-3": {
+            "left": 230,
+            "top": 0
+          }
+        },
+        "resized": {
+          "u100-2": {
+            "width": 130,
+            "height": 40
+          },
+          "u100": {
+            "width": 130,
+            "height": 80
+          }
+        },
+        "sizes": {
+          "u100": {
+            "vert": false,
+            "sizes": [
+              {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              {
+                "itemId": 2,
+                "width": 130,
+                "height": 40
+              },
+              {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              "2": {
+                "itemId": 2,
+                "width": 130,
+                "height": 40
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            },
+            "resized": true
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "row source compression isolated, nonfit row pushes following item",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 65,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 0,
+            "top": 20,
+            "width": 100,
+            "height": 25,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 0,
+            "top": 45,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u1-2": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 10,
+            "display": "block"
+          },
+          "u2-2": {
+            "left": 10,
+            "top": 15,
+            "width": 20,
+            "height": 10,
+            "display": "block"
+          },
+          "u2-3": {
+            "left": 10,
+            "top": 10,
+            "width": 20,
+            "height": 10,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "u100-2"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2-2",
+            "x": 0,
+            "y": 5,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2-2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2-2",
+            "x": 10,
+            "y": 15
+          },
+          {
+            "kind": "fit",
+            "id": "u2-2"
+          },
+          {
+            "kind": "release",
+            "id": "u2-2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2-2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "u100-2"
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100-2",
+            "width": 100,
+            "height": 25
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100",
+            "width": 100,
+            "height": 65
+          },
+          {
+            "kind": "fit",
+            "id": "u100"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u100-3",
+            "x": 0,
+            "y": 45
+          },
+          {
+            "kind": "event",
+            "id": "u100-2",
+            "event": "onItemResize"
+          }
+        ],
+        "moved": {
+          "u2-2": {
+            "left": 10,
+            "top": 15
+          },
+          "u100-3": {
+            "left": 0,
+            "top": 45
+          }
+        },
+        "resized": {
+          "u100-2": {
+            "width": 100,
+            "height": 25
+          },
+          "u100": {
+            "width": 100,
+            "height": 65
+          }
+        },
+        "sizes": {
+          "u100": {
+            "vert": true,
+            "sizes": [
+              {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              {
+                "itemId": 2,
+                "width": 100,
+                "height": 25
+              },
+              {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              "2": {
+                "itemId": 2,
+                "width": 100,
+                "height": 25
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            }
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "fit-content row skips explicit item push",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 60,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 0,
+            "top": 20,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 0,
+            "top": 40,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u1-2": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 10,
+            "display": "block"
+          },
+          "u2-2": {
+            "left": 10,
+            "top": 15,
+            "width": 20,
+            "height": 10,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "u100-2"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2-2",
+            "x": 0,
+            "y": 5,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2-2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2-2",
+            "x": 10,
+            "y": 15
+          },
+          {
+            "kind": "fit",
+            "id": "u2-2"
+          },
+          {
+            "kind": "release",
+            "id": "u2-2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2-2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "u100-2"
+          }
+        ],
+        "moved": {
+          "u2-2": {
+            "left": 10,
+            "top": 15
+          }
+        },
+        "resized": {},
+        "sizes": {
+          "u100": {
+            "vert": true,
+            "sizes": [
+              {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              "2": {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            }
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "animated two-axis compression uses default arc, not straight trajectory",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 120,
+            "top": 170,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 10,
+            "y": 10,
+            "options": {
+              "duration": 70,
+              "easing": "linear"
+            }
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 120,
+            "y": 170
+          },
+          {
+            "kind": "animate",
+            "id": "parameter",
+            "props": {
+              "parameter": 1
+            },
+            "options": {
+              "duration": 70,
+              "easing": "linear",
+              "queue": false
+            }
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          },
+          {
+            "kind": "controlled-half-step",
+            "nodes": {
+              "base": {
+                "left": 0,
+                "top": 0,
+                "width": 0,
+                "height": 0,
+                "display": "block"
+              },
+              "u1": {
+                "left": 100,
+                "top": 100,
+                "width": 100,
+                "height": 50,
+                "display": "block"
+              },
+              "u2": {
+                "left": 112.92893218813452,
+                "top": 167.07106781186548,
+                "width": 20,
+                "height": 20,
+                "display": "block"
+              }
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 120,
+            "top": 170
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "missing easing forces instant; truthy easing with zero duration defaults500",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 170,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 170
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          },
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {
+              "duration": 0,
+              "easing": "linear"
+            }
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 180
+          },
+          {
+            "kind": "animate",
+            "id": "u2",
+            "props": {
+              "left": "+=0",
+              "top": "+=10"
+            },
+            "options": {
+              "duration": 500,
+              "easing": "linear",
+              "queue": false
+            }
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 180
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 1
+      }
+    },
+    {
+      "name": "zero primary still moves complementary and emits one event",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 117,
+            "top": 160,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 7,
+            "y": 0,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 117,
+            "y": 160
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 117,
+            "top": 160
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "margin shifts cross clamp and touching remains excluded",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 160,
+            "width": 10,
+            "height": 20,
+            "display": "block"
+          },
+          "u3": {
+            "left": 120,
+            "top": 170,
+            "width": 10,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u3",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u3"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u3",
+            "x": 120,
+            "y": 170
+          },
+          {
+            "kind": "fit",
+            "id": "u3"
+          },
+          {
+            "kind": "release",
+            "id": "u3",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u3",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u3": {
+            "left": 120,
+            "top": 170
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "hidden source still selects numeric siblings",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "none"
+          },
+          "u2": {
+            "left": 110,
+            "top": 170,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 170
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 170
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "unrelated source sibling panel does not recurse into its children",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u9": {
+            "left": 300,
+            "top": 100,
+            "width": 100,
+            "height": 100,
+            "display": "block"
+          },
+          "u9_state0": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 160,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {},
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "partial layer recursion drops complementary delta in original recursive call",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "u9": {
+            "left": 100,
+            "top": 140,
+            "width": 100,
+            "height": 60,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 170,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          },
+          "u3": {
+            "left": 110,
+            "top": 140,
+            "width": 20,
+            "height": 10,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "pushContainer",
+            "id": "u9"
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 170
+          },
+          {
+            "kind": "popContainer",
+            "id": "u9"
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 170
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "ordinary item basiclink wrapper is traversed",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          },
+          "link": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u2": {
+            "left": 110,
+            "top": 170,
+            "width": 20,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "base"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2",
+            "x": 0,
+            "y": 10,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2",
+            "x": 110,
+            "y": 170
+          },
+          {
+            "kind": "fit",
+            "id": "u2"
+          },
+          {
+            "kind": "release",
+            "id": "u2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "base"
+          }
+        ],
+        "moved": {
+          "u2": {
+            "left": 110,
+            "top": 170
+          }
+        },
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "source inside panel inside row does not explicitly push row height",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 60,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 0,
+            "top": 20,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 0,
+            "top": 40,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u9-2": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u9-2_state0": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1-2": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 10,
+            "display": "block"
+          },
+          "u2-2": {
+            "left": 10,
+            "top": 15,
+            "width": 20,
+            "height": 10,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "hide",
+            "id": "u9-2_state0"
+          },
+          {
+            "kind": "moveBy",
+            "id": "u2-2",
+            "x": 0,
+            "y": 5,
+            "options": {}
+          },
+          {
+            "kind": "drag-log",
+            "id": "u2-2"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u2-2",
+            "x": 10,
+            "y": 15
+          },
+          {
+            "kind": "fit",
+            "id": "u2-2"
+          },
+          {
+            "kind": "release",
+            "id": "u2-2",
+            "type": "move"
+          },
+          {
+            "kind": "event",
+            "id": "u2-2",
+            "event": "onMove"
+          },
+          {
+            "kind": "show",
+            "id": "u9-2_state0"
+          }
+        ],
+        "moved": {
+          "u2-2": {
+            "left": 10,
+            "top": 15
+          }
+        },
+        "resized": {},
+        "sizes": {
+          "u100": {
+            "vert": true,
+            "sizes": [
+              {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              "2": {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              }
+            }
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "wrapped vertical primary growth pushes later same-column items",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 200,
+            "height": 55,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 35,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 0,
+            "top": 35,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 100,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-4": {
+            "left": 100,
+            "top": 20,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "cacheSize",
+            "id": "u100-1",
+            "width": 100,
+            "height": 35
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100",
+            "width": 200,
+            "height": 55
+          },
+          {
+            "kind": "fit",
+            "id": "u100"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u100-2",
+            "x": 0,
+            "y": 35
+          },
+          {
+            "kind": "event",
+            "id": "u100-1",
+            "event": "onItemResize"
+          }
+        ],
+        "moved": {
+          "u100-2": {
+            "left": 0,
+            "top": 35
+          }
+        },
+        "resized": {
+          "u100-1": {
+            "width": 100,
+            "height": 35
+          },
+          "u100": {
+            "width": 200,
+            "height": 55
+          }
+        },
+        "sizes": {
+          "u100": {
+            "vert": true,
+            "sizes": [
+              [
+                {
+                  "itemId": 1,
+                  "width": 100,
+                  "height": 35
+                },
+                {
+                  "itemId": 2,
+                  "width": 100,
+                  "height": 20
+                }
+              ],
+              [
+                {
+                  "itemId": 3,
+                  "width": 100,
+                  "height": 20
+                },
+                {
+                  "itemId": 4,
+                  "width": 100,
+                  "height": 20
+                }
+              ]
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 100,
+                "height": 35
+              },
+              "2": {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              },
+              "4": {
+                "itemId": 4,
+                "width": 100,
+                "height": 20
+              }
+            },
+            "resized": true
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "wrapped vertical secondary growth shifts all later columns",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 230,
+            "height": 40,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 130,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 0,
+            "top": 20,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 130,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-4": {
+            "left": 130,
+            "top": 20,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "cacheSize",
+            "id": "u100-1",
+            "width": 130,
+            "height": 20
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100",
+            "width": 230,
+            "height": 40
+          },
+          {
+            "kind": "fit",
+            "id": "u100"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u100-3",
+            "x": 130,
+            "y": 0
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u100-4",
+            "x": 130,
+            "y": 20
+          },
+          {
+            "kind": "event",
+            "id": "u100-1",
+            "event": "onItemResize"
+          }
+        ],
+        "moved": {
+          "u100-3": {
+            "left": 130,
+            "top": 0
+          },
+          "u100-4": {
+            "left": 130,
+            "top": 20
+          }
+        },
+        "resized": {
+          "u100-1": {
+            "width": 130,
+            "height": 20
+          },
+          "u100": {
+            "width": 230,
+            "height": 40
+          }
+        },
+        "sizes": {
+          "u100": {
+            "vert": true,
+            "sizes": [
+              [
+                {
+                  "itemId": 1,
+                  "width": 130,
+                  "height": 20
+                },
+                {
+                  "itemId": 2,
+                  "width": 100,
+                  "height": 20
+                }
+              ],
+              [
+                {
+                  "itemId": 3,
+                  "width": 100,
+                  "height": 20
+                },
+                {
+                  "itemId": 4,
+                  "width": 100,
+                  "height": 20
+                }
+              ]
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 130,
+                "height": 20
+              },
+              "2": {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              },
+              "4": {
+                "itemId": 4,
+                "width": 100,
+                "height": 20
+              }
+            },
+            "resized": true
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "wrapped secondary shrink below peer maximum keeps later columns",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 200,
+            "height": 40,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 80,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 0,
+            "top": 20,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 100,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-4": {
+            "left": 100,
+            "top": 20,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "cacheSize",
+            "id": "u100-1",
+            "width": 80,
+            "height": 20
+          },
+          {
+            "kind": "event",
+            "id": "u100-1",
+            "event": "onItemResize"
+          }
+        ],
+        "moved": {},
+        "resized": {
+          "u100-1": {
+            "width": 80,
+            "height": 20
+          }
+        },
+        "sizes": {
+          "u100": {
+            "vert": true,
+            "sizes": [
+              [
+                {
+                  "itemId": 1,
+                  "width": 80,
+                  "height": 20
+                },
+                {
+                  "itemId": 2,
+                  "width": 100,
+                  "height": 20
+                }
+              ],
+              [
+                {
+                  "itemId": 3,
+                  "width": 100,
+                  "height": 20
+                },
+                {
+                  "itemId": 4,
+                  "width": 100,
+                  "height": 20
+                }
+              ]
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 80,
+                "height": 20
+              },
+              "2": {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              },
+              "4": {
+                "itemId": 4,
+                "width": 100,
+                "height": 20
+              }
+            },
+            "resized": true
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "wrapped shorter primary column does not shrink maximum repeater height",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 200,
+            "height": 40,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 0,
+            "top": 20,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 100,
+            "top": 0,
+            "width": 100,
+            "height": 10,
+            "display": "block"
+          },
+          "u100-4": {
+            "left": 100,
+            "top": 10,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "cacheSize",
+            "id": "u100-3",
+            "width": 100,
+            "height": 10
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u100-4",
+            "x": 100,
+            "y": 10
+          },
+          {
+            "kind": "event",
+            "id": "u100-3",
+            "event": "onItemResize"
+          }
+        ],
+        "moved": {
+          "u100-4": {
+            "left": 100,
+            "top": 10
+          }
+        },
+        "resized": {
+          "u100-3": {
+            "width": 100,
+            "height": 10
+          }
+        },
+        "sizes": {
+          "u100": {
+            "vert": true,
+            "sizes": [
+              [
+                {
+                  "itemId": 1,
+                  "width": 100,
+                  "height": 20
+                },
+                {
+                  "itemId": 2,
+                  "width": 100,
+                  "height": 20
+                }
+              ],
+              [
+                {
+                  "itemId": 3,
+                  "width": 100,
+                  "height": 10
+                },
+                {
+                  "itemId": 4,
+                  "width": 100,
+                  "height": 20
+                }
+              ]
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 100,
+                "height": 20
+              },
+              "2": {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 10
+              },
+              "4": {
+                "itemId": 4,
+                "width": 100,
+                "height": 20
+              }
+            },
+            "resized": true
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "wrapped horizontal secondary growth shifts all later rows",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u100": {
+            "left": 0,
+            "top": 0,
+            "width": 400,
+            "height": 55,
+            "display": "block"
+          },
+          "u100-1": {
+            "left": 0,
+            "top": 0,
+            "width": 100,
+            "height": 35,
+            "display": "block"
+          },
+          "u100-2": {
+            "left": 100,
+            "top": 0,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-3": {
+            "left": 0,
+            "top": 35,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          },
+          "u100-4": {
+            "left": 100,
+            "top": 35,
+            "width": 100,
+            "height": 20,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "cacheSize",
+            "id": "u100-1",
+            "width": 100,
+            "height": 35
+          },
+          {
+            "kind": "cacheSize",
+            "id": "u100",
+            "width": 400,
+            "height": 55
+          },
+          {
+            "kind": "fit",
+            "id": "u100"
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u100-3",
+            "x": 0,
+            "y": 35
+          },
+          {
+            "kind": "cacheMove",
+            "id": "u100-4",
+            "x": 100,
+            "y": 35
+          },
+          {
+            "kind": "event",
+            "id": "u100-1",
+            "event": "onItemResize"
+          }
+        ],
+        "moved": {
+          "u100-3": {
+            "left": 0,
+            "top": 35
+          },
+          "u100-4": {
+            "left": 100,
+            "top": 35
+          }
+        },
+        "resized": {
+          "u100-1": {
+            "width": 100,
+            "height": 35
+          },
+          "u100": {
+            "width": 400,
+            "height": 55
+          }
+        },
+        "sizes": {
+          "u100": {
+            "vert": false,
+            "sizes": [
+              [
+                {
+                  "itemId": 1,
+                  "width": 100,
+                  "height": 35
+                },
+                {
+                  "itemId": 2,
+                  "width": 100,
+                  "height": 20
+                }
+              ],
+              [
+                {
+                  "itemId": 3,
+                  "width": 100,
+                  "height": 20
+                },
+                {
+                  "itemId": 4,
+                  "width": 100,
+                  "height": 20
+                }
+              ]
+            ],
+            "sizesMap": {
+              "1": {
+                "itemId": 1,
+                "width": 100,
+                "height": 35
+              },
+              "2": {
+                "itemId": 2,
+                "width": 100,
+                "height": 20
+              },
+              "3": {
+                "itemId": 3,
+                "width": 100,
+                "height": 20
+              },
+              "4": {
+                "itemId": 4,
+                "width": 100,
+                "height": 20
+              }
+            },
+            "resized": true
+          }
+        },
+        "pending": 0
+      }
+    },
+    {
+      "name": "thisItem outside repeater evaluates but no size change",
+      "passed": true,
+      "observed": {
+        "nodes": {
+          "base": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0,
+            "display": "block"
+          },
+          "u1": {
+            "left": 100,
+            "top": 100,
+            "width": 100,
+            "height": 50,
+            "display": "block"
+          }
+        },
+        "calls": [
+          {
+            "kind": "evaluate",
+            "value": "100",
+            "source": "u1"
+          },
+          {
+            "kind": "evaluate",
+            "value": "20",
+            "source": "u1"
+          },
+          {
+            "kind": "dispatch",
+            "index": 1
+          }
+        ],
+        "moved": {},
+        "resized": {},
+        "sizes": {},
+        "pending": 0
+      }
+    },
+    {
+      "name": "thisItem target restored after normal evaluation and before dispatch",
+      "passed": true,
+      "observed": {
+        "target": "keep",
+        "result": {
+          "nodes": {
+            "base": {
+              "left": 0,
+              "top": 0,
+              "width": 0,
+              "height": 0,
+              "display": "block"
+            },
+            "u100": {
+              "left": 0,
+              "top": 0,
+              "width": 120,
+              "height": 65,
+              "display": "block"
+            },
+            "u100-1": {
+              "left": 0,
+              "top": 0,
+              "width": 100,
+              "height": 20,
+              "display": "block"
+            },
+            "u100-2": {
+              "left": 0,
+              "top": 20,
+              "width": 120,
+              "height": 25,
+              "display": "block"
+            },
+            "u100-3": {
+              "left": 0,
+              "top": 45,
+              "width": 100,
+              "height": 20,
+              "display": "block"
+            },
+            "u1-2": {
+              "left": 0,
+              "top": 0,
+              "width": 0,
+              "height": 0,
+              "display": "block"
+            }
+          },
+          "calls": [
+            {
+              "kind": "evaluate",
+              "value": "120",
+              "source": "u1-2"
+            },
+            {
+              "kind": "evaluate",
+              "value": "25",
+              "source": "u1-2"
+            },
+            {
+              "kind": "cacheSize",
+              "id": "u100-2",
+              "width": 120,
+              "height": 20
+            },
+            {
+              "kind": "cacheSize",
+              "id": "u100",
+              "width": 120,
+              "height": 60
+            },
+            {
+              "kind": "fit",
+              "id": "u100"
+            },
+            {
+              "kind": "cacheSize",
+              "id": "u100-2",
+              "width": 120,
+              "height": 25
+            },
+            {
+              "kind": "cacheSize",
+              "id": "u100",
+              "width": 120,
+              "height": 65
+            },
+            {
+              "kind": "fit",
+              "id": "u100"
+            },
+            {
+              "kind": "cacheMove",
+              "id": "u100-3",
+              "x": 0,
+              "y": 45
+            },
+            {
+              "kind": "event",
+              "id": "u100-2",
+              "event": "onItemResize"
+            },
+            {
+              "kind": "dispatch",
+              "index": 1
+            }
+          ],
+          "moved": {
+            "u100-3": {
+              "left": 0,
+              "top": 45
+            }
+          },
+          "resized": {
+            "u100-2": {
+              "width": 120,
+              "height": 25
+            },
+            "u100": {
+              "width": 120,
+              "height": 65
+            }
+          },
+          "sizes": {
+            "u100": {
+              "vert": true,
+              "sizes": [
+                {
+                  "itemId": 1,
+                  "width": 100,
+                  "height": 20
+                },
+                {
+                  "itemId": 2,
+                  "width": 120,
+                  "height": 25
+                },
+                {
+                  "itemId": 3,
+                  "width": 100,
+                  "height": 20
+                }
+              ],
+              "sizesMap": {
+                "1": {
+                  "itemId": 1,
+                  "width": 100,
+                  "height": 20
+                },
+                "2": {
+                  "itemId": 2,
+                  "width": 120,
+                  "height": 25
+                },
+                "3": {
+                  "itemId": 3,
+                  "width": 100,
+                  "height": 20
+                }
+              },
+              "resized": true
+            }
+          },
+          "pending": 0
+        }
+      }
+    }
+  ],
+  "substitutions": [
+    "DOM geometry, CSS numeric values, parent/type identity, visibility and direct children are controlled in-memory fixtures.",
+    "Original MoveWidget and CSS writes run, but animate uses queued controlled endpoint completion, not real jQuery or clock/easing sampling.",
+    "fitParentPanel, event listener delivery, drag logging and animation channel release are recording sinks.",
+    "Input expressions supply explicit StringLiteral-like values; original native compiler/expression parser and real repeater binding lifecycle are not run."
+  ],
+  "originalDllExecuted": false,
+  "originalAxureGuiCompared": false
+}

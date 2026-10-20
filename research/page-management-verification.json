@@ -1,0 +1,835 @@
+{
+  "verifiedAt": "2026-10-13T13:17:09.160Z",
+  "scope": "Page hierarchy, folders, ordering, multiple open page tabs, native sitemap recovery and preview/offline navigation",
+  "fullAxureParity": false,
+  "originalAxureGuiCompared": false,
+  "officialBehaviorEvidence": "research/page-management-evidence.md",
+  "implementation": "research/page-management-implementation.md",
+  "tests": {
+    "typecheck": true,
+    "unit": 814,
+    "unitFiles": 38,
+    "nodeParser": 140,
+    "productionBrowser": 102,
+    "packagedSmokeScripts": 6
+  },
+  "sourceAuditCapturedAt": "2026-10-13T13:15:14.625Z",
+  "sourceFiles": {
+    "README.md": "e460f7177fa8bf682635bf7c3121504a6bd81c58b4aa6f02e413fa18aaf943ab",
+    "desktop/import-rp-worker.cjs": "1127acbe1e641daf9950f7c8c2a9183e1e850be855c8f5a1e3f7023892007526",
+    "desktop/main.cjs": "4abe362bbf2a7973ca8caf1a42037860b2cdf1d6440b0c15618196174156b331",
+    "desktop/preload.cjs": "56eddf19cf0304f0e530360ff7d8edc2798100c9004fedfa23dc91ab1ec5801b",
+    "dist/assets/index-D0-_j78z.js": "f450761e0573c9f9d8c22a090f1033bd1969a65338a4359600a36679c533470b",
+    "dist/assets/index-Nct2g0ts.css": "0538cad1b9048f4718dd3837ba6b181e3a6f5ff778ed13677518c05f6928e70d",
+    "dist/assets/rolldown-runtime-CbXtAM7H.js": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a",
+    "dist/assets/vendor-B8Ui1azJ.js": "a0887627e501703e8afaa3a7655912572d7376d93e97f478279034400caabfc8",
+    "dist/index.html": "f07683ac693a825571a4588ee1326605a5d36f88eccb9ecb81ab4abd5ca93aa8",
+    "docs/axure-analysis.md": "9c77eb6595ad348ae1a322d03451baf86122e4a990063793ae181d9c3a4c431a",
+    "docs/implementation-status.md": "46b3242a1b32d1b4b69684ae3fee2cf665829edf8e3cbf1f90beeffbee4d4d21",
+    "docs/project-decisions.md": "5e290ab4e9db8aea865b06ac24c6e2d90a3b7b76e547bcefd3dc6063acac69ae",
+    "docs/windows-readme.txt": "59a06776fe5abc12321a2a90540d3b6542c9fe38eff254ba359248d1aed1fc99",
+    "package-lock.json": "5b45d1a6c21a03ab405d6cf7107b9dd0922eacc087ada29e94c682b9e36de3bd",
+    "package.json": "2b032b10aee35760a2e89427a194bb2b5a818f4a4607ca157a3cea6b8afbfcdb",
+    "playwright.config.ts": "2a498f5825f8eb3fa0a0567e9e2a38af4e24b21aeeed552c05700ffbc29955e4",
+    "research/page-management-evidence.json": "72e37855f8913dea73e2587309790f9254d150b8e746ee6c4a132378dfe6b112",
+    "research/page-management-evidence.md": "4120a5c27b3992e23e01495fe17ab40c7aec5ac11282bfcf95f9bbf241796518",
+    "research/page-management-implementation.md": "6243b2f9ebe83e5386cbc60659ca09efd04f2d4ba5edae2b24706f3450676dd2",
+    "research/scripts/audit-rp-imports.mjs": "173510575e6b317d29e354ef9472aa55723f96867524f809e74fc84298298c14",
+    "research/scripts/audit-rp-samples.mjs": "30ea7def17fe3128f948462d8c1aef92950cdc6b48c82899f0ab6fb1231cebd6",
+    "research/scripts/inspect-rp-serialization.ps1": "2c3cebbef109bb692562cbf80d6b60f36449275a21d19060fa10089ab27389b5",
+    "research/scripts/probe-item-layout-review.mjs": "4b03e4c8c2d6c8496402c97782c68223580d9d0f8a9cf575027f61ad64bd07d1",
+    "research/scripts/probe-repeater-empty-strings.mjs": "676ed1efa85c2368727757d97919173ffdf25c2d91e5c771f13929813d81ce02",
+    "research/scripts/probe-repeater-fit.mjs": "6f2285d1b9e01dcc80815778cc37f37dfcf7dd31b5df5f96ea61527bf293431e",
+    "research/scripts/probe-repeater-query.mjs": "77a7252763acab4faa67839ada4392b79a6908a778e98c3de1014d31818454ba",
+    "research/scripts/probe-widget-geometry.mjs": "2f41d2ab927cc1b54454c17057d15b6f2edacce68dfae321c81f766a9b219fb9",
+    "research/scripts/read-rp-appearance.test.mjs": "c4248dbc657e0796618b7cf2471b7ac16871dfe18b83bc46d6315c6a4848ce2c",
+    "research/scripts/read-rp-container.mjs": "e9ec939defe3e926740096fa294510f27e026748e9e3effdfa8a2e27cdc461cc",
+    "research/scripts/read-rp-container.test.mjs": "581025c1605c504794a057cd913b2bf6ba407480b4297e6fade364c079c0239f",
+    "research/scripts/read-rp-images.test.mjs": "4623c086c967df2906c2f572af59e28977841e43870b23da1148d5df5faab2a5",
+    "research/scripts/read-rp-interactions.mjs": "5bd4e98e6504722610b25744463adda7c5969cb2661cecd60e18b7e7724c12cc",
+    "research/scripts/read-rp-interactions.test.mjs": "6fd0537940b92ce7b9af85ee11fe5729e7891bd4d663f686d6ee47d33e9d6ba9",
+    "research/scripts/read-rp-objects.mjs": "6e94582d21efacec6e75cfcf41953cc02913fa68031056637387df34f6cb59b9",
+    "research/scripts/read-rp-objects.test.mjs": "7fde9a7087501ae436dfca0e574253766141474170234df3e7379fea47ebfcf6",
+    "research/scripts/read-rp-page-tree.test.mjs": "a6e359da6051f0587f4d8d1c2004086fe2dba998a122c587d6e8488f68e883a6",
+    "research/scripts/read-rp-semantics.mjs": "8d66a4bb61ab0d74962e792e3e291bfc10d24aa268dfe5171ed6872c78fe87aa",
+    "research/scripts/read-rp-settings.test.mjs": "35442b4aab1c56ebce8941f4b12e70e7db78b7b5d3e0a01dacd15caf8512184d",
+    "research/scripts/read-rp-shapes-forms.test.mjs": "41b2321ea2c42c642309bfc9ec083575a5fc1bd109e72226fbe5371e2aae09ea",
+    "research/scripts/read-rp-vectors.test.mjs": "43cb6d2b551bc1744bdccb1c2c8fdc7e478e6cec97501a7b920abeda4e084af7",
+    "research/scripts/show-rp-cil.mjs": "364b219de8a45f1ac4e26f6ea0f558bd4d18769c1a369253d2119ffc978aadc6",
+    "research/scripts/summarize-rp-interaction-evidence.mjs": "7fda69b6db4cd590ba2e09f5dfc67f2d6d812cb10e97cfad969cf2494de5e330",
+    "research/scripts/synthetic-rp-fixture.test.mjs": "e569cf842a36f458a8b3b41438507827f7e573022b04c91625db75824f3945b1",
+    "scripts/archive-windows.ps1": "575090311337dbf72947e4f4a107a88274043e04d2a7a0ef5b2953226857130f",
+    "scripts/package-windows.mjs": "8f9f3f9e54c7fbab027f29cd0d515b6a738a803ebdc2113d6513849d16c04fcf",
+    "scripts/repeater-box-scenario.d.mts": "df3a2c5e291b2e5709d4d51b96f32f3b63cf9f89572d7158c10b49fe54057ed0",
+    "scripts/repeater-box-scenario.mjs": "2ce5b2e4ff09ffa51a14bf5967d1b19672ff1b7b7a9bd312381c4940c4a29748",
+    "scripts/repeater-layout-scenario.d.mts": "975d64d6edc8f2374c6235c668aade4979c581fdb048fd3c458484dce02f0651",
+    "scripts/repeater-layout-scenario.mjs": "08b09dd9ae9cf5a69ede27889e2699835d7c71df65d2063c549d55dae8f93082",
+    "scripts/repeater-row-scenario.d.mts": "1dd7e0cf66bcd9757f95c653e71f5318fce3b74251fde1e8ac86d0cdfe0a687c",
+    "scripts/repeater-row-scenario.mjs": "c3379db6f0cd6b3d80a76c634d7358c9782709059d1c946f1296f0d66eb5053d",
+    "scripts/smoke-desktop.mjs": "09460818f29593327612b8c8de1bc51f9bfe0330635ff0a466efba9abb3d0c90",
+    "scripts/smoke-page-tree.mjs": "20139075528906264ad87d25e8ea7aa9cfeb0faef9748c78de89e6f3d6890846",
+    "scripts/smoke-repeater-box.mjs": "b4f1f9b834c3525801abc764ce467e1b3db2f36a4a57f1d41b81d67f20870da3",
+    "scripts/smoke-repeater-empty.mjs": "7f863148ba42addf1f0b4781f3d06954bc5545db03cae7af29e4dad92d49274f",
+    "scripts/smoke-repeater-layout.mjs": "c3bcfbcf5519f4d5e478fc17b293a2767ff4703a817ada8f078d09968650bcc8",
+    "scripts/smoke-repeater-pagination.mjs": "ad0a87afd54610caf59aa76b934ecae74aa4a74cfc0839bd5902f80de22e857b",
+    "scripts/smoke-repeater-row.mjs": "e4910aae476cffc89a8085cdcd0356056a2de6f75b50aa62644668902416eb2e",
+    "scripts/smoke-rp-images.mjs": "31ad2e532dcd7357a5abe54ea89094938d4fa7ce1d913bf933bdb1fc644e61bc",
+    "scripts/smoke-rp-import.mjs": "984712cc72cccd29e296c4299c9844f429c84e7da820fc710f100caaa6802191",
+    "scripts/smoke-rp-shapes-forms.mjs": "41bea2f072d6156039a9f9ab78903e1ee995287ddc6d344029d385ba1ad4cadf",
+    "scripts/smoke-vector-editing.mjs": "341f8cd6c9ddc9573406060882d42dd94739f08598b4bcd3d118de6fec764a63",
+    "scripts/synthetic-rp-fixture.mjs": "fe3c367ecd774592b10d259b1e7fa7c0a30bad1b298c7943ce02b79920e99e86",
+    "scripts/verify-windows-bundle.mjs": "46ce42b25e6c3f5c7344ff17f182047ab1cf22e159148b95c876c39e96c0b4e5",
+    "src/App.tsx": "a8b34d16aeffee086a38b1df621475e1cfebf690520ed5cb96160816a76a79f8",
+    "src/components/AdaptiveControls.css": "d7e088f73bcafade5eb852c4f0d281499590851e91704594b7f0bbe6b88c57d1",
+    "src/components/AdaptiveControls.tsx": "43f9908f33e469a95710aa4ee0ad8be177bac36b6fe37e469195ce08ec7c0555",
+    "src/components/CanvasVectorTools.tsx": "22bce24a12fd63cea6edead6dc1f87cce3fa0c33106b003034defe0bcf8a6734",
+    "src/components/CaseMenus.css": "7e71790fb5d78c351613aa1594df47cbbd62a88c65f8d447b6bbff5f51bfd4ec",
+    "src/components/CaseMenus.tsx": "26d6d42bfe07ffb6ee6c0ad8201a2a992f29957b5da10e0b2506b23700ed2007",
+    "src/components/Dialogs.css": "ea8702cfe1a88da231a1e9ef0dff3b4daead9b79f7541febafff15c75ffe1d0d",
+    "src/components/Dialogs.tsx": "1f101eeb07ebace7967207ec5080b33c187d044f2f47246dcf48cc83fa45d120",
+    "src/components/Inspector.css": "ff920c916e2927911a2173df52534d9708eb05c94f5af0d9d8b473016172a201",
+    "src/components/Inspector.tsx": "465eea19cb814107fe02bd1a2ecadc2bedd337de36dea8bc85abed779fab9336",
+    "src/components/PageTabs.css": "9d1b8d97e4af9f8ed6e153f915db0afedcaee4039be05d4bbd1ce2afab2ef77e",
+    "src/components/PageTabs.tsx": "446ef4e49a441534a727ee4f507416a3075c759f0f528743c8e5ec050e615874",
+    "src/components/PageTree.css": "109aa2dd864f7df7e56da889d6b7b4ebfb369652bf0beef9045d7b8817437c1b",
+    "src/components/PageTree.tsx": "63ed29feaeb509946c8ba475b7e1452a0545b381ac71d2849351f3c402f5f230",
+    "src/components/Preview.tsx": "b1a34fdc95d6c043b28399d103db1d644a9283a3ebcfadfbde767bee8e72a3ff",
+    "src/components/PrototypeSettings.css": "bfdd7b4e483153d50f3e94de2822d79b1de2f25a5eabd95a5ba16dc79d0a9eef",
+    "src/components/PrototypeSettings.tsx": "b01ac181f7fd6b1216d78242ffaf697494aaa60dccc81e2fb77e50e4f927a3fd",
+    "src/components/RpImport.css": "baebb98190c2638bbe163b5efd6ffa276a7ca9db161dce8e45d977461c4577fe",
+    "src/components/RpImportReport.tsx": "36420d60a51c3d8e8de060762a9dbfe5d606ee43bffa1e1fd92dcc6e7b4ace64",
+    "src/components/WidgetView.tsx": "19c12177194579d27180da30f585c7d122f65e9d2be47984e62d1e884a525a17",
+    "src/desktop.d.ts": "6b717ac9cc7f0928c393c1efe4f5ea9a4f5253fbe2a37a633a7a3e163159a2d1",
+    "src/main.tsx": "46bd1c713fc27aba209f22dd4e6a55302ef4694e63b68ed19b438d9b4f0970c6",
+    "src/model/adaptive.ts": "9f8ae2b6da141eb1dea655486a7bf39ccedd86612c73b0792511f8f3c5ef6735",
+    "src/model/components.ts": "83a2e27722db6454be22fa8b6c5a004ab41695fd3e8a8988a449b51a19958ae7",
+    "src/model/document.ts": "e1a120427ae1f7fedc570008e1b2183fe36edc4750f6d978cd2abc00b7debd5f",
+    "src/model/import-rp.ts": "86d5608927b7989dd1c4ab46bebad102ea0f26412fdbac961591b99469805e64",
+    "src/model/page-tree-core.ts": "29997e6044176b33a42cb011a1fb382da5025c110655513a821b7553f7c32792",
+    "src/model/page-tree.ts": "d6e333458019b46ef2b36d6a1b9f2ce5a95a69b1ed1c9e2d5d418582cac5567d",
+    "src/model/types.ts": "2e1c15e40753caddcf0407b3f9e35fbe22e4149ede8901c8625d7192747dd4f6",
+    "src/model/vector-editing.ts": "5beb656467c33b73b6a0425bb003a78f2325127f6f4c4c2a7e3bc4b9b028512d",
+    "src/model/vector.ts": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147",
+    "src/runtime/browser-box.ts": "62819a6b079d850e915f45536d05cacdcd271ab13d7312ce53f60aba31ae6e7b",
+    "src/runtime/engine.ts": "a59ebf1bf3d6122d1f4dcc3a604eab41e9b0148cb68401eef556ca07e1ceaf38",
+    "src/runtime/export-runtime.ts": "430d5229580f39b1a0835fb435f8e1b00ccd5625d6da293d366ea9786840ddc8",
+    "src/runtime/export.ts": "57fa54afacc09051963d4b1bdbeaa5e76db4831f9179b6c3689addf72ca3b47e",
+    "src/runtime/expressions.ts": "a8dbd83ccf3516f1e1708aa11d30bc0f81c946f1f5814868bb33e3adac239f1d",
+    "src/style.css": "74e5a606eaeaeac149e047c1fc3a514166087fcf94fe88cc16d1f7ab69bd8fb4",
+    "tests/adaptive.test.ts": "0b7d718c9601c76d77ea49d0eadb7e379df14d1c2553891f26de924a985fbf8c",
+    "tests/browser-box.test.ts": "474ede1ab8d03e070d8d90ef40c3399f54f4a5feb0ba3131e65bfa219d05481a",
+    "tests/case-selection.test.ts": "0c7ec4f99ab459fa2ad905cd39b8bd5c49745d8bba1eaadc5a1b54563396ce69",
+    "tests/components.test.ts": "c65f9dfbd2a7da2951a4fdbfee89242eeb50ffb50943dd8953e6377fe9c4d0f1",
+    "tests/conditional-cases.test.ts": "abdb1ccca5cc63cf639db3e0fc1faff899c2f72a970ddd262e0320d1a073c5b5",
+    "tests/corner-radii.test.ts": "15184500708cd8f74721d63407964bbc978b7fb6e71ab1c7d18750ff16497486",
+    "tests/document.test.ts": "e0dcb0bef89afda6e7343edf7514ffac3fed6942d4d9ec97e16e3e7bc26218c0",
+    "tests/e2e/adaptive-and-nesting.spec.ts": "5be6c426f51d4f0c5f7baaf8325872903ad4bd0355c0bcc45e28fad48d53cb2d",
+    "tests/e2e/case-selection.spec.ts": "bfaedff397073963eaeca6c5968ec09d91d646f6a427613229e69c1a1df9de39",
+    "tests/e2e/conditional-cases.spec.ts": "5664cfa0cb0014ef7855851a3db705cfef438014bbf16e6002c4e85cfd30c4a0",
+    "tests/e2e/editor.spec.ts": "0a92b12a9ece89c7828947170500f3909998bf474275b1c20bd3e1ead64190b6",
+    "tests/e2e/expressions.spec.ts": "f7cda16b75aab8b9c1ab42b119a3d700c5ebae7a21d3b0a17637ff099789c22a",
+    "tests/e2e/input-focus.spec.ts": "f9c02d0170c4344f1a2762951bdadf13b0bfae10a8fb87118bad126942034bdd",
+    "tests/e2e/named-repeater-authoring.spec.ts": "1d0562d8e36705ca84c25c9269096e1cf25bde9765d8787a61c8f71b5102ec33",
+    "tests/e2e/native-comparison.spec.ts": "b42e1fdc1dc6940bb0eb6eb53c86f3c9b9f6e2229ebc85db4d3eaa85a3b134b1",
+    "tests/e2e/page-navigation.spec.ts": "72d065b20db9671ef7caddb6837cc7fc66aeb4dc57044996108068290035653a",
+    "tests/e2e/page-tree.spec.ts": "a822a6a677ea33fbb500ee49cababc9a4eb0fb9d53c06b016422db4c5423e469",
+    "tests/e2e/preview.spec.ts": "20ee49efdd408fa9406124cdad6f94da9457bae92814327071473d23c1270eef",
+    "tests/e2e/repeater-authoring.spec.ts": "fedcaf85fb3b9ee8f9c9e7d2db6f92993f51b29d5a55c4f2438600e785e92524",
+    "tests/e2e/repeater-box-geometry.spec.ts": "39408f051db12cf86986c5c9efcbc2107a868805986346f993b961c6d3246518",
+    "tests/e2e/repeater-empty.spec.ts": "94c97a38cc9830a7cb3cbd8848848ff0590d99e3e76f162e1ef122c65d264129",
+    "tests/e2e/repeater-inspector.spec.ts": "a0805b570ef2ae4f773808d4df4a088ce15183545caa580faed1d8dbf74a687b",
+    "tests/e2e/repeater-layout-authoring.spec.ts": "16d11b82303b35df8596764a4f73afc84f46a82072a68ea6d113838bd57ff8b6",
+    "tests/e2e/repeater-layout.spec.ts": "a370ce762e8d4b86f27d25e231a5edff1783e9b4b174647ccca9cb4a72cfcbdd",
+    "tests/e2e/repeater-pagination.spec.ts": "b31481d38f0ec1ebd2f84ab1bd8bf60f917f8354646c2b4b5d390f885dfa7f50",
+    "tests/e2e/repeater-queries.spec.ts": "fe3d61f447b7ad85ca8458bc32f16c901d4a0b58ff15963d35d8abebbbd0a0af",
+    "tests/e2e/repeater-row-geometry.spec.ts": "a8e6f0bdd89e93e27ea57ee5b3a24e320d6693f211e306c7045264da38a78a18",
+    "tests/e2e/repeater-state.spec.ts": "03df5ada8c92db7e1977ac75445d1cee678733d91d473473990d2312c9e8d080",
+    "tests/e2e/rp-interactions.spec.ts": "b4ba8b29e23fabb21bf0e3499f6e29aeadb5a801e4fa1e51f535ac0e9736f753",
+    "tests/e2e/selection.spec.ts": "8ce1c414c23565552b99cc983b0959ab879dac42a24e19c92839d193cc26ac6e",
+    "tests/e2e/text-change.spec.ts": "c373b25ac1dc510fba07dc238ac5d3dc3f4580ee4cb70736225c56a24b23b0e4",
+    "tests/e2e/text-layout.spec.ts": "4ff115821d76ec6ad2c1e6e1d5dd3becabc5204792f3d54e3e1d875c5c14cefe",
+    "tests/e2e/vector-editing.spec.ts": "dbbed692018d2f474f25aaa30795c6753f33341bef698c19de7c628e80a5a41a",
+    "tests/e2e/vector.spec.ts": "59006e6e5109cd1c249d791196cf3ec7375ca1ea9a0cd4d7bf4701f08311ac0f",
+    "tests/e2e/wait-scheduling.spec.ts": "c2e3e14c3053a196820a7c5f3293b55cd25ee30bf204d462c78dcc19a170079e",
+    "tests/export.test.ts": "ded7ae67252db06bf1d7c8983ab30771ac17572b6c6135dfb391763200df3530",
+    "tests/expressions.test.ts": "80b9a130eaaf35155bc007aecc7ba10b8c2c71bdcc68f9c2913f21956a32bcd0",
+    "tests/import-rp-interactions.test.ts": "6d44dda159c2b51f912f9da4356fc1084674ab7eba534c0a8ce4bcb8a62a762f",
+    "tests/import-rp-page-tree.test.ts": "7a56740206f0033c38d934e3a79776f88ccc73dab41d47d34a186720d5e08ff1",
+    "tests/import-rp-shapes-forms.test.ts": "8bac25b2b21d3b33be3ba26cd282ecb6700ecb485a0c3514801ab191a65f9c17",
+    "tests/import-rp-vectors.test.ts": "f05d79cd93dcf46e1c33f9c57155770deb32c8a6cb4a58c1fb95474057f85ef3",
+    "tests/import-rp.test.ts": "b29766059c2d25c6555d33e268431900cc03074a2b99000b8dec763faa87e0a7",
+    "tests/input-focus.test.ts": "1c1c34b4c6aafc5b9044efb52c26ecd6ad7cd0757a9fece9076279447ba47cf9",
+    "tests/named-repeater-authoring.test.ts": "f8c4b11e22addd9d9bf5af48790aec711c8bb5159736c74c9a757dfe8cfa950f",
+    "tests/page-tree.test.ts": "72133c7b1a9bb65f795183a8e3d70003f4a4d6816e081a6926edc1e53797a6b8",
+    "tests/repeater-authoring.test.ts": "e2ad6ed2646a49552405ebb349af4ef0d2b974512bba1f165e9934e6f49692c5",
+    "tests/repeater-box-authoring.test.ts": "216c6cbbb274a1181c96be7156e26033b1085bcb381c87dd8acd354b134d28cc",
+    "tests/repeater-box-runtime.test.ts": "0f0ab033846c91b5ebe02e4bbc153ebfca9c43c822f9a109d423b2b4f4ec470d",
+    "tests/repeater-empty.test.ts": "b49c01ab33ddefcd79a8b5a52595395393f3bd086ffd24487a2d38b22e5278a7",
+    "tests/repeater-layout-authoring.test.ts": "f275f832bdad3d589a82f1b3a65d773a02cb17aa8cbb7eec1209135c710cf936",
+    "tests/repeater-layout.test.ts": "960c4c36122b005dbdfa3343802f76cad5b969d89c77c845f1f61c446b8a13b1",
+    "tests/repeater-lifecycle.test.ts": "9065271a9fc132856dea1b091c22c57db8da81ce0dec51c07fcec7c1f3071ac9",
+    "tests/repeater-pagination-marking.test.ts": "205ba61e5342481e50fef459ed820b2c7a1f3c635a6e5c8286affb07f6b60463",
+    "tests/repeater-queries.test.ts": "c3feb7e0ab7b159ee6b97f52eb6edabfdb982f3adfe3853b9eb3fb2cfd83342a",
+    "tests/repeater-row-geometry.test.ts": "76283e4d2725fbfca0307f636f4e7e31a110499923b357c318d86a7ce9dcf066",
+    "tests/repeater-state.test.ts": "ee61fab3cbde56e89f06fd20f27cbf3f637d800e96b7865be05f028dbaa951da",
+    "tests/runtime-lifecycle.test.ts": "e54a4b06f9c4ef9c94a0388b5e47d6d4b373608ea1bf435f64babd32938d8e72",
+    "tests/runtime.test.ts": "de3e5de1e10d75a58f0bb4503a505c6478ac39ed1f9d86ad596c4f220a1c5228",
+    "tests/selection-model.test.ts": "d35bf0d9c76a8247c79a8b1e21522b0fbb7ad5ea20a8e7714d9822672f853068",
+    "tests/selection-runtime.test.ts": "04df55a320e036af87b11712826ce0227b876558cb2bf3b12fe4bc4357deb647",
+    "tests/text-layout.test.ts": "db637d37936be0b70ab80d30ba2131944e3d732a170db098317842cd2cecdd7d",
+    "tests/vector-editing-review.test.ts": "020c0495ac61eb3f3694caf8b368aed308fb4a5765fd628e6bbc313e18c9bed4",
+    "tests/vector-editing.test.ts": "097a58d8eedf238316c92480ac052754d6b7e4f81502404a453f63a88abf206c",
+    "tests/vector.test.ts": "1e15d65bb8772de80ad0435900f1f0cb19d629fdc8e69c9f2fda4248d6a248dc",
+    "tests/wait-scheduling.test.ts": "5fb853426d896e45c8a39d9ea53471c81de9822f715f6e575db942637fc295ed",
+    "tests/widget-geometry.test.ts": "dd39ae6a25223e0665eca663b6a105deb6ab4849c4003ced6f9ceff119970da7",
+    "vite.config.ts": "4479ca8a508c8bacc616fadb8667a5cd67646eb4a4efa9c870abedab4acab933"
+  },
+  "logs": [
+    ".build/page-tree-build.log",
+    ".build/page-tree-unit.log",
+    ".build/page-tree-parser.log",
+    ".build/page-tree-e2e.log",
+    ".build/page-tree-smoke-desktop.log",
+    ".build/page-tree-smoke-vector-editing.log",
+    ".build/page-tree-smoke-rp-import.log",
+    ".build/page-tree-smoke-rp-images.log",
+    ".build/page-tree-smoke-page-tree.log",
+    ".build/page-tree-smoke-rp-shapes-forms.log"
+  ],
+  "nativeTreeEvidence": {
+    "samples": [
+      {
+        "file": "complex-interactions-required-fields.rp",
+        "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c",
+        "pages": 2,
+        "folders": 0,
+        "nodes": 2
+      },
+      {
+        "file": "the-basics-tab-menu.rp",
+        "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4",
+        "pages": 1,
+        "folders": 0,
+        "nodes": 1
+      },
+      {
+        "file": "Prototyping Basics.rp",
+        "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7",
+        "pages": 1,
+        "folders": 0,
+        "nodes": 1
+      },
+      {
+        "file": "Quick Win.rp",
+        "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051",
+        "pages": 2,
+        "folders": 0,
+        "nodes": 2
+      },
+      {
+        "file": "UX Prototyping.rp",
+        "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72",
+        "pages": 10,
+        "folders": 6,
+        "nodes": 16
+      },
+      {
+        "file": "Default.rplib",
+        "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50",
+        "pages": 40,
+        "folders": 5,
+        "nodes": 45
+      }
+    ],
+    "totalNodes": 67,
+    "originalGuiCompared": false
+  },
+  "firstProductionRun": {
+    "passed": 101,
+    "failed": 1,
+    "report": ".build/page-tree-e2e-first.json",
+    "proof": "test-results/page-tree-row-precision-before",
+    "resolution": "Place independent DOM oracle at the current viewport origin; preserve tolerance and exact CSS/model assertions",
+    "pureCssProbe": {
+      "dpr": 1.5,
+      "atZero": {
+        "origin": 0,
+        "cssLeft": "381.8px",
+        "rowViewportX": 383.79168701171875,
+        "relativeX": 383.79168701171875
+      },
+      "at682": {
+        "origin": 682,
+        "cssLeft": "381.8px",
+        "rowViewportX": 1065.791748046875,
+        "relativeX": 383.791748046875
+      },
+      "repeatAt682": {
+        "origin": 682,
+        "cssLeft": "381.8px",
+        "rowViewportX": 1065.791748046875,
+        "relativeX": 383.791748046875
+      },
+      "difference": 0.00006103515625,
+      "verifiedAt": "2026-10-13T13:14:11.107Z",
+      "browser": "155.0.4283.45",
+      "method": "Pure CSS DOM boxes only; no product or Axure layout code",
+      "assertionToleranceChanged": false
+    }
+  },
+  "regressions": {
+    "beforeFix": "test-results/page-tree-before-ownership-fix",
+    "finalCases": 8,
+    "scope": "Actual drag zones, saved-document preservation, atomic history, keyboard ownership, tabs, hierarchy and navigation"
+  },
+  "bundle": {
+    "verifiedAt": "2026-10-13T13:14:49.077Z",
+    "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+    "packagedAsarEntries": 18,
+    "parserCopiesMatchSource": true,
+    "allPackagedAppFilesMatchSource": true,
+    "quickStartMatchesSource": true,
+    "originalVendorAssetsPackaged": false,
+    "packagedFileHashes": {
+      "dist/assets/index-D0-_j78z.js": "f450761e0573c9f9d8c22a090f1033bd1969a65338a4359600a36679c533470b",
+      "dist/assets/index-Nct2g0ts.css": "0538cad1b9048f4718dd3837ba6b181e3a6f5ff778ed13677518c05f6928e70d",
+      "dist/assets/rolldown-runtime-CbXtAM7H.js": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a",
+      "dist/assets/vendor-B8Ui1azJ.js": "a0887627e501703e8afaa3a7655912572d7376d93e97f478279034400caabfc8",
+      "dist/index.html": "f07683ac693a825571a4588ee1326605a5d36f88eccb9ecb81ab4abd5ca93aa8",
+      "desktop/import-rp-worker.cjs": "1127acbe1e641daf9950f7c8c2a9183e1e850be855c8f5a1e3f7023892007526",
+      "desktop/main.cjs": "4abe362bbf2a7973ca8caf1a42037860b2cdf1d6440b0c15618196174156b331",
+      "desktop/preload.cjs": "56eddf19cf0304f0e530360ff7d8edc2798100c9004fedfa23dc91ab1ec5801b",
+      "research/scripts/read-rp-container.mjs": "e9ec939defe3e926740096fa294510f27e026748e9e3effdfa8a2e27cdc461cc",
+      "research/scripts/read-rp-objects.mjs": "6e94582d21efacec6e75cfcf41953cc02913fa68031056637387df34f6cb59b9",
+      "research/scripts/read-rp-interactions.mjs": "5bd4e98e6504722610b25744463adda7c5969cb2661cecd60e18b7e7724c12cc",
+      "research/scripts/read-rp-semantics.mjs": "8d66a4bb61ab0d74962e792e3e291bfc10d24aa268dfe5171ed6872c78fe87aa",
+      "package.json": "290821da9e4b2c9a3d3b3103c5d7469552457611b8d8edd92a3f2190041f30f9"
+    }
+  },
+  "archive": {
+    "verifiedAt": "2026-10-13T21:16:41.3228387+08:00",
+    "archive": "D:\\WSCodex\\REA\\release\\REA-Prototype-Studio-0.1.0-win64.zip",
+    "bytes": 163048045,
+    "sha256": "f44f1489f3b84989036e7b92273f68138412ef3298cb5e9662d70a9882c1a314",
+    "archiveEntries": 74,
+    "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+    "executableSha256": "85310368395926e8c56200da88762f1874f297df84e20b57c3d3a46f82806e5c",
+    "archivedAsarMatchesTestedBundle": true,
+    "archivedExecutableMatchesTestedBundle": true
+  },
+  "desktop": [
+    {
+      "script": "smoke-desktop.mjs",
+      "startedAt": "2026-10-13T13:14:49.347Z",
+      "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+      "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+      "finishedAt": "2026-10-13T13:15:25.214Z",
+      "exitCode": 0,
+      "appAsarUnchanged": true,
+      "logFile": ".build/page-tree-smoke-desktop.log",
+      "report": {
+        "ok": true,
+        "title": "REA Prototype Studio",
+        "widgets": 1,
+        "desktopApi": "function",
+        "nodeExposed": false,
+        "nativeRename": true,
+        "nativeSaveOpen": true,
+        "nativeExport": true,
+        "conditionalCasePersistenceAndPreview": true,
+        "caseMenuPersistenceAndSelection": true
+      },
+      "ok": true
+    },
+    {
+      "script": "smoke-vector-editing.mjs",
+      "startedAt": "2026-10-13T13:14:49.348Z",
+      "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+      "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+      "finishedAt": "2026-10-13T13:15:32.220Z",
+      "exitCode": 0,
+      "appAsarUnchanged": true,
+      "logFile": ".build/page-tree-smoke-vector-editing.log",
+      "report": {
+        "ok": true,
+        "startedAt": "2026-10-13T13:14:49.767Z",
+        "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+        "userData": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-vector-editing-9orBQW",
+        "errors": [],
+        "network": [],
+        "screenshots": [
+          {
+            "file": "D:\\WSCodex\\REA\\artifacts\\vector-editing-desktop.png",
+            "sha256": "ab5ca451a2ad1366330d192f1316cb1c8700507da634913b12b19c62be09c686"
+          },
+          {
+            "file": "D:\\WSCodex\\REA\\artifacts\\vector-editing-preview.png",
+            "sha256": "9a44d11ef037a9850e9c2272f0115108571f6db22c3b32c774b8a43040f3a594"
+          }
+        ],
+        "pickerResponsesMocked": true,
+        "originalAxureGuiCompared": false,
+        "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+        "penDrawing": true,
+        "canvasPointEditing": true,
+        "atomicUndoRedo": true,
+        "nativeSaveOpen": true,
+        "previewAndOffline": true,
+        "projectSha256": "fcf12f7538ce124152472d8144d8ebcde2385af82f40b0710b149af9abedf7f2",
+        "htmlSha256": "2d081da0e4b6a2876077490eb23fc8734f6a23076a4d72bc69ce46861f404a05",
+        "expectedD": "M 20 50 C 20 50 120 0 160 40 C 200 80 160 200 160 200 Z",
+        "finishedAt": "2026-10-13T13:15:31.999Z"
+      },
+      "ok": true
+    },
+    {
+      "script": "smoke-rp-import.mjs",
+      "startedAt": "2026-10-13T13:14:49.348Z",
+      "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+      "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+      "finishedAt": "2026-10-13T13:15:47.740Z",
+      "exitCode": 0,
+      "appAsarUnchanged": true,
+      "logFile": ".build/page-tree-smoke-rp-import.log",
+      "report": {
+        "ok": true,
+        "sourceUnchanged": true,
+        "requiredFields": {
+          "pages": 2,
+          "widgets": 7,
+          "skipped": 0,
+          "events": 3,
+          "cases": 4,
+          "actions": 4,
+          "variables": 1,
+          "nativeSaveReopen": true,
+          "previewAndOfflineBehaviorVerified": true,
+          "nativeComparisonBoundaryVerified": true,
+          "importedTextClippingChecked": true
+        },
+        "tabMenu": {
+          "pages": 1,
+          "widgets": 3,
+          "skipped": 0,
+          "stylesVerified": true,
+          "events": 2,
+          "eventsSkipped": 0,
+          "panelStates": 2,
+          "nestedWidgets": 2,
+          "nativeSaveReopen": true,
+          "previewAndOfflineBehaviorVerified": true
+        },
+        "unexpectedNetworkRequests": 0,
+        "originalAxureVisualComparison": false,
+        "emptyRecoveryFixture": "independently encoded SYNTHETIC-empty-page.rp",
+        "emptyRecoveryPreservesCurrentDocument": true
+      },
+      "ok": true
+    },
+    {
+      "script": "smoke-rp-images.mjs",
+      "startedAt": "2026-10-13T13:15:25.217Z",
+      "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+      "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+      "finishedAt": "2026-10-13T13:16:03.415Z",
+      "exitCode": 0,
+      "appAsarUnchanged": true,
+      "logFile": ".build/page-tree-smoke-rp-images.log",
+      "report": {
+        "ok": true,
+        "results": [
+          {
+            "file": "Quick Win.rp",
+            "widgets": 33,
+            "skipped": 9,
+            "images": 2,
+            "originalBytesPreserved": true,
+            "nativeSaveOpen": true,
+            "editorPreviewAndOfflineDecoded": true
+          },
+          {
+            "file": "UX Prototyping.rp",
+            "widgets": 126,
+            "skipped": 27,
+            "images": 2,
+            "originalBytesPreserved": true,
+            "nativeSaveOpen": true,
+            "editorPreviewAndOfflineDecoded": true
+          }
+        ],
+        "unexpectedNetworkRequests": 0,
+        "originalAxureVisualComparison": false
+      },
+      "ok": true
+    },
+    {
+      "script": "smoke-page-tree.mjs",
+      "startedAt": "2026-10-13T13:15:47.743Z",
+      "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+      "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+      "finishedAt": "2026-10-13T13:16:25.870Z",
+      "exitCode": 0,
+      "appAsarUnchanged": true,
+      "logFile": ".build/page-tree-smoke-page-tree.log",
+      "report": {
+        "ok": true,
+        "startedAt": "2026-10-13T13:15:48.161Z",
+        "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+        "userData": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-page-tree-UoERH4",
+        "errors": [],
+        "network": [],
+        "screenshots": [
+          {
+            "file": "D:\\WSCodex\\REA\\artifacts\\page-tree-desktop.png",
+            "sha256": "cf8b5ee664c124666df74a69db1883469c196a968b06a1d905d18910d0160654"
+          },
+          {
+            "file": "D:\\WSCodex\\REA\\artifacts\\page-tree-preview.png",
+            "sha256": "785b6a25d3e193c95284708359a36b94f25332bbf076b36e3b68c8dd4ca65892"
+          },
+          {
+            "file": "D:\\WSCodex\\REA\\artifacts\\rp-page-tree-desktop.png",
+            "sha256": "f11591766fa327ea79b60786d7453dfed2c728b0a19dd45dea647d646a278954"
+          }
+        ],
+        "pickerResponsesMocked": true,
+        "originalAxureGuiCompared": false,
+        "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+        "authoring": {
+          "pages": 3,
+          "folders": 1,
+          "subtreeReorder": true,
+          "atomicUndoRedo": true,
+          "nativeSaveOpen": true,
+          "previewAndOfflineLinks": true,
+          "offlineLandingFollowsTree": true
+        },
+        "nativeRp": {
+          "file": "UX Prototyping.rp",
+          "sourceSha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72",
+          "pages": 10,
+          "folders": 6,
+          "nodes": 16,
+          "exactSourceTree": true,
+          "sourceUnchanged": true
+        },
+        "demos": [
+          "page-tree-demo.rea.json",
+          "page-tree-demo.html"
+        ],
+        "finishedAt": "2026-10-13T13:16:25.649Z"
+      },
+      "ok": true
+    },
+    {
+      "script": "smoke-rp-shapes-forms.mjs",
+      "startedAt": "2026-10-13T13:15:32.223Z",
+      "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+      "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+      "finishedAt": "2026-10-13T13:16:57.400Z",
+      "exitCode": 0,
+      "appAsarUnchanged": true,
+      "logFile": ".build/page-tree-smoke-rp-shapes-forms.log",
+      "report": {
+        "ok": true,
+        "timestamp": "2026-10-13T13:15:32.631Z",
+        "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+        "userData": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-UMVAIx",
+        "bundleHash": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+        "bundleHashKind": "resources/app.asar SHA-256",
+        "sourceHashes": {
+          "Default.rplib": {
+            "before": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50",
+            "after": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+          },
+          "Flow.rplib": {
+            "before": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451",
+            "after": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+          },
+          "Prototyping Basics.rp": {
+            "before": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7",
+            "after": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+          }
+        },
+        "results": [
+          {
+            "file": "Default.rplib",
+            "reportCounts": {
+              "pages": 40,
+              "top": 26,
+              "skipped": 14,
+              "nested": 0
+            },
+            "savedFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-UMVAIx\\Default.rplib.rea.json",
+            "savedSha256": "dbe33f67a5667966d7e3b01f517626bf53a10e3e3df9c32a4a820fcccd3c7beb",
+            "htmlFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-UMVAIx\\Default.rplib.html",
+            "htmlSha256": "5881b435559c5453497fcbe29aae5ba02252ba428796d46106d8944fd94aea1a",
+            "nativeSaveReopen": true,
+            "designUnchangedAfterPreviewAndExport": true,
+            "preview": {
+              "checkedEllipses": [
+                {
+                  "name": "Circle marker",
+                  "width": 30,
+                  "height": 30,
+                  "left": "100px",
+                  "top": "100px"
+                },
+                {
+                  "name": "Ellipse",
+                  "width": 170,
+                  "height": 170,
+                  "left": "100px",
+                  "top": "100px"
+                }
+              ],
+              "checkedNativePaths": [
+                {
+                  "name": "Drop marker",
+                  "storedCommands": 6,
+                  "subpaths": 1,
+                  "closed": 1
+                },
+                {
+                  "name": "Placeholder",
+                  "storedCommands": 10,
+                  "subpaths": 3,
+                  "closed": 1
+                },
+                {
+                  "name": "Horizontal line",
+                  "storedCommands": 2,
+                  "subpaths": 1,
+                  "closed": 0
+                }
+              ],
+              "textareaUnicodeNewlineAndLiteralPreserved": true
+            },
+            "offline": {
+              "checkedEllipses": [
+                {
+                  "name": "Circle marker",
+                  "width": 30,
+                  "height": 30,
+                  "left": "100px",
+                  "top": "100px"
+                },
+                {
+                  "name": "Ellipse",
+                  "width": 170,
+                  "height": 170,
+                  "left": "100px",
+                  "top": "100px"
+                }
+              ],
+              "checkedNativePaths": [
+                {
+                  "name": "Drop marker",
+                  "storedCommands": 6,
+                  "subpaths": 1,
+                  "closed": 1
+                },
+                {
+                  "name": "Placeholder",
+                  "storedCommands": 10,
+                  "subpaths": 3,
+                  "closed": 1
+                },
+                {
+                  "name": "Horizontal line",
+                  "storedCommands": 2,
+                  "subpaths": 1,
+                  "closed": 0
+                }
+              ],
+              "textareaUnicodeNewlineAndLiteralPreserved": true
+            }
+          },
+          {
+            "file": "Flow.rplib",
+            "reportCounts": {
+              "pages": 37,
+              "top": 21,
+              "skipped": 16,
+              "nested": 0
+            },
+            "savedFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-UMVAIx\\Flow.rplib.rea.json",
+            "savedSha256": "a13766ed9bc0c32c29b15b50c8eff7f2863119f4cef91a4f7e8ce7464896f326",
+            "htmlFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-UMVAIx\\Flow.rplib.html",
+            "htmlSha256": "258d978f44745e749fc511d0c52be2fae4c713854e2f8995086f9f2162eae67e",
+            "nativeSaveReopen": true,
+            "designUnchangedAfterPreviewAndExport": true,
+            "preview": {
+              "checkedNativePaths": [
+                {
+                  "name": "Database",
+                  "storedCommands": 11,
+                  "subpaths": 2,
+                  "closed": 1
+                },
+                {
+                  "name": "Actor",
+                  "storedCommands": 14,
+                  "subpaths": 5,
+                  "closed": 1
+                },
+                {
+                  "name": "Stacked file",
+                  "storedCommands": 22,
+                  "subpaths": 4,
+                  "closed": 1
+                }
+              ]
+            },
+            "offline": {
+              "checkedNativePaths": [
+                {
+                  "name": "Database",
+                  "storedCommands": 11,
+                  "subpaths": 2,
+                  "closed": 1
+                },
+                {
+                  "name": "Actor",
+                  "storedCommands": 14,
+                  "subpaths": 5,
+                  "closed": 1
+                },
+                {
+                  "name": "Stacked file",
+                  "storedCommands": 22,
+                  "subpaths": 4,
+                  "closed": 1
+                }
+              ]
+            }
+          },
+          {
+            "file": "Prototyping Basics.rp",
+            "reportCounts": {
+              "pages": 1,
+              "top": 172,
+              "skipped": 27,
+              "nested": 52
+            },
+            "savedFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-UMVAIx\\Prototyping Basics.rp.rea.json",
+            "savedSha256": "943c1dfabfbd7414095e7bf282d6f500e69195855fd22a7d37a2a9bdd612504e",
+            "htmlFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-UMVAIx\\Prototyping Basics.rp.html",
+            "htmlSha256": "0b32a4b561300d2d9f89a62e8cd50f50653342a6abe8c09a56f2e1e9f8de238d",
+            "nativeSaveReopen": true,
+            "designUnchangedAfterPreviewAndExport": true,
+            "preview": {
+              "activeEllipseDomCount": 46,
+              "activeNestedEllipseDomCount": 3,
+              "totalSavedEllipseCount": 52,
+              "nestedSavedEllipseCount": 9,
+              "highYGeometryVisibilityNotClaimed": true
+            },
+            "offline": {
+              "activeEllipseDomCount": 46,
+              "activeNestedEllipseDomCount": 3,
+              "totalSavedEllipseCount": 52,
+              "nestedSavedEllipseCount": 9,
+              "highYGeometryVisibilityNotClaimed": true
+            }
+          }
+        ],
+        "screenshots": [
+          {
+            "file": "D:\\WSCodex\\REA\\artifacts\\rp-ellipse-preview.png",
+            "sha256": "b968ca314deeec8e0f4c9055506e390c3b06c587d730f47b041a651048e70c75"
+          },
+          {
+            "file": "D:\\WSCodex\\REA\\artifacts\\rp-textarea-preview.png",
+            "sha256": "6365dc6c8cea282fc3e9ad781e25f0fc2b99a539412acb717853bd09884d8bff"
+          },
+          {
+            "file": "D:\\WSCodex\\REA\\artifacts\\rp-compound-path-preview.png",
+            "sha256": "918d860246c6adf9ab30f93064b7128fe5ef841b64989222bc187b095e9ffa9e"
+          }
+        ],
+        "network": [],
+        "errors": [],
+        "pickerSelectionMocked": true,
+        "originalAxureGuiComparison": false,
+        "limitations": [
+          "Only OS picker responses are mocked; file bytes, Worker, parser, IPC, model conversion and export are real.",
+          "Native picker currently filters .rp; this test supplies Default.rplib directly and does not assert chooser extension availability.",
+          "Stored normalized vector geometry is rendered as SVG. Native stroke displacement, caps, arrowheads, join choices and pixel snapping are not reproduced.",
+          "Prototyping Basics includes high Y coordinates beyond the recovered default page size; DOM presence is checked without claiming all objects are visible at once."
+        ],
+        "finishedAt": "2026-10-13T13:16:57.180Z"
+      },
+      "ok": true
+    }
+  ],
+  "packagedPageTree": {
+    "ok": true,
+    "startedAt": "2026-10-13T13:15:48.161Z",
+    "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+    "userData": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-page-tree-UoERH4",
+    "errors": [],
+    "network": [],
+    "screenshots": [
+      {
+        "file": "D:\\WSCodex\\REA\\artifacts\\page-tree-desktop.png",
+        "sha256": "cf8b5ee664c124666df74a69db1883469c196a968b06a1d905d18910d0160654"
+      },
+      {
+        "file": "D:\\WSCodex\\REA\\artifacts\\page-tree-preview.png",
+        "sha256": "785b6a25d3e193c95284708359a36b94f25332bbf076b36e3b68c8dd4ca65892"
+      },
+      {
+        "file": "D:\\WSCodex\\REA\\artifacts\\rp-page-tree-desktop.png",
+        "sha256": "f11591766fa327ea79b60786d7453dfed2c728b0a19dd45dea647d646a278954"
+      }
+    ],
+    "pickerResponsesMocked": true,
+    "originalAxureGuiCompared": false,
+    "appAsarSha256": "392e8b04133db739e9e99f9d680c691c9f23ba09ac9ba15f63cde7d126e585bc",
+    "authoring": {
+      "pages": 3,
+      "folders": 1,
+      "subtreeReorder": true,
+      "atomicUndoRedo": true,
+      "nativeSaveOpen": true,
+      "previewAndOfflineLinks": true,
+      "offlineLandingFollowsTree": true
+    },
+    "nativeRp": {
+      "file": "UX Prototyping.rp",
+      "sourceSha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72",
+      "pages": 10,
+      "folders": 6,
+      "nodes": 16,
+      "exactSourceTree": true,
+      "sourceUnchanged": true
+    },
+    "demos": [
+      "page-tree-demo.rea.json",
+      "page-tree-demo.html"
+    ],
+    "finishedAt": "2026-10-13T13:16:25.649Z"
+  },
+  "screenshotsReviewed": [
+    "D:\\WSCodex\\REA\\artifacts\\page-tree-desktop.png",
+    "D:\\WSCodex\\REA\\artifacts\\page-tree-preview.png",
+    "D:\\WSCodex\\REA\\artifacts\\rp-page-tree-desktop.png"
+  ],
+  "demos": [
+    {
+      "file": "artifacts/page-tree-demo.rea.json",
+      "sha256": "0b535c5f8c86b857038790840ec5b7c4a6d9b7428925b958e9d32912b2cdebf1"
+    },
+    {
+      "file": "artifacts/page-tree-demo.html",
+      "sha256": "60e2d9e89f6686b42f2face1d137862806e9efbad4ff2e81811629f370adfb92"
+    }
+  ],
+  "limitations": [
+    "Original Axure GUI capture remains blocked; official documentation and decoded native files do not establish original GUI/raster parity.",
+    "Page/folder limits (200 each, 12 levels), deletion confirmation for parent pages, drag zones, F2, search ancestor retention and Gallery focus policies are explicit product choices.",
+    "Page duplication, multi-selection, clipboard between projects, full tab keyboard semantics/session persistence and exact native menus remain incomplete.",
+    "Native RP recovery remains partial and read-only; no native RP write-back or cloud collaboration."
+  ]
+}

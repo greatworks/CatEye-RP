@@ -1,0 +1,788 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "runtime-rotate-demo",
+  "name": "Rotate · anchors, motion and instances",
+  "pages": [
+    {
+      "id": "rotate-home",
+      "name": "Rotation lab",
+      "width": 1120,
+      "height": 840,
+      "background": "#f5f7fb",
+      "widgets": [
+        {
+          "id": "rotate-title",
+          "type": "text",
+          "name": "rotate-title",
+          "text": "Rotation lab",
+          "notes": "",
+          "x": 48,
+          "y": 28,
+          "rotation": 0,
+          "width": 1000,
+          "height": 48,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 30,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rotate-description",
+          "type": "text",
+          "name": "rotate-description",
+          "text": "Change orientation or orbit around an anchor. Repeated controls stay independent.",
+          "notes": "",
+          "x": 48,
+          "y": 83,
+          "rotation": 0,
+          "width": 1000,
+          "height": 36,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 15,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rotate-shape-label",
+          "type": "text",
+          "name": "rotate-shape-label",
+          "text": "SHAPE · ORIENTATION + POSITION",
+          "notes": "",
+          "x": 48,
+          "y": 145,
+          "rotation": 0,
+          "width": 455,
+          "height": 28,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rotate-input-label",
+          "type": "text",
+          "name": "rotate-input-label",
+          "text": "INPUT · OFFSET ANCHOR CHANGES POSITION",
+          "notes": "",
+          "x": 566,
+          "y": 145,
+          "rotation": 0,
+          "width": 505,
+          "height": 28,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rotate-shape",
+          "type": "box",
+          "name": "Rotation target",
+          "text": "SHAPE",
+          "notes": "",
+          "x": 200,
+          "y": 205,
+          "rotation": 0,
+          "width": 160,
+          "height": 80,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#2563eb",
+            "stroke": "#1d4ed8",
+            "strokeWidth": 2,
+            "radius": 8,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rotate-count-case",
+              "event": "rotate",
+              "name": "rotate",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rotate-count-action-0",
+                  "type": "setVariable",
+                  "targetId": "Turns",
+                  "value": "[[Turns + 1]]"
+                },
+                {
+                  "id": "rotate-count-action-1",
+                  "type": "setText",
+                  "targetId": "rotate-events",
+                  "value": "Rotated events: [[Turns]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rotate-input",
+          "type": "input",
+          "name": "Input orbit target",
+          "text": "Editable input",
+          "notes": "",
+          "x": 600,
+          "y": 205,
+          "rotation": 0,
+          "width": 160,
+          "height": 80,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rotate-by",
+          "type": "button",
+          "name": "Rotate by 90°",
+          "text": "Rotate by 90°",
+          "notes": "",
+          "x": 48,
+          "y": 346,
+          "rotation": 0,
+          "width": 200,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rotate-by-case",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rotate-by-action-0",
+                  "type": "rotate",
+                  "rotate": {
+                    "mode": "by",
+                    "degrees": "90",
+                    "clockwise": false,
+                    "anchor": "center",
+                    "offsetX": "0",
+                    "offsetY": "0",
+                    "easing": "none",
+                    "duration": 500
+                  },
+                  "targetId": "rotate-shape"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rotate-to",
+          "type": "button",
+          "name": "Rotate to 0°",
+          "text": "Rotate to 0°",
+          "notes": "",
+          "x": 268,
+          "y": 346,
+          "rotation": 0,
+          "width": 200,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rotate-to-case",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rotate-to-action-0",
+                  "type": "rotate",
+                  "rotate": {
+                    "mode": "to",
+                    "degrees": "0",
+                    "clockwise": true,
+                    "anchor": "center",
+                    "offsetX": "0",
+                    "offsetY": "0",
+                    "easing": "none",
+                    "duration": 500
+                  },
+                  "targetId": "rotate-shape"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rotate-pivot",
+          "type": "button",
+          "name": "Orbit top left",
+          "text": "Orbit top left",
+          "notes": "",
+          "x": 48,
+          "y": 398,
+          "rotation": 0,
+          "width": 200,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rotate-pivot-case",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rotate-pivot-action-0",
+                  "type": "rotate",
+                  "rotate": {
+                    "mode": "by",
+                    "degrees": "90",
+                    "clockwise": true,
+                    "anchor": "top left",
+                    "offsetX": "0",
+                    "offsetY": "0",
+                    "easing": "linear",
+                    "duration": 600
+                  },
+                  "targetId": "rotate-shape"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rotate-input-orbit",
+          "type": "button",
+          "name": "Orbit input",
+          "text": "Orbit input",
+          "notes": "",
+          "x": 566,
+          "y": 346,
+          "rotation": 0,
+          "width": 200,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rotate-input-orbit-case",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rotate-input-orbit-action-0",
+                  "type": "rotate",
+                  "rotate": {
+                    "mode": "by",
+                    "degrees": "90",
+                    "clockwise": true,
+                    "anchor": "top left",
+                    "offsetX": "0",
+                    "offsetY": "0",
+                    "easing": "linear",
+                    "duration": 600
+                  },
+                  "targetId": "rotate-input"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rotate-events",
+          "type": "text",
+          "name": "rotate-events",
+          "text": "Rotated events: 0",
+          "notes": "",
+          "x": 268,
+          "y": 400,
+          "rotation": 0,
+          "width": 270,
+          "height": 32,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rotate-row-label",
+          "type": "text",
+          "name": "rotate-row-label",
+          "text": "REPEATER · EACH ROW OWNS ITS MOTION",
+          "notes": "",
+          "x": 48,
+          "y": 477,
+          "rotation": 0,
+          "width": 620,
+          "height": 30,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rotate-repeater",
+          "type": "repeater",
+          "name": "Independent rows",
+          "text": "",
+          "notes": "",
+          "x": 48,
+          "y": 520,
+          "rotation": 0,
+          "width": 620,
+          "height": 190,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "First row"
+              },
+              {
+                "Name": "Second row"
+              }
+            ],
+            "template": [
+              {
+                "id": "rotate-row-shape",
+                "type": "box",
+                "name": "Row shape",
+                "text": "[[Item.Name]]",
+                "notes": "",
+                "x": 14,
+                "y": 12,
+                "rotation": 0,
+                "width": 92,
+                "height": 48,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#f59e0b",
+                  "stroke": "#d97706",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": []
+              },
+              {
+                "id": "rotate-row-button",
+                "type": "button",
+                "name": "Rotate this row",
+                "text": "Rotate this row",
+                "notes": "",
+                "x": 154,
+                "y": 18,
+                "rotation": 0,
+                "width": 200,
+                "height": 38,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#5b5ce2",
+                  "stroke": "#5b5ce2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#ffffff",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "rotate-row-button-case",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "rotate-row-button-action-0",
+                        "type": "rotate",
+                        "rotate": {
+                          "mode": "by",
+                          "degrees": "180",
+                          "clockwise": true,
+                          "anchor": "center",
+                          "offsetX": "0",
+                          "offsetY": "0",
+                          "easing": "linear",
+                          "duration": 600
+                        },
+                        "targetId": "rotate-row-shape"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "itemHeight": 92,
+            "gap": 2
+          }
+        },
+        {
+          "id": "rotate-frame",
+          "type": "inlineFrame",
+          "name": "Independent frame",
+          "text": "",
+          "notes": "",
+          "inlineFrame": {
+            "hideBorders": false,
+            "scrolling": "auto",
+            "preview": {
+              "kind": "none"
+            },
+            "target": {
+              "kind": "page",
+              "pageId": "rotate-child"
+            }
+          },
+          "x": 746,
+          "y": 488,
+          "rotation": 0,
+          "width": 322,
+          "height": 237,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rotate-footnote",
+          "type": "text",
+          "name": "rotate-footnote",
+          "text": "Restart the prototype to reset positions, angles and event counts.",
+          "notes": "",
+          "x": 48,
+          "y": 762,
+          "rotation": 0,
+          "width": 1000,
+          "height": 32,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveSelection": "native-size",
+      "adaptiveBaseSize": {
+        "width": 0,
+        "height": 0
+      },
+      "adaptiveViews": []
+    },
+    {
+      "id": "rotate-child",
+      "name": "Embedded rotation",
+      "width": 320,
+      "height": 235,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "rotate-child-shape",
+          "type": "box",
+          "name": "Embedded shape",
+          "text": "FRAME",
+          "notes": "",
+          "x": 96,
+          "y": 52,
+          "rotation": 0,
+          "width": 128,
+          "height": 64,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#0f766e",
+            "stroke": "#115e59",
+            "strokeWidth": 1,
+            "radius": 0,
+            "color": "#fff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rotate-child-button",
+          "type": "button",
+          "name": "Rotate in frame",
+          "text": "Rotate in frame",
+          "notes": "",
+          "x": 60,
+          "y": 165,
+          "rotation": 0,
+          "width": 200,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rotate-child-button-case",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rotate-child-button-action-0",
+                  "type": "rotate",
+                  "rotate": {
+                    "mode": "by",
+                    "degrees": "180",
+                    "clockwise": true,
+                    "anchor": "center",
+                    "offsetX": "0",
+                    "offsetY": "0",
+                    "easing": "linear",
+                    "duration": 600
+                  },
+                  "targetId": "rotate-child-shape"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveSelection": "native-size",
+      "adaptiveBaseSize": {
+        "width": 0,
+        "height": 0
+      },
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {
+    "Turns": "0"
+  },
+  "styles": []
+}

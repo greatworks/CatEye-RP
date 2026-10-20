@@ -1,0 +1,74 @@
+{
+  "capturedAt": "2026-10-20T06:54:37.264Z",
+  "finding": "NLR-REVIEW-01",
+  "description": "Layer top/left Resize uses rotated AABB origin instead of original offsetLocation() ignoring rotation.",
+  "kind": "Actual module/serialized implementation compared with exact-source Resize helper in a declared NodeVM geometry facade; no original GUI/browser.",
+  "sources": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "d0225887038d5e675b07cf9250f73883aaa7877d4814ca89e57237da70c7262b"
+    },
+    {
+      "path": "research/native-layers-runtime-probe.mjs",
+      "sha256": "728ec878c2474dee48e818fcef852988fe5721d88adccbacba504305aac668d5"
+    },
+    {
+      "path": "research/native-layers-runtime-manifest.json",
+      "sha256": "200ef8293b83121fb06357d4d9d74e664088987293db8c303bda8e095d6db77a"
+    }
+  ],
+  "sourceStable": true,
+  "native": {
+    "css": {
+      "height": 32,
+      "width": 60
+    },
+    "delta": {
+      "x": 20,
+      "y": 12
+    }
+  },
+  "results": [
+    {
+      "portable": false,
+      "observed": {
+        "x": 165,
+        "y": 126,
+        "width": 60,
+        "height": 32
+      },
+      "expected": {
+        "x": 160,
+        "y": 132,
+        "width": 60,
+        "height": 32
+      },
+      "passed": false
+    },
+    {
+      "portable": true,
+      "observed": {
+        "x": 165,
+        "y": 126,
+        "width": 60,
+        "height": 32
+      },
+      "expected": {
+        "x": 160,
+        "y": 132,
+        "width": 60,
+        "height": 32
+      },
+      "passed": false
+    }
+  ],
+  "summary": {
+    "total": 2,
+    "passed": 0,
+    "failed": 2
+  },
+  "script": {
+    "path": "research/native-layers-runtime-integration-probe.mjs",
+    "sha256": "d9dbce2f000da9bf14a46b35a9a6fb3c49784f2a932c9746ce3a0eeb9432a974"
+  }
+}

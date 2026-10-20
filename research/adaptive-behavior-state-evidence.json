@@ -1,0 +1,79 @@
+{
+  "schema": "adaptive-behavior-state-evidence-v1",
+  "generatedAt": "2026-10-15T09:48:43.310Z",
+  "version": "11.0.0.4150",
+  "distributionSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "validation": {
+    "vm": {
+      "kind": "exact-retained-JavaScript-slices-in-NodeVM",
+      "passed": 237,
+      "failed": 0
+    },
+    "dom": {
+      "kind": "actual-isolated-Edge-DOM-with-retained-jQuery-and-exact-style-slices",
+      "passed": 8,
+      "failed": 0,
+      "browser": "155.0.4283.45",
+      "network": [],
+      "errors": []
+    }
+  },
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\adaptive.js",
+      "sha256": "e141ea07bb973b6007f2ad7d7205516a041a801ec97e410467352c27af3b2928"
+    },
+    {
+      "name": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "name": "../jquery-3.7.1.min.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/adaptive-behavior-state-probe.mjs",
+      "sha256": "181c46c7c1130f8d5d29f7db0f2fe1b97a202b3f36586293b7a948edbd18297f"
+    },
+    {
+      "path": "research/adaptive-behavior-state-probe.json",
+      "sha256": "750636ec491278a82a264b94b9a58d51812983a765a0578b498c79ff3625b488"
+    },
+    {
+      "path": "research/adaptive-behavior-state-dom-probe.mjs",
+      "sha256": "e8947b1e76a1a0ddf837541e649a4f7f211160265f01e748a9f6785ba0dcc699"
+    },
+    {
+      "path": "research/adaptive-behavior-state-dom-probe.json",
+      "sha256": "4728ebac6c2518810dd49a65ea237a78c5ea5dd465a53f94f6347ea85bde8f91"
+    },
+    {
+      "path": "research/adaptive-behavior-state-evidence.md",
+      "sha256": "016f5619f7096f8b55c06adbc4f020d818ea43575c7dedfd4e2be746b28c5f75"
+    }
+  ],
+  "implementation": [],
+  "tests": [],
+  "screenshots": [],
+  "productChanged": false,
+  "oldEvidenceChanged": false,
+  "limitations": [
+    "Synthetic generated-object records; no claim that null/empty state records are authorable by the native editor.",
+    "jQuery extend and DOM class endpoints are explicit minimal sinks, not a full browser or original page.",
+    "Original lookup, composition, state generation, CSS conversion, adaptive dispatch execute. SVG drawing/text cache restoration/measurements/repeater refresh/visibility are terminal recording sinks.",
+    "Rich node style application observes assigned strings, not browser CSS acceptance or glyph pixels. Master chain retrieval is a controlled sink; the original RDO dispatch is executed.",
+    "Synthetic DOM and generated-object records; not a native exported page or native GUI capture.",
+    "Lookup, text CSS reset/cache/application and state classes are original slices. SVG draw, geometry/corners, effects and image endpoints are explicit sinks.",
+    "Computed font/color/decoration strings were read from actual Edge. No claim about original fonts, visual glyph pixels, or final complete cascade.",
+    "Rich-set marker is assigned by harness to isolate subsequent lookup. Setter parsing is covered by frozen earlier research, not executed here."
+  ]
+}

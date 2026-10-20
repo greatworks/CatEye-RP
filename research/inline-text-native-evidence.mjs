@@ -1,0 +1,7 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+const sha=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const paths=['metadata.ps1','metadata.json','canvas-metadata.json','xrefs.ps1','command-lambda-cil.json','command-xrefs.json','command-cil.json','command-callers.json','key-handler-cil.json','key-dependencies-cil.json','key-exit-cil.json','key-enum.json','evidence.md','evidence.mjs'].map(name=>'research/inline-text-native-'+name);
+const report={method:'Narrow static metadata/token CIL trace; no target assembly or GUI execution',assemblySha256:'dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7',hooks:{textEditCommandLambda:100665110,lambdaUser:100665030,keyHandler:100665029,commandGroupDispatch:100665031,unclassifiedExitCandidate:100664859},keyEnum:{type:'Axure.Constants.AxKeys',Enter:6,Return:6,Escape:13,Control:131072,Shift:65536},unknown:['Escape commit versus cancel','Enter and Ctrl+Enter behavior','Outside click and lost focus behavior','Toolbar focus retention','Undo transaction boundaries'],productParityClaim:false,productFilesChanged:false,sources:paths.map(file=>({file,sha256:sha(file)}))};
+fs.writeFileSync('research/inline-text-native-evidence.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({file:'research/inline-text-native-evidence.json',sha256:sha('research/inline-text-native-evidence.json')},null,2));

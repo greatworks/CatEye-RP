@@ -1,0 +1,6042 @@
+{
+  "method": "Bounded original-CIL control flow replay, never original DLL execution. Native STO constructors are AST-building sinks preserving operator/member/argument data; collections/empty checks and expression values are controlled. The 12 real ASTs use explicitly controlled geometry, independent numeric intervals, and the shipped action.js false-condition gate; no JS generator/browser execution or actual rendered geometry claim.",
+  "originalAxureGuiCompared": false,
+  "originalDllExecuted": false,
+  "sources": [
+    {
+      "file": "research/runtime-transform-format-move-info-cil.json",
+      "sha256": "5cd2185893a93f3fdb0b8a508f12533b9744df7403aa1fbf5cac9e095c3c9bcd"
+    },
+    {
+      "file": "research/runtime-transform-bindings-flatten-cil.json",
+      "sha256": "d5b92f54475b54b7e1e29f58182cc46e28b5d75051d0a147d5995046d30ea39b"
+    },
+    {
+      "file": "research/runtime-transform-bindings-flatten-recursive-cil.json",
+      "sha256": "eecb9e38b177da7e376ec7254c8bbae993056d8fcabc256000af98623cb04368"
+    },
+    {
+      "file": "research/runtime-transform-bindings-boundary-probe.mjs",
+      "sha256": "4d92b08b2c3c67a698806f7bd4679f0a62e4fa6fde8bae1dbcc81f0a603d8551"
+    },
+    {
+      "file": "research/runtime-transform-bindings-expression-probe.mjs",
+      "sha256": "35a51b882c40a1ea1a68f6f00e6a49693fc9e59ee2d2867240ac44be0c81393f"
+    },
+    {
+      "file": "research/runtime-transform-bindings-case-census.json",
+      "sha256": "a207988c445aa4be1f16494de6a23289dc220a8f2dee6ebee2579c7fb75aeb22"
+    },
+    {
+      "file": "research/runtime-transform-format-boundary-cil.json",
+      "sha256": "1cd1fdc417513066014462e3fffb4e62728684ec1d6983f1afe0566ebf6883fc"
+    },
+    {
+      "file": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    },
+    {
+      "file": "research/text-autofit-native-literals.mjs",
+      "sha256": "2b8f2adee7d6e1ac5ac4e0188edf616057d1e129071b9818eb4900dfbf9e3091"
+    }
+  ],
+  "checks": {
+    "total": 96,
+    "passed": 96,
+    "syntheticCases": 36,
+    "realBoundaryContexts": 60,
+    "realBoundaryObjects": 12
+  },
+  "results": [
+    {
+      "name": "comparison op5 40,10",
+      "passed": true
+    },
+    {
+      "name": "comparison op5 40,90",
+      "passed": true
+    },
+    {
+      "name": "comparison op5 40,40",
+      "passed": true
+    },
+    {
+      "name": "comparison op5 40,40.25",
+      "passed": true
+    },
+    {
+      "name": "comparison op6 40,10",
+      "passed": true
+    },
+    {
+      "name": "comparison op6 40,90",
+      "passed": true
+    },
+    {
+      "name": "comparison op6 40,40",
+      "passed": true
+    },
+    {
+      "name": "comparison op6 40,40.25",
+      "passed": true
+    },
+    {
+      "name": "comparison op7 40,10",
+      "passed": true
+    },
+    {
+      "name": "comparison op7 40,90",
+      "passed": true
+    },
+    {
+      "name": "comparison op7 40,40",
+      "passed": true
+    },
+    {
+      "name": "comparison op7 40,40.25",
+      "passed": true
+    },
+    {
+      "name": "comparison op8 40,10",
+      "passed": true
+    },
+    {
+      "name": "comparison op8 40,90",
+      "passed": true
+    },
+    {
+      "name": "comparison op8 40,40",
+      "passed": true
+    },
+    {
+      "name": "comparison op8 40,40.25",
+      "passed": true
+    },
+    {
+      "name": "direction left op5",
+      "passed": true
+    },
+    {
+      "name": "direction left op6",
+      "passed": true
+    },
+    {
+      "name": "direction left op7",
+      "passed": true
+    },
+    {
+      "name": "direction left op8",
+      "passed": true
+    },
+    {
+      "name": "direction right op5",
+      "passed": true
+    },
+    {
+      "name": "direction right op6",
+      "passed": true
+    },
+    {
+      "name": "direction right op7",
+      "passed": true
+    },
+    {
+      "name": "direction right op8",
+      "passed": true
+    },
+    {
+      "name": "direction top op5",
+      "passed": true
+    },
+    {
+      "name": "direction top op6",
+      "passed": true
+    },
+    {
+      "name": "direction top op7",
+      "passed": true
+    },
+    {
+      "name": "direction top op8",
+      "passed": true
+    },
+    {
+      "name": "direction bottom op5",
+      "passed": true
+    },
+    {
+      "name": "direction bottom op6",
+      "passed": true
+    },
+    {
+      "name": "direction bottom op7",
+      "passed": true
+    },
+    {
+      "name": "direction bottom op8",
+      "passed": true
+    },
+    {
+      "name": "ordered AND clamp combines lower and upper bounds with one original direction seed",
+      "passed": true
+    },
+    {
+      "name": "OR flatten retains source-order leaves in STO projection; original boolean expression is a separate writer",
+      "passed": true
+    },
+    {
+      "name": "null boundary clears scratch scope and returns null",
+      "passed": true
+    },
+    {
+      "name": "empty unsupported comparison op has no synthesized clamp",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 4226f9cb45574a16a38a50433bdc7b32 candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 4226f9cb45574a16a38a50433bdc7b32 candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 4226f9cb45574a16a38a50433bdc7b32 candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 4226f9cb45574a16a38a50433bdc7b32 candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 4226f9cb45574a16a38a50433bdc7b32 candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary bf846a0bd17340ed8c2bd393ae791e1b candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary bf846a0bd17340ed8c2bd393ae791e1b candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary bf846a0bd17340ed8c2bd393ae791e1b candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary bf846a0bd17340ed8c2bd393ae791e1b candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary bf846a0bd17340ed8c2bd393ae791e1b candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary c2a12f3a7d2d4e2b8ce090ce1b4cb868 candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary c2a12f3a7d2d4e2b8ce090ce1b4cb868 candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary c2a12f3a7d2d4e2b8ce090ce1b4cb868 candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary c2a12f3a7d2d4e2b8ce090ce1b4cb868 candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary c2a12f3a7d2d4e2b8ce090ce1b4cb868 candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 42b2880636f94e66a2931ca1a186265a candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 42b2880636f94e66a2931ca1a186265a candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 42b2880636f94e66a2931ca1a186265a candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 42b2880636f94e66a2931ca1a186265a candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 42b2880636f94e66a2931ca1a186265a candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3fac2a311beb4943837fb5aaa505d2e2 candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3fac2a311beb4943837fb5aaa505d2e2 candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3fac2a311beb4943837fb5aaa505d2e2 candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3fac2a311beb4943837fb5aaa505d2e2 candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3fac2a311beb4943837fb5aaa505d2e2 candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 8e887b58ddc243eebb242d0221ceeed8 candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 8e887b58ddc243eebb242d0221ceeed8 candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 8e887b58ddc243eebb242d0221ceeed8 candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 8e887b58ddc243eebb242d0221ceeed8 candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 8e887b58ddc243eebb242d0221ceeed8 candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 1d2102635a504d47b43b54a363fc32ab candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 1d2102635a504d47b43b54a363fc32ab candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 1d2102635a504d47b43b54a363fc32ab candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 1d2102635a504d47b43b54a363fc32ab candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 1d2102635a504d47b43b54a363fc32ab candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3d41af2a3a514d1d973362627f59923d candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3d41af2a3a514d1d973362627f59923d candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3d41af2a3a514d1d973362627f59923d candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3d41af2a3a514d1d973362627f59923d candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3d41af2a3a514d1d973362627f59923d candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 94d32a1108634fae9bc2f59dfad5b5f7 candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 94d32a1108634fae9bc2f59dfad5b5f7 candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 94d32a1108634fae9bc2f59dfad5b5f7 candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 94d32a1108634fae9bc2f59dfad5b5f7 candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 94d32a1108634fae9bc2f59dfad5b5f7 candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary f8f956d3797d4cba86c6ba377299807c candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary f8f956d3797d4cba86c6ba377299807c candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary f8f956d3797d4cba86c6ba377299807c candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary f8f956d3797d4cba86c6ba377299807c candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary f8f956d3797d4cba86c6ba377299807c candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3136c95feee5414ebfcf26b003ade398 candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3136c95feee5414ebfcf26b003ade398 candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3136c95feee5414ebfcf26b003ade398 candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3136c95feee5414ebfcf26b003ade398 candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 3136c95feee5414ebfcf26b003ade398 candidate 300",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 987245fe6cbb4ebba4e13cf7e83ec813 candidate -100",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 987245fe6cbb4ebba4e13cf7e83ec813 candidate 0",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 987245fe6cbb4ebba4e13cf7e83ec813 candidate 0.5",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 987245fe6cbb4ebba4e13cf7e83ec813 candidate 65",
+      "passed": true
+    },
+    {
+      "name": "actual boundary 987245fe6cbb4ebba4e13cf7e83ec813 candidate 300",
+      "passed": true
+    }
+  ],
+  "examples": [
+    {
+      "kind": "comparison",
+      "op": 5,
+      "a": 40,
+      "b": 10,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "max"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "arithmetic",
+            "operator": "+",
+            "left": {
+              "kind": "raw",
+              "value": 10
+            },
+            "right": {
+              "kind": "constant",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "result": 40
+    },
+    {
+      "kind": "comparison",
+      "op": 5,
+      "a": 40,
+      "b": 90,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "max"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "arithmetic",
+            "operator": "+",
+            "left": {
+              "kind": "raw",
+              "value": 90
+            },
+            "right": {
+              "kind": "constant",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "result": 91
+    },
+    {
+      "kind": "comparison",
+      "op": 5,
+      "a": 40,
+      "b": 40,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "max"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "arithmetic",
+            "operator": "+",
+            "left": {
+              "kind": "raw",
+              "value": 40
+            },
+            "right": {
+              "kind": "constant",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "result": 41
+    },
+    {
+      "kind": "comparison",
+      "op": 5,
+      "a": 40,
+      "b": 40.25,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "max"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "arithmetic",
+            "operator": "+",
+            "left": {
+              "kind": "raw",
+              "value": 40.25
+            },
+            "right": {
+              "kind": "constant",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "result": 41.25
+    },
+    {
+      "kind": "comparison",
+      "op": 6,
+      "a": 40,
+      "b": 10,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "min"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "arithmetic",
+            "operator": "-",
+            "left": {
+              "kind": "raw",
+              "value": 10
+            },
+            "right": {
+              "kind": "constant",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "result": 9
+    },
+    {
+      "kind": "comparison",
+      "op": 6,
+      "a": 40,
+      "b": 90,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "min"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "arithmetic",
+            "operator": "-",
+            "left": {
+              "kind": "raw",
+              "value": 90
+            },
+            "right": {
+              "kind": "constant",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "result": 40
+    },
+    {
+      "kind": "comparison",
+      "op": 6,
+      "a": 40,
+      "b": 40,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "min"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "arithmetic",
+            "operator": "-",
+            "left": {
+              "kind": "raw",
+              "value": 40
+            },
+            "right": {
+              "kind": "constant",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "result": 39
+    },
+    {
+      "kind": "comparison",
+      "op": 6,
+      "a": 40,
+      "b": 40.25,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "min"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "arithmetic",
+            "operator": "-",
+            "left": {
+              "kind": "raw",
+              "value": 40.25
+            },
+            "right": {
+              "kind": "constant",
+              "value": 1
+            }
+          }
+        ]
+      },
+      "result": 39.25
+    },
+    {
+      "kind": "comparison",
+      "op": 7,
+      "a": 40,
+      "b": 10,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "max"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "raw",
+            "value": 10
+          }
+        ]
+      },
+      "result": 40
+    },
+    {
+      "kind": "comparison",
+      "op": 7,
+      "a": 40,
+      "b": 90,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "max"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "raw",
+            "value": 90
+          }
+        ]
+      },
+      "result": 90
+    },
+    {
+      "kind": "comparison",
+      "op": 7,
+      "a": 40,
+      "b": 40,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "max"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "raw",
+            "value": 40
+          }
+        ]
+      },
+      "result": 40
+    },
+    {
+      "kind": "comparison",
+      "op": 7,
+      "a": 40,
+      "b": 40.25,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "max"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "raw",
+            "value": 40.25
+          }
+        ]
+      },
+      "result": 40.25
+    },
+    {
+      "kind": "comparison",
+      "op": 8,
+      "a": 40,
+      "b": 10,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "min"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "raw",
+            "value": 10
+          }
+        ]
+      },
+      "result": 10
+    },
+    {
+      "kind": "comparison",
+      "op": 8,
+      "a": 40,
+      "b": 90,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "min"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "raw",
+            "value": 90
+          }
+        ]
+      },
+      "result": 40
+    },
+    {
+      "kind": "comparison",
+      "op": 8,
+      "a": 40,
+      "b": 40,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "min"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "raw",
+            "value": 40
+          }
+        ]
+      },
+      "result": 40
+    },
+    {
+      "kind": "comparison",
+      "op": 8,
+      "a": 40,
+      "b": 40.25,
+      "ast": {
+        "kind": "call",
+        "object": {
+          "kind": "variable",
+          "name": "Math"
+        },
+        "member": {
+          "kind": "member",
+          "name": "min"
+        },
+        "args": [
+          {
+            "kind": "raw",
+            "value": 40
+          },
+          {
+            "kind": "raw",
+            "value": 40.25
+          }
+        ]
+      },
+      "result": 40
+    },
+    {
+      "kind": "direction",
+      "direction": "left",
+      "op": 5,
+      "ast": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        },
+        "ySto": null
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "left",
+            "value": 40
+          }
+        }
+      ],
+      "result": 101
+    },
+    {
+      "kind": "direction",
+      "direction": "left",
+      "op": 6,
+      "ast": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        },
+        "ySto": null
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "left",
+            "value": 40
+          }
+        }
+      ],
+      "result": 40
+    },
+    {
+      "kind": "direction",
+      "direction": "left",
+      "op": 7,
+      "ast": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "variable",
+              "name": "valueVar0"
+            }
+          ]
+        },
+        "ySto": null
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "left",
+            "value": 40
+          }
+        }
+      ],
+      "result": 100
+    },
+    {
+      "kind": "direction",
+      "direction": "left",
+      "op": 8,
+      "ast": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "variable",
+              "name": "valueVar0"
+            }
+          ]
+        },
+        "ySto": null
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "left",
+            "value": 40
+          }
+        }
+      ],
+      "result": 40
+    },
+    {
+      "kind": "direction",
+      "direction": "right",
+      "op": 5,
+      "ast": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "direcVal0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "arithmetic",
+                "operator": "-",
+                "left": {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                },
+                "right": {
+                  "kind": "property",
+                  "object": {
+                    "kind": "variable",
+                    "name": "Target"
+                  },
+                  "member": {
+                    "kind": "member",
+                    "name": "width"
+                  }
+                }
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        },
+        "ySto": null
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "right",
+            "value": 40
+          }
+        }
+      ],
+      "result": 89
+    },
+    {
+      "kind": "direction",
+      "direction": "right",
+      "op": 6,
+      "ast": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "direcVal0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "arithmetic",
+                "operator": "-",
+                "left": {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                },
+                "right": {
+                  "kind": "property",
+                  "object": {
+                    "kind": "variable",
+                    "name": "Target"
+                  },
+                  "member": {
+                    "kind": "member",
+                    "name": "width"
+                  }
+                }
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        },
+        "ySto": null
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "right",
+            "value": 40
+          }
+        }
+      ],
+      "result": 28
+    },
+    {
+      "kind": "direction",
+      "direction": "right",
+      "op": 7,
+      "ast": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "direcVal0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "right",
+            "value": 40
+          }
+        }
+      ],
+      "result": 88
+    },
+    {
+      "kind": "direction",
+      "direction": "right",
+      "op": 8,
+      "ast": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "direcVal0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "right",
+            "value": 40
+          }
+        }
+      ],
+      "result": 28
+    },
+    {
+      "kind": "direction",
+      "direction": "top",
+      "op": 5,
+      "ast": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "top",
+            "value": 40
+          }
+        }
+      ],
+      "result": 101
+    },
+    {
+      "kind": "direction",
+      "direction": "top",
+      "op": 6,
+      "ast": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "top",
+            "value": 40
+          }
+        }
+      ],
+      "result": 40
+    },
+    {
+      "kind": "direction",
+      "direction": "top",
+      "op": 7,
+      "ast": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "variable",
+              "name": "valueVar0"
+            }
+          ]
+        }
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "top",
+            "value": 40
+          }
+        }
+      ],
+      "result": 100
+    },
+    {
+      "kind": "direction",
+      "direction": "top",
+      "op": 8,
+      "ast": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "variable",
+              "name": "valueVar0"
+            }
+          ]
+        }
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "top",
+            "value": 40
+          }
+        }
+      ],
+      "result": 40
+    },
+    {
+      "kind": "direction",
+      "direction": "bottom",
+      "op": 5,
+      "ast": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "direcVal0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "height"
+                }
+              }
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "arithmetic",
+                "operator": "-",
+                "left": {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                },
+                "right": {
+                  "kind": "property",
+                  "object": {
+                    "kind": "variable",
+                    "name": "Target"
+                  },
+                  "member": {
+                    "kind": "member",
+                    "name": "height"
+                  }
+                }
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "bottom",
+            "value": 40
+          }
+        }
+      ],
+      "result": 93
+    },
+    {
+      "kind": "direction",
+      "direction": "bottom",
+      "op": 6,
+      "ast": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "direcVal0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "height"
+                }
+              }
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "arithmetic",
+                "operator": "-",
+                "left": {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                },
+                "right": {
+                  "kind": "property",
+                  "object": {
+                    "kind": "variable",
+                    "name": "Target"
+                  },
+                  "member": {
+                    "kind": "member",
+                    "name": "height"
+                  }
+                }
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "bottom",
+            "value": 40
+          }
+        }
+      ],
+      "result": 32
+    },
+    {
+      "kind": "direction",
+      "direction": "bottom",
+      "op": 7,
+      "ast": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "direcVal0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "height"
+                }
+              }
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "height"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "bottom",
+            "value": 40
+          }
+        }
+      ],
+      "result": 92
+    },
+    {
+      "kind": "direction",
+      "direction": "bottom",
+      "op": 8,
+      "ast": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "direcVal0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "height"
+                }
+              }
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "height"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 100
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "bottom",
+            "value": 40
+          }
+        }
+      ],
+      "result": 32
+    },
+    {
+      "kind": "AND",
+      "ast": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      },
+      "scope": [
+        {
+          "name": "valueVar0",
+          "expr": {
+            "kind": "raw",
+            "value": 20
+          }
+        },
+        {
+          "name": "direcVal0",
+          "expr": {
+            "kind": "direction",
+            "direction": "left",
+            "value": 40
+          }
+        },
+        {
+          "name": "valueVar1",
+          "expr": {
+            "kind": "raw",
+            "value": 50
+          }
+        }
+      ],
+      "result": 38
+    }
+  ],
+  "realExamples": [
+    {
+      "packageId": "e60b879dcd664f83b848b6f88263b0a3",
+      "actionId": "11d6f5026e0f42a0ae792349648002c3",
+      "infoId": "4226f9cb45574a16a38a50433bdc7b32",
+      "candidate": -100,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "e60b879dcd664f83b848b6f88263b0a3",
+      "actionId": "11d6f5026e0f42a0ae792349648002c3",
+      "infoId": "4226f9cb45574a16a38a50433bdc7b32",
+      "candidate": 0,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "e60b879dcd664f83b848b6f88263b0a3",
+      "actionId": "11d6f5026e0f42a0ae792349648002c3",
+      "infoId": "4226f9cb45574a16a38a50433bdc7b32",
+      "candidate": 0.5,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "e60b879dcd664f83b848b6f88263b0a3",
+      "actionId": "11d6f5026e0f42a0ae792349648002c3",
+      "infoId": "4226f9cb45574a16a38a50433bdc7b32",
+      "candidate": 65,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "e60b879dcd664f83b848b6f88263b0a3",
+      "actionId": "11d6f5026e0f42a0ae792349648002c3",
+      "infoId": "4226f9cb45574a16a38a50433bdc7b32",
+      "candidate": 300,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 198,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "ecd43b2d273942cd8b2fcc9adff736f6",
+      "infoId": "bf846a0bd17340ed8c2bd393ae791e1b",
+      "candidate": -100,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "ecd43b2d273942cd8b2fcc9adff736f6",
+      "infoId": "bf846a0bd17340ed8c2bd393ae791e1b",
+      "candidate": 0,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "ecd43b2d273942cd8b2fcc9adff736f6",
+      "infoId": "bf846a0bd17340ed8c2bd393ae791e1b",
+      "candidate": 0.5,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "ecd43b2d273942cd8b2fcc9adff736f6",
+      "infoId": "bf846a0bd17340ed8c2bd393ae791e1b",
+      "candidate": 65,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "ecd43b2d273942cd8b2fcc9adff736f6",
+      "infoId": "bf846a0bd17340ed8c2bd393ae791e1b",
+      "candidate": 300,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 148,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "872bf4aa810d472986bad3bb96133710",
+      "infoId": "c2a12f3a7d2d4e2b8ce090ce1b4cb868",
+      "candidate": -100,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 30,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "872bf4aa810d472986bad3bb96133710",
+      "infoId": "c2a12f3a7d2d4e2b8ce090ce1b4cb868",
+      "candidate": 0,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 30,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "872bf4aa810d472986bad3bb96133710",
+      "infoId": "c2a12f3a7d2d4e2b8ce090ce1b4cb868",
+      "candidate": 0.5,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 30,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "872bf4aa810d472986bad3bb96133710",
+      "infoId": "c2a12f3a7d2d4e2b8ce090ce1b4cb868",
+      "candidate": 65,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "872bf4aa810d472986bad3bb96133710",
+      "infoId": "c2a12f3a7d2d4e2b8ce090ce1b4cb868",
+      "candidate": 300,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 148,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "5f4316b935e04dfda556fbd38ac074fa",
+      "infoId": "42b2880636f94e66a2931ca1a186265a",
+      "candidate": -100,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 40,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "5f4316b935e04dfda556fbd38ac074fa",
+      "infoId": "42b2880636f94e66a2931ca1a186265a",
+      "candidate": 0,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 40,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "5f4316b935e04dfda556fbd38ac074fa",
+      "infoId": "42b2880636f94e66a2931ca1a186265a",
+      "candidate": 0.5,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 40,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "5f4316b935e04dfda556fbd38ac074fa",
+      "infoId": "42b2880636f94e66a2931ca1a186265a",
+      "candidate": 65,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "ea34298060ce43b1beefe6300b0348f4",
+      "actionId": "5f4316b935e04dfda556fbd38ac074fa",
+      "infoId": "42b2880636f94e66a2931ca1a186265a",
+      "candidate": 300,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 198,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "actionId": "456df8da779e4d4fa335f4f42cf8caff",
+      "infoId": "3fac2a311beb4943837fb5aaa505d2e2",
+      "candidate": -100,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 0,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "actionId": "456df8da779e4d4fa335f4f42cf8caff",
+      "infoId": "3fac2a311beb4943837fb5aaa505d2e2",
+      "candidate": 0,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 0,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "actionId": "456df8da779e4d4fa335f4f42cf8caff",
+      "infoId": "3fac2a311beb4943837fb5aaa505d2e2",
+      "candidate": 0.5,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 0.5,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "actionId": "456df8da779e4d4fa335f4f42cf8caff",
+      "infoId": "3fac2a311beb4943837fb5aaa505d2e2",
+      "candidate": 65,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "actionId": "456df8da779e4d4fa335f4f42cf8caff",
+      "infoId": "3fac2a311beb4943837fb5aaa505d2e2",
+      "candidate": 300,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 208,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "actionId": "b4d38b3018984946a8e0942c7b5a50b0",
+      "infoId": "8e887b58ddc243eebb242d0221ceeed8",
+      "candidate": -100,
+      "axis": "ySto",
+      "conditionPassed": false,
+      "selectedCoordinate": 1,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0"
+      ],
+      "projection": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "actionId": "b4d38b3018984946a8e0942c7b5a50b0",
+      "infoId": "8e887b58ddc243eebb242d0221ceeed8",
+      "candidate": 0,
+      "axis": "ySto",
+      "conditionPassed": false,
+      "selectedCoordinate": 1,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0"
+      ],
+      "projection": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "actionId": "b4d38b3018984946a8e0942c7b5a50b0",
+      "infoId": "8e887b58ddc243eebb242d0221ceeed8",
+      "candidate": 0.5,
+      "axis": "ySto",
+      "conditionPassed": true,
+      "selectedCoordinate": 0.5,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0"
+      ],
+      "projection": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "actionId": "b4d38b3018984946a8e0942c7b5a50b0",
+      "infoId": "8e887b58ddc243eebb242d0221ceeed8",
+      "candidate": 65,
+      "axis": "ySto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0"
+      ],
+      "projection": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "actionId": "b4d38b3018984946a8e0942c7b5a50b0",
+      "infoId": "8e887b58ddc243eebb242d0221ceeed8",
+      "candidate": 300,
+      "axis": "ySto",
+      "conditionPassed": true,
+      "selectedCoordinate": 300,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0"
+      ],
+      "projection": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "31cde213c2f944bda1a3fb5047ee9ab3",
+      "infoId": "1d2102635a504d47b43b54a363fc32ab",
+      "candidate": -100,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "31cde213c2f944bda1a3fb5047ee9ab3",
+      "infoId": "1d2102635a504d47b43b54a363fc32ab",
+      "candidate": 0,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "31cde213c2f944bda1a3fb5047ee9ab3",
+      "infoId": "1d2102635a504d47b43b54a363fc32ab",
+      "candidate": 0.5,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "31cde213c2f944bda1a3fb5047ee9ab3",
+      "infoId": "1d2102635a504d47b43b54a363fc32ab",
+      "candidate": 65,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "31cde213c2f944bda1a3fb5047ee9ab3",
+      "infoId": "1d2102635a504d47b43b54a363fc32ab",
+      "candidate": 300,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 198,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "978f883ad2584cd386932e74cbf3c277",
+      "infoId": "3d41af2a3a514d1d973362627f59923d",
+      "candidate": -100,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "978f883ad2584cd386932e74cbf3c277",
+      "infoId": "3d41af2a3a514d1d973362627f59923d",
+      "candidate": 0,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "978f883ad2584cd386932e74cbf3c277",
+      "infoId": "3d41af2a3a514d1d973362627f59923d",
+      "candidate": 0.5,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 10,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "978f883ad2584cd386932e74cbf3c277",
+      "infoId": "3d41af2a3a514d1d973362627f59923d",
+      "candidate": 65,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "978f883ad2584cd386932e74cbf3c277",
+      "infoId": "3d41af2a3a514d1d973362627f59923d",
+      "candidate": 300,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 148,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "fe860287d63e4a0ea70b672ebf24181b",
+      "infoId": "94d32a1108634fae9bc2f59dfad5b5f7",
+      "candidate": -100,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 30,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "fe860287d63e4a0ea70b672ebf24181b",
+      "infoId": "94d32a1108634fae9bc2f59dfad5b5f7",
+      "candidate": 0,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 30,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "fe860287d63e4a0ea70b672ebf24181b",
+      "infoId": "94d32a1108634fae9bc2f59dfad5b5f7",
+      "candidate": 0.5,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 30,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "fe860287d63e4a0ea70b672ebf24181b",
+      "infoId": "94d32a1108634fae9bc2f59dfad5b5f7",
+      "candidate": 65,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "fe860287d63e4a0ea70b672ebf24181b",
+      "infoId": "94d32a1108634fae9bc2f59dfad5b5f7",
+      "candidate": 300,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 148,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "6b53da51ad4049aaa569b1aad6ef5559",
+      "infoId": "f8f956d3797d4cba86c6ba377299807c",
+      "candidate": -100,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 40,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "6b53da51ad4049aaa569b1aad6ef5559",
+      "infoId": "f8f956d3797d4cba86c6ba377299807c",
+      "candidate": 0,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 40,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "6b53da51ad4049aaa569b1aad6ef5559",
+      "infoId": "f8f956d3797d4cba86c6ba377299807c",
+      "candidate": 0.5,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 40,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "6b53da51ad4049aaa569b1aad6ef5559",
+      "infoId": "f8f956d3797d4cba86c6ba377299807c",
+      "candidate": 65,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "9f2226d0f29c47a8b104b1293e29b97d",
+      "actionId": "6b53da51ad4049aaa569b1aad6ef5559",
+      "infoId": "f8f956d3797d4cba86c6ba377299807c",
+      "candidate": 300,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 198,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "actionId": "e5e1b1bf2afa4d53b70b9bc9e999e92b",
+      "infoId": "3136c95feee5414ebfcf26b003ade398",
+      "candidate": -100,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 0,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "actionId": "e5e1b1bf2afa4d53b70b9bc9e999e92b",
+      "infoId": "3136c95feee5414ebfcf26b003ade398",
+      "candidate": 0,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 0,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "actionId": "e5e1b1bf2afa4d53b70b9bc9e999e92b",
+      "infoId": "3136c95feee5414ebfcf26b003ade398",
+      "candidate": 0.5,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 0.5,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "actionId": "e5e1b1bf2afa4d53b70b9bc9e999e92b",
+      "infoId": "3136c95feee5414ebfcf26b003ade398",
+      "candidate": 65,
+      "axis": "xSto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "actionId": "e5e1b1bf2afa4d53b70b9bc9e999e92b",
+      "infoId": "3136c95feee5414ebfcf26b003ade398",
+      "candidate": 300,
+      "axis": "xSto",
+      "conditionPassed": false,
+      "selectedCoordinate": 208,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0",
+        "valueVar1"
+      ],
+      "projection": {
+        "xSto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "min"
+          },
+          "args": [
+            {
+              "kind": "call",
+              "object": {
+                "kind": "variable",
+                "name": "Math"
+              },
+              "member": {
+                "kind": "member",
+                "name": "max"
+              },
+              "args": [
+                {
+                  "kind": "variable",
+                  "name": "direcVal0"
+                },
+                {
+                  "kind": "variable",
+                  "name": "valueVar0"
+                }
+              ]
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "-",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar1"
+              },
+              "right": {
+                "kind": "property",
+                "object": {
+                  "kind": "variable",
+                  "name": "Target"
+                },
+                "member": {
+                  "kind": "member",
+                  "name": "width"
+                }
+              }
+            }
+          ]
+        },
+        "ySto": null
+      }
+    },
+    {
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "actionId": "2cc5b57e48074f50911535f73cea6e2e",
+      "infoId": "987245fe6cbb4ebba4e13cf7e83ec813",
+      "candidate": -100,
+      "axis": "ySto",
+      "conditionPassed": false,
+      "selectedCoordinate": 1,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0"
+      ],
+      "projection": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "actionId": "2cc5b57e48074f50911535f73cea6e2e",
+      "infoId": "987245fe6cbb4ebba4e13cf7e83ec813",
+      "candidate": 0,
+      "axis": "ySto",
+      "conditionPassed": false,
+      "selectedCoordinate": 1,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0"
+      ],
+      "projection": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "actionId": "2cc5b57e48074f50911535f73cea6e2e",
+      "infoId": "987245fe6cbb4ebba4e13cf7e83ec813",
+      "candidate": 0.5,
+      "axis": "ySto",
+      "conditionPassed": true,
+      "selectedCoordinate": 0.5,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0"
+      ],
+      "projection": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "actionId": "2cc5b57e48074f50911535f73cea6e2e",
+      "infoId": "987245fe6cbb4ebba4e13cf7e83ec813",
+      "candidate": 65,
+      "axis": "ySto",
+      "conditionPassed": true,
+      "selectedCoordinate": 65,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0"
+      ],
+      "projection": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "actionId": "2cc5b57e48074f50911535f73cea6e2e",
+      "infoId": "987245fe6cbb4ebba4e13cf7e83ec813",
+      "candidate": 300,
+      "axis": "ySto",
+      "conditionPassed": true,
+      "selectedCoordinate": 300,
+      "scopeKeys": [
+        "valueVar0",
+        "direcVal0"
+      ],
+      "projection": {
+        "xSto": null,
+        "ySto": {
+          "kind": "call",
+          "object": {
+            "kind": "variable",
+            "name": "Math"
+          },
+          "member": {
+            "kind": "member",
+            "name": "max"
+          },
+          "args": [
+            {
+              "kind": "variable",
+              "name": "direcVal0"
+            },
+            {
+              "kind": "arithmetic",
+              "operator": "+",
+              "left": {
+                "kind": "variable",
+                "name": "valueVar0"
+              },
+              "right": {
+                "kind": "constant",
+                "value": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

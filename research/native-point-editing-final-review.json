@@ -1,0 +1,188 @@
+{
+  "reviewedAt": "2026-10-15T16:28:53.232Z",
+  "blockingFindings": [],
+  "productionModifiedByReviewer": false,
+  "originalAxureGuiCompared": false,
+  "reviewScope": "Current helper, shared model command, App/Inspector/Canvas integration and strict saved-document preservation. No full suite/build/package or browser execution.",
+  "checks": {
+    "geometryCases": 384,
+    "geometrySourceHashes": 14,
+    "adaptiveNestedPreservation": 18,
+    "actualCustomRectangles": 2,
+    "unsupportedBoundaries": 3,
+    "total": 407
+  },
+  "staticChecks": [
+    "Every point entry shares preparation/reason gate",
+    "Numeric and canvas mutation share current-only model commit",
+    "Transient drawing uses normal adaptive style and temporary path identity",
+    "Prepared-contour no-op, cancellation and source-revision invalidation",
+    "Active/inactive/nested/shared-set data retained; no projection leak",
+    "Shape300/custom identity never implicitly promotes to box"
+  ],
+  "limitations": [
+    "Original GUI unverified",
+    "Native owner rebounding/rotation adjustment not implemented in this stage",
+    "Native RN4I AutoFitWidth/Height=false side effects not implemented; shapeText retained",
+    "Original default-style provider transition not fully reproduced",
+    "Partial-border and independent-corner parameter point editing unavailable"
+  ],
+  "sourceHashes": [
+    {
+      "file": "src/model/vector-authoring.ts",
+      "sha256": "3a11a65829362183b40407adb5543dbc38dcf9560709578ee5d3f8dc19af697c"
+    },
+    {
+      "file": "src/model/vector-editing.ts",
+      "sha256": "5beb656467c33b73b6a0425bb003a78f2325127f6f4c4c2a7e3bc4b9b028512d"
+    },
+    {
+      "file": "src/model/vector.ts",
+      "sha256": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147"
+    },
+    {
+      "file": "src/model/line-style.ts",
+      "sha256": "87ae321c7ad2ae5125ca3ce3fd9f7c721e81e8a61aea93221f9e930f8d74e93b"
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "0581444169bd91244d6ab56dd2ad2850675fc54734f4b4b33ffbe8de8ec16a82"
+    },
+    {
+      "file": "src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+    },
+    {
+      "file": "src/model/document.ts",
+      "sha256": "b2bd73800782f5252c1042e94aba39dff48b8e39553b927cefd69a55b4a899fb"
+    },
+    {
+      "file": "src/model/types.ts",
+      "sha256": "0c8669d7778a150b2036b4b30125c85ac71d32836de5d240029d027e536a201e"
+    },
+    {
+      "file": "src/App.tsx",
+      "sha256": "8bd415064cfbe7a237473e0e8eb3e83cfc5a0eb3573a0939a0d2654b0a9fc092"
+    },
+    {
+      "file": "src/components/CanvasVectorTools.tsx",
+      "sha256": "1236da274e59e765ff247cdb0e5a3131f3eeb78c9c34ac55dbe1c2ed7d547225"
+    },
+    {
+      "file": "src/components/Inspector.tsx",
+      "sha256": "0a96d36e485ca5e3a47b09326c68f9e4709f7e8ecf1400178588fe90ba0b4d88"
+    },
+    {
+      "file": "src/components/WidgetView.tsx",
+      "sha256": "1d20650b830c03fb9dc0dda93553ef9054ee05fa94306030a1e181a269b52544"
+    }
+  ],
+  "geometryEvidenceSourceHashes": [
+    {
+      "path": "research/native-pills-evidence-probe.mjs",
+      "sha256": "7d86350e5294e62c3039673811a0bba070789db356b45a2833c8428594a51e99"
+    },
+    {
+      "path": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128"
+    },
+    {
+      "path": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    },
+    {
+      "path": "research/native-corners-path-builder-cil.json",
+      "sha256": "0db6f6e944a0592df099ec77268f015d146231afdf38b0b2c3827e71d180ae4e"
+    },
+    {
+      "path": "research/native-pills-coalesce-cil.json",
+      "sha256": "55b51963667039afccf7061f38d469fbc44b691c804cf3623d5032aa8ac6a53d"
+    },
+    {
+      "path": "research/native-pills-merge-cil.json",
+      "sha256": "f51849ecfd4acd1fd014b83ad744e697f90db95940db1b55b963f6af821d8207"
+    },
+    {
+      "path": "research/native-pills-point-cil.json",
+      "sha256": "b112497199854407539ea73f52a6ee58a3f5c92ad9d2a97704cd24e1b862d774"
+    },
+    {
+      "path": "research/native-pills-handle-cil.json",
+      "sha256": "19d56a304addf4e34b0ed754a614554b5b50e2bb1c0da27eb9a40da3485459a2"
+    },
+    {
+      "path": "research/native-pills-point-equality-cil.json",
+      "sha256": "7d2e72f1db9e418e8b8ce77eafb3e9bbbb05e752fb3851537fc4d73dbb388442"
+    },
+    {
+      "path": "research/native-pills-point-comparison-cil.json",
+      "sha256": "0e959ed748d96b913aeb8e5171dd722f0191405ffe23b0fc29a2d4c3973f29c9"
+    },
+    {
+      "path": "research/native-pills-point-axes-cil.json",
+      "sha256": "41f5f1ddd5180cbc560be402638520db5b8aea5ecb4dd92d73e8573273908911"
+    },
+    {
+      "path": "research/native-pills-point-constructor-cil.json",
+      "sha256": "28fae7b77e20d1eabeb5b0f62cf7f45d97666c816b71e44a25344a32161d1caa"
+    },
+    {
+      "path": "research/native-pills-point-setters-cil.json",
+      "sha256": "0096143584e44323a49fcb6512f10b3093072aefff8e8fff5e246be940089fd4"
+    },
+    {
+      "path": "research/native-pills-scalar-comparison-cil.json",
+      "sha256": "7e5835dd34d2bda492fb4ee5c64beedce1cce9bf1d96ee315c966d59f2e047a8"
+    }
+  ],
+  "files": [
+    {
+      "file": "research/native-point-editing-final-review-probe.json",
+      "sha256": "d214049a492efc75f21dd4fd23a625e94660c3102cafeb5f33ab4f681abf8f20"
+    },
+    {
+      "file": "research/native-point-editing-final-review-probe.mjs",
+      "sha256": "37179f6d2667c86add0f42f8f15ea932bbb0c921c4a185c0814e3183750078c0"
+    },
+    {
+      "file": "research/native-point-editing-final-review.md",
+      "sha256": "a4bc34b14c2cf6e4067ef72e75e55d621a84c855c001f71f90dde23adf84c3dd"
+    },
+    {
+      "file": "research/native-point-editing-final-review-freeze.mjs",
+      "sha256": "9a4fe8b75eb21822ecc457150c076b21e73d2e7c2245f1fc54def30f690c6964"
+    },
+    {
+      "file": "research/native-point-editing-evidence.md",
+      "sha256": "50d139304a523d2f56e373d67e139d80e9c6af34a8cd2bcba5cd4b2a705932e9"
+    },
+    {
+      "file": "research/native-point-editing-evidence.json",
+      "sha256": "7b2847d851d8b6a41d2df3a9f36bf30f3b8a606db5a1975332c876da47369166"
+    },
+    {
+      "file": "research/native-point-editing-format-evidence.md",
+      "sha256": "656601a06cf35c0105935be972ab41c26320e15a79a7c79ed58e15ed253e4f0e"
+    },
+    {
+      "file": "research/native-point-editing-format-evidence.json",
+      "sha256": "7e92e6c4b037b645804ee3b0e241e7a4867fd676e20be8a3107aca7f1e292bec"
+    },
+    {
+      "file": "research/native-point-editing-evidence-geometry.json",
+      "sha256": "792e0b4bddf4151a6f4f6b4453f7fb38788b15291b9d4628b8b50aa8b2003f7f"
+    },
+    {
+      "file": "research/native-point-editing-format-custom-rectangles.rea.json",
+      "sha256": "e8e97b7fd1c628c8d236ba9dbea5288abbf00cc5e68152f24f8ca410f85e33c3"
+    },
+    {
+      "file": "research/native-point-editing-format-import.json",
+      "sha256": "fed290233108a3bb46dca0755c693eea56cfdb346fc0b2fd9edd2e55dce52dae"
+    },
+    {
+      "file": "research/native-pills-imported-widgets.json",
+      "sha256": "f615d633a59757226c7fa2d185cbfb1799ea032fa96038a39cc935f066ba5462"
+    }
+  ]
+}

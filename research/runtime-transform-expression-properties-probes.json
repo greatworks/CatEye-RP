@@ -1,0 +1,220 @@
+{
+  "capturedAt": "2026-10-20T05:24:30.322Z",
+  "target": "Axure RP 11.0.0.4150",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6",
+      "bytes": 29187
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\sto.js",
+      "sha256": "c1ff17b0ed8a2e3a34cba550c7f4e9447827d131e38542d397e686c0e0b6b9b6",
+      "bytes": 9159
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\variables.js",
+      "sha256": "91c71787560b88e597b6baf934bd68075597901afccf4787b6aa9d8c43453188",
+      "bytes": 6971
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1",
+      "bytes": 41976
+    }
+  ],
+  "ranges": [
+    {
+      "file": "doc.js",
+      "from": 349,
+      "through": 543,
+      "sha256": "12c3135df0e00a47b68f5b79386ae5e4d93a8837fceb6c11170df648216616d9"
+    }
+  ],
+  "script": {
+    "path": "research/runtime-transform-expression-properties-probe.mjs",
+    "sha256": "c8b5d4003ce8a070df15eb49850444d65a602e360ceb7bf566892b47f749a2d0"
+  },
+  "summary": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "widget-info construction does not read geometry; first geometry access caches all four axes",
+      "passed": true,
+      "actual": {
+        "before": 0,
+        "first": 40,
+        "rest": [
+          50,
+          300,
+          160,
+          340,
+          210
+        ],
+        "reads": [
+          [
+            "bounds",
+            "#track",
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "name": "text and angle have independent lazy caches",
+      "passed": true,
+      "actual": {
+        "first": [
+          "second",
+          70
+        ],
+        "last": [
+          "second",
+          70
+        ],
+        "reads": [
+          [
+            "bounds",
+            "#track",
+            true,
+            true
+          ],
+          [
+            "text"
+          ],
+          [
+            "rotation"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "widthchange is not cached but the width used by it is cached",
+      "passed": true,
+      "actual": {
+        "a": 10,
+        "b": 20,
+        "reads": [
+          [
+            "bounds",
+            "#track",
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "name": "StringLiteral alias shares one lazy geometry object within its substitutions",
+      "passed": true,
+      "actual": {
+        "value": "10/200",
+        "reads": [
+          [
+            "bounds",
+            "#track",
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "name": "each new StringLiteral reconstructs its alias geometry cache",
+      "passed": true,
+      "actual": {
+        "a": "200",
+        "b": "350",
+        "reads": [
+          [
+            "bounds",
+            "#track",
+            true,
+            true
+          ],
+          [
+            "bounds",
+            "#track",
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "name": "This is fetched as a fresh widget-info for each STO property access",
+      "passed": true,
+      "actual": {
+        "value": "10/200",
+        "reads": [
+          [
+            "bounds",
+            "#track",
+            true,
+            true
+          ],
+          [
+            "bounds",
+            "#track",
+            true,
+            true
+          ]
+        ]
+      }
+    },
+    {
+      "name": "original numeric toFixed 33.333333333333336/0",
+      "passed": true,
+      "actual": "33"
+    },
+    {
+      "name": "original numeric toFixed 33.333333333333336/2",
+      "passed": true,
+      "actual": "33.33"
+    },
+    {
+      "name": "original numeric toFixed 12.25/undefined",
+      "passed": true,
+      "actual": "12"
+    },
+    {
+      "name": "original numeric toFixed 12.25/1.9",
+      "passed": true,
+      "actual": "12.3"
+    },
+    {
+      "name": "original numeric toFixed NaN/0",
+      "passed": true,
+      "actual": "NaN"
+    },
+    {
+      "name": "original numeric toFixed Infinity/0",
+      "passed": true,
+      "actual": "Infinity"
+    },
+    {
+      "name": "original toFixed rejects a string receiver without compiler coercion",
+      "passed": true,
+      "actual": "TypeError"
+    },
+    {
+      "name": "original toFixed accepts a global receiver with explicit desired float",
+      "passed": true,
+      "actual": "3.00"
+    },
+    {
+      "name": "out of range original toFixed is retained as the original StringLiteral marker",
+      "passed": true,
+      "actual": "[[(1).toFixed(101)]]"
+    }
+  ],
+  "substitutions": [
+    "Original doc.js widget-info consumer is executed, but DOM geometry/text/rotation reads are explicit mutable providers.",
+    "STO carriers and desiredType are supplied explicitly; native text-to-STO compiler coercion inference is not executed.",
+    "No GUI, real pointer, or original DLL execution."
+  ]
+}

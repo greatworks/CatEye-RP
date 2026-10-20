@@ -1,0 +1,435 @@
+{
+  "verifiedAt": "2026-10-13T12:49:19.256Z",
+  "scope": "Canvas Pen and direct vector point editing",
+  "officialBehaviorEvidence": "research/rp-vector-editing-evidence.md",
+  "implementation": "research/rp-vector-editing-implementation.md",
+  "originalAxureGuiCompared": false,
+  "tests": {
+    "unit": 763,
+    "unitFiles": 36,
+    "nodeParser": 100,
+    "productionBrowser": 94,
+    "packagedSmokeScripts": 5
+  },
+  "logs": [
+    ".build/vector-editing-unit.log",
+    ".build/vector-editing-parser.log",
+    ".build/vector-editing-e2e.log"
+  ],
+  "sourceFiles": {
+    "docs/windows-readme.txt": "1fd626e8b964716caf930802414d62b67c3ed727291ca8bd5824279dd58ebca8",
+    "research/rp-vector-editing-evidence.json": "f3641ef209399649df6eb8c5b19af2497a2d253d5b0bd3ccaa1cdf66b0da92c5",
+    "research/rp-vector-editing-evidence.md": "43351a7460a82032e87032770974a5e0d51f25b89766334e3f4e46c1b24586b4",
+    "research/rp-vector-editing-implementation.md": "100dd51689479fa6969160593af299ca1e0cce74a3e4a44ab99c1bd6f2e79101",
+    "scripts/smoke-vector-editing.mjs": "341f8cd6c9ddc9573406060882d42dd94739f08598b4bcd3d118de6fec764a63",
+    "src/App.tsx": "714a47e30caa57968be957f09bf2a11e47eb0dd40d769abffba1164f37f30bef",
+    "src/components/AdaptiveControls.css": "d7e088f73bcafade5eb852c4f0d281499590851e91704594b7f0bbe6b88c57d1",
+    "src/components/AdaptiveControls.tsx": "43f9908f33e469a95710aa4ee0ad8be177bac36b6fe37e469195ce08ec7c0555",
+    "src/components/CanvasVectorTools.tsx": "22bce24a12fd63cea6edead6dc1f87cce3fa0c33106b003034defe0bcf8a6734",
+    "src/components/CaseMenus.css": "7e71790fb5d78c351613aa1594df47cbbd62a88c65f8d447b6bbff5f51bfd4ec",
+    "src/components/CaseMenus.tsx": "26d6d42bfe07ffb6ee6c0ad8201a2a992f29957b5da10e0b2506b23700ed2007",
+    "src/components/Dialogs.css": "ea8702cfe1a88da231a1e9ef0dff3b4daead9b79f7541febafff15c75ffe1d0d",
+    "src/components/Dialogs.tsx": "1f101eeb07ebace7967207ec5080b33c187d044f2f47246dcf48cc83fa45d120",
+    "src/components/Inspector.css": "ff920c916e2927911a2173df52534d9708eb05c94f5af0d9d8b473016172a201",
+    "src/components/Inspector.tsx": "465eea19cb814107fe02bd1a2ecadc2bedd337de36dea8bc85abed779fab9336",
+    "src/components/Preview.tsx": "2dbf3f6a40fb0609205db0df4c7ad3009d7849a4c2610d021e7bf3fd0643332a",
+    "src/components/PrototypeSettings.css": "bfdd7b4e483153d50f3e94de2822d79b1de2f25a5eabd95a5ba16dc79d0a9eef",
+    "src/components/PrototypeSettings.tsx": "b01ac181f7fd6b1216d78242ffaf697494aaa60dccc81e2fb77e50e4f927a3fd",
+    "src/components/RpImport.css": "baebb98190c2638bbe163b5efd6ffa276a7ca9db161dce8e45d977461c4577fe",
+    "src/components/RpImportReport.tsx": "36420d60a51c3d8e8de060762a9dbfe5d606ee43bffa1e1fd92dcc6e7b4ace64",
+    "src/components/WidgetView.tsx": "19c12177194579d27180da30f585c7d122f65e9d2be47984e62d1e884a525a17",
+    "src/desktop.d.ts": "6b717ac9cc7f0928c393c1efe4f5ea9a4f5253fbe2a37a633a7a3e163159a2d1",
+    "src/main.tsx": "46bd1c713fc27aba209f22dd4e6a55302ef4694e63b68ed19b438d9b4f0970c6",
+    "src/model/adaptive.ts": "9f8ae2b6da141eb1dea655486a7bf39ccedd86612c73b0792511f8f3c5ef6735",
+    "src/model/components.ts": "83a2e27722db6454be22fa8b6c5a004ab41695fd3e8a8988a449b51a19958ae7",
+    "src/model/document.ts": "d2f1b8bb3b9821e803c7a3ac1551080fc5601b106352d7eb5fbdd6071733d3ca",
+    "src/model/import-rp.ts": "31645a5a60ad7e6af729f75db5d09293e9f5baeca92b211f07be478e4e8a1614",
+    "src/model/types.ts": "67598b96f0fc86d64f00bf9768c3a588e111d622904757ec75a59608677970f5",
+    "src/model/vector-editing.ts": "5beb656467c33b73b6a0425bb003a78f2325127f6f4c4c2a7e3bc4b9b028512d",
+    "src/model/vector.ts": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147",
+    "src/runtime/browser-box.ts": "62819a6b079d850e915f45536d05cacdcd271ab13d7312ce53f60aba31ae6e7b",
+    "src/runtime/engine.ts": "a59ebf1bf3d6122d1f4dcc3a604eab41e9b0148cb68401eef556ca07e1ceaf38",
+    "src/runtime/export-runtime.ts": "3597d85eb750fbeda4d25176df2a9ac8c9a63137c2e2eb3b40901f61cc487d7a",
+    "src/runtime/export.ts": "9e251ceeeb485f14299f66cfd6bc9855af2cbab0713eeb7f14c40df90f4a47c8",
+    "src/runtime/expressions.ts": "a8dbd83ccf3516f1e1708aa11d30bc0f81c946f1f5814868bb33e3adac239f1d",
+    "src/style.css": "74e5a606eaeaeac149e047c1fc3a514166087fcf94fe88cc16d1f7ab69bd8fb4",
+    "tests/e2e/vector-editing.spec.ts": "80dfea5836789319d815703b921fb8626791146e4fe636dc35d52b7e5ede466a",
+    "tests/vector-editing-review.test.ts": "020c0495ac61eb3f3694caf8b368aed308fb4a5765fd628e6bbc313e18c9bed4",
+    "tests/vector-editing.test.ts": "097a58d8eedf238316c92480ac052754d6b7e4f81502404a453f63a88abf206c",
+    "tests/vector.test.ts": "1e15d65bb8772de80ad0435900f1f0cb19d629fdc8e69c9f2fda4248d6a248dc"
+  },
+  "packagedAppAsarSha256": "6389f5277c3a8bff7250bef3950c9f19716aca78e8653498d0145598356923c7",
+  "packagedFileHashes": {
+    "dist/assets/index-BS3sSO0Y.css": "1294335cd2876deea2c1fd3d372fc497e861cf13d76bb500eb776163e6df0fa0",
+    "dist/assets/index-DrBwWHo3.js": "1453ed9ced4f3ddb680257853c33c9317cc35c0cdaae334c506f3e5c26a76362",
+    "dist/index.html": "fc9e1790877c7285c1b56448715eccffa90129e3d0d25520947b0d8935beffa3",
+    "desktop/import-rp-worker.cjs": "1127acbe1e641daf9950f7c8c2a9183e1e850be855c8f5a1e3f7023892007526",
+    "desktop/main.cjs": "4abe362bbf2a7973ca8caf1a42037860b2cdf1d6440b0c15618196174156b331",
+    "desktop/preload.cjs": "56eddf19cf0304f0e530360ff7d8edc2798100c9004fedfa23dc91ab1ec5801b",
+    "research/scripts/read-rp-container.mjs": "e9ec939defe3e926740096fa294510f27e026748e9e3effdfa8a2e27cdc461cc",
+    "research/scripts/read-rp-objects.mjs": "6e94582d21efacec6e75cfcf41953cc02913fa68031056637387df34f6cb59b9",
+    "research/scripts/read-rp-interactions.mjs": "5bd4e98e6504722610b25744463adda7c5969cb2661cecd60e18b7e7724c12cc",
+    "research/scripts/read-rp-semantics.mjs": "ad954201389ec9f1cf92549d9846e984980f056610661475bf1fa5f14fdb8b7f",
+    "package.json": "290821da9e4b2c9a3d3b3103c5d7469552457611b8d8edd92a3f2190041f30f9"
+  },
+  "archive": {
+    "verifiedAt": "2026-10-13T20:49:15.8066506+08:00",
+    "archive": "D:\\WSCodex\\REA\\release\\REA-Prototype-Studio-0.1.0-win64.zip",
+    "bytes": 163037692,
+    "sha256": "71c6d63a56130ed47231972b0738c89790031012850135fc0e67927be22cb87b",
+    "archiveEntries": 74,
+    "appAsarSha256": "6389f5277c3a8bff7250bef3950c9f19716aca78e8653498d0145598356923c7",
+    "executableSha256": "1331b374f4a3023123257087df56e2bca147ed98d17bf65b44a89414acf9bab7",
+    "archivedAsarMatchesTestedBundle": true,
+    "archivedExecutableMatchesTestedBundle": true
+  },
+  "desktop": {
+    "basic": {
+      "ok": true,
+      "title": "REA Prototype Studio",
+      "widgets": 1,
+      "desktopApi": "function",
+      "nodeExposed": false,
+      "nativeRename": true,
+      "nativeSaveOpen": true,
+      "nativeExport": true,
+      "conditionalCasePersistenceAndPreview": true,
+      "caseMenuPersistenceAndSelection": true
+    },
+    "vector": {
+      "ok": true,
+      "startedAt": "2026-10-13T12:45:50.548Z",
+      "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+      "userData": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-vector-editing-Lp1n6r",
+      "errors": [],
+      "network": [],
+      "screenshots": [
+        {
+          "file": "D:\\WSCodex\\REA\\artifacts\\vector-editing-desktop.png",
+          "sha256": "ecc0ed5e457d6593beda643c51852481eb1b722544d3148e114c8990aa796f03"
+        },
+        {
+          "file": "D:\\WSCodex\\REA\\artifacts\\vector-editing-preview.png",
+          "sha256": "9a44d11ef037a9850e9c2272f0115108571f6db22c3b32c774b8a43040f3a594"
+        }
+      ],
+      "pickerResponsesMocked": true,
+      "originalAxureGuiCompared": false,
+      "appAsarSha256": "6389f5277c3a8bff7250bef3950c9f19716aca78e8653498d0145598356923c7",
+      "penDrawing": true,
+      "canvasPointEditing": true,
+      "atomicUndoRedo": true,
+      "nativeSaveOpen": true,
+      "previewAndOffline": true,
+      "projectSha256": "663df2eb3799a196b270bb56f82703c8480a9a33e0ce95bf84031952bb70e44c",
+      "htmlSha256": "06e23577571a8e681fa98dd71282c39a3cd1c57d4f25a835b4b45189c8960566",
+      "expectedD": "M 20 50 C 20 50 120 0 160 40 C 200 80 160 200 160 200 Z",
+      "finishedAt": "2026-10-13T12:46:33.772Z"
+    },
+    "rp": {
+      "ok": true,
+      "sourceUnchanged": true,
+      "requiredFields": {
+        "pages": 2,
+        "widgets": 7,
+        "skipped": 0,
+        "events": 3,
+        "cases": 4,
+        "actions": 4,
+        "variables": 1,
+        "nativeSaveReopen": true,
+        "previewAndOfflineBehaviorVerified": true,
+        "nativeComparisonBoundaryVerified": true,
+        "importedTextClippingChecked": true
+      },
+      "tabMenu": {
+        "pages": 1,
+        "widgets": 3,
+        "skipped": 0,
+        "stylesVerified": true,
+        "events": 2,
+        "eventsSkipped": 0,
+        "panelStates": 2,
+        "nestedWidgets": 2,
+        "nativeSaveReopen": true,
+        "previewAndOfflineBehaviorVerified": true
+      },
+      "unexpectedNetworkRequests": 0,
+      "originalAxureVisualComparison": false,
+      "emptyRecoveryFixture": "independently encoded SYNTHETIC-empty-page.rp",
+      "emptyRecoveryPreservesCurrentDocument": true
+    },
+    "images": {
+      "ok": true,
+      "results": [
+        {
+          "file": "Quick Win.rp",
+          "widgets": 33,
+          "skipped": 9,
+          "images": 2,
+          "originalBytesPreserved": true,
+          "nativeSaveOpen": true,
+          "editorPreviewAndOfflineDecoded": true
+        },
+        {
+          "file": "UX Prototyping.rp",
+          "widgets": 126,
+          "skipped": 27,
+          "images": 2,
+          "originalBytesPreserved": true,
+          "nativeSaveOpen": true,
+          "editorPreviewAndOfflineDecoded": true
+        }
+      ],
+      "unexpectedNetworkRequests": 0,
+      "originalAxureVisualComparison": false
+    },
+    "shapes": {
+      "ok": true,
+      "timestamp": "2026-10-13T12:46:17.896Z",
+      "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+      "userData": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-CmLtSc",
+      "bundleHash": "6389f5277c3a8bff7250bef3950c9f19716aca78e8653498d0145598356923c7",
+      "bundleHashKind": "resources/app.asar SHA-256",
+      "sourceHashes": {
+        "Default.rplib": {
+          "before": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50",
+          "after": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+        },
+        "Flow.rplib": {
+          "before": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451",
+          "after": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+        },
+        "Prototyping Basics.rp": {
+          "before": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7",
+          "after": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+        }
+      },
+      "results": [
+        {
+          "file": "Default.rplib",
+          "reportCounts": {
+            "pages": 40,
+            "top": 26,
+            "skipped": 14,
+            "nested": 0
+          },
+          "savedFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-CmLtSc\\Default.rplib.rea.json",
+          "savedSha256": "5822f9b068aa08e8f5957f825472955b8e8c7dc89bc09ab3f1e7ddbbe2bce68f",
+          "htmlFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-CmLtSc\\Default.rplib.html",
+          "htmlSha256": "cab6031c4e7884ac50cd0f43aa5f2ac54631708de9f0dc6b905bc88243acf02a",
+          "nativeSaveReopen": true,
+          "designUnchangedAfterPreviewAndExport": true,
+          "preview": {
+            "checkedEllipses": [
+              {
+                "name": "Circle marker",
+                "width": 30,
+                "height": 30,
+                "left": "100px",
+                "top": "100px"
+              },
+              {
+                "name": "Ellipse",
+                "width": 170,
+                "height": 170,
+                "left": "100px",
+                "top": "100px"
+              }
+            ],
+            "checkedNativePaths": [
+              {
+                "name": "Drop marker",
+                "storedCommands": 6,
+                "subpaths": 1,
+                "closed": 1
+              },
+              {
+                "name": "Placeholder",
+                "storedCommands": 10,
+                "subpaths": 3,
+                "closed": 1
+              },
+              {
+                "name": "Horizontal line",
+                "storedCommands": 2,
+                "subpaths": 1,
+                "closed": 0
+              }
+            ],
+            "textareaUnicodeNewlineAndLiteralPreserved": true
+          },
+          "offline": {
+            "checkedEllipses": [
+              {
+                "name": "Circle marker",
+                "width": 30,
+                "height": 30,
+                "left": "100px",
+                "top": "100px"
+              },
+              {
+                "name": "Ellipse",
+                "width": 170,
+                "height": 170,
+                "left": "100px",
+                "top": "100px"
+              }
+            ],
+            "checkedNativePaths": [
+              {
+                "name": "Drop marker",
+                "storedCommands": 6,
+                "subpaths": 1,
+                "closed": 1
+              },
+              {
+                "name": "Placeholder",
+                "storedCommands": 10,
+                "subpaths": 3,
+                "closed": 1
+              },
+              {
+                "name": "Horizontal line",
+                "storedCommands": 2,
+                "subpaths": 1,
+                "closed": 0
+              }
+            ],
+            "textareaUnicodeNewlineAndLiteralPreserved": true
+          }
+        },
+        {
+          "file": "Flow.rplib",
+          "reportCounts": {
+            "pages": 37,
+            "top": 21,
+            "skipped": 16,
+            "nested": 0
+          },
+          "savedFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-CmLtSc\\Flow.rplib.rea.json",
+          "savedSha256": "aed153f299a81569ada971ece9dd49a2289abaac0a7559d8e0b107b2566d549d",
+          "htmlFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-CmLtSc\\Flow.rplib.html",
+          "htmlSha256": "b8ee838ab7a7689dc472afd2beff12770991735c1552fed324a2ebc6d967dfdb",
+          "nativeSaveReopen": true,
+          "designUnchangedAfterPreviewAndExport": true,
+          "preview": {
+            "checkedNativePaths": [
+              {
+                "name": "Database",
+                "storedCommands": 11,
+                "subpaths": 2,
+                "closed": 1
+              },
+              {
+                "name": "Actor",
+                "storedCommands": 14,
+                "subpaths": 5,
+                "closed": 1
+              },
+              {
+                "name": "Stacked file",
+                "storedCommands": 22,
+                "subpaths": 4,
+                "closed": 1
+              }
+            ]
+          },
+          "offline": {
+            "checkedNativePaths": [
+              {
+                "name": "Database",
+                "storedCommands": 11,
+                "subpaths": 2,
+                "closed": 1
+              },
+              {
+                "name": "Actor",
+                "storedCommands": 14,
+                "subpaths": 5,
+                "closed": 1
+              },
+              {
+                "name": "Stacked file",
+                "storedCommands": 22,
+                "subpaths": 4,
+                "closed": 1
+              }
+            ]
+          }
+        },
+        {
+          "file": "Prototyping Basics.rp",
+          "reportCounts": {
+            "pages": 1,
+            "top": 172,
+            "skipped": 27,
+            "nested": 52
+          },
+          "savedFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-CmLtSc\\Prototyping Basics.rp.rea.json",
+          "savedSha256": "5557e967632e5371834e3f6fab9f3885786ee4c186cc386d8a0f4cab74a78ed5",
+          "htmlFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-CmLtSc\\Prototyping Basics.rp.html",
+          "htmlSha256": "6858123060a98e38e4ed7f2397e9e385d282ec3112bd955ab093345f94d9a937",
+          "nativeSaveReopen": true,
+          "designUnchangedAfterPreviewAndExport": true,
+          "preview": {
+            "activeEllipseDomCount": 46,
+            "activeNestedEllipseDomCount": 3,
+            "totalSavedEllipseCount": 52,
+            "nestedSavedEllipseCount": 9,
+            "highYGeometryVisibilityNotClaimed": true
+          },
+          "offline": {
+            "activeEllipseDomCount": 46,
+            "activeNestedEllipseDomCount": 3,
+            "totalSavedEllipseCount": 52,
+            "nestedSavedEllipseCount": 9,
+            "highYGeometryVisibilityNotClaimed": true
+          }
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "D:\\WSCodex\\REA\\artifacts\\rp-ellipse-preview.png",
+          "sha256": "64b85c2fbaaae90a24d054e7568c36f30e21077b2fc2a915225d1ebce95bbef7"
+        },
+        {
+          "file": "D:\\WSCodex\\REA\\artifacts\\rp-textarea-preview.png",
+          "sha256": "133a5c3cd9211b9fcf7472ab0d4a51015a918c719f88a90616b0025280feecd7"
+        },
+        {
+          "file": "D:\\WSCodex\\REA\\artifacts\\rp-compound-path-preview.png",
+          "sha256": "7e3100fe96d23fe127b18b08066e28b81de26a5e1d46f6357795d5ec95597367"
+        }
+      ],
+      "network": [],
+      "errors": [],
+      "pickerSelectionMocked": true,
+      "originalAxureGuiComparison": false,
+      "limitations": [
+        "Only OS picker responses are mocked; file bytes, Worker, parser, IPC, model conversion and export are real.",
+        "Native picker currently filters .rp; this test supplies Default.rplib directly and does not assert chooser extension availability.",
+        "Stored normalized vector geometry is rendered as SVG. Native stroke displacement, caps, arrowheads, join choices and pixel snapping are not reproduced.",
+        "Prototyping Basics includes high Y coordinates beyond the recovered default page size; DOM presence is checked without claiming all objects are visible at once."
+      ],
+      "finishedAt": "2026-10-13T12:47:42.518Z"
+    }
+  },
+  "demos": [
+    {
+      "file": "artifacts/pen-demo.rea.json",
+      "sha256": "663df2eb3799a196b270bb56f82703c8480a9a33e0ce95bf84031952bb70e44c"
+    },
+    {
+      "file": "artifacts/pen-demo.html",
+      "sha256": "06e23577571a8e681fa98dd71282c39a3cd1c57d4f25a835b4b45189c8960566"
+    }
+  ],
+  "limitations": [
+    "Original Axure GUI capture remains blocked; no original GUI or final raster comparison.",
+    "Cubic split uses a bounded nearest-parameter search and De Casteljau; original insertion/deletion and handle-coupling algorithms are unknown.",
+    "Existing CSS-only box/ellipse widgets are not automatically converted. Direct point editing requires stored vectorPath.",
+    "Point moves retain widget bounds and move the path within/outside them. Native automatic bounds rebasing is unverified.",
+    "No Boolean path operations, SVG import, arcs, native .rp write-back or cloud collaboration."
+  ]
+}

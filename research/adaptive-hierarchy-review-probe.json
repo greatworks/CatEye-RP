@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-10-15T08:51:03.015Z",
+  "method": "Node built-in TypeScript stripping executes current product-model functions. All examples edit only shared notes before changing an ancestor. No product files are modified.",
+  "sources": [
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "29b0429ea6414b3f942446067c6f9b05f6b866979cd92c0ef1564c66f590f44c"
+    },
+    {
+      "path": "src/model/adaptive-selection.ts",
+      "sha256": "cd0085a3b91837e31118d04bcccbc8cd0e5a0466664177fb1b1af52806946980"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "b3d905526a836d9ce0d793d23ca3650995e7fd12c4f2cd51d2ff7fc39a0c5c57"
+    }
+  ],
+  "results": [
+    {
+      "property": "width",
+      "before": {
+        "width": 300
+      },
+      "afterSharedEdit": null,
+      "expectedAfterParentChange": 300,
+      "observedAfterParentChange": 400,
+      "preserved": false
+    },
+    {
+      "property": "color",
+      "before": {
+        "style": {
+          "color": "#ff0000"
+        }
+      },
+      "afterSharedEdit": null,
+      "expectedAfterParentChange": "#ff0000",
+      "observedAfterParentChange": "#0000ff",
+      "preserved": false
+    },
+    {
+      "property": "hidden",
+      "before": {
+        "hidden": true
+      },
+      "afterSharedEdit": null,
+      "expectedAfterParentChange": true,
+      "observedAfterParentChange": false,
+      "preserved": false
+    },
+    {
+      "property": "fill-reset",
+      "before": {
+        "style": {
+          "fill": "#ffffff"
+        }
+      },
+      "afterSharedEdit": null,
+      "expectedAfterParentChange": false,
+      "observedAfterParentChange": true,
+      "preserved": false
+    }
+  ]
+}

@@ -1,0 +1,424 @@
+{
+  "capturedAt": "2026-10-20T07:18:28.875Z",
+  "scope": "Independent read-only Layer runtime integration review; no production/test modifications and no full suite/browser runs.",
+  "summary": {
+    "finalIndependentCases": 50,
+    "passed": 50,
+    "failed": 0,
+    "rawImportEvents": 13,
+    "originalSourceCasesInPriorFrozenReports": 111,
+    "unresolvedConfirmedProductDefectsInReviewedScope": 0
+  },
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.js",
+      "sha256": "f5a2eaeef5c65135a580b6ed6fa3cc59ac0fc291ea2e0801070ae21e4a5d5330",
+      "bytes": 18687
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\move.js",
+      "sha256": "c823954b5ed5862d56176b8984837e8f26588540ee4768d4483d68a399b95644"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\math.js",
+      "sha256": "f56ab4a6c3f6e91aaba9bebf2e81485965fc82bca63af0c606593d580c1de883",
+      "bytes": 16141
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53",
+      "bytes": 66834
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "bytes": 122627
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1",
+      "bytes": 41976
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\adaptive.js",
+      "sha256": "e141ea07bb973b6007f2ad7d7205516a041a801ec97e410467352c27af3b2928",
+      "bytes": 32653
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\init.temp.js",
+      "sha256": "0f6c77f52d3e1fcb5e3c8590b2d4be324af66832255a6d2385f7c01a5841a6bb"
+    }
+  ],
+  "implementation": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "5d8cb997dd29745add36a3270c40c7c743342a0621da1a001403544e8d651128",
+      "fallback": {
+        "path": "research/native-layers-runtime-final-export-runtime.ts.txt",
+        "sha256": "5d8cb997dd29745add36a3270c40c7c743342a0621da1a001403544e8d651128"
+      }
+    },
+    {
+      "path": "src/runtime/engine.ts",
+      "sha256": "9df0fab611180061800d823172452b62ca18bb8a0375666066af9ef6604fb040",
+      "fallback": {
+        "path": "research/native-layers-runtime-final-engine.ts.txt",
+        "sha256": "9df0fab611180061800d823172452b62ca18bb8a0375666066af9ef6604fb040"
+      }
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "d6c76c2ab5ad69595ef55f947143e47afbbbee0415845843efac009b5ae9f0b1",
+      "fallback": {
+        "path": "research/native-layers-runtime-final-expressions.ts.txt",
+        "sha256": "d6c76c2ab5ad69595ef55f947143e47afbbbee0415845843efac009b5ae9f0b1"
+      }
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "aedf707cf12d3c460271723a86c47a750c670de9b884bb9555131cb35dfa8c1b",
+      "fallback": {
+        "path": "research/native-layers-runtime-final-Preview.tsx.txt",
+        "sha256": "aedf707cf12d3c460271723a86c47a750c670de9b884bb9555131cb35dfa8c1b"
+      }
+    },
+    {
+      "path": "src/model/types.ts",
+      "sha256": "0515ee7828fe633c896b6c8503367a18f8a30ccb4b14ee9d5c37487ee6ffed36",
+      "fallback": {
+        "path": "research/native-layers-runtime-final-types.ts.txt",
+        "sha256": "0515ee7828fe633c896b6c8503367a18f8a30ccb4b14ee9d5c37487ee6ffed36"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "path": "research/native-layers-runtime-integration-final-resize.json",
+      "sha256": "b2a32eb4559d5807592892625c0b3d057639087c862c33765690f17bd39f2592",
+      "script": {
+        "path": "research/native-layers-runtime-integration-probe.mjs",
+        "sha256": "d9dbce2f000da9bf14a46b35a9a6fb3c49784f2a932c9746ce3a0eeb9432a974"
+      },
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0
+      }
+    },
+    {
+      "path": "research/native-layers-runtime-initial-state-review-green.json",
+      "sha256": "780640cf2754e6a2e19b4464b92fd12f9b696f9ab3310e4d3ab00edff666ea5e",
+      "script": {
+        "path": "research/native-layers-runtime-initial-state-review-probe.mjs",
+        "sha256": "5bcc4505f4be6fa798e3b99067d5fe84a24477108629c5023fb52a09ce4d66a0"
+      },
+      "summary": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0
+      }
+    },
+    {
+      "path": "research/native-layers-runtime-initial-state-integration-probes.json",
+      "sha256": "436c8ad6e49bfa65fc0e5ac32252d4d19cb9423ed8bec26ef345818b456ba0e2",
+      "script": {
+        "path": "D:\\WSCodex\\REA\\research\\native-layers-runtime-initial-state-integration-probe.mjs",
+        "sha256": "2044dc59cb486ae347153a37631272d496bec3ea0013334ed130ac218d66c798"
+      },
+      "summary": {
+        "total": 32,
+        "passed": 32,
+        "failed": 0
+      }
+    },
+    {
+      "path": "research/native-layers-runtime-final-consumers-probes.json",
+      "sha256": "42431a24b1d4296f26f5bc757bb5083169921b01968ea48dfc22c7bf0902489e",
+      "script": {
+        "path": "D:\\WSCodex\\REA\\research\\native-layers-runtime-final-consumers-probe.mjs",
+        "sha256": "18eeeb0eb0818950e613ac36dcbce796e8610ec12da6d3a888f26ce351df9800"
+      },
+      "summary": {
+        "total": 12,
+        "passed": 12,
+        "failed": 0
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "NLR-REVIEW-01",
+      "status": "fixed-and-independently-retested",
+      "problem": "Layer edge-anchor Resize used rotated AABB origin instead of offsetLocation(ignoreRotation).",
+      "red": {
+        "path": "research/native-layers-runtime-integration-first-probes.json",
+        "sha256": "403e7416bac857db6f98b04f28cf9cb444d2dc24261b4ce6d509936e95f08121"
+      },
+      "intermediateGreen": {
+        "path": "research/native-layers-runtime-integration-resize-correction-probes.json",
+        "sha256": "7b7ef2d040e194fc03c5a576763fb02c4cc1be71361cb33263c89afdfc01b2d4"
+      },
+      "finalGreen": {
+        "path": "research/native-layers-runtime-integration-final-resize.json",
+        "sha256": "b2a32eb4559d5807592892625c0b3d057639087c862c33765690f17bd39f2592"
+      },
+      "expected": {
+        "x": 160,
+        "y": 132,
+        "width": 60,
+        "height": 32
+      },
+      "originalProduct": {
+        "x": 165,
+        "y": 126,
+        "width": 60,
+        "height": 32
+      }
+    },
+    {
+      "id": "NLR-REVIEW-02",
+      "status": "fixed-and-independently-retested",
+      "problem": "Layer initial selected+disabled used authored disabled during pre-disable selected propagation; child remained unselected.",
+      "red": {
+        "path": "research/native-layers-runtime-initial-state-review-red.json",
+        "sha256": "ccc6fd67d2fdfe277ea79016db4bcbf06ca6c3bc8c541498bc5c6e61463e72f3"
+      },
+      "finalGreen": {
+        "path": "research/native-layers-runtime-initial-state-review-green.json",
+        "sha256": "780640cf2754e6a2e19b4464b92fd12f9b696f9ab3310e4d3ab00edff666ea5e"
+      },
+      "fullMatrixGreen": {
+        "path": "research/native-layers-runtime-initial-state-integration-probes.json",
+        "sha256": "436c8ad6e49bfa65fc0e5ac32252d4d19cb9423ed8bec26ef345818b456ba0e2"
+      },
+      "limit": "Error counterpart passed already. First harness report lacked page.interactions and is not a product defect."
+    },
+    {
+      "id": "NLR-INTEGRATION-03",
+      "status": "source-contract-reconciled-and-retested",
+      "problem": "Initial generated Layer bounds must survive Base; runtime filtered bounds are named/fit cache only.",
+      "finalGreen": {
+        "path": "research/native-layers-runtime-final-consumers-probes.json",
+        "sha256": "42431a24b1d4296f26f5bc757bb5083169921b01968ea48dfc22c7bf0902489e"
+      },
+      "source": "adaptive.js 48–159 and cache precedence probes"
+    },
+    {
+      "id": "NLR-INTEGRATION-04",
+      "status": "source-contract-reconciled-and-retested",
+      "problem": "Combined Resize+Rotate offsets are per-leaf, after Resize invocation, with different X/Y event target carriers.",
+      "finalGreen": {
+        "path": "research/native-layers-runtime-final-consumers-probes.json",
+        "sha256": "42431a24b1d4296f26f5bc757bb5083169921b01968ea48dfc22c7bf0902489e"
+      },
+      "limit": "64ms actual Node consumer dispatch and expression-read tracing; native orbit was an explicit sink, so no new full native orbit pixel claim."
+    },
+    {
+      "id": "NLR-WITHDRAWN-01",
+      "status": "withdrawn-before-product-fix",
+      "problem": "Direct MoveWidget(to=true) per-member delta was initially overgeneralized to actual Move To action.",
+      "correction": "Actual action computes root delta then calls moveBy. Uniform member delta is correct.",
+      "source": {
+        "path": "research/native-layers-runtime-move-action-probes.json",
+        "sha256": "de74a7c8c3a91801cb29c45d2892289abe763f731a94e1e4f8595267c29d3cf9"
+      }
+    }
+  ],
+  "historicalImplementation": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "d0225887038d5e675b07cf9250f73883aaa7877d4814ca89e57237da70c7262b",
+      "observedIn": "research/native-layers-runtime-integration-first-probes.json",
+      "status": "historical-hash-only",
+      "fallback": null
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "60f520c08c22fa5d7b787309d28128530e7bd086a7acd19752d020ecbacf2fb1",
+      "observedIn": "research/native-layers-runtime-integration-resize-correction-probes.json",
+      "status": "historical-hash-only",
+      "fallback": null
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "766a76bbbe9d2eb493f770180e1eb9866fe81957e431b4c50da9565fd6585ac1",
+      "observedIn": "research/native-layers-runtime-initial-state-review-red.json",
+      "status": "historical-hash-only",
+      "fallback": null
+    }
+  ],
+  "historicalScriptFallbacks": [
+    {
+      "reportedPath": "research/native-layers-runtime-initial-state-review-probe.mjs",
+      "sha256": "b9927fbedbee3ba5a10eebbf78bf2ec46b27c6cce9931b3dc3c3e1e92733bf09",
+      "observedIn": {
+        "path": "research/native-layers-runtime-initial-state-review-first.json",
+        "sha256": "d9248fe0806ee4b39fb2ab8cdf746f07c3ab7c4c054ff14d64a81e25e0882c79"
+      },
+      "fallback": {
+        "path": "research/native-layers-runtime-initial-state-review-first-probe.mjs",
+        "sha256": "b9927fbedbee3ba5a10eebbf78bf2ec46b27c6cce9931b3dc3c3e1e92733bf09"
+      }
+    },
+    {
+      "reportedPath": "research/native-layers-runtime-initial-bounds-probe.mjs",
+      "sha256": "f7962c85c26265c03849e5926ddd300c8ea76ee1335e9ce7184f0ac5a0de330f",
+      "observedIn": {
+        "path": "research/native-layers-runtime-initial-bounds-first-probes.json",
+        "sha256": "337fa66c8021b9fb5765428c750cdb5901f29665c1e262f00582c5ea4715a623"
+      },
+      "fallback": {
+        "path": "research/native-layers-runtime-initial-bounds-first-probe.mjs",
+        "sha256": "f7962c85c26265c03849e5926ddd300c8ea76ee1335e9ce7184f0ac5a0de330f"
+      }
+    },
+    {
+      "reportedPath": "research/native-layers-runtime-move-action-probe.mjs",
+      "sha256": "42487fea720bc77d58fda47e53615d60f3dca26c222b30d92fa17ec365d93be8",
+      "observedIn": {
+        "path": "research/native-layers-runtime-move-action-first-probes.json",
+        "sha256": "e0d2247cc5336059fc42d2f78f84dcf6589c32933a46728998284f8e72e1850c"
+      },
+      "fallback": {
+        "path": "research/native-layers-runtime-move-action-first-probe.mjs",
+        "sha256": "42487fea720bc77d58fda47e53615d60f3dca26c222b30d92fa17ec365d93be8"
+      }
+    }
+  ],
+  "sourceSearch": {
+    "path": "research/native-layers-runtime-source-snapshot-search.json",
+    "sha256": "39bca601b4944421228b00766a1a663c1e25d9fd319d6412ea6fce74b61ac652"
+  },
+  "importReview": {
+    "path": "research/native-layers-runtime-import-events-review.json",
+    "sha256": "b5bf5029dbf4dd18b19a376d1095667091248881336ee7379b724013dad8371d"
+  },
+  "evidence": [
+    {
+      "path": "research/native-layers-runtime-manifest.json",
+      "sha256": "200ef8293b83121fb06357d4d9d74e664088987293db8c303bda8e095d6db77a"
+    },
+    {
+      "path": "research/native-layers-runtime-supplement-manifest.json",
+      "sha256": "511e53e23d2fc392e82150b09d6892d2a5733e183ead88262d9f347bed0a4482"
+    },
+    {
+      "path": "research/native-layers-runtime-evidence.md",
+      "sha256": "6c0315526111512cdcb8e98bbcf6f4197d9f869b5d3f01bebb70f0c86b4722f2"
+    },
+    {
+      "path": "research/native-layers-runtime-supplement-evidence.md",
+      "sha256": "9a2b2cd66b397c9b6711abab413e058fb75052bfdd1f7c27f7abcabdbbf6d1c1"
+    },
+    {
+      "path": "research/native-layers-runtime-supplement-evidence.json",
+      "sha256": "0f7b663a3fc3e585965a65733d4ea54856e7ffb53031f6fc65047b5d5b64a900"
+    },
+    {
+      "path": "research/native-layers-runtime-import-events-review.json",
+      "sha256": "b5bf5029dbf4dd18b19a376d1095667091248881336ee7379b724013dad8371d"
+    },
+    {
+      "path": "research/native-layers-runtime-import-events-review.mjs",
+      "sha256": "7387f7dc187698516bf314d97c768ab0f945f2aae5affda00c9a66d96e2198da"
+    },
+    {
+      "path": "research/native-layers-runtime-source-snapshot-search.json",
+      "sha256": "39bca601b4944421228b00766a1a663c1e25d9fd319d6412ea6fce74b61ac652"
+    },
+    {
+      "path": "research/native-layers-runtime-integration-first-probes.json",
+      "sha256": "403e7416bac857db6f98b04f28cf9cb444d2dc24261b4ce6d509936e95f08121"
+    },
+    {
+      "path": "research/native-layers-runtime-integration-resize-correction-probes.json",
+      "sha256": "7b7ef2d040e194fc03c5a576763fb02c4cc1be71361cb33263c89afdfc01b2d4"
+    },
+    {
+      "path": "research/native-layers-runtime-initial-state-review-red.json",
+      "sha256": "ccc6fd67d2fdfe277ea79016db4bcbf06ca6c3bc8c541498bc5c6e61463e72f3"
+    },
+    {
+      "path": "research/native-layers-runtime-initial-state-review-first.json",
+      "sha256": "d9248fe0806ee4b39fb2ab8cdf746f07c3ab7c4c054ff14d64a81e25e0882c79"
+    },
+    {
+      "path": "research/native-layers-runtime-initial-state-review-first-probe.mjs",
+      "sha256": "b9927fbedbee3ba5a10eebbf78bf2ec46b27c6cce9931b3dc3c3e1e92733bf09"
+    },
+    {
+      "path": "research/native-layers-runtime-initial-bounds-first-probes.json",
+      "sha256": "337fa66c8021b9fb5765428c750cdb5901f29665c1e262f00582c5ea4715a623"
+    },
+    {
+      "path": "research/native-layers-runtime-initial-bounds-first-probe.mjs",
+      "sha256": "f7962c85c26265c03849e5926ddd300c8ea76ee1335e9ce7184f0ac5a0de330f"
+    },
+    {
+      "path": "research/native-layers-runtime-move-action-first-probes.json",
+      "sha256": "e0d2247cc5336059fc42d2f78f84dcf6589c32933a46728998284f8e72e1850c"
+    },
+    {
+      "path": "research/native-layers-runtime-move-action-first-probe.mjs",
+      "sha256": "42487fea720bc77d58fda47e53615d60f3dca26c222b30d92fa17ec365d93be8"
+    },
+    {
+      "path": "research/native-layers-runtime-integration-final-resize.json",
+      "sha256": "b2a32eb4559d5807592892625c0b3d057639087c862c33765690f17bd39f2592"
+    },
+    {
+      "path": "research/native-layers-runtime-initial-state-review-green.json",
+      "sha256": "780640cf2754e6a2e19b4464b92fd12f9b696f9ab3310e4d3ab00edff666ea5e"
+    },
+    {
+      "path": "research/native-layers-runtime-initial-state-integration-probes.json",
+      "sha256": "436c8ad6e49bfa65fc0e5ac32252d4d19cb9423ed8bec26ef345818b456ba0e2"
+    },
+    {
+      "path": "research/native-layers-runtime-final-consumers-probes.json",
+      "sha256": "42431a24b1d4296f26f5bc757bb5083169921b01968ea48dfc22c7bf0902489e"
+    },
+    {
+      "path": "research/native-layers-runtime-integration-probe.mjs",
+      "sha256": "d9dbce2f000da9bf14a46b35a9a6fb3c49784f2a932c9746ce3a0eeb9432a974"
+    },
+    {
+      "path": "research/native-layers-runtime-initial-state-review-probe.mjs",
+      "sha256": "5bcc4505f4be6fa798e3b99067d5fe84a24477108629c5023fb52a09ce4d66a0"
+    },
+    {
+      "path": "D:\\WSCodex\\REA\\research\\native-layers-runtime-initial-state-integration-probe.mjs",
+      "sha256": "2044dc59cb486ae347153a37631272d496bec3ea0013334ed130ac218d66c798"
+    },
+    {
+      "path": "D:\\WSCodex\\REA\\research\\native-layers-runtime-final-consumers-probe.mjs",
+      "sha256": "18eeeb0eb0818950e613ac36dcbce796e8610ec12da6d3a888f26ce351df9800"
+    }
+  ],
+  "limits": [
+    "No original GUI/browser/pixel comparison or vendor DLL execution by this review.",
+    "Final 50 cases are independent product module/serialized Node executions. Original exact-source fixtures use declared DOM/query/style/expression/fit/animation sinks as documented in frozen 78+33 reports.",
+    "Combined native orbit remains an argument/completion sink; nonzero source Resize supplemental probe observes start only. The product 64ms check uses real Node timers, not browser layout or native jQuery timing.",
+    "Native initial-state event dispatch is bounded to the selected/disabled two-widget matrix. General selection groups, arbitrary reentrant initialization, all contained/tree branches and every nested repeater persistence combination are not claimed fully equivalent.",
+    "Current snapshots are genuine copies and match final reviewed hashes. Three historical intermediate product versions have recorded hashes/sourceStable outputs but no retained full byte snapshots; the author confirmed none were saved, and bounded local snapshot search found none. They cannot be independently re-executed from the retained bytes. No red source was reconstructed.",
+    "The raw 13-event audit independently walks two original files. Its whole-corpus 182-layer/unchanged-leaf totals are attributed to the format audit, not an independent complete reimport.",
+    "Editor grouping/ungrouping, pinning, author resize/rotate controls, arbitrary fixed/percent panels and unknown native Layer branches are outside this runtime review.",
+    "Product finite/dimension guards may deliberately reject native nonfinite outcomes; all-excluded logical Layer bounds sentinel is tested separately from nonnegative CSS render size."
+  ]
+}

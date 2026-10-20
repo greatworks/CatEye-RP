@@ -1,0 +1,51 @@
+{
+  "method": "Independent product protocol reproduction, not original Axure execution",
+  "results": [
+    {
+      "name": "without diagnostic",
+      "expectedAssignment": true,
+      "actualAssignment": true,
+      "issues": []
+    },
+    {
+      "name": "actual standalone-value-parts diagnostic",
+      "expectedAssignment": true,
+      "actualAssignment": true,
+      "issues": [
+        [
+          "adaptive-source-diagnostics",
+          "原生自适应来源诊断已保留；不根据缓存或名称补造缺失集合。",
+          null,
+          null,
+          [
+            {
+              "scope": "document",
+              "code": "standalone-value-parts",
+              "reason": "Decoded standalone values contain no object identities; not candidates for adaptive sets",
+              "count": 3
+            }
+          ]
+        ]
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/model/import-rp-adaptive.ts",
+      "sha256": "851ccaff2c8e987d9844afce66713e038df6844998fe5db6dcc80f51e6faa511"
+    },
+    {
+      "path": "research/scripts/read-rp-adaptive.mjs",
+      "sha256": "b45176e0eab90d4c1d3c2c704a5e7b953344a3e58fdca1b7e3d88dbd59928220"
+    },
+    {
+      "path": "research/adaptive-import-styles-importer-probe.mjs",
+      "sha256": "939884d4ad0fcf3bec702b2fe9d7e5277bcc0c1434ec7e52b6b763643bc3c22f"
+    },
+    {
+      "path": ".build/load-ts.mjs",
+      "sha256": "f027d29e8fadf3df545a82e534e9e58d7bbe4fd416c4062847a740bb58e2df25"
+    }
+  ],
+  "ok": true
+}

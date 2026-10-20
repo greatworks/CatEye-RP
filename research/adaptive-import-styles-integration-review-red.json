@@ -1,0 +1,90 @@
+{
+  "kind": "Independent product protocol reproduction with a retained native table and synthetic invalid adaptive declaration/action; not native GUI or exported-runtime execution",
+  "source": {
+    "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+    "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50",
+    "afterSha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+  },
+  "implementation": [
+    {
+      "path": "src/model/import-rp.ts",
+      "sha256": "57feeb6fa3c6216f1463c071df45ee1503ab8d4be4027d932b52429fd711358e"
+    },
+    {
+      "path": "src/model/import-rp-adaptive.ts",
+      "sha256": "851ccaff2c8e987d9844afce66713e038df6844998fe5db6dcc80f51e6faa511"
+    },
+    {
+      "path": "research/scripts/read-rp-semantics.mjs",
+      "sha256": "d246e353bf36015213fb27ac468a279764d2d9fdb60e18f49066ca9e178580ec"
+    }
+  ],
+  "results": [
+    {
+      "name": "admitted parent table",
+      "expectedButtonEvents": 1,
+      "actualButtonEvents": 1,
+      "topWidgets": [
+        {
+          "id": "rp-w-556a42319a0a476c8e81f2d6da0ada41-36a2bbf16b624eb9869e340c7b663c36",
+          "type": "table",
+          "name": "table 36a2bbf1"
+        },
+        {
+          "id": "rp-w-556a42319a0a476c8e81f2d6da0ada41-000000000000000000000000000003de",
+          "type": "box",
+          "name": "Probe"
+        }
+      ],
+      "buttonActions": [
+        {
+          "id": "rp-a-556a42319a0a476c8e81f2d6da0ada41-000000000000000000000000000003de-0-0-0",
+          "type": "show",
+          "targetId": "rp-w-556a42319a0a476c8e81f2d6da0ada41-40f6d7fa97a243708d54990b189068dc"
+        }
+      ],
+      "counts": {
+        "widgets": 2,
+        "nested": 9,
+        "events": 1,
+        "skippedEvents": 0
+      },
+      "issues": []
+    },
+    {
+      "name": "rejected parent table",
+      "expectedButtonEvents": 0,
+      "actualButtonEvents": 1,
+      "topWidgets": [
+        {
+          "id": "rp-w-556a42319a0a476c8e81f2d6da0ada41-000000000000000000000000000003de",
+          "type": "box",
+          "name": "Probe"
+        }
+      ],
+      "buttonActions": [
+        {
+          "id": "rp-a-556a42319a0a476c8e81f2d6da0ada41-000000000000000000000000000003de-0-0-0",
+          "type": "show",
+          "targetId": "rp-w-556a42319a0a476c8e81f2d6da0ada41-40f6d7fa97a243708d54990b189068dc"
+        }
+      ],
+      "counts": {
+        "widgets": 1,
+        "nested": 9,
+        "events": 1,
+        "skippedEvents": 0
+      },
+      "issues": [
+        {
+          "code": "widget-skipped",
+          "message": "Independent synthetic unsupported local declaration",
+          "severity": "skipped",
+          "packageId": "556a42319a0a476c8e81f2d6da0ada41",
+          "sourceId": "36a2bbf16b624eb9869e340c7b663c36"
+        }
+      ]
+    }
+  ],
+  "ok": false
+}

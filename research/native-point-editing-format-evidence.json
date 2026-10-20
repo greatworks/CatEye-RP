@@ -1,0 +1,376 @@
+{
+  "schema": "native-point-editing-format-v1",
+  "capturedAt": "2026-10-15T16:14:21.091Z",
+  "target": {
+    "version": "11.0.0.4150",
+    "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+  },
+  "method": "Read-only retained CIL and original stored records; original DLL/GUI not executed. Historical census reused, two original files reread for four exact source witnesses, complete UI file freshly imported and saved/read back.",
+  "claims": [
+    {
+      "status": "direct-static",
+      "claim": "Shape identity is independent of saved path family. DSO4 is Shape==300; LN4g returns cN89 directly for300 and regenerates all other shapes before returning it.",
+      "anchors": [
+        {
+          "method": "DSO4",
+          "token": 100708406,
+          "il": "7-15"
+        },
+        {
+          "method": "LN4g",
+          "token": 100702676,
+          "il": "7-43"
+        }
+      ]
+    },
+    {
+      "status": "direct-static",
+      "claim": "Shared Shape and ControlPoints are object fields; the shape serializer calls LN4g(0) before writing the control point array. A saved noncustom path is a generated snapshot at save time.",
+      "anchors": [
+        {
+          "method": "get_Shape",
+          "token": 100702789,
+          "field": "SN8X",
+          "il": "7-13"
+        },
+        {
+          "method": "DN4W",
+          "token": 100702683,
+          "field": "cN89",
+          "il": "7-42"
+        },
+        {
+          "method": "NIwY",
+          "token": 100702762,
+          "il": "401-465"
+        }
+      ]
+    },
+    {
+      "status": "direct-static",
+      "claim": "For parameter shapes jN4k reads current sizing rectangle, effective radius, border parameters, smart-point data and corner mask, then calls the shape factory. Its result is not determined by stored ControlPoints alone.",
+      "anchors": [
+        {
+          "method": "jN4k",
+          "token": 100702679,
+          "il": "7-97",
+          "factoryToken": 100722530
+        }
+      ]
+    },
+    {
+      "status": "direct-static",
+      "claim": "TN46 itself is a geometry update, not a Shape300 setter: hN4K produces bounds/normalized points, xJ0B/uJ0j write location/size, and DN4W stores points.",
+      "anchors": [
+        {
+          "method": "TN46",
+          "token": 100702684,
+          "il": "7-56"
+        },
+        {
+          "method": "xJ0B",
+          "token": 100695349
+        },
+        {
+          "method": "uJ0j",
+          "token": 100695365
+        }
+      ]
+    },
+    {
+      "status": "direct-static",
+      "claim": "ChangeShapeTo qNnT can store supplied contours, call set_Shape and invalidate dependent geometry; set_Shape changes shared SN8X and may change type-dependent defaults/caches. It is separate from ordinary adaptive PName editing.",
+      "anchors": [
+        {
+          "method": "qNnT",
+          "token": 100702809,
+          "il": "7-146"
+        },
+        {
+          "method": "set_Shape",
+          "token": 100702790,
+          "il": "388-551"
+        }
+      ]
+    },
+    {
+      "status": "direct-record",
+      "claim": "Two actual UI records are Shape300 despite exact four-anchor rectangular geometry. Current complete native import preserves both as type path without cornerVisibility.",
+      "sourceIds": [
+        "04417a8fd0fe4f8e8734460a02a0b2b2",
+        "25a13179ceeb4c69a7ac383ce58dd7f0"
+      ]
+    },
+    {
+      "status": "direct-record",
+      "claim": "Two actual Form Shape300 custom11-anchor paths retain local determined+overridden P71=2. Radius presence is not parameter-shape identity and does not prove regeneration is active.",
+      "sourceIds": [
+        "b607dd0c4ccc42e2b83eeb7cda35167f",
+        "b365f0e6db904531bfec85ad07a1d17e"
+      ]
+    },
+    {
+      "status": "direct-static-and-record",
+      "claim": "Shape/path identity and normalized points are shared; placement, size and visual properties remain separate provider data. Shape300 normalized geometry still scales through the current sizing/world transform. Thirteen Flow Shape300 records have three adaptive style references each; those observed maps are empty style records, not a nonempty custom path override witness.",
+      "anchors": [
+        {
+          "method": "WNn5",
+          "token": 100702749
+        },
+        {
+          "method": "eJmT",
+          "token": 100695285
+        },
+        {
+          "method": "A5ph",
+          "token": 100720533
+        },
+        {
+          "method": "D5pZ",
+          "token": 100720547
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "vectorRecords": 2805,
+    "shape0": 1388,
+    "shape300": 1127,
+    "exactFourAnchorRectanglesWithShape300": 2,
+    "shape300WithLocalCornerProperty": 2,
+    "shape300WithObservedAdaptiveMapsInHistoricalSemanticTraversal": 13
+  },
+  "sourceWitnesses": [
+    {
+      "sourceId": "b607dd0c4ccc42e2b83eeb7cda35167f",
+      "packageId": "e75bf1b9234d40d9bb3c2f8a4ece4689",
+      "sourcePartSha256": "c474ba5f1feacfeae1e6f0960a9cdd285551ae499d0bea6b6eb5eedada87952e",
+      "sample": {
+        "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+        "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+      },
+      "shape": 300,
+      "size": {
+        "Width": 120,
+        "Height": 35
+      },
+      "witnessKind": "custom-identity-retained-radius"
+    },
+    {
+      "sourceId": "b365f0e6db904531bfec85ad07a1d17e",
+      "packageId": "c356742c685a47b0b1a9b4abc4dd2ad8",
+      "sourcePartSha256": "82404621d611e635b7dbe7e3fd9b36b9f3be19523f8e4e44305a89d79563051a",
+      "sample": {
+        "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+        "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+      },
+      "shape": 300,
+      "size": {
+        "Width": 120,
+        "Height": 35
+      },
+      "witnessKind": "custom-identity-retained-radius"
+    },
+    {
+      "sourceId": "04417a8fd0fe4f8e8734460a02a0b2b2",
+      "packageId": "6881ba8b98974feb8ba4bf4d89c9b422",
+      "sourcePartSha256": "6eceaf73320d47ed60ea74e04bb67d1b580d71090c7d5b28e147082688e73f31",
+      "sample": {
+        "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+        "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b"
+      },
+      "shape": 300,
+      "size": {
+        "Width": 350,
+        "Height": 80
+      },
+      "witnessKind": "custom-identity-exact-rectangle"
+    },
+    {
+      "sourceId": "25a13179ceeb4c69a7ac383ce58dd7f0",
+      "packageId": "5c6f3b90e33443189fa470be22096bbc",
+      "sourcePartSha256": "b3cde617e248f3a4c5578bcb1e714d50346c294bb87be71123a77fb67230b063",
+      "sample": {
+        "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+        "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b"
+      },
+      "shape": 300,
+      "size": {
+        "Width": 350,
+        "Height": 80
+      },
+      "witnessKind": "custom-identity-exact-rectangle"
+    }
+  ],
+  "importVerification": {
+    "file": "research/native-point-editing-format-import.json",
+    "sha256": "fed290233108a3bb46dca0755c693eea56cfdb346fc0b2fd9edd2e55dce52dae",
+    "widgets": [
+      {
+        "sourceId": "04417a8fd0fe4f8e8734460a02a0b2b2",
+        "id": "rp-w-6881ba8b98974feb8ba4bf4d89c9b422-04417a8fd0fe4f8e8734460a02a0b2b2",
+        "type": "path"
+      },
+      {
+        "sourceId": "25a13179ceeb4c69a7ac383ce58dd7f0",
+        "id": "rp-w-5c6f3b90e33443189fa470be22096bbc-25a13179ceeb4c69a7ac383ce58dd7f0",
+        "type": "path"
+      }
+    ],
+    "fixture": {
+      "file": "research/native-point-editing-format-custom-rectangles.rea.json",
+      "sha256": "e8e97b7fd1c628c8d236ba9dbea5288abbf00cc5e68152f24f8ca410f85e33c3"
+    },
+    "saveReadback": true
+  },
+  "modelContract": [
+    "Keep parameter-vs-custom identity separate from a rectangle-family recognizer. Once a genuine custom edit commits, returning coordinates to a rectangle must not by itself reactivate parameter geometry.",
+    "Do not delete retained radius/mask, state maps or inactive adaptive declarations merely because geometry becomes custom. Suppress parameter reconstruction by identity; retain unrelated paint and shared content.",
+    "A committed path/identity change is shared content. Per-view location/size and visual overrides must retain their existing scope; resolving the visible view must not flatten parent or inactive declarations.",
+    "The exact native entry/exit gesture timing, no-op conversion and undo transaction are owned by the companion point-mode investigation. This format report alone does not authorize conversion merely on entering edit mode."
+  ],
+  "limits": [
+    "No sample contains before/after editing history. The two rectangular custom shapes prove final representation, not the user gesture that created it.",
+    "No claim that all node edits use TN46, that every conversion clears or preserves every style-provider slot, or that custom geometry is automatically recognized back into a parameter shape.",
+    "The helper family check was invoked without native Shape gating solely to demonstrate geometric equivalence. The production reader correctly keeps the original Shape300 gate.",
+    "Historical adaptiveStyleCount6 was a flat alternating GUID/ref array length: actual maps are three, not six views. Frozen old census is not rewritten.",
+    "The first research import oracle omitted the explicit closing L emitted by the existing converter; the oracle was corrected to M/L/L/L/L/Z without changing the original file or product.",
+    "No production files, old tests or frozen reports were modified, and no full suite/browser/build/package/original application run is claimed."
+  ],
+  "sources": [
+    {
+      "file": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/AxureRP11.dll",
+      "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+    },
+    {
+      "file": "research/samples/metadata-Shape.json",
+      "sha256": "f90b74554ddcbc4b53a119812e8a19d15d2bf4f07f4e1bd04a0efe8ae041c46a"
+    },
+    {
+      "file": "research/rp-vector-path-vector-cil.json",
+      "sha256": "d9ea4d127e1eb2a728c864cb8390b0cf8b59bcd6b734a8af1b49aee27f2f2154"
+    },
+    {
+      "file": "research/rp-vector-path-shape-predicate-cil.json",
+      "sha256": "f9c3b612c2a4d7b20cb39ee5f5cbd69187d303ed362aab382a1398607c6293fc"
+    },
+    {
+      "file": "research/rp-vector-path-vector-drawing-cil.json",
+      "sha256": "9a34e1f5bcecab1809191bfb968758f991c3d9c8cc18620a6e695d210b85b782"
+    },
+    {
+      "file": "research/rp-vector-path-world-scale-cil.json",
+      "sha256": "547aa38153cc4430c1f26bf4df96fc198a2f813d2643a2a0bb852addf47b9cf4"
+    },
+    {
+      "file": "research/rp-vector-path-widget-transform-cil.json",
+      "sha256": "3b92524a582b37ce5b4d3fa2960d189046c536f6de2dee502ea3c1849f5edda0"
+    },
+    {
+      "file": "research/rp-vector-path-point-transform-cil.json",
+      "sha256": "e7240fe4a844d31c6bd651d6bf425463e421207dfe494ce21d60c84bfa7409f4"
+    },
+    {
+      "file": "research/rp-vector-path-scale-cil.json",
+      "sha256": "5d256d8ac6e627d1d93d18e177e8918d41185f89b9233e1b0bff4d45e94c4db2"
+    },
+    {
+      "file": "research/rp-vector-path-evidence.md",
+      "sha256": "2a1c90bc3485a45c152c0faed020faec5b129c0d7420df7984e1d62547b461fa"
+    },
+    {
+      "file": "research/adaptive-all-views-effects-evidence.md",
+      "sha256": "33999e6abf11be6b9a6074f89d03ba036b5b82f98569cb5beea3c9ccef3c2ff5"
+    },
+    {
+      "file": "research/adaptive-all-views-effects-shape-cil.json",
+      "sha256": "276c3ab2bbb7e6aa48b0fa0a1b7a80437f32380e386b733629f295ddc473218b"
+    },
+    {
+      "file": "research/native-corners-format-census.json",
+      "sha256": "9ec93f38ebd345b1861dfc179500689dbe948b117d46145487e72abef18e1ccd"
+    },
+    {
+      "file": "research/adaptive-behavior-format-census.json",
+      "sha256": "34606a80fb56dd68eb2b877547122b452215a8b024aefb25979ecfc5b2e670a2"
+    },
+    {
+      "file": "research/native-point-editing-format-shape-cil.json",
+      "sha256": "8ed8fb0e3930ef4bf2478340488524967babb12e9b72933c2942d9f34841d8fd"
+    },
+    {
+      "file": "research/native-point-editing-evidence-shape-cil.json",
+      "sha256": "cf93fe04b04866c330e8950cf0b2aa3692c69bd10e10fd614ce97d6d9ae11bac"
+    },
+    {
+      "file": "research/native-point-editing-format-inventory.mjs",
+      "sha256": "c1ea9eb462d5d38a840eca94b3f9d1d1fe4add50a23e79b7916d0b55c1076cc8"
+    },
+    {
+      "file": "research/native-point-editing-format-inventory.json",
+      "sha256": "450d6051bd0457c1cf43dffae5233851fd5825ab061435682d9868fb3affd7a4"
+    },
+    {
+      "file": "research/native-point-editing-format-import.mjs",
+      "sha256": "bea97827732fb5e832dd833c182f03772ed7f2f3f6b36e6a5f72ac87e9a97000"
+    },
+    {
+      "file": "research/native-point-editing-format-import.json",
+      "sha256": "fed290233108a3bb46dca0755c693eea56cfdb346fc0b2fd9edd2e55dce52dae"
+    },
+    {
+      "file": "research/native-point-editing-format-custom-rectangles.rea.json",
+      "sha256": "e8e97b7fd1c628c8d236ba9dbea5288abbf00cc5e68152f24f8ca410f85e33c3"
+    },
+    {
+      "file": "research/native-point-editing-format-freeze.mjs",
+      "sha256": "a026fb30ae96d84d9da94252329ece9fa6dfeb00bfc0031a7d541c47ab1d8d74"
+    }
+  ],
+  "samples": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+      "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Flow.rplib",
+      "sha256": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Icons.rplib",
+      "sha256": "83f450088f81f6047dfb196919fff3a4aae2f3adb56668da4d4c8cfd3b813bda"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Quick Win.rp",
+      "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+      "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72"
+    },
+    {
+      "file": "research/samples/the-basics-tab-menu.rp",
+      "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4"
+    },
+    {
+      "file": "research/samples/complex-interactions-required-fields.rp",
+      "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c"
+    }
+  ]
+}

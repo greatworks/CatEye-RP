@@ -1,0 +1,960 @@
+{
+  "method": "Bounded interpretation of two complete getter instruction bodies, jJeK tail IL3098 onward and hbUB; metadata and writer sinks injected. No original DLL/JS execution.",
+  "sources": [
+    {
+      "file": "research/runtime-text-autofit-bridge-width-cil.json",
+      "sha256": "4e0e843114fa9bba4ff582ae70f4f932665ea5272417645595a970e908bbc445"
+    },
+    {
+      "file": "research/runtime-text-autofit-bridge-height-cil.json",
+      "sha256": "385b5a39fc03d43128843d0ea2e7c4187a6a8c98bd0ff69327744d8c35ee5301"
+    },
+    {
+      "file": "research/runtime-text-autofit-bridge-bool-cil.json",
+      "sha256": "d7b61ab3a9b4d8cd9f88f719f76510e6fb611a932607f79690efe246ccadb1c2"
+    },
+    {
+      "file": "research/runtime-text-autofit-bridge-bool-value-cil.json",
+      "sha256": "6b77b01573802c706c0fc0b77355796e6970d0dc93814d12d003c607ccb9fa93"
+    },
+    {
+      "file": "research/line-style-json-friendly-cil.json",
+      "sha256": "a91bd154da750063dd56911597871ae741cae8031a8def25000ee290462ede13"
+    },
+    {
+      "file": "research/runtime-text-autofit-bridge-metadata.json",
+      "sha256": "3d04320c2a805a82719fc7aecee68b6e31a4b0de904cffc2a1f87f0d16edd4a3"
+    },
+    {
+      "file": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    },
+    {
+      "file": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128"
+    },
+    {
+      "file": "research/text-autofit-native-literals.mjs",
+      "sha256": "2b8f2adee7d6e1ac5ac4e0188edf616057d1e129071b9818eb4900dfbf9e3091"
+    }
+  ],
+  "cases": 41,
+  "passed": 41,
+  "limits": [
+    "Does not replay earlier unrelated jJeK fields or full generator",
+    "TITl and tITy writer sinks capture writes, not generated page output",
+    "Transform resolution is injected; exact effective transform chain remains prior evidence",
+    "NaN scale cases are synthetic gate tests, not admitted native import values"
+  ],
+  "records": [
+    {
+      "stored": {
+        "width": false,
+        "height": false
+      },
+      "transform": null,
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": false
+      },
+      "transform": {
+        "sx": 1,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": false
+      },
+      "transform": {
+        "sx": 2,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": false
+      },
+      "transform": {
+        "sx": 1,
+        "sy": 2
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": false
+      },
+      "transform": {
+        "sx": -1,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": false
+      },
+      "transform": {
+        "sx": 1,
+        "sy": -1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": false
+      },
+      "transform": {
+        "sx": "NaN",
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": false
+      },
+      "transform": {
+        "sx": 1,
+        "sy": "NaN"
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": true
+      },
+      "transform": null,
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": true
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": true
+      },
+      "transform": {
+        "sx": 1,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": true
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": true
+      },
+      "transform": {
+        "sx": 2,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": true
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": true
+      },
+      "transform": {
+        "sx": 1,
+        "sy": 2
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": true
+      },
+      "transform": {
+        "sx": -1,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": true
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": true
+      },
+      "transform": {
+        "sx": 1,
+        "sy": -1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": true
+      },
+      "transform": {
+        "sx": "NaN",
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": true
+      }
+    },
+    {
+      "stored": {
+        "width": false,
+        "height": true
+      },
+      "transform": {
+        "sx": 1,
+        "sy": "NaN"
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": false
+      },
+      "transform": null,
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": true,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": false
+      },
+      "transform": {
+        "sx": 1,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": true,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": false
+      },
+      "transform": {
+        "sx": 2,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": false
+      },
+      "transform": {
+        "sx": 1,
+        "sy": 2
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": true,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": false
+      },
+      "transform": {
+        "sx": -1,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": false
+      },
+      "transform": {
+        "sx": 1,
+        "sy": -1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": true,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": false
+      },
+      "transform": {
+        "sx": "NaN",
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": false
+      },
+      "transform": {
+        "sx": 1,
+        "sy": "NaN"
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": true,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": true
+      },
+      "transform": null,
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ],
+      "expected": {
+        "autoFitWidth": true,
+        "autoFitHeight": true
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": true
+      },
+      "transform": {
+        "sx": 1,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ],
+      "expected": {
+        "autoFitWidth": true,
+        "autoFitHeight": true
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": true
+      },
+      "transform": {
+        "sx": 2,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": true
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": true
+      },
+      "transform": {
+        "sx": 1,
+        "sy": 2
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": true,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": true
+      },
+      "transform": {
+        "sx": -1,
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": true
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": true
+      },
+      "transform": {
+        "sx": 1,
+        "sy": -1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": true,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": true
+      },
+      "transform": {
+        "sx": "NaN",
+        "sy": 1
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": false
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ],
+      "expected": {
+        "autoFitWidth": false,
+        "autoFitHeight": true
+      }
+    },
+    {
+      "stored": {
+        "width": true,
+        "height": true
+      },
+      "transform": {
+        "sx": 1,
+        "sy": "NaN"
+      },
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": false
+        }
+      ],
+      "expected": {
+        "autoFitWidth": true,
+        "autoFitHeight": false
+      }
+    },
+    {
+      "scopeType": "VectorShape",
+      "base": "Axure.DocumentModel.Objects.TextRectObject",
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ]
+    },
+    {
+      "scopeType": "TableCell",
+      "base": "Axure.DocumentModel.Objects.TextRectObject",
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ]
+    },
+    {
+      "scopeType": "ImageBox",
+      "base": "Axure.DocumentModel.Objects.TextRectObject",
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ]
+    },
+    {
+      "scopeType": "SelectionButton",
+      "base": "Axure.DocumentModel.Objects.TextRectObject",
+      "emitted": [
+        {
+          "key": "autoFitWidth",
+          "formatting": 0,
+          "value": true
+        },
+        {
+          "key": "autoFitHeight",
+          "formatting": 0,
+          "value": true
+        }
+      ]
+    },
+    {
+      "scopeType": "Repeater",
+      "base": "kJm2.KJm7",
+      "emitted": []
+    },
+    {
+      "scopeType": "Table",
+      "base": "Axure.DocumentModel.Objects.DiagramObjectContainer",
+      "emitted": []
+    },
+    {
+      "scopeType": "TreeNodeObject",
+      "base": "Axure.DocumentModel.Objects.DiagramObjectContainer",
+      "emitted": []
+    },
+    {
+      "scopeType": "TextBox",
+      "base": "Axure.DocumentModel.Objects.SelectablePlainTextObject",
+      "emitted": []
+    },
+    {
+      "scopeType": "TextArea",
+      "base": "Axure.DocumentModel.Objects.SelectablePlainTextObject",
+      "emitted": []
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+import {_electron as electron,expect} from '@playwright/test';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
+import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+import {errorHintFixture,exerciseErrorHint} from './error-hint-scenario.mjs';
+const root=path.resolve(import.meta.dirname,'..'),executablePath=process.argv[2]?path.resolve(process.argv[2]):undefined;
+const sha=bytes=>createHash('sha256').update(bytes).digest('hex'),userData=await fs.mkdtemp(path.join(os.tmpdir(),'rea-error-hint-'));
+const audit={ok:false,startedAt:new Date().toISOString(),executablePath,userData,errors:[],network:[],screenshots:[],pickerResponsesMocked:true,originalAxureGuiCompared:false};
+const doc=errorHintFixture(),source=path.join(userData,'error-hint.rea.json');await fs.writeFile(source,JSON.stringify(doc));let app;
+try{
+  if(executablePath)audit.appAsarSha256=sha(await fs.readFile(path.join(path.dirname(executablePath),'resources/app.asar')));
+  app=await electron.launch({...(executablePath?{executablePath}:{args:[root]}),env:{...process.env,REA_HEADLESS_TEST:'1',REA_TEST_USER_DATA:userData}});
+  const observe=page=>page.on('pageerror',error=>audit.errors.push(error.message));app.on('window',observe);await app.context().route(/^https?:\/\//,route=>{audit.network.push(route.request().url());return route.abort()});
+  const page=await app.firstWindow();observe(page);await page.locator('.application').waitFor();await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].webContents.setBackgroundThrottling(false));
+  const menu=async name=>{await page.locator('.menubar').getByRole('button',{name:'File',exact:true}).click();await page.locator('.dropdown-menu').getByRole('button',{name,exact:true}).click()};
+  const open=async file=>{await app.evaluate(({dialog},file)=>{dialog.showOpenDialog=async()=>({canceled:false,filePaths:[file]})},file);await menu('Open… Ctrl+O');await expect(page.locator('.statusbar')).toContainText('Document opened')};
+  const save=async file=>{await app.evaluate(({dialog},file)=>{dialog.showSaveDialog=async()=>({canceled:false,filePath:file})},file);await page.getByTitle('Save',{exact:true}).click();await expect(page.locator('.statusbar')).toContainText(`Saved ${path.basename(file)}`);return JSON.parse(await fs.readFile(file,'utf8'))};
+  const capture=async(name,id,renderPage=page)=>{await renderPage.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));const bytes=Buffer.from(await app.evaluate(async({BrowserWindow},id)=>(await BrowserWindow.fromId(id).webContents.capturePage(undefined,{stayHidden:true})).toPNG().toString('base64'),id),'base64');const file=path.join(root,'artifacts',name);await fs.writeFile(file,bytes);audit.screenshots.push({file,sha256:sha(bytes)})};
+  await open(source);const saved=path.join(userData,'saved.rea.json');expect(await save(saved)).toEqual(doc);await open(saved);
+  const mainId=await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].id);
+  await page.locator('.editor-widget').filter({has:page.getByRole('textbox',{name:'Focus hint',exact:true})}).click();await page.getByRole('complementary',{name:'Properties inspector'}).getByRole('tab',{name:'Interactions',exact:true}).click();await expect(page.getByLabel('Hint text',{exact:true})).toHaveValue('Search people');await capture('error-hint-authoring.png',mainId);
+  await page.getByTitle('Preview (F5)',{exact:true}).click();await exerciseErrorHint(page,page.locator('.preview-overlay'));await capture('error-hint-desktop.png',mainId);
+  await page.getByRole('button',{name:'Close preview',exact:true}).click();expect(await save(path.join(userData,'after-preview.rea.json'))).toEqual(doc);
+  const html=path.join(userData,'error-hint.html');await app.evaluate(({dialog},file)=>{dialog.showSaveDialog=async()=>({canceled:false,filePath:file})},html);await page.getByRole('button',{name:'Export HTML',exact:true}).click();await expect(page.locator('.statusbar')).toContainText('Exported');
+  const pending=app.waitForEvent('window');const offlineId=await app.evaluate(({BrowserWindow},url)=>{const window=new BrowserWindow({show:false,width:1600,height:1100,webPreferences:{nodeIntegration:false,contextIsolation:true,sandbox:true,backgroundThrottling:false}});void window.loadURL(url);return window.id},pathToFileURL(html).href);const offline=await pending;
+  await exerciseErrorHint(offline,offline);await capture('error-hint-desktop-offline.png',offlineId,offline);await offline.close();expect(await save(path.join(userData,'after-export.rea.json'))).toEqual(doc);
+  await fs.copyFile(saved,path.join(root,'artifacts/error-hint-demo.rea.json'));await fs.copyFile(html,path.join(root,'artifacts/error-hint-demo.html'));
+  const nativeFile=path.join(root,'research/samples/Prototype Starter.rp'),nativeBefore=sha(await fs.readFile(nativeFile));
+  await app.evaluate(({dialog},file)=>{dialog.showOpenDialog=async()=>({canceled:false,filePaths:[file]})},nativeFile);await menu('Import Axure .rp (experimental)…');
+  const report=page.getByRole('dialog',{name:'RP import report',exact:true});await expect(report).toBeVisible();await report.getByRole('button',{name:'Close report',exact:true}).click();
+  const recovered=await save(path.join(userData,'native-hints.rea.json'));
+  const all=items=>items.flatMap(w=>[w,...all((w.states??[]).flatMap(s=>s.widgets)),...all(w.repeater?.template??[])]);
+  const targetId='rp-w-06dc4240ee184698944195b5c1b18269-bebad8ede9374fea951d04ac834a7f63',targetPage=recovered.pages.find(p=>all(p.widgets).some(w=>w.id===targetId));
+  expect(targetPage).toBeTruthy();const target=all(targetPage.widgets).find(w=>w.id===targetId);expect(target.hintText).toBe('Search...');expect(target.hintHideOn).toBe('typing');expect(target.hintStyle).toEqual({color:'#bdbdbd'});expect(target.text).toBe('');
+  // The real input is in the Main Panel's inactive Search state. Select that
+  // state through the Inspector, then undo the test preparation afterwards.
+  await page.locator('.left-pane').getByRole('button',{name:'Pages',exact:true}).click();await page.locator(`[data-page-node-id="${targetPage.id}"]`).dblclick();
+  await page.locator('.left-pane').getByRole('button',{name:'Outline',exact:true}).click();await page.locator('.left-pane .tree-row').filter({has:page.getByText('Main Panel',{exact:true})}).click();
+  const inspector=page.getByRole('complementary',{name:'Properties inspector'});await inspector.getByRole('tab',{name:'Style',exact:true}).click();await inspector.getByLabel('Show Search',{exact:true}).check();
+  const prepared=structuredClone(recovered),preparedPage=prepared.pages.find(p=>p.id===targetPage.id),panel=preparedPage.widgets.find(w=>w.name==='Main Panel');panel.activeStateId=panel.states.find(s=>s.name==='Search').id;
+  expect(await save(path.join(userData,'native-search-state.rea.json'))).toEqual(prepared);
+  await page.getByTitle('Preview (F5)',{exact:true}).click();await page.locator(`.preview-pages [data-page-id="${targetPage.id}"]`).click();const nativeInput=page.locator(`.preview-page [data-widget-id="${targetId}"] input`);
+  await expect(nativeInput).toHaveValue('Search...');await expect(nativeInput).toHaveCSS('color','rgb(189, 189, 189)');await capture('rp-error-hint-desktop.png',mainId);
+  await nativeInput.click();await nativeInput.pressSequentially('Find');await expect(nativeInput).toHaveValue('Find');await nativeInput.press('ControlOrMeta+A');await nativeInput.press('Backspace');await expect(nativeInput).toHaveValue('Search...');
+  await page.getByRole('button',{name:'Close preview',exact:true}).click();expect(await save(path.join(userData,'native-after.rea.json'))).toEqual(prepared);await page.getByTitle('Undo',{exact:true}).click();expect(await save(path.join(userData,'native-restored.rea.json'))).toEqual(recovered);
+  expect(sha(await fs.readFile(nativeFile))).toBe(nativeBefore);expect(audit.errors).toEqual([]);expect(audit.network).toEqual([]);
+  audit.nativeRp={file:'Prototype Starter.rp',sourceSha256:nativeBefore,sourceUnchanged:true,targetId,hintText:target.hintText,hintHideOn:target.hintHideOn,hintStyle:target.hintStyle,realKeyboardEditing:true,savedDesignUnchanged:true,testPreparation:{activatedPanelState:'Search',viaInspector:true,undoVerified:true}};
+  Object.assign(audit,{ok:true,nativeSaveReopen:true,designUnchanged:true,previewAndOffline:true,actualKeyboardEditing:true,passwordHint:true,rowIsolation:true,errorEventDeduplication:true,rawTextChangeTrace:true,projectSha256:sha(await fs.readFile(saved)),htmlSha256:sha(await fs.readFile(html))});
+}catch(error){audit.failure=error.stack??String(error);throw error}finally{if(app)await app.close();audit.finishedAt=new Date().toISOString();await fs.writeFile(path.join(root,'.build/error-hint-desktop-audit.json'),JSON.stringify(audit,null,2)+'\n');console.log(JSON.stringify(audit,null,2))}

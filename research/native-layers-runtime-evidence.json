@@ -1,0 +1,274 @@
+{
+  "capturedAt": "2026-10-20T06:52:24.636Z",
+  "target": "Axure RP 11.0.0.4150",
+  "stage": "native-layers-runtime",
+  "summary": {
+    "total": 78,
+    "passed": 78,
+    "failed": 0,
+    "groups": {
+      "structureBoundsMove": 43,
+      "stateActionsFocus": 30,
+      "cachePrecedence": 5
+    }
+  },
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.js",
+      "sha256": "f5a2eaeef5c65135a580b6ed6fa3cc59ac0fc291ea2e0801070ae21e4a5d5330",
+      "bytes": 18687
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "bytes": 79505
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\move.js",
+      "sha256": "c823954b5ed5862d56176b8984837e8f26588540ee4768d4483d68a399b95644",
+      "bytes": 22052
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\math.js",
+      "sha256": "f56ab4a6c3f6e91aaba9bebf2e81485965fc82bca63af0c606593d580c1de883",
+      "bytes": 16141
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53",
+      "bytes": 66834
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "bytes": 122627
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c",
+      "bytes": 130698
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3",
+      "bytes": 101724
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1",
+      "bytes": 41976
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\adaptive.js",
+      "sha256": "e141ea07bb973b6007f2ad7d7205516a041a801ec97e410467352c27af3b2928",
+      "bytes": 32653
+    }
+  ],
+  "evidence": [
+    {
+      "id": "NLR-01",
+      "status": "executed-exact-source-with-facade",
+      "title": "Layer is ordered structural membership, not a child coordinate origin",
+      "locations": [
+        "math.js:88-101",
+        "move.js:69-108",
+        "axQuery.std.js:1438-1575",
+        "visibility.js:822-1013"
+      ],
+      "contract": "Deep collection recurses only through Layers; panel/repeater is one leaf. Member coordinates stay in containing page/state scope. Temporary reference-counted containers subtract/re-add the Layer origin without changing the authored coordinate frame."
+    },
+    {
+      "id": "NLR-02",
+      "status": "executed-exact-source-with-facade",
+      "title": "Movement eligibility differs from moved-cache recursion",
+      "locations": [
+        "math.js:88-101",
+        "move.js:84-108",
+        "visibility.js:1347-1414"
+      ],
+      "contract": "Move event/member-info enumeration excludes own inline-hidden branches, but movement cache recursion still changes hidden and limbo descendants. It stops at non-Layer containers. MoveTo registers each visible member against the same requested target; its recorded delta can differ from the shared translated displacement. Public zero MoveBy emits only root Move."
+    },
+    {
+      "id": "NLR-03",
+      "status": "executed-exact-source-with-facade",
+      "title": "Runtime bounds have filtering and sentinel quirks",
+      "locations": [
+        "axQuery.std.js:1299-1371",
+        "axQuery.std.js:1438-1575",
+        "repeater.js:1896-1930"
+      ],
+      "contract": "childrenBoundingRect excludes own hidden, limbo, fixed-horizontal panels and zero-by-zero Layers. It includes rotated/shadow bounds. Nonempty lists seed left/top=99999 and right/bottom=0: all-excluded yields negative dimensions, negative-only union extends to origin. _updateLayerRectCache actually stores these values. Empty list differs: zero bounds. Size event precedes location event."
+    },
+    {
+      "id": "NLR-04",
+      "status": "executed-exact-source-with-facade",
+      "title": "Cache/data/style priority and instance keys",
+      "locations": [
+        "axQuery.std.js:1438-1575",
+        "visibility.js:1347-1414"
+      ],
+      "contract": "Moved/resized caches beat data-left/top/width/height, which beat normal/effective style geometry. DOM string \"0\" counts as present. Cache keys are full element IDs; fixture row instances remain isolated. Native row binding and deletion lifecycle are not replayed here."
+    },
+    {
+      "id": "NLR-05",
+      "status": "executed-exact-source-with-facade",
+      "title": "Layer Resize expands ordered members and reserves separate channels",
+      "locations": [
+        "action.js:1286-1506",
+        "action.js:1654-1732",
+        "axQuery.std.js:570-826"
+      ],
+      "contract": "Root resize plus nested Layer resize and leaf resize/move reservations. Deep collection includes hidden/limbo. Root reads current bounds at queue start, rounds requested dimension differences then applies stop ratio. Leaf resize applies type gates; nonresizable leaf can move without resizing. Top-left, center and bottom-right numerical results are recorded. Nested Layer emits Resize but does not directly scale itself in this branch."
+    },
+    {
+      "id": "NLR-06",
+      "status": "executed-producer-and-queue-orbit-sink",
+      "title": "Layer Rotate has independent layerDegree and member orientation gates",
+      "locations": [
+        "action.js:1061-1065",
+        "action.js:1082-1189",
+        "action.js:1192-1197",
+        "action.js:1240-1256"
+      ],
+      "contract": "Root layerDegree caches full target before partial animation. Nested Layer gets Rotate event without changing its independent layerDegree. Leaf orbit pivot uses Layer bounding center plus anchor/offset in containing scope. Image/hotspot/panel/vector/line rotate orientation; other leaf types orbit only. New probes execute queue and producer but replace orbit rendering with an explicit argument/completion sink."
+    },
+    {
+      "id": "NLR-07",
+      "status": "executed-producer-and-queue-orbit-sink",
+      "title": "Combined Layer Resize and Rotate quirks",
+      "locations": [
+        "action.js:1355-1365",
+        "action.js:1381-1400"
+      ],
+      "contract": "Root Rotate is raised twice. Member pivot applies resizeInfo.anchor rather than rotateInfo.anchor. This branch does not apply clockwise sign; false still delivers +90 in the fixture. resizeOffset and per-member resizeDeltaMove are passed separately. This is not proof of full composed browser animation."
+    },
+    {
+      "id": "NLR-08",
+      "status": "executed-control-flow-paint-sinks",
+      "title": "Propagate affects hover/down only, with a container barrier",
+      "locations": [
+        "events.js:1018-1061",
+        "events.js:1438-1456",
+        "repeater.js:2605-2653"
+      ],
+      "contract": "Missing/false propagate is false by runtime truthiness. Traversal skips a nonpropagating child container and its whole branch; ordinary leaves have no such flag gate. True container propagates hover/down through descendants including hidden/limbo. Upward lookup can cross false intermediate parent, returning direct=false. Container handlers paint children, not their own hover/down style. This flag is not a generic click broadcast flag."
+    },
+    {
+      "id": "NLR-09",
+      "status": "executed-control-flow-paint-sinks",
+      "title": "Selected, Enabled and Error use different independent recursion",
+      "locations": [
+        "style.js:186-253",
+        "axQuery.std.js:1087-1178"
+      ],
+      "contract": "Selected ignores propagate, includes hidden/limbo children, skips disabled subtree, emits child events before parent. Enabled/Error ignore propagate but use ignoreUnplaced=true, including hidden and skipping limbo. Grouped-selection and contained-owner redirection branches remain outside these fixtures."
+    },
+    {
+      "id": "NLR-10",
+      "status": "executed-control-flow-dom-facade",
+      "title": "Focus uses the first ordered child, not the first visible child",
+      "locations": [
+        "events.js:650-710"
+      ],
+      "contract": "Maps objs[0], follows nested Layer recursively, does not filter hidden/limbo, and does not fall back past an empty first Layer. Final input/img/div suffix selection remains ordered. Existing own focus interaction suppresses proxy need; ancestor focus interaction can request it."
+    },
+    {
+      "id": "NLR-11",
+      "status": "static-source-only-in-this-stage",
+      "title": "Parent fitting and adaptive cache recomputation",
+      "locations": [
+        "repeater.js:1590-1626",
+        "repeater.js:1881-1930",
+        "adaptive.js:149"
+      ],
+      "contract": "fitParentPanel first updates nearest Layer/RDO; only changed Layer bounds recurse upwards. Panel/row/body handling follows. updateAllLayerSizeCaches visits reverse collected Layer order, skipping own/ancestor limbo. Full fit/row/animation event integration is not executed by this stage, whose fit callback is a recording sink."
+    },
+    {
+      "id": "NLR-12",
+      "status": "static-source-only-in-this-stage",
+      "title": "Show/hide and event bubbling remain separate from Propagate",
+      "locations": [
+        "visibility.js:55-121",
+        "events.js:323-406"
+      ],
+      "contract": "Layer show/hide uses a temporary container wrapper, like the panel path with isPanel=false, not a child hidden-flag rewrite. Limbo is an early gate. Generic handled-event/bubbling is separate from hover/down propagation. These complete browser event and visibility paths were read, not replayed here."
+    }
+  ],
+  "probeReports": [
+    {
+      "path": "research/native-layers-runtime-second-probes.json",
+      "sha256": "8e89a62755108d4f6ae062010cb9bf5ab0f78ae146b024e81e2f98b20ecf16f9",
+      "bytes": 36738
+    },
+    {
+      "path": "research/native-layers-runtime-actions-probes.json",
+      "sha256": "3a8e05a950d49074163aac531885ad4e3c541b0a3ba91505f444e7406328b6e7",
+      "bytes": 128572
+    },
+    {
+      "path": "research/native-layers-runtime-cache-final-probes.json",
+      "sha256": "ed7892afe6e09bb3cf25f7b25cdaa788530c9dfdcf2318c7342557eb4883efc7",
+      "bytes": 10132
+    }
+  ],
+  "failureHistory": [
+    {
+      "report": "research/native-layers-runtime-first-probes.json",
+      "summary": "32/43; 11 harness failures because window.document was absent.",
+      "scriptSnapshot": "research/native-layers-runtime-first-probe.mjs",
+      "correction": "Set window.document to the already-declared document facade. Original slices unchanged."
+    },
+    {
+      "report": "research/native-layers-runtime-actions-first-probes.json",
+      "summary": "13/22; 9 harness failures from absent $ax.splice and omitted _updateOffset slice.",
+      "scriptSnapshot": "research/native-layers-runtime-actions-first-probe.mjs",
+      "correction": "Provide array splice facade and include unchanged original action.js 1192-1197."
+    },
+    {
+      "report": "research/native-layers-runtime-actions-second-probes.json",
+      "summary": "22/22 intermediate success.",
+      "scriptSnapshot": "research/native-layers-runtime-actions-second-probe.mjs",
+      "correction": "Later eight cases extend cache/composition/focus coverage; snapshot retained."
+    },
+    {
+      "report": "research/native-layers-runtime-actions-third-probes.json",
+      "summary": "26/30; four focus harness syntax failures because the slice stopped before its closing brace.",
+      "scriptSnapshot": "research/native-layers-runtime-actions-third-probe.mjs",
+      "correction": "Extend exact focus slice through events.js 710; no original statements changed."
+    },
+    {
+      "report": "research/native-layers-runtime-cache-probes.json",
+      "summary": "2/5; three assertion-shape failures because expected location omitted original left/top aliases.",
+      "scriptSnapshot": "research/native-layers-runtime-cache-first-probe.mjs",
+      "correction": "Retain original output and expect all four location aliases, without changing consumer code."
+    }
+  ],
+  "limits": [
+    "No original Axure GUI was operated or pixel-compared by this stage; no proprietary DLL method executed.",
+    "All 78 current passing cases are isolated original-JavaScript NodeVM executions with declared in-memory DOM/query, style and scheduling facades. They are not 78 full-original-page/browser tests.",
+    "Original full math.js/move.js and named exact source slices are executed. CSS style resolution, fixed-position detection, expression compilation, real repeater binding, fit-parent completion, event listener reentrancy, annotation and flyout effects are not fully composed.",
+    "The action probe executes real producer/queue/public Resize and Move consumers. Its Rotate orbit is an explicit argument/completion sink. It establishes reservation, eligibility, pivot and cache/event inputs, not complete browser orbit pixels or timing.",
+    "Controlled animation completion is not real jQuery timing/easing. Nonzero-duration nested Layer queue interruption and reentrant fit/action behavior remain unverified.",
+    "All-filtered negative dimensions are proven in query and runtime caches. Browser treatment of negative CSS dimensions, visual wrapper clipping and product render guards require separate verification.",
+    "Managed editor bounds differ from runtime bounds: format-agent CIL reports flattened actual leaves with first-leaf union seed and no runtime visible/shadow filter. This report does not substitute the runtime sentinel rule for saved/editor geometry.",
+    "Selection groups, contained widget redirection, tree special recursion, fixed members, percent-width panels, full repeater lifecycle, focus delivery and generic click bubbling are not fully executed end to end.",
+    "No product sources or tests were changed. Proposed schema and implementation guidance below are recommendations, not claims of an already matching implementation."
+  ],
+  "modelRecommendation": {
+    "type": "layer",
+    "data": {
+      "widgets": "ordered child identities, preserving nested Layers",
+      "propagate": "optional boolean; runtime default false"
+    },
+    "geometry": "Members remain in the containing non-Layer coordinate space. Keep declared/editor bounds distinct from cached runtime bounds. Do not add Layer x/y to members or apply a shared CSS rotate to the whole subtree.",
+    "rotation": "Independent runtime layerDegree. Member geometry/orientation updates are actual motion operations, with type-specific eligibility.",
+    "state": "Keep root state and ordered member recursion. Do not implement Propagate as a blanket event/disabled/selected broadcast switch."
+  },
+  "originalDllExecuted": false,
+  "originalGuiCompared": false
+}

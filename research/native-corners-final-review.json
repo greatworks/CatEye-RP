@@ -1,0 +1,3354 @@
+{
+  "capturedAt": "2026-10-15T14:41:14.997Z",
+  "kind": "Read-only independent product review. Module/serialized helpers and actual App command slice with explicit selection/commit sinks. Audit joins are retained metadata checks, not rerun native import or original GUI.",
+  "sources": [
+    {
+      "path": "src/model/line-style.ts",
+      "sha256": "3915cc61def68759309f58d7c586ccfc15f800eeb3ed813545578794cc3f36d9"
+    },
+    {
+      "path": "src/model/gradient.ts",
+      "sha256": "3dfe9f36ac2f6a567d961fc428b63d80bf1566dc553099858b09e210d0f87c12"
+    },
+    {
+      "path": "src/components/WidgetView.tsx",
+      "sha256": "1d20650b830c03fb9dc0dda93553ef9054ee05fa94306030a1e181a269b52544"
+    },
+    {
+      "path": "src/components/CornerEditor.tsx",
+      "sha256": "8c180bb791b943ccd0286b0351e2fb285730a4b6fda11fec5b54e491c01d2b1b"
+    },
+    {
+      "path": "src/components/CornerEditor.css",
+      "sha256": "aa8c829b90278d427db9ddd7271000b8c5900e56b74f4038ecd2248ae606276f"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "2ab40ccd6d9be601e516cb4633e171a84318e29c28d1016aab11366f3defbf58"
+    },
+    {
+      "path": "src/components/widget-style-command.ts",
+      "sha256": "7c258dae1c7b0b504705a9ca46be2a9558f775949ee9fbd201983627552a7e2e"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "0c403f7febd14ce1cffd89a295c6e4ab4afa9e433711e98d1f251b3c0b42f34a"
+    },
+    {
+      "path": "src/model/types.ts",
+      "sha256": "0c8669d7778a150b2036b4b30125c85ac71d32836de5d240029d027e536a201e"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "b2bd73800782f5252c1042e94aba39dff48b8e39553b927cefd69a55b4a899fb"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "4be2be441f5c48e5753a16bda4c8d0a92f8030a0ab9b3a911b9885148238a2a6"
+    },
+    {
+      "path": "src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+    },
+    {
+      "path": "src/model/import-rp.ts",
+      "sha256": "d76fb978118c0f03f5fb8120bb252a29f0aff6f229f24c01d035c32bb4bdd4e6"
+    },
+    {
+      "path": "src/model/import-rp-adaptive.ts",
+      "sha256": "f9ae36e93f0cee480a03ecfe647d27199076dbb39b3f6812b58c771e6b14ff97"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "b0631b578a95479d97d56f0095df5f6b0bfe54e559a56ef4b97f129f2dff5b71"
+    },
+    {
+      "path": "research/scripts/read-rp-semantics.mjs",
+      "sha256": "181cd54e084f9b3611d5a11110c7043b1d3375be3a0683ea327025170928f9e8"
+    },
+    {
+      "path": "tests/native-corners-renderer.test.ts",
+      "sha256": "b57de0b6f5d49c4daa8a3e3c02b5e12b2478b074a17c4e312dd9cf635b441576"
+    },
+    {
+      "path": "tests/native-corners-authoring.test.ts",
+      "sha256": "2bf4b18e6052a17c3bc6a16c456bd6d9b587f00ef0d412c8c3dd45cedb6d49e1"
+    },
+    {
+      "path": "tests/native-corners-controls.test.ts",
+      "sha256": "39c6dfd70e5c4f1e2a3438139b65277f1342248d43af117b255677b7db4bcfd4"
+    },
+    {
+      "path": "tests/native-corners-runtime.test.ts",
+      "sha256": "d61de87c64d4d756d907c3328d0d087ed5b2e5f37cd87f12469fb25223595036"
+    },
+    {
+      "path": "tests/import-rp-native-corners.test.ts",
+      "sha256": "bfcbcfba8559b935c3f8f80795f9a05526e3f164e89400bafa55c4d2e6f1c08e"
+    }
+  ],
+  "baseline": [
+    {
+      "path": ".build/before-native-corners/src/model/line-style.ts",
+      "sha256": "3b5c12f5dc776aeeec3649d59904cd1ae0be28d108e40925bf4d6e568dc2d60c"
+    },
+    {
+      "path": ".build/before-native-corners/src/model/gradient.ts",
+      "sha256": "c7adceee51cede68bb25a6028b5147007d7947e9dc57f908c90d3e3bacc7eee5"
+    },
+    {
+      "path": ".build/before-native-corners/src/components/WidgetView.tsx",
+      "sha256": "04951a60437549f3b9613039cd7eae154271023ccdedc90d05645491e9a7daee"
+    },
+    {
+      "path": ".build/before-native-corners/src/components/Inspector.tsx",
+      "sha256": "406eb50c3a634067e111a56d8fee7b7dc7cf94067b9d5a4a1f67eac54b2f0725"
+    },
+    {
+      "path": ".build/before-native-corners/src/components/widget-style-command.ts",
+      "sha256": "73500ccf8ab80c0977f397051dd0ba1cec89e3b45eba00fe684d977a9d71c356"
+    },
+    {
+      "path": ".build/before-native-corners/src/App.tsx",
+      "sha256": "18d59af41c498e0072374cb5aa14c5f94c2d7409b1714976f524329400440d4c"
+    },
+    {
+      "path": ".build/before-native-corners/src/model/types.ts",
+      "sha256": "89f3bf1faa5732523915fbced601f620eb6bd4560496d81baa8fade397663512"
+    },
+    {
+      "path": ".build/before-native-corners/src/model/document.ts",
+      "sha256": "0cf7ff741e2e188d4d093dd8073968a1e89035186a3187496ca5bcfd2dee9d84"
+    },
+    {
+      "path": ".build/before-native-corners/src/model/adaptive.ts",
+      "sha256": "2cd738e8db66e70d534c76df7ee7b8889b2ed4747bbf1f8a6fa916ff82cbdbb7"
+    },
+    {
+      "path": ".build/before-native-corners/src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+    },
+    {
+      "path": ".build/before-native-corners/src/model/import-rp.ts",
+      "sha256": "20739293e2a104d9c6098c8cd3e8e12790b643690acbfffecfb3d668565feca8"
+    },
+    {
+      "path": ".build/before-native-corners/src/model/import-rp-adaptive.ts",
+      "sha256": "b609916ec6cfab559c771b3c6dfa939cfefe24759e563734798ed4417665144e"
+    },
+    {
+      "path": ".build/before-native-corners/src/runtime/export-runtime.ts",
+      "sha256": "81819cfde4480f5bb895492aaac8d6ee3d515d889463b43a5fe83bd829844294"
+    }
+  ],
+  "probe": {
+    "path": "research/native-corners-final-review-probe.mjs",
+    "sha256": "e53c8885aa98ad7a6d62d22af59e8b4e58ffc6d931050b2e3058f5f20dbe485d"
+  },
+  "evidence": [
+    {
+      "path": "research/native-corners-evidence.json",
+      "sha256": "bfe40fe1f738a4ca7d461630b4c19af0c0ecbfe9ce02e3e179997128471ecfd4"
+    },
+    {
+      "path": "research/native-corners-runtime-probes.json",
+      "sha256": "2dd9ea0044231c4e931166011681f09bf60f1cee99625b63cc86f5dac2cae2f6"
+    },
+    {
+      "path": "research/native-corners-static-probes.json",
+      "sha256": "d9313c6424607dd93bb9b896b9878e5546ec9b590229c17c06ffef07ea089dc0"
+    },
+    {
+      "path": "research/native-corners-render-review.json",
+      "sha256": "6f0fd51f1aac9b9875cf14058dce8213f8825962280773969962e8c9baa43b58"
+    },
+    {
+      "path": "research/native-corners-render-review-observed-failure.json",
+      "sha256": "fa6565d493389ce75354d97ea1a983e3b10224009b96f6d659292b081d54d147"
+    },
+    {
+      "path": "research/native-corners-format-import-audit.json",
+      "sha256": "f20d4031adca705fb38320ca5af82aea2bd6124047c6cc7ff48e8d21a9473563"
+    },
+    {
+      "path": "research/native-corners-format-census.json",
+      "sha256": "9ec93f38ebd345b1861dfc179500689dbe948b117d46145487e72abef18e1ccd"
+    }
+  ],
+  "slices": [
+    {
+      "path": "src/App.tsx",
+      "startLine": 308,
+      "endLine": 360,
+      "sha256": "1bd991bfc1e19a7e163ee047e703bd6c71465e96ca72afaddf677f1c91c8d4e3"
+    }
+  ],
+  "results": [
+    {
+      "name": "prior-NC-REVIEW-01-false-90",
+      "pass": true,
+      "observed": {
+        "supports": true,
+        "radii": [
+          90,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "supports": true,
+        "radii": [
+          90,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "prior-NC-REVIEW-01-false-20",
+      "pass": true,
+      "observed": {
+        "supports": true,
+        "radii": [
+          20,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "supports": true,
+        "radii": [
+          20,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "prior-css-256-mask-matrix-false",
+      "pass": true,
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "prior-square-gradient-border-false",
+      "pass": true,
+      "observed": true,
+      "expected": true
+    },
+    {
+      "name": "resized-normalized-declared-family-sides-false",
+      "pass": true,
+      "observed": {
+        "sides": true,
+        "corners": true,
+        "radii": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "sides": true,
+        "corners": true,
+        "radii": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "edited-handle-rejects-native-regeneration-false",
+      "pass": true,
+      "observed": {
+        "sides": false,
+        "corners": false,
+        "rebuild": false
+      },
+      "expected": {
+        "sides": false,
+        "corners": false,
+        "rebuild": false
+      }
+    },
+    {
+      "name": "prior-NC-REVIEW-01-true-90",
+      "pass": true,
+      "observed": {
+        "supports": true,
+        "radii": [
+          90,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "supports": true,
+        "radii": [
+          90,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "prior-NC-REVIEW-01-true-20",
+      "pass": true,
+      "observed": {
+        "supports": true,
+        "radii": [
+          20,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "supports": true,
+        "radii": [
+          20,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "prior-css-256-mask-matrix-true",
+      "pass": true,
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "prior-square-gradient-border-true",
+      "pass": true,
+      "observed": true,
+      "expected": true
+    },
+    {
+      "name": "resized-normalized-declared-family-sides-true",
+      "pass": true,
+      "observed": {
+        "sides": true,
+        "corners": true,
+        "radii": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": {
+        "sides": true,
+        "corners": true,
+        "radii": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "edited-handle-rejects-native-regeneration-true",
+      "pass": true,
+      "observed": {
+        "sides": false,
+        "corners": false,
+        "rebuild": false
+      },
+      "expected": {
+        "sides": false,
+        "corners": false,
+        "rebuild": false
+      }
+    },
+    {
+      "name": "app-per-target-mask-current-or-all-false",
+      "pass": true,
+      "observed": [
+        {
+          "radius": 40,
+          "mask": [
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "radius": 41,
+          "mask": [
+            false,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "radius": 42,
+          "mask": [
+            false,
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "radius": 43,
+          "mask": [
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ],
+      "expected": [
+        {
+          "radius": 40,
+          "mask": [
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "radius": 41,
+          "mask": [
+            false,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "radius": 42,
+          "mask": [
+            false,
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "radius": 43,
+          "mask": [
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "name": "app-arbitrary-and-equal-inactive-retained-false",
+      "pass": true,
+      "observed": [
+        {
+          "y": 52,
+          "style": {
+            "radius": 82,
+            "cornerVisibility": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "fill": "#abcdef"
+          }
+        },
+        {
+          "y": 53,
+          "style": {
+            "radius": 83,
+            "cornerVisibility": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "fill": "#abcdef"
+          }
+        }
+      ],
+      "expected": [
+        {
+          "y": 52,
+          "style": {
+            "radius": 82,
+            "cornerVisibility": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "fill": "#abcdef"
+          }
+        },
+        {
+          "y": 53,
+          "style": {
+            "radius": 83,
+            "cornerVisibility": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "fill": "#abcdef"
+          }
+        }
+      ]
+    },
+    {
+      "name": "app-p81-never-clears-inactive-p71-false",
+      "pass": true,
+      "observed": [
+        80,
+        81
+      ],
+      "expected": [
+        80,
+        81
+      ]
+    },
+    {
+      "name": "app-p81-clears-only-changed-inactive-mask-false",
+      "pass": true,
+      "observed": [
+        true,
+        true
+      ],
+      "expected": [
+        true,
+        true
+      ]
+    },
+    {
+      "name": "app-p71-per-target-mask-retained-false",
+      "pass": true,
+      "observed": [
+        {
+          "radius": 40,
+          "mask": [
+            true,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "radius": 40,
+          "mask": [
+            true,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "radius": 40,
+          "mask": [
+            false,
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "radius": 43,
+          "mask": [
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ],
+      "expected": [
+        {
+          "radius": 40,
+          "mask": [
+            true,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "radius": 40,
+          "mask": [
+            true,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "radius": 40,
+          "mask": [
+            false,
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "radius": 43,
+          "mask": [
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "name": "app-equal-radius-inactive-retained-false",
+      "pass": true,
+      "observed": {
+        "y": 50,
+        "style": {
+          "radius": 80,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "fill": "#abcdef"
+        }
+      },
+      "expected": {
+        "y": 50,
+        "style": {
+          "radius": 80,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "fill": "#abcdef"
+        }
+      }
+    },
+    {
+      "name": "app-effects-per-target-retain-radius-and-color-false",
+      "pass": true,
+      "observed": [
+        {
+          "fill": "#111111",
+          "radius": 10,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "fill": "#222222",
+          "radius": 11,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "fill": "#333333",
+          "radius": 12,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "fill": "#444444",
+          "radius": 13,
+          "cornerVisibility": [
+            true,
+            true,
+            false,
+            true
+          ]
+        }
+      ],
+      "expected": [
+        {
+          "fill": "#111111",
+          "radius": 10,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "fill": "#222222",
+          "radius": 11,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "fill": "#333333",
+          "radius": 12,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "fill": "#444444",
+          "radius": 13,
+          "cornerVisibility": [
+            true,
+            true,
+            false,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "name": "source-fixture-not-mutated-false",
+      "pass": true,
+      "observed": {
+        "id": "review-page",
+        "name": "Independent corners",
+        "width": 1200,
+        "height": 900,
+        "background": "#ffffff",
+        "widgets": [
+          {
+            "id": "a",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 8,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                false,
+                false,
+                false
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#111111",
+              "radius": 10,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "id": "b",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 18,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#222222",
+              "radius": 11,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            }
+          },
+          {
+            "id": "equal",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 28,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                false,
+                false,
+                true,
+                false
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#333333",
+              "radius": 12,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "id": "arbitrary",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 38,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#444444",
+              "radius": 13,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            },
+            "vectorPath": {
+              "fillRule": "nonzero",
+              "commands": [
+                {
+                  "op": "M",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "op": "L",
+                  "x": 1,
+                  "y": 0
+                },
+                {
+                  "op": "L",
+                  "x": 0.5,
+                  "y": 1
+                },
+                {
+                  "op": "Z"
+                }
+              ]
+            }
+          }
+        ],
+        "notes": "",
+        "interactions": [],
+        "adaptiveViews": [
+          {
+            "id": "phone",
+            "name": "Phone",
+            "width": 390,
+            "overrides": {
+              "a": {
+                "x": 10,
+                "style": {
+                  "radius": 40,
+                  "cornerVisibility": [
+                    true,
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              },
+              "b": {
+                "x": 11,
+                "style": {
+                  "radius": 41,
+                  "cornerVisibility": [
+                    true,
+                    true,
+                    false,
+                    true
+                  ]
+                }
+              },
+              "equal": {
+                "x": 12,
+                "style": {
+                  "radius": 42,
+                  "cornerVisibility": [
+                    false,
+                    false,
+                    true,
+                    false
+                  ]
+                }
+              },
+              "arbitrary": {
+                "x": 13,
+                "style": {
+                  "radius": 43,
+                  "cornerVisibility": [
+                    true,
+                    true,
+                    true,
+                    true
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "adaptiveSelection": "native-size",
+        "adaptiveBaseSize": {
+          "width": 0,
+          "height": 0
+        },
+        "adaptiveOverrides": {
+          "inactive": {
+            "a": {
+              "y": 50,
+              "style": {
+                "radius": 80,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "b": {
+              "y": 51,
+              "style": {
+                "radius": 81,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "equal": {
+              "y": 52,
+              "style": {
+                "radius": 82,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "arbitrary": {
+              "y": 53,
+              "style": {
+                "radius": 83,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "id": "review-page",
+        "name": "Independent corners",
+        "width": 1200,
+        "height": 900,
+        "background": "#ffffff",
+        "widgets": [
+          {
+            "id": "a",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 8,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                false,
+                false,
+                false
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#111111",
+              "radius": 10,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "id": "b",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 18,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#222222",
+              "radius": 11,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            }
+          },
+          {
+            "id": "equal",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 28,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                false,
+                false,
+                true,
+                false
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#333333",
+              "radius": 12,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "id": "arbitrary",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 38,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#444444",
+              "radius": 13,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            },
+            "vectorPath": {
+              "fillRule": "nonzero",
+              "commands": [
+                {
+                  "op": "M",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "op": "L",
+                  "x": 1,
+                  "y": 0
+                },
+                {
+                  "op": "L",
+                  "x": 0.5,
+                  "y": 1
+                },
+                {
+                  "op": "Z"
+                }
+              ]
+            }
+          }
+        ],
+        "notes": "",
+        "interactions": [],
+        "adaptiveViews": [
+          {
+            "id": "phone",
+            "name": "Phone",
+            "width": 390,
+            "overrides": {
+              "a": {
+                "x": 10,
+                "style": {
+                  "radius": 40,
+                  "cornerVisibility": [
+                    true,
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              },
+              "b": {
+                "x": 11,
+                "style": {
+                  "radius": 41,
+                  "cornerVisibility": [
+                    true,
+                    true,
+                    false,
+                    true
+                  ]
+                }
+              },
+              "equal": {
+                "x": 12,
+                "style": {
+                  "radius": 42,
+                  "cornerVisibility": [
+                    false,
+                    false,
+                    true,
+                    false
+                  ]
+                }
+              },
+              "arbitrary": {
+                "x": 13,
+                "style": {
+                  "radius": 43,
+                  "cornerVisibility": [
+                    true,
+                    true,
+                    true,
+                    true
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "adaptiveSelection": "native-size",
+        "adaptiveBaseSize": {
+          "width": 0,
+          "height": 0
+        },
+        "adaptiveOverrides": {
+          "inactive": {
+            "a": {
+              "y": 50,
+              "style": {
+                "radius": 80,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "b": {
+              "y": 51,
+              "style": {
+                "radius": 81,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "equal": {
+              "y": 52,
+              "style": {
+                "radius": 82,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "arbitrary": {
+              "y": 53,
+              "style": {
+                "radius": 83,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "app-per-target-mask-current-or-all-true",
+      "pass": true,
+      "observed": [
+        {
+          "radius": 40,
+          "mask": [
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "radius": 41,
+          "mask": [
+            false,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "radius": 42,
+          "mask": [
+            false,
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "radius": 43,
+          "mask": [
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ],
+      "expected": [
+        {
+          "radius": 40,
+          "mask": [
+            false,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "radius": 41,
+          "mask": [
+            false,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "radius": 42,
+          "mask": [
+            false,
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "radius": 43,
+          "mask": [
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "name": "app-arbitrary-and-equal-inactive-retained-true",
+      "pass": true,
+      "observed": [
+        {
+          "y": 52,
+          "style": {
+            "radius": 82,
+            "cornerVisibility": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "fill": "#abcdef"
+          }
+        },
+        {
+          "y": 53,
+          "style": {
+            "radius": 83,
+            "cornerVisibility": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "fill": "#abcdef"
+          }
+        }
+      ],
+      "expected": [
+        {
+          "y": 52,
+          "style": {
+            "radius": 82,
+            "cornerVisibility": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "fill": "#abcdef"
+          }
+        },
+        {
+          "y": 53,
+          "style": {
+            "radius": 83,
+            "cornerVisibility": [
+              true,
+              true,
+              true,
+              true
+            ],
+            "fill": "#abcdef"
+          }
+        }
+      ]
+    },
+    {
+      "name": "app-p81-never-clears-inactive-p71-true",
+      "pass": true,
+      "observed": [
+        80,
+        81
+      ],
+      "expected": [
+        80,
+        81
+      ]
+    },
+    {
+      "name": "app-p81-clears-only-changed-inactive-mask-true",
+      "pass": true,
+      "observed": [
+        false,
+        false
+      ],
+      "expected": [
+        false,
+        false
+      ]
+    },
+    {
+      "name": "app-p71-per-target-mask-retained-true",
+      "pass": true,
+      "observed": [
+        {
+          "radius": 40,
+          "mask": [
+            true,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "radius": 40,
+          "mask": [
+            true,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "radius": 40,
+          "mask": [
+            false,
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "radius": 43,
+          "mask": [
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ],
+      "expected": [
+        {
+          "radius": 40,
+          "mask": [
+            true,
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "radius": 40,
+          "mask": [
+            true,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "radius": 40,
+          "mask": [
+            false,
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "radius": 43,
+          "mask": [
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "name": "app-equal-radius-inactive-retained-true",
+      "pass": true,
+      "observed": {
+        "y": 50,
+        "style": {
+          "radius": 80,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "fill": "#abcdef"
+        }
+      },
+      "expected": {
+        "y": 50,
+        "style": {
+          "radius": 80,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "fill": "#abcdef"
+        }
+      }
+    },
+    {
+      "name": "app-effects-per-target-retain-radius-and-color-true",
+      "pass": true,
+      "observed": [
+        {
+          "fill": "#111111",
+          "radius": 10,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "fill": "#222222",
+          "radius": 11,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "fill": "#333333",
+          "radius": 12,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "fill": "#444444",
+          "radius": 13,
+          "cornerVisibility": [
+            true,
+            true,
+            false,
+            true
+          ]
+        }
+      ],
+      "expected": [
+        {
+          "fill": "#111111",
+          "radius": 10,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "fill": "#222222",
+          "radius": 11,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            true
+          ]
+        },
+        {
+          "fill": "#333333",
+          "radius": 12,
+          "cornerVisibility": [
+            false,
+            true,
+            false,
+            false
+          ]
+        },
+        {
+          "fill": "#444444",
+          "radius": 13,
+          "cornerVisibility": [
+            true,
+            true,
+            false,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "name": "source-fixture-not-mutated-true",
+      "pass": true,
+      "observed": {
+        "id": "review-page",
+        "name": "Independent corners",
+        "width": 1200,
+        "height": 900,
+        "background": "#ffffff",
+        "widgets": [
+          {
+            "id": "a",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 8,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                false,
+                false,
+                false
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#111111",
+              "radius": 10,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "id": "b",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 18,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#222222",
+              "radius": 11,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            }
+          },
+          {
+            "id": "equal",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 28,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                false,
+                false,
+                true,
+                false
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#333333",
+              "radius": 12,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "id": "arbitrary",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 38,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#444444",
+              "radius": 13,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            },
+            "vectorPath": {
+              "fillRule": "nonzero",
+              "commands": [
+                {
+                  "op": "M",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "op": "L",
+                  "x": 1,
+                  "y": 0
+                },
+                {
+                  "op": "L",
+                  "x": 0.5,
+                  "y": 1
+                },
+                {
+                  "op": "Z"
+                }
+              ]
+            }
+          }
+        ],
+        "notes": "",
+        "interactions": [],
+        "adaptiveViews": [
+          {
+            "id": "phone",
+            "name": "Phone",
+            "width": 390,
+            "overrides": {
+              "a": {
+                "x": 10,
+                "style": {
+                  "radius": 40,
+                  "cornerVisibility": [
+                    true,
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              },
+              "b": {
+                "x": 11,
+                "style": {
+                  "radius": 41,
+                  "cornerVisibility": [
+                    true,
+                    true,
+                    false,
+                    true
+                  ]
+                }
+              },
+              "equal": {
+                "x": 12,
+                "style": {
+                  "radius": 42,
+                  "cornerVisibility": [
+                    false,
+                    false,
+                    true,
+                    false
+                  ]
+                }
+              },
+              "arbitrary": {
+                "x": 13,
+                "style": {
+                  "radius": 43,
+                  "cornerVisibility": [
+                    true,
+                    true,
+                    true,
+                    true
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "adaptiveSelection": "native-size",
+        "adaptiveBaseSize": {
+          "width": 0,
+          "height": 0
+        },
+        "adaptiveOverrides": {
+          "inactive": {
+            "a": {
+              "y": 50,
+              "style": {
+                "radius": 80,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "b": {
+              "y": 51,
+              "style": {
+                "radius": 81,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "equal": {
+              "y": 52,
+              "style": {
+                "radius": 82,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "arbitrary": {
+              "y": 53,
+              "style": {
+                "radius": 83,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            }
+          }
+        }
+      },
+      "expected": {
+        "id": "review-page",
+        "name": "Independent corners",
+        "width": 1200,
+        "height": 900,
+        "background": "#ffffff",
+        "widgets": [
+          {
+            "id": "a",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 8,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                false,
+                false,
+                false
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#111111",
+              "radius": 10,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "id": "b",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 18,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#222222",
+              "radius": 11,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            }
+          },
+          {
+            "id": "equal",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 28,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                false,
+                false,
+                true,
+                false
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#333333",
+              "radius": 12,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "id": "arbitrary",
+            "type": "box",
+            "name": "Box",
+            "text": "",
+            "x": 100,
+            "y": 100,
+            "width": 180,
+            "height": 90,
+            "rotation": 0,
+            "style": {
+              "fill": "#ffffff",
+              "stroke": "#b8bdc7",
+              "strokeWidth": 1,
+              "radius": 38,
+              "color": "#263348",
+              "fontSize": 14,
+              "fontFamily": "Arial",
+              "fontWeight": 400,
+              "textAlign": "center",
+              "opacity": 1,
+              "cornerVisibility": [
+                true,
+                true,
+                true,
+                true
+              ]
+            },
+            "hidden": false,
+            "locked": false,
+            "disabled": false,
+            "notes": "",
+            "interactions": [],
+            "selectedStyle": {
+              "fill": "#444444",
+              "radius": 13,
+              "cornerVisibility": [
+                true,
+                true,
+                false,
+                true
+              ]
+            },
+            "vectorPath": {
+              "fillRule": "nonzero",
+              "commands": [
+                {
+                  "op": "M",
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "op": "L",
+                  "x": 1,
+                  "y": 0
+                },
+                {
+                  "op": "L",
+                  "x": 0.5,
+                  "y": 1
+                },
+                {
+                  "op": "Z"
+                }
+              ]
+            }
+          }
+        ],
+        "notes": "",
+        "interactions": [],
+        "adaptiveViews": [
+          {
+            "id": "phone",
+            "name": "Phone",
+            "width": 390,
+            "overrides": {
+              "a": {
+                "x": 10,
+                "style": {
+                  "radius": 40,
+                  "cornerVisibility": [
+                    true,
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              },
+              "b": {
+                "x": 11,
+                "style": {
+                  "radius": 41,
+                  "cornerVisibility": [
+                    true,
+                    true,
+                    false,
+                    true
+                  ]
+                }
+              },
+              "equal": {
+                "x": 12,
+                "style": {
+                  "radius": 42,
+                  "cornerVisibility": [
+                    false,
+                    false,
+                    true,
+                    false
+                  ]
+                }
+              },
+              "arbitrary": {
+                "x": 13,
+                "style": {
+                  "radius": 43,
+                  "cornerVisibility": [
+                    true,
+                    true,
+                    true,
+                    true
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "adaptiveSelection": "native-size",
+        "adaptiveBaseSize": {
+          "width": 0,
+          "height": 0
+        },
+        "adaptiveOverrides": {
+          "inactive": {
+            "a": {
+              "y": 50,
+              "style": {
+                "radius": 80,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "b": {
+              "y": 51,
+              "style": {
+                "radius": 81,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "equal": {
+              "y": 52,
+              "style": {
+                "radius": 82,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            },
+            "arbitrary": {
+              "y": 53,
+              "style": {
+                "radius": 83,
+                "cornerVisibility": [
+                  true,
+                  true,
+                  true,
+                  true
+                ],
+                "fill": "#abcdef"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "import-audit-six-state-owners",
+      "pass": true,
+      "observed": 6,
+      "expected": 6
+    },
+    {
+      "name": "import-audit-initial-selected-count",
+      "pass": true,
+      "observed": 2,
+      "expected": 2
+    },
+    {
+      "name": "import-state-and-action-projection-9c544b28d6be49afb47dc8c5a5e359d1",
+      "pass": true,
+      "observed": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-c598ff6cf4ba459cbef032f0cd4048f7-9c544b28d6be49afb47dc8c5a5e359d1",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "9c544b28d6be49afb47dc8c5a5e359d1",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "color": "#000000",
+          "fontFamily": "Roboto",
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      },
+      "expected": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-c598ff6cf4ba459cbef032f0cd4048f7-9c544b28d6be49afb47dc8c5a5e359d1",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "9c544b28d6be49afb47dc8c5a5e359d1",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "fontFamily": "Roboto",
+          "color": "#000000",
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "raw-od-state-corner-projection-9c544b28d6be49afb47dc8c5a5e359d1",
+      "pass": true,
+      "observed": {
+        "Selected": {
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      },
+      "expected": {
+        "Selected": {
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "import-state-and-action-projection-e8120fabe7b64b67bd1b01289f7f0d1a",
+      "pass": true,
+      "observed": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-c598ff6cf4ba459cbef032f0cd4048f7-e8120fabe7b64b67bd1b01289f7f0d1a",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "e8120fabe7b64b67bd1b01289f7f0d1a",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "color": "#000000",
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      },
+      "expected": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-c598ff6cf4ba459cbef032f0cd4048f7-e8120fabe7b64b67bd1b01289f7f0d1a",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "e8120fabe7b64b67bd1b01289f7f0d1a",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "color": "#000000",
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "raw-od-state-corner-projection-e8120fabe7b64b67bd1b01289f7f0d1a",
+      "pass": true,
+      "observed": {
+        "Selected": {
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      },
+      "expected": {
+        "Selected": {
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "import-state-and-action-projection-5296517d239645c884d9e2cbc21d6729",
+      "pass": true,
+      "observed": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-c598ff6cf4ba459cbef032f0cd4048f7-5296517d239645c884d9e2cbc21d6729",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "5296517d239645c884d9e2cbc21d6729",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 4,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "color": "#000000",
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      },
+      "expected": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-c598ff6cf4ba459cbef032f0cd4048f7-5296517d239645c884d9e2cbc21d6729",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "5296517d239645c884d9e2cbc21d6729",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "color": "#000000",
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 4,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "raw-od-state-corner-projection-5296517d239645c884d9e2cbc21d6729",
+      "pass": true,
+      "observed": {
+        "Selected": {
+          "radius": 4,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      },
+      "expected": {
+        "Selected": {
+          "radius": 4,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "import-state-and-action-projection-9464cb4c672a4650bd59f41199cc3c7a",
+      "pass": true,
+      "observed": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-6502ae053ecc499ea9f15238102d015c-9464cb4c672a4650bd59f41199cc3c7a",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "9464cb4c672a4650bd59f41199cc3c7a",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "color": "#000000",
+          "fontFamily": "Roboto",
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      },
+      "expected": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-6502ae053ecc499ea9f15238102d015c-9464cb4c672a4650bd59f41199cc3c7a",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "9464cb4c672a4650bd59f41199cc3c7a",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "fontFamily": "Roboto",
+          "color": "#000000",
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "raw-od-state-corner-projection-9464cb4c672a4650bd59f41199cc3c7a",
+      "pass": true,
+      "observed": {
+        "Selected": {
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      },
+      "expected": {
+        "Selected": {
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "import-state-and-action-projection-cd50fe88ac0d4e45b4577201127304d7",
+      "pass": true,
+      "observed": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-6502ae053ecc499ea9f15238102d015c-cd50fe88ac0d4e45b4577201127304d7",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "cd50fe88ac0d4e45b4577201127304d7",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "color": "#000000",
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      },
+      "expected": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-6502ae053ecc499ea9f15238102d015c-cd50fe88ac0d4e45b4577201127304d7",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "cd50fe88ac0d4e45b4577201127304d7",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "color": "#000000",
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "raw-od-state-corner-projection-cd50fe88ac0d4e45b4577201127304d7",
+      "pass": true,
+      "observed": {
+        "Selected": {
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      },
+      "expected": {
+        "Selected": {
+          "radius": 5,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "import-state-and-action-projection-05323c55c8cc43b4954feb44c11c1db1",
+      "pass": true,
+      "observed": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-6502ae053ecc499ea9f15238102d015c-05323c55c8cc43b4954feb44c11c1db1",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "05323c55c8cc43b4954feb44c11c1db1",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 4,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "color": "#000000",
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      },
+      "expected": {
+        "sourceRetained": true,
+        "event": "click",
+        "conditions": [],
+        "actions": [
+          {
+            "type": "setSelected",
+            "targetId": "rp-w-6502ae053ecc499ea9f15238102d015c-05323c55c8cc43b4954feb44c11c1db1",
+            "value": "true"
+          }
+        ],
+        "nativeActions": [
+          {
+            "type": "setSelected",
+            "targetSourceId": "05323c55c8cc43b4954feb44c11c1db1",
+            "value": "true"
+          }
+        ],
+        "selectedPatch": {
+          "color": "#000000",
+          "fill": "#ffffff",
+          "stroke": "#dedede",
+          "strokeWidth": 1,
+          "radius": 4,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "outerShadow": {
+            "on": true,
+            "offsetX": 0,
+            "offsetY": 0,
+            "blurRadius": 8,
+            "color": "#0000001f"
+          }
+        },
+        "hoverPatch": {
+          "fill": "#f9f9f9",
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "raw-od-state-corner-projection-05323c55c8cc43b4954feb44c11c1db1",
+      "pass": true,
+      "observed": {
+        "Selected": {
+          "radius": 4,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      },
+      "expected": {
+        "Selected": {
+          "radius": 4,
+          "cornerVisibility": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "MouseOver": {
+          "radius": 4
+        }
+      }
+    },
+    {
+      "name": "review-does-not-change-product-source",
+      "pass": true,
+      "observed": [
+        {
+          "path": "src/model/line-style.ts",
+          "sha256": "3915cc61def68759309f58d7c586ccfc15f800eeb3ed813545578794cc3f36d9"
+        },
+        {
+          "path": "src/model/gradient.ts",
+          "sha256": "3dfe9f36ac2f6a567d961fc428b63d80bf1566dc553099858b09e210d0f87c12"
+        },
+        {
+          "path": "src/components/WidgetView.tsx",
+          "sha256": "1d20650b830c03fb9dc0dda93553ef9054ee05fa94306030a1e181a269b52544"
+        },
+        {
+          "path": "src/components/CornerEditor.tsx",
+          "sha256": "8c180bb791b943ccd0286b0351e2fb285730a4b6fda11fec5b54e491c01d2b1b"
+        },
+        {
+          "path": "src/components/CornerEditor.css",
+          "sha256": "aa8c829b90278d427db9ddd7271000b8c5900e56b74f4038ecd2248ae606276f"
+        },
+        {
+          "path": "src/components/Inspector.tsx",
+          "sha256": "2ab40ccd6d9be601e516cb4633e171a84318e29c28d1016aab11366f3defbf58"
+        },
+        {
+          "path": "src/components/widget-style-command.ts",
+          "sha256": "7c258dae1c7b0b504705a9ca46be2a9558f775949ee9fbd201983627552a7e2e"
+        },
+        {
+          "path": "src/App.tsx",
+          "sha256": "0c403f7febd14ce1cffd89a295c6e4ab4afa9e433711e98d1f251b3c0b42f34a"
+        },
+        {
+          "path": "src/model/types.ts",
+          "sha256": "0c8669d7778a150b2036b4b30125c85ac71d32836de5d240029d027e536a201e"
+        },
+        {
+          "path": "src/model/document.ts",
+          "sha256": "b2bd73800782f5252c1042e94aba39dff48b8e39553b927cefd69a55b4a899fb"
+        },
+        {
+          "path": "src/model/adaptive.ts",
+          "sha256": "4be2be441f5c48e5753a16bda4c8d0a92f8030a0ab9b3a911b9885148238a2a6"
+        },
+        {
+          "path": "src/model/adaptive-view-sets.ts",
+          "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+        },
+        {
+          "path": "src/model/import-rp.ts",
+          "sha256": "d76fb978118c0f03f5fb8120bb252a29f0aff6f229f24c01d035c32bb4bdd4e6"
+        },
+        {
+          "path": "src/model/import-rp-adaptive.ts",
+          "sha256": "f9ae36e93f0cee480a03ecfe647d27199076dbb39b3f6812b58c771e6b14ff97"
+        },
+        {
+          "path": "src/runtime/export-runtime.ts",
+          "sha256": "b0631b578a95479d97d56f0095df5f6b0bfe54e559a56ef4b97f129f2dff5b71"
+        },
+        {
+          "path": "research/scripts/read-rp-semantics.mjs",
+          "sha256": "181cd54e084f9b3611d5a11110c7043b1d3375be3a0683ea327025170928f9e8"
+        },
+        {
+          "path": "tests/native-corners-renderer.test.ts",
+          "sha256": "b57de0b6f5d49c4daa8a3e3c02b5e12b2478b074a17c4e312dd9cf635b441576"
+        },
+        {
+          "path": "tests/native-corners-authoring.test.ts",
+          "sha256": "2bf4b18e6052a17c3bc6a16c456bd6d9b587f00ef0d412c8c3dd45cedb6d49e1"
+        },
+        {
+          "path": "tests/native-corners-controls.test.ts",
+          "sha256": "39c6dfd70e5c4f1e2a3438139b65277f1342248d43af117b255677b7db4bcfd4"
+        },
+        {
+          "path": "tests/native-corners-runtime.test.ts",
+          "sha256": "d61de87c64d4d756d907c3328d0d087ed5b2e5f37cd87f12469fb25223595036"
+        },
+        {
+          "path": "tests/import-rp-native-corners.test.ts",
+          "sha256": "bfcbcfba8559b935c3f8f80795f9a05526e3f164e89400bafa55c4d2e6f1c08e"
+        }
+      ],
+      "expected": [
+        {
+          "path": "src/model/line-style.ts",
+          "sha256": "3915cc61def68759309f58d7c586ccfc15f800eeb3ed813545578794cc3f36d9"
+        },
+        {
+          "path": "src/model/gradient.ts",
+          "sha256": "3dfe9f36ac2f6a567d961fc428b63d80bf1566dc553099858b09e210d0f87c12"
+        },
+        {
+          "path": "src/components/WidgetView.tsx",
+          "sha256": "1d20650b830c03fb9dc0dda93553ef9054ee05fa94306030a1e181a269b52544"
+        },
+        {
+          "path": "src/components/CornerEditor.tsx",
+          "sha256": "8c180bb791b943ccd0286b0351e2fb285730a4b6fda11fec5b54e491c01d2b1b"
+        },
+        {
+          "path": "src/components/CornerEditor.css",
+          "sha256": "aa8c829b90278d427db9ddd7271000b8c5900e56b74f4038ecd2248ae606276f"
+        },
+        {
+          "path": "src/components/Inspector.tsx",
+          "sha256": "2ab40ccd6d9be601e516cb4633e171a84318e29c28d1016aab11366f3defbf58"
+        },
+        {
+          "path": "src/components/widget-style-command.ts",
+          "sha256": "7c258dae1c7b0b504705a9ca46be2a9558f775949ee9fbd201983627552a7e2e"
+        },
+        {
+          "path": "src/App.tsx",
+          "sha256": "0c403f7febd14ce1cffd89a295c6e4ab4afa9e433711e98d1f251b3c0b42f34a"
+        },
+        {
+          "path": "src/model/types.ts",
+          "sha256": "0c8669d7778a150b2036b4b30125c85ac71d32836de5d240029d027e536a201e"
+        },
+        {
+          "path": "src/model/document.ts",
+          "sha256": "b2bd73800782f5252c1042e94aba39dff48b8e39553b927cefd69a55b4a899fb"
+        },
+        {
+          "path": "src/model/adaptive.ts",
+          "sha256": "4be2be441f5c48e5753a16bda4c8d0a92f8030a0ab9b3a911b9885148238a2a6"
+        },
+        {
+          "path": "src/model/adaptive-view-sets.ts",
+          "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+        },
+        {
+          "path": "src/model/import-rp.ts",
+          "sha256": "d76fb978118c0f03f5fb8120bb252a29f0aff6f229f24c01d035c32bb4bdd4e6"
+        },
+        {
+          "path": "src/model/import-rp-adaptive.ts",
+          "sha256": "f9ae36e93f0cee480a03ecfe647d27199076dbb39b3f6812b58c771e6b14ff97"
+        },
+        {
+          "path": "src/runtime/export-runtime.ts",
+          "sha256": "b0631b578a95479d97d56f0095df5f6b0bfe54e559a56ef4b97f129f2dff5b71"
+        },
+        {
+          "path": "research/scripts/read-rp-semantics.mjs",
+          "sha256": "181cd54e084f9b3611d5a11110c7043b1d3375be3a0683ea327025170928f9e8"
+        },
+        {
+          "path": "tests/native-corners-renderer.test.ts",
+          "sha256": "b57de0b6f5d49c4daa8a3e3c02b5e12b2478b074a17c4e312dd9cf635b441576"
+        },
+        {
+          "path": "tests/native-corners-authoring.test.ts",
+          "sha256": "2bf4b18e6052a17c3bc6a16c456bd6d9b587f00ef0d412c8c3dd45cedb6d49e1"
+        },
+        {
+          "path": "tests/native-corners-controls.test.ts",
+          "sha256": "39c6dfd70e5c4f1e2a3438139b65277f1342248d43af117b255677b7db4bcfd4"
+        },
+        {
+          "path": "tests/native-corners-runtime.test.ts",
+          "sha256": "d61de87c64d4d756d907c3328d0d087ed5b2e5f37cd87f12469fb25223595036"
+        },
+        {
+          "path": "tests/import-rp-native-corners.test.ts",
+          "sha256": "bfcbcfba8559b935c3f8f80795f9a05526e3f164e89400bafa55c4d2e6f1c08e"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "passed": 43,
+    "failed": 0
+  },
+  "limitations": [
+    "No browser/package/original GUI execution.",
+    "The unchanged native importer requires the older restricted saved-rectangle recognizer; arbitrary or oversized unproven native snapshots remain rejected rather than inferred.",
+    "Native width-zero/pattern-none dynamic SVG skips and managed initial oversized fill differ from declarative product regeneration, as recorded in prior frozen evidence.",
+    "Six newly recovered Click actions set selected=true; they are not toggle actions. Two initial selected objects preserve non-corner paint but intentionally correct corner geometry."
+  ]
+}

@@ -1,0 +1,21 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+const sha=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const record=file=>({file,sha256:sha(file)});
+const read=file=>JSON.parse(fs.readFileSync(file,'utf8').replace(/^\uFEFF/,''));
+const staticFile='research/adaptive-placement-format-manifest.json',staticManifest=read(staticFile);
+if(sha(staticFile)!=='002c55ca82bf672de716377e7fb00a1f705e3149504f891c525c91468679afd1')throw Error('Frozen static manifest changed');
+for(const {file,sha256}of [...staticManifest.files,...staticManifest.samples])if(sha(file)!==sha256)throw Error('Frozen static dependency changed '+file);
+const sources=['research/scripts/read-rp-adaptive.mjs','research/scripts/read-rp-semantics.mjs','src/model/import-rp-adaptive.ts','src/model/import-rp.ts'];
+const tests=['research/scripts/read-rp-placement.test.mjs','tests/import-rp-placement.test.ts','research/scripts/read-rp-adaptive-styles.test.mjs','tests/import-rp-adaptive-styles.test.ts','tests/adaptive-placement-integration.test.ts','scripts/synthetic-rp-placement-fixture.mjs'];
+const logs=['reader-red','reader-green','import-first','import-final','integration-first','fit-red','related-reader','related-reader-final','related-import','related-import-final','typecheck','corpus-final'].map(name=>`research/adaptive-placement-format-${name}.log`);
+const corpusFile='research/adaptive-placement-corpus-audit.json',corpus=read(corpusFile);
+if(!corpus.ok||corpus.totals.samples!==11||corpus.totals.admitted!==10||corpus.totals.rejected!==1)throw Error('Final corpus audit did not pass');
+for(const file of sources){const entry=corpus.sources.find(s=>s.file===file);if(!entry||entry.sha256!==sha(file))throw Error('Corpus bound to stale product '+file);}
+const files=[...tests,...logs,staticFile,corpusFile,'research/adaptive-placement-format-implementation.md','research/adaptive-placement-format-implementation-freeze.mjs'];
+const evidence={originalAssemblyExecuted:false,originalGuiCompared:false,syntheticPositiveCases:true,nativeVersion:[11,0,0,0],nativeEnum:{0:false,1:true,2:false},baseTrueOmitted:true,localTruePreserved:true,tests:{newReader:31,newImporter:53,relatedReader:175,relatedImporter:184,typecheckExit:0},redEvidence:[{file:logs[0],failures:26,reason:'New recovery API absent before implementation'},{file:'research/adaptive-placement-format-fit-red.log',failed:1,passed:1,reason:'Unplaced child incorrectly contributed 300x170 to initial fit bounds'}],legacyCorrections:[{file:tests[2],reason:'Eligible numeric IGNORE=0 maps to placed:false; other unknown-property negatives retained'},{file:tests[3],reason:'Inactive carrier changed from invalid Boolean to numeric BoolOverride2; inactive assertion retained'}],corpus:{file:corpusFile,...corpus.totals,fullDocumentAndReportUnchanged:true,originalUnplacedPositiveCount:0},review:{blockingFindings:[],checked:['Placement validated before graph registration','Compound rejection restores target indexes','Incomplete fit panels rejected','Adaptive maps attached only to admitted graph','Event targets resolved only after admitted graph','Initial fit skips unplaced children']},sources:sources.map(record),files:files.map(record)};
+const evidenceFile='research/adaptive-placement-format-implementation.json';fs.writeFileSync(evidenceFile,JSON.stringify(evidence,null,2)+'\n');
+const manifest={sources:evidence.sources,files:[...evidence.files,record(evidenceFile)],samples:staticManifest.samples};
+const manifestFile='research/adaptive-placement-format-implementation-manifest.json';fs.writeFileSync(manifestFile,JSON.stringify(manifest,null,2)+'\n');
+for(const {file,sha256}of [...manifest.sources,...manifest.files,...manifest.samples])if(sha(file)!==sha256)throw Error('Final hash mismatch '+file);
+console.log(JSON.stringify({ok:true,verifiedHashes:manifest.sources.length+manifest.files.length+manifest.samples.length,staticHashes:staticManifest.files.length+staticManifest.samples.length,sources:evidence.sources,evidence:record(evidenceFile),manifest:record(manifestFile)}));

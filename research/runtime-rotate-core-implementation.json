@@ -1,0 +1,182 @@
+{
+  "schema": 1,
+  "stage": "runtime-rotate",
+  "owner": "editor_core",
+  "createdAt": "2026-10-20T04:39:12.614Z",
+  "status": "owner source and tests frozen; final release validation belongs to parent",
+  "production": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "7b25f9c68ae6fe3c3f8383eff1970b9317d15168a9def1a4fc0e3b67234a5bc9"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "da2d65503bc3a44d22e2a4379b1de7a026d1e2259cddc9857554641e64dfe173"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "976ecdd306aedb50e29dde60dc274d84e75433cd7379ffd7a8f55b0d0edf10cc"
+    },
+    {
+      "path": "src/runtime/engine.ts",
+      "sha256": "62460dc920affad6b70e9f531a4164aea95aeeb77850319e17d9455d081dc529"
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/runtime-rotate.test.ts",
+      "sha256": "8e8ebc639d3e99fa776f64478cf07a99eb46935ae9a5d450641dfbefc774c129"
+    },
+    {
+      "path": "tests/expressions.test.ts",
+      "sha256": "c22d280ab8d3514c2f74aca0c1d85e03df51f1ad838d766a78983256c7c47815"
+    }
+  ],
+  "reports": [
+    {
+      "path": ".build/runtime-rotate-unit-red.json",
+      "sha256": "265110c8a076870ad7b4fffbfb76db9ffd4e60a818bf8307dcce4fc6af2eaeff",
+      "total": 88,
+      "passed": 0,
+      "failed": 88,
+      "pending": 0
+    },
+    {
+      "path": ".build/runtime-rotate-unit-first.json",
+      "sha256": "a0406d7f8ab5f93849dabf04049c52affc539be554948f371dae83ed91b78595",
+      "total": 88,
+      "passed": 88,
+      "failed": 0,
+      "pending": 0
+    },
+    {
+      "path": ".build/runtime-rotate-unit-groups-red.json",
+      "sha256": "1b6be75f12b027e01828cdd02e69641413aa06eb2ed4c10fff142a523ac2e705",
+      "total": 100,
+      "passed": 92,
+      "failed": 8,
+      "pending": 0
+    },
+    {
+      "path": ".build/runtime-rotate-unit-groups-first.json",
+      "sha256": "a1554484fe7294f31b28a11c68b8cdeb301dd913472de1e3e764f81bf64cdfa3",
+      "total": 100,
+      "passed": 100,
+      "failed": 0,
+      "pending": 0
+    },
+    {
+      "path": ".build/runtime-rotate-queue-failure-red.json",
+      "sha256": "1cebe491ad53a2f867ab6c3fec62d55cf9c3943bbb1842b8b71e416179c86c34",
+      "total": 102,
+      "passed": 0,
+      "failed": 2,
+      "pending": 100
+    },
+    {
+      "path": ".build/runtime-rotate-queue-failure-green.json",
+      "sha256": "bc6be72d22f94ed32ebd2e2cfebeaf30e8aa61af58bd18a5e97e5b9ba008001f",
+      "total": 102,
+      "passed": 102,
+      "failed": 0,
+      "pending": 0
+    },
+    {
+      "path": ".build/runtime-rotate-cache-fit-first.json",
+      "sha256": "3496c66f488c950d44206cb82e0042a034ca81d37872e65ad36eb35723ba9362",
+      "total": 109,
+      "passed": 107,
+      "failed": 2,
+      "pending": 0
+    },
+    {
+      "path": ".build/runtime-rotate-cache-fit-green.json",
+      "sha256": "cd583a50d42a95fbc5d7780ad60c7b7b730854f542762457621e025654a19ed3",
+      "total": 109,
+      "passed": 109,
+      "failed": 0,
+      "pending": 0
+    },
+    {
+      "path": ".build/runtime-rotate-orbit-order-red.json",
+      "sha256": "faf03186d1598f4226306235b497b2ec08fd5ee6119b185f4acc11cbf8591fd9",
+      "total": 109,
+      "passed": 0,
+      "failed": 0,
+      "pending": 109,
+      "classification": "harness placement error; not product red"
+    },
+    {
+      "path": ".build/runtime-rotate-orbit-order-red-valid.json",
+      "sha256": "eb7e619ee9a59136517762ade7bf95b62162fd133c229f2e0a33d11b76511945",
+      "total": 111,
+      "passed": 0,
+      "failed": 2,
+      "pending": 109
+    },
+    {
+      "path": ".build/runtime-rotate-orbit-order-green.json",
+      "sha256": "f0b859f9146a867bd6de0d0dbdeb1c100883ae35ed8bdeba7f160d7368a56fdb",
+      "total": 111,
+      "passed": 111,
+      "failed": 0,
+      "pending": 0
+    },
+    {
+      "path": ".build/runtime-rotate-core-final-focused.json",
+      "sha256": "541b16e7701d9266449371f0e1970b266ccfed20979769f52ad269c62553aeab",
+      "total": 305,
+      "passed": 303,
+      "failed": 2,
+      "pending": 0
+    },
+    {
+      "path": ".build/runtime-rotate-core-focused-green.json",
+      "sha256": "c02a57f521e8f7820fef00e91f11877e3756622e335d1e66bedafb6f505dacb9",
+      "total": 309,
+      "passed": 309,
+      "failed": 0,
+      "pending": 0
+    }
+  ],
+  "typecheck": {
+    "path": ".build/runtime-rotate-core-typecheck-final.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exitCode": 0
+  },
+  "evidence": [
+    {
+      "path": "research/runtime-rotate-motion-evidence.md",
+      "sha256": "22d3d8d0cf6d78d409b7e8cb9b2b5af17771befbb2b031d6e2ac88830fda42aa"
+    },
+    {
+      "path": "research/runtime-rotate-motion-evidence.json",
+      "sha256": "17d148d2efab657b6e1d9366645dfafe0a036fe39aa66509042081115ecfd63e"
+    },
+    {
+      "path": "research/runtime-rotate-motion-fixtures.json",
+      "sha256": "691410fb534ef12f2eeb252efab7c05852eab0f836f743d03985118251277b34"
+    },
+    {
+      "path": "research/runtime-rotate-authoring-analysis.md",
+      "sha256": "7b71df039211f78af1b49b017030c1413dbf63f2300f1976455d5e9aa7edffec"
+    },
+    {
+      "path": "research/runtime-rotate-authoring-analysis.json",
+      "sha256": "e194da5ce1b41f500d532eeab49e44fc44e7ec3e7cada6a03285e741b630b463"
+    }
+  ],
+  "report": {
+    "path": "research/runtime-rotate-core-implementation.md",
+    "sha256": "6254cb5608b9e9d2a873f99c31c3b8ff2fe01ab4be6226a765dfc9cd5eb2df71"
+  },
+  "blockingFindings": [],
+  "limits": [
+    "No full timed Move/Resize coalescing",
+    "Flat group compatibility is not native Layer hierarchy",
+    "16ms elapsed-time scheduler, not identical vendor RAF cadence",
+    "Fractional computed-matrix rounding not reproduced bitwise",
+    "Explicit independent transaction/row/unload lifetime policy",
+    "No native GUI pixel claim or final package result"
+  ]
+}

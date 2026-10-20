@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "stage": "native-point-commit-inspector",
+  "capturedAt": "2026-10-15T18:02:35.049Z",
+  "productionModified": false,
+  "originalComparison": false,
+  "originalDllExecuted": false,
+  "browserExecuted": false,
+  "blockingFindings": [],
+  "checks": {
+    "total": 33,
+    "passed": 33
+  },
+  "sourceStableDuringReview": true,
+  "sources": [
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "c55baefbda6d61e6a6b880f5e306ed83298fccf1dfb5ecd43ea182340fe504d6"
+    },
+    {
+      "path": ".build/before-native-point-commit/src/components/Inspector.tsx",
+      "sha256": "0a96d36e485ca5e3a47b09326c68f9e4709f7e8ecf1400178588fe90ba0b4d88"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c204576a681ad3e5bf8c9fe1f8d2ea0d36f4dd59be5b9118571744c307ecd109"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "b6ad359478286e201469fcf26cc698076f0ecd08bf4dc386ca57b6ba96611da0"
+    },
+    {
+      "path": "tests/e2e/native-point-commit.spec.ts",
+      "sha256": "f5e8c0166e0e6044b8bb50f8511255e0a491551b053c8837968b77174e455369"
+    },
+    {
+      "path": ".build/native-point-commit-field-red-e2e.json",
+      "sha256": "4157188d2e0cfa7f05d669558e54dc24ae62d009fdf8f988e222e6654eebf838"
+    }
+  ],
+  "preservedFrozenEvidence": [
+    {
+      "path": "research/native-point-commit-final-review.json",
+      "sha256": "7ab24dcd3a2a4622de7c120a98c9eda1f460ec534ad84235daf74f09f3dc0b9b"
+    },
+    {
+      "path": "research/native-point-commit-final-review-probe.json",
+      "sha256": "638dd4fb1805bb9e2db0a3e900ce2e75e3cdb2470ea5ebc802704dcf263357b2"
+    },
+    {
+      "path": "research/native-point-commit-format-manifest.json",
+      "sha256": "58210917bd7f7cd77bcf5e2d60bd1cc7c958872cdabf8174704872980c61c690"
+    }
+  ],
+  "method": {
+    "kind": "Exact extracted NumberField TSX compiled in memory with retained Rolldown transform; bounded useState/useEffect and JSX sinks",
+    "harnessSource": "function harness(body,initial){\n let slots=[],effects=[],cursor=0,pending=[],dirty=false,tree,props={label:'Probe',value:0,...initial},calls=[],blurCalls=0;\n const useState=initial=>{const i=cursor++;if(!(i in slots))slots[i]=typeof initial==='function'?initial():initial;return [slots[i],v=>{const next=typeof v==='function'?v(slots[i]):v;if(!Object.is(slots[i],next)){slots[i]=next;dirty=true;}}];};\n const useEffect=(fn,deps)=>{const i=cursor++,old=effects[i];if(!old||deps.some((v,k)=>!Object.is(v,old[k]))){effects[i]=deps;pending.push(fn);}};\n const js=transformSync('field.tsx',body+'\\nglobalThis.Render=NumberField;',{jsx:{runtime:'classic'}}).code;\n const context={useState,useEffect,React:{createElement:(type,props,...children)=>({type,props:{...props,children}})}};\n vm.runInNewContext(js,context);\n function render(){let count=0;do{dirty=false;cursor=0;pending=[];tree=context.Render({...props,onChange:value=>{calls.push(value);if(typeof props.accept==='function'){props={...props,value:props.accept(value)};dirty=true;}}});for(const effect of pending)effect();assert(++count<20,'render settled');}while(dirty);}\n function input(){return tree.props.children.find(x=>x?.type==='input').props;}\n render();\n return {type(value){input().onChange({target:{value}});render();},commit(){input().onBlur();render();},enter(){input().onKeyDown({key:'Enter',currentTarget:{blur(){blurCalls++;input().onBlur();}}});render();},external(value){props={...props,value};render();},value:()=>input().value,calls:()=>[...calls],blurCalls:()=>blurCalls};\n}",
+    "currentFunction": "function NumberField({ label, value, onChange, min, max, step = 1, commitUnchanged = false, normalizeOnCommit = false }: {\n  label: string; value: number; onChange: (value: number) => void; min?: number; max?: number; step?: number; commitUnchanged?: boolean; normalizeOnCommit?: boolean;\n}) {\n  const [draft, setDraft] = useState(String(value));\n  const [modified, setModified] = useState(false);\n  useEffect(() => { setDraft(String(value)); setModified(false); }, [value]);\n  function commit() {\n    const parsed = Number(draft);\n    if (!draft.trim() || !Number.isFinite(parsed)) { setDraft(String(value)); setModified(false); return; }\n    const next = Math.min(max ?? Infinity, Math.max(min ?? -Infinity, parsed));\n    // Point rebounding can return the same canonical percentage as before.\n    // Reset the draft even then; a changed canonical value arrives via the effect.\n    setDraft(String(normalizeOnCommit ? value : next)); setModified(false);\n    if (next !== value || (commitUnchanged && modified)) onChange(next);\n  }\n  return <label className=\"inspector-number\"><span>{label}</span><input aria-label={label} type=\"number\" value={draft} min={min} max={max} step={step} onChange={event => { setDraft(event.target.value); setModified(true); }} onBlur={commit} onKeyDown={event => { if (event.key === 'Enter') event.currentTarget.blur(); }} /></label>;\n}",
+    "previousFunction": "function NumberField({ label, value, onChange, min, max, step = 1, commitUnchanged = false }: {\n  label: string; value: number; onChange: (value: number) => void; min?: number; max?: number; step?: number; commitUnchanged?: boolean;\n}) {\n  const [draft, setDraft] = useState(String(value));\n  const [modified, setModified] = useState(false);\n  useEffect(() => { setDraft(String(value)); setModified(false); }, [value]);\n  function commit() {\n    const parsed = Number(draft);\n    if (!draft.trim() || !Number.isFinite(parsed)) { setDraft(String(value)); setModified(false); return; }\n    const next = Math.min(max ?? Infinity, Math.max(min ?? -Infinity, parsed));\n    setDraft(String(next)); setModified(false);\n    if (next !== value || (commitUnchanged && modified)) onChange(next);\n  }\n  return <label className=\"inspector-number\"><span>{label}</span><input aria-label={label} type=\"number\" value={draft} min={min} max={max} step={step} onChange={event => { setDraft(event.target.value); setModified(true); }} onBlur={commit} onKeyDown={event => { if (event.key === 'Enter') event.currentTarget.blur(); }} /></label>;\n}",
+    "reactRuntimeExecuted": false,
+    "limits": [
+      "Hook scheduling is a deterministic test sink, not actual React/browser execution.",
+      "HTML number-input sanitization and focus event ordering are not emulated.",
+      "Production browser/build/package validation remains parent-owned."
+    ]
+  },
+  "results": [
+    {
+      "name": "captured original same-canonical failure and corrected draft",
+      "passed": true,
+      "before": "-25",
+      "after": "0",
+      "canonical": 0
+    },
+    {
+      "name": "changed canonical value is received by value effect",
+      "passed": true,
+      "requested": -100,
+      "canonical": -40.84507042
+    },
+    {
+      "name": "same numeric request resets formatting without redundant callback",
+      "passed": true
+    },
+    {
+      "name": "same request opt-in commitUnchanged is still honored once",
+      "passed": true
+    },
+    {
+      "name": "untouched opt-in field does not manufacture a commit",
+      "passed": true
+    },
+    {
+      "name": "invalid input restores canonical: \"\"",
+      "passed": true
+    },
+    {
+      "name": "invalid input restores canonical: \" \"",
+      "passed": true
+    },
+    {
+      "name": "invalid input restores canonical: \"-\"",
+      "passed": true
+    },
+    {
+      "name": "invalid input restores canonical: \"NaN\"",
+      "passed": true
+    },
+    {
+      "name": "invalid input restores canonical: \"Infinity\"",
+      "passed": true
+    },
+    {
+      "name": "invalid input restores canonical: \"-Infinity\"",
+      "passed": true
+    },
+    {
+      "name": "invalid input restores canonical: \"1e999\"",
+      "passed": true
+    },
+    {
+      "name": "finite input clamps before callback and canonical display wins",
+      "passed": true
+    },
+    {
+      "name": "rejected parent edit retains canonical display without repeated callback",
+      "passed": true
+    },
+    {
+      "name": "external canonical change resets a pending draft as before",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: false/\"0\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: false/\"000\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: false/\"5\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: false/\"-50\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: false/\"200\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: false/\"\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: false/\"NaN\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: false/\"1e999\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: true/\"0\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: true/\"000\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: true/\"5\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: true/\"-50\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: true/\"200\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: true/\"\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: true/\"NaN\"",
+      "passed": true
+    },
+    {
+      "name": "default NumberField matches previous implementation: true/\"1e999\"",
+      "passed": true
+    },
+    {
+      "name": "the function default behavior is structurally unchanged",
+      "passed": true
+    },
+    {
+      "name": "normalizeOnCommit is enabled only on node and cubic handle field loops",
+      "passed": true,
+      "staticCallSites": 2,
+      "renderedNodeAxes": 2,
+      "renderedCubicControlAxes": 4
+    }
+  ],
+  "conclusion": "The opt-in restores canonical draft when rebounding returns the same value; changed canonical props still synchronize by the existing effect. Invalid input and ordinary NumberField default behavior remain unchanged.",
+  "report": {
+    "path": "research/native-point-commit-inspector-review.md",
+    "sha256": "e70b93bcb58b98df4ea0fd2d3925a205d9fbbfeb596daa7dfb478c310ed23eb2"
+  }
+}

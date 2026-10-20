@@ -1,0 +1,96 @@
+{
+  "reviewedAt": "2026-10-15T15:05:19.314Z",
+  "reviewer": "Main integration review plus independent feature reviewer",
+  "blockingFindings": [],
+  "method": [
+    "Read App per-target commands and adaptive grouping against the frozen prior source.",
+    "Checked strict native importer projection, supported-surface and proven-base guards.",
+    "Reconciled original dynamic SVG versus initial managed/CSS differences.",
+    "Independently inspected three actual-package PNGs and exact source/bundle audits."
+  ],
+  "evidence": [
+    {
+      "path": "research/native-corners-final-review.json",
+      "sha256": "1f4f87ac97b0fc15b2868c6986c68bff1c0304c4ce1165f7c841496062a770c6"
+    },
+    {
+      "path": "research/native-corners-format-manifest.json",
+      "sha256": "e5df830cfb599e66a46821665902a304af5c477b6147275eabfb7017318737fc"
+    },
+    {
+      "path": "research/native-corners-authoring-implementation.json",
+      "sha256": "d17767934bedf5e6ac149187decfd85f9c751309686f54486a8dffa1e3530a8f"
+    },
+    {
+      "path": ".build/native-corners-unit-confirmed.json",
+      "sha256": "2dbee42f0e799d72c5ee192eb70a098f33ad5bcaf7dc07ab17ecba31f2a62f5c"
+    },
+    {
+      "path": ".build/native-corners-parser-final.tap",
+      "sha256": "a89e80c53c069774ad26cb6d7ae7ee55fba025bf286f8aecb64ac1588fcd89a2"
+    },
+    {
+      "path": ".build/native-corners-release-final-e2e.json",
+      "sha256": "1939a0321f3b7bb575589e3fce649d519ec6a3ec6792c294d18a5e7afd8b44be"
+    },
+    {
+      "path": ".build/native-corners-desktop-audit.json",
+      "sha256": "ec5bdc0ecc377284c0411b564047de5e2e2045b89f5ace21ccf12aa520cd6d2b"
+    },
+    {
+      "path": ".build/native-corners-smoke-runs.json",
+      "sha256": "8ac5a3573a766997c4e0e99a06f25ab1aa1331da840bb912fd00a95925bb7f9d"
+    },
+    {
+      "path": ".build/native-corners-visual-review.json",
+      "sha256": "ae316a687dc08946b67b3676a906f6c87e334f6c0422d477fb63fa0e51305320"
+    },
+    {
+      "path": ".build/native-corners-reference-audit.json",
+      "sha256": "4855027889f688f542cc7b3568cc7a78e5047cd3d45bcfc4937b68c822bf2ad1"
+    }
+  ],
+  "toolingCorrections": {
+    "hiddenWindow": "Element-screenshot stability timeout replaced by capturePage pixel sampling. No product or ASAR change.",
+    "priorFailure": {
+      "path": ".build/native-corners-desktop-first-audit.json",
+      "sha256": "eea86305db251b1f291148cdda7f723cff408d60103247b6228a9f02a6198134"
+    },
+    "preservedSources": [
+      {
+        "path": ".build/native-corners-before-hidden-capture/native-corners-scenario.mjs",
+        "sha256": "96f6533f58e60c64bc94e65642daac396f0f51c502338452e6b3178e0dc776be"
+      },
+      {
+        "path": ".build/native-corners-before-hidden-capture/smoke-native-corners.mjs",
+        "sha256": "78d6a5e73e41ccaf828a1778a7708900961b21cd35d760933f7c2aa65a6af96a"
+      },
+      {
+        "path": ".build/native-corners-before-hidden-capture/authoring.png",
+        "sha256": "d91bdf88027869ba55e057db5eae0eb76f189454275fadd5da608bf4f7d49aba"
+      }
+    ],
+    "currentSources": [
+      {
+        "path": "scripts/native-corners-scenario.mjs",
+        "sha256": "35e36dc977b1cd0e1d54d984f4e2f000beb9c9ef0b8cceda10bb0e5a10bd36fd"
+      },
+      {
+        "path": "scripts/smoke-native-corners.mjs",
+        "sha256": "7c288a14c60a6e3323d4e17b771a33fdfe4274cd1f2a62a3a1b7553d48f3aa6a"
+      },
+      {
+        "path": "scripts/smoke-native-corners-rp-import.mjs",
+        "sha256": "d548b531bc307d0411863990786def0b441a125b8d2f0cd4067a2e9f5ef33871"
+      }
+    ]
+  },
+  "originalAxureGuiCompared": false,
+  "fullParity": false,
+  "remaining": [
+    "Initial managed large-radius fill and zero-width/pattern-none dynamic update cache behavior.",
+    "28 native pill path snapshots and other unproven native rectangle carriers.",
+    "Unparameterized legacy vectors retain stored geometry.",
+    "Original GUI capture, full native writeback and collaboration."
+  ]
+}

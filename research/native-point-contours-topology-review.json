@@ -1,0 +1,130 @@
+{
+  "kind": "independent-native-point-contours-topology-final-review",
+  "generatedAt": "2026-10-17T11:28:05.317Z",
+  "originalAssemblyExecuted": false,
+  "originalGuiCompared": false,
+  "productionModifiedByReviewer": false,
+  "blockingFindings": [],
+  "checks": {
+    "total": 71,
+    "passed": 71
+  },
+  "sourceStableDuringProbe": true,
+  "resolvedFindings": [
+    {
+      "id": "first-anchor-fallback-premature-rounding",
+      "count": 1,
+      "redInputs": 10,
+      "redPassed": 61,
+      "total": 71,
+      "oldHelperSha256": "0ce4ebd2a375d2ab46bfdd61630fa89c34b8b53c8fe766dc4ae7f490f9098565",
+      "newHelperSha256": "056eb17a8fdf60dc819a12b6b59c116b167a883acea75607dd8a8affce3a8fcc",
+      "nativeMethod": 100702690,
+      "nativeIL": "0x56-0x77 -> 0xB6 skips Y5uk at 0xB0",
+      "example": {
+        "worldAnchor": {
+          "x": 12.25,
+          "y": 30.75
+        },
+        "stroke": 1,
+        "expectedOwner": {
+          "x": 11,
+          "y": 30,
+          "width": 1,
+          "height": 1
+        },
+        "oldOwner": {
+          "x": 12,
+          "y": 30,
+          "width": 1,
+          "height": 1
+        }
+      }
+    }
+  ],
+  "sourceContract": {
+    "path": "research/native-point-contours-topology-manifest.json",
+    "sha256": "2ab95dad4766403d9eeaa0e36a2b1d711b1b132e7d58acfc70084d6386d36615",
+    "checks": {
+      "total": 65,
+      "passed": 65
+    }
+  },
+  "sources": [
+    {
+      "path": "src/model/vector-commit.ts",
+      "sha256": "056eb17a8fdf60dc819a12b6b59c116b167a883acea75607dd8a8affce3a8fcc"
+    },
+    {
+      "path": "src/model/vector-contours.ts",
+      "sha256": "0fe9ab8aceb1bfcfefcf79de872e0726e86633873e4d72a120176c4ad600fafa"
+    },
+    {
+      "path": "src/model/vector.ts",
+      "sha256": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "b6ad359478286e201469fcf26cc698076f0ecd08bf4dc386ca57b6ba96611da0"
+    },
+    {
+      "path": "src/components/CanvasVectorTools.tsx",
+      "sha256": "ce1af980044c8adb9f90b38c4da7b428bdb7adaaebf83662132af50b18096a27"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c204576a681ad3e5bf8c9fe1f8d2ea0d36f4dd59be5b9118571744c307ecd109"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "c55baefbda6d61e6a6b880f5e306ed83298fccf1dfb5ecd43ea182340fe504d6"
+    },
+    {
+      "path": "research/native-point-contours-topology-probe.mjs",
+      "sha256": "a30fe3b0ea84ab9e9dc51fef38a12db09dad1b288450b94901bd7ca7c5c2c2e1"
+    },
+    {
+      "path": "research/native-point-contours-topology-probes.json",
+      "sha256": "00d22ad1bc821e33bde7ecef15ce3e7edb8a5d1daf89c29d96243f18ad82c1d6"
+    },
+    {
+      "path": "research/native-point-contours-topology-manifest.json",
+      "sha256": "2ab95dad4766403d9eeaa0e36a2b1d711b1b132e7d58acfc70084d6386d36615"
+    },
+    {
+      "path": "research/native-point-contours-rotation-evidence.json",
+      "sha256": "6e8d853fe6f70a77a78214b909025a68a0c024d70c5de65655f4656ea65a94bc"
+    }
+  ],
+  "files": [
+    {
+      "path": "research/native-point-contours-topology-review.md",
+      "sha256": "1aec36145c19fb1441e632b7da59fe2839dc3d0d3c41d74e4c49b1cad9a4cfc0"
+    },
+    {
+      "path": "research/native-point-contours-topology-review-probe.mjs",
+      "sha256": "082e259ed85ff9d337bb711eb3af4fe9dc6cf0433f1201e871179848e49707ee"
+    },
+    {
+      "path": "research/native-point-contours-topology-review-red.json",
+      "sha256": "c2852942efd213a199f0c4c4787f7c8e3e1ed4e34ccb3f78606dc4244c81bb5a"
+    },
+    {
+      "path": "research/native-point-contours-topology-review-probe.json",
+      "sha256": "d280471a04a28f3d7c72401fa98dcd50b240ab7ca15223de3f810b3ba6f9f9f4"
+    },
+    {
+      "path": ".build/native-point-contours-fallback-red.json",
+      "sha256": "136185859a57dc6e71fba827d31819272c68b4df66fe195081181f0b97ba0075"
+    },
+    {
+      "path": ".build/native-point-contours-fallback-green.json",
+      "sha256": "d97f55a7e355ff544d8baaed9a48cf4e503eda7e8b374c3aff04c4bee1bba091"
+    }
+  ],
+  "limits": [
+    "Read-only TS module comparison via stripped in-memory modules; no product build or browser.",
+    "Native bounded CIL oracle uses explicit numeric/collection sinks; native GUI not compared.",
+    "Inactive native endpoint handles absent from M/L/C/Z cannot be reconstructed by either adapter."
+  ]
+}

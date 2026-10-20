@@ -1,0 +1,434 @@
+{
+  "source": "research/rp-interaction-PlainTextObject-cil.json",
+  "sourceSha256": "74157d095fb982d771c9594c24825bf84bb89c65f411171cfc80c4ad0f502e84",
+  "targetSha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+  "method": "Selected static getter/setter and serializer call windows, not execution; serializer string keys remain obfuscated in these windows",
+  "methods": [
+    {
+      "Name": "get_PlaceholderText",
+      "Token": 100701331,
+      "ILBytes": 14,
+      "Instructions": [
+        {
+          "Offset": 0,
+          "Op": "br.s",
+          "Operand": 7,
+          "Resolved": null
+        },
+        {
+          "Offset": 2,
+          "Op": "call",
+          "Operand": 1010303940,
+          "Resolved": "60:3C3803C4"
+        },
+        {
+          "Offset": 7,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 8,
+          "Op": "ldfld",
+          "Operand": 67126430,
+          "Resolved": "Axure.DocumentModel.Objects.PlainTextObject::MNp6"
+        },
+        {
+          "Offset": 13,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "Name": "set_PlaceholderText",
+      "Token": 100701332,
+      "ILBytes": 155,
+      "Instructions": [
+        {
+          "Offset": 18,
+          "Op": "ldc.i4",
+          "Operand": 234264,
+          "Resolved": null
+        },
+        {
+          "Offset": 23,
+          "Op": "beq",
+          "Operand": 91,
+          "Resolved": null
+        },
+        {
+          "Offset": 28,
+          "Op": "br",
+          "Operand": 33,
+          "Resolved": null
+        },
+        {
+          "Offset": 33,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 34,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 35,
+          "Op": "stfld",
+          "Operand": 67126430,
+          "Resolved": "Axure.DocumentModel.Objects.PlainTextObject::MNp6"
+        },
+        {
+          "Offset": 40,
+          "Op": "ldc.i4",
+          "Operand": 66244,
+          "Resolved": null
+        },
+        {
+          "Offset": 45,
+          "Op": "ldc.i4",
+          "Operand": 270050,
+          "Resolved": null
+        },
+        {
+          "Offset": 50,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "Name": "get_HideHintOnFocus",
+      "Token": 100701333,
+      "ILBytes": 14,
+      "Instructions": [
+        {
+          "Offset": 0,
+          "Op": "br.s",
+          "Operand": 7,
+          "Resolved": null
+        },
+        {
+          "Offset": 2,
+          "Op": "call",
+          "Operand": 807649093,
+          "Resolved": "Document:3023BF45"
+        },
+        {
+          "Offset": 7,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 8,
+          "Op": "ldfld",
+          "Operand": 67126431,
+          "Resolved": "Axure.DocumentModel.Objects.PlainTextObject::CNpD"
+        },
+        {
+          "Offset": 13,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "Name": "set_HideHintOnFocus",
+      "Token": 100701334,
+      "ILBytes": 61,
+      "Instructions": [
+        {
+          "Offset": 18,
+          "Op": "ldc.i4",
+          "Operand": -153587,
+          "Resolved": null
+        },
+        {
+          "Offset": 23,
+          "Op": "beq",
+          "Operand": 33,
+          "Resolved": null
+        },
+        {
+          "Offset": 28,
+          "Op": "br",
+          "Operand": 60,
+          "Resolved": null
+        },
+        {
+          "Offset": 33,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 34,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 35,
+          "Op": "stfld",
+          "Operand": 67126431,
+          "Resolved": "Axure.DocumentModel.Objects.PlainTextObject::CNpD"
+        },
+        {
+          "Offset": 40,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        },
+        {
+          "Offset": 45,
+          "Op": "ldfld",
+          "Operand": 67142308,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_60a860ee94d94361a97d4233f8c4dffd"
+        },
+        {
+          "Offset": 50,
+          "Op": "brfalse",
+          "Operand": 60,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "Name": "NIwY",
+      "Token": 100701362,
+      "ILBytes": 1226,
+      "Instructions": [
+        {
+          "Offset": 888,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        },
+        {
+          "Offset": 893,
+          "Op": "ldfld",
+          "Operand": 67142313,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_27e8749db7224e37aabe2ac3704fb967"
+        },
+        {
+          "Offset": 898,
+          "Op": "xor",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 899,
+          "Op": "call",
+          "Operand": 100732102,
+          "Resolved": "wIhA.zIhQ::sIho"
+        },
+        {
+          "Offset": 904,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 905,
+          "Op": "call",
+          "Operand": 100701333,
+          "Resolved": "Axure.DocumentModel.Objects.PlainTextObject::get_HideHintOnFocus"
+        },
+        {
+          "Offset": 910,
+          "Op": "call",
+          "Operand": 100716848,
+          "Resolved": "ftnd.Wtnq::op_Implicit"
+        },
+        {
+          "Offset": 915,
+          "Op": "callvirt",
+          "Operand": 100716031,
+          "Resolved": "MtXw.StXT::jtme"
+        },
+        {
+          "Offset": 920,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        },
+        {
+          "Offset": 1101,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        },
+        {
+          "Offset": 1106,
+          "Op": "ldfld",
+          "Operand": 67142313,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_27e8749db7224e37aabe2ac3704fb967"
+        },
+        {
+          "Offset": 1111,
+          "Op": "xor",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 1112,
+          "Op": "call",
+          "Operand": 100732102,
+          "Resolved": "wIhA.zIhQ::sIho"
+        },
+        {
+          "Offset": 1117,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 1118,
+          "Op": "call",
+          "Operand": 100701331,
+          "Resolved": "Axure.DocumentModel.Objects.PlainTextObject::get_PlaceholderText"
+        },
+        {
+          "Offset": 1123,
+          "Op": "call",
+          "Operand": 100716842,
+          "Resolved": "ftnd.Wtnq::op_Implicit"
+        },
+        {
+          "Offset": 1128,
+          "Op": "callvirt",
+          "Operand": 100716031,
+          "Resolved": "MtXw.StXT::jtme"
+        },
+        {
+          "Offset": 1133,
+          "Op": "ldc.i4",
+          "Operand": 190347,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "Name": "oIw4",
+      "Token": 100701363,
+      "ILBytes": 962,
+      "Instructions": [
+        {
+          "Offset": 234,
+          "Op": "ldfld",
+          "Operand": 67142227,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_ea0c957a85ad4342a2b57d4e8ab85755"
+        },
+        {
+          "Offset": 239,
+          "Op": "xor",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 240,
+          "Op": "call",
+          "Operand": 100732102,
+          "Resolved": "wIhA.zIhQ::sIho"
+        },
+        {
+          "Offset": 245,
+          "Op": "callvirt",
+          "Operand": 100716030,
+          "Resolved": "MtXw.StXT::Ytmx"
+        },
+        {
+          "Offset": 250,
+          "Op": "call",
+          "Operand": 100716855,
+          "Resolved": "ftnd.Wtnq::op_Explicit"
+        },
+        {
+          "Offset": 255,
+          "Op": "call",
+          "Operand": 100701334,
+          "Resolved": "Axure.DocumentModel.Objects.PlainTextObject::set_HideHintOnFocus"
+        },
+        {
+          "Offset": 260,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        },
+        {
+          "Offset": 265,
+          "Op": "ldfld",
+          "Operand": 67142325,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_d9d02c1beada443f9bf2bf02d2cb9da2"
+        },
+        {
+          "Offset": 270,
+          "Op": "brfalse",
+          "Operand": 542,
+          "Resolved": null
+        },
+        {
+          "Offset": 661,
+          "Op": "ldfld",
+          "Operand": 67142245,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_12d7391c2c704393b19bbd6e593f2662"
+        },
+        {
+          "Offset": 666,
+          "Op": "xor",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 667,
+          "Op": "call",
+          "Operand": 100732102,
+          "Resolved": "wIhA.zIhQ::sIho"
+        },
+        {
+          "Offset": 672,
+          "Op": "callvirt",
+          "Operand": 100716030,
+          "Resolved": "MtXw.StXT::Ytmx"
+        },
+        {
+          "Offset": 677,
+          "Op": "call",
+          "Operand": 100716849,
+          "Resolved": "ftnd.Wtnq::op_Explicit"
+        },
+        {
+          "Offset": 682,
+          "Op": "call",
+          "Operand": 100701332,
+          "Resolved": "Axure.DocumentModel.Objects.PlainTextObject::set_PlaceholderText"
+        },
+        {
+          "Offset": 687,
+          "Op": "ldc.i4",
+          "Operand": 130829,
+          "Resolved": null
+        },
+        {
+          "Offset": 692,
+          "Op": "ldc.i4",
+          "Operand": 503297,
+          "Resolved": null
+        },
+        {
+          "Offset": 697,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    }
+  ]
+}

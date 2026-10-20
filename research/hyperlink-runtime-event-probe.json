@@ -1,0 +1,2037 @@
+{
+  "capturedAt": "2026-10-13T17:57:36.140Z",
+  "method": "Exact original event, menu, Wait and link-action slices in isolated DOM; deterministic timer queue and navigation sink",
+  "browser": "155.0.4283.45",
+  "files": [
+    {
+      "file": "events.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "file": "action.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3"
+    },
+    {
+      "file": "../jquery-3.7.1.min.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85"
+    }
+  ],
+  "sourceSlices": [
+    {
+      "file": "events.js",
+      "first": 281,
+      "last": 415,
+      "source": "    var _handleEvent = $ax.event.handleEvent = function (elementId, eventInfo, axEventObject, skipShowDescriptions, synthetic) {\n        var eventType = axEventObject.eventType;\n        if(_enteredWidgets[elementId] && eventType == 'OnMouseEnter') return; // Suppress entering a widget when already in widget (ie only)\n        if(_isSuppressedEvent(elementId, eventType)) {\n            _removeSuppressedEvent(elementId, eventType);\n            return;\n        }\n\n        if(axEventObject.proxy) {\n            var firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                var firingObj = $obj(firingId);\n                var nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                eventInfo = $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), false, firingId);\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n//        var x = JSON.stringify(eventInfo);\n//        var y = JSON.stringify(axEventObject);\n\n        var fireTime = new Date().getTime();\n\n        if(fireTime - eventNestingTime > 100) {\n            eventNestingTime = fireTime;\n            eventNesting = 0;\n        }\n\n        if(eventNesting === 0) {\n            $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, fireTime);\n        }\n\n        eventNesting += 1;\n\n        if (!synthetic && !_getCanClick() && (eventType == 'OnClick' || eventType == 'OnPageClick')) return;\n        // If you are supposed to suppress, do that right away.\n        if(suppressedEventStatus[eventType]) {\n            return;\n        }\n\n        var currentEvent = $ax.getjBrowserEvent();\n        if(!synthetic && currentEvent && currentEvent.originalEvent && currentEvent.originalEvent.handled && !eventInfo.isMasterEvent) return;\n        if(!synthetic && elementId && !$ax.style.getObjVisible(elementId) && _notAllowedInvisible(elementId)) return;\n\n        //if debug\n        var axObj = $obj(elementId);\n        var axObjLabel = axObj ? axObj.label : eventInfo.label;\n        var axObjType = axObj ? axObj.friendlyType : eventInfo.friendlyType;\n        if (!skipShowDescriptions || eventType == 'OnPageLoad') postMessage('axEvent', { 'label': axObjLabel, 'type': axObjType, 'event': axEventObject, 'elementId': $ax.repeater.getScriptIdFromElementId(elementId) });\n\n        var bubble = true;\n        var showCaseDescriptions = !skipShowDescriptions && _shouldShowCaseDescriptions(axEventObject);\n        if(!showCaseDescriptions) {\n            //handle case descriptions\n            var caseGroups = [];\n            var currentCaseGroup = [];\n            caseGroups[0] = currentCaseGroup;\n\n            // Those refreshes not after a wait\n            var guaranteedRefreshes = {};\n\n            var caseGroupIndex = 0;\n            for(var i = 0; i < axEventObject.cases.length; i++) {\n                var currentCase = axEventObject.cases[i];\n                if(currentCase.isNewIfGroup && i != 0) {\n                    caseGroupIndex++;\n                    currentCaseGroup = [];\n                    caseGroups[caseGroups.length] = currentCaseGroup;\n                    // Joon: Isn't caseGroups.length always equal to caseGroupIndex?\n                }\n                currentCaseGroup[currentCaseGroup.length] = currentCase;\n\n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    var action = currentCase.actions[j];\n                    if(action.action == 'wait') break;\n                    if(action.action != 'refreshRepeater') continue;\n                    for(var k = 0; k < action.repeatersToRefresh.length; k++) {\n                        var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[k], eventInfo)[0];\n                        if(id) guaranteedRefreshes[id] = caseGroupIndex;\n                    }\n                }\n            }\n\n            for(var i = 0; i < caseGroups.length; i++) {\n                var groupRefreshes = [];\n                for(var key in guaranteedRefreshes) {\n                    if(guaranteedRefreshes[key] == i) groupRefreshes[groupRefreshes.length] = key;\n                }\n                bubble = _handleCaseGroup(eventInfo, caseGroups[i], groupRefreshes) && bubble;\n            }\n        } else {\n            _showCaseDescriptions(elementId, eventInfo, axEventObject, synthetic);\n            bubble = false;\n        }\n\n        // If not handled, synthetically bubble if you can\n        if(bubble && _widgetToFocusParent[elementId]) {\n            firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                firingObj = $obj(firingId);\n                nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n\n        // Only trigger a supression if it handled this event\n        if(!bubble && suppressingEvents[eventType]) {\n            suppressedEventStatus[suppressingEvents[eventType]] = true;\n        }\n\n        $ax.action.flushAllResizeMoveActions(eventInfo);\n\n        // This should not be needed anymore. All refreshes should be inserted, or handled earlier.\n        var repeaters = $ax.deepCopy($ax.action.repeatersToRefresh);\n        while($ax.action.repeatersToRefresh.length) $ax.action.repeatersToRefresh.pop();\n        for(i = 0; i < repeaters.length; i++) $ax.repeater.refreshRepeater(repeaters[i], eventInfo);\n\n        if(currentEvent && currentEvent.originalEvent) {\n            currentEvent.originalEvent.handled = !synthetic && !bubble && allowBubble.indexOf(eventType) == -1;\n            //currentEvent.originalEvent.donotdrag = currentEvent.donotdrag || (!bubble && eventDescription == 'OnMouseDown');\n\n            // Prevent default if necessary\n            if (currentEvent.originalEvent.handled && preventDefaultEvents.indexOf(eventType) != -1) {\n                currentEvent.preventDefault();\n            }\n        }\n\n        eventNesting -= 1;\n\n        if(!showCaseDescriptions) postMessage('axEventComplete');\n\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 432,
+      "last": 500,
+      "source": "    var _showCaseDescriptions = function(elementId, eventInfo, axEventObject, synthetic) {\n\n        if(axEventObject.cases.length == 0) return true;\n\n        var linksId = elementId + \"linkBox\";\n        $('#' + linksId).remove();\n\n        var $container = $(\"<div class='intcases' id='\" + linksId + \"'></div>\");\n\n        if(!_isEventSimulating(axEventObject)) {\n            var copy = $ax.eventCopy(eventInfo);\n            for (var i = 0; i < axEventObject.cases.length; i++) {\n                var kase = axEventObject.cases[i];\n                if (kase.disabled) continue;\n                var $link = $(\"<div class='intcaselink'>\" + kase.description + \"</div>\");\n                $link.click(function(j) {\n                    return function () {\n                        var currentCase = axEventObject.cases[j];\n                        postMessage('axCase', { 'item': currentCase.description, 'description': currentCase.conditionString, 'color': currentCase.caseColorHex })\n                        for(var k = 0; k < currentCase.actions.length; k++) {\n                            var currentAction = currentCase.actions[k];\n\n                            // Only use action's direct description if no action info descriptions exist\n                            postMessage('axAction', { 'name': currentAction.displayName });\n                            //postMessage('axAction', { 'item': currentAction.description, 'description': (Object.keys(currentAction.actionInfoDescriptions).length > 0 ? \"\" : currentAction.description) });\n\n                            for (var target in currentAction.actionInfoDescriptions) {\n                                var infoDescriptions = currentAction.actionInfoDescriptions[target];\n                                for (var shortDescription in infoDescriptions) {\n                                    postMessage('axInfo', { 'item': target, 'description': shortDescription, 'longDescription': infoDescriptions[shortDescription] });\n                                }\n                            }\n                        }\n                        postMessage('axEventComplete');\n\n                        var bubble = $ax.action.dispatchAction(copy, axEventObject.cases[j].actions);\n                        $ax.action.flushAllResizeMoveActions(copy);\n                        $('#' + linksId).remove();\n                        return bubble;\n                    };\n                } (i)\n                );\n\n                $container.append($link);\n            }\n        } else {\n            var fullDescription = axEventObject.description + \":<br>\";\n            for(var i = 0; i < axEventObject.cases.length; i++) {\n                var currentCase = axEventObject.cases[i];\n                fullDescription += \"&nbsp;&nbsp;\" + currentCase.description.replace(/<br>/g, '<br>&nbsp;&nbsp;') + \":<br>\";\n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    fullDescription += \"&nbsp;&nbsp;&nbsp;&nbsp;\" + currentCase.actions[j].description.replace(/<br>/g, '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;') + \"<br>\";\n                }\n            }\n            fullDescription = fullDescription.substring(0, fullDescription.length - 4);\n\n            var $link = $(\"<div class='intcaselink'>\" + fullDescription + \"</div>\");\n            $link.click(function() {\n                _handleEvent(elementId, eventInfo, axEventObject, true, synthetic);\n                postMessage('axEventComplete');\n                $('#' + linksId).remove();\n                return;\n            });\n            $container.append($link);\n        }\n        $container.mouseleave(function(e) { $ax.legacy.SuppressBubble(e); });\n        $('body').append($container);\n        _showCaseLinks(eventInfo, linksId);\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 528,
+      "last": 595,
+      "source": "    var _shouldShowCaseDescriptions = function(axEventObject) {\n        if($ax.document.configuration.linkStyle == \"alwaysDisplayTargets\") return true;\n        if($ax.document.configuration.linkStyle == \"neverDisplayTargets\") return false;\n        if(axEventObject.cases.length == 0) return false;\n        if(_isEventSimulating(axEventObject)) return false;\n        if(axEventObject.cases.filter(c => !c.disabled).length >= 2) return true;\n        return false;\n    };\n\n    var _isEventSimulating = function(axEventObject) {\n        for(var i = 0; i < axEventObject.cases.length; i++) {\n            if(axEventObject.cases[i].condition) return true;\n        }\n        return false;\n    };\n\n    var _handleCaseGroup = function (eventInfo, caseGroup, groupRefreshes) {\n        for(var i = 0; i < caseGroup.length; i++) {\n            var currentCase = caseGroup[i];\n            if(currentCase.disabled) continue;\n            if(!currentCase.condition || _processCondition(currentCase.condition, eventInfo)) {\n                postMessage('axCase', { 'item': currentCase.description, 'description': currentCase.conditionString, 'color': currentCase.caseColorHex })\n                \n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    var currentAction = currentCase.actions[j];\n                    if (currentAction.action != 'refreshRepeater') {\n                        // Only use action's direct description if no action info descriptions exist\n                        postMessage('axAction', { 'name': currentAction.displayName });\n                        //postMessage('axAction', { 'item': currentAction.description, 'description': (Object.keys(currentAction.actionInfoDescriptions).length > 0 ? \"\" : currentAction.description) });\n\n                        for (var target in currentAction.actionInfoDescriptions) {\n                            var infoDescriptions = currentAction.actionInfoDescriptions[target];\n                            for (var shortDescription in infoDescriptions) {\n                                postMessage('axInfo', { 'item': target, 'description': shortDescription, 'longDescription': infoDescriptions[shortDescription] });\n                            }\n                        }\n                    }\n                }\n\n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    var action = currentCase.actions[j];\n                    if(action.action == 'wait') break;\n                    if(action.action != 'refreshRepeater') continue;\n                    for(var k = 0; k < action.repeatersToRefresh.length; k++) {\n                        var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[i], eventInfo)[i];\n                        if(id) {\n                            var index = groupRefreshes.indexOf(id);\n                            if(index != -1) $ax.splice(groupRefreshes, index);\n                        }\n                    }\n                }\n\n                // Any guaranteed refreshes that aren't accounted for must be run still.\n                $ax.action.tryRefreshRepeaters(groupRefreshes, eventInfo);\n\n                $ax.action.dispatchAction(eventInfo, currentCase.actions);\n                return false;\n            }\n        }\n\n        // Any guaranteed refreshes that aren't accounted for must be run still.\n        $ax.action.tryRefreshRepeaters(groupRefreshes, eventInfo);\n        return true;\n    };\n\n    var _processCondition = function(expr, eventInfo) {\n        return $ax.expr.evaluateExpr(expr, eventInfo);\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 605,
+      "last": 626,
+      "source": "    var _attachDefaultObjectEvent = function(elementIdQuery, elementId, eventName, fn) {\n        var func = function (e) {\n            var inputIndex = elementId.indexOf('_input');\n            if (inputIndex == -1) {\n                if ($ax.style.IsWidgetDisabled(elementId) || _shouldIgnoreLabelClickFromCheckboxOrRadioButton(e)) return true;\n            } else {\n                if ($ax.style.IsWidgetDisabled(elementId.substring(0, inputIndex)) || _shouldIgnoreLabelClickFromCheckboxOrRadioButton(e)) return false;\n            }\n            return fn.apply(this, arguments);\n        };\n        var bind = !elementIdQuery[eventName];\n        if(bind) elementIdQuery.bind(eventName, func);\n        else elementIdQuery[eventName](func);\n    };\n\n    var _shouldIgnoreLabelClickFromCheckboxOrRadioButton = function(e) {\n        return (((_hasParentWithMatchingSelector(e.target, '.checkbox') && $(e.target).closest('label').length != 0) ||\n            _hasParentWithMatchingSelector(e.target, '.radio_button') && $(e.target).closest('label').length != 0)) && e.type == 'click';\n    };\n    var _hasParentWithMatchingSelector = function(target, selector) {\n        return $(target).parents(selector).length != 0;\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 638,
+      "last": 648,
+      "source": "    var _fireObjectEvent = function(elementId, event, originalArgs) {\n        var element = window.document.getElementById(elementId);\n\n        var handlerList = _objectIdToEventHandlers[elementId] && _objectIdToEventHandlers[elementId][event];\n        if(handlerList) {\n            for(var i = 0; i < handlerList.length; i++) handlerList[i].apply(element, originalArgs);\n        }\n\n        eventNesting -= 1;\n\n    };"
+    },
+    {
+      "file": "action.js",
+      "first": 351,
+      "last": 368,
+      "source": "    var _dispatchAction = $ax.action.dispatchAction = function(eventInfo, actions, currentIndex) {\n        currentIndex = currentIndex || 0;\n        //If no actions, you can bubble\n        if(currentIndex >= actions.length) return;\n        //actions are responsible for doing their own dispatching\n        _actionHandlers[actions[currentIndex].action](eventInfo, actions, currentIndex);\n    };\n\n    _actionHandlers.wait = function(eventInfo, actions, index) {\n        var action = actions[index];\n        var infoCopy = $ax.eventCopy(eventInfo);\n        window.setTimeout(function() {\n            infoCopy.now = new Date();\n            infoCopy.idToResizeMoveState = undefined;\n            _dispatchAction(infoCopy, actions, index + 1);\n            _action.flushAllResizeMoveActions(infoCopy);\n        }, action.waitTime);\n    };"
+    },
+    {
+      "file": "action.js",
+      "first": 399,
+      "last": 449,
+      "source": "\n    var linkActionHelper = function(eventInfo, actions, index) {\n        var action = actions[index];\n        eventInfo.link = true;\n\n        if(action.linkType != 'frame') {\n            var includeVars = _includeVars(action.target, eventInfo);\n            if(action.target.targetType == \"reloadPage\") {\n                $ax.reload(action.target.includeVariables);\n            } else if(action.target.targetType == \"backUrl\") {\n                $ax.back();\n            }\n\n            var url = action.target.url;\n            if(!url && action.target.urlLiteral) {\n                url = $ax.expr.evaluateExpr(action.target.urlLiteral, eventInfo, true);\n            }\n\n            if(url) {\n                let useStartHtml = shouldUseStartHtml(action);\n                if(useStartHtml) {\n                    //use start.html to load player\n                    url = urlWithStartHtml(url);\n                    //collapse player for popup\n                    if(action.linkType == \"popup\") url = urlWithCollapseSitemap(url);\n                }\n                \n                //set useGlobalVarNameInUrl to true to use GLOBAL_VAR_NAME in the url, so player knows how to parse it\n                //without this, we are assuming everything after '#' are global vars \n                if(action.linkType == \"popup\") {\n                    $ax.navigate({\n                        url: url,\n                        target: action.linkType,\n                        includeVariables: includeVars,\n                        popupOptions: action.popup,\n                        useGlobalVarNameInUrl : useStartHtml\n                    });\n                } else {\n                    $ax.navigate({\n                        url: url,\n                        target: action.linkType,\n                        includeVariables: includeVars,\n                        useGlobalVarNameInUrl : useStartHtml\n                    });\n                }\n            }\n        } else linkFrame(eventInfo, action);\n        eventInfo.link = false;\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 1260,
+      "last": 1314,
+      "source": "            if(dObj.type == 'hyperlink') {\n                $element.mouseenter(function() {\n                    var linkId = this.id;\n                    if(_event.mouseOverIds.indexOf(linkId) != -1) return true;\n                    _event.mouseOverIds[_event.mouseOverIds.length] = linkId;\n                    var mouseOverObjectId = _event.mouseOverObjectId;\n                    if(mouseOverObjectId && $ax.style.IsWidgetDisabled(mouseOverObjectId)) return true;\n\n                    $ax.style.SetLinkHover(linkId);\n\n                    var bubble = _fireObjectEvent(linkId, 'mouseenter', arguments);\n\n                    $ax.annotation.updateLinkLocations($ax.GetParentIdFromLink(linkId));\n                    return bubble;\n                }).mouseleave(function() {\n                    var linkId = this.id;\n                    $ax.splice(_event.mouseOverIds, _event.mouseOverIds.indexOf(linkId), 1);\n                    var mouseOverObjectId = _event.mouseOverObjectId;\n                    if(mouseOverObjectId && $ax.style.IsWidgetDisabled(mouseOverObjectId)) return true;\n\n                    $ax.style.SetLinkNotHover(linkId);\n\n                    var bubble = _fireObjectEvent(linkId, 'mouseleave', arguments);\n\n                    $ax.annotation.updateLinkLocations($ax.GetParentIdFromLink(linkId));\n                    return bubble;\n                }).bind($ax.features.eventNames.mouseDownName, function() {\n                    var linkId = this.id;\n                    var mouseOverObjectId = _event.mouseOverObjectId;\n                    if($ax.style.IsWidgetDisabled(mouseOverObjectId)) return undefined;\n\n                    if(mouseOverObjectId) $ax.style.SetWidgetMouseDown(mouseOverObjectId, true);\n                    $ax.style.SetLinkMouseDown(linkId);\n\n                    $ax.annotation.updateLinkLocations($ax.GetParentIdFromLink(linkId));\n\n                    return false;\n                }).bind($ax.features.eventNames.mouseUpName, function() {\n                    var linkId = this.id;\n                    var mouseOverObjectId = _event.mouseOverObjectId;\n                    if(mouseOverObjectId && $ax.style.IsWidgetDisabled(mouseOverObjectId)) return;\n\n                    if(mouseOverObjectId) $ax.style.SetWidgetMouseDown(mouseOverObjectId, false);\n                    $ax.style.SetLinkNotMouseDown(linkId);\n\n                    $ax.annotation.updateLinkLocations($ax.GetParentIdFromLink(linkId));\n\n                }).click(function() {\n                    var elementId = this.id;\n                    var mouseOverObjectId = _event.mouseOverObjectId;\n                    if(mouseOverObjectId && $ax.style.IsWidgetDisabled(mouseOverObjectId)) return undefined;\n\n                    return _fireObjectEvent(elementId, 'click', arguments);\n                });\n            }"
+    }
+  ],
+  "cases": [
+    {
+      "name": "external current navigation",
+      "options": {
+        "target": "current"
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "link"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "current",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "axAction",
+            "name": "linkWindow"
+          },
+          {
+            "kind": "record",
+            "source": "link",
+            "label": "link"
+          },
+          {
+            "kind": "navigate",
+            "options": {
+              "url": "https://example.invalid/destination",
+              "target": "current",
+              "includeVariables": false,
+              "useGlobalVarNameInUrl": false
+            }
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "external new navigation",
+      "options": {
+        "target": "new"
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "link"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "axAction",
+            "name": "linkWindow"
+          },
+          {
+            "kind": "record",
+            "source": "link",
+            "label": "link"
+          },
+          {
+            "kind": "navigate",
+            "options": {
+              "url": "https://example.invalid/destination",
+              "target": "new",
+              "includeVariables": false,
+              "useGlobalVarNameInUrl": false
+            }
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "Wait0 marks original click handled before delayed continuation",
+      "options": {
+        "wait": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "wait",
+                      "displayName": "wait",
+                      "description": "wait",
+                      "actionInfoDescriptions": {},
+                      "waitTime": 0
+                    },
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "after-wait"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "wait"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "axAction",
+            "name": "linkWindow"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [
+          {
+            "delay": 0
+          }
+        ],
+        "menus": 0
+      },
+      "after": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "wait",
+                      "displayName": "wait",
+                      "description": "wait",
+                      "actionInfoDescriptions": {},
+                      "waitTime": 0
+                    },
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "after-wait"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "wait"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "axAction",
+            "name": "linkWindow"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          },
+          {
+            "kind": "record",
+            "source": "link",
+            "label": "after-wait"
+          },
+          {
+            "kind": "navigate",
+            "options": {
+              "url": "https://example.invalid/destination",
+              "target": "new",
+              "includeVariables": false,
+              "useGlobalVarNameInUrl": false
+            }
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "independent second IF group runs before earlier Wait0 continuation",
+      "options": {
+        "groups": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "wait",
+                      "displayName": "wait",
+                      "description": "wait",
+                      "actionInfoDescriptions": {},
+                      "waitTime": 0
+                    },
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "delayed-first"
+                    }
+                  ],
+                  "description": "Case"
+                },
+                {
+                  "actions": [
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "second"
+                    }
+                  ],
+                  "description": "Case",
+                  "isNewIfGroup": true
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "wait"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "record",
+            "source": "link",
+            "label": "second"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [
+          {
+            "delay": 0
+          }
+        ],
+        "menus": 0
+      },
+      "after": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "wait",
+                      "displayName": "wait",
+                      "description": "wait",
+                      "actionInfoDescriptions": {},
+                      "waitTime": 0
+                    },
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "delayed-first"
+                    }
+                  ],
+                  "description": "Case"
+                },
+                {
+                  "actions": [
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "second"
+                    }
+                  ],
+                  "description": "Case",
+                  "isNewIfGroup": true
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "wait"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "record",
+            "source": "link",
+            "label": "second"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          },
+          {
+            "kind": "record",
+            "source": "link",
+            "label": "delayed-first"
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "menu blocks parent click before option selection",
+      "options": {
+        "menu": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "link"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 1
+      },
+      "after": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "link"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          },
+          {
+            "kind": "SetLinkNotHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "axAction",
+            "name": "linkWindow"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "record",
+            "source": "link",
+            "label": "link"
+          },
+          {
+            "kind": "navigate",
+            "options": {
+              "url": "https://example.invalid/destination",
+              "target": "new",
+              "includeVariables": false,
+              "useGlobalVarNameInUrl": false
+            }
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "menu closes after synchronous Wait prefix but does not cancel continuation",
+      "options": {
+        "menu": true,
+        "wait": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "wait",
+                      "displayName": "wait",
+                      "description": "wait",
+                      "actionInfoDescriptions": {},
+                      "waitTime": 0
+                    },
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "after-wait"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 1
+      },
+      "selected": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "wait",
+                      "displayName": "wait",
+                      "description": "wait",
+                      "actionInfoDescriptions": {},
+                      "waitTime": 0
+                    },
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "after-wait"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          },
+          {
+            "kind": "SetLinkNotHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "wait"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "axAction",
+            "name": "linkWindow"
+          },
+          {
+            "kind": "axEventComplete"
+          }
+        ],
+        "pending": [
+          {
+            "delay": 0
+          }
+        ],
+        "menus": 0
+      },
+      "after": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "wait",
+                      "displayName": "wait",
+                      "description": "wait",
+                      "actionInfoDescriptions": {},
+                      "waitTime": 0
+                    },
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "after-wait"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          },
+          {
+            "kind": "SetLinkNotHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "wait"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "axAction",
+            "name": "linkWindow"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "record",
+            "source": "link",
+            "label": "after-wait"
+          },
+          {
+            "kind": "navigate",
+            "options": {
+              "url": "https://example.invalid/destination",
+              "target": "new",
+              "includeVariables": false,
+              "useGlobalVarNameInUrl": false
+            }
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "always conditional menu evaluates condition only when menu selected",
+      "options": {
+        "menu": true,
+        "condition": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "link"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false,
+                  "condition": {
+                    "value": true
+                  }
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 1
+      },
+      "after": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "link"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false,
+                  "condition": {
+                    "value": true
+                  }
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          },
+          {
+            "kind": "SetLinkNotHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "axEventComplete"
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "disabled parent",
+      "options": {
+        "parentDisabled": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "parentDOM",
+            "handled": false
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": false,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "disabled only case",
+      "options": {
+        "disabled": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "link"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": true
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": false
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "record",
+            "source": "parent",
+            "label": "parent"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "link own disabled flag is not binding guard",
+      "options": {
+        "linkDisabled": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [
+                    {
+                      "action": "record",
+                      "displayName": "record",
+                      "description": "record",
+                      "actionInfoDescriptions": {},
+                      "label": "link"
+                    },
+                    {
+                      "action": "linkWindow",
+                      "displayName": "linkWindow",
+                      "description": "linkWindow",
+                      "actionInfoDescriptions": {},
+                      "linkType": "new",
+                      "target": {
+                        "targetType": "webUrl",
+                        "urlLiteral": {
+                          "literal": "https://example.invalid/destination"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "axAction",
+            "name": "linkWindow"
+          },
+          {
+            "kind": "record",
+            "source": "link",
+            "label": "link"
+          },
+          {
+            "kind": "navigate",
+            "options": {
+              "url": "https://example.invalid/destination",
+              "target": "new",
+              "includeVariables": false,
+              "useGlobalVarNameInUrl": false
+            }
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "hidden link event guard permits parent fallback",
+      "options": {
+        "hidden": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "parentDOM",
+            "handled": false
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "record",
+            "source": "parent",
+            "label": "parent"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "empty matching case blocks parent",
+      "options": {
+        "empty": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": [
+                {
+                  "actions": [],
+                  "description": "Case",
+                  "disabled": false
+                }
+              ]
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": true
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "no case allows parent",
+      "options": {
+        "none": true
+      },
+      "before": {
+        "trace": [
+          {
+            "kind": "SetLinkHover",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              true
+            ]
+          },
+          {
+            "kind": "SetLinkMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "SetWidgetMouseDown",
+            "args": [
+              "parent",
+              false
+            ]
+          },
+          {
+            "kind": "SetLinkNotMouseDown",
+            "args": [
+              "link"
+            ]
+          },
+          {
+            "kind": "axEvent",
+            "event": {
+              "description": "Click",
+              "eventType": "OnClick",
+              "cases": []
+            },
+            "elementId": "link"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "parentDOM",
+            "handled": false
+          },
+          {
+            "kind": "axCase",
+            "item": "Case"
+          },
+          {
+            "kind": "axAction",
+            "name": "record"
+          },
+          {
+            "kind": "record",
+            "source": "parent",
+            "label": "parent"
+          },
+          {
+            "kind": "axEventComplete"
+          },
+          {
+            "kind": "bodyDOM",
+            "handled": true,
+            "defaultPrevented": false
+          }
+        ],
+        "pending": [],
+        "menus": 0
+      },
+      "passed": true
+    }
+  ],
+  "network": [],
+  "pageErrors": [],
+  "limits": [
+    "Event copy, conditions and data lookups are bounded fixture stubs",
+    "Menu positioning is a stub, action dispatch/closure/removal are original",
+    "Timer queue records exact scheduling and manual continuation; no real URL opened",
+    "Original generated href/tabindex remains unknown"
+  ]
+}

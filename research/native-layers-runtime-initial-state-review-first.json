@@ -1,0 +1,239 @@
+{
+  "capturedAt": "2026-10-20T07:06:25.011Z",
+  "finding": "NLR-REVIEW-02",
+  "kind": "Original init branch and Selected/query recursion in NodeVM; style painting, event delivery and geometry are declared facades. Product module/serialized runtime start is executed directly. No browser or original GUI.",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "style.js",
+      "first": 322,
+      "last": 324,
+      "sha256": "e5d3ab4b08a573ead5e27bee363888d2b5640304918a761524f092d3d9a457fd"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 1087,
+      "last": 1178,
+      "sha256": "4c58069d7e32d0122d3df406bfd3e636fc5872a931617fc9509134e2e342ad4d"
+    },
+    {
+      "file": "style.js",
+      "first": 186,
+      "last": 253,
+      "sha256": "60dd34358e2d3a45d23f536f2e6da7cf75f5f51dfe5e5b682e0f46ff0a1bbd0f"
+    },
+    {
+      "file": "events.js",
+      "first": 805,
+      "last": 838,
+      "sha256": "aac55781f1c804e7b18b434c821325b3870e23b6d809e9584b03d28cc64303b8"
+    }
+  ],
+  "implementation": {
+    "path": "src/runtime/export-runtime.ts",
+    "sha256": "766a76bbbe9d2eb493f770180e1eb9866fe81957e431b4c50da9565fd6585ac1"
+  },
+  "sourceStable": true,
+  "dependencies": [
+    {
+      "path": "research/native-layers-runtime-probe.mjs",
+      "sha256": "728ec878c2474dee48e818fcef852988fe5721d88adccbacba504305aac668d5"
+    }
+  ],
+  "script": {
+    "path": "research/native-layers-runtime-initial-state-review-probe.mjs",
+    "sha256": "b9927fbedbee3ba5a10eebbf78bf2ec46b27c6cce9931b3dc3c3e1e92733bf09"
+  },
+  "summary": {
+    "total": 4,
+    "passed": 0,
+    "failed": 4
+  },
+  "results": [
+    {
+      "field": "selected",
+      "portable": false,
+      "native": {
+        "selected": {
+          "a": true,
+          "g": true
+        },
+        "error": {},
+        "disabled": {
+          "g": true,
+          "a": true
+        },
+        "calls": [
+          {
+            "kind": "selectedEvent",
+            "id": "a",
+            "value": true
+          },
+          {
+            "kind": "selectedEvent",
+            "id": "g",
+            "value": true
+          },
+          {
+            "kind": "enabled",
+            "id": "g",
+            "value": false
+          },
+          {
+            "kind": "enabled",
+            "id": "a",
+            "value": false
+          }
+        ]
+      },
+      "expected": {
+        "selected": true,
+        "disabled": true
+      },
+      "passed": false,
+      "error": "TypeError: items is not iterable\n    at run (file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:2612:24)\n    at loads (file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:3000:7)\n    at file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:3095:28\n    at file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:328:43\n    at atomic (file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:2521:7)\n    at file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:328:28"
+    },
+    {
+      "field": "selected",
+      "portable": true,
+      "native": {
+        "selected": {
+          "a": true,
+          "g": true
+        },
+        "error": {},
+        "disabled": {
+          "g": true,
+          "a": true
+        },
+        "calls": [
+          {
+            "kind": "selectedEvent",
+            "id": "a",
+            "value": true
+          },
+          {
+            "kind": "selectedEvent",
+            "id": "g",
+            "value": true
+          },
+          {
+            "kind": "enabled",
+            "id": "g",
+            "value": false
+          },
+          {
+            "kind": "enabled",
+            "id": "a",
+            "value": false
+          }
+        ]
+      },
+      "expected": {
+        "selected": true,
+        "disabled": true
+      },
+      "passed": false,
+      "error": "TypeError: items is not iterable\n    at run (evalmachine.<anonymous>:2490:24)\n    at loads (evalmachine.<anonymous>:2878:7)\n    at evalmachine.<anonymous>:2973:28\n    at evalmachine.<anonymous>:206:43\n    at atomic (evalmachine.<anonymous>:2399:7)\n    at evalmachine.<anonymous>:206:28"
+    },
+    {
+      "field": "error",
+      "portable": false,
+      "native": {
+        "selected": {},
+        "error": {
+          "g": true,
+          "a": true
+        },
+        "disabled": {
+          "g": true,
+          "a": true
+        },
+        "calls": [
+          {
+            "kind": "error",
+            "id": "g",
+            "value": true
+          },
+          {
+            "kind": "error",
+            "id": "a",
+            "value": true
+          },
+          {
+            "kind": "enabled",
+            "id": "g",
+            "value": false
+          },
+          {
+            "kind": "enabled",
+            "id": "a",
+            "value": false
+          }
+        ]
+      },
+      "expected": {
+        "error": true,
+        "disabled": true
+      },
+      "passed": false,
+      "error": "TypeError: items is not iterable\n    at run (file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:2612:24)\n    at loads (file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:3000:7)\n    at file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:3095:28\n    at file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:328:43\n    at atomic (file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:2521:7)\n    at file:///D:/WSCodex/REA/src/runtime/export-runtime.ts:328:28"
+    },
+    {
+      "field": "error",
+      "portable": true,
+      "native": {
+        "selected": {},
+        "error": {
+          "g": true,
+          "a": true
+        },
+        "disabled": {
+          "g": true,
+          "a": true
+        },
+        "calls": [
+          {
+            "kind": "error",
+            "id": "g",
+            "value": true
+          },
+          {
+            "kind": "error",
+            "id": "a",
+            "value": true
+          },
+          {
+            "kind": "enabled",
+            "id": "g",
+            "value": false
+          },
+          {
+            "kind": "enabled",
+            "id": "a",
+            "value": false
+          }
+        ]
+      },
+      "expected": {
+        "error": true,
+        "disabled": true
+      },
+      "passed": false,
+      "error": "TypeError: items is not iterable\n    at run (evalmachine.<anonymous>:2490:24)\n    at loads (evalmachine.<anonymous>:2878:7)\n    at evalmachine.<anonymous>:2973:28\n    at evalmachine.<anonymous>:206:43\n    at atomic (evalmachine.<anonymous>:2399:7)\n    at evalmachine.<anonymous>:206:28"
+    }
+  ]
+}

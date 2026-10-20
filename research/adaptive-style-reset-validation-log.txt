@@ -1,0 +1,30 @@
+2026-10-15, bounded research only. No product edits.
+
+Initial comparison harness attempt:
+Command: node research/adaptive-style-reset-probe.mjs
+Exit 1
+AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: true
+actual: true
+expected: true
+operator: notStrictEqual
+
+Cause: the third product scenario called Show on an already-visible base
+object, so the action correctly made no override. The proposed persistent
+action state did not exist in that fixture. This was a harness error, not a
+product regression or an original-runtime discrepancy. The final fixture
+starts that scenario hidden before Show and initializes the prior view.
+No frozen product source or prior AutoFit evidence was changed.
+
+Final first probe:
+Command: node research/adaptive-style-reset-probe.mjs
+Exit 0
+{"originalCases":6,"productComparisons":3,"status":"observed differences asserted","output":"research/adaptive-style-reset-probe.json"}
+All three final comparisons explicitly retain opposite original/product
+visibility values. Passing assertions certify that the difference was
+reproduced; they do not certify current product parity.
+
+Additional exact visibility/event probe:
+Command: node research/adaptive-style-reset-events-probe.mjs
+Exit 0
+{"passed":18,"output":"research/adaptive-style-reset-events-probe.json"}
+Positive fire:true controls emit onShow/onHide; adaptive calls do not.

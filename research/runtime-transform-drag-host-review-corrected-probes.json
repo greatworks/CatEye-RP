@@ -1,0 +1,499 @@
+{
+  "capturedAt": "2026-10-20T05:53:41.538Z",
+  "kind": "Independent current-product bridge + exact extracted current host subscribe callbacks + current core runtime; Node event surface, not browser",
+  "sourcesBefore": [
+    {
+      "path": "src/runtime/drag-input.ts",
+      "sha256": "41f8088036694bc99a2f4b0b27a078e63cf90af576341025ec09b4fe09e64767"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "86772c6fae80365c7178141ccdd0e990176ab9843b63ffd1a43c73eeed8ce4c5"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "8d8f318ebab90d39c67428037879516362e45072e2b33fd5e4c138f7c3d348ca"
+    }
+  ],
+  "sourcesAfter": [
+    {
+      "path": "src/runtime/drag-input.ts",
+      "sha256": "41f8088036694bc99a2f4b0b27a078e63cf90af576341025ec09b4fe09e64767"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "86772c6fae80365c7178141ccdd0e990176ab9843b63ffd1a43c73eeed8ce4c5"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "8d8f318ebab90d39c67428037879516362e45072e2b33fd5e4c138f7c3d348ca"
+    }
+  ],
+  "sourceDrift": [],
+  "hookSources": [
+    {
+      "path": "src/components/Preview.tsx",
+      "text": "    session.subscribe(()=>{if(drag.hasActiveDrag()&&!session.state().motionState?.drag?.started)drag.cancel();setRuntime(structuredClone(session.state()))});",
+      "sha256": "f68740de27d670cbf256ed773fedf1fb93971ea105e8f2fe8c2f0292ce66f40d"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "text": "  const schedule = () => { if (drag?.hasActiveDrag() && !runtime.state().motionState?.drag?.started) drag.cancel(); if (!renderPending) { renderPending = true; queueMicrotask(safeRender); } };",
+      "sha256": "5edf40a42e62dee36d41e23d9af31f07d289e63a6119b2efddddb521ac7190db"
+    }
+  ],
+  "script": {
+    "path": "research/runtime-transform-drag-host-review-probe.mjs",
+    "sha256": "3196f038055859dd5ed9d868b663ce7251df75185712a53dc289f0bc5b797f39"
+  },
+  "summary": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "preview/module completed drag keeps click suppression through idle notify",
+      "passed": true,
+      "observed": {
+        "beforeClick": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "click",
+            "mousemove",
+            "touchcancel"
+          ],
+          "pageId": "p2",
+          "errors": []
+        },
+        "clickPrevented": true,
+        "after": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "p2",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "preview/module page navigation cancels active bridge and permits next source",
+      "passed": true,
+      "observed": {
+        "navigated": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "p10",
+          "errors": []
+        },
+        "nextStarted": {
+          "active": true,
+          "runtimeStarted": true,
+          "cursor": "auto",
+          "listeners": [
+            "mousemove",
+            "mouseup",
+            "touchcancel"
+          ],
+          "pageId": "p10",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "preview/module row removal cancels active bridge without Drop",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "p12",
+        "errors": []
+      }
+    },
+    {
+      "name": "preview/module touch cancel removes touch listeners and restores cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "p18",
+        "errors": []
+      }
+    },
+    {
+      "name": "preview/module detached source during Drop does not leak cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "click",
+          "mousemove",
+          "touchcancel"
+        ],
+        "pageId": "p23",
+        "errors": []
+      }
+    },
+    {
+      "name": "preview/serialized completed drag keeps click suppression through idle notify",
+      "passed": true,
+      "observed": {
+        "beforeClick": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "click",
+            "mousemove",
+            "touchcancel"
+          ],
+          "pageId": "p28",
+          "errors": []
+        },
+        "clickPrevented": true,
+        "after": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "p28",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "preview/serialized page navigation cancels active bridge and permits next source",
+      "passed": true,
+      "observed": {
+        "navigated": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "p36",
+          "errors": []
+        },
+        "nextStarted": {
+          "active": true,
+          "runtimeStarted": true,
+          "cursor": "auto",
+          "listeners": [
+            "mousemove",
+            "mouseup",
+            "touchcancel"
+          ],
+          "pageId": "p36",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "preview/serialized row removal cancels active bridge without Drop",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "p38",
+        "errors": []
+      }
+    },
+    {
+      "name": "preview/serialized touch cancel removes touch listeners and restores cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "p44",
+        "errors": []
+      }
+    },
+    {
+      "name": "preview/serialized detached source during Drop does not leak cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "click",
+          "mousemove",
+          "touchcancel"
+        ],
+        "pageId": "p49",
+        "errors": []
+      }
+    },
+    {
+      "name": "offline/module completed drag keeps click suppression through idle notify",
+      "passed": true,
+      "observed": {
+        "beforeClick": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "click",
+            "mousemove",
+            "touchcancel"
+          ],
+          "pageId": "p54",
+          "errors": []
+        },
+        "clickPrevented": true,
+        "after": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "p54",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "offline/module page navigation cancels active bridge and permits next source",
+      "passed": true,
+      "observed": {
+        "navigated": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "p62",
+          "errors": []
+        },
+        "nextStarted": {
+          "active": true,
+          "runtimeStarted": true,
+          "cursor": "auto",
+          "listeners": [
+            "mousemove",
+            "mouseup",
+            "touchcancel"
+          ],
+          "pageId": "p62",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "offline/module row removal cancels active bridge without Drop",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "p64",
+        "errors": []
+      }
+    },
+    {
+      "name": "offline/module touch cancel removes touch listeners and restores cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "p70",
+        "errors": []
+      }
+    },
+    {
+      "name": "offline/module detached source during Drop does not leak cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "click",
+          "mousemove",
+          "touchcancel"
+        ],
+        "pageId": "p75",
+        "errors": []
+      }
+    },
+    {
+      "name": "offline/serialized completed drag keeps click suppression through idle notify",
+      "passed": true,
+      "observed": {
+        "beforeClick": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "click",
+            "mousemove",
+            "touchcancel"
+          ],
+          "pageId": "p80",
+          "errors": []
+        },
+        "clickPrevented": true,
+        "after": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "p80",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "offline/serialized page navigation cancels active bridge and permits next source",
+      "passed": true,
+      "observed": {
+        "navigated": {
+          "active": false,
+          "runtimeStarted": false,
+          "cursor": "auto",
+          "listeners": [
+            "touchcancel"
+          ],
+          "pageId": "p88",
+          "errors": []
+        },
+        "nextStarted": {
+          "active": true,
+          "runtimeStarted": true,
+          "cursor": "auto",
+          "listeners": [
+            "mousemove",
+            "mouseup",
+            "touchcancel"
+          ],
+          "pageId": "p88",
+          "errors": []
+        }
+      }
+    },
+    {
+      "name": "offline/serialized row removal cancels active bridge without Drop",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "p90",
+        "errors": []
+      }
+    },
+    {
+      "name": "offline/serialized touch cancel removes touch listeners and restores cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "touchcancel"
+        ],
+        "pageId": "p96",
+        "errors": []
+      }
+    },
+    {
+      "name": "offline/serialized detached source during Drop does not leak cursor",
+      "passed": true,
+      "observed": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [
+          "click",
+          "mousemove",
+          "touchcancel"
+        ],
+        "pageId": "p101",
+        "errors": []
+      }
+    }
+  ],
+  "boundaries": [
+    {
+      "host": "preview",
+      "name": "controlled persisted pagehide/pageshow",
+      "afterHide": {
+        "active": true,
+        "runtimeStarted": true,
+        "cursor": "move",
+        "listeners": [
+          "mousemove",
+          "mouseup",
+          "touchcancel"
+        ],
+        "pageId": "p106",
+        "errors": []
+      },
+      "canStartAfterShow": false,
+      "interpretation": "No pagehide listener: active bridge remains without unmount/blur."
+    },
+    {
+      "host": "offline",
+      "name": "controlled persisted pagehide/pageshow",
+      "afterHide": {
+        "active": false,
+        "runtimeStarted": false,
+        "cursor": "auto",
+        "listeners": [],
+        "pageId": "p111",
+        "errors": []
+      },
+      "canStartAfterShow": false,
+      "interpretation": "Mount disposes controller permanently on pagehide; pageshow does not recreate it. Browser BFCache eligibility was not exercised."
+    }
+  ],
+  "limitations": [
+    "DOM event dispatch and cursor style are controlled surfaces; no browser click/touch ordering/BFCache eligibility proof.",
+    "Both current host subscribe callback expressions execute as read, but React mounting/offline rendering are not executed.",
+    "Core source is being edited independently; whole-file drift is recorded and only reviewed hook hashes are stable assertions."
+  ]
+}

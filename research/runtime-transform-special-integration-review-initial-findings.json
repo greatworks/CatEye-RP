@@ -1,0 +1,65 @@
+{
+  "capturedAt": "2026-10-20T06:02:20.816Z",
+  "status": "one-confirmed-issue",
+  "finding": "RTS-INTEGRATION-01",
+  "sources": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "8d8f318ebab90d39c67428037879516362e45072e2b33fd5e4c138f7c3d348ca"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "d6c76c2ab5ad69595ef55f947143e47afbbbee0415845843efac009b5ae9f0b1"
+    },
+    {
+      "path": "tests/runtime-transform-core-special.test.ts",
+      "sha256": "e8af5a0532e3914b10307dd30eb1a1af107905c8c3f789ce987cb3181a201baf"
+    },
+    {
+      "path": "tests/runtime-transform-core-consumers.test.ts",
+      "sha256": "a811c381e167df5234d6e3cd6df9b383953d3fbc69bf4a420b857f599bb0de39"
+    }
+  ],
+  "checks": {
+    "focused52": true,
+    "independent48": true
+  },
+  "evidence": [
+    {
+      "path": "research/runtime-transform-special-integration-review-initial-findings.md",
+      "sha256": "343c603e418b274f230bef5bdb212ecc26dc3fa61dc5ed704459c6c7c883f52e"
+    },
+    {
+      "path": "research/runtime-transform-special-integration-review-page-scope.json",
+      "sha256": "118af7f8d0e7f84df320d69de8e126c1b86dfef9ca152cd121eb28f2c872b47e"
+    },
+    {
+      "path": "research/runtime-transform-special-integration-review-page-scope-source-parent.json",
+      "sha256": "776326c1e6db678cde34aa2de8ef097f5fbcedd091b277eb5901c8609dd13c96"
+    },
+    {
+      "path": "research/runtime-transform-special-integration-review-page-scope-first-probe.mjs",
+      "sha256": "735bb613135ad1406a541e15eaf9c0df5954cc434e0091de7e8b13725f367b98"
+    },
+    {
+      "path": "research/runtime-transform-special-integration-review-page-scope-probe.mjs",
+      "sha256": "100c026a73164f29e4ce3ee9bbf1664f8f5d1a3e5c2512363f80c4d492d99b75"
+    },
+    {
+      "path": "research/runtime-transform-special-integration-review-first-probe.mjs",
+      "sha256": "db5da91ea48fa447af12003ed8e9f69a962de00d54e1ade5e4ba720f9f310720"
+    },
+    {
+      "path": "research/runtime-transform-special-integration-review-probes.json",
+      "sha256": "3dc664470b71110bbe6c27a118596efb3608bb7ffda32b50538cb66c31e00b14"
+    },
+    {
+      "path": "research/runtime-transform-special-integration-review-started-probes.json",
+      "sha256": "d342475be54135d14f54da56a703883fdd0a319f054ea318634d459e251b315e"
+    },
+    {
+      "path": "research/runtime-transform-special-integration-review-focused.json",
+      "sha256": "aa2e55e28718eaeb93e00065525024d62c49f9b5b8c6b51a8c08012191470ae9"
+    }
+  ]
+}

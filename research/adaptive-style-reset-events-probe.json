@@ -1,0 +1,500 @@
+{
+  "schema": "adaptive-style-reset-events-v1",
+  "capturedAt": "2026-10-15T06:44:50.692Z",
+  "kind": "Exact retained applyView/addLimboAndHiddenIds/SetWidgetVisibility/SetVisibility/SetVisible bodies in Node VM. DOM nodes and nonanimated side-effect APIs are explicit mocks. No browser or original GUI.",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\adaptive.js",
+      "sha256": "e141ea07bb973b6007f2ad7d7205516a041a801ec97e410467352c27af3b2928"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "visibility.js",
+      "first": 15,
+      "last": 32,
+      "label": "SetIdVisible",
+      "sha256": "5ec648cee981d5ff4c7ff336441986b05eb9cfcd82a53ce3eb9f4606cecf99cb"
+    },
+    {
+      "file": "visibility.js",
+      "first": 40,
+      "last": 53,
+      "label": "SetVisible",
+      "sha256": "dbf56451742e56733e5048738887ff3c5cfa5d8c38442ac7acb789d7d2388427"
+    },
+    {
+      "file": "visibility.js",
+      "first": 55,
+      "last": 124,
+      "label": "_setWidgetVisibility",
+      "sha256": "c1e6c4a3442cf676e5a5f3be90f179a29a7b6d418b0c89378b7da7cbd0a0b343"
+    },
+    {
+      "file": "visibility.js",
+      "first": 148,
+      "last": 607,
+      "label": "_setVisibility",
+      "sha256": "21607dabb5f09ea7d38194c3273001f2f18f1814829e0ff2e090f80f4078d38d"
+    },
+    {
+      "file": "visibility.js",
+      "first": 1267,
+      "last": 1325,
+      "label": "_addLimboAndHiddenIds",
+      "sha256": "3643edd3f503e7ad97e87b8a5c40e1b12605b52238108607613b392d7cc7f796"
+    },
+    {
+      "file": "adaptive.js",
+      "first": 245,
+      "last": 269,
+      "label": "_applyView",
+      "sha256": "09852952fbccdc1d298d6a6608b75e268b6c9d02f21fcddcbd724c1339f824b3"
+    },
+    {
+      "file": "adaptive.js",
+      "first": 271,
+      "last": 317,
+      "label": "_applyAdaptiveViewOnObject",
+      "sha256": "ff573de6d3bf004ecc1f611fed3dbb88a23f40ee939d06835312ec6a3f0b3e54"
+    }
+  ],
+  "cases": 18,
+  "results": [
+    {
+      "name": "missing-view-visible-inherits-hidden-base",
+      "config": {
+        "name": "missing-view-visible-inherits-hidden-base",
+        "base": {
+          "visible": false
+        },
+        "visible": true,
+        "expected": false
+      },
+      "first": {
+        "visible": false,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": false,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "missing-view-visible-inherits-visible-base",
+      "config": {
+        "name": "missing-view-visible-inherits-visible-base",
+        "base": {
+          "visible": true
+        },
+        "visible": false,
+        "expected": true
+      },
+      "first": {
+        "visible": true,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": true,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "missing-view-and-base-visible-defaults-visible",
+      "config": {
+        "name": "missing-view-and-base-visible-defaults-visible",
+        "visible": false,
+        "expected": true
+      },
+      "first": {
+        "visible": true,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": true,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "view-true-overrides-hidden-base",
+      "config": {
+        "name": "view-true-overrides-hidden-base",
+        "base": {
+          "visible": false
+        },
+        "view": {
+          "visible": true
+        },
+        "visible": false,
+        "expected": true
+      },
+      "first": {
+        "visible": true,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": true,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "view-false-overrides-visible-base",
+      "config": {
+        "name": "view-false-overrides-visible-base",
+        "base": {
+          "visible": true
+        },
+        "view": {
+          "visible": false
+        },
+        "visible": true,
+        "expected": false
+      },
+      "first": {
+        "visible": false,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": false,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "same-visibility-no-event",
+      "config": {
+        "name": "same-visibility-no-event",
+        "visible": true,
+        "expected": true
+      },
+      "first": {
+        "visible": true,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": true,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "base-reset-hidden-does-not-fire",
+      "config": {
+        "name": "base-reset-hidden-does-not-fire",
+        "operation": "base",
+        "base": {
+          "visible": false
+        },
+        "visible": true,
+        "expected": false
+      },
+      "first": {
+        "visible": false,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": false,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "contained-object-skipped",
+      "config": {
+        "name": "contained-object-skipped",
+        "contained": true,
+        "visible": false,
+        "expected": false
+      },
+      "first": {
+        "visible": false,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": false,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "table-cell-skipped",
+      "config": {
+        "name": "table-cell-skipped",
+        "type": "tableCell",
+        "visible": false,
+        "expected": false
+      },
+      "first": {
+        "visible": false,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": false,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "submenu-skipped",
+      "config": {
+        "name": "submenu-skipped",
+        "submenu": true,
+        "visible": false,
+        "expected": false
+      },
+      "first": {
+        "visible": false,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": false,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "menu-contained-table-skipped",
+      "config": {
+        "name": "menu-contained-table-skipped",
+        "type": "table",
+        "menuParent": true,
+        "visible": false,
+        "expected": false
+      },
+      "first": {
+        "visible": false,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": false,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "panel-root-reset-without-container-animation",
+      "config": {
+        "name": "panel-root-reset-without-container-animation",
+        "type": "dynamicPanel",
+        "visible": false,
+        "expected": true
+      },
+      "first": {
+        "visible": true,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": true,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "repeater-root-reset",
+      "config": {
+        "name": "repeater-root-reset",
+        "type": "repeater",
+        "visible": false,
+        "expected": true
+      },
+      "first": {
+        "visible": true,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": true,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "repeater-descendant-not-automatically-skipped-by-applyView",
+      "config": {
+        "name": "repeater-descendant-not-automatically-skipped-by-applyView",
+        "inRepeater": true,
+        "visible": false,
+        "expected": true
+      },
+      "first": {
+        "visible": true,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": true,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "explicit-skipRepeater-skips-descendant",
+      "config": {
+        "name": "explicit-skipRepeater-skips-descendant",
+        "operation": "skipRepeater",
+        "inRepeater": true,
+        "visible": false,
+        "expected": false
+      },
+      "first": {
+        "visible": false,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": false,
+        "events": [],
+        "trace": [],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "limbo-hides-and-later-action-cannot-show",
+      "config": {
+        "name": "limbo-hides-and-later-action-cannot-show",
+        "view": {
+          "limbo": true
+        },
+        "visible": true,
+        "expected": false,
+        "tryShowAfterLimbo": true
+      },
+      "first": {
+        "visible": false,
+        "events": [],
+        "trace": []
+      },
+      "final": {
+        "visible": false,
+        "events": [],
+        "trace": [
+          "queue-next"
+        ],
+        "limbo": {
+          "w": true
+        }
+      }
+    },
+    {
+      "name": "ordinary-explicit-show-fire-positive-control",
+      "config": {
+        "name": "ordinary-explicit-show-fire-positive-control",
+        "operation": "direct",
+        "visible": false,
+        "desired": true,
+        "expected": true,
+        "expectedEvent": "onShow"
+      },
+      "first": {
+        "visible": true,
+        "events": [
+          {
+            "id": "w",
+            "name": "onShow"
+          }
+        ],
+        "trace": [
+          "onShow",
+          "queue-next"
+        ]
+      },
+      "final": {
+        "visible": true,
+        "events": [
+          {
+            "id": "w",
+            "name": "onShow"
+          }
+        ],
+        "trace": [
+          "onShow",
+          "queue-next"
+        ],
+        "limbo": {}
+      }
+    },
+    {
+      "name": "ordinary-explicit-hide-fire-positive-control",
+      "config": {
+        "name": "ordinary-explicit-hide-fire-positive-control",
+        "operation": "direct",
+        "visible": true,
+        "desired": false,
+        "expected": false,
+        "expectedEvent": "onHide"
+      },
+      "first": {
+        "visible": false,
+        "events": [
+          {
+            "id": "w",
+            "name": "onHide"
+          }
+        ],
+        "trace": [
+          "onHide",
+          "queue-next"
+        ]
+      },
+      "final": {
+        "visible": false,
+        "events": [
+          {
+            "id": "w",
+            "name": "onHide"
+          }
+        ],
+        "trace": [
+          "onHide",
+          "queue-next"
+        ],
+        "limbo": {}
+      }
+    }
+  ],
+  "boundaries": [
+    "No easing/animations; all adaptive calls omit easing and fire.",
+    "Normal-state computeAllOverrides is an injected view dictionary; merge of object base and supplied overrides is actual adaptive.js code. Full nested adaptive/named/state style resolution is not reproduced.",
+    "Panel root visibility gate is executed, not state scroll/fit/layout behavior.",
+    "Repeater descendant visibility gate is executed before a mocked refresh; row destruction/reinitialization is outside this probe.",
+    "Synthetic event dispatch is a recording sink; no actions or case menus execute."
+  ]
+}

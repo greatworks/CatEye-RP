@@ -1,0 +1,230 @@
+{
+  "stage": "layer-resize",
+  "scope": "authoring integration",
+  "createdAt": "2026-10-20T08:52:16.490Z",
+  "frozen": true,
+  "originalGuiCompared": false,
+  "fullAxureParity": false,
+  "production": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "2dff4dc6177d5c33f12b6dec799d4b1fe1650b57d237bdb4a7308edfbef6104e",
+      "bytes": 98450
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "b088ee0f943c3f732b9ed31b44dc5e1b89442288af67a63d6d2da870f680d322",
+      "bytes": 113309
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/e2e/layer-resize-authoring.spec.ts",
+      "sha256": "8633a15d5a442f62fc09f78cbbc35dc8787da10d1a0a560da7aeec33b9b25247",
+      "bytes": 17797
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "src/model/author-layer-resize.ts",
+      "sha256": "2d578f9151299197e9efb0e0f690449705991331f97a091860932e483e620bc6",
+      "bytes": 16627
+    },
+    {
+      "path": "src/model/author-resize-solver.ts",
+      "sha256": "95d2b05236c850976cc2f1230319ad6bd23b468b6de7fb4fffb2b7ed2bb6fb10",
+      "bytes": 12516
+    },
+    {
+      "path": "src/model/layer-geometry.ts",
+      "sha256": "3d5e5638d0956cbcb80f201b9714823cfe2a9c3cbe152708f06550c669d46994",
+      "bytes": 2757
+    },
+    {
+      "path": "src/model/resize-pins.ts",
+      "sha256": "40b464deec19c57547b0d8caa16a58900f4701742891c2bcb093e801ce2371c0",
+      "bytes": 512
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "110ae6811273c8f074f2246f5cf67702d32879d122fe04ff57fdad8dd39ec8d5",
+      "bytes": 41444
+    },
+    {
+      "path": "src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309",
+      "bytes": 13234
+    }
+  ],
+  "report": [
+    {
+      "path": "research/layer-resize-authoring-implementation.md",
+      "sha256": "6f4d3bf9f5e27b9f0b03894119ad07a001e582dabf6129e4d2b5eeb109c68eec",
+      "bytes": 6684
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/layer-resize-capability-manifest.json",
+      "sha256": "271d49ede2a4c8ab3a7a133f80fe29602c52cd81a8eccf5731b2624b79e93f2c",
+      "bytes": 1586
+    },
+    {
+      "path": "research/layer-resize-pins-model-implementation.json",
+      "sha256": "d9f5938fbdeeb84d6f1464282c7b3f8a2c57aefcd77114e17ce90d6b084b744a",
+      "bytes": 6899
+    },
+    {
+      "path": "research/layer-resize-controller-evidence.md",
+      "sha256": "40560698d225fc4a8cb85d2bcdfe8219133acfa42d809e2dd64be97ddec53000",
+      "bytes": 10758
+    },
+    {
+      "path": "research/layer-resize-controller-planner-fixtures.json",
+      "sha256": "4f95adf10badc7e99ed37874640ce9279d82386c8a226b37898b8e88af1d42ef",
+      "bytes": 880643
+    }
+  ],
+  "retainedSources": [
+    {
+      "path": ".build/layer-resize-authoring-before/src/App.tsx",
+      "sha256": "1d84911a294c11838eb418bd96796caaed4f2a28a0d87b61beedcfe11b3e9baf",
+      "bytes": 91868
+    },
+    {
+      "path": ".build/layer-resize-authoring-before/src/components/Inspector.tsx",
+      "sha256": "58d12f0b7ff92509f33714dd86a51a974709c258f679926c65cf3ea173b5bfa6",
+      "bytes": 111479
+    },
+    {
+      "path": ".build/layer-resize-authoring-production-first-source/src/App.tsx",
+      "sha256": "cfe7290b81d0f7a80a64ccb02c5808e31fe63205db1e6f82a6ecd22029819328",
+      "bytes": 98015
+    },
+    {
+      "path": ".build/layer-resize-authoring-production-first-source/src/components/Inspector.tsx",
+      "sha256": "b088ee0f943c3f732b9ed31b44dc5e1b89442288af67a63d6d2da870f680d322",
+      "bytes": 113309
+    },
+    {
+      "path": ".build/layer-resize-authoring-production-first.spec.ts",
+      "sha256": "e0d8f295a1cc4a0b84b4edda840282e5dd003b196028deb4b1f3a30a61c8dae7",
+      "bytes": 13497
+    },
+    {
+      "path": ".build/layer-resize-authoring-production-second.spec.ts",
+      "sha256": "ceb8761886c4259841187044a84e95af59949211fd6f5a9d9b6ed7027b42c350",
+      "bytes": 17636
+    }
+  ],
+  "runs": [
+    {
+      "path": ".build/layer-resize-ui-red.json",
+      "sha256": "1e017505a67b9aea373be33378e443233d698b78d677323c9ca7a86561fdfa35",
+      "stats": {
+        "startTime": "2026-10-20T08:37:30.082Z",
+        "duration": 13470.261999999999,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "classification": "previous production: missing Layer handles, expected behavioral red"
+    },
+    {
+      "path": ".build/layer-resize-ui-production-first-e2e.json",
+      "sha256": "3ea40ea2b9beea4ea1f89e307ec7cd0d4eed238174820c8ce825f327538deec9",
+      "stats": {
+        "startTime": "2026-10-20T08:40:15.833Z",
+        "duration": 44469.170999999995,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 4,
+        "flaky": 0
+      },
+      "classification": "first production: side-axis gap; two history-precondition errors; invalid shared-page fixture"
+    },
+    {
+      "path": ".build/layer-resize-ui-production-second-e2e.json",
+      "sha256": "ecd77d759ce898acd0a451f9a4c99c2e6e8e1c2b347358a6f2782983e427fb7b",
+      "stats": {
+        "startTime": "2026-10-20T08:49:20.949Z",
+        "duration": 40766.215,
+        "expected": 7,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "classification": "corrected production: seven workflows green; same-value fill produced no editing intent"
+    },
+    {
+      "path": ".build/layer-resize-ui-production-same-value-e2e.json",
+      "sha256": "c746e2ea35a55b85b0310e62e69ed9bbf6e3d3982cedaab47b35ff60ead3e9c7",
+      "stats": {
+        "startTime": "2026-10-20T08:50:31.995Z",
+        "duration": 5160.626,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "classification": "real keyboard same-value edit: strict per-target regression green"
+    }
+  ],
+  "supportingLogs": [
+    {
+      "path": ".build/layer-resize-ui-red.log",
+      "sha256": "09e0f5fad3807997c3ad6167a0eb1ddd64b47624a6e13fe39eddb83547ce4f91",
+      "bytes": 3669
+    },
+    {
+      "path": ".build/layer-resize-ui-first.log",
+      "sha256": "fa50eeea1921969202ef9a2b78fd1ee779822771df6d0bd446b83c960d77951f",
+      "bytes": 7963
+    },
+    {
+      "path": ".build/layer-resize-ui-production-first.log",
+      "sha256": "929a4cfc29c2d8f728cb10cb51de04dfc699129cbed90dfb09858600219e667d",
+      "bytes": 16347
+    },
+    {
+      "path": ".build/layer-resize-ui-production-second.log",
+      "sha256": "a97db73da9d32e79056d06ea646cae916e3edf2e1bbb59b4287916820d240886",
+      "bytes": 5687
+    },
+    {
+      "path": ".build/layer-resize-ui-production-same-value.log",
+      "sha256": "04f07489506aed0cd0919000bcaf64962c7e9aacbb689122d7b63e615a46e96d",
+      "bytes": 948
+    },
+    {
+      "path": ".build/layer-resize-authoring-typecheck-third.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".build/layer-resize-authoring-list.log",
+      "sha256": "6c31f3704772a08946796a8c9fd41fbee118faddd81d5399cc7f52713191c063",
+      "bytes": 1083
+    }
+  ],
+  "developmentRun": {
+    "status": "stopped after repeated page-load timeout",
+    "enteredActionFailures": false,
+    "note": "First two workflows timed out before page load; a later nested workflow completed. No timeout increase or speculative product change."
+  },
+  "coverage": {
+    "finalWorkflowCount": 8,
+    "acceptedBatchPassed": 7,
+    "correctedFocusedPassed": 1,
+    "unifiedFinalEightRun": "delegated to parent comprehensive production suite; not claimed complete by this report"
+  },
+  "limits": [
+    "No original GUI/pixel comparison, native writeback, or full parity claim.",
+    "Per-target Inspector width/height assignment is an explicit product convention; source-proven pointer resize uses one shared selection rectangle.",
+    "preserveAspect is false because the full native aspect/modifier activation gate is not closed.",
+    "Unsupported compound/control trees are atomically rejected by the controller; pin storage alone is not universal resize support.",
+    "Hidden/unplaced editor selection-frame variants are outside this admitted displayed-root UI scope.",
+    "Zero-delta no-history and invalid-result atomic rejection are independent editor policies."
+  ]
+}

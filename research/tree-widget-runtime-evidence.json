@@ -1,0 +1,177 @@
+{
+  "capturedAt": "2026-10-13T19:40:32.208Z",
+  "title": "Axure RP 11 Tree widget runtime evidence and implementation verification",
+  "identity": {
+    "version": "11.0.0.4150",
+    "distributionSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+    "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7"
+  },
+  "officialSources": [
+    {
+      "url": "https://docs.axure.com/axure-rp/reference/trees/",
+      "claims": [
+        "tree nodes contain only text and icons",
+        "branch expansion icons are functional in canvas and browser",
+        "default Triangle with Plus/minus or custom options",
+        "tree properties are not adaptive"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "move.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\move.js",
+      "sha256": "c823954b5ed5862d56176b8984837e8f26588540ee4768d4483d68a399b95644"
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "file": "events.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "file": "action.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3"
+    },
+    {
+      "file": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "file": "visibility.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53"
+    },
+    {
+      "file": "doc.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1"
+    },
+    {
+      "file": "../jquery-3.7.1.min.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85"
+    },
+    {
+      "file": "tree.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\tree.js",
+      "sha256": "661f7a9e991d0371123e972e63fd7b771589bddc5cd89bec8be6d9ba0ecef453"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/tree-widget-runtime-evidence.md",
+      "sha256": "f66620c6e86f7b956c9891124e000f5cc0d31661a80206c7caee1bb2f8683542"
+    },
+    {
+      "path": "research/tree-widget-runtime-probe.json",
+      "sha256": "adca8930e24d28db671380f5c8639f8a6faee4b48744fa3c5f210e9cbb0cbe1e"
+    },
+    {
+      "path": "research/scripts/probe-tree-widget-runtime.mjs",
+      "sha256": "48dbf477e6344f6cee83dc48eebce38c3e0530266760a91107f82fcde1b6dbfc"
+    }
+  ],
+  "implementation": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "87aed5a28db1135f0cd7c50da2716870f0f7aa5102af77cb02d18e545937e889"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "6bdc4dfa425e32961a2df1d763d7d746553130f9de93541f96bf60a4cf69c2d7"
+    },
+    {
+      "path": "src/runtime/engine.ts",
+      "sha256": "24e2852407fa0c32045f9f2ccf369e98d11612d315e1cc357ba9ea09a13acb54"
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/tree-widget-runtime.test.ts",
+      "sha256": "e992ceceebd356f2ba8755d8398dade0e91da4aafdf40dd4b71890a8a9e96338"
+    },
+    {
+      "path": "tests/e2e/tree-widget-runtime.spec.ts",
+      "sha256": "e3f3e01d13b7966f3d6c72e0ff70202b65161382a47293001c6f060d1a356963"
+    },
+    {
+      "path": "tests/fixtures/tree-widgets.ts",
+      "sha256": "9b46ecc342244f52c985748edb9f171295a7ab902bd990b5c226f724535f8edf"
+    },
+    {
+      "path": "tests/export.test.ts",
+      "sha256": "ded7ae67252db06bf1d7c8983ab30771ac17572b6c6135dfb391763200df3530"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "test-results/tree-widget-runtime-focused/tree-widget-runtime-previe-6882c-h-independent-repeated-rows/tree-preview.png",
+      "sha256": "e04a65c9f6d15f2607a2cd8ed13473c901cd69035eb936998216781cd1bd8810"
+    },
+    {
+      "path": "test-results/tree-widget-runtime-focused/tree-widget-runtime-offlin-22d0f-h-independent-repeated-rows/tree-offline.png",
+      "sha256": "922fa57e6faa0f2f8c843820581611845d85637e4fec1f6a1acff0fa6ab250a0"
+    }
+  ],
+  "verification": {
+    "originalFunctionProbes": {
+      "passed": 37,
+      "network": 0,
+      "pageErrors": 0,
+      "browser": "155.0.4283.45"
+    },
+    "focusedUnit": {
+      "tree": 55,
+      "unchangedMenu": 51,
+      "unchangedTable": 75,
+      "total": 181,
+      "moduleAndSerialized": true
+    },
+    "typecheck": "passed",
+    "browser": {
+      "passed": 2,
+      "modes": [
+        "preview",
+        "actual exported file offline"
+      ],
+      "file": "tests/e2e/tree-widget-runtime.spec.ts",
+      "httpRequestsOffline": 0,
+      "pageErrors": 0,
+      "screenshotsVisuallyInspected": true,
+      "fixture": "Final 200px status and taller page: full aggregate displayed without clipping; both screenshot files reinspected",
+      "testedRuntimeSha256": "9202ef03fb0308880f16788523bc9f66a5e7774d5e8e0ee61f5c6fefc886bb14",
+      "revisionStatus": "Historical focused result before portable SVG DOM-construction correction; final production verification is parent-owned"
+    },
+    "fullSuite": "parent-owned, not run by this agent",
+    "buildPackage": "parent-owned, not run by this agent",
+    "portableSvgCorrection": {
+      "reason": "Existing export safety test forbids HTML-string parsing sinks even for static SVG markup",
+      "implementation": "createElementNS, setAttribute and replaceChildren with glyph change guard",
+      "exportTests": 12,
+      "treeRuntimeTests": 55,
+      "total": 67,
+      "typecheck": "passed",
+      "testContractUnchanged": true
+    }
+  },
+  "limits": [
+    "Original Axure GUI behavior/pixels not observed; no vendor app launched by these probes",
+    "Collapsed/Expanded raster icons not included in product; independently drawn 9px SVG",
+    "Original expansion image identity/load/selection events not modeled as separate Widget",
+    "Empty array versus absent native label InteractionMap cannot be separately represented; nonempty label interactions keep events at label",
+    "Product keyboard/ARIA and 16px static icon geometry are explicit conventions",
+    "Source expanded getter bug intentionally not used as internal expanded state"
+  ]
+}

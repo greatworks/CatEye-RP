@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "kind": "Final read-only independent Layer resize integration review",
+  "createdAt": "2026-10-20T08:55:52.091Z",
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "status": "passed within declared supported scope",
+  "summary": {
+    "total": 179,
+    "passed": 179,
+    "failed": 0,
+    "unchangedInputReplays": 83,
+    "newEntryComparisons": 96,
+    "nativeFiniteCrossingOutcomes": 18,
+    "explicitPositiveSizeRejections": 30
+  },
+  "findings": [],
+  "resolvedFinding": {
+    "id": "LAYER-RESIZE-SHARED-SELECTION",
+    "originalFailure": "research/layer-resize-numeric-entry-review-probes.json",
+    "finalProbe": "research/layer-resize-numeric-final-entry-probes.json",
+    "finalExample": "shared-12-100-free"
+  },
+  "implementation": [
+    {
+      "path": "src/model/author-layer-resize.ts",
+      "sha256": "2d578f9151299197e9efb0e0f690449705991331f97a091860932e483e620bc6"
+    },
+    {
+      "path": "src/model/author-resize-solver.ts",
+      "sha256": "95d2b05236c850976cc2f1230319ad6bd23b468b6de7fb4fffb2b7ed2bb6fb10"
+    },
+    {
+      "path": "src/model/layer-geometry.ts",
+      "sha256": "3d5e5638d0956cbcb80f201b9714823cfe2a9c3cbe152708f06550c669d46994"
+    },
+    {
+      "path": "src/model/resize-pins.ts",
+      "sha256": "40b464deec19c57547b0d8caa16a58900f4701742891c2bcb093e801ce2371c0"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "2dff4dc6177d5c33f12b6dec799d4b1fe1650b57d237bdb4a7308edfbef6104e"
+    }
+  ],
+  "snapshots": [
+    {
+      "originalPath": "src/model/author-layer-resize.ts",
+      "path": "research/layer-resize-numeric-integration-review-642b075a7a3f.ts.txt",
+      "sha256": "642b075a7a3f86a030588a14f1775b20356c9a5ea24115d59dae29999a9b6f04"
+    },
+    {
+      "originalPath": "src/model/author-layer-resize.ts",
+      "path": "research/layer-resize-numeric-final-review-2d578f915129.ts.txt",
+      "sha256": "2d578f9151299197e9efb0e0f690449705991331f97a091860932e483e620bc6"
+    },
+    {
+      "originalPath": "src/App.tsx",
+      "path": "research/layer-resize-numeric-entry-review-app-before.tsx.txt",
+      "sha256": "2dff4dc6177d5c33f12b6dec799d4b1fe1650b57d237bdb4a7308edfbef6104e"
+    },
+    {
+      "originalPath": "src/App.tsx",
+      "path": "research/layer-resize-numeric-final-review-app-2dff4dc6177d.tsx.txt",
+      "sha256": "2dff4dc6177d5c33f12b6dec799d4b1fe1650b57d237bdb4a7308edfbef6104e"
+    },
+    {
+      "originalPath": "research/layer-resize-controller-planner-oracle.mjs",
+      "path": "research/layer-resize-numeric-entry-review-oracle-before.mjs.txt",
+      "sha256": "c237e035138f5cb55e05bae4d9a4d0f0f923cc1e7880226a6546330aa56887f6"
+    }
+  ],
+  "sources": [
+    {
+      "path": "research/layer-resize-numeric-entry-review-oracle-before.mjs.txt",
+      "sha256": "c237e035138f5cb55e05bae4d9a4d0f0f923cc1e7880226a6546330aa56887f6"
+    },
+    {
+      "path": "research/layer-resize-controller-probe.mjs",
+      "sha256": "ca81115b3d6a92aabbe751b21c5427ebc7e0fe2093fe0265e988ba26c2416800"
+    },
+    {
+      "path": "research/layer-resize-numeric-replay.mjs",
+      "sha256": "5c7de39285e87c7ea4492666b38decf096873a8c0d9ce23898a8174027d6a20f"
+    },
+    {
+      "path": "research/layer-resize-controller-manifest.json",
+      "sha256": "f248078274cb16687b244e2a2ca977c76ab0bc3d8da304752d90b5729b559c0b"
+    },
+    {
+      "path": "research/layer-resize-numeric-manifest.json",
+      "sha256": "e9ce3242c3f32bfacf3ccc007f0e1a26bf732eac042b08e783b200cc0fc24948"
+    },
+    {
+      "path": ".build/next-layer-authoring/resize-propagation-cil.json",
+      "sha256": "f32e834763dd14c7b67042db9eb84d6c99337d2ebc104e2d1d4dc3bef40d04ca"
+    },
+    {
+      "path": "research/layer-resize-controller-planner-host-cil.json",
+      "sha256": "b89512f7215cde03b19c52d3e28ea00f60607869f253ff4cae8c067410ece73c"
+    },
+    {
+      "path": "research/layer-resize-controller-planner-axis-cil.json",
+      "sha256": "103f11e052d0744525db97194237166d15bbef23366252be50d5fc7f362ec738"
+    },
+    {
+      "path": "research/layer-resize-controller-planner-selection-cil.json",
+      "sha256": "f96383d20cff304297aaed03ca30c53b46732053b2ac3dfc62599b536a1bd1ba"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/layer-resize-numeric-integration-review.md",
+      "sha256": "3e6baf88f6ac9aa71ea7ebe2a3780d3abe3e6eb629abdeb4b1d56a78e87d6163"
+    },
+    {
+      "path": "research/layer-resize-numeric-integration-review.json",
+      "sha256": "f8d8e3b1dcaf9dda1e2835e0eb3342eaec46a915fd56eafd1d48f370a5a12d17"
+    },
+    {
+      "path": "research/layer-resize-numeric-integration-review-probes.json",
+      "sha256": "3495286cd9aec4eca5653e65025620752c59dd8670dd7cbadd66d64c143c1e7f"
+    },
+    {
+      "path": "research/layer-resize-numeric-entry-review-probe.mjs",
+      "sha256": "38e74b0fd7d18bf715e62638441465e56bc6faf7cad1ac4fad6b3a686283a1ee"
+    },
+    {
+      "path": "research/layer-resize-numeric-entry-review-probes.json",
+      "sha256": "2e306a52077c7e6ed4f02c0082b28fb413c83e0330467c95aa8ca59f99b5d3d5"
+    },
+    {
+      "path": "research/layer-resize-numeric-final-review-probes.json",
+      "sha256": "b013a08f189512568ba2b3ab305c2b4de2c58c0fc5919da91342b5649c2a224a"
+    },
+    {
+      "path": "research/layer-resize-numeric-final-entry-probes.json",
+      "sha256": "51554ebde504de793f7ca8dcda5caa51a34ac0db9bf576872053803efdd0e9da"
+    },
+    {
+      "path": "research/layer-resize-numeric-final-review.md",
+      "sha256": "95464b65a20e6a3b3ef3fb2411e7910cb5b340f79194194f47775894cf3035b7"
+    }
+  ],
+  "tests": [
+    {
+      "path": "research/layer-resize-numeric-final-review-probe.mjs",
+      "sha256": "e3c006acc7a3dc181113d3b7847106f8241a033d5ad6d8042a97f99c1e4a15f7"
+    },
+    {
+      "path": "research/layer-resize-numeric-final-entry-probe.mjs",
+      "sha256": "91981a0dcb92c2d10a8df0df9d39e4a4cdc101630da89965ae7c13e95629e220"
+    }
+  ],
+  "originalSource": {
+    "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/AxureRP11.dll",
+    "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+  },
+  "limitations": [
+    "Inspector per-target width/height is an independent editor convention; native numeric UI entry is not established here.",
+    "Hidden/unplaced selection construction may distinguish sizing and parent-frame filtering.",
+    "Zero/nonfinite/model bounds rejection is explicit product policy.",
+    "No GUI/browser or target DLL execution; controller/numeric instruction interpreters have declared collection, union, property and notification facades.",
+    "Unused Vite HMR port conflict warning occurred; both module comparison processes nevertheless exited 0."
+  ],
+  "sourceStable": true
+}

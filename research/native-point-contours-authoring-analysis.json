@@ -1,0 +1,1138 @@
+{
+  "schema": 1,
+  "stage": "native-point-contours",
+  "role": "authoring-read-only-analysis",
+  "createdAt": "2026-10-17T11:15:44.673Z",
+  "scope": {
+    "writes": [
+      "research/native-point-contours-authoring-analysis.md",
+      "research/native-point-contours-authoring-analysis.json"
+    ],
+    "productionEdits": false,
+    "testEdits": false,
+    "oldEvidenceEdits": false,
+    "browserRun": false,
+    "originalExecution": false,
+    "testSuiteRun": false
+  },
+  "sources": [
+    {
+      "path": "src/model/types.ts",
+      "bytes": 17238,
+      "sha256": "0c8669d7778a150b2036b4b30125c85ac71d32836de5d240029d027e536a201e",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "src/model/vector.ts",
+      "bytes": 3462,
+      "sha256": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "src/model/vector-editing.ts",
+      "bytes": 12086,
+      "sha256": "5beb656467c33b73b6a0425bb003a78f2325127f6f4c4c2a7e3bc4b9b028512d",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "src/model/vector-commit.ts",
+      "bytes": 6116,
+      "sha256": "ce5e8218b83d672762efbe7de861d175a40dbb21313d827e5b2d7ebf35e058bd",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "src/model/vector-authoring.ts",
+      "bytes": 3849,
+      "sha256": "3a11a65829362183b40407adb5543dbc38dcf9560709578ee5d3f8dc19af697c",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "bytes": 40119,
+      "sha256": "b6ad359478286e201469fcf26cc698076f0ecd08bf4dc386ca57b6ba96611da0",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "src/App.tsx",
+      "bytes": 89438,
+      "sha256": "c204576a681ad3e5bf8c9fe1f8d2ea0d36f4dd59be5b9118571744c307ecd109",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "src/components/CanvasVectorTools.tsx",
+      "bytes": 13295,
+      "sha256": "ce1af980044c8adb9f90b38c4da7b428bdb7adaaebf83662132af50b18096a27",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "bytes": 106292,
+      "sha256": "c55baefbda6d61e6a6b880f5e306ed83298fccf1dfb5ecd43ea182340fe504d6",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "tests/native-point-commit.test.ts",
+      "bytes": 15844,
+      "sha256": "931fbae93dc7d8c29ae6c3bacc119cfd213a85c9808eecedcaf172d4b23a454c",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "tests/native-point-editing-authoring.test.ts",
+      "bytes": 12156,
+      "sha256": "4004444dffbef72fa47d8c3a7034fcc96f1cc5608716538ea45e64a90a2eca33",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "tests/vector.test.ts",
+      "bytes": 9289,
+      "sha256": "a161a9113a5f469972fa340737432afe42b534e085c670482e778a8d6c3b280e",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "tests/vector-editing.test.ts",
+      "bytes": 7541,
+      "sha256": "097a58d8eedf238316c92480ac052754d6b7e4f81502404a453f63a88abf206c",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "tests/vector-editing-review.test.ts",
+      "bytes": 9242,
+      "sha256": "020c0495ac61eb3f3694caf8b368aed308fb4a5765fd628e6bbc313e18c9bed4",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "research/native-point-commit-evidence.md",
+      "bytes": 10834,
+      "sha256": "21899e6b8d7282607650ec935d4f5e19fdbbe7e2d282df6d774e37e2929f3f31",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "research/native-point-commit-format-evidence.md",
+      "bytes": 10958,
+      "sha256": "829e81389bdf32fe84fe2acb899c17124d7870f30c2d14104dc56d5fb0681c18",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "research/native-point-commit-evidence-contours-cil.json",
+      "bytes": 22840,
+      "sha256": "d5676821b66db0e3a1835bd4e8744124fb6ed27a50fb3731f2cfcc0f89252fb6",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "research/native-point-commit-evidence-reindex-filter-cil.json",
+      "bytes": 3878,
+      "sha256": "7b5dcd90f7b54547f6e5df1046edccb49fd72e7d6c552372ee6d5132497c809e",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "research/native-point-commit-evidence-degenerate-curve-cil.json",
+      "bytes": 14520,
+      "sha256": "629d66025389b9a6adf620a805f262c38789b2542260dc36e635c6eed4be31d8",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "research/native-point-commit-evidence-degenerate-line-cil.json",
+      "bytes": 4427,
+      "sha256": "8c78b0f5e1004cb18513e990d46be2a58256f39706acc3197a7ed74a3ce0de94",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "research/native-point-commit-evidence-normalize-cil.json",
+      "bytes": 57852,
+      "sha256": "15027f941518fdb3b94aa00320624751ecd05b87921e6f28dde8aa281deb2aea",
+      "status": "current-read-snapshot"
+    },
+    {
+      "path": "research/native-point-contours-rotation-factory-cil.json",
+      "bytes": 13196,
+      "sha256": "53d750ec307d38903ec2b00d75fbad824ae03257a180c79c086be289f6945cca",
+      "status": "ongoing-native-research-snapshot"
+    },
+    {
+      "path": "research/native-point-contours-rotation-angle-cil.json",
+      "bytes": 12151,
+      "sha256": "752b295485b06a56db24add57838b8b68860dbeed2843a5b6222a7f86f2b6e58",
+      "status": "ongoing-native-research-snapshot"
+    }
+  ],
+  "observations": {
+    "method": "Read-only Node stripTypeScriptTypes and vm.SourceTextModule execution of current product modules; no assertions, native execution, browser or filesystem writes.",
+    "records": [
+      {
+        "name": "empty",
+        "commands": [],
+        "parse": "rejected",
+        "parseError": "vectorPath.commands: expected 1..4096 commands",
+        "inputUnchanged": true
+      },
+      {
+        "name": "M-only",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0.5,
+            "y": 0.5
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 1,
+        "segments": 0,
+        "commitError": "Point editing requires a path with a line or curve segment",
+        "inputUnchanged": true
+      },
+      {
+        "name": "MZ",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0.5,
+            "y": 0.5
+          },
+          {
+            "op": "Z"
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 1,
+        "segments": 0,
+        "commitError": "Point editing requires a path with a line or curve segment",
+        "inputUnchanged": true
+      },
+      {
+        "name": "two-M",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0.5,
+            "y": 0.5
+          },
+          {
+            "op": "M",
+            "x": 3,
+            "y": 4
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 2,
+        "segments": 0,
+        "commitError": "Point editing requires a path with a line or curve segment",
+        "inputUnchanged": true
+      },
+      {
+        "name": "zero-L",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0.5,
+            "y": 0.5
+          },
+          {
+            "op": "L",
+            "x": 0.5,
+            "y": 0.5
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 2,
+        "segments": 1,
+        "commit": {
+          "bounds": {
+            "x": 149,
+            "y": 149,
+            "width": 1,
+            "height": 1
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 1,
+                "y": 1
+              },
+              {
+                "op": "L",
+                "x": 1,
+                "y": 1
+              }
+            ]
+          }
+        },
+        "inputUnchanged": true
+      },
+      {
+        "name": "zero-C",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0.5,
+            "y": 0.5
+          },
+          {
+            "op": "C",
+            "x1": 0.5,
+            "y1": 0.5,
+            "x2": 0.5,
+            "y2": 0.5,
+            "x": 0.5,
+            "y": 0.5
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 2,
+        "segments": 1,
+        "commit": {
+          "bounds": {
+            "x": 149,
+            "y": 149,
+            "width": 1,
+            "height": 1
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 1,
+                "y": 1
+              },
+              {
+                "op": "C",
+                "x1": 1,
+                "y1": 1,
+                "x2": 1,
+                "y2": 1,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          }
+        },
+        "inputUnchanged": true
+      },
+      {
+        "name": "tiny-L-below",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0.5,
+            "y": 0.5
+          },
+          {
+            "op": "L",
+            "x": 0.50000999,
+            "y": 0.5
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 2,
+        "segments": 1,
+        "commit": {
+          "bounds": {
+            "x": 150,
+            "y": 149,
+            "width": 1,
+            "height": 1
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0,
+                "y": 1
+              },
+              {
+                "op": "L",
+                "x": 0.0009990000000072996,
+                "y": 1
+              }
+            ]
+          }
+        },
+        "inputUnchanged": true
+      },
+      {
+        "name": "tiny-L-at",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0.5,
+            "y": 0.5
+          },
+          {
+            "op": "L",
+            "x": 0.50001,
+            "y": 0.5
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 2,
+        "segments": 1,
+        "commit": {
+          "bounds": {
+            "x": 150,
+            "y": 149,
+            "width": 1,
+            "height": 1
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0,
+                "y": 1
+              },
+              {
+                "op": "L",
+                "x": 0.0010000000000047748,
+                "y": 1
+              }
+            ]
+          }
+        },
+        "inputUnchanged": true
+      },
+      {
+        "name": "tiny-L-above",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0.5,
+            "y": 0.5
+          },
+          {
+            "op": "L",
+            "x": 0.50001001,
+            "y": 0.5
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 2,
+        "segments": 1,
+        "commit": {
+          "bounds": {
+            "x": 150,
+            "y": 149,
+            "width": 1,
+            "height": 1
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0,
+                "y": 1
+              },
+              {
+                "op": "L",
+                "x": 0.00100100000000225,
+                "y": 1
+              }
+            ]
+          }
+        },
+        "inputUnchanged": true
+      },
+      {
+        "name": "isolated-M-before-line",
+        "commands": [
+          {
+            "op": "M",
+            "x": -10,
+            "y": -10
+          },
+          {
+            "op": "M",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "op": "L",
+            "x": 1,
+            "y": 1
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 3,
+        "segments": 1,
+        "commit": {
+          "bounds": {
+            "x": 100,
+            "y": 100,
+            "width": 100,
+            "height": 100
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": -10,
+                "y": -10
+              },
+              {
+                "op": "M",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "op": "L",
+                "x": 1,
+                "y": 1
+              }
+            ]
+          }
+        },
+        "inputUnchanged": true
+      },
+      {
+        "name": "isolated-M-after-line",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "op": "L",
+            "x": 1,
+            "y": 1
+          },
+          {
+            "op": "M",
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 3,
+        "segments": 1,
+        "commit": {
+          "bounds": {
+            "x": 100,
+            "y": 100,
+            "width": 100,
+            "height": 100
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "op": "L",
+                "x": 1,
+                "y": 1
+              },
+              {
+                "op": "M",
+                "x": 10,
+                "y": 10
+              }
+            ]
+          }
+        },
+        "inputUnchanged": true
+      },
+      {
+        "name": "two-open-contours",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "op": "L",
+            "x": 1,
+            "y": 1
+          },
+          {
+            "op": "M",
+            "x": 2,
+            "y": 3
+          },
+          {
+            "op": "L",
+            "x": 3,
+            "y": 4
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 4,
+        "segments": 2,
+        "commit": {
+          "bounds": {
+            "x": 100,
+            "y": 100,
+            "width": 300,
+            "height": 400
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "op": "L",
+                "x": 0.3333333333333333,
+                "y": 0.25
+              },
+              {
+                "op": "M",
+                "x": 0.6666666666666666,
+                "y": 0.75
+              },
+              {
+                "op": "L",
+                "x": 1,
+                "y": 1
+              }
+            ]
+          }
+        },
+        "inputUnchanged": true
+      },
+      {
+        "name": "closed-and-open",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "op": "L",
+            "x": 1,
+            "y": 0
+          },
+          {
+            "op": "L",
+            "x": 0.5,
+            "y": 1
+          },
+          {
+            "op": "Z"
+          },
+          {
+            "op": "M",
+            "x": 2,
+            "y": 3
+          },
+          {
+            "op": "L",
+            "x": 3,
+            "y": 4
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 5,
+        "segments": 4,
+        "commit": {
+          "bounds": {
+            "x": 100,
+            "y": 100,
+            "width": 300,
+            "height": 400
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "op": "L",
+                "x": 0.3333333333333333,
+                "y": 0
+              },
+              {
+                "op": "L",
+                "x": 0.16666666666666666,
+                "y": 0.25
+              },
+              {
+                "op": "Z"
+              },
+              {
+                "op": "M",
+                "x": 0.6666666666666666,
+                "y": 0.75
+              },
+              {
+                "op": "L",
+                "x": 1,
+                "y": 1
+              }
+            ]
+          }
+        },
+        "inputUnchanged": true
+      },
+      {
+        "name": "coincident-cubic-extrema",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0.5,
+            "y": 0.5
+          },
+          {
+            "op": "C",
+            "x1": -1,
+            "y1": 2,
+            "x2": 2,
+            "y2": -1,
+            "x": 0.5,
+            "y": 0.5
+          }
+        ],
+        "parse": "accepted",
+        "anchors": 2,
+        "segments": 1,
+        "commit": {
+          "bounds": {
+            "x": 106,
+            "y": 106,
+            "width": 88,
+            "height": 88
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0.5,
+                "y": 0.5
+              },
+              {
+                "op": "C",
+                "x1": -1.2045454545454546,
+                "y1": 2.2045454545454546,
+                "x2": 2.2045454545454546,
+                "y2": -1.2045454545454546,
+                "x": 0.5,
+                "y": 0.5
+              }
+            ]
+          }
+        },
+        "inputUnchanged": true
+      }
+    ],
+    "rotations": [
+      {
+        "rotation": -0.000011,
+        "bounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250.00000000000045,
+          "height": 100.00000479965544
+        },
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": -2.842170943040396e-17,
+              "y": 4.7996552124995116e-8
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999982,
+              "y": 4.7996552124995116e-8
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999982,
+              "y": 1.0000000000000002
+            },
+            {
+              "op": "L",
+              "x": 0.19999999999999962,
+              "y": 1.0000000000000002
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        }
+      },
+      {
+        "rotation": -0.00001,
+        "bounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250.0000000000004,
+          "height": 100.00000436332314
+        },
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": -2.8421709430403965e-17,
+              "y": 4.363322952411646e-8
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999982,
+              "y": 4.363322952411646e-8
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999984,
+              "y": 0.9999999999999997
+            },
+            {
+              "op": "L",
+              "x": 0.19999999999999962,
+              "y": 0.9999999999999997
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        }
+      },
+      {
+        "rotation": -0.000009,
+        "bounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250.00000000000028,
+          "height": 100.00000392699084
+        },
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": -2.842170943040398e-17,
+              "y": 3.9269906885160637e-8
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999989,
+              "y": 3.9269906885160637e-8
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999989,
+              "y": 0.9999999999999997
+            },
+            {
+              "op": "L",
+              "x": 0.19999999999999976,
+              "y": 0.9999999999999994
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        }
+      },
+      {
+        "rotation": 0,
+        "bounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "op": "L",
+              "x": 0.2,
+              "y": 1
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        }
+      },
+      {
+        "rotation": 0.000009,
+        "bounds": {
+          "x": 50,
+          "y": 99.99999607300919,
+          "width": 250.00000000000028,
+          "height": 100.00000392699081
+        },
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": -5.684341886080795e-17,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999989,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999989,
+              "y": 0.9999999607300931
+            },
+            {
+              "op": "L",
+              "x": 0.19999999999999976,
+              "y": 0.9999999607300935
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        }
+      },
+      {
+        "rotation": 0.00001,
+        "bounds": {
+          "x": 50,
+          "y": 99.99999563667689,
+          "width": 250.00000000000034,
+          "height": 100.00000436332311
+        },
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": -5.684341886080794e-17,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999987,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999984,
+              "y": 0.9999999563667705
+            },
+            {
+              "op": "L",
+              "x": 0.19999999999999973,
+              "y": 0.9999999563667705
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        }
+      },
+      {
+        "rotation": 0.000011,
+        "bounds": {
+          "x": 50,
+          "y": 99.99999520034456,
+          "width": 250.00000000000045,
+          "height": 100.00000479965544
+        },
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": -2.842170943040396e-17,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999982,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 0.9999999999999982,
+              "y": 0.9999999520034482
+            },
+            {
+              "op": "L",
+              "x": 0.19999999999999962,
+              "y": 0.9999999520034482
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        }
+      },
+      {
+        "rotation": 360,
+        "bounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "op": "L",
+              "x": 0.2,
+              "y": 1
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        }
+      }
+    ],
+    "deleteTwoToOne": {
+      "before": {
+        "fillRule": "nonzero",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "op": "L",
+            "x": 1,
+            "y": 1
+          }
+        ]
+      },
+      "after": {
+        "fillRule": "nonzero",
+        "commands": [
+          {
+            "op": "M",
+            "x": 0,
+            "y": 0
+          }
+        ]
+      },
+      "commitError": "Point editing requires a path with a line or curve segment"
+    }
+  },
+  "findings": [
+    {
+      "id": "m-only-commit",
+      "classification": "verified-current-product",
+      "sources": [
+        "src/model/vector.ts:15",
+        "src/model/vector-editing.ts:132",
+        "src/model/vector-commit.ts:70"
+      ],
+      "summary": "M-only/MZ/multi-M store successfully but changed path commit fails. Delete two-to-one returns M then fails commit."
+    },
+    {
+      "id": "derived-contour-measurement",
+      "classification": "verified-current-product-with-native-contract-pending",
+      "sources": [
+        "src/model/vector-editing.ts:66",
+        "src/model/vector-commit.ts:60",
+        "research/native-point-commit-evidence.md:82"
+      ],
+      "summary": "Current bounds include all L/C, no native derived contour filtering. Isolated M excluded from bounds but preserved in output."
+    },
+    {
+      "id": "tiny-rotation",
+      "classification": "source-confirmed-gap-final-oracle-pending",
+      "sources": [
+        "src/model/vector-commit.ts:10",
+        "src/model/vector-commit.ts:73",
+        "research/native-point-contours-rotation-factory-cil.json"
+      ],
+      "summary": "Current exact-nonzero rotation starts at world-control generation. Native SizingRect factory tests strict small-angle threshold before world mapping; later branch-only change would be insufficient."
+    },
+    {
+      "id": "rejected-selection",
+      "classification": "static-integration-risk-not-browser-reproduced",
+      "sources": [
+        "src/App.tsx:148",
+        "src/components/CanvasVectorTools.tsx:125",
+        "src/components/Inspector.tsx:491"
+      ],
+      "summary": "Void callback plus parent catch lets child selection update after rejected commit. Preserve logical selection on failure if touched."
+    }
+  ],
+  "nativePending": [
+    "Complete derived contour construction and participation selector order",
+    "Single-curve threshold branch polarity and cubic degeneration predicate",
+    "All-filtered/empty bounds especially rotated",
+    "Full-turn and tiny-angle factory results",
+    "Whether supported storage requires inactive edge metadata"
+  ],
+  "recommendation": {
+    "measurementProjection": "Separate bounds-only native contour projection; do not simplify saved commands or globally filter vectorSegments.",
+    "frame": "Resolve source-derived sizing frame before generating world controls; preserve stored rotation.",
+    "commit": "Retain current-only TN46 slot writes, atomicity, shapeText and inactive maps.",
+    "authoring": "Keep logical indices stable; return commit success/mapping only if needed.",
+    "schema": "No new persistent fields until proven necessary."
+  },
+  "limitations": [
+    "No original GUI or DLL execution",
+    "No new native CIL replay by this agent",
+    "No full contour parity claim",
+    "No production fix or new regression tests",
+    "Node observations characterize current product only"
+  ],
+  "toolingAttempts": [
+    {
+      "method": "TypeScript transpileModule",
+      "outcome": "Unavailable: installed typescript export has version metadata only"
+    },
+    {
+      "method": "esbuild resolution",
+      "outcome": "Package absent; no installation attempted"
+    },
+    {
+      "method": "Node built-in type stripping and VM modules",
+      "outcome": "23 observations recorded without filesystem writes"
+    }
+  ]
+}

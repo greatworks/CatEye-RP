@@ -1,0 +1,1850 @@
+{
+  "date": "2026-10-13",
+  "nativeVersion": "11.0.0.4150",
+  "evidenceType": "isolated-original-function-probes",
+  "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "installerSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "nativeDllSha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+  "files": [
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "file": "events.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "file": "axQuery.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.js",
+      "sha256": "f5a2eaeef5c65135a580b6ed6fa3cc59ac0fc291ea2e0801070ae21e4a5d5330"
+    },
+    {
+      "file": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "file": "flyout.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\flyout.js",
+      "sha256": "13e003db00c1f89f6e628ea61492de4d09053143e5f9c68c5bf30c35e6f2a788"
+    },
+    {
+      "file": "repeater.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b"
+    },
+    {
+      "file": "init.temp.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\init.temp.js",
+      "sha256": "0f6c77f52d3e1fcb5e3c8590b2d4be324af66832255a6d2385f7c01a5841a6bb"
+    }
+  ],
+  "scope": "SHA-pinned original error setters/query/action functions, state composers, placeholder manager, input hint handlers and text setter. Synthetic DOM/style endpoints, validity and container child enumeration. No compiler-generated CSS, actual browser paint, event-menu dispatcher, Android runtime or original GUI parity claim.",
+  "officialSources": [
+    "https://docs.axure.com/axure-rp/reference/style-effects/",
+    "https://docs.axure.com/axure-rp/reference/text-fields-text-areas/"
+  ],
+  "excerpts": [
+    {
+      "file": "style.js",
+      "startLine": 74,
+      "endLine": 166,
+      "text": "\n    var _widgetHasState = function(id, state) {\n        if($ax.style.getElementImageOverride(id, state)) return true;\n        var diagramObject = $ax.getObjectFromElementId(id);\n\n        //var adaptiveIdChain = $ax.adaptive.getAdaptiveIdChain($ax.adaptive.currentViewId);\n        var adaptiveIdChain = $ax.style.getViewIdChain($ax.adaptive.currentViewId, id, diagramObject);\n\n        for(var i = 0; i < adaptiveIdChain.length; i++) {\n            var viewId = adaptiveIdChain[i];\n            var adaptiveStyle = diagramObject.adaptiveStyles[viewId];\n            if(adaptiveStyle && adaptiveStyle.stateStyles && adaptiveStyle.stateStyles[state]) return true;\n        }\n\n        if(diagramObject.style.stateStyles) {\n            var stateStyle = diagramObject.style.stateStyles[state];\n            if(!stateStyle) return false;\n            return !$.isEmptyObject(stateStyle);\n        }\n\n        return false;\n    };\n\n    $ax.style.SetWidgetHover = function(id, value) {\n        if(!_widgetHasState(id, MOUSE_OVER)) return;\n\n        var valToSet = value || _isRolloverOverride(id);\n        const state = _generateFullState(id, undefined, undefined, undefined, undefined, valToSet);\n        _applyImageAndTextJson(id, state);\n        _updateElementIdImageStyle(id, state);\n    };\n\n    var _rolloverOverrides = [];\n    var _isRolloverOverride = function(id) {\n        return _rolloverOverrides.indexOf(id) != -1;\n    };\n\n    $ax.style.AddRolloverOverride = function(id) {\n        if(_isRolloverOverride(id)) return;\n        _rolloverOverrides[_rolloverOverrides.length] = id;\n        if($ax.event.mouseOverIds.indexOf(id) == -1) $ax.style.SetWidgetHover(id, true);\n    };\n\n    $ax.style.RemoveRolloverOverride = function(id) {\n        var index = _rolloverOverrides.indexOf(id);\n        if(index == -1) return;\n        $ax.splice(_rolloverOverrides, index, 1);\n        if($ax.event.mouseOverIds.indexOf(id) == -1) $ax.style.SetWidgetHover(id, false);\n    };\n\n    $ax.style.ObjHasMouseDown = function (id) {\n        return _widgetHasState(id, MOUSE_DOWN);\n    };\n\n    // checkMouseOver is used for applying style effects to everything in a group\n    $ax.style.SetWidgetMouseDown = function(id, value, checkMouseOver) {\n        if($ax.style.IsWidgetDisabled(id)) return;\n        if(!_widgetHasState(id, MOUSE_DOWN)) return;\n        const state = _generateFullState(id, undefined, undefined, undefined, undefined, !checkMouseOver ? true : undefined, value);\n        _applyImageAndTextJson(id, state);\n        _updateElementIdImageStyle(id, state);\n    };\n\n    var _generateFullState = function (id, forceFocused, forceSelected, forceDisabled, forceError, forceMouseOver, forceMouseDown) {\n        let state = $ax.style.ShowingHint(id) ? HINT : '';\n        if (forceError === true || forceError !== false && _style.IsWidgetError(id)) {\n            state = _compoundStates(state, ERROR);\n        }\n        if (forceSelected === true || forceSelected !== false && _style.IsWidgetSelected(id)) {\n            state = _compoundStates(state, SELECTED);\n        }\n        if (forceDisabled === true || forceDisabled !== false && _isWidgetDisabled(id)) {\n            return _compoundStates(DISABLED, state);\n        }\n        if (forceFocused === true || forceFocused !== false && _hasAnyFocusedClass(id)) {\n            return _compoundStates(state, FOCUSED);\n        }\n        if (forceMouseDown === true || forceMouseDown !== false && $ax.event.mouseDownObjectId == id) {\n            state = _compoundStates(state, MOUSE_DOWN);\n        }\n        if (forceMouseOver === true || forceMouseOver !== false &&\n            ($ax.event.mouseOverIds.indexOf(id) !== -1 && _widgetHasState(id, MOUSE_OVER) || _isRolloverOverride(id))) {\n            return _compoundStates(state, MOUSE_OVER);\n        }\n        return state.length > 0 ? state : NORMAL;\n    };\n\n    var _compoundStates = function (current, baseState) {\n        if (current.length < 1) return baseState;\n        if (baseState.length < 1) return current;\n        const capital = current.charAt(0).toUpperCase() + current.slice(1);\n        return baseState + capital;\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 176,
+      "endLine": 320,
+      "text": "    $ax.style.SetWidgetFocused = function (id, value) {\n        if (_isWidgetDisabled(id)) return;\n        if (!_widgetHasState(id, FOCUSED)) return;\n\n        const state = _generateFullState(id, value);\n\n        _applyImageAndTextJson(id, state);\n        _updateElementIdImageStyle(id, state);\n    }\n\n    $ax.style.SetWidgetSelected = function(id, value, alwaysApply) {\n        if(_isWidgetDisabled(id)) return;\n        //NOTE: not firing select events if state didn't change\n        const raiseSelectedEvents = $ax.style.IsWidgetSelected(id) != value;\n\n        if(value) {\n            var group = $('#' + id).attr('selectiongroup');\n            if(group) {\n                $(\"[selectiongroup='\" + group + \"']\").each(function() {\n                    var otherId = this.id;\n                    if(otherId == id) return;\n                    if ($ax.visibility.isScriptIdLimbo($ax.repeater.getScriptIdFromElementId(otherId))) return;\n                    $ax.style.SetWidgetSelected(otherId, false, alwaysApply);\n                });\n            }\n        }\n        var obj = $obj(id);\n        if(obj) {\n            // Lets remove 'selected' css class independently of object type (dynamic panel, layer or simple rectangle). See RP-1559\n            if (!value) $jobj(id).removeClass(SELECTED);\n\n            var actionId = id;\n            if ($ax.public.fn.IsDynamicPanel(obj.type) || $ax.public.fn.IsLayerOrRdo(obj.type)) {\n                var children = $axure('#' + id).getChildren()[0].children;\n                var skipIds = new Set();\n                for(var i = 0; i < children.length; i++) {\n                    var childId = children[i];\n                    // only set one member of selection group in children selected since subsequent calls\n                    // will unselect the previous one anyway\n                    if(value) {\n                        if(skipIds.has(childId)) continue;\n                        var group = $('#' + childId).attr('selectiongroup');\n                        if(group) for (var item of $(\"[selectiongroup='\" + group + \"']\")) skipIds.add(item.id);\n                    }\n                    // Special case for trees\n                    var childObj = $jobj(childId);\n                    if(childObj.hasClass('treeroot')) {\n                        var treenodes = childObj.find('.treenode');\n                        for(var j = 0; j < treenodes.length; j++) {\n                            $axure('#' + treenodes[j].id).selected(value);\n                        }\n                    } else $axure('#' + childId).selected(value);\n                }\n            } else {\n                const widgetHasSelectedState = _widgetHasState(id, SELECTED);\n                while(obj.isContained && !widgetHasSelectedState) obj = obj.parent;\n                var itemId = $ax.repeater.getItemIdFromElementId(id);\n                var path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(id));\n                path[path.length - 1] = obj.id;\n                actionId = $ax.getElementIdFromPath(path, { itemNum: itemId });\n                if(alwaysApply || widgetHasSelectedState) {\n                    const state = _generateFullState(actionId, undefined, value);\n                    _applyImageAndTextJson(actionId, state);\n                    _updateElementIdImageStyle(actionId, state);\n                }\n                //added actionId and this hacky logic because we set style state on child, but interaction on parent\n                //then the id saved in _selectedWidgets would be depended on widgetHasSelectedState... more see case 1818143\n                while(obj.isContained && !$ax.getObjectFromElementId(id).interactionMap) obj = obj.parent;\n                path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(id));\n                path[path.length - 1] = obj.id;\n                actionId = $ax.getElementIdFromPath(path, { itemNum: itemId });\n            }\n        }\n\n        //    ApplyImageAndTextJson(id, value ? 'selected' : 'normal');\n        _selectedWidgets[id] = value;\n        if(raiseSelectedEvents) $ax.event.raiseSelectedEvents(actionId, value);\n    };\n\n    $ax.style.IsWidgetSelected = function(id) {\n        return Boolean(_selectedWidgets[id] || _hasAnySelectedClass(id));\n    };\n\n    $ax.style.SetWidgetEnabled = function(id, value) {\n        _disabledWidgets[id] = !value;\n        $('#' + id).find('a').css('cursor', value ? 'pointer' : 'default');\n\n        if(!_widgetHasState(id, DISABLED)) return;\n        if(!value) {\n            const state = _generateFullState(id, undefined, undefined, true);\n            _applyImageAndTextJson(id, state);\n            _updateElementIdImageStyle(id, state);\n        } else $ax.style.SetWidgetSelected(id, $ax.style.IsWidgetSelected(id), true);\n    };\n\n    $ax.style.IsWidgetError = function (id) {\n        return Boolean(_errorWidgets[id] || _hasAnyErrorClass(id));\n    };\n\n    $ax.style.SetWidgetError = function (id, value) {\n        if(_isWidgetDisabled(id)) return;\n\n        var raiseErrorEvents = $ax.style.IsWidgetError(id) != value;\n        _errorWidgets[id] = value;\n        if(raiseErrorEvents) $ax.event.raiseErrorEvents(id, value);\n        if(!_widgetHasState(id, ERROR) && !_hasAnyErrorClass(id)) return;\n        const state = _generateFullState(id, undefined, undefined, undefined, value);\n        _applyImageAndTextJson(id, state);\n        _updateElementIdImageStyle(id, state);\n    }\n\n    $ax.style.ShowingHint = function(id) {\n        return _hintWidgets[id] === true;\n    };\n\n    $ax.style.SetWidgetPlaceholder = function(id, active, text, password) {\n        _hintWidgets[id] = active && text && text.length > 0;\n\n        const state = _generateState(id);\n        const inputId = $ax.repeater.applySuffixToElementId(id, '_input');\n        const obj = $jobj(inputId);\n\n        if(!active) {\n            try { //ie8 and below error\n                if(password) document.getElementById(inputId).type = 'password';\n            } catch(e) { } \n        } else {\n            try { //ie8 and below error\n                if(password && text) document.getElementById(inputId).type = 'text';\n            } catch(e) { }\n        }\n\n        obj.val(text);\n\n        const style = _computeAllOverrides(id, undefined, state, $ax.adaptive.currentViewId);\n        if(!$.isEmptyObject(style)) _applyTextStyle(inputId, style);\n\n        _updateStateClasses(\n            [\n                id,\n                $ax.repeater.applySuffixToElementId(id, '_div'),\n                inputId\n            ], state, false\n        );\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 322,
+      "endLine": 343,
+      "text": "    var _isWidgetDisabled = $ax.style.IsWidgetDisabled = function(id) {\n        return Boolean(_disabledWidgets[id]);\n    };\n\n    var _elementIdsToImageOverrides = {};\n    $ax.style.mapElementIdToImageOverrides = function (elementId, override) {\n        for(var key in override) _addImageOverride(elementId, key, override[key]);\n    };\n\n    var _addImageOverride = function (elementId, state, val) {\n        if (!_elementIdsToImageOverrides[elementId]) _elementIdsToImageOverrides[elementId] = {};\n        _elementIdsToImageOverrides[elementId][state] = val;\n    }\n\n    $ax.style.deleteElementIdToImageOverride = function(elementId) {\n        delete _elementIdsToImageOverrides[elementId];\n    };\n\n    $ax.style.getElementImageOverride = function(elementId, state) {\n        var url = _elementIdsToImageOverrides[elementId] && _elementIdsToImageOverrides[elementId][state];\n        return url;\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 349,
+      "endLine": 592,
+      "text": "    // these camel case state names match up to generated\n    // javascript properties such as keys for compound state images\n\n    var NORMAL = 'normal';\n    var MOUSE_OVER = 'mouseOver';\n    var MOUSE_DOWN = 'mouseDown';\n    var SELECTED = 'selected';\n    var DISABLED = 'disabled';\n    var ERROR = 'error';\n    var HINT = 'hint';\n    var FOCUSED = 'focused';\n\n    var SELECTED_ERROR = 'selectedError';\n    var SELECTED_HINT = 'selectedHint';\n    var SELECTED_ERROR_HINT = 'selectedErrorHint';\n    var ERROR_HINT = 'errorHint';\n\n    var MOUSE_OVER_MOUSE_DOWN = 'mouseOverMouseDown';\n    var MOUSE_OVER_SELECTED = 'mouseOverSelected';\n    var MOUSE_OVER_ERROR = 'mouseOverError';\n    var MOUSE_OVER_HINT = 'mouseOverHint';\n\n    var MOUSE_OVER_SELECTED_ERROR = 'mouseOverSelectedError';\n    var MOUSE_OVER_SELECTED_HINT = 'mouseOverSelectedHint';\n    var MOUSE_OVER_SELECTED_ERROR_HINT = 'mouseOverSelectedErrorHint';\n    var MOUSE_OVER_ERROR_HINT = 'mouseOverErrorHint';\n\n    var MOUSE_DOWN_SELECTED = 'mouseDownSelected';\n    var MOUSE_DOWN_ERROR = 'mouseDownError';\n    var MOUSE_DOWN_HINT = 'mouseDownHint';\n\n    var MOUSE_DOWN_SELECTED_ERROR = 'mouseDownSelectedError';\n    var MOUSE_DOWN_SELECTED_HINT = 'mouseDownSelectedHint';\n    var MOUSE_DOWN_SELECTED_ERROR_HINT = 'mouseDownSelectedErrorHint';\n    var MOUSE_DOWN_ERROR_HINT = 'mouseDownErrorHint';\n\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED = 'mouseOverMouseDownSelected';\n    var MOUSE_OVER_MOUSE_DOWN_ERROR = 'mouseOverMouseDownError';\n    var MOUSE_OVER_MOUSE_DOWN_HINT = 'MouseOverMouseDownHint';\n\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR = 'mouseOverMouseDownSelectedError';\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT = 'mouseOverMouseDownSelectedHint';\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT = 'mouseOverMouseDownSelectedErrorHint';\n    var MOUSE_OVER_MOUSE_DOWN_ERROR_HINT = 'mouseOverMouseDownErrorHint';\n\n    var FOCUSED_SELECTED = 'focusedSelected';\n    var FOCUSED_ERROR = 'focusedError';\n    var FOCUSED_HINT = 'focusedHint';\n\n    var FOCUSED_SELECTED_ERROR = 'focusedSelectedError';\n    var FOCUSED_SELECTED_HINT = 'focusedSelectedHint';\n    var FOCUSED_SELECTED_ERROR_HINT = 'focusedSelectedErrorHint';\n    var FOCUSED_ERROR_HINT = 'focusedErrorHint';\n\n    var HINT_DISABLED = 'hintDisabled';\n    var SELECTED_DISABLED = 'selectedDisabled';\n    var ERROR_DISABLED = 'errorDisabled';\n    var SELECTED_HINT_DISABLED = 'selectedHintDisabled';\n    var ERROR_HINT_DISABLED = 'errorHintDisabled';\n    var SELECTED_ERROR_DISABLED = 'selectedErrorDisabled';\n    var SELECTED_ERROR_HINT_DISABLED = 'selectedErrorHintDisabled';\n\n    // Compound states are applied with multiple classes\n    // #u0.mouseOver.mouseDown.Selected.Error in .css\n    // class=\"mouseOver mouseDown selected error\" in .html\n    var ALL_STATES_WITH_CSS_CLASS = [\n        MOUSE_OVER,\n        MOUSE_DOWN,\n        SELECTED,\n        DISABLED,\n        ERROR,\n        HINT,\n        FOCUSED\n    ];\n\n    var _stateHasFocused = function (state) {\n        return state == FOCUSED\n            || state == FOCUSED_SELECTED\n            || state == FOCUSED_ERROR\n            || state == FOCUSED_HINT\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT;\n    };\n\n    var _hasAnyFocusedClass = _style.HasAnyFocusedClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(FOCUSED);\n    };\n\n    var _stateHasHint = function (state) {\n        return state == HINT\n            || state == SELECTED_HINT\n            || state == SELECTED_ERROR_HINT\n            || state == ERROR_HINT\n            || state == MOUSE_OVER_HINT\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_DOWN_HINT\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT\n            || state == FOCUSED_HINT\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT\n            || state == HINT_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _stateHasError = function (state) {\n        return state == ERROR\n            || state == SELECTED_ERROR\n            || state == SELECTED_ERROR_HINT\n            || state == ERROR_HINT\n            || state == MOUSE_OVER_ERROR\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT\n            || state == FOCUSED_ERROR\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT\n            || state == ERROR_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnyErrorClass = _style.HasAnyErrorClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(ERROR);\n    };\n\n    var _stateHasDisabled = _style.StateHasDisabled = function (state) {\n        return state == DISABLED\n            || state == HINT_DISABLED\n            || state == SELECTED_DISABLED\n            || state == ERROR_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnyDisabledClass = _style.HasAnyDisabledClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(DISABLED);\n    };\n\n    var _stateHasSelected = _style.StateHasSelected = function (state) {\n        return state == SELECTED\n            || state == SELECTED_ERROR\n            || state == SELECTED_HINT\n            || state == SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_SELECTED\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_SELECTED\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == FOCUSED_SELECTED\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == SELECTED_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnySelectedClass = _style.HasAnySelectedClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(SELECTED);\n    };\n\n    var _removeAnySelectedClass = _style.RemoveAnySelectedClass = function (id) {\n        const jobj = $('#' + id);\n        jobj.removeClass(SELECTED);\n    };\n\n    var _stateHasMouseOver = function (state) {\n        return state == MOUSE_OVER\n            || state == MOUSE_OVER_MOUSE_DOWN\n            || state == MOUSE_OVER_SELECTED\n            || state == MOUSE_OVER_ERROR\n            || state == MOUSE_OVER_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT;\n    };\n\n    var _stateHasMouseDown = function (state) {\n        return state == MOUSE_DOWN\n            || state == MOUSE_OVER_MOUSE_DOWN\n            || state == MOUSE_DOWN_SELECTED\n            || state == MOUSE_DOWN_ERROR\n            || state == MOUSE_DOWN_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT;\n    };\n\n    var _generateState = _style.generateState = function (id) {\n        return _generateFullState(id);\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 1647,
+      "endLine": 1736,
+      "text": "    var _applyImageAndTextJson = function (id, event, blockTransition) {\n        var hasNotrs;\n        if(!blockTransition) hasNotrs = _enableStateTransitions(id);\n\n        const textId = $ax.GetTextPanelId(id);\n        if(textId) _resetTextJson(id, textId);\n\n        var fullStyle = _computeFullStyle(id, event, $ax.adaptive.currentViewId);\n        if (_idToAppliedStyles[id] && _idToAppliedStyles[id].style) {\n            $.extend(fullStyle, _idToAppliedStyles[id].style);\n        }\n\n        if($ax.public.fn.IsImageBox($obj(id).type)) {\n            const imageUrl = $ax.adaptive.getImageForStateAndView(id, event);\n            if(imageUrl) {\n                _applyImage(id, imageUrl, event);\n            }\n        } else _applySvg(id, event, fullStyle);\n\n        if (textId) {\n            const overridedStyle = _computeAllOverrides(id, undefined, event, $ax.adaptive.currentViewId);\n            var borderElement = document.getElementById(id + '_div');\n            if($(borderElement).hasClass(\"bgImg\")) borderElement = undefined;\n            var textElement = document.getElementById(textId);\n            if (!$.isEmptyObject(overridedStyle)) {\n                var diagramObject = $ax.getObjectFromElementId(id);\n                //var fullStyle = _computeFullStyle(id, event, $ax.adaptive.currentViewId, overridedStyle);\n                var padding = { top: 0, right: 0, bottom: 0, left: 0 };\n                if (fullStyle.paddingTop) padding.top = +fullStyle.paddingTop;\n                if (fullStyle.paddingBottom) padding.bottom = +fullStyle.paddingBottom;\n                if (fullStyle.paddingLeft) padding.left = +fullStyle.paddingLeft;\n                if (fullStyle.paddingRight) padding.right = +fullStyle.paddingRight;\n                var newSize = _applyTextStyle(textId, overridedStyle, padding);\n                if (borderElement && textElement && (diagramObject.autoFitHeight || diagramObject.autoFitWidth)) {\n                    if (diagramObject.autoFitHeight) {\n                        var height = newSize.height;\n                        borderElement.style.height = height + 'px';\n                        textElement.style.top = 0;\n                    }\n                    if (diagramObject.autoFitWidth) {\n                        var width = newSize.width;\n                        borderElement.style.width = width + 'px';\n                        textElement.style.left = 0;\n                    }\n                }\n            } else if (borderElement && textElement) {\n                var parentElement = document.getElementById(id);\n                if (parentElement) {\n                    borderElement.style.height = parentElement.style.height;\n                    borderElement.style.width = parentElement.style.width;\n                }\n                textElement.style.top = '';\n                textElement.style.left = '';\n            }\n        }\n\n        _updateStateClasses(\n            [\n                id,\n                $ax.repeater.applySuffixToElementId(id, '_div'),\n                $ax.repeater.applySuffixToElementId(id, '_input')\n            ], event, false\n        );\n\n        _updateCornersForBorders(id, fullStyle);\n\n        if(!blockTransition && hasNotrs) disableStateTransitionsOnEnd(id, fullStyle.transition);\n    };\n    \n    let _updateStateClasses = function(ids, event, addMouseOverOnMouseDown) {\n        for(let i = 0; i < ids.length; i++) {\n            _updateStateClassesHelper(ids[i], event, addMouseOverOnMouseDown);\n        }\n    };\n\n    let _updateStateClassesHelper = function(id, event, addMouseOverOnMouseDown) {\n        const jobj = $jobj(id);\n\n        const isMouseDownEvent = _stateHasMouseDown(event);\n\n        for (let i = 0; i < ALL_STATES_WITH_CSS_CLASS.length; i++) jobj.removeClass(ALL_STATES_WITH_CSS_CLASS[i]);\n\n        if (addMouseOverOnMouseDown && isMouseDownEvent || _stateHasMouseOver(event)) jobj.addClass(MOUSE_OVER);\n        if (isMouseDownEvent) jobj.addClass(MOUSE_DOWN);\n        if (_stateHasFocused(event)) jobj.addClass(FOCUSED);\n        if (_stateHasSelected(event)) jobj.addClass(SELECTED);\n        if (_stateHasError(event)) jobj.addClass(ERROR);\n        if (_stateHasDisabled(event)) jobj.addClass(DISABLED);\n        if (_stateHasHint(event)) jobj.addClass(HINT);\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 1763,
+      "endLine": 1915,
+      "text": "    var FONT_PROPS = {\n        'typeface': true,\n        'fontName': true,\n        'fontWeight': true,\n        'fontStyle': true,\n        'fontStretch': true,\n        'fontSize': true,\n        'underline': true,\n        'foreGroundFill': true,\n        'horizontalAlignment': true,\n        'letterCase': true,\n        'strikethrough': true\n    };\n\n    var _getViewIdChain = $ax.style.getViewIdChain = function(currentViewId, id, diagramObject) {\n        var viewIdChain;\n        if (diagramObject.owner.type == 'Axure:Master' || diagramObject.owner.type == 'referenceDiagramObject') {\n            //set viewIdChain to the chain from the parent RDO\n            var parentRdoId;\n            if (diagramObject.owner.type == 'referenceDiagramObject') parentRdoId = diagramObject.owner.scriptIds[0];\n            if (!parentRdoId) parentRdoId = $ax('#' + id).getParents(true, ['rdo'])[0][0];\n            var rdoState = $ax.style.generateState(parentRdoId);\n            var rdoStyle = $ax.style.computeFullStyle(parentRdoId, rdoState, currentViewId);\n            var viewOverride = rdoStyle.viewOverride;\n            viewIdChain = $ax.adaptive.getMasterAdaptiveIdChain(diagramObject.owner.type == 'referenceDiagramObject' ? diagramObject.owner.masterId : diagramObject.owner.packageId, viewOverride);\n        } else {\n            viewIdChain = $ax.adaptive.getAdaptiveIdChain(currentViewId);\n        }\n        return viewIdChain;\n    }\n\n    var _computeAllOverrides = $ax.style.computeAllOverrides = function(id, parentId, state, currentViewId) {\n        var computedStyle = {};\n        if(parentId) computedStyle = _computeAllOverrides(parentId, null, state, currentViewId);\n\n        var diagramObject = $ax.getObjectFromElementId(id);\n\n        var viewIdChain = _getViewIdChain(currentViewId, id, diagramObject);\n        var excludeFont = _shapesWithSetRichText[id];\n        for(var i = 0; i < viewIdChain.length; i++) {\n            var viewId = viewIdChain[i];\n            var style = diagramObject.adaptiveStyles[viewId];\n            if(style) {\n                // we want to exclude the normal font style for shapes where the rich text has been set with an interaction\n                // so we copy the style so we don't modify the original, then delete all the font props.\n                if(excludeFont) {\n                    style = $ax.deepCopy(style);\n                    for(var prop in FONT_PROPS) delete style[prop];\n                }\n\n                if(style) {\n                    var customStyle = style.baseStyle && $ax.document.stylesheet.stylesById[style.baseStyle];\n                    //make sure not to extend the customStyle this can mutate it for future use\n                    $.extend(computedStyle, customStyle);\n                }\n                $.extend(computedStyle, style);\n            }\n        }\n\n        // order matters so higher priority styles override lower priority\n        $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, NORMAL, viewIdChain, true));\n        if (_stateHasMouseOver(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_OVER, viewIdChain, true));\n        }\n        if (_stateHasMouseDown(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_DOWN, viewIdChain, true));\n        }\n        if (_stateHasFocused(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, FOCUSED, viewIdChain, true));\n        }\n        if (_stateHasSelected(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, SELECTED, viewIdChain, true));\n        }\n        if (_stateHasError(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, ERROR, viewIdChain, true));\n        }\n        if (_stateHasHint(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, HINT, viewIdChain, true));\n        }\n        if (_stateHasDisabled(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, DISABLED, viewIdChain, true));\n        }\n\n        return _removeUnsupportedProperties(computedStyle, diagramObject);\n    };\n\n    var _computeStateStyleForViewChain = function(diagramObject, state, viewIdChain, excludeNormal) {\n        var styleObject = diagramObject;\n        while(styleObject.isContained) styleObject = styleObject.parent;\n\n        var adaptiveStyles = styleObject.adaptiveStyles;\n\n        for(var i = viewIdChain.length - 1; i >= 0; i--) {\n            var viewId = viewIdChain[i];\n            var viewStyle = adaptiveStyles[viewId];\n            var stateStyle = viewStyle && _getFullStateStyle(viewStyle, state, excludeNormal);\n            if (stateStyle) return $.extend({}, stateStyle);\n            else if (viewStyle && viewStyle.stateStyles) return {}; //stateStyles are overriden but states could be null\n        }\n\n        // we dont want to actually include the object style because those are not overrides, hence the true for \"excludeNormal\" and not passing the val through\n        var stateStyleFromDefault = _getFullStateStyle(styleObject.style, state, true);\n        return $.extend({}, stateStyleFromDefault);\n    };\n\n    // returns the full effective style for an object in a state state and view\n    var _computeFullStyle = $ax.style.computeFullStyle = function(id, state, currentViewId, overrides) {\n        var obj = $obj(id);\n        if (!overrides) overrides = _computeAllOverrides(id, undefined, state, currentViewId);\n        // get style for current state\n        var dynamicPanelStyle = _getCurrentPanelDiagramStyle(id);\n\n        // todo: account for image box\n        var objStyle = obj.style;\n        var customStyle = objStyle.baseStyle && $ax.document.stylesheet.stylesById[objStyle.baseStyle];\n        var returnVal = $.extend({}, $ax.document.stylesheet.defaultStyle, customStyle, objStyle, dynamicPanelStyle, overrides);\n        return _removeUnsupportedProperties(returnVal, obj);\n    };\n\n    var _getCurrentPanelDiagramStyle = function (id) {\n        var diagramObj = $ax.visibility.GetCurrentPanelDiagram(id);\n        if (diagramObj) {\n            return diagramObj.style;\n        }\n        return {};\n    };\n\n    var _removeUnsupportedProperties = function(style, object) {\n        // for now all we need to do is remove padding from checkboxes and radio buttons\n        //if ($ax.public.fn.IsRadioButton(object.type) || $ax.public.fn.IsCheckBox(object.type)) {\n        //    style.paddingTop = 0;\n        //    style.paddingLeft = 0;\n        //    style.paddingRight = 0;\n        //    style.paddingBottom = 0;\n        //}\n        //if ($ax.public.fn.IsTextBox(object.type) || $ax.public.fn.IsTextArea(object.type) || $ax.public.fn.IsButton(object.type)\n        //    || $ax.public.fn.IsListBox(object.type) || $ax.public.fn.IsComboBox(object.type)) {\n        //    if (object.images && style.fill) delete style['fill'];\n        //}\n\n        return style;\n    };\n\n    var _getFullStateStyle = function(style, state, excludeNormal) {\n        //'normal' is needed because now DiagramObjects get their image from the Style and unapplying a rollover needs the image\n        var stateStyle = state == NORMAL && !excludeNormal ? style : style && style.stateStyles && style.stateStyles[state];\n        if(stateStyle) {\n            var customStyle = stateStyle.baseStyle && $ax.document.stylesheet.stylesById[stateStyle.baseStyle];\n            //make sure not to extend the customStyle this can mutate it for future use\n            return $.extend({}, customStyle, stateStyle);\n        }\n        return undefined;\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 2348,
+      "endLine": 2357,
+      "text": "    $ax.style.clearStateForRepeater = function(repeaterId) {\n        var children = $ax.getChildElementIdsForRepeater(repeaterId);\n        for(var i = 0; i < children.length; i++) {\n            var id = children[i];\n            delete _hintWidgets[id];\n            delete _errorWidgets[id];\n            delete _selectedWidgets[id];\n            delete _disabledWidgets[id];\n        }\n    }"
+    },
+    {
+      "file": "flyout.js",
+      "startLine": 214,
+      "endLine": 285,
+      "text": "    var _placeholderManager = $ax.placeholderManager = {};\n    var idToPlaceholderInfo = {};\n\n    var _registerPlaceholder = function(elementId, text, password) {\n        idToPlaceholderInfo[elementId] = { text: text, password: password, active: false };\n    };\n    _placeholderManager.registerPlaceholder = _registerPlaceholder;\n\n    _placeholderManager.refreshPlaceholder = function (elementId) {\n        var info = idToPlaceholderInfo[elementId];\n        if (!info || !info.active) return;\n        $ax.style.SetWidgetPlaceholder(elementId, true, info.text, info.password);\n    }\n\n    var _updatePlaceholder = function(elementId, active, clearText) {\n        var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');\n\n        var info = idToPlaceholderInfo[elementId];\n        if(!info || info.active == active) return;\n        info.active = active;\n\n        if(active) var text = info.text;\n        else if(!ANDROID) text = clearText ? '' : document.getElementById(inputId).value;\n        else {\n            var currentText = document.getElementById(inputId).value;\n            if(!clearText) text = currentText;\n            else if(currentText == info.text) text = \"\";\n            else {\n                var lastIndex = currentText.lastIndexOf(info.text);\n                //here i am assuming the text is always inserted in front\n                text = currentText.substring(0, lastIndex);\n            }\n        }\n\n        $ax.style.SetWidgetPlaceholder(elementId, active, text, info.password);\n    };\n    _placeholderManager.updatePlaceholder = _updatePlaceholder;\n\n    var _isActive = function(elementId) {\n        var info = idToPlaceholderInfo[elementId];\n        return Boolean(info && info.active);\n    };\n    _placeholderManager.isActive = _isActive;\n\n    var _selectRange = function(elementId, start, end) {\n        $jobj(elementId).each(function() {\n            if(this.setSelectionRange) {\n                var validTypes = [\"text\", \"search\", \"url\", \"tel\", \"password\"];\n                if(this.tagName.toLowerCase() != \"input\" || validTypes.indexOf(this.type) > -1) {\n                    this.focus();\n                    this.setSelectionRange(start, end);\n                }\n            } else if(this.createTextRange) {\n                var range = this.createTextRange();\n                range.collapse(true);\n                range.moveEnd('character', end);\n                range.moveStart('character', start);\n                range.select();\n            }\n        });\n    };\n    _placeholderManager.selectRange = _selectRange;\n\n    var _moveCaret = function(id, index) {\n        var inputIndex = id.indexOf('_input');\n        if(inputIndex == -1) return;\n        var inputId = id.substring(0, inputIndex);\n\n        if(!_isActive(inputId)) return;\n        _selectRange(id, index, index);\n    };\n    _placeholderManager.moveCaret = _moveCaret;"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1695,
+      "endLine": 1699,
+      "text": "    var _raiseErrorEvents = function(elementId, value) {\n        if(value) $ax.event.raiseSyntheticEvent(elementId, 'onErrorSet');\n        else $ax.event.raiseSyntheticEvent(elementId, 'onErrorRemoved');\n    }\n    $ax.event.raiseErrorEvents = _raiseErrorEvents;"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 253,
+      "endLine": 261,
+      "text": "    _exprFunctions.SetErrorState = function (elementIds, value) {\n        var toggle = value == 'toggle';\n        var boolValue = Boolean(value) && value != 'false';\n\n        for(var i = 0; i < elementIds.length; i++) {\n            var query = $ax('#' + elementIds[i]);\n            query.error(toggle ? !query.error() : boolValue);\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 289,
+      "endLine": 300,
+      "text": "    _exprFunctions.SetWidgetFormText = function(elementIds, value) {\n        for(var i = 0; i < elementIds.length; i++) {\n            var elementId = elementIds[i];\n            var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');\n\n            var obj = $jobj(inputId);\n            if(obj.val() == value || (value == '' && $ax.placeholderManager.isActive(elementId))) return;\n            obj.val(value);\n            $ax.placeholderManager.updatePlaceholder(elementId, !value);\n            if($ax.event.HasTextChanged($ax.getObjectFromElementId(elementId))) $ax.event.TryFireTextChanged(elementId);\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 586,
+      "endLine": 590,
+      "text": "    _exprFunctions.GetWidgetText = function(ids) {\n        if($ax.placeholderManager.isActive(ids[0])) return '';\n        var input = $ax.INPUT(ids[0]);\n        return $ax('#' + ($jobj(input).length ? input : ids[0])).text();\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "startLine": 87,
+      "endLine": 93,
+      "text": "    $ax.public.fn.SupportsErrorStyle = function(widgetType) {\n        return $ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType)\n            || $ax.public.fn.IsDynamicPanel(widgetType) || $ax.public.fn.IsLayerOrRdo(widgetType)\n            || $ax.public.fn.IsTextArea(widgetType) || $ax.public.fn.IsTextBox(widgetType)\n            || $ax.public.fn.IsListBox(widgetType) || $ax.public.fn.IsComboBox(widgetType)\n            || $ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)\n    }"
+    },
+    {
+      "file": "axQuery.std.js",
+      "startLine": 1145,
+      "endLine": 1178,
+      "text": "    $ax.public.fn.error = function () {\n        if(arguments[0] == undefined) {\n            var firstId = this.getElementIds()[0];\n            if(!firstId) return undefined;\n            //check for error\n            var widgetType = $ax.getTypeFromElementId(firstId);\n            if($ax.public.fn.SupportsErrorStyle(widgetType)) {\n                return $ax.style.IsWidgetError(firstId);\n            }\n        } else {\n            var elementIds = this.getElementIds();\n\n            for(var index = 0; index < elementIds.length; index++) {\n                var elementId = elementIds[index];\n                var widgetType = $ax.getTypeFromElementId(elementId);\n\n                var error = arguments[0];\n                if($ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType)\n                    || $ax.public.fn.IsTextBox(widgetType) || $ax.public.fn.IsTextArea(widgetType)\n                    || $ax.public.fn.IsComboBox(widgetType) || $ax.public.fn.IsListBox(widgetType)\n                    || $ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)\n                ) $ax.style.SetWidgetError(elementId, error);\n\n                if($ax.public.fn.IsDynamicPanel(widgetType) || $ax.public.fn.IsLayerOrRdo(widgetType)) {\n                    $ax.style.SetWidgetError(elementId, error);\n                    var children = this.getChildren(false, true)[index].children;\n                    for(var i = 0; i < children.length; i++) {\n                        $axure('#' + children[i]).error(error);\n                    }\n                }\n            }\n            return this;\n        }\n    }"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1483,
+      "endLine": 1490,
+      "text": "    var _createElementId = function(scriptId, itemId) {\n        if(!itemId) return scriptId;\n        var i = scriptId.indexOf('_');\n        var sections = i > -1 ? [scriptId.substring(0, i), scriptId.substring(i + 1)] : [scriptId];\n        var retval = sections[0] + '-' + itemId;\n        return sections.length > 1 ? retval + '_' + sections[1] : retval;\n    };\n    _repeaterManager.createElementId = _createElementId;"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1503,
+      "endLine": 1526,
+      "text": "    var _getScriptIdFromElementId = function(elementId) {\n        if(!elementId) return elementId;\n        var sections = elementId.split('-');\n        var retval = sections[0];\n        if(sections.length <= 1) return retval;\n        sections = sections[1].split('_');\n        return sections.length > 1 ? retval + '_' + sections[1] : retval;\n    };\n    _repeaterManager.getScriptIdFromElementId = _getScriptIdFromElementId;\n\n    var _getItemIdFromElementId = function(elementId) {\n        var sections = elementId.split('-');\n        if(sections.length < 2) return '';\n        sections = sections[1].split('_');\n        return sections[0];\n    };\n    _repeaterManager.getItemIdFromElementId = _getItemIdFromElementId;\n\n    // TODO: Just inline this if we keep it this way.\n    var _applySuffixToElementId = function(id, suffix) {\n        return id + suffix;\n        //        return _createElementId(_getScriptIdFromElementId(id) + suffix, _getItemIdFromElementId(id));\n    };\n    _repeaterManager.applySuffixToElementId = _applySuffixToElementId;"
+    },
+    {
+      "file": "events.js",
+      "startLine": 759,
+      "endLine": 790,
+      "text": "            if(dObj.tabbable) {\n                if($ax.public.fn.IsLayerOrRdo(dObj.type)) _event.layerRdoMapFocus(dObj, elementId);\n                var focusableId = _event.getFocusableWidgetOrChildId(elementId);\n                var $focusable = $('#' + focusableId);\n                $focusable.attr(\"tabIndex\", 0);\n                if($focusable.is('div') || $focusable.is('img')) {\n                    $focusable.bind($ax.features.eventNames.mouseDownName, function () {\n                        window.shouldOutline = false;\n                    });\n                    _attachFocusAndBlur($focusable);\n                }\n            }\n\n            // Focus has to be done before on focus fires\n            // Set up focus\n            if ($ax.public.fn.IsTextArea(dObj.type) || $ax.public.fn.IsTextBox(dObj.type) || $ax.public.fn.IsCheckBox(dObj.type) || $ax.public.fn.IsRadioButton(dObj.type) ||\n                $ax.public.fn.IsListBox(dObj.type) || $ax.public.fn.IsComboBox(dObj.type) || $ax.public.fn.IsButton(dObj.type) ||\n                (dObj.tabbable && ($ax.public.fn.IsImageBox(dObj.type) || $ax.public.fn.IsVector(dObj.type) || $ax.IsTreeNodeObject(dObj.type) || $ax.public.fn.IsTableCell(dObj.type)))) {\n                var focusObj = $jobj($ax.event.getFocusableWidgetOrChildId(elementId));\n                focusObj.focus(function() {\n                    window.lastFocusedControl = elementId;\n                    $ax.style.SetWidgetFocused(elementId, true);\n                });\n                focusObj.blur(function() {\n                    $ax.style.SetWidgetFocused(elementId, false);\n                });\n            }\n            // [MAS: Supressing events were here]\n            _createProxies(dObj, elementId);\n            var isDynamicPanel = $ax.public.fn.IsDynamicPanel(dObj.type);\n            if(dObj.interactionMap) {\n                _attachEvents(dObj, elementId, isDynamicPanel);"
+    },
+    {
+      "file": "events.js",
+      "startLine": 803,
+      "endLine": 835,
+      "text": "            _attachIxStyleEvents(dObj, elementId, $element);\n\n            var $axElement = $ax('#' + elementId);\n            // Base case is set up selected disabled error based on the default in the axobj, for non, repeaters and resetting repeaters\n            var itemReset = refreshType == $ax.repeater.refreshType.reset;\n            if(!itemId || itemReset) {\n                //initialize selected and error before disabled or else style state dictionaries will be incorrect\n                if($ax.public.fn.IsVector(dObj.type) || $ax.public.fn.IsImageBox(dObj.type) || isDynamicPanel || $ax.public.fn.IsLayerOrRdo(dObj.type)\n                    || $ax.public.fn.IsTextBox(dObj.type) || $ax.public.fn.IsTextArea(dObj.type) || $ax.public.fn.IsComboBox(dObj.type) || $ax.public.fn.IsListBox(dObj.type)\n                    || $ax.public.fn.IsCheckBox(dObj.type) || $ax.public.fn.IsRadioButton(dObj.type)) {\n\n                    // Initialize selected elements\n                    // only set one member of selection group selected since subsequent calls\n                    // will unselect the previous one anyway\n                    if(dObj.error) $axElement.error(true);\n\n                    if(dObj.selected && !skipSelectedIds.has(elementId)) {\n                        var group = $('#' + elementId).attr('selectiongroup');\n                        if(group) for(var item of $(\"[selectiongroup='\" + group + \"']\")) skipSelectedIds.add(item.id);\n                        $axElement.selected(true);\n                    }\n\n                    if (dObj.disabled) $axElement.enabled(false);\n                }\n            } else if(refreshType == $ax.repeater.refreshType.preEval) {\n                // Otherwise everything should be set up correctly by pre-eval, want to set up selected/disabled/error dictionaries (and disabled status)\n                const isSelected = $element.hasClass('selected');\n                const isError = $element.hasClass('error');\n                const isDisabled = $element.hasClass('disabled');\n                if(isSelected) $axElement.selected(true);\n                if(isError) $axElement.error(true);\n                if(isDisabled) $axElement.enabled(false);\n            } else {"
+    },
+    {
+      "file": "events.js",
+      "startLine": 855,
+      "endLine": 933,
+      "text": "            const clearPlaceholderTextIfNeeded = function(elementId) {\n                if(!dObj.HideHintOnFocused) {\n                    var inputIndex = elementId.indexOf('_input');\n                    if(inputIndex == -1) return;\n                    var inputId = elementId.substring(0, inputIndex);\n                    if(!$ax.placeholderManager.isActive(inputId)) return;\n                    $ax.placeholderManager.updatePlaceholder(inputId, false, true);\n                }\n            }\n\n            // Initialize Placeholders. Right now this is text boxes and text areas.\n            // Also, the assuption is being made that these widgets with the placeholder, have no other styles (this may change...)\n            var hasPlaceholder = dObj.placeholderText == '' ? true : Boolean(dObj.placeholderText);\n            if(isInput && hasPlaceholder) {\n                // This is needed to initialize the placeholder state\n                inputJobj.on('focus', function () {\n                    if(dObj.HideHintOnFocused) {\n                        var id = this.id;\n                        var inputIndex = id.indexOf('_input');\n                        if (inputIndex == -1) return;\n                        var inputId = id.substring(0, inputIndex);\n\n                        if (!$ax.placeholderManager.isActive(inputId)) return;\n                        $ax.placeholderManager.updatePlaceholder(inputId, false, true);\n                    }\n                    $ax.placeholderManager.moveCaret(this.id);\n                }).on('mouseup', function() {\n                    $ax.placeholderManager.moveCaret(this.id);\n                }).on('blur', function() {\n                    var id = this.id;\n                    var inputIndex = id.indexOf('_input');\n                    if(inputIndex == -1) return;\n                    var inputId = id.substring(0, inputIndex);\n                    var $input = $jobj(id);\n                    var invalidInput = !$input[0].validity.valid;\n                    if($input.val() || invalidInput) return;\n                    $ax.placeholderManager.updatePlaceholder(inputId, true);\n                });\n\n                inputJobj.on('input', function () {\n                    if (!dObj.HideHintOnFocused) { //hide on type\n                        var id = this.id;\n                        var inputIndex = id.indexOf('_input');\n                        if(inputIndex == -1) return;\n                        var inputId = id.substring(0, inputIndex);\n\n                        var $input = $jobj(id);\n                        var emptyInputValue = !$input.val();\n                        var validInput = $input[0].validity.valid;\n                        if ($ax.placeholderManager.isActive(inputId)) {\n                            // clear text if emptyInputValue is true and input is valid;\n                            $ax.placeholderManager.updatePlaceholder(inputId, false, emptyInputValue && validInput);\n                        }\n                        else if (emptyInputValue && validInput) {\n                            $ax.placeholderManager.updatePlaceholder(inputId, true);\n                            $ax.placeholderManager.moveCaret(id, 0);\n                        }\n                    };\n                });\n\n                inputJobj.on('keydown', function () {\n                    clearPlaceholderTextIfNeeded(this.id);\n                }).on('beforeinput', function () {\n                    clearPlaceholderTextIfNeeded(this.id);\n                }).on('paste', function () {\n                    clearPlaceholderTextIfNeeded(this.id);\n                });\n\n                $ax.placeholderManager.registerPlaceholder(elementId, dObj.placeholderText, inputJobj.attr('type') == 'password');\n\n                // Reset placeholders when the \"Back/next to previous page\" browser event was fired.\n                // It's need because we use input value with some style and js hacks as placeholder\n                // And browsers save values of input elements in their history.\n                // More info - RP-2077\n                if (!$ax.placeholderManager.isActive(elementId) && inputJobj.val() === dObj.placeholderText) {\n                    inputJobj.val('');\n                }\n                $ax.placeholderManager.updatePlaceholder(elementId, !inputJobj.val());\n            }"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1195,
+      "endLine": 1213,
+      "text": "            // Attach synthetic onTextChange event to textbox and textarea elements\n            if ($ax.event.HasTextChanged(dObj)) {\n                var element = $jobj($ax.INPUT(elementId));\n                $ax.updateElementText(elementId, element.val());\n                //Key down needed because when holding a key down, key up only fires once, but keydown fires repeatedly.\n                //Key up because last mouse down will only show the state before the last character.\n                element.on('keydown', function(e) {\n                    $ax.setjBrowserEvent(e);\n                    $ax.event.TryFireTextChanged(elementId);\n                }).on('keyup', function(e) {\n                    $ax.setjBrowserEvent(e);\n                    $ax.event.TryFireTextChanged(elementId);\n                }).on('input', function(e) {\n                    $ax.setjBrowserEvent(e);\n                    $ax.event.TryFireTextChanged(elementId);\n                });\n            };\n\n            // Attach synthetic onCheckedChange event to radiobutton and checkbox elements"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1701,
+      "endLine": 1717,
+      "text": "    var _raiseSyntheticEvent = function (elementId, eventName, skipShowDescription, eventInfo, nonSynthetic) {\n        if ($ax.style.IsWidgetDisabled(elementId) && _shouldStopOnDisabledWidget(eventName)) return;\n        // Empty string used when this is an event directly on the page.\n        var dObj = elementId === '' ? $ax.pageData.page : $ax.getObjectFromElementId(elementId);\n        var axEventObject = dObj && dObj.interactionMap && dObj.interactionMap[eventName];\n        if (!axEventObject) return;\n        \n        eventInfo = eventInfo || $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), skipShowDescription, elementId);\n        //        $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, new Date().getTime());\n        _handleEvent(elementId, eventInfo, axEventObject, false, !nonSynthetic);\n    };\n    $ax.event.raiseSyntheticEvent = _raiseSyntheticEvent;\n\n    var _shouldStopOnDisabledWidget = function (eventName) {\n        var blackList = [\"onLongClick\"];\n        return blackList.some(x => x === eventName);\n    }"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1763,
+      "endLine": 1784,
+      "text": "    var _initialize = function() {\n        $ax.repeater.loadRepeaters();\n\n        // Make sure key events for page are initialized first. That way they will update the value of key pressed before any other events occur.\n        _event.initKeyEvents($(window));\n\n        initSuppressingEvents();\n\n        // Anything with an item id is in a repeater and should be handled by that repeater.\n        _initializeObjectEvents($ax(function(obj, elementId) { return !$ax.repeater.getItemIdFromElementId(elementId); }));\n\n        //finally, process the pageload\n        _pageLoad();\n        //        _loadDynamicPanelsAndMasters();\n        //        $ax.repeater.init();\n\n        // and wipe out the basic links.\n        $('.basiclink').click(function() {\n            return false;\n        });\n    };\n    _event.initialize = _initialize;"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1796,
+      "endLine": 1808,
+      "text": "    $ax.event.HasTextChanged = function(diagramObject) {\n        if (!$ax.public.fn.IsTextBox(diagramObject.type) && !$ax.public.fn.IsTextArea(diagramObject.type)) return false;\n        var map = diagramObject.interactionMap;\n        return map && map.onTextChange;\n    };\n\n    $ax.event.TryFireTextChanged = function(elementId) {\n        var query = $jobj($ax.repeater.applySuffixToElementId(elementId, '_input'));\n        if(!$ax.hasElementTextChanged(elementId, query.val())) return;\n        $ax.updateElementText(elementId, query.val());\n\n        $ax.event.raiseSyntheticEvent(elementId, 'onTextChange');\n    };"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1833,
+      "endLine": 1838,
+      "text": "    //onload everything now, not only dp and master\n    var _loadDynamicPanelsAndMasters = function (objects, path, itemId) {\n        fireEventThroughContainers('onLoad', objects, true, [$ax.constants.PAGE_TYPE, $ax.constants.REFERENCE_DIAGRAM_OBJECT_TYPE, $ax.constants.DYNAMIC_PANEL_TYPE],\n            [$ax.constants.ALL_TYPE], path, itemId);\n    };\n    $ax.loadDynamicPanelsAndMasters = _loadDynamicPanelsAndMasters;"
+    },
+    {
+      "file": "init.temp.js",
+      "startLine": 238,
+      "endLine": 252,
+      "text": "        $ax.annotation.initialize();\n\n        $ax.legacy.BringFixedToFront();\n        $ax.event.initialize();\n        $ax.style.initialize();\n        $ax.visibility.initialize();\n        $ax.repeater.initialize();\n        $ax.globalVariableProvider.load();\n        $ax.dynamicPanelManager.initialize(); //needs to be called after visibility is initialized\n        $ax.adaptive.initialize();\n        $ax.loadDynamicPanelsAndMasters();\n        $ax.adaptive.loadFinished();\n        var start = (new Date()).getTime();\n        $ax.repeater.initRefresh();\n        var end = (new Date()).getTime();"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 305,
+      "endLine": 356,
+      "text": "            for (var i = 0; i < ids.length; i++) {\n                var id = ids[i];\n                var childJobj = $jobj(id);\n                if (obj.repeaterPropMap.isolateSelection && childJobj.attr('selectiongroup')) {\n                    childJobj.attr('selectiongroup', _createElementId(childJobj.attr('selectiongroup'), _getItemIdFromElementId(id)));\n                }\n                $ax.initializeObjectEvents($ax('#' + id), refreshType);\n            }\n        }\n\n        var query = _getItemQuery(repeaterId);\n        if(viewId) $ax.adaptive.applyView(viewId, query);\n        else $ax.visibility.resetLimboAndHiddenToDefaults(_getItemQuery(repeaterId, preevalMap));\n\n        $ax.annotation.createFootnotes(query, true);\n\n        for(var index = 0; index < ids.length; index++) {\n            id = ids[index];\n            \n            if ($ax.ieColorManager) $ax.ieColorManager.applyBackground($ax('#' + id));\n            //$ax.style.initializeObjectTextAlignment($ax('#' + id));\n            $ax.applyHighlight($ax('#' + id), true);\n        }\n\n        $ax.messageCenter.startCombineEventMessages();\n        $ax.cacheRepeaterInfo(repeaterId, $ax.getWidgetInfo(repeaterId));\n\n        //RP-1824 The Item Loaded interaction does not fire when last item of repeater is deleted\n        //Fire item looded event when all items are removed\n        var currentItemCount = _repeaterManager.getItemCount(repeaterId);\n        var deleteLastItems = previousItemCount > 0 && currentItemCount === 0;\n\n        //do the objects in the repeater do not repeatedly do this when setting text\n        var trap = $ax.expr.displayWidgetAndParents(repeaterId);\n\n        //$ax.style.startSuspendTextAlignment();\n        // Now load\n        for(pos = start; pos < end || deleteLastItems; pos++) {\n            itemId = orderedIds[pos];\n            itemElementId = _createElementId(repeaterId, itemId);\n            if (!preevalMap[orderedIds[pos]]) {\n                // Hide OnBeforeItemLoad event from the user\n                const wasTracing = $ax.messageCenter.getState('isTracing') === true;\n                // Make sure isTracing is false in case it was undefined\n                // Send 'tempStop' state to not clear accumulated events (during page loading)\n                $ax.messageCenter.setState('isTracing', 'tempStop');\n                $ax.event.raiseSyntheticEvent(itemElementId, 'onBeforeItemLoad', true);\n                if(wasTracing) $ax.messageCenter.setState('isTracing', wasTracing);\n                $ax.event.raiseSyntheticEvent(itemElementId, 'onItemLoad', true);\n            }\n            deleteLastItems = false;\n            $ax.loadDynamicPanelsAndMasters(obj.objects, path, itemId);"
+    },
+    {
+      "file": "axQuery.js",
+      "startLine": 304,
+      "endLine": 393,
+      "text": "    $ax.public.fn.getChildren = function(deep, ignoreUnplaced) { // ignoreUnplaced should probably be the default, but when that is done a full audit of usages should be done\n        var elementIds = this.getElementIds();\n        var children = [];\n\n        var getChildren = function (elementId) {\n            var obj = $obj(elementId);\n            //if(!obj) return undefined;\n\n            var isRepeater = obj && obj.type == $ax.constants.REPEATER_TYPE;\n            if (isRepeater && $ax.repeater.getScriptIdFromElementId(elementId) != elementId) {\n                //prevent repeater items from being marked as isRepeater\n                //TODO: evaluate changing the naming convention to be more like panel states which don't seem to have this problem\n                obj = undefined;\n                isRepeater = false;\n            }\n            var isDynamicPanel = obj && obj.type == $ax.constants.DYNAMIC_PANEL_TYPE;\n            //var isLayer = obj.type == $ax.constants.LAYER_TYPE;\n            //var isMaster = obj.type == $ax.constants.MASTER_TYPE || obj.type == $ax.constants.REFERENCE_DIAGRAM_OBJECT_TYPE;\n            \n            var isMenu = obj && obj.type == $ax.constants.MENU_OBJECT_TYPE;\n            var isTreeNode = obj && obj.type == $ax.constants.TREE_NODE_OBJECT_TYPE;\n            //var isTable = obj.type == $ax.constants.TABLE_TYPE;\n            //var isCompoundVector = obj.type == $ax.constants.VECTOR_SHAPE_TYPE && obj.generateCompound;\n\n            //if (isRepeater || isDynamicPanel || isLayer || isMaster || isMenu || isTreeNode || isTable) {// || isCompoundVector) {\n                // Find parent that children should be pulled from. Default is just the elementId query (used by table and master)\n                var parent = $jobj(elementId);\n                if(isRepeater) {\n                    parent = $();\n                    var itemIds = $ax.getItemIdsForRepeater(elementId);\n                    for(var itemIndex = 0; itemIndex < itemIds.length; itemIndex++) parent = parent.add($jobj($ax.repeater.createElementId(elementId, itemIds[itemIndex])));\n                } else if(isDynamicPanel) {\n                    // Really only need to do active state probably...\n                    parent = $jobj(elementId).children();\n                    // Get through all containers\n                    while ($(parent[0]).attr('id').indexOf('container') != -1) parent = parent.children();\n                    // Now at states, but want states content\n                    parent = parent.children();\n                } else if(isTreeNode) parent = $jobj($ax.repeater.applySuffixToElementId(elementId, '_children'));\n\n                // Menu doesn't want all children, only tables and menus, so it must be handled specially\n                var children = isMenu ? parent.children('.ax_table').add(parent.children('.ax_menu')) : parent.children();\n                children = $ax.visibility.getRealChildren(_fixForBasicLinks(children));\n                \n                // For tree nodes you want the the button shape contained by the elementQuery too\n                if(isTreeNode) {\n                    var treeNodeChildren = $jobj(elementId).children();\n                    for(var treeNodeIndex = 0; treeNodeIndex < treeNodeChildren.length; treeNodeIndex++) {\n                        var treeNodeChild = $(treeNodeChildren[treeNodeIndex]);\n                        var childObj = $obj(treeNodeChild.attr('id'));\n                        if (childObj && $ax.public.fn.IsVector(childObj.type)) children = children.add(treeNodeChild);\n                    }\n                }\n                \n\n                var childrenIds = [];\n                for(var childIndex = 0; childIndex < children.length; childIndex++) {\n                    var childObj = $(children[childIndex]);\n                    var id = childObj.attr('id');\n                    if(typeof(id) == 'undefined' && childObj.is('a')) id = $(childObj.children()[0]).attr('id');\n                    // Ignore annotations and any other children that are not elements\n                    if (id.split('_').length > 1) continue;\n                    // Ignore Unplaced\n                    if(ignoreUnplaced && $ax.visibility.isScriptIdLimbo($ax.repeater.getScriptIdFromElementId(id))) continue;\n                    childrenIds.push(id);\n                }\n                \n                if(deep) {\n                    var childObjs = [];\n                    for(var i = 0; i < childrenIds.length; i++) {\n                        var childId = childrenIds[i];\n                        childObjs[i] = { id: childId, children: getChildren(childId) };\n                    }\n                    childrenIds = childObjs;\n                }\n                \n                return childrenIds;\n            //}\n\n            //return undefined;\n        };\n\n        for(var i = 0; i < elementIds.length; i++) {\n            var elementId = elementIds[i];\n            //if the state is passed in, look for children in the content element\n            if (elementId.indexOf('_state') > -1 && elementId.indexOf('_content') < 0) elementId = elementId + '_content';\n            children[children.length] = { id: elementId, children: getChildren(elementId)};\n        }\n        return children;\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 2427,
+      "endLine": 2494,
+      "text": "    var _applyTextStyle = function (id, style, padding = {top:0, right: 0, bottom: 0, left: 0}) {\n        return _transformTextWithVerticalAlignment(id, function() {\n            var styleProperties = _getCssStyleProperties(style);\n            var container = $('#' + id);\n            var newSize = { width: container[0].offsetWidth, height: container[0].offsetHeight };\n            var hasLineHeight = !!container.css('line-height');\n            container.find('*').each(function(index, element) {\n                _applyCssProps(element, styleProperties);\n                var width = element.offsetWidth + padding.left + padding.right;\n                var height = element.offsetHeight + padding.top + padding.bottom;\n                if(width > newSize.width) newSize.width = width;\n                if(!hasLineHeight && height > newSize.height) newSize.height = height;\n            });\n            return newSize;\n        });\n    };\n\n    var _applyCssProps = function(element, styleProperties, applyAllStyle) {\n        if(applyAllStyle) {\n            var allProps = styleProperties.allProps;\n            for(var prop in allProps) element.style[prop] = allProps[prop];\n        } else {\n            var nodeName = element.nodeName.toLowerCase();\n            if(nodeName == 'p') {\n                var parProps = styleProperties.parProps;\n                for(prop in parProps) element.style[prop] = parProps[prop];\n            } else if(nodeName != 'a') {\n                var runProps = styleProperties.runProps;\n                for(prop in runProps) element.style[prop] = runProps[prop];\n            }\n        }\n    };\n\n    var _getCssShadow = function(shadow) {\n        return !shadow.on ? \"none\"\n            : shadow.offsetX + \"px \" + shadow.offsetY + \"px \" + shadow.blurRadius + \"px \" + _getCssColor(shadow.color);\n    };\n\n    var _getCssStyleProperties = function(style) {\n        var toApply = {};\n        toApply.runProps = {};\n        toApply.parProps = {};\n        toApply.allProps = {};\n\n        if(style.fontName) toApply.allProps.fontFamily = toApply.runProps.fontFamily = style.fontName;\n        // we need to set font size on both runs and pars because otherwise it well mess up the measure and thereby vertical alignment\n        if(style.fontSize) toApply.allProps.fontSize = toApply.runProps.fontSize = toApply.parProps.fontSize = style.fontSize;\n        if(style.fontWeight !== undefined) toApply.allProps.fontWeight = toApply.runProps.fontWeight = style.fontWeight;\n        if(style.fontStyle !== undefined) toApply.allProps.fontStyle = toApply.runProps.fontStyle = style.fontStyle;\n\n        var textDecoration = [];\n        if(style.underline !== undefined) textDecoration[0] = style.underline ? 'underline ' : 'none';\n        if(style.strikethrough !== undefined) {\n            var index = textDecoration.length;\n            if(style.strikethrough) textDecoration[index] ='line-through';\n            else if(index == 0) textDecoration[0] = 'none';\n        } \n        if (textDecoration.length > 0) {\n            var decorationLineUp = \"\";\n            for (var l = 0; l < textDecoration.length; l++) {\n                decorationLineUp = decorationLineUp + textDecoration[l];\n            }\n            toApply.allProps.textDecoration = toApply.runProps.textDecoration = decorationLineUp;\n        }\n        if(style.foreGroundFill) {\n            toApply.allProps.color = toApply.runProps.color = _getColorFromFill(style.foreGroundFill);\n            //if(style.foreGroundFill.opacity) toApply.allProps.opacity = toApply.runProps.opacity = style.foreGroundFill.opacity;\n        }"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 600,
+      "endLine": 606,
+      "text": "    _exprFunctions.GetWidgetValueLength = function(ids) {\n        var id = ids[0];\n        if(!id) return undefined;\n        if($ax.placeholderManager.isActive(id)) return 0;\n        var obj = $jobj($ax.INPUT(id));\n        if(!obj.length) obj = $jobj(id);\n        var val = obj[0].value || _exprFunctions.GetWidgetText([id]);"
+    }
+  ],
+  "experiments": [
+    {
+      "name": "error write precedes event, event precedes paint; repeat true emits no event",
+      "actual": {
+        "trace": [
+          {
+            "kind": "event",
+            "id": "w",
+            "event": "onErrorSet",
+            "flag": true,
+            "classes": []
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "error",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.8,
+              "fill": {
+                "color": 7
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                }
+              },
+              "fontWeight": 700
+            }
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "error",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.8,
+              "fill": {
+                "color": 7
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                }
+              },
+              "fontWeight": 700
+            }
+          },
+          {
+            "kind": "event",
+            "id": "w",
+            "event": "onErrorRemoved",
+            "flag": false,
+            "classes": [
+              "error"
+            ]
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "normal",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.8,
+              "fill": {
+                "color": 1
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                }
+              }
+            }
+          }
+        ],
+        "snap": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "setting false on already normal is event-noop but can repaint",
+      "actual": [
+        {
+          "kind": "paint",
+          "id": "w",
+          "state": "normal",
+          "style": {
+            "fontSize": 12,
+            "opacity": 0.8,
+            "fill": {
+              "color": 1
+            },
+            "borderWidth": 1,
+            "paddingLeft": 2,
+            "stateStyles": {
+              "error": {
+                "fill": {
+                  "color": 7
+                },
+                "fontWeight": 700
+              },
+              "hint": {
+                "fill": {
+                  "color": 8
+                },
+                "fontSize": 18
+              },
+              "selected": {
+                "fill": {
+                  "color": 5
+                }
+              },
+              "focused": {
+                "fill": {
+                  "color": 4
+                },
+                "paddingLeft": 8
+              },
+              "disabled": {
+                "fill": {
+                  "color": 6
+                },
+                "opacity": 0.25
+              }
+            }
+          }
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "error without effect stores flag and emits event without paint",
+      "actual": {
+        "trace": [
+          {
+            "kind": "event",
+            "id": "w",
+            "event": "onErrorSet",
+            "flag": true,
+            "classes": []
+          }
+        ],
+        "snap": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [],
+          "error": true,
+          "flag": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "disabled rejects set remove and toggle error without event",
+      "actual": {
+        "trace": [],
+        "snap": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "existing error survives disable; attempted remove is ignored",
+      "actual": {
+        "trace": [],
+        "snap": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "disabled",
+            "error"
+          ],
+          "error": true,
+          "flag": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "exact action boolean coercion and per-target toggle",
+      "actual": [
+        {
+          "value": false,
+          "result": false
+        },
+        {
+          "value": true,
+          "result": true
+        },
+        {
+          "value": "false",
+          "result": false
+        },
+        {
+          "value": "FALSE",
+          "result": true
+        },
+        {
+          "value": "0",
+          "result": true
+        },
+        {
+          "value": 0,
+          "result": false
+        },
+        {
+          "value": "",
+          "result": false
+        },
+        {
+          "value": null,
+          "result": false
+        },
+        {
+          "value": "toggle",
+          "result": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "same-value action on first target does not skip remaining error targets",
+      "actual": [
+        {
+          "kind": "event",
+          "id": "b",
+          "event": "onErrorSet",
+          "flag": true,
+          "classes": []
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "error event can remove error before outer paint, leaving stale error class",
+      "actual": {
+        "trace": [
+          {
+            "kind": "event",
+            "id": "w",
+            "event": "onErrorSet",
+            "flag": true,
+            "classes": []
+          },
+          {
+            "kind": "event",
+            "id": "w",
+            "event": "onErrorRemoved",
+            "flag": false,
+            "classes": []
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "normal",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.8,
+              "fill": {
+                "color": 1
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                }
+              }
+            }
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "error",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.8,
+              "fill": {
+                "color": 7
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                }
+              },
+              "fontWeight": 700
+            }
+          }
+        ],
+        "snap": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "error"
+          ],
+          "error": true,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "stale reentrant error class survives next hover and another remove emits Removed again",
+      "actual": {
+        "hovered": {
+          "snap": {
+            "active": false,
+            "showing": false,
+            "value": "",
+            "logical": "",
+            "type": "text",
+            "classes": [
+              "error",
+              "mouseOver"
+            ],
+            "error": true,
+            "flag": false
+          },
+          "paint": {
+            "id": "w",
+            "state": "mouseOverError",
+            "style": {
+              "fontSize": 99,
+              "opacity": 0.8,
+              "fill": {
+                "color": 7
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                },
+                "mouseOver": {
+                  "fontSize": 99
+                }
+              },
+              "fontWeight": 700
+            }
+          }
+        },
+        "trace": [
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "mouseOverError",
+            "style": {
+              "fontSize": 99,
+              "opacity": 0.8,
+              "fill": {
+                "color": 7
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                },
+                "mouseOver": {
+                  "fontSize": 99
+                }
+              },
+              "fontWeight": 700
+            }
+          },
+          {
+            "kind": "event",
+            "id": "w",
+            "event": "onErrorRemoved",
+            "flag": false,
+            "classes": [
+              "mouseOver",
+              "error"
+            ]
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "mouseOver",
+            "style": {
+              "fontSize": 99,
+              "opacity": 0.8,
+              "fill": {
+                "color": 1
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                },
+                "mouseOver": {
+                  "fontSize": 99
+                }
+              }
+            }
+          }
+        ],
+        "snap": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "mouseOver"
+          ],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "empty default error style does not paint; existing error class still permits clearing",
+      "actual": {
+        "without": {
+          "snap": {
+            "active": false,
+            "showing": false,
+            "value": "",
+            "logical": "",
+            "type": "text",
+            "classes": [],
+            "error": true,
+            "flag": true
+          },
+          "paintCount": 0
+        },
+        "after": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [],
+          "error": false,
+          "flag": false
+        },
+        "trace": [
+          {
+            "kind": "event",
+            "id": "w",
+            "event": "onErrorSet",
+            "flag": true,
+            "classes": []
+          },
+          {
+            "kind": "event",
+            "id": "w",
+            "event": "onErrorRemoved",
+            "flag": false,
+            "classes": [
+              "error"
+            ]
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "normal",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.8,
+              "fill": {
+                "color": 1
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {},
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                }
+              }
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "empty adaptive error state map counts as present and adds error class",
+      "actual": {
+        "snap": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "error"
+          ],
+          "error": true,
+          "flag": true
+        },
+        "trace": [
+          {
+            "kind": "event",
+            "id": "w",
+            "event": "onErrorSet",
+            "flag": true,
+            "classes": []
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "error",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.8,
+              "fill": {
+                "color": 1
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {}
+              }
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "default error initialization with initial error class false",
+      "actual": {
+        "trace": [
+          {
+            "kind": "event",
+            "id": "w",
+            "event": "onErrorSet",
+            "flag": true,
+            "classes": []
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "error",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.8,
+              "fill": {
+                "color": 7
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                }
+              },
+              "fontWeight": 700
+            }
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "errorDisabled",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.25,
+              "fill": {
+                "color": 6
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                }
+              },
+              "fontWeight": 700
+            }
+          }
+        ],
+        "snap": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "disabled",
+            "error"
+          ],
+          "error": true,
+          "flag": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "default error initialization with initial error class true",
+      "actual": {
+        "trace": [
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "error",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.8,
+              "fill": {
+                "color": 7
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                }
+              },
+              "fontWeight": 700
+            }
+          },
+          {
+            "kind": "paint",
+            "id": "w",
+            "state": "errorDisabled",
+            "style": {
+              "fontSize": 12,
+              "opacity": 0.25,
+              "fill": {
+                "color": 6
+              },
+              "borderWidth": 1,
+              "paddingLeft": 2,
+              "stateStyles": {
+                "error": {
+                  "fill": {
+                    "color": 7
+                  },
+                  "fontWeight": 700
+                },
+                "hint": {
+                  "fill": {
+                    "color": 8
+                  },
+                  "fontSize": 18
+                },
+                "selected": {
+                  "fill": {
+                    "color": 5
+                  }
+                },
+                "focused": {
+                  "fill": {
+                    "color": 4
+                  },
+                  "paddingLeft": 8
+                },
+                "disabled": {
+                  "fill": {
+                    "color": 6
+                  },
+                  "opacity": 0.25
+                }
+              },
+              "fontWeight": 700
+            }
+          }
+        ],
+        "snap": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "disabled",
+            "error"
+          ],
+          "error": true,
+          "flag": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "panel error applies parent then children; disabled child ignored; repeater branch excluded",
+      "actual": {
+        "events": [
+          "w",
+          "a"
+        ],
+        "flags": [
+          true,
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "disabled panel does not block query recursion into enabled children",
+      "actual": [
+        "a"
+      ],
+      "pass": true
+    },
+    {
+      "name": "error query supports ordinary form types but not repeater/button-only types",
+      "actual": [
+        {
+          "type": "shape",
+          "flag": true
+        },
+        {
+          "type": "input",
+          "flag": true
+        },
+        {
+          "type": "textarea",
+          "flag": true
+        },
+        {
+          "type": "select",
+          "flag": true
+        },
+        {
+          "type": "list",
+          "flag": true
+        },
+        {
+          "type": "checkbox",
+          "flag": true
+        },
+        {
+          "type": "radio",
+          "flag": true
+        },
+        {
+          "type": "repeater",
+          "flag": false
+        },
+        {
+          "type": "button",
+          "flag": false
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "row ids isolate error and clearStateForRepeater clears dictionaries only",
+      "actual": {
+        "before": [
+          true,
+          false
+        ],
+        "flags": [
+          false,
+          false
+        ],
+        "classStillThere": true
+      },
+      "pass": true
+    },
+    {
+      "name": "empty initial value activates hint while logical text stays empty",
+      "actual": {
+        "active": true,
+        "showing": true,
+        "value": "Hint",
+        "logical": "",
+        "type": "text",
+        "classes": [
+          "hint"
+        ],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "nonempty initial value is preserved with hint inactive",
+      "actual": {
+        "active": false,
+        "showing": false,
+        "value": "Actual",
+        "logical": "Actual",
+        "type": "text",
+        "classes": [],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "initial real value equal to hint is erased by native history workaround",
+      "actual": {
+        "active": true,
+        "showing": true,
+        "value": "Hint",
+        "logical": "",
+        "type": "text",
+        "classes": [
+          "hint"
+        ],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "empty hint registers active placeholder but does not activate Hint style",
+      "actual": {
+        "active": true,
+        "showing": false,
+        "value": "",
+        "logical": "",
+        "type": "text",
+        "classes": [],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "focus-hide clears on focus and restores only on empty valid blur",
+      "actual": {
+        "focused": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [],
+          "error": false,
+          "flag": false
+        },
+        "blurred": {
+          "active": true,
+          "showing": true,
+          "value": "Hint",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "hint"
+          ],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "typing-hide keeps hint on focus; even nonediting keydown clears it",
+      "actual": {
+        "focused": {
+          "active": true,
+          "showing": true,
+          "value": "Hint",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "hint"
+          ],
+          "error": false,
+          "flag": false
+        },
+        "keydown": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "beforeinput clears typing hint before native text input",
+      "actual": {
+        "active": false,
+        "showing": false,
+        "value": "",
+        "logical": "",
+        "type": "text",
+        "classes": [],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "paste clears typing hint before native text input",
+      "actual": {
+        "active": false,
+        "showing": false,
+        "value": "",
+        "logical": "",
+        "type": "text",
+        "classes": [],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "typing-delete to empty immediately restores hint while focused",
+      "actual": {
+        "typed": {
+          "active": false,
+          "showing": false,
+          "value": "X",
+          "logical": "X",
+          "type": "text",
+          "classes": [],
+          "error": false,
+          "flag": false
+        },
+        "empty": {
+          "active": true,
+          "showing": true,
+          "value": "Hint",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "hint"
+          ],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "focus-hide deletion leaves empty value until blur",
+      "actual": {
+        "empty": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [],
+          "error": false,
+          "flag": false
+        },
+        "blurred": {
+          "active": true,
+          "showing": true,
+          "value": "Hint",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "hint"
+          ],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "invalid empty input neither input nor blur restores hint",
+      "actual": {
+        "active": false,
+        "showing": false,
+        "value": "",
+        "logical": "",
+        "type": "text",
+        "classes": [],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "direct input without keydown keeps typed content while deactivating hint",
+      "actual": {
+        "active": false,
+        "showing": false,
+        "value": "Unicode 字 [[literal]]",
+        "logical": "Unicode 字 [[literal]]",
+        "type": "text",
+        "classes": [],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "password switches to visible text only while nonempty hint is active",
+      "actual": {
+        "before": {
+          "active": true,
+          "showing": true,
+          "value": "Password",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "hint"
+          ],
+          "error": false,
+          "flag": false
+        },
+        "focus": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "password",
+          "classes": [],
+          "error": false,
+          "flag": false
+        },
+        "blur": {
+          "active": true,
+          "showing": true,
+          "value": "Password",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "hint"
+          ],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "empty password hint stays password input",
+      "actual": {
+        "active": true,
+        "showing": false,
+        "value": "",
+        "logical": "",
+        "type": "password",
+        "classes": [],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "SetText empty activates hint even for focused focus-hide field",
+      "actual": {
+        "active": true,
+        "showing": true,
+        "value": "Hint",
+        "logical": "",
+        "type": "text",
+        "classes": [
+          "hint"
+        ],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "focus-hide SetText-empty then typing leaves manager active and mixed DOM text logically empty",
+      "actual": {
+        "typed": {
+          "active": true,
+          "showing": true,
+          "value": "xHint",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "hint"
+          ],
+          "error": false,
+          "flag": false
+        },
+        "blurred": {
+          "active": true,
+          "showing": true,
+          "value": "xHint",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "hint"
+          ],
+          "error": false,
+          "flag": false
+        },
+        "refresh": {
+          "active": true,
+          "showing": true,
+          "value": "Hint",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "hint"
+          ],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "SetText equal displayed hint short-circuits and stays logically empty",
+      "actual": {
+        "active": true,
+        "showing": true,
+        "value": "Hint",
+        "logical": "",
+        "type": "text",
+        "classes": [
+          "hint"
+        ],
+        "error": false,
+        "flag": false
+      },
+      "pass": true
+    },
+    {
+      "name": "SetText identical first target returns entire form setter before second target",
+      "actual": {
+        "first": {
+          "active": false,
+          "showing": false,
+          "value": "A",
+          "logical": "A",
+          "type": "text",
+          "classes": [],
+          "error": false,
+          "flag": false
+        },
+        "second": {
+          "active": false,
+          "showing": false,
+          "value": "B",
+          "logical": "B",
+          "type": "text",
+          "classes": [],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "hint refresh does not mutate logical text and errors coexist with hint",
+      "actual": {
+        "snap": {
+          "active": true,
+          "showing": true,
+          "value": "Hint",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "error",
+            "hint"
+          ],
+          "error": true,
+          "flag": true
+        },
+        "combined": {
+          "fontSize": 18,
+          "opacity": 0.8,
+          "fill": {
+            "color": 8
+          },
+          "borderWidth": 1,
+          "paddingLeft": 2,
+          "stateStyles": {
+            "error": {
+              "fill": {
+                "color": 7
+              },
+              "fontWeight": 700
+            },
+            "hint": {
+              "fill": {
+                "color": 8
+              },
+              "fontSize": 18
+            },
+            "selected": {
+              "fill": {
+                "color": 5
+              }
+            },
+            "focused": {
+              "fill": {
+                "color": 4
+              },
+              "paddingLeft": 8
+            },
+            "disabled": {
+              "fill": {
+                "color": 6
+              },
+              "opacity": 0.25
+            }
+          },
+          "fontWeight": 700
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "selected error hint disabled per-property precedence and transient suppression",
+      "actual": {
+        "state": "selectedErrorHintDisabled",
+        "style": {
+          "fontSize": 18,
+          "opacity": 0.25,
+          "fill": {
+            "color": 6
+          },
+          "borderWidth": 1,
+          "paddingLeft": 2,
+          "stateStyles": {
+            "error": {
+              "fill": {
+                "color": 7
+              },
+              "fontWeight": 700
+            },
+            "hint": {
+              "fill": {
+                "color": 8
+              },
+              "fontSize": 18
+            },
+            "selected": {
+              "fill": {
+                "color": 5
+              }
+            },
+            "focused": {
+              "fill": {
+                "color": 4
+              },
+              "paddingLeft": 8
+            },
+            "disabled": {
+              "fill": {
+                "color": 6
+              },
+              "opacity": 0.25
+            }
+          },
+          "fontWeight": 700
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "hint is per row and input suffix preserves exact row identity",
+      "actual": {
+        "one": {
+          "active": false,
+          "showing": false,
+          "value": "",
+          "logical": "",
+          "type": "text",
+          "classes": [],
+          "error": false,
+          "flag": false
+        },
+        "two": {
+          "active": true,
+          "showing": true,
+          "value": "Two",
+          "logical": "",
+          "type": "text",
+          "classes": [
+            "hint"
+          ],
+          "error": false,
+          "flag": false
+        }
+      },
+      "pass": true
+    }
+  ]
+}

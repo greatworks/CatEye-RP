@@ -1,0 +1,1568 @@
+{
+  "timestamp": "2026-10-13T16:25:59.003Z",
+  "target": "Axure RP 11.0.0.4150",
+  "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "distributionSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "browser": "155.0.4283.45",
+  "files": [
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "file": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "file": "../jquery-3.7.1.min.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85"
+    }
+  ],
+  "sourceSlices": [
+    {
+      "file": "style.js",
+      "first": 349,
+      "last": 592,
+      "mode": "executed",
+      "source": "    // these camel case state names match up to generated\n    // javascript properties such as keys for compound state images\n\n    var NORMAL = 'normal';\n    var MOUSE_OVER = 'mouseOver';\n    var MOUSE_DOWN = 'mouseDown';\n    var SELECTED = 'selected';\n    var DISABLED = 'disabled';\n    var ERROR = 'error';\n    var HINT = 'hint';\n    var FOCUSED = 'focused';\n\n    var SELECTED_ERROR = 'selectedError';\n    var SELECTED_HINT = 'selectedHint';\n    var SELECTED_ERROR_HINT = 'selectedErrorHint';\n    var ERROR_HINT = 'errorHint';\n\n    var MOUSE_OVER_MOUSE_DOWN = 'mouseOverMouseDown';\n    var MOUSE_OVER_SELECTED = 'mouseOverSelected';\n    var MOUSE_OVER_ERROR = 'mouseOverError';\n    var MOUSE_OVER_HINT = 'mouseOverHint';\n\n    var MOUSE_OVER_SELECTED_ERROR = 'mouseOverSelectedError';\n    var MOUSE_OVER_SELECTED_HINT = 'mouseOverSelectedHint';\n    var MOUSE_OVER_SELECTED_ERROR_HINT = 'mouseOverSelectedErrorHint';\n    var MOUSE_OVER_ERROR_HINT = 'mouseOverErrorHint';\n\n    var MOUSE_DOWN_SELECTED = 'mouseDownSelected';\n    var MOUSE_DOWN_ERROR = 'mouseDownError';\n    var MOUSE_DOWN_HINT = 'mouseDownHint';\n\n    var MOUSE_DOWN_SELECTED_ERROR = 'mouseDownSelectedError';\n    var MOUSE_DOWN_SELECTED_HINT = 'mouseDownSelectedHint';\n    var MOUSE_DOWN_SELECTED_ERROR_HINT = 'mouseDownSelectedErrorHint';\n    var MOUSE_DOWN_ERROR_HINT = 'mouseDownErrorHint';\n\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED = 'mouseOverMouseDownSelected';\n    var MOUSE_OVER_MOUSE_DOWN_ERROR = 'mouseOverMouseDownError';\n    var MOUSE_OVER_MOUSE_DOWN_HINT = 'MouseOverMouseDownHint';\n\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR = 'mouseOverMouseDownSelectedError';\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT = 'mouseOverMouseDownSelectedHint';\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT = 'mouseOverMouseDownSelectedErrorHint';\n    var MOUSE_OVER_MOUSE_DOWN_ERROR_HINT = 'mouseOverMouseDownErrorHint';\n\n    var FOCUSED_SELECTED = 'focusedSelected';\n    var FOCUSED_ERROR = 'focusedError';\n    var FOCUSED_HINT = 'focusedHint';\n\n    var FOCUSED_SELECTED_ERROR = 'focusedSelectedError';\n    var FOCUSED_SELECTED_HINT = 'focusedSelectedHint';\n    var FOCUSED_SELECTED_ERROR_HINT = 'focusedSelectedErrorHint';\n    var FOCUSED_ERROR_HINT = 'focusedErrorHint';\n\n    var HINT_DISABLED = 'hintDisabled';\n    var SELECTED_DISABLED = 'selectedDisabled';\n    var ERROR_DISABLED = 'errorDisabled';\n    var SELECTED_HINT_DISABLED = 'selectedHintDisabled';\n    var ERROR_HINT_DISABLED = 'errorHintDisabled';\n    var SELECTED_ERROR_DISABLED = 'selectedErrorDisabled';\n    var SELECTED_ERROR_HINT_DISABLED = 'selectedErrorHintDisabled';\n\n    // Compound states are applied with multiple classes\n    // #u0.mouseOver.mouseDown.Selected.Error in .css\n    // class=\"mouseOver mouseDown selected error\" in .html\n    var ALL_STATES_WITH_CSS_CLASS = [\n        MOUSE_OVER,\n        MOUSE_DOWN,\n        SELECTED,\n        DISABLED,\n        ERROR,\n        HINT,\n        FOCUSED\n    ];\n\n    var _stateHasFocused = function (state) {\n        return state == FOCUSED\n            || state == FOCUSED_SELECTED\n            || state == FOCUSED_ERROR\n            || state == FOCUSED_HINT\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT;\n    };\n\n    var _hasAnyFocusedClass = _style.HasAnyFocusedClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(FOCUSED);\n    };\n\n    var _stateHasHint = function (state) {\n        return state == HINT\n            || state == SELECTED_HINT\n            || state == SELECTED_ERROR_HINT\n            || state == ERROR_HINT\n            || state == MOUSE_OVER_HINT\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_DOWN_HINT\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT\n            || state == FOCUSED_HINT\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT\n            || state == HINT_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _stateHasError = function (state) {\n        return state == ERROR\n            || state == SELECTED_ERROR\n            || state == SELECTED_ERROR_HINT\n            || state == ERROR_HINT\n            || state == MOUSE_OVER_ERROR\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT\n            || state == FOCUSED_ERROR\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT\n            || state == ERROR_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnyErrorClass = _style.HasAnyErrorClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(ERROR);\n    };\n\n    var _stateHasDisabled = _style.StateHasDisabled = function (state) {\n        return state == DISABLED\n            || state == HINT_DISABLED\n            || state == SELECTED_DISABLED\n            || state == ERROR_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnyDisabledClass = _style.HasAnyDisabledClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(DISABLED);\n    };\n\n    var _stateHasSelected = _style.StateHasSelected = function (state) {\n        return state == SELECTED\n            || state == SELECTED_ERROR\n            || state == SELECTED_HINT\n            || state == SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_SELECTED\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_SELECTED\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == FOCUSED_SELECTED\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == SELECTED_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnySelectedClass = _style.HasAnySelectedClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(SELECTED);\n    };\n\n    var _removeAnySelectedClass = _style.RemoveAnySelectedClass = function (id) {\n        const jobj = $('#' + id);\n        jobj.removeClass(SELECTED);\n    };\n\n    var _stateHasMouseOver = function (state) {\n        return state == MOUSE_OVER\n            || state == MOUSE_OVER_MOUSE_DOWN\n            || state == MOUSE_OVER_SELECTED\n            || state == MOUSE_OVER_ERROR\n            || state == MOUSE_OVER_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT;\n    };\n\n    var _stateHasMouseDown = function (state) {\n        return state == MOUSE_DOWN\n            || state == MOUSE_OVER_MOUSE_DOWN\n            || state == MOUSE_DOWN_SELECTED\n            || state == MOUSE_DOWN_ERROR\n            || state == MOUSE_DOWN_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT;\n    };\n\n    var _generateState = _style.generateState = function (id) {\n        return _generateFullState(id);\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 1763,
+      "last": 1915,
+      "mode": "executed",
+      "source": "    var FONT_PROPS = {\n        'typeface': true,\n        'fontName': true,\n        'fontWeight': true,\n        'fontStyle': true,\n        'fontStretch': true,\n        'fontSize': true,\n        'underline': true,\n        'foreGroundFill': true,\n        'horizontalAlignment': true,\n        'letterCase': true,\n        'strikethrough': true\n    };\n\n    var _getViewIdChain = $ax.style.getViewIdChain = function(currentViewId, id, diagramObject) {\n        var viewIdChain;\n        if (diagramObject.owner.type == 'Axure:Master' || diagramObject.owner.type == 'referenceDiagramObject') {\n            //set viewIdChain to the chain from the parent RDO\n            var parentRdoId;\n            if (diagramObject.owner.type == 'referenceDiagramObject') parentRdoId = diagramObject.owner.scriptIds[0];\n            if (!parentRdoId) parentRdoId = $ax('#' + id).getParents(true, ['rdo'])[0][0];\n            var rdoState = $ax.style.generateState(parentRdoId);\n            var rdoStyle = $ax.style.computeFullStyle(parentRdoId, rdoState, currentViewId);\n            var viewOverride = rdoStyle.viewOverride;\n            viewIdChain = $ax.adaptive.getMasterAdaptiveIdChain(diagramObject.owner.type == 'referenceDiagramObject' ? diagramObject.owner.masterId : diagramObject.owner.packageId, viewOverride);\n        } else {\n            viewIdChain = $ax.adaptive.getAdaptiveIdChain(currentViewId);\n        }\n        return viewIdChain;\n    }\n\n    var _computeAllOverrides = $ax.style.computeAllOverrides = function(id, parentId, state, currentViewId) {\n        var computedStyle = {};\n        if(parentId) computedStyle = _computeAllOverrides(parentId, null, state, currentViewId);\n\n        var diagramObject = $ax.getObjectFromElementId(id);\n\n        var viewIdChain = _getViewIdChain(currentViewId, id, diagramObject);\n        var excludeFont = _shapesWithSetRichText[id];\n        for(var i = 0; i < viewIdChain.length; i++) {\n            var viewId = viewIdChain[i];\n            var style = diagramObject.adaptiveStyles[viewId];\n            if(style) {\n                // we want to exclude the normal font style for shapes where the rich text has been set with an interaction\n                // so we copy the style so we don't modify the original, then delete all the font props.\n                if(excludeFont) {\n                    style = $ax.deepCopy(style);\n                    for(var prop in FONT_PROPS) delete style[prop];\n                }\n\n                if(style) {\n                    var customStyle = style.baseStyle && $ax.document.stylesheet.stylesById[style.baseStyle];\n                    //make sure not to extend the customStyle this can mutate it for future use\n                    $.extend(computedStyle, customStyle);\n                }\n                $.extend(computedStyle, style);\n            }\n        }\n\n        // order matters so higher priority styles override lower priority\n        $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, NORMAL, viewIdChain, true));\n        if (_stateHasMouseOver(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_OVER, viewIdChain, true));\n        }\n        if (_stateHasMouseDown(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_DOWN, viewIdChain, true));\n        }\n        if (_stateHasFocused(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, FOCUSED, viewIdChain, true));\n        }\n        if (_stateHasSelected(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, SELECTED, viewIdChain, true));\n        }\n        if (_stateHasError(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, ERROR, viewIdChain, true));\n        }\n        if (_stateHasHint(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, HINT, viewIdChain, true));\n        }\n        if (_stateHasDisabled(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, DISABLED, viewIdChain, true));\n        }\n\n        return _removeUnsupportedProperties(computedStyle, diagramObject);\n    };\n\n    var _computeStateStyleForViewChain = function(diagramObject, state, viewIdChain, excludeNormal) {\n        var styleObject = diagramObject;\n        while(styleObject.isContained) styleObject = styleObject.parent;\n\n        var adaptiveStyles = styleObject.adaptiveStyles;\n\n        for(var i = viewIdChain.length - 1; i >= 0; i--) {\n            var viewId = viewIdChain[i];\n            var viewStyle = adaptiveStyles[viewId];\n            var stateStyle = viewStyle && _getFullStateStyle(viewStyle, state, excludeNormal);\n            if (stateStyle) return $.extend({}, stateStyle);\n            else if (viewStyle && viewStyle.stateStyles) return {}; //stateStyles are overriden but states could be null\n        }\n\n        // we dont want to actually include the object style because those are not overrides, hence the true for \"excludeNormal\" and not passing the val through\n        var stateStyleFromDefault = _getFullStateStyle(styleObject.style, state, true);\n        return $.extend({}, stateStyleFromDefault);\n    };\n\n    // returns the full effective style for an object in a state state and view\n    var _computeFullStyle = $ax.style.computeFullStyle = function(id, state, currentViewId, overrides) {\n        var obj = $obj(id);\n        if (!overrides) overrides = _computeAllOverrides(id, undefined, state, currentViewId);\n        // get style for current state\n        var dynamicPanelStyle = _getCurrentPanelDiagramStyle(id);\n\n        // todo: account for image box\n        var objStyle = obj.style;\n        var customStyle = objStyle.baseStyle && $ax.document.stylesheet.stylesById[objStyle.baseStyle];\n        var returnVal = $.extend({}, $ax.document.stylesheet.defaultStyle, customStyle, objStyle, dynamicPanelStyle, overrides);\n        return _removeUnsupportedProperties(returnVal, obj);\n    };\n\n    var _getCurrentPanelDiagramStyle = function (id) {\n        var diagramObj = $ax.visibility.GetCurrentPanelDiagram(id);\n        if (diagramObj) {\n            return diagramObj.style;\n        }\n        return {};\n    };\n\n    var _removeUnsupportedProperties = function(style, object) {\n        // for now all we need to do is remove padding from checkboxes and radio buttons\n        //if ($ax.public.fn.IsRadioButton(object.type) || $ax.public.fn.IsCheckBox(object.type)) {\n        //    style.paddingTop = 0;\n        //    style.paddingLeft = 0;\n        //    style.paddingRight = 0;\n        //    style.paddingBottom = 0;\n        //}\n        //if ($ax.public.fn.IsTextBox(object.type) || $ax.public.fn.IsTextArea(object.type) || $ax.public.fn.IsButton(object.type)\n        //    || $ax.public.fn.IsListBox(object.type) || $ax.public.fn.IsComboBox(object.type)) {\n        //    if (object.images && style.fill) delete style['fill'];\n        //}\n\n        return style;\n    };\n\n    var _getFullStateStyle = function(style, state, excludeNormal) {\n        //'normal' is needed because now DiagramObjects get their image from the Style and unapplying a rollover needs the image\n        var stateStyle = state == NORMAL && !excludeNormal ? style : style && style.stateStyles && style.stateStyles[state];\n        if(stateStyle) {\n            var customStyle = stateStyle.baseStyle && $ax.document.stylesheet.stylesById[stateStyle.baseStyle];\n            //make sure not to extend the customStyle this can mutate it for future use\n            return $.extend({}, customStyle, stateStyle);\n        }\n        return undefined;\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2028,
+      "last": 2042,
+      "mode": "executed",
+      "source": "    var _resetTextJson = function(id, textid) {\n        // reset the opacity\n        $jobj(id).children().css('opacity', '');\n\n        var cacheObject = _originalTextCache[textid];\n        if(cacheObject) {\n            _transformTextWithVerticalAlignment(textid, function() {\n                var styleCache = cacheObject.styleCache;\n                var textQuery = $('#' + textid);\n                textQuery.find('*').each(function(index, element) {\n                    element.style.cssText = styleCache[element.id];\n                });\n            });\n        }\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2076,
+      "last": 2094,
+      "mode": "executed",
+      "source": "    var _transformTextWithVerticalAlignment = $ax.style.transformTextWithVerticalAlignment = function(textId, transformFn) {\n        if(!_originalTextCache[textId]) {\n            $ax.style.CacheOriginalText(textId);\n        }\n\n        var rtfElement = window.document.getElementById(textId);\n        if(!rtfElement) return;\n\n        return transformFn();\n\n        //_storeIdToAlignProps(textId);\n\n        //if (_suspendTextAlignment) {\n        //    _suspendedTextIds.push(textId);\n        //    return;\n        //}\n\n        //$ax.style.setTextAlignment([textId]);\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2427,
+      "last": 2532,
+      "mode": "executed",
+      "source": "    var _applyTextStyle = function (id, style, padding = {top:0, right: 0, bottom: 0, left: 0}) {\n        return _transformTextWithVerticalAlignment(id, function() {\n            var styleProperties = _getCssStyleProperties(style);\n            var container = $('#' + id);\n            var newSize = { width: container[0].offsetWidth, height: container[0].offsetHeight };\n            var hasLineHeight = !!container.css('line-height');\n            container.find('*').each(function(index, element) {\n                _applyCssProps(element, styleProperties);\n                var width = element.offsetWidth + padding.left + padding.right;\n                var height = element.offsetHeight + padding.top + padding.bottom;\n                if(width > newSize.width) newSize.width = width;\n                if(!hasLineHeight && height > newSize.height) newSize.height = height;\n            });\n            return newSize;\n        });\n    };\n\n    var _applyCssProps = function(element, styleProperties, applyAllStyle) {\n        if(applyAllStyle) {\n            var allProps = styleProperties.allProps;\n            for(var prop in allProps) element.style[prop] = allProps[prop];\n        } else {\n            var nodeName = element.nodeName.toLowerCase();\n            if(nodeName == 'p') {\n                var parProps = styleProperties.parProps;\n                for(prop in parProps) element.style[prop] = parProps[prop];\n            } else if(nodeName != 'a') {\n                var runProps = styleProperties.runProps;\n                for(prop in runProps) element.style[prop] = runProps[prop];\n            }\n        }\n    };\n\n    var _getCssShadow = function(shadow) {\n        return !shadow.on ? \"none\"\n            : shadow.offsetX + \"px \" + shadow.offsetY + \"px \" + shadow.blurRadius + \"px \" + _getCssColor(shadow.color);\n    };\n\n    var _getCssStyleProperties = function(style) {\n        var toApply = {};\n        toApply.runProps = {};\n        toApply.parProps = {};\n        toApply.allProps = {};\n\n        if(style.fontName) toApply.allProps.fontFamily = toApply.runProps.fontFamily = style.fontName;\n        // we need to set font size on both runs and pars because otherwise it well mess up the measure and thereby vertical alignment\n        if(style.fontSize) toApply.allProps.fontSize = toApply.runProps.fontSize = toApply.parProps.fontSize = style.fontSize;\n        if(style.fontWeight !== undefined) toApply.allProps.fontWeight = toApply.runProps.fontWeight = style.fontWeight;\n        if(style.fontStyle !== undefined) toApply.allProps.fontStyle = toApply.runProps.fontStyle = style.fontStyle;\n\n        var textDecoration = [];\n        if(style.underline !== undefined) textDecoration[0] = style.underline ? 'underline ' : 'none';\n        if(style.strikethrough !== undefined) {\n            var index = textDecoration.length;\n            if(style.strikethrough) textDecoration[index] ='line-through';\n            else if(index == 0) textDecoration[0] = 'none';\n        } \n        if (textDecoration.length > 0) {\n            var decorationLineUp = \"\";\n            for (var l = 0; l < textDecoration.length; l++) {\n                decorationLineUp = decorationLineUp + textDecoration[l];\n            }\n            toApply.allProps.textDecoration = toApply.runProps.textDecoration = decorationLineUp;\n        }\n        if(style.foreGroundFill) {\n            toApply.allProps.color = toApply.runProps.color = _getColorFromFill(style.foreGroundFill);\n            //if(style.foreGroundFill.opacity) toApply.allProps.opacity = toApply.runProps.opacity = style.foreGroundFill.opacity;\n        }\n        if(style.horizontalAlignment) toApply.allProps.textAlign = toApply.parProps.textAlign = toApply.runProps.textAlign = style.horizontalAlignment;\n        if(style.lineSpacing) toApply.allProps.lineHeight = toApply.parProps.lineHeight = style.lineSpacing;\n        if(style.textShadow) toApply.allProps.textShadow = toApply.parProps.textShadow = _getCssShadow(style.textShadow);\n        if (style.letterCase) toApply.allProps.textTransform = toApply.parProps.textTransform = style.letterCase;\n        if (style.characterSpacing) toApply.allProps.letterSpacing = toApply.runProps.letterSpacing = style.characterSpacing;\n\n        return toApply;\n    };\n\n    var _getColorFromFill = function(fill) {\n        //var fillString = '00000' + fill.color.toString(16);\n        //return '#' + fillString.substring(fillString.length - 6);\n        var val = fill.color;\n        var color = {};\n        color.b = val % 256;\n        val = Math.floor(val / 256);\n        color.g = val % 256;\n        val = Math.floor(val / 256);\n        color.r = val % 256;\n        color.a = typeof (fill.opacity) == 'number' ? fill.opacity : 1;\n        return _getCssColor(color);\n    };\n\n    var _getColorFromArgbColorProp = function (val) {\n        var color = {};\n        color.b = val % 256;\n        val = Math.floor(val / 256);\n        color.g = val % 256;\n        val = Math.floor(val / 256);\n        color.r = val % 256;\n        val = Math.floor(val / 256);\n        color.a = (val % 256) / 255;\n        return _getCssColor(color);\n    };\n\n    var _getCssColor = function(rgbaObj) {\n        return \"rgba(\" + rgbaObj.r + \", \" + rgbaObj.g + \", \" + rgbaObj.b + \", \" + rgbaObj.a + \")\";\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 2590,
+      "last": 2618,
+      "mode": "executed",
+      "source": "    var CACHE_COUNTER = 0;\n\n    $ax.style.CacheOriginalText = function(textId, hasRichTextBeenSet) {\n        var rtfQuery = $('#' + textId);\n        if(rtfQuery.length > 0) {\n\n            var styleCache = {};\n            rtfQuery.find('*').each(function(index, element) {\n                var elementId = element.id;\n                if(!elementId) element.id = elementId = 'cache' + CACHE_COUNTER++;\n                styleCache[elementId] = element.style.cssText;\n            });\n\n            _originalTextCache[textId] = {\n                styleCache: styleCache\n            };\n            if(hasRichTextBeenSet) {\n                var shapeId = $ax.GetShapeIdFromText(textId);\n                _shapesWithSetRichText[shapeId] = true;\n            }\n        }\n    };\n\n    $ax.style.ClearCacheForRepeater = function(repeaterId) {\n        for(var elementId in _originalTextCache) {\n            var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n            if($ax.getParentRepeaterFromScriptId(scriptId) == repeaterId) delete _originalTextCache[elementId];\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 316,
+      "last": 385,
+      "mode": "executed",
+      "source": "    _exprFunctions.SetWidgetRichText = function(ids, value, plain) {\n        // Converts dates, widgetinfo, and the like to strings.\n        value = _exprFunctions.ToString(value);\n\n        //Replace any newlines with line breaks\n        var finalValue = value.replace(/\\r\\n/g, '<br>').replace(/\\n/g, '<br>');\n\n        for(var i = 0; i < ids.length; i++) {\n            var id = ids[i];\n\n            // If calling this on button shape, get the id of the rich text panel inside instead\n            if($obj(id).type !== $ax.constants.LINK_TYPE) id = $ax.GetTextPanelId(id, true);\n\n            var element = window.document.getElementById(id);\n            $ax.visibility.SetVisible(element, value != '');\n\n            $ax.style.transformTextWithVerticalAlignment(id, function() {\n                var spans = $jobj(id).find('span');\n                if(plain) {\n                    // Can't set value as text because '<br/>' doesn't actually do a line break\n                    // Can't set vaule as html because it doesn't like '<' and ignores all after it\n                    // Create tags yourself\n                    var lines = value.split(/\\r\\n|\\n/);\n                    //if we are dealing with only one line, just reuse the old one\n                    if(spans.length === 1 && lines.length === 1) {\n                        $(spans[0]).text(value);\n                        return;\n                    }\n\n                    // Wrap in span and p, style them accordingly.\n                    var span = $('<span></span>');\n                    if(spans.length > 0) {\n                        span.attr('style', $(spans[0]).attr('style'));\n                        span.attr('id', $(spans[0]).attr('id'));\n                    }\n\n                    if(lines.length == 1) span.text(value);\n                    else {\n                        for(var i = 0; i < lines.length; i++) {\n                            if(i != 0) span.append($('<br />'));\n                            var line = lines[i];\n                            if(line.length == 0) continue;\n\n                            var subSpan = $('<span />');\n                            subSpan.text(line);\n                            span.append(subSpan);\n                        }\n                    }\n\n                    var ps = $jobj(id).find('p');\n                    if(ps && ps.length) {\n                        ps[0].innerHTML = $('<div></div>').append(span).html();;\n                        if(ps.length > 1) {\n                            for(var i = 1; i < ps.length; i++) {\n                                $(ps[i]).remove();\n                            }\n                        }\n                    } else {\n                        var p = $('<p></p>');\n                        p.append(span);\n                        element.innerHTML = $('<div></div>').append(p).html();\n                    }\n                } else element.innerHTML = finalValue;\n            });\n\n            if(!plain) $ax.style.CacheOriginalText(id, true);\n\n            autofitWidget(ids[i]);\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 753,
+      "last": 758,
+      "mode": "executed",
+      "source": "    _exprFunctions.ToString = function(value) {\n        if(value.isWidget) {\n            return value.text;\n        }\n        return String(value);\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 883,
+      "last": 924,
+      "mode": "executed",
+      "source": "    var getWidgetText = function(id) {\n        var idQuery = $jobj(id);\n        var inputQuery = $jobj($ax.INPUT(id));\n        if(inputQuery.length) idQuery = inputQuery;\n\n        if (idQuery.is('input') && ($ax.public.fn.IsCheckBox(idQuery.attr('type')) || idQuery.attr('type') == 'radio')) {\n            idQuery = idQuery.parent().find('label').find('div');\n        }\n\n        if(idQuery.is('div')) {\n            var $rtfObj = idQuery.hasClass('text') ? idQuery : idQuery.find('.text');\n            if($rtfObj.length == 0) return '';\n\n            var textOut = '';\n            $rtfObj.children('p,ul,ol').each(function(index) {\n                if(index != 0) textOut += '\\n';\n\n                //var htmlContent = $(this).html();\n                //if(isSoloBr(htmlContent)) return; // It has a solo br, then it was just put in for a newline, and paragraph already added the new line.\n                if (isSoloBr($(this).children())) return;\n\n                var htmlContent = $(this).html();            \n                //Replace line breaks (set in SetWidgetRichText) with newlines and nbsp's with regular spaces.\n                htmlContent = htmlContent.replace(/<br[^>]*>/ig, '\\n').replace(/&nbsp;/ig, ' ');\n                textOut += $(htmlContent).text();\n                //textOut += htmlContent.replace(/<[^>]*>/g, '');\n            });\n\n            return textOut;\n        } else {\n            var val = idQuery.val();\n            return val == undefined ? '' : val;\n        }\n    };\n\n    var isSoloBr = function($html) {\n        //html = $(html);\n        // Html needs one and only one span\n        var spanChildren = $html.length == 1 && $html.is('span') ? $html.children() : false;\n        // Span children needs exactly one br and no text in the span\n        return spanChildren && spanChildren.length == 1 && spanChildren.is('br') && spanChildren.text().trim() == '';\n    };"
+    },
+    {
+      "file": "style.js",
+      "first": 1647,
+      "last": 1713,
+      "mode": "static-only",
+      "source": "    var _applyImageAndTextJson = function (id, event, blockTransition) {\n        var hasNotrs;\n        if(!blockTransition) hasNotrs = _enableStateTransitions(id);\n\n        const textId = $ax.GetTextPanelId(id);\n        if(textId) _resetTextJson(id, textId);\n\n        var fullStyle = _computeFullStyle(id, event, $ax.adaptive.currentViewId);\n        if (_idToAppliedStyles[id] && _idToAppliedStyles[id].style) {\n            $.extend(fullStyle, _idToAppliedStyles[id].style);\n        }\n\n        if($ax.public.fn.IsImageBox($obj(id).type)) {\n            const imageUrl = $ax.adaptive.getImageForStateAndView(id, event);\n            if(imageUrl) {\n                _applyImage(id, imageUrl, event);\n            }\n        } else _applySvg(id, event, fullStyle);\n\n        if (textId) {\n            const overridedStyle = _computeAllOverrides(id, undefined, event, $ax.adaptive.currentViewId);\n            var borderElement = document.getElementById(id + '_div');\n            if($(borderElement).hasClass(\"bgImg\")) borderElement = undefined;\n            var textElement = document.getElementById(textId);\n            if (!$.isEmptyObject(overridedStyle)) {\n                var diagramObject = $ax.getObjectFromElementId(id);\n                //var fullStyle = _computeFullStyle(id, event, $ax.adaptive.currentViewId, overridedStyle);\n                var padding = { top: 0, right: 0, bottom: 0, left: 0 };\n                if (fullStyle.paddingTop) padding.top = +fullStyle.paddingTop;\n                if (fullStyle.paddingBottom) padding.bottom = +fullStyle.paddingBottom;\n                if (fullStyle.paddingLeft) padding.left = +fullStyle.paddingLeft;\n                if (fullStyle.paddingRight) padding.right = +fullStyle.paddingRight;\n                var newSize = _applyTextStyle(textId, overridedStyle, padding);\n                if (borderElement && textElement && (diagramObject.autoFitHeight || diagramObject.autoFitWidth)) {\n                    if (diagramObject.autoFitHeight) {\n                        var height = newSize.height;\n                        borderElement.style.height = height + 'px';\n                        textElement.style.top = 0;\n                    }\n                    if (diagramObject.autoFitWidth) {\n                        var width = newSize.width;\n                        borderElement.style.width = width + 'px';\n                        textElement.style.left = 0;\n                    }\n                }\n            } else if (borderElement && textElement) {\n                var parentElement = document.getElementById(id);\n                if (parentElement) {\n                    borderElement.style.height = parentElement.style.height;\n                    borderElement.style.width = parentElement.style.width;\n                }\n                textElement.style.top = '';\n                textElement.style.left = '';\n            }\n        }\n\n        _updateStateClasses(\n            [\n                id,\n                $ax.repeater.applySuffixToElementId(id, '_div'),\n                $ax.repeater.applySuffixToElementId(id, '_input')\n            ], event, false\n        );\n\n        _updateCornersForBorders(id, fullStyle);\n\n        if(!blockTransition && hasNotrs) disableStateTransitionsOnEnd(id, fullStyle.transition);"
+    },
+    {
+      "file": "expr.js",
+      "first": 302,
+      "last": 314,
+      "mode": "static-only",
+      "source": "    _exprFunctions.SetFocusedWidgetText = function(elementId, value) {\n        if(window.lastFocusedControl) {\n            var elementId = window.lastFocusedControl;\n            var type = $obj(elementId).type;\n            if ($ax.public.fn.IsTextBox(type) || $ax.public.fn.IsTextArea(type)) _exprFunctions.SetWidgetFormText([elementId], value);\n            else _exprFunctions.SetWidgetRichText([elementId], value, true);\n        }\n    };\n\n    _exprFunctions.GetRtfElementHeight = function(rtfElement) {\n        if(rtfElement.innerHTML == '') rtfElement.innerHTML = '&nbsp;';\n        return rtfElement.offsetHeight;\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 840,
+      "last": 881,
+      "mode": "static-only",
+      "source": "    $ax.public.fn.text = function() {\n        if(arguments[0] == undefined) {\n            var firstId = this.getElementIds()[0];\n\n            if(!firstId) { return undefined; }\n\n            return getWidgetText(firstId);\n        } else {\n            var elementIds = this.getElementIds();\n\n            for(var index = 0; index < elementIds.length; index++) {\n                var currentItem = elementIds[index];\n\n                var widgetType = $ax.getTypeFromElementId(currentItem);\n\n                if($ax.public.fn.IsTextBox(widgetType) || $ax.public.fn.IsTextArea(widgetType)) { //For non rtf\n                    SetWidgetFormText(currentItem, arguments[0]);\n                } else {\n                    var idRtf = '#' + currentItem;\n                    if($(idRtf).length == 0) idRtf = '#u' + (Number(currentItem.substring(1)) + 1);\n\n                    if($(idRtf).length != 0) {\n                        //If the richtext div already has some text in it,\n                        //preserve only the first style and get rid of the rest\n                        //If no pre-existing p-span tags, don't do anything\n                        if($(idRtf).find('p').find('span').length > 0) {\n                            $(idRtf).find('p:not(:first)').remove();\n                            $(idRtf).find('p').find('span:not(:first)').remove();\n\n                            //Replace new-lines with NEWLINE token, then html encode the string,\n                            //finally replace NEWLINE token with linebreak\n                            var textWithLineBreaks = arguments[0].replace(/\\n/g, '--NEWLINE--');\n                            var textHtml = $('<div/>').text(textWithLineBreaks).html();\n                            $(idRtf).find('span').html(textHtml.replace(/--NEWLINE--/g, '<br>'));\n                        }\n                    }\n                }\n            }\n\n            return this;\n        }\n    };"
+    }
+  ],
+  "cases": [
+    {
+      "name": "font style and weight are independent run properties including explicit normal",
+      "result": {
+        "runProps": {
+          "fontWeight": 700,
+          "fontStyle": "normal"
+        },
+        "parProps": {},
+        "allProps": {
+          "fontWeight": 700,
+          "fontStyle": "normal"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "undefined font style leaves mixed run italics unchanged when weight changes",
+      "result": {
+        "html": "<p id=\"cache0\"><span style=\"font-style: italic; font-weight: 700;\" id=\"cache1\">A</span><span style=\"font-style: normal; font-weight: 700;\" id=\"cache2\">B</span></p>",
+        "text": "AB",
+        "visibility": "",
+        "rich": false,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "AB",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache1",
+            "text": "A",
+            "css": "font-style: italic; font-weight: 700;",
+            "fontStyle": "italic",
+            "fontWeight": "700",
+            "computedStyle": "italic",
+            "computedWeight": "700"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache2",
+            "text": "B",
+            "css": "font-style: normal; font-weight: 700;",
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "computedStyle": "normal",
+            "computedWeight": "700"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache0": "",
+            "cache1": "font-style: italic;",
+            "cache2": "font-style: normal;"
+          }
+        },
+        "trace": []
+      },
+      "passed": true
+    },
+    {
+      "name": "explicit normal removes inline italic from every run without clearing weight",
+      "result": {
+        "html": "<p id=\"cache0\"><span style=\"font-style: normal; font-weight: 700; color: rgb(1, 2, 3);\" id=\"cache1\">Old</span></p>",
+        "text": "Old",
+        "visibility": "",
+        "rich": false,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "Old",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache1",
+            "text": "Old",
+            "css": "font-style: normal; font-weight: 700; color: rgb(1, 2, 3);",
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "computedStyle": "normal",
+            "computedWeight": "700"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache0": "",
+            "cache1": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);"
+          }
+        },
+        "trace": []
+      },
+      "passed": true
+    },
+    {
+      "name": "oblique CSS value preserved separately from italic",
+      "result": {
+        "html": "<p id=\"cache0\"><span style=\"font-style: oblique; font-weight: 700; color: rgb(1, 2, 3);\" id=\"cache1\">Old</span></p>",
+        "text": "Old",
+        "visibility": "",
+        "rich": false,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "Old",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache1",
+            "text": "Old",
+            "css": "font-style: oblique; font-weight: 700; color: rgb(1, 2, 3);",
+            "fontStyle": "oblique",
+            "fontWeight": "700",
+            "computedStyle": "oblique",
+            "computedWeight": "700"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache0": "",
+            "cache1": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);"
+          }
+        },
+        "trace": []
+      },
+      "passed": true
+    },
+    {
+      "name": "paragraph and anchor excluded from font property write, span inside anchor receives it",
+      "result": {
+        "html": "<p style=\"font-style:normal\" id=\"cache0\"><a style=\"font-style:normal\" id=\"cache1\"><span id=\"cache2\" style=\"font-style: italic;\">A</span></a><span id=\"cache3\" style=\"font-style: italic;\">B</span></p>",
+        "text": "AB",
+        "visibility": "",
+        "rich": false,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "AB",
+            "css": "font-style: normal;",
+            "fontStyle": "normal",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "A",
+            "id": "cache1",
+            "text": "A",
+            "css": "font-style: normal;",
+            "fontStyle": "normal",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache2",
+            "text": "A",
+            "css": "font-style: italic;",
+            "fontStyle": "italic",
+            "fontWeight": "",
+            "computedStyle": "italic",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache3",
+            "text": "B",
+            "css": "font-style: italic;",
+            "fontStyle": "italic",
+            "fontWeight": "",
+            "computedStyle": "italic",
+            "computedWeight": "400"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache0": "font-style: normal;",
+            "cache1": "font-style: normal;",
+            "cache2": "",
+            "cache3": ""
+          }
+        },
+        "trace": []
+      },
+      "passed": true
+    },
+    {
+      "name": "state font overlays merge per property and later normal clears earlier italic",
+      "result": {
+        "selected": {
+          "fontStyle": "italic",
+          "fontWeight": 700
+        },
+        "disabled": {
+          "fontWeight": 700,
+          "fontStyle": "normal"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "plain single span changes literal text and retains run formatting and identity",
+      "result": {
+        "html": "<p id=\"cache0\"><span style=\"font-style:italic;font-weight:700;color:rgb(1,2,3)\" id=\"cache1\">&lt;b&gt;&amp; [[literal]]</span></p>",
+        "text": "<b>& [[literal]]",
+        "visibility": "visible",
+        "rich": false,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "<b>& [[literal]]",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache1",
+            "text": "<b>& [[literal]]",
+            "css": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);",
+            "fontStyle": "italic",
+            "fontWeight": "700",
+            "computedStyle": "italic",
+            "computedWeight": "700"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache0": "",
+            "cache1": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);"
+          }
+        },
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "plain replaces heterogeneous runs and paragraphs with first span style",
+      "result": {
+        "html": "<p style=\"text-align:right\" id=\"cache0\"><span style=\"font-style:italic\" id=\"one\">New</span></p>",
+        "text": "New",
+        "visibility": "visible",
+        "rich": false,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "New",
+            "css": "text-align: right;",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "one",
+            "text": "New",
+            "css": "font-style: italic;",
+            "fontStyle": "italic",
+            "fontWeight": "",
+            "computedStyle": "italic",
+            "computedWeight": "400"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache0": "text-align: right;",
+            "one": "font-style: italic;",
+            "cache1": "font-weight: 700;",
+            "cache2": "",
+            "cache3": ""
+          }
+        },
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "plain multiline keeps blank lines and escapes markup",
+      "result": {
+        "html": "<p id=\"cache0\"><span style=\"font-style:italic;font-weight:700;color:rgb(1,2,3)\" id=\"cache1\"><span>A</span><br><br><span>&lt;B&gt;</span><br></span></p>",
+        "text": "A\n\n<B>\n",
+        "visibility": "visible",
+        "rich": false,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache0",
+            "text": "A<B>",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache1",
+            "text": "A<B>",
+            "css": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);",
+            "fontStyle": "italic",
+            "fontWeight": "700",
+            "computedStyle": "italic",
+            "computedWeight": "700"
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "text": "A",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "italic",
+            "computedWeight": "700"
+          },
+          {
+            "tag": "BR",
+            "id": "",
+            "text": "",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "italic",
+            "computedWeight": "700"
+          },
+          {
+            "tag": "BR",
+            "id": "",
+            "text": "",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "italic",
+            "computedWeight": "700"
+          },
+          {
+            "tag": "SPAN",
+            "id": "",
+            "text": "<B>",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "italic",
+            "computedWeight": "700"
+          },
+          {
+            "tag": "BR",
+            "id": "",
+            "text": "",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "italic",
+            "computedWeight": "700"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache0": "",
+            "cache1": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);"
+          }
+        },
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "empty text hides text node and later nonempty restores visibility",
+      "result": {
+        "empty": {
+          "html": "<p id=\"cache0\"><span style=\"font-style:italic;font-weight:700;color:rgb(1,2,3)\" id=\"cache1\"></span></p>",
+          "text": "",
+          "visibility": "hidden",
+          "rich": false,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache1",
+              "text": "",
+              "css": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);",
+              "fontStyle": "italic",
+              "fontWeight": "700",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            }
+          ],
+          "cache": {
+            "styleCache": {
+              "cache0": "",
+              "cache1": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);"
+            }
+          },
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": false
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ]
+        },
+        "after": {
+          "html": "<p id=\"cache0\"><span style=\"font-style:italic;font-weight:700;color:rgb(1,2,3)\" id=\"cache1\">Back</span></p>",
+          "text": "Back",
+          "visibility": "visible",
+          "rich": false,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Back",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache1",
+              "text": "Back",
+              "css": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);",
+              "fontStyle": "italic",
+              "fontWeight": "700",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            }
+          ],
+          "cache": {
+            "styleCache": {
+              "cache0": "",
+              "cache1": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);"
+            }
+          },
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": false
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            },
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "plain while hover takes current span style but reset restores original CSS only",
+      "result": {
+        "before": {
+          "html": "<p id=\"cache0\"><span style=\"font-style: normal; font-weight: 400; color: rgb(1, 2, 3);\" id=\"cache1\">Changed</span></p>",
+          "text": "Changed",
+          "visibility": "visible",
+          "rich": false,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Changed",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache1",
+              "text": "Changed",
+              "css": "font-style: normal; font-weight: 400; color: rgb(1, 2, 3);",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            }
+          ],
+          "cache": {
+            "styleCache": {
+              "cache0": "",
+              "cache1": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);"
+            }
+          },
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ]
+        },
+        "after": {
+          "html": "<p id=\"cache0\" style=\"\"><span style=\"font-style: italic; font-weight: 700; color: rgb(1, 2, 3);\" id=\"cache1\">Changed</span></p>",
+          "text": "Changed",
+          "visibility": "visible",
+          "rich": false,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "Changed",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache1",
+              "text": "Changed",
+              "css": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);",
+              "fontStyle": "italic",
+              "fontWeight": "700",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            }
+          ],
+          "cache": {
+            "styleCache": {
+              "cache0": "",
+              "cache1": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);"
+            }
+          },
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "rich HTML replaces runs and establishes a new CSS reset baseline",
+      "result": {
+        "html": "<p id=\"cache2\" style=\"\"><span style=\"font-style: normal; font-weight: 500;\" id=\"cache3\">New</span><span style=\"font-style: italic;\" id=\"cache4\">Mix</span></p>",
+        "text": "NewMix",
+        "visibility": "visible",
+        "rich": true,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache2",
+            "text": "NewMix",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache3",
+            "text": "New",
+            "css": "font-style: normal; font-weight: 500;",
+            "fontStyle": "normal",
+            "fontWeight": "500",
+            "computedStyle": "normal",
+            "computedWeight": "500"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache4",
+            "text": "Mix",
+            "css": "font-style: italic;",
+            "fontStyle": "italic",
+            "fontWeight": "",
+            "computedStyle": "italic",
+            "computedWeight": "400"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache2": "",
+            "cache3": "font-style: normal; font-weight: 500;",
+            "cache4": "font-style: italic;"
+          }
+        },
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "rich setter does not immediately reapply an already active state style",
+      "result": {
+        "before": {
+          "html": "<p id=\"cache2\"><span style=\"font-style:normal\" id=\"cache3\">New</span></p>",
+          "text": "New",
+          "visibility": "visible",
+          "rich": true,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache2",
+              "text": "New",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache3",
+              "text": "New",
+              "css": "font-style: normal;",
+              "fontStyle": "normal",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            }
+          ],
+          "cache": {
+            "styleCache": {
+              "cache2": "",
+              "cache3": "font-style: normal;"
+            }
+          },
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ]
+        },
+        "after": {
+          "html": "<p id=\"cache2\" style=\"\"><span style=\"font-style: italic;\" id=\"cache3\">New</span></p>",
+          "text": "New",
+          "visibility": "visible",
+          "rich": true,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache2",
+              "text": "New",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache3",
+              "text": "New",
+              "css": "font-style: italic;",
+              "fontStyle": "italic",
+              "fontWeight": "",
+              "computedStyle": "italic",
+              "computedWeight": "400"
+            }
+          ],
+          "cache": {
+            "styleCache": {
+              "cache2": "",
+              "cache3": "font-style: normal;"
+            }
+          },
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "rich suppresses adaptive direct font but keeps interactive font and geometry",
+      "result": {
+        "before": {
+          "fontStyle": "italic",
+          "fontWeight": 900,
+          "paddingLeft": 4
+        },
+        "after": {
+          "paddingLeft": 4
+        },
+        "selected": {
+          "paddingLeft": 4,
+          "fontStyle": "oblique"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "rich adaptive baseStyle fonts are still reintroduced by the exact merge order",
+      "result": {
+        "fontStyle": "italic",
+        "baseStyle": "shared"
+      },
+      "passed": true
+    },
+    {
+      "name": "plain after rich retains rich cache exclusion flag",
+      "result": {
+        "html": "<p id=\"cache2\" style=\"\"><span style=\"font-style: oblique;\" id=\"cache3\">Plain</span></p>",
+        "text": "Plain",
+        "visibility": "visible",
+        "rich": true,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache2",
+            "text": "Plain",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache3",
+            "text": "Plain",
+            "css": "font-style: oblique;",
+            "fontStyle": "oblique",
+            "fontWeight": "",
+            "computedStyle": "oblique",
+            "computedWeight": "400"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache2": "",
+            "cache3": "font-style: oblique;"
+          }
+        },
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          },
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "rich one-span-one-br getter quirk skips paragraph even with adjacent text nodes",
+      "result": {
+        "html": "<p id=\"cache2\"><span id=\"cache3\">A&nbsp;B<br id=\"cache4\">C</span></p><p id=\"cache5\"><span id=\"cache6\">D</span></p>",
+        "text": "\nD",
+        "visibility": "visible",
+        "rich": true,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache2",
+            "text": "A BC",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache3",
+            "text": "A BC",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "BR",
+            "id": "cache4",
+            "text": "",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "P",
+            "id": "cache5",
+            "text": "D",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache6",
+            "text": "D",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache2": "",
+            "cache3": "",
+            "cache4": "",
+            "cache5": "",
+            "cache6": ""
+          }
+        },
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "rich structured runs getter normalizes nbsp and paragraph boundaries",
+      "result": {
+        "html": "<p id=\"cache2\"><span id=\"cache3\"><span id=\"cache4\">A&nbsp;B</span><br id=\"cache5\"><span id=\"cache6\">C</span></span></p><p id=\"cache7\"><span id=\"cache8\">D</span></p>",
+        "text": "A B\nC\nD",
+        "visibility": "visible",
+        "rich": true,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache2",
+            "text": "A BC",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache3",
+            "text": "A BC",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache4",
+            "text": "A B",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "BR",
+            "id": "cache5",
+            "text": "",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache6",
+            "text": "C",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "P",
+            "id": "cache7",
+            "text": "D",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache8",
+            "text": "D",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache2": "",
+            "cache3": "",
+            "cache4": "",
+            "cache5": "",
+            "cache6": "",
+            "cache7": "",
+            "cache8": ""
+          }
+        },
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "identical rich writes still run visibility and autofit; no text-change hook",
+      "result": {
+        "html": "<p id=\"cache4\"><span id=\"cache5\">A</span></p>",
+        "text": "A",
+        "visibility": "visible",
+        "rich": true,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache4",
+            "text": "A",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache5",
+            "text": "A",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache4": "",
+            "cache5": ""
+          }
+        },
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          },
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "nonempty html with empty plain content remains visible",
+      "result": {
+        "html": "<p id=\"cache2\"><span id=\"cache3\"></span></p>",
+        "text": "",
+        "visibility": "visible",
+        "rich": true,
+        "nodes": [
+          {
+            "tag": "P",
+            "id": "cache2",
+            "text": "",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          },
+          {
+            "tag": "SPAN",
+            "id": "cache3",
+            "text": "",
+            "css": "",
+            "fontStyle": "",
+            "fontWeight": "",
+            "computedStyle": "normal",
+            "computedWeight": "400"
+          }
+        ],
+        "cache": {
+          "styleCache": {
+            "cache2": "",
+            "cache3": ""
+          }
+        },
+        "trace": [
+          {
+            "kind": "visible",
+            "id": "w_text",
+            "visible": true
+          },
+          {
+            "kind": "autofit",
+            "id": "w"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "direct rich multi-target loop visits each target",
+      "result": {
+        "a": {
+          "html": "<p id=\"cache2\"><span id=\"cache3\">Both</span></p>",
+          "text": "Both",
+          "visibility": "visible",
+          "rich": true,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache2",
+              "text": "Both",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache3",
+              "text": "Both",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            }
+          ],
+          "cache": {
+            "styleCache": {
+              "cache2": "",
+              "cache3": ""
+            }
+          },
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            },
+            {
+              "kind": "visible",
+              "id": "b_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "b"
+            }
+          ]
+        },
+        "b": {
+          "html": "<p id=\"cache6\"><span id=\"cache7\">Both</span></p>",
+          "text": "Both",
+          "visibility": "visible",
+          "rich": true,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache6",
+              "text": "Both",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache7",
+              "text": "Both",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            }
+          ],
+          "cache": {
+            "styleCache": {
+              "cache6": "",
+              "cache7": ""
+            }
+          },
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            },
+            {
+              "kind": "visible",
+              "id": "b_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "b"
+            }
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "plain multiline visits every target; inner callback loop has its own function scope",
+      "result": {
+        "a": {
+          "html": "<p id=\"cache0\"><span style=\"font-style:italic;font-weight:700;color:rgb(1,2,3)\" id=\"cache1\"><span>A</span><br><span>B</span></span></p>",
+          "text": "A\nB",
+          "visibility": "visible",
+          "rich": false,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache0",
+              "text": "AB",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache1",
+              "text": "AB",
+              "css": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);",
+              "fontStyle": "italic",
+              "fontWeight": "700",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "text": "A",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            },
+            {
+              "tag": "BR",
+              "id": "",
+              "text": "",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "text": "B",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            }
+          ],
+          "cache": {
+            "styleCache": {
+              "cache0": "",
+              "cache1": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);"
+            }
+          },
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            },
+            {
+              "kind": "visible",
+              "id": "b_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "b"
+            }
+          ]
+        },
+        "b": {
+          "html": "<p id=\"cache2\"><span style=\"font-style:italic;font-weight:700;color:rgb(1,2,3)\" id=\"cache3\"><span>A</span><br><span>B</span></span></p>",
+          "text": "A\nB",
+          "visibility": "visible",
+          "rich": false,
+          "nodes": [
+            {
+              "tag": "P",
+              "id": "cache2",
+              "text": "AB",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "normal",
+              "computedWeight": "400"
+            },
+            {
+              "tag": "SPAN",
+              "id": "cache3",
+              "text": "AB",
+              "css": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);",
+              "fontStyle": "italic",
+              "fontWeight": "700",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "text": "A",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            },
+            {
+              "tag": "BR",
+              "id": "",
+              "text": "",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "text": "B",
+              "css": "",
+              "fontStyle": "",
+              "fontWeight": "",
+              "computedStyle": "italic",
+              "computedWeight": "700"
+            }
+          ],
+          "cache": {
+            "styleCache": {
+              "cache2": "",
+              "cache3": "font-style: italic; font-weight: 700; color: rgb(1, 2, 3);"
+            }
+          },
+          "trace": [
+            {
+              "kind": "visible",
+              "id": "w_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "w"
+            },
+            {
+              "kind": "visible",
+              "id": "b_text",
+              "visible": true
+            },
+            {
+              "kind": "autofit",
+              "id": "b"
+            }
+          ]
+        }
+      },
+      "passed": true
+    }
+  ],
+  "networkRequests": [],
+  "pageErrors": [],
+  "limits": [
+    "Original runtime function slices only; no original app or generated page executed",
+    "Markup, object metadata, visibility endpoint, and autofit endpoint are explicit fixtures",
+    "State composition and actual DOM CSS text application/cache/restore are original code",
+    "AutoFit only traced; exact layout, links, SVG paint and complete event dispatch not reproduced",
+    "No script-bearing HTML input tested; native HTML branch is not a recommendation to accept arbitrary HTML in product",
+    "Direct array setter loop is distinguished from compiled fcall target fanout",
+    "FONT_STYLE1002 stored values require separate managed metadata evidence; not inferred from JS names"
+  ]
+}

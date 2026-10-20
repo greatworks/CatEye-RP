@@ -1,0 +1,551 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "ea26e11e-9568-4d2d-9538-d19b791d73fc",
+  "name": "Text decorations and inline editing",
+  "pages": [
+    {
+      "id": "e1338d5c-8462-491f-8a0a-afa0ee60f513",
+      "name": "Page 1",
+      "width": 1080,
+      "height": 920,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "deco-heading",
+          "type": "text",
+          "name": "Decoration heading",
+          "text": "Text decoration, preserved",
+          "notes": "",
+          "x": 30,
+          "y": 25,
+          "rotation": 0,
+          "width": 1000,
+          "height": 50,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 30,
+            "fontFamily": "Roboto",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "deco-rich",
+          "type": "box",
+          "name": "Decoration mixture",
+          "text": "None  Underline  Strike  Both",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "None  ",
+                    "style": {
+                      "underline": false,
+                      "strikethrough": false
+                    }
+                  },
+                  {
+                    "text": "Underline  ",
+                    "style": {
+                      "color": "#6d28d9",
+                      "underline": true,
+                      "strikethrough": false
+                    }
+                  },
+                  {
+                    "text": "Strike  ",
+                    "style": {
+                      "underline": false,
+                      "strikethrough": true
+                    }
+                  },
+                  {
+                    "text": "Both",
+                    "style": {
+                      "fontWeight": 700,
+                      "underline": true,
+                      "strikethrough": true
+                    }
+                  }
+                ],
+                "lineHeightPx": 34
+              }
+            ],
+            "expressionMode": "literal"
+          },
+          "x": 30,
+          "y": 115,
+          "rotation": 0,
+          "width": 570,
+          "height": 100,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#f3f6fc",
+            "stroke": "#d5deed",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              16,
+              18,
+              16,
+              18
+            ],
+            "color": "#263348",
+            "fontSize": 24,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "underline": true,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [],
+          "selectedStyle": {
+            "underline": false
+          },
+          "mouseOverStyle": {
+            "strikethrough": true
+          },
+          "disabledStyle": {
+            "underline": true,
+            "strikethrough": true
+          }
+        },
+        {
+          "id": "deco-hint",
+          "type": "text",
+          "name": "Decoration explanation",
+          "text": "Hover changes the line. Leaving restores each text segment.",
+          "notes": "",
+          "x": 30,
+          "y": 228,
+          "rotation": 0,
+          "width": 570,
+          "height": 55,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 17,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "deco-adaptive",
+          "type": "text",
+          "name": "Adaptive decoration",
+          "text": "Adaptive state composition",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "Adaptive state composition",
+                    "style": {
+                      "underline": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "x": 30,
+          "y": 315,
+          "rotation": 0,
+          "width": 570,
+          "height": 55,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 23,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "underline": true,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [],
+          "selected": true,
+          "selectedStyle": {
+            "strikethrough": true
+          }
+        },
+        {
+          "id": "deco-input",
+          "type": "input",
+          "name": "Decorated input",
+          "text": "Editable text",
+          "notes": "",
+          "x": 30,
+          "y": 425,
+          "rotation": 0,
+          "width": 350,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "color": "#263348",
+            "fontSize": 19,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "underline": true,
+            "strikethrough": true,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "deco-panel",
+          "type": "panel",
+          "name": "Container isolation",
+          "text": "",
+          "notes": "",
+          "x": 30,
+          "y": 535,
+          "rotation": 0,
+          "width": 570,
+          "height": 85,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "underline": true,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "activeStateId": "deco-panel-state",
+          "states": [
+            {
+              "id": "deco-panel-state",
+              "name": "State 1",
+              "widgets": [
+                {
+                  "id": "deco-child",
+                  "type": "text",
+                  "name": "Undecorated child",
+                  "text": "Container formatting does not mark this child.",
+                  "notes": "",
+                  "x": 10,
+                  "y": 10,
+                  "rotation": 0,
+                  "width": 530,
+                  "height": 55,
+                  "hidden": false,
+                  "locked": false,
+                  "disabled": false,
+                  "style": {
+                    "fill": "transparent",
+                    "stroke": "#b8bdc7",
+                    "strokeWidth": 0,
+                    "radius": 0,
+                    "color": "#263348",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fontWeight": 400,
+                    "textAlign": "left",
+                    "opacity": 1
+                  },
+                  "interactions": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "deco-button-0",
+          "type": "button",
+          "name": "Select mixture",
+          "text": "Select mixture",
+          "notes": "",
+          "x": 655,
+          "y": 115,
+          "rotation": 0,
+          "width": 250,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "deco-event-0",
+              "event": "click",
+              "name": "Select mixture",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "deco-action-0",
+                  "type": "setSelected",
+                  "targetId": "deco-rich",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "deco-button-1",
+          "type": "button",
+          "name": "Clear selection",
+          "text": "Clear selection",
+          "notes": "",
+          "x": 655,
+          "y": 179,
+          "rotation": 0,
+          "width": 250,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "deco-event-1",
+              "event": "click",
+              "name": "Clear selection",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "deco-action-1",
+                  "type": "setSelected",
+                  "targetId": "deco-rich",
+                  "value": "false"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "deco-button-2",
+          "type": "button",
+          "name": "Disable mixture",
+          "text": "Disable mixture",
+          "notes": "",
+          "x": 655,
+          "y": 243,
+          "rotation": 0,
+          "width": 250,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "deco-event-2",
+              "event": "click",
+              "name": "Disable mixture",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "deco-action-2",
+                  "type": "disable",
+                  "targetId": "deco-rich"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "deco-button-3",
+          "type": "button",
+          "name": "Enable mixture",
+          "text": "Enable mixture",
+          "notes": "",
+          "x": 655,
+          "y": 307,
+          "rotation": 0,
+          "width": 250,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "deco-event-3",
+              "event": "click",
+              "name": "Enable mixture",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "deco-action-3",
+                  "type": "enable",
+                  "targetId": "deco-rich"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "deco-button-4",
+          "type": "button",
+          "name": "Replace text",
+          "text": "Replace text",
+          "notes": "",
+          "x": 655,
+          "y": 371,
+          "rotation": 0,
+          "width": 250,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "deco-event-4",
+              "event": "click",
+              "name": "Replace text",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "deco-action-4",
+                  "type": "setText",
+                  "targetId": "deco-rich",
+                  "value": "Replacement keeps the first text format."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": [
+        {
+          "id": "deco-phone",
+          "name": "Phone",
+          "width": 768,
+          "overrides": {
+            "deco-adaptive": {
+              "width": 340,
+              "style": {
+                "underline": false
+              }
+            },
+            "deco-rich": {
+              "width": 340
+            },
+            "deco-panel": {
+              "width": 340
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

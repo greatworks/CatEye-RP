@@ -1,0 +1,295 @@
+{
+  "capturedAt": "2026-10-20T05:54:59.827Z",
+  "stage": "runtime-transform",
+  "status": "core stable for independent review; parent host/full/release checks pending",
+  "originalAxureGuiCompared": false,
+  "fullAxureParity": false,
+  "ownedProduction": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "8d8f318ebab90d39c67428037879516362e45072e2b33fd5e4c138f7c3d348ca",
+      "bytes": 300652
+    },
+    {
+      "path": "src/runtime/engine.ts",
+      "sha256": "1e622020f33846906e30f229048e1cd0cab62e01a9416a34efd255fbc7a672be",
+      "bytes": 7316
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/runtime-transform-core-consumers.test.ts",
+      "sha256": "a811c381e167df5234d6e3cd6df9b383953d3fbc69bf4a420b857f599bb0de39",
+      "bytes": 11229
+    },
+    {
+      "path": "tests/runtime-transform-core-lifecycle.test.ts",
+      "sha256": "2bb774b1e85115025dda74f524161acdbad9f35bc4cabc8c6bc08e3fbe1c310a",
+      "bytes": 13393
+    },
+    {
+      "path": "tests/runtime-transform-core-matrix.test.ts",
+      "sha256": "2da80ce0acd02ca60e5de6534e8c3fe16ee8ab48d9f5406b0573f66c88520531",
+      "bytes": 6602
+    },
+    {
+      "path": "tests/runtime-transform-core-special.test.ts",
+      "sha256": "e8af5a0532e3914b10307dd30eb1a1af107905c8c3f789ce987cb3181a201baf",
+      "bytes": 7804
+    },
+    {
+      "path": "tests/runtime-transform-core.test.ts",
+      "sha256": "1ba4758efd4e7c325f6358b23d9dd815aad2bb61f19901764f3ad0e342ed0fdc",
+      "bytes": 9758
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/runtime-transform-browser-evidence.json",
+      "sha256": "656b9f2005ced5e29acb0f09e347f6aa8c5b353018b116e0a98b921c9fa87eff",
+      "bytes": 16565
+    },
+    {
+      "path": "research/runtime-transform-special-evidence.json",
+      "sha256": "0a743bea52391576c3956639806b7f2ffcf778a5e1245b6939e1278eaa898f98",
+      "bytes": 12362
+    },
+    {
+      "path": "research/runtime-transform-bindings-evidence.json",
+      "sha256": "f7ecf150e9f0f2c81ed41392cfaf1666f31471660c231c73251b3b3cb105cc92",
+      "bytes": 301366
+    },
+    {
+      "path": "research/runtime-transform-review-orbit-cache-correction.json",
+      "sha256": "150f94108520becb47000b97c7755b7d03a4cd63ae0c074ec1dd5c459b2eb7b8",
+      "bytes": 7265
+    }
+  ],
+  "focusedResults": [
+    {
+      "path": "research/runtime-transform-core-implementation-consumers-extra-green.json",
+      "sha256": "7515cb048bfb97036cc88652ec39d929d5fdd4eeb21ed57d0f4647087152af16",
+      "bytes": 70714,
+      "passed": 219,
+      "failed": 0,
+      "total": 219,
+      "success": true
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-consumers-extra-red-valid.json",
+      "sha256": "3a9de245f48d1e08fa491a2451eb76037f24bd1ad24e31f5658cc57b29b4bb76",
+      "bytes": 12901,
+      "passed": 14,
+      "failed": 8,
+      "total": 22,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-consumers-extra-red.json",
+      "sha256": "e45cb6259086b1756c4369e8218c56eb02b8718a27bfbee86aebee78522a5534",
+      "bytes": 12985,
+      "passed": 14,
+      "failed": 8,
+      "total": 22,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-consumers-first.json",
+      "sha256": "f777776e86e213a0ef186fa4d41f039e0df5033f60b312c4e878ddf507397387",
+      "bytes": 7243,
+      "passed": 10,
+      "failed": 4,
+      "total": 14,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-consumers-red.json",
+      "sha256": "197a1248121732ee299c7354f594f0981b273950f5974633994c2e18a6a434e9",
+      "bytes": 11866,
+      "passed": 0,
+      "failed": 14,
+      "total": 14,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-consumers-second.json",
+      "sha256": "bbb5df366d5d6834293c1b8d145db247ce073389593847ce5f0701a0fcc9ccff",
+      "bytes": 79452,
+      "passed": 243,
+      "failed": 0,
+      "total": 243,
+      "success": true
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-focused-fifth.json",
+      "sha256": "221024e9ca2ea7d8e26d92119a476dfa8099de3bd6ab0424bd73205d1dea340a",
+      "bytes": 124197,
+      "passed": 363,
+      "failed": 0,
+      "total": 363,
+      "success": true
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-focused-fourth.json",
+      "sha256": "3a706b36b379249d331a1a90fb49cd6592204f17ced61923639eee47b19b4cc7",
+      "bytes": 50778,
+      "passed": 134,
+      "failed": 0,
+      "total": 134,
+      "success": true
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-focused-seventh.json",
+      "sha256": "899a571dbca1c1902b54a30c69d01f78f43f2bf2b42ab2d6f79fc957653ff0d9",
+      "bytes": 159153,
+      "passed": 457,
+      "failed": 0,
+      "total": 457,
+      "success": true
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-focused-sixth.json",
+      "sha256": "555f92e3311634dfbf39f29d9ad4a16839843069358d1ed8212266b40e6af17f",
+      "bytes": 140134,
+      "passed": 403,
+      "failed": 2,
+      "total": 405,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-lifecycle-extra-green.json",
+      "sha256": "145d08acecd0cdfbc1314e92c28ed15933c5bdddddddb2a57e6b59901a40e343",
+      "bytes": 11801,
+      "passed": 29,
+      "failed": 0,
+      "total": 29,
+      "success": true
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-lifecycle-extra-red-valid.json",
+      "sha256": "3f9f5c4d8d1bb189f2c0f0acbdd2213f7079ac0367ca3308661838231b84ae39",
+      "bytes": 12720,
+      "passed": 25,
+      "failed": 4,
+      "total": 29,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-lifecycle-extra-red.json",
+      "sha256": "e585a1dd509e61964e4cdff43b7a52f2e3ff9fd07e91bc4c392f76743de33123",
+      "bytes": 13518,
+      "passed": 25,
+      "failed": 4,
+      "total": 29,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-lifecycle-first.json",
+      "sha256": "9e6b2e7131303a25555b726c9fd764f4e99bfb9f1e8cfb759b93108b81d264b3",
+      "bytes": 8959,
+      "passed": 19,
+      "failed": 2,
+      "total": 21,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-matrix-first.json",
+      "sha256": "4e9ecec9b18cef8d1f886843ac6bf51d7d7b7075c0e0655a63723a5d15550fe1",
+      "bytes": 58929,
+      "passed": 162,
+      "failed": 14,
+      "total": 176,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-matrix-second.json",
+      "sha256": "a2c15adeaca2febffffab52c12e907cc8905b11287c188fbaa47c0c3d88bb5c1",
+      "bytes": 53900,
+      "passed": 176,
+      "failed": 0,
+      "total": 176,
+      "success": true
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-special-first.json",
+      "sha256": "ceb3169083c51108133605085b5f984a7701be75afce3bae41f194b10f6205b1",
+      "bytes": 15974,
+      "passed": 42,
+      "failed": 0,
+      "total": 42,
+      "success": true
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-special-red.json",
+      "sha256": "4a8465a45607d8455b958299f430a9eab32f8f8f4cfefcd77fff772fed6682e9",
+      "bytes": 17435,
+      "passed": 16,
+      "failed": 12,
+      "total": 28,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-unit-first.json",
+      "sha256": "ad34b93dc300d9ee187579b16b934c3571b1632a1b262980af5637caa4fa52b8",
+      "bytes": 12930,
+      "passed": 30,
+      "failed": 2,
+      "total": 32,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-unit-red.json",
+      "sha256": "f5e10731c52e5ee9074bcac6059b73f52ca7a10c2bcd8830e54b31d4fdca0be3",
+      "bytes": 22121,
+      "passed": 4,
+      "failed": 28,
+      "total": 32,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-unit-second.json",
+      "sha256": "fc33b6e78fd46bf2d00557a8ab6373fe68d1ab4afbaaca91d800f2453954ee25",
+      "bytes": 63234,
+      "passed": 164,
+      "failed": 2,
+      "total": 166,
+      "success": false
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-unit-third.json",
+      "sha256": "cf9057e1a8f271ca2544679ecc07d24ddf4b7064b9f837eb0a563218549b866b",
+      "bytes": 62807,
+      "passed": 166,
+      "failed": 0,
+      "total": 166,
+      "success": true
+    },
+    {
+      "path": "research/runtime-transform-core-implementation-zero-red.json",
+      "sha256": "a94b790b676f2c3ddf06f8ddebd2947664f29b5054dfb4eab275369fa420947f",
+      "bytes": 10611,
+      "passed": 22,
+      "failed": 2,
+      "total": 24,
+      "success": false
+    }
+  ],
+  "typecheck": {
+    "command": "npx tsc -b --pretty false",
+    "exitCode": 0
+  },
+  "summary": {
+    "path": "research/runtime-transform-core-implementation-summary.md",
+    "sha256": "a0638b2c9c4baa5da23c02cd3ae201825f067dff0327d0248acbacc471a3472b",
+    "bytes": 14043
+  },
+  "limitations": [
+    "Native Layer/fixed/state-size metadata unavailable",
+    "Composite descendant compression rejects unsupported wrapper coordinates",
+    "PanelStateChange carrier unavailable",
+    "withThis compiler boundary-local substitution not fully modeled",
+    "LocationBeforeDrag parent movement/scroll viewport mapping not established",
+    "Nonfinite orbit and mixed instant nonprogress rejected atomically",
+    "No owner browser/full suite/package runs"
+  ]
+}

@@ -1,0 +1,8 @@
+$AssemblyPath=(Get-Content research/tree-widget-format-metadata.json -Raw|ConvertFrom-Json).assembly
+$stream=[IO.File]::OpenRead($AssemblyPath);$pe=[System.Reflection.PortableExecutable.PEReader]::new($stream)
+try {
+ $md=[System.Reflection.Metadata.PEReaderExtensions]::GetMetadataReader($pe);$targets=@{}
+ foreach($h in $md.TypeDefinitions){$t=$md.GetTypeDefinition($h);if($md.GetString($t.Name) -ne 'KJm7'){continue};foreach($fh in $t.GetFields()){$f=$md.GetFieldDefinition($fh);$name=$md.GetString($f.Name);if($name -in @('lJZZ','GJZd','PJZb')){$targets[[System.Reflection.Metadata.Ecma335.MetadataTokens]::GetToken([System.Reflection.Metadata.EntityHandle]$fh)]=$name}}}
+ $found=foreach($h in $md.MethodDefinitions){$m=$md.GetMethodDefinition($h);if($m.RelativeVirtualAddress -le 0){continue};$il=[System.Reflection.Metadata.PEReaderExtensions]::GetMethodBody($pe,$m.RelativeVirtualAddress).GetILBytes();$refs=@(for($i=0;$i -lt $il.Length-4;$i++){if($il[$i] -in @(0x7b,0x7c,0x7d)){$token=[BitConverter]::ToInt32($il,$i+1);if($targets.ContainsKey($token)){[PSCustomObject]@{offset=$i;field=$targets[$token];token=$token}}}});if($refs.Count){$t=$md.GetTypeDefinition($m.GetDeclaringType());[PSCustomObject]@{type=$md.GetString($t.Name);name=$md.GetString($m.Name);token=[System.Reflection.Metadata.Ecma335.MetadataTokens]::GetToken([System.Reflection.Metadata.EntityHandle]$h);refs=$refs}}}
+ [PSCustomObject]@{assembly=$AssemblyPath;sha256=(Get-FileHash -LiteralPath $AssemblyPath -Algorithm SHA256).Hash.ToLowerInvariant();method='Static field-opcode candidate scan only; claims require full instruction decoding';candidates=@($found)}|ConvertTo-Json -Depth 6
+}finally{$pe.Dispose();$stream.Dispose()}

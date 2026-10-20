@@ -1,0 +1,5464 @@
+{
+  "schema": 1,
+  "kind": "actual retained source outputs with declared VM/browser sinks; not independent implementation simulation",
+  "probe": {
+    "path": "research/runtime-rotate-motion-probes.json",
+    "sha256": "4175a7ba6360103caaba3dd4083b90cee8f1f2aa0b47ba344417038fdce2fa37"
+  },
+  "tolerances": {
+    "transcendental": 1e-9,
+    "browserAngle": 0.001,
+    "browserOrbit": 0.05
+  },
+  "fixtures": [
+    {
+      "name": "stop-by-instant",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "degree": 180,
+        "current": 30,
+        "stop": {
+          "instant": true
+        },
+        "actual": 180
+      }
+    },
+    {
+      "name": "stop-by-0",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "degree": 180,
+        "current": 30,
+        "stop": {
+          "start": 0,
+          "end": 40,
+          "len": 100
+        },
+        "actual": 72
+      }
+    },
+    {
+      "name": "stop-by-40",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "degree": 180,
+        "current": 30,
+        "stop": {
+          "start": 40,
+          "end": 100,
+          "len": 100
+        },
+        "actual": 108
+      }
+    },
+    {
+      "name": "stop-to-instant",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "degree": 180,
+        "current": 30,
+        "stop": {
+          "instant": true
+        },
+        "actual": 150
+      }
+    },
+    {
+      "name": "stop-to-0",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "degree": 180,
+        "current": 30,
+        "stop": {
+          "start": 0,
+          "end": 40,
+          "len": 100
+        },
+        "actual": 60
+      }
+    },
+    {
+      "name": "stop-to-40",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "degree": 180,
+        "current": 30,
+        "stop": {
+          "start": 40,
+          "end": 100,
+          "len": 100
+        },
+        "actual": 150
+      }
+    },
+    {
+      "name": "batch-rotate:100",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "before": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          }
+        ],
+        "after": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 100,
+              "stop": {
+                "start": 0,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch-rotate:100/rotate:60",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "before": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "singleImage",
+            "id": "a"
+          }
+        ],
+        "after": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 100,
+              "stop": {
+                "start": 0,
+                "end": 100,
+                "len": 100
+              }
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 60,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 60,
+              "stop": {
+                "start": 0,
+                "end": 60,
+                "len": 60
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch-rotate:100/move:40",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "before": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          }
+        ],
+        "after": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              }
+            },
+            "move": {
+              "name": "move",
+              "degree": 180,
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              }
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 60,
+              "stop": {
+                "start": 40,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch-move:40/rotate:100",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "before": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          }
+        ],
+        "after": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              }
+            },
+            "move": {
+              "name": "move",
+              "degree": 180,
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              }
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 60,
+              "stop": {
+                "start": 40,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch-resize:70/rotate:100",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "before": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "singleImage",
+            "id": "a"
+          }
+        ],
+        "after": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "resize",
+            "id": "a",
+            "info": {
+              "name": "resize",
+              "duration": 70,
+              "easing": "linear"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 70,
+              "stop": {
+                "start": 0,
+                "end": 70,
+                "len": 70
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 70,
+                "len": 100
+              }
+            },
+            "rotate": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 30,
+              "stop": {
+                "start": 70,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch-move:40/resize:70/rotate:100",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "before": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "resize",
+            "id": "a",
+            "info": {
+              "name": "resize",
+              "duration": 70,
+              "easing": "linear"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 70
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "len": 100,
+                "end": 40
+              }
+            },
+            "move": {
+              "name": "move",
+              "degree": 180,
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              }
+            },
+            "rotate": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            }
+          }
+        ],
+        "after": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "resize",
+            "id": "a",
+            "info": {
+              "name": "resize",
+              "duration": 70,
+              "easing": "linear"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 70
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "len": 100,
+                "end": 40
+              }
+            },
+            "move": {
+              "name": "move",
+              "degree": 180,
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              }
+            },
+            "rotate": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            }
+          },
+          {
+            "kind": "resize",
+            "id": "a",
+            "info": {
+              "name": "resize",
+              "duration": 70,
+              "easing": "linear"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 30,
+              "stop": {
+                "start": 40,
+                "end": 70,
+                "len": 70
+              },
+              "rotateStop": {
+                "start": 40,
+                "end": 70,
+                "len": 100
+              }
+            },
+            "rotate": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 30,
+              "stop": {
+                "start": 70,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch-rotate:100/rotate:0",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "before": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "singleImage",
+            "id": "a"
+          }
+        ],
+        "after": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 100,
+              "stop": {
+                "start": 0,
+                "end": 100,
+                "len": 100
+              }
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 0,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "none",
+              "duration": 0,
+              "stop": {
+                "instant": true
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch-rotate:0/rotate:100",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "before": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 0,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "none",
+              "duration": 0,
+              "stop": {
+                "instant": true
+              }
+            }
+          },
+          {
+            "kind": "singleImage",
+            "id": "a"
+          }
+        ],
+        "after": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 0,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "none",
+              "duration": 0,
+              "stop": {
+                "instant": true
+              }
+            }
+          },
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 100,
+              "stop": {
+                "start": 0,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch-rotate:100:swing/move:40:linear",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "before": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          }
+        ],
+        "after": [
+          {
+            "kind": "singleImage",
+            "id": "a"
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "swing"
+              }
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              }
+            },
+            "move": {
+              "name": "move",
+              "degree": 180,
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              }
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "info": {
+              "name": "rotate",
+              "degree": 180,
+              "options": {
+                "duration": 100,
+                "easing": "swing"
+              }
+            },
+            "options": {
+              "easing": "swing",
+              "duration": 60,
+              "stop": {
+                "start": 40,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "native-bounds-style-angle",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "cfg": {
+          "name": "style-angle",
+          "angle": 30
+        },
+        "rect": {
+          "left": 88.39745962155612,
+          "top": 56.698729810778076,
+          "width": 223.20508075688778,
+          "height": 186.60254037844385,
+          "right": 311.6025403784439,
+          "bottom": 243.30127018922192,
+          "x": 88.39745962155612,
+          "y": 56.698729810778076,
+          "location": {
+            "x": 88.39745962155612,
+            "y": 56.698729810778076,
+            "left": 88.39745962155612,
+            "top": 56.698729810778076
+          },
+          "size": {
+            "width": 223.20508075688778,
+            "height": 186.60254037844385
+          },
+          "centerPoint": {
+            "x": 200,
+            "y": 150
+          }
+        }
+      }
+    },
+    {
+      "name": "native-bounds-target-cache",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "cfg": {
+          "name": "target-cache",
+          "angle": 30,
+          "cache": 90
+        },
+        "rect": {
+          "left": 150,
+          "top": 50,
+          "width": 100,
+          "height": 200,
+          "right": 250,
+          "bottom": 250,
+          "x": 150,
+          "y": 50,
+          "location": {
+            "x": 150,
+            "y": 50,
+            "left": 150,
+            "top": 50
+          },
+          "size": {
+            "width": 100,
+            "height": 200
+          },
+          "centerPoint": {
+            "x": 200,
+            "y": 150
+          }
+        }
+      }
+    },
+    {
+      "name": "native-bounds-zero-cache-falls-back",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "cfg": {
+          "name": "zero-cache-falls-back",
+          "angle": 30,
+          "cache": 0
+        },
+        "rect": {
+          "left": 88.39745962155612,
+          "top": 56.698729810778076,
+          "width": 223.20508075688778,
+          "height": 186.60254037844385,
+          "right": 311.6025403784439,
+          "bottom": 243.30127018922192,
+          "x": 88.39745962155612,
+          "y": 56.698729810778076,
+          "location": {
+            "x": 88.39745962155612,
+            "y": 56.698729810778076,
+            "left": 88.39745962155612,
+            "top": 56.698729810778076
+          },
+          "size": {
+            "width": 223.20508075688778,
+            "height": 186.60254037844385
+          },
+          "centerPoint": {
+            "x": 200,
+            "y": 150
+          }
+        }
+      }
+    },
+    {
+      "name": "native-bounds-positive-shadow",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "cfg": {
+          "name": "positive-shadow",
+          "angle": 0,
+          "shadow": {
+            "on": true,
+            "offsetX": 10,
+            "offsetY": 20,
+            "blurRadius": 6
+          }
+        },
+        "rect": {
+          "left": 100,
+          "top": 100,
+          "width": 216,
+          "height": 126,
+          "isFixed": false,
+          "right": 316,
+          "bottom": 226,
+          "x": 100,
+          "y": 100,
+          "location": {
+            "x": 100,
+            "y": 100,
+            "left": 100,
+            "top": 100
+          },
+          "size": {
+            "width": 216,
+            "height": 126
+          },
+          "centerPoint": {
+            "x": 208,
+            "y": 163
+          }
+        }
+      }
+    },
+    {
+      "name": "native-bounds-negative-shadow",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "cfg": {
+          "name": "negative-shadow",
+          "angle": 0,
+          "shadow": {
+            "on": true,
+            "offsetX": -10,
+            "offsetY": -20,
+            "blurRadius": 6
+          }
+        },
+        "rect": {
+          "left": 84,
+          "top": 74,
+          "width": 216,
+          "height": 126,
+          "isFixed": false,
+          "right": 300,
+          "bottom": 200,
+          "x": 84,
+          "y": 74,
+          "location": {
+            "x": 84,
+            "y": 74,
+            "left": 84,
+            "top": 74
+          },
+          "size": {
+            "width": 216,
+            "height": 126
+          },
+          "centerPoint": {
+            "x": 192,
+            "y": 137
+          }
+        }
+      }
+    },
+    {
+      "name": "layer-split-delta-0",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "first": 72,
+        "second": 180,
+        "value": 360,
+        "events": [
+          {
+            "id": "group",
+            "event": "onRotate",
+            "value": 180
+          },
+          {
+            "id": "group",
+            "event": "onRotate",
+            "value": 360
+          }
+        ]
+      }
+    },
+    {
+      "name": "layer-split-delta-30",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "first": 72,
+        "second": 180,
+        "value": 390,
+        "events": [
+          {
+            "id": "group",
+            "event": "onRotate",
+            "value": 210
+          },
+          {
+            "id": "group",
+            "event": "onRotate",
+            "value": 390
+          }
+        ]
+      }
+    },
+    {
+      "name": "layer-split-location-0",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "first": 72,
+        "second": 0,
+        "value": 180,
+        "events": [
+          {
+            "id": "group",
+            "event": "onRotate",
+            "value": 180
+          },
+          {
+            "id": "group",
+            "event": "onRotate",
+            "value": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "layer-split-location-30",
+      "kind": "exact-source-node-vm-with-explicit-sinks",
+      "observed": {
+        "first": 60,
+        "second": 0,
+        "value": 180,
+        "events": [
+          {
+            "id": "group",
+            "event": "onRotate",
+            "value": 180
+          },
+          {
+            "id": "group",
+            "event": "onRotate",
+            "value": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-linear",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 18,
+            "previousProperty": 0
+          },
+          {
+            "now": 45,
+            "previousProperty": 18
+          },
+          {
+            "now": 90,
+            "previousProperty": 45
+          },
+          {
+            "now": 135,
+            "previousProperty": 90
+          },
+          {
+            "now": 162,
+            "previousProperty": 135
+          },
+          {
+            "now": 180,
+            "previousProperty": 162
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 18
+          },
+          {
+            "progress": 0.25,
+            "degree": 45
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 135
+          },
+          {
+            "progress": 0.9,
+            "degree": 162
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-swing",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 4.404913533436182,
+            "previousProperty": 0
+          },
+          {
+            "now": 26.360389693210717,
+            "previousProperty": 4.404913533436182
+          },
+          {
+            "now": 89.99999999999999,
+            "previousProperty": 26.360389693210717
+          },
+          {
+            "now": 153.63961030678928,
+            "previousProperty": 89.99999999999999
+          },
+          {
+            "now": 175.59508646656383,
+            "previousProperty": 153.63961030678928
+          },
+          {
+            "now": 180,
+            "previousProperty": 175.59508646656383
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 4.404913533436182
+          },
+          {
+            "progress": 0.25,
+            "degree": 26.360389693210717
+          },
+          {
+            "progress": 0.5,
+            "degree": 89.99999999999999
+          },
+          {
+            "progress": 0.75,
+            "degree": 153.63961030678928
+          },
+          {
+            "progress": 0.9,
+            "degree": 175.59508646656383
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInQuad",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 1.8000000000000003,
+            "previousProperty": 0
+          },
+          {
+            "now": 11.25,
+            "previousProperty": 1.8000000000000003
+          },
+          {
+            "now": 45,
+            "previousProperty": 11.25
+          },
+          {
+            "now": 101.25,
+            "previousProperty": 45
+          },
+          {
+            "now": 145.8,
+            "previousProperty": 101.25
+          },
+          {
+            "now": 180,
+            "previousProperty": 145.8
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 1.8000000000000003
+          },
+          {
+            "progress": 0.25,
+            "degree": 11.25
+          },
+          {
+            "progress": 0.5,
+            "degree": 45
+          },
+          {
+            "progress": 0.75,
+            "degree": 101.25
+          },
+          {
+            "progress": 0.9,
+            "degree": 145.8
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeOutQuad",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 34.19999999999999,
+            "previousProperty": 0
+          },
+          {
+            "now": 78.75,
+            "previousProperty": 34.19999999999999
+          },
+          {
+            "now": 135,
+            "previousProperty": 78.75
+          },
+          {
+            "now": 168.75,
+            "previousProperty": 135
+          },
+          {
+            "now": 178.2,
+            "previousProperty": 168.75
+          },
+          {
+            "now": 180,
+            "previousProperty": 178.2
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 34.19999999999999
+          },
+          {
+            "progress": 0.25,
+            "degree": 78.75
+          },
+          {
+            "progress": 0.5,
+            "degree": 135
+          },
+          {
+            "progress": 0.75,
+            "degree": 168.75
+          },
+          {
+            "progress": 0.9,
+            "degree": 178.2
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInOutQuad",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 3.6000000000000005,
+            "previousProperty": 0
+          },
+          {
+            "now": 22.5,
+            "previousProperty": 3.6000000000000005
+          },
+          {
+            "now": 90,
+            "previousProperty": 22.5
+          },
+          {
+            "now": 157.5,
+            "previousProperty": 90
+          },
+          {
+            "now": 176.4,
+            "previousProperty": 157.5
+          },
+          {
+            "now": 180,
+            "previousProperty": 176.4
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 3.6000000000000005
+          },
+          {
+            "progress": 0.25,
+            "degree": 22.5
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 157.5
+          },
+          {
+            "progress": 0.9,
+            "degree": 176.4
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInCubic",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.18000000000000005,
+            "previousProperty": 0
+          },
+          {
+            "now": 2.8125,
+            "previousProperty": 0.18000000000000005
+          },
+          {
+            "now": 22.5,
+            "previousProperty": 2.8125
+          },
+          {
+            "now": 75.9375,
+            "previousProperty": 22.5
+          },
+          {
+            "now": 131.22000000000003,
+            "previousProperty": 75.9375
+          },
+          {
+            "now": 180,
+            "previousProperty": 131.22000000000003
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 0.18000000000000005
+          },
+          {
+            "progress": 0.25,
+            "degree": 2.8125
+          },
+          {
+            "progress": 0.5,
+            "degree": 22.5
+          },
+          {
+            "progress": 0.75,
+            "degree": 75.9375
+          },
+          {
+            "progress": 0.9,
+            "degree": 131.22000000000003
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeOutCubic",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 48.77999999999999,
+            "previousProperty": 0
+          },
+          {
+            "now": 104.0625,
+            "previousProperty": 48.77999999999999
+          },
+          {
+            "now": 157.5,
+            "previousProperty": 104.0625
+          },
+          {
+            "now": 177.1875,
+            "previousProperty": 157.5
+          },
+          {
+            "now": 179.82,
+            "previousProperty": 177.1875
+          },
+          {
+            "now": 180,
+            "previousProperty": 179.82
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 48.77999999999999
+          },
+          {
+            "progress": 0.25,
+            "degree": 104.0625
+          },
+          {
+            "progress": 0.5,
+            "degree": 157.5
+          },
+          {
+            "progress": 0.75,
+            "degree": 177.1875
+          },
+          {
+            "progress": 0.9,
+            "degree": 179.82
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInOutCubic",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.7200000000000002,
+            "previousProperty": 0
+          },
+          {
+            "now": 11.25,
+            "previousProperty": 0.7200000000000002
+          },
+          {
+            "now": 90,
+            "previousProperty": 11.25
+          },
+          {
+            "now": 168.75,
+            "previousProperty": 90
+          },
+          {
+            "now": 179.28,
+            "previousProperty": 168.75
+          },
+          {
+            "now": 180,
+            "previousProperty": 179.28
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 0.7200000000000002
+          },
+          {
+            "progress": 0.25,
+            "degree": 11.25
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 168.75
+          },
+          {
+            "progress": 0.9,
+            "degree": 179.28
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInQuart",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.018000000000000002,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.703125,
+            "previousProperty": 0.018000000000000002
+          },
+          {
+            "now": 11.25,
+            "previousProperty": 0.703125
+          },
+          {
+            "now": 56.953125,
+            "previousProperty": 11.25
+          },
+          {
+            "now": 118.098,
+            "previousProperty": 56.953125
+          },
+          {
+            "now": 180,
+            "previousProperty": 118.098
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 0.018000000000000002
+          },
+          {
+            "progress": 0.25,
+            "degree": 0.703125
+          },
+          {
+            "progress": 0.5,
+            "degree": 11.25
+          },
+          {
+            "progress": 0.75,
+            "degree": 56.953125
+          },
+          {
+            "progress": 0.9,
+            "degree": 118.098
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeOutQuart",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 61.901999999999994,
+            "previousProperty": 0
+          },
+          {
+            "now": 123.046875,
+            "previousProperty": 61.901999999999994
+          },
+          {
+            "now": 168.75,
+            "previousProperty": 123.046875
+          },
+          {
+            "now": 179.296875,
+            "previousProperty": 168.75
+          },
+          {
+            "now": 179.982,
+            "previousProperty": 179.296875
+          },
+          {
+            "now": 180,
+            "previousProperty": 179.982
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 61.901999999999994
+          },
+          {
+            "progress": 0.25,
+            "degree": 123.046875
+          },
+          {
+            "progress": 0.5,
+            "degree": 168.75
+          },
+          {
+            "progress": 0.75,
+            "degree": 179.296875
+          },
+          {
+            "progress": 0.9,
+            "degree": 179.982
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInOutQuart",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.14400000000000002,
+            "previousProperty": 0
+          },
+          {
+            "now": 5.625,
+            "previousProperty": 0.14400000000000002
+          },
+          {
+            "now": 90,
+            "previousProperty": 5.625
+          },
+          {
+            "now": 174.375,
+            "previousProperty": 90
+          },
+          {
+            "now": 179.856,
+            "previousProperty": 174.375
+          },
+          {
+            "now": 180,
+            "previousProperty": 179.856
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 0.14400000000000002
+          },
+          {
+            "progress": 0.25,
+            "degree": 5.625
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 174.375
+          },
+          {
+            "progress": 0.9,
+            "degree": 179.856
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInQuint",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.0018000000000000004,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.17578125,
+            "previousProperty": 0.0018000000000000004
+          },
+          {
+            "now": 5.625,
+            "previousProperty": 0.17578125
+          },
+          {
+            "now": 42.71484375,
+            "previousProperty": 5.625
+          },
+          {
+            "now": 106.28820000000002,
+            "previousProperty": 42.71484375
+          },
+          {
+            "now": 180,
+            "previousProperty": 106.28820000000002
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 0.0018000000000000004
+          },
+          {
+            "progress": 0.25,
+            "degree": 0.17578125
+          },
+          {
+            "progress": 0.5,
+            "degree": 5.625
+          },
+          {
+            "progress": 0.75,
+            "degree": 42.71484375
+          },
+          {
+            "progress": 0.9,
+            "degree": 106.28820000000002
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeOutQuint",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 73.71179999999998,
+            "previousProperty": 0
+          },
+          {
+            "now": 137.28515625,
+            "previousProperty": 73.71179999999998
+          },
+          {
+            "now": 174.375,
+            "previousProperty": 137.28515625
+          },
+          {
+            "now": 179.82421875,
+            "previousProperty": 174.375
+          },
+          {
+            "now": 179.9982,
+            "previousProperty": 179.82421875
+          },
+          {
+            "now": 180,
+            "previousProperty": 179.9982
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 73.71179999999998
+          },
+          {
+            "progress": 0.25,
+            "degree": 137.28515625
+          },
+          {
+            "progress": 0.5,
+            "degree": 174.375
+          },
+          {
+            "progress": 0.75,
+            "degree": 179.82421875
+          },
+          {
+            "progress": 0.9,
+            "degree": 179.9982
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInOutQuint",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.028800000000000006,
+            "previousProperty": 0
+          },
+          {
+            "now": 2.8125,
+            "previousProperty": 0.028800000000000006
+          },
+          {
+            "now": 90,
+            "previousProperty": 2.8125
+          },
+          {
+            "now": 177.1875,
+            "previousProperty": 90
+          },
+          {
+            "now": 179.97119999999998,
+            "previousProperty": 177.1875
+          },
+          {
+            "now": 180,
+            "previousProperty": 179.97119999999998
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 0.028800000000000006
+          },
+          {
+            "progress": 0.25,
+            "degree": 2.8125
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 177.1875
+          },
+          {
+            "progress": 0.9,
+            "degree": 179.97119999999998
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInExpo",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.00018000000000000007,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.0439453125,
+            "previousProperty": 0.00018000000000000007
+          },
+          {
+            "now": 2.8125,
+            "previousProperty": 0.0439453125
+          },
+          {
+            "now": 32.0361328125,
+            "previousProperty": 2.8125
+          },
+          {
+            "now": 95.65938000000001,
+            "previousProperty": 32.0361328125
+          },
+          {
+            "now": 180,
+            "previousProperty": 95.65938000000001
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 0.00018000000000000007
+          },
+          {
+            "progress": 0.25,
+            "degree": 0.0439453125
+          },
+          {
+            "progress": 0.5,
+            "degree": 2.8125
+          },
+          {
+            "progress": 0.75,
+            "degree": 32.0361328125
+          },
+          {
+            "progress": 0.9,
+            "degree": 95.65938000000001
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeOutExpo",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 84.34061999999999,
+            "previousProperty": 0
+          },
+          {
+            "now": 147.9638671875,
+            "previousProperty": 84.34061999999999
+          },
+          {
+            "now": 177.1875,
+            "previousProperty": 147.9638671875
+          },
+          {
+            "now": 179.9560546875,
+            "previousProperty": 177.1875
+          },
+          {
+            "now": 179.99982,
+            "previousProperty": 179.9560546875
+          },
+          {
+            "now": 180,
+            "previousProperty": 179.99982
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 84.34061999999999
+          },
+          {
+            "progress": 0.25,
+            "degree": 147.9638671875
+          },
+          {
+            "progress": 0.5,
+            "degree": 177.1875
+          },
+          {
+            "progress": 0.75,
+            "degree": 179.9560546875
+          },
+          {
+            "progress": 0.9,
+            "degree": 179.99982
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInOutExpo",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.005760000000000002,
+            "previousProperty": 0
+          },
+          {
+            "now": 1.40625,
+            "previousProperty": 0.005760000000000002
+          },
+          {
+            "now": 90,
+            "previousProperty": 1.40625
+          },
+          {
+            "now": 178.59375,
+            "previousProperty": 90
+          },
+          {
+            "now": 179.99424,
+            "previousProperty": 178.59375
+          },
+          {
+            "now": 180,
+            "previousProperty": 179.99424
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 0.005760000000000002
+          },
+          {
+            "progress": 0.25,
+            "degree": 1.40625
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 178.59375
+          },
+          {
+            "progress": 0.9,
+            "degree": 179.99424
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInSine",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 2.2160986928752013,
+            "previousProperty": 0
+          },
+          {
+            "now": 13.701684147968386,
+            "previousProperty": 2.2160986928752013
+          },
+          {
+            "now": 52.720779386421434,
+            "previousProperty": 13.701684147968386
+          },
+          {
+            "now": 111.11698217428383,
+            "previousProperty": 52.720779386421434
+          },
+          {
+            "now": 151.84179629275843,
+            "previousProperty": 111.11698217428383
+          },
+          {
+            "now": 179.99999999999997,
+            "previousProperty": 151.84179629275843
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 2.2160986928752013
+          },
+          {
+            "progress": 0.25,
+            "degree": 13.701684147968386
+          },
+          {
+            "progress": 0.5,
+            "degree": 52.720779386421434
+          },
+          {
+            "progress": 0.75,
+            "degree": 111.11698217428383
+          },
+          {
+            "progress": 0.9,
+            "degree": 151.84179629275843
+          },
+          {
+            "progress": 1,
+            "degree": 179.99999999999997
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeOutSine",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 1.9984014443252818e-14,
+            "previousProperty": 0
+          },
+          {
+            "now": 28.158203707241572,
+            "previousProperty": 1.9984014443252818e-14
+          },
+          {
+            "now": 68.88301782571617,
+            "previousProperty": 28.158203707241572
+          },
+          {
+            "now": 127.27922061357856,
+            "previousProperty": 68.88301782571617
+          },
+          {
+            "now": 166.2983158520316,
+            "previousProperty": 127.27922061357856
+          },
+          {
+            "now": 177.7839013071248,
+            "previousProperty": 166.2983158520316
+          },
+          {
+            "now": 180,
+            "previousProperty": 177.7839013071248
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 1.9984014443252818e-14
+          },
+          {
+            "progress": 0.1,
+            "degree": 28.158203707241572
+          },
+          {
+            "progress": 0.25,
+            "degree": 68.88301782571617
+          },
+          {
+            "progress": 0.5,
+            "degree": 127.27922061357856
+          },
+          {
+            "progress": 0.75,
+            "degree": 166.2983158520316
+          },
+          {
+            "progress": 0.9,
+            "degree": 177.7839013071248
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInOutSine",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 4.404913533436182,
+            "previousProperty": 0
+          },
+          {
+            "now": 26.360389693210717,
+            "previousProperty": 4.404913533436182
+          },
+          {
+            "now": 90,
+            "previousProperty": 26.360389693210717
+          },
+          {
+            "now": 153.63961030678928,
+            "previousProperty": 90
+          },
+          {
+            "now": 175.59508646656383,
+            "previousProperty": 153.63961030678928
+          },
+          {
+            "now": 180,
+            "previousProperty": 175.59508646656383
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 4.404913533436182
+          },
+          {
+            "progress": 0.25,
+            "degree": 26.360389693210717
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 153.63961030678928
+          },
+          {
+            "progress": 0.9,
+            "degree": 175.59508646656383
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInCirc",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.9022613208084063,
+            "previousProperty": 0
+          },
+          {
+            "now": 5.715749420666234,
+            "previousProperty": 0.9022613208084063
+          },
+          {
+            "now": 24.115427318801054,
+            "previousProperty": 5.715749420666234
+          },
+          {
+            "now": 60.94119100209342,
+            "previousProperty": 24.115427318801054
+          },
+          {
+            "now": 101.5398190162679,
+            "previousProperty": 60.94119100209342
+          },
+          {
+            "now": 180,
+            "previousProperty": 101.5398190162679
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 0.9022613208084063
+          },
+          {
+            "progress": 0.25,
+            "degree": 5.715749420666234
+          },
+          {
+            "progress": 0.5,
+            "degree": 24.115427318801054
+          },
+          {
+            "progress": 0.75,
+            "degree": 60.94119100209342
+          },
+          {
+            "progress": 0.9,
+            "degree": 101.5398190162679
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeOutCirc",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 78.4601809837321,
+            "previousProperty": 0
+          },
+          {
+            "now": 119.05880899790658,
+            "previousProperty": 78.4601809837321
+          },
+          {
+            "now": 155.88457268119896,
+            "previousProperty": 119.05880899790658
+          },
+          {
+            "now": 174.28425057933376,
+            "previousProperty": 155.88457268119896
+          },
+          {
+            "now": 179.0977386791916,
+            "previousProperty": 174.28425057933376
+          },
+          {
+            "now": 180,
+            "previousProperty": 179.0977386791916
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 78.4601809837321
+          },
+          {
+            "progress": 0.25,
+            "degree": 119.05880899790658
+          },
+          {
+            "progress": 0.5,
+            "degree": 155.88457268119896
+          },
+          {
+            "progress": 0.75,
+            "degree": 174.28425057933376
+          },
+          {
+            "progress": 0.9,
+            "degree": 179.0977386791916
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInOutCirc",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 1.8183692598055923,
+            "previousProperty": 0
+          },
+          {
+            "now": 12.057713659400527,
+            "previousProperty": 1.8183692598055923
+          },
+          {
+            "now": 90,
+            "previousProperty": 12.057713659400527
+          },
+          {
+            "now": 167.94228634059948,
+            "previousProperty": 90
+          },
+          {
+            "now": 178.1816307401944,
+            "previousProperty": 167.94228634059948
+          },
+          {
+            "now": 180,
+            "previousProperty": 178.1816307401944
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 1.8183692598055923
+          },
+          {
+            "progress": 0.25,
+            "degree": 12.057713659400527
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 167.94228634059948
+          },
+          {
+            "progress": 0.9,
+            "degree": 178.1816307401944
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInElastic",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": -0.9904080939880053,
+            "previousProperty": 0
+          },
+          {
+            "now": 2.8125,
+            "previousProperty": -0.9904080939880053
+          },
+          {
+            "now": -5.625000000000007,
+            "previousProperty": 2.8125
+          },
+          {
+            "now": -22.499999999999986,
+            "previousProperty": -5.625000000000007
+          },
+          {
+            "now": -10.80645064253285,
+            "previousProperty": -22.499999999999986
+          },
+          {
+            "now": 180,
+            "previousProperty": -10.80645064253285
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": -0.9904080939880053
+          },
+          {
+            "progress": 0.25,
+            "degree": 2.8125
+          },
+          {
+            "progress": 0.5,
+            "degree": -5.625000000000007
+          },
+          {
+            "progress": 0.75,
+            "degree": -22.499999999999986
+          },
+          {
+            "progress": 0.9,
+            "degree": -10.80645064253285
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeOutElastic",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 190.80645064253287,
+            "previousProperty": 0
+          },
+          {
+            "now": 202.5,
+            "previousProperty": 190.80645064253287
+          },
+          {
+            "now": 185.625,
+            "previousProperty": 202.5
+          },
+          {
+            "now": 177.1875,
+            "previousProperty": 185.625
+          },
+          {
+            "now": 180.990408093988,
+            "previousProperty": 177.1875
+          },
+          {
+            "now": 180,
+            "previousProperty": 180.990408093988
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 190.80645064253287
+          },
+          {
+            "progress": 0.25,
+            "degree": 202.5
+          },
+          {
+            "progress": 0.5,
+            "degree": 185.625
+          },
+          {
+            "progress": 0.75,
+            "degree": 177.1875
+          },
+          {
+            "progress": 0.9,
+            "degree": 180.990408093988
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInOutElastic",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 0.7131180552308919,
+            "previousProperty": 0
+          },
+          {
+            "now": -2.8125000000000036,
+            "previousProperty": 0.7131180552308919
+          },
+          {
+            "now": 90,
+            "previousProperty": -2.8125000000000036
+          },
+          {
+            "now": 182.8125,
+            "previousProperty": 90
+          },
+          {
+            "now": 179.2868819447691,
+            "previousProperty": 182.8125
+          },
+          {
+            "now": 180,
+            "previousProperty": 179.2868819447691
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 0.7131180552308919
+          },
+          {
+            "progress": 0.25,
+            "degree": -2.8125000000000036
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 182.8125
+          },
+          {
+            "progress": 0.9,
+            "degree": 179.2868819447691
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInBack",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": -3.06,
+            "previousProperty": 0
+          },
+          {
+            "now": -14.0625,
+            "previousProperty": -3.06
+          },
+          {
+            "now": -22.5,
+            "previousProperty": -14.0625
+          },
+          {
+            "now": 25.3125,
+            "previousProperty": -22.5
+          },
+          {
+            "now": 102.06000000000003,
+            "previousProperty": 25.3125
+          },
+          {
+            "now": 180,
+            "previousProperty": 102.06000000000003
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": -3.06
+          },
+          {
+            "progress": 0.25,
+            "degree": -14.0625
+          },
+          {
+            "progress": 0.5,
+            "degree": -22.5
+          },
+          {
+            "progress": 0.75,
+            "degree": 25.3125
+          },
+          {
+            "progress": 0.9,
+            "degree": 102.06000000000003
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeOutBack",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 77.93999999999997,
+            "previousProperty": 0
+          },
+          {
+            "now": 154.6875,
+            "previousProperty": 77.93999999999997
+          },
+          {
+            "now": 202.5,
+            "previousProperty": 154.6875
+          },
+          {
+            "now": 194.0625,
+            "previousProperty": 202.5
+          },
+          {
+            "now": 183.05999999999997,
+            "previousProperty": 194.0625
+          },
+          {
+            "now": 180,
+            "previousProperty": 183.05999999999997
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 77.93999999999997
+          },
+          {
+            "progress": 0.25,
+            "degree": 154.6875
+          },
+          {
+            "progress": 0.5,
+            "degree": 202.5
+          },
+          {
+            "progress": 0.75,
+            "degree": 194.0625
+          },
+          {
+            "progress": 0.9,
+            "degree": 183.05999999999997
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInOutBack",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": -5.040000000000001,
+            "previousProperty": 0
+          },
+          {
+            "now": -11.25,
+            "previousProperty": -5.040000000000001
+          },
+          {
+            "now": 90,
+            "previousProperty": -11.25
+          },
+          {
+            "now": 191.25,
+            "previousProperty": 90
+          },
+          {
+            "now": 185.04,
+            "previousProperty": 191.25
+          },
+          {
+            "now": 180,
+            "previousProperty": 185.04
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": -5.040000000000001
+          },
+          {
+            "progress": 0.25,
+            "degree": -11.25
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 191.25
+          },
+          {
+            "progress": 0.9,
+            "degree": 185.04
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInBounce",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 2.1374999999999993,
+            "previousProperty": 0
+          },
+          {
+            "now": 4.921875000000001,
+            "previousProperty": 2.1374999999999993
+          },
+          {
+            "now": 42.1875,
+            "previousProperty": 4.921875000000001
+          },
+          {
+            "now": 94.921875,
+            "previousProperty": 42.1875
+          },
+          {
+            "now": 166.38750000000002,
+            "previousProperty": 94.921875
+          },
+          {
+            "now": 180,
+            "previousProperty": 166.38750000000002
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 2.1374999999999993
+          },
+          {
+            "progress": 0.25,
+            "degree": 4.921875000000001
+          },
+          {
+            "progress": 0.5,
+            "degree": 42.1875
+          },
+          {
+            "progress": 0.75,
+            "degree": 94.921875
+          },
+          {
+            "progress": 0.9,
+            "degree": 166.38750000000002
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeOutBounce",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 13.61249999999999,
+            "previousProperty": 0
+          },
+          {
+            "now": 85.078125,
+            "previousProperty": 13.61249999999999
+          },
+          {
+            "now": 137.8125,
+            "previousProperty": 85.078125
+          },
+          {
+            "now": 175.078125,
+            "previousProperty": 137.8125
+          },
+          {
+            "now": 177.8625,
+            "previousProperty": 175.078125
+          },
+          {
+            "now": 180,
+            "previousProperty": 177.8625
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 13.61249999999999
+          },
+          {
+            "progress": 0.25,
+            "degree": 85.078125
+          },
+          {
+            "progress": 0.5,
+            "degree": 137.8125
+          },
+          {
+            "progress": 0.75,
+            "degree": 175.078125
+          },
+          {
+            "progress": 0.9,
+            "degree": 177.8625
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "retained-tween-easeInOutBounce",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "steps": [
+          {
+            "now": 0,
+            "previousProperty": 0
+          },
+          {
+            "now": 5.3999999999999995,
+            "previousProperty": 0
+          },
+          {
+            "now": 21.09375,
+            "previousProperty": 5.3999999999999995
+          },
+          {
+            "now": 90,
+            "previousProperty": 21.09375
+          },
+          {
+            "now": 158.90625,
+            "previousProperty": 90
+          },
+          {
+            "now": 174.6,
+            "previousProperty": 158.90625
+          },
+          {
+            "now": 180,
+            "previousProperty": 174.6
+          }
+        ],
+        "values": [
+          {
+            "progress": 0,
+            "degree": 0
+          },
+          {
+            "progress": 0.1,
+            "degree": 5.3999999999999995
+          },
+          {
+            "progress": 0.25,
+            "degree": 21.09375
+          },
+          {
+            "progress": 0.5,
+            "degree": 90
+          },
+          {
+            "progress": 0.75,
+            "degree": 158.90625
+          },
+          {
+            "progress": 0.9,
+            "degree": 174.6
+          },
+          {
+            "progress": 1,
+            "degree": 180
+          }
+        ]
+      }
+    },
+    {
+      "name": "angle-0/90/false",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "initial": 0,
+        "degree": 90,
+        "to": false,
+        "final": {
+          "angle": 90,
+          "inline": "rotate(90deg)",
+          "left": 100,
+          "top": 100,
+          "cache": 90
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0.3000001907348633,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 90,
+            "at": 1.6000001430511475,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 1.6000001430511475,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 1.7000000476837158,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 1.8000001907348633,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 90,
+            "at": 1.9000000953674316,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 2.1000001430511475,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 2.1000001430511475,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 2.200000047683716,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 2.200000047683716,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 2.200000047683716
+          }
+        ]
+      }
+    },
+    {
+      "name": "angle-30/180/true",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "initial": 30,
+        "degree": 180,
+        "to": true,
+        "final": {
+          "angle": 180,
+          "inline": "rotate(180deg)",
+          "left": 100,
+          "top": 100,
+          "cache": 180
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 180,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 180,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 180
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 180,
+              "inline": "rotate(180deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 180
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 180,
+              "inline": "rotate(180deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 180
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 180,
+              "inline": "rotate(180deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 180
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 180,
+              "inline": "rotate(180deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 180
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.20000004768371582
+          }
+        ]
+      }
+    },
+    {
+      "name": "angle-0/-90/false",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "initial": 0,
+        "degree": -90,
+        "to": false,
+        "final": {
+          "angle": -90,
+          "inline": "rotate(-90deg)",
+          "left": 100,
+          "top": 100,
+          "cache": -90
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": -90,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": -90,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100,
+              "cache": -90
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": -90,
+              "inline": "rotate(-90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": -90
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": -90,
+              "inline": "rotate(-90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": -90
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": -90,
+              "inline": "rotate(-90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": -90
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": -90,
+              "inline": "rotate(-90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": -90
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.2999999523162842
+          }
+        ]
+      }
+    },
+    {
+      "name": "angle-720/15/false",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "initial": 720,
+        "degree": 15,
+        "to": false,
+        "final": {
+          "angle": 735,
+          "inline": "rotate(735deg)",
+          "left": 100,
+          "top": 100,
+          "cache": 735
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0,
+            "snapshot": {
+              "angle": 720,
+              "inline": "rotate(720deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 15,
+            "at": 0,
+            "snapshot": {
+              "angle": 720,
+              "inline": "rotate(720deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 720,
+              "inline": "rotate(720deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 720,
+              "inline": "rotate(720deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 720,
+              "inline": "rotate(720deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 735,
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 720,
+              "inline": "rotate(720deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 735
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 735,
+              "inline": "rotate(735deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 735
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 735,
+              "inline": "rotate(735deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 735
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 735,
+              "inline": "rotate(735deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 735
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 735,
+              "inline": "rotate(735deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 735
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.10000014305114746
+          }
+        ]
+      }
+    },
+    {
+      "name": "angle-720.5/15/false",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "initial": 720.5,
+        "degree": 15,
+        "to": false,
+        "final": {
+          "angle": 15.499986175338892,
+          "inline": "rotate(15.5deg)",
+          "left": 100,
+          "top": 100,
+          "cache": 15.50000021944691
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0,
+            "snapshot": {
+              "angle": 0.5000002194469105,
+              "inline": "rotate(720.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 15,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0.5000002194469105,
+              "inline": "rotate(720.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0.5000002194469105,
+              "inline": "rotate(720.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0.5000002194469105,
+              "inline": "rotate(720.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0.5000002194469105,
+              "inline": "rotate(720.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 15.50000021944691,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0.5000002194469105,
+              "inline": "rotate(720.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 15.50000021944691
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.19999980926513672,
+            "snapshot": {
+              "angle": 15.499986175338892,
+              "inline": "rotate(15.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 15.50000021944691
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.2999999523162842,
+            "snapshot": {
+              "angle": 15.499986175338892,
+              "inline": "rotate(15.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 15.50000021944691
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.2999999523162842,
+            "snapshot": {
+              "angle": 15.499986175338892,
+              "inline": "rotate(15.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 15.50000021944691
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.2999999523162842,
+            "snapshot": {
+              "angle": 15.499986175338892,
+              "inline": "rotate(15.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 15.50000021944691
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.2999999523162842
+          }
+        ]
+      }
+    },
+    {
+      "name": "angle--90.5/10/false",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "initial": -90.5,
+        "degree": 10,
+        "to": false,
+        "final": {
+          "angle": 279.50001850472995,
+          "inline": "rotate(279.5deg)",
+          "left": 100,
+          "top": 100,
+          "cache": 279.4999997805531
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0,
+            "snapshot": {
+              "angle": 269.4999997805531,
+              "inline": "rotate(-90.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 10,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 269.4999997805531,
+              "inline": "rotate(-90.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 269.4999997805531,
+              "inline": "rotate(-90.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 269.4999997805531,
+              "inline": "rotate(-90.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 269.4999997805531,
+              "inline": "rotate(-90.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 279.4999997805531,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 269.4999997805531,
+              "inline": "rotate(-90.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 279.4999997805531
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 279.50001850472995,
+              "inline": "rotate(279.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 279.4999997805531
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 279.50001850472995,
+              "inline": "rotate(279.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 279.4999997805531
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 279.50001850472995,
+              "inline": "rotate(279.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 279.4999997805531
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 279.50001850472995,
+              "inline": "rotate(279.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 279.4999997805531
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.20000004768371582
+          }
+        ]
+      }
+    },
+    {
+      "name": "angle-0/360.5/false",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "initial": 0,
+        "degree": 360.5,
+        "to": false,
+        "final": {
+          "angle": 0.5000002194469105,
+          "inline": "rotate(360.5deg)",
+          "left": 100,
+          "top": 100,
+          "cache": 360.5
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 360.5,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 360.5,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 360.5
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0.5000002194469105,
+              "inline": "rotate(360.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 360.5
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0.5000002194469105,
+              "inline": "rotate(360.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 360.5
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0.5000002194469105,
+              "inline": "rotate(360.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 360.5
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.19999980926513672,
+            "snapshot": {
+              "angle": 0.5000002194469105,
+              "inline": "rotate(360.5deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 360.5
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.19999980926513672
+          }
+        ]
+      }
+    },
+    {
+      "name": "angle-0/0/false",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "initial": 0,
+        "degree": 0,
+        "to": false,
+        "final": {
+          "angle": 0,
+          "inline": "rotate(0deg)",
+          "left": 100,
+          "top": 100
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.10000014305114746,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.10000014305114746
+          }
+        ]
+      }
+    },
+    {
+      "name": "angle-30/30/true",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "initial": 30,
+        "degree": 30,
+        "to": true,
+        "final": {
+          "angle": 30,
+          "inline": "rotate(30deg)",
+          "left": 100,
+          "top": 100
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 30,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 30,
+              "inline": "rotate(30deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.09999990463256836
+          }
+        ]
+      }
+    },
+    {
+      "name": "gate-vector-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-vector-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": -50,
+        "top": 150,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-image-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-image-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": -50,
+        "top": 150,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-hotspot-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-hotspot-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": -50,
+        "top": 150,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-panel-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-panel-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": -50,
+        "top": 150,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-hline-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-hline-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": -50,
+        "top": 150,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-vline-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-vline-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": -50,
+        "top": 150,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-input-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-input-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 0,
+        "inline": "rotate(0deg)",
+        "left": -50,
+        "top": 150
+      }
+    },
+    {
+      "name": "gate-textarea-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-textarea-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 0,
+        "inline": "rotate(0deg)",
+        "left": -50,
+        "top": 150
+      }
+    },
+    {
+      "name": "gate-select-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-select-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 0,
+        "inline": "rotate(0deg)",
+        "left": -50,
+        "top": 150
+      }
+    },
+    {
+      "name": "gate-tree-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-tree-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 0,
+        "inline": "rotate(0deg)",
+        "left": -50,
+        "top": 150
+      }
+    },
+    {
+      "name": "gate-table-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-table-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 0,
+        "inline": "rotate(0deg)",
+        "left": -50,
+        "top": 150
+      }
+    },
+    {
+      "name": "gate-inlineFrame-center",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 90,
+        "inline": "rotate(90deg)",
+        "left": 100,
+        "top": 100,
+        "cache": 90
+      }
+    },
+    {
+      "name": "gate-inlineFrame-top left",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "angle": 0,
+        "inline": "rotate(0deg)",
+        "left": -50,
+        "top": 150
+      }
+    },
+    {
+      "name": "rotated-local-offset-0",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "before": {
+          "angle": 0,
+          "inline": "rotate(0deg)",
+          "left": 100,
+          "top": 100
+        },
+        "after": {
+          "angle": 90,
+          "inline": "rotate(90deg)",
+          "left": 120,
+          "top": 60,
+          "cache": 90
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 90,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 30,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": -10,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "moved",
+            "id": "a",
+            "value": {
+              "x": 20,
+              "y": -40
+            },
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 120,
+              "top": 60
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 120,
+              "top": 60
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 90,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 120,
+              "top": 60,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 120,
+              "top": 60,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 120,
+              "top": 60,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 120,
+              "top": 60,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.09999990463256836
+          }
+        ]
+      }
+    },
+    {
+      "name": "rotated-local-offset-90",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "before": {
+          "angle": 90,
+          "inline": "rotate(90deg)",
+          "left": 100,
+          "top": 100
+        },
+        "after": {
+          "angle": 180,
+          "inline": "rotate(180deg)",
+          "left": 140,
+          "top": 120,
+          "cache": 180
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 90,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 30,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": -10,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "moved",
+            "id": "a",
+            "value": {
+              "x": 40,
+              "y": 20
+            },
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 140,
+              "top": 120
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 140,
+              "top": 120
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 180,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 140,
+              "top": 120,
+              "cache": 180
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 180,
+              "inline": "rotate(180deg)",
+              "left": 140,
+              "top": 120,
+              "cache": 180
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 180,
+              "inline": "rotate(180deg)",
+              "left": 140,
+              "top": 120,
+              "cache": 180
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 180,
+              "inline": "rotate(180deg)",
+              "left": 140,
+              "top": 120,
+              "cache": 180
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.20000004768371582
+          }
+        ]
+      }
+    },
+    {
+      "name": "rotated-local-offset--45.5",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "before": {
+          "angle": 314.5000072367092,
+          "inline": "rotate(-45.5deg)",
+          "left": 100,
+          "top": 100
+        },
+        "after": {
+          "angle": 44.50000723670925,
+          "inline": "rotate(404.5deg)",
+          "left": 85.4882,
+          "top": 57.6986,
+          "cache": 404.5000072367092
+        },
+        "trace": [
+          {
+            "kind": "singleImage",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 314.5000072367092,
+              "inline": "rotate(-45.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 90,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 314.5000072367092,
+              "inline": "rotate(-45.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 30,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 314.5000072367092,
+              "inline": "rotate(-45.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": -10,
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 314.5000072367092,
+              "inline": "rotate(-45.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.20000004768371582,
+            "snapshot": {
+              "angle": 314.5000072367092,
+              "inline": "rotate(-45.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "moved",
+            "id": "a",
+            "value": {
+              "x": -14.511827337319659,
+              "y": -42.301381387985685
+            },
+            "at": 0.2999999523162842,
+            "snapshot": {
+              "angle": 314.5000072367092,
+              "inline": "rotate(-45.5deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 1,
+            "at": 0.2999999523162842,
+            "snapshot": {
+              "angle": 314.5000072367092,
+              "inline": "rotate(-45.5deg)",
+              "left": 85.4882,
+              "top": 57.6986
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.2999999523162842,
+            "snapshot": {
+              "angle": 314.5000072367092,
+              "inline": "rotate(-45.5deg)",
+              "left": 85.4882,
+              "top": 57.6986
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 404.5000072367092,
+            "at": 0.2999999523162842,
+            "snapshot": {
+              "angle": 314.5000072367092,
+              "inline": "rotate(-45.5deg)",
+              "left": 85.4882,
+              "top": 57.6986,
+              "cache": 404.5000072367092
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.39999985694885254,
+            "snapshot": {
+              "angle": 44.50000723670925,
+              "inline": "rotate(404.5deg)",
+              "left": 85.4882,
+              "top": 57.6986,
+              "cache": 404.5000072367092
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.39999985694885254,
+            "snapshot": {
+              "angle": 44.50000723670925,
+              "inline": "rotate(404.5deg)",
+              "left": 85.4882,
+              "top": 57.6986,
+              "cache": 404.5000072367092
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.39999985694885254,
+            "snapshot": {
+              "angle": 44.50000723670925,
+              "inline": "rotate(404.5deg)",
+              "left": 85.4882,
+              "top": 57.6986,
+              "cache": 404.5000072367092
+            }
+          },
+          {
+            "kind": "dispatch-next",
+            "id": null,
+            "value": 1,
+            "at": 0.39999985694885254
+          }
+        ]
+      }
+    },
+    {
+      "name": "coalesced-unchanged-resize-ignores-clockwise-false",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "final": {
+          "angle": 90,
+          "inline": "rotate(90deg)",
+          "left": 100,
+          "top": 100,
+          "cache": 90
+        },
+        "trace": [
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.5,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.5,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.5,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 90,
+            "at": 0.5,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 90,
+            "at": 0.5,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.6000001430511475,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.6000001430511475,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.6000001430511475,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onResize",
+            "at": 0.6000001430511475,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "coalesced-unchanged-resize-ignores-clockwise-true",
+      "kind": "actual-edge-retained-jquery-and-function-slices-with-explicit-host-sinks",
+      "observed": {
+        "final": {
+          "angle": 90,
+          "inline": "rotate(90deg)",
+          "left": 100,
+          "top": 100,
+          "cache": 90
+        },
+        "trace": [
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 0,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onRotate",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "eval",
+            "id": "a",
+            "value": 90,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100
+            }
+          },
+          {
+            "kind": "cache",
+            "id": "a",
+            "value": 90,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 0,
+              "inline": "rotate(0deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "fire",
+            "id": "a",
+            "value": 5,
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "fit",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "annotation",
+            "id": "a",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "value": "onResize",
+            "at": 0.09999990463256836,
+            "snapshot": {
+              "angle": 90,
+              "inline": "rotate(90deg)",
+              "left": 100,
+              "top": 100,
+              "cache": 90
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

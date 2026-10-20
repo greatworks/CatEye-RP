@@ -1,0 +1,584 @@
+{
+  "schema": 1,
+  "method": "Bounded static CIL instruction replay, not DLL execution or original GUI",
+  "assemblySha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+  "limitations": [
+    "GetEdit object equality modelled structurally for scalar/Point examples; no claim for every arbitrary custom object equality.",
+    "Geometry external provider, min-size/scale constraint and event calls are explicit sinks; cases use ordinary non-contained, scale=1, allowed sizes.",
+    "clear-adaptive-property-keys is a sink; all-map iteration proven separately by WJpV retained CIL, not simulated as native execution.",
+    "No GUI input/drag/undo dispatch was executed."
+  ],
+  "sources": [
+    {
+      "path": "research/adaptive-all-views-edit-diff-cil.json",
+      "sha256": "319cfd1ba385b8b844a0ad0435e0a21cdabf42a7ce8f41104aab416f9875e3d8"
+    },
+    {
+      "path": "research/adaptive-all-views-prop-flags-cil.json",
+      "sha256": "035750475eb63a187980a2d97a7480fb07a2302fd124631bfb6c5e40a8c3f28e"
+    },
+    {
+      "path": "research/adaptive-all-views-position-cil.json",
+      "sha256": "b61233793fefd0d7fa9f4a34a749517803ace9e9de3db48d1a6e042524d925d4"
+    },
+    {
+      "path": "research/adaptive-all-views-geometry-write-cil.json",
+      "sha256": "f15bf9e876c798ecb265a9e9a57dd55571ab126f5d81584346099a7cef984a49"
+    },
+    {
+      "path": "research/adaptive-all-views-property-write-cil.json",
+      "sha256": "f3198a94d99681c84b0030231445d53b48488c2d52f5faaebcaf0be70b3f11e0"
+    },
+    {
+      "path": "research/adaptive-all-views-size-cil.json",
+      "sha256": "59b186faf30ccd979d79c02fe9658477950803d12fed5ca6264a753c2b3868f1"
+    },
+    {
+      "path": "research/adaptive-all-views-clear-geometry-cil.json",
+      "sha256": "108875a05eaa772252bbcb6d987cc528499213c6d29e068f6d2270e73ff6e3bd"
+    },
+    {
+      "path": "research/adaptive-all-views-metadata.json",
+      "sha256": "022d9867cfc176599bdb3d7abbaeb842304c8faf7bd8a3ac46f911e77d920f27"
+    },
+    {
+      "path": "research/adaptive-all-views-properties-cil.json",
+      "sha256": "9ce91b7bdafa8f736d267b5630cef3d78743be2cd9c96d20304649d8dcd782fa"
+    },
+    {
+      "path": "research/adaptive-placement-authoring-owner-cil.json",
+      "sha256": "ec1f255e8b29456e7ba9d762fe606f1570e64f44d62f1743e287fbb1b8c216a0"
+    },
+    {
+      "path": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    },
+    {
+      "path": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128"
+    }
+  ],
+  "results": [
+    {
+      "name": "same effective scalar",
+      "observed": {
+        "requested": {
+          "name": 101,
+          "value": 12,
+          "overridden": true,
+          "indeterminate": false
+        },
+        "current": 12,
+        "currentIndeterminate": false,
+        "capability": true,
+        "edit": null
+      }
+    },
+    {
+      "name": "changed scalar",
+      "observed": {
+        "requested": {
+          "name": 101,
+          "value": 13,
+          "overridden": true,
+          "indeterminate": false
+        },
+        "current": 12,
+        "currentIndeterminate": false,
+        "capability": true,
+        "edit": {
+          "name": 101,
+          "value": 13,
+          "info": "<opaque-prop-info>",
+          "overridden": true
+        }
+      }
+    },
+    {
+      "name": "same point",
+      "observed": {
+        "requested": {
+          "name": 101,
+          "value": {
+            "x": 20,
+            "y": 70
+          },
+          "overridden": true,
+          "indeterminate": false
+        },
+        "current": {
+          "x": 20,
+          "y": 70
+        },
+        "currentIndeterminate": false,
+        "capability": true,
+        "edit": null
+      }
+    },
+    {
+      "name": "only x changed is a whole point",
+      "observed": {
+        "requested": {
+          "name": 101,
+          "value": {
+            "x": 21,
+            "y": 70
+          },
+          "overridden": true,
+          "indeterminate": false
+        },
+        "current": {
+          "x": 20,
+          "y": 70
+        },
+        "currentIndeterminate": false,
+        "capability": true,
+        "edit": {
+          "name": 101,
+          "value": {
+            "x": 21,
+            "y": 70
+          },
+          "info": "<opaque-prop-info>",
+          "overridden": true
+        }
+      }
+    },
+    {
+      "name": "unoverridden request",
+      "observed": {
+        "requested": {
+          "name": 101,
+          "value": 13,
+          "overridden": false,
+          "indeterminate": false
+        },
+        "current": 12,
+        "currentIndeterminate": false,
+        "capability": true,
+        "edit": null
+      }
+    },
+    {
+      "name": "indeterminate request",
+      "observed": {
+        "requested": {
+          "name": 101,
+          "value": 13,
+          "overridden": true,
+          "indeterminate": true
+        },
+        "current": 12,
+        "currentIndeterminate": false,
+        "capability": true,
+        "edit": null
+      }
+    },
+    {
+      "name": "indeterminate current same value",
+      "observed": {
+        "requested": {
+          "name": 101,
+          "value": 12,
+          "overridden": true,
+          "indeterminate": false
+        },
+        "current": 12,
+        "currentIndeterminate": true,
+        "capability": true,
+        "edit": {
+          "name": 101,
+          "value": 12,
+          "info": "<opaque-prop-info>",
+          "overridden": true
+        }
+      }
+    },
+    {
+      "name": "capability rejects changed request",
+      "observed": {
+        "requested": {
+          "name": 101,
+          "value": 13,
+          "overridden": true,
+          "indeterminate": false
+        },
+        "current": 12,
+        "currentIndeterminate": false,
+        "capability": false,
+        "edit": null
+      }
+    },
+    {
+      "name": "same location All Views",
+      "observed": {
+        "value": {
+          "x": 20,
+          "y": 70
+        },
+        "allViews": true,
+        "trace": []
+      }
+    },
+    {
+      "name": "changed X All Views",
+      "observed": {
+        "value": {
+          "x": 21,
+          "y": 70
+        },
+        "allViews": true,
+        "trace": [
+          {
+            "call": "clear-adaptive-property-keys",
+            "keys": [
+              101
+            ]
+          },
+          {
+            "write": "base",
+            "key": 101,
+            "value": {
+              "x": 21,
+              "y": 70
+            }
+          },
+          {
+            "call": "invalidate-provider",
+            "provider": "current",
+            "key": 101
+          },
+          {
+            "call": "notify-property"
+          },
+          {
+            "call": "invalidate-after"
+          },
+          {
+            "call": "OnLocationChanged"
+          }
+        ]
+      }
+    },
+    {
+      "name": "changed X current view",
+      "observed": {
+        "value": {
+          "x": 21,
+          "y": 70
+        },
+        "allViews": false,
+        "trace": [
+          {
+            "write": "current",
+            "key": 101,
+            "value": {
+              "x": 21,
+              "y": 70
+            }
+          },
+          {
+            "call": "invalidate-after"
+          },
+          {
+            "call": "OnLocationChanged"
+          }
+        ]
+      }
+    },
+    {
+      "name": "same size All Views",
+      "observed": {
+        "value": {
+          "width": 100,
+          "height": 80
+        },
+        "allViews": true,
+        "trace": []
+      }
+    },
+    {
+      "name": "changed width All Views",
+      "observed": {
+        "value": {
+          "width": 101,
+          "height": 80
+        },
+        "allViews": true,
+        "trace": [
+          {
+            "call": "clear-adaptive-property-keys",
+            "keys": [
+              105
+            ]
+          },
+          {
+            "write": "base",
+            "key": 105,
+            "value": {
+              "width": 101,
+              "height": 80
+            }
+          },
+          {
+            "call": "invalidate-provider",
+            "provider": "current",
+            "key": 105
+          },
+          {
+            "call": "notify-property"
+          },
+          {
+            "call": "invalidate-after"
+          },
+          {
+            "call": "EIuw"
+          }
+        ]
+      }
+    },
+    {
+      "name": "changed width current view",
+      "observed": {
+        "value": {
+          "width": 101,
+          "height": 80
+        },
+        "allViews": false,
+        "trace": [
+          {
+            "write": "current",
+            "key": 105,
+            "value": {
+              "width": 101,
+              "height": 80
+            }
+          },
+          {
+            "call": "invalidate-after"
+          },
+          {
+            "call": "EIuw"
+          }
+        ]
+      }
+    }
+  ],
+  "atomics": [
+    {
+      "name": "Location",
+      "key": 101,
+      "setter": 100717328,
+      "il": [
+        34,
+        35,
+        37,
+        38,
+        43
+      ],
+      "carrier": "m5wr.f5wV"
+    },
+    {
+      "name": "Size",
+      "key": 105,
+      "setter": 100717330,
+      "il": [
+        34,
+        35,
+        37,
+        38,
+        43
+      ],
+      "carrier": "hHBO.fHBd"
+    },
+    {
+      "name": "Fill",
+      "key": 7,
+      "setter": 100717372,
+      "il": [
+        33,
+        34,
+        35,
+        36
+      ],
+      "carrier": "reference value"
+    },
+    {
+      "name": "BorderFill",
+      "key": 8,
+      "setter": 100717374,
+      "il": [
+        33,
+        34,
+        35,
+        36
+      ],
+      "carrier": "reference value"
+    },
+    {
+      "name": "CornerRadius",
+      "key": 71,
+      "setter": 100717378,
+      "il": [
+        34,
+        35,
+        37,
+        38,
+        43
+      ],
+      "carrier": "System.Double"
+    },
+    {
+      "name": "CornerVisibility",
+      "key": 81,
+      "setter": 100717428,
+      "il": [
+        33,
+        34,
+        36,
+        37,
+        42
+      ],
+      "carrier": "Axure.Platform.Position"
+    },
+    {
+      "name": "BorderWidth",
+      "key": 15,
+      "setter": 100717392,
+      "il": [
+        33,
+        34,
+        36,
+        37,
+        42
+      ],
+      "carrier": "System.Double"
+    },
+    {
+      "name": "BorderVisibility",
+      "key": 80,
+      "setter": 100717426,
+      "il": [
+        33,
+        34,
+        36,
+        37,
+        42
+      ],
+      "carrier": "Axure.Platform.Position"
+    },
+    {
+      "name": "PaddingLeft",
+      "key": 11,
+      "setter": 100717384,
+      "il": [
+        33,
+        34,
+        36,
+        37,
+        42
+      ],
+      "carrier": "System.Double"
+    },
+    {
+      "name": "PaddingTop",
+      "key": 12,
+      "setter": 100717386,
+      "il": [
+        33,
+        34,
+        36,
+        37,
+        42
+      ],
+      "carrier": "System.Double"
+    },
+    {
+      "name": "PaddingRight",
+      "key": 13,
+      "setter": 100717388,
+      "il": [
+        34,
+        35,
+        37,
+        38,
+        43
+      ],
+      "carrier": "System.Double"
+    },
+    {
+      "name": "PaddingBottom",
+      "key": 14,
+      "setter": 100717390,
+      "il": [
+        33,
+        34,
+        36,
+        37,
+        42
+      ],
+      "carrier": "System.Double"
+    },
+    {
+      "name": "LineEnds",
+      "key": 17,
+      "setter": 100717396,
+      "il": [
+        33,
+        34,
+        36,
+        37,
+        42
+      ],
+      "carrier": "vHea.SHeh"
+    },
+    {
+      "name": "IxStyles",
+      "key": 21,
+      "setter": 100717412,
+      "il": [
+        34,
+        35,
+        37,
+        38
+      ],
+      "carrier": "reference value"
+    },
+    {
+      "name": "OuterShadow",
+      "key": 72,
+      "setter": 100717416,
+      "il": [
+        33,
+        34,
+        36,
+        37
+      ],
+      "carrier": "reference value"
+    },
+    {
+      "name": "InnerShadow",
+      "key": 73,
+      "setter": 100717418,
+      "il": [
+        33,
+        34,
+        36,
+        37
+      ],
+      "carrier": "reference value"
+    },
+    {
+      "name": "TextShadow",
+      "key": 74,
+      "setter": 100717420,
+      "il": [
+        34,
+        35,
+        37,
+        38
+      ],
+      "carrier": "reference value"
+    }
+  ]
+}

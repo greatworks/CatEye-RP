@@ -1,0 +1,267 @@
+{
+  "capturedAt": "2026-10-20T05:39:59.758Z",
+  "target": "Axure RP 11.0.0.4150",
+  "execution": "Exact original action/compress/item sizing/public Move consumers + full original move/math in NodeVM. Geometry, collections, DOM writes and animation scheduling are declared facades.",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "bytes": 122627
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "bytes": 79505
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\move.js",
+      "sha256": "c823954b5ed5862d56176b8984837e8f26588540ee4768d4483d68a399b95644",
+      "bytes": 22052
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\math.js",
+      "sha256": "f56ab4a6c3f6e91aaba9bebf2e81485965fc82bca63af0c606593d580c1de883",
+      "bytes": 16141
+    }
+  ],
+  "ranges": [
+    {
+      "file": "axQuery.std.js",
+      "from": 457,
+      "through": 483,
+      "sha256": "3b705c92658c348356a3e44cc97cb6c605f6d65fa2acb10cf07f060581fb6446"
+    },
+    {
+      "file": "axQuery.std.js",
+      "from": 523,
+      "through": 540,
+      "sha256": "1fa00dc87a3ad75d958d5cdc69aed8ca46005bcf535ffd1c000c30912969a574"
+    },
+    {
+      "file": "repeater.js",
+      "from": 1483,
+      "through": 1538,
+      "sha256": "12ea64a642d0b1dddfbe450e9d7f8be2f33fd398e7099eaf6102985351b36cfd"
+    },
+    {
+      "file": "repeater.js",
+      "from": 1080,
+      "through": 1290,
+      "sha256": "8a70d7ca754c6ce79216f060099d1620e86049b2abeed7efd89d6a967822f180"
+    },
+    {
+      "file": "repeater.js",
+      "from": 1998,
+      "through": 2021,
+      "sha256": "ff5536bf7970fadb22622ee9120884ef644b4653186878a1f5cc48f1c5f625c0"
+    },
+    {
+      "file": "repeater.js",
+      "from": 2340,
+      "through": 2604,
+      "sha256": "713f4ebc7fc41237c73cf9f46cb89c89a34e505a564012dbed70534865ca5e0c"
+    },
+    {
+      "file": "action.js",
+      "from": 702,
+      "through": 742,
+      "sha256": "f1a2ee8bf72395c2b3567741c4443f67f4d2eb3782a89854c0d51acdbc0c431e"
+    },
+    {
+      "file": "action.js",
+      "from": 1258,
+      "through": 1284,
+      "sha256": "1c5fe58e4da21b75038ec83094b6863a838b02a2ddf8f468ac043085333391ed"
+    },
+    {
+      "file": "action.js",
+      "from": 1528,
+      "through": 1552,
+      "sha256": "bacad3b58778377bba1513c4ecd59127949a41dc65572d764c984a4807027051"
+    }
+  ],
+  "script": {
+    "path": "research/runtime-transform-special-probe.mjs",
+    "sha256": "185990e0f685cdc2581ffe1f7fa7fa800fdd9def53662ed11e13e14dcc09bdce"
+  },
+  "summary": {
+    "total": 32,
+    "passed": 0,
+    "failed": 32
+  },
+  "results": [
+    {
+      "name": "grow inferred",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:295\n    at evalmachine.<anonymous>:1:306\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "shrink inferred",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:295\n    at evalmachine.<anonymous>:1:306\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "grow explicit",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:294\n    at evalmachine.<anonymous>:1:305\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "shrink explicit",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:294\n    at evalmachine.<anonymous>:1:305\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "same explicit",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:294\n    at evalmachine.<anonymous>:1:305\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "same inferred",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:295\n    at evalmachine.<anonymous>:1:306\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "negative supplied grow",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:295\n    at evalmachine.<anonymous>:1:306\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "negative supplied shrink",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:295\n    at evalmachine.<anonymous>:1:306\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "strict cross overlap 100/10/150",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:267\n    at evalmachine.<anonymous>:1:278\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "strict cross overlap 199/10/150",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:267\n    at evalmachine.<anonymous>:1:278\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "strict cross overlap 200/10/150",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:267\n    at evalmachine.<anonymous>:1:278\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "strict cross overlap 90/10/150",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:266\n    at evalmachine.<anonymous>:1:277\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "strict cross overlap 90/11/150",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:266\n    at evalmachine.<anonymous>:1:277\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "strict cross overlap 100/10/149.999",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:271\n    at evalmachine.<anonymous>:1:282\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "strict cross overlap 100/10/150.001",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:271\n    at evalmachine.<anonymous>:1:282\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "strict cross overlap 100/0/160",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:266\n    at evalmachine.<anonymous>:1:277\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "current cross origin with maximum old/current width",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:373\n    at evalmachine.<anonymous>:1:384\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "nonresize NaN means unit primary shift and NaN complementary zero",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:272\n    at evalmachine.<anonymous>:1:283\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "Right primary and complementary axis",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:271\n    at evalmachine.<anonymous>:1:282\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "DOM ordering, hidden and fixed eligibility",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:497\n    at evalmachine.<anonymous>:1:508\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "nested panel stays within state, does not move external sibling",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:400\n    at evalmachine.<anonymous>:1:411\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "candidate panel uses shown state cross width not outer width",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:352\n    at evalmachine.<anonymous>:1:363\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "animated primary-only keeps easing and releases after onMove",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:274\n    at evalmachine.<anonymous>:1:331\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "instant order fit then release then onMove",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:268\n    at evalmachine.<anonymous>:1:279\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "action consumer chooses old rectangle on Resize",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:453\n    at evalmachine.<anonymous>:1:464\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "action ordinary event uses current threshold and unit inferred delta",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:438\n    at evalmachine.<anonymous>:1:449\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "thisItem full consumer resizes row and pushes following rows once",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:650\n    at evalmachine.<anonymous>:1:661\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "thisItem equal dimensions does not emit resize",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:535\n    at evalmachine.<anonymous>:1:546\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "thisItem blank and NaN preserve dimensions, negative clamps zero",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:605\n    at evalmachine.<anonymous>:1:616\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "horizontal row layout shifts only later items primary axis",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:406\n    at evalmachine.<anonymous>:1:417\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "row source compression isolated, nonfit row pushes following item",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:636\n    at evalmachine.<anonymous>:1:647\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    },
+    {
+      "name": "fit-content row skips explicit item push",
+      "passed": false,
+      "error": "evalmachine.<anonymous>:32\n    function snapshot(){return Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{left:num(n.style.left),top:num(n.style.top),width:num(n.style.width),height:num(n.style.height),display:n.style.display}]))}\n                                                                                                            ^\n\nTypeError: Cannot read properties of undefined (reading 'left')\n    at evalmachine.<anonymous>:32:109\n    at Array.map (<anonymous>)\n    at snapshot (evalmachine.<anonymous>:32:73)\n    at result (evalmachine.<anonymous>:33:37)\n    at evalmachine.<anonymous>:1:623\n    at evalmachine.<anonymous>:1:634\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:63:30\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-special-probe.mjs:66:80)"
+    }
+  ],
+  "substitutions": [
+    "DOM geometry, CSS numeric values, parent/type identity, visibility and direct children are controlled in-memory fixtures.",
+    "Original MoveWidget and CSS writes run, but animate uses queued controlled endpoint completion, not real jQuery or clock/easing sampling.",
+    "fitParentPanel, event listener delivery, drag logging and animation channel release are recording sinks.",
+    "Input expressions supply explicit StringLiteral-like values; original native compiler/expression parser and real repeater binding lifecycle are not run."
+  ],
+  "originalDllExecuted": false,
+  "originalAxureGuiCompared": false
+}

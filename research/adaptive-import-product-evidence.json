@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "status": "focused product implementation frozen",
+  "blockingFindings": [],
+  "files": [
+    {
+      "path": "src/model/import-rp.ts",
+      "sha256": "02454b55b5deee4e79f69e26dd464e48be922b3dae20f1a2f793d9e3b20a817f"
+    },
+    {
+      "path": "src/model/import-rp-adaptive.ts",
+      "sha256": "851ccaff2c8e987d9844afce66713e038df6844998fe5db6dcc80f51e6faa511"
+    },
+    {
+      "path": "tests/import-rp-adaptive-sets.test.ts",
+      "sha256": "84a7220ac751bc28d63524c1681de8f462edfb1b5f03cf5b3dcde43100e2527b"
+    },
+    {
+      "path": "tests/import-rp-adaptive-styles.test.ts",
+      "sha256": "4c4518b26ec87e5084fe789d256bc5f7e3a73b739264b70d370af7f0de0865a1"
+    },
+    {
+      "path": "tests/import-rp-adaptive-raw.test.ts",
+      "sha256": "25bed65911bda4b32d55db637d4dd605476d10ad072cbe0901c55bd85cad8f8c"
+    },
+    {
+      "path": "tests/import-rp-rich-hyperlink.test.ts",
+      "sha256": "23f416c7c49f0f13f2e2d48bb200c1ecd03c43e47d02e91d9a1538ad9da00133"
+    },
+    {
+      "path": "tests/import-rp-table.test.ts",
+      "sha256": "ccd696fcc4d8e54b5b079e17e47b6145a05807ba4e7118b0a8e1b76b94c482e3"
+    }
+  ],
+  "report": {
+    "path": "research/adaptive-import-product-evidence.md",
+    "sha256": "7efa8d8c0deee4e9b1fccdb333aa19e0b023db832ff0af7ba6eab5ccafc7451b"
+  },
+  "validation": {
+    "newProduct": {
+      "path": ".build/adaptive-import-product-green.json",
+      "sha256": "38762681fb2e056de80218383ff8b5426d0b4e338cc8e8ae287be0bd562401c5",
+      "passed": 70,
+      "failed": 0,
+      "skipped": 0,
+      "total": 70,
+      "success": true
+    },
+    "existingRegression": {
+      "path": ".build/adaptive-import-existing-green.json",
+      "sha256": "1b5fa123eae3a5491558c4a68a4e073528633351af1e0feb84c68746b522932e",
+      "passed": 146,
+      "failed": 0,
+      "skipped": 0,
+      "total": 146,
+      "success": true
+    },
+    "typecheck": {
+      "path": ".build/adaptive-import-typecheck.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217",
+      "exitCode": 0
+    },
+    "redEvidence": [
+      {
+        "path": ".build/adaptive-import-sets-red.json",
+        "sha256": "4734fac1498fb1f2fb71ab7648ae8f9fa7495350b66694de3e24f91a9eb49a9f",
+        "passed": 3,
+        "failed": 22,
+        "skipped": 0,
+        "total": 25,
+        "success": false
+      },
+      {
+        "path": ".build/adaptive-import-local-red.json",
+        "sha256": "825984256d2a9b1f37ea048626e0b09f15e900abbd1470e2415000bb1dfa1699",
+        "passed": 15,
+        "failed": 5,
+        "skipped": 25,
+        "total": 45,
+        "success": false
+      },
+      {
+        "path": ".build/adaptive-import-container-red.json",
+        "sha256": "3295624e0f4ff01feed83c75a9c28b144fb0f0a62351fd59e7c70341f7552856",
+        "passed": 0,
+        "failed": 2,
+        "skipped": 8,
+        "total": 10,
+        "success": false
+      },
+      {
+        "path": ".build/adaptive-import-existing-before-fixture-fix.json",
+        "sha256": "1e51b5b3437a7ac702fe30f958ba60489832c8f4e88ef3598453c00a6ebd62f5",
+        "passed": 142,
+        "failed": 4,
+        "skipped": 0,
+        "total": 146,
+        "success": false
+      }
+    ],
+    "identityProbe": {
+      "path": ".build/adaptive-import-fixture-identity-probe.json",
+      "sha256": "436453b5e2ddb25e9ece134c30ad2a9195658687385bf497c3b18da9615fb5b3"
+    },
+    "independentReview": {
+      "path": "research/adaptive-import-styles-integration-review.json",
+      "sha256": "a0ef8953397fd31b30cb148d7217df5abb983e8febe2f851c7b4b42233b0d3f6"
+    }
+  },
+  "notes": [
+    "The first set/action red run includes one fixture helper-shadowing error; 21 other failures were feature gaps.",
+    "Two intermediate test-authoring syntax errors were corrected before executable product tests.",
+    "Four old clone sites now synchronize sourceId with their synthetic new IDs; original assertions are unchanged.",
+    "No full suite, browser, build or packaging run by this worker.",
+    "Native named/assigned positives are independently encoded synthetic fixtures, not Axure GUI-generated output."
+  ]
+}

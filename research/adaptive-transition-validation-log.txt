@@ -1,0 +1,17 @@
+2026-10-15. New research only. No product source or test changes.
+
+NodeVM harness development:
+- Initial slice 74..93 omitted widgetHasState closing return/brace: syntax failure. Fixed exact source range to74..96.
+- Initial applySvg style-source slice omitted local declaration: ReferenceError. Fixed exact range to1001..1008.
+- Mock children query lacked length and therefore skipped the real source length gate: assertion failure. Added explicit length4.
+- Contained synthetic object lacked mandatory containing owner: computeStateStyleForViewChain TypeError. Added explicit synthetic parent, with same declared fixture style.
+- Final expanded original-function matrix:47/47 passed.
+
+Real Edge DOM harness development:
+- Initial action-style helper extraction ended midway through setApplyStyleTag: syntax failure. Retained only complete registry/isLastAppliedStyle functions and complete applyWidgetStyle.
+- Initial helper call used wrong argument order: isLastAppliedStyle error. Corrected to exact native signature(id,className,style,image,clearPrevious).
+- Nonplain rich case exposed unbound structuredClone adapter Illegal invocation. Replaced adapter with value=>structuredClone(value).
+- Final actual Edge155.0.4283.45 DOM cases:3/3 passed, network requests0, page errors0.
+
+Retained-census containment join:29/29 records, original Default.rplib SHA unchanged.
+No failed product assertion was removed or changed. These were research harness bootstrap/adapter corrections; passing results are separately retained in JSON with exact slice/source hashes.

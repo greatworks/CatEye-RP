@@ -1,0 +1,67 @@
+{
+  "scope": "Line style authoring, separate from renderer pixel verification",
+  "sources": [
+    {
+      "file": "src/components/LineStyleEditor.tsx",
+      "sha256": "cc98849a2baaf1d0639ffaa4bb9e333876cabce76d2969a7accb6af55ebd5562"
+    },
+    {
+      "file": "src/components/LineStyleEditor.css",
+      "sha256": "bb9683977e7610555e71b70d6c94127e6cc7c60596e2d3d335bb06664ec30caa"
+    },
+    {
+      "file": "src/components/Inspector.tsx",
+      "sha256": "158bb5764cd991e5ab3d7f12fda4f4cd4c17dfcadc5ee26dd6ce50509b5ff25d"
+    },
+    {
+      "file": "src/App.tsx",
+      "sha256": "544faba01640548d3383f9cd57af0a9a8b6a6543791ebd3bd393717a9b0bc9c7"
+    },
+    {
+      "file": "tests/line-style-authoring.test.ts",
+      "sha256": "4abb18c6a0e638be3b887d5de6f255bb3cb13f31b2eab2e785cac4c78555756f"
+    },
+    {
+      "file": "tests/e2e/line-style-authoring.spec.ts",
+      "sha256": "98529a1187e068074205c740146c7bad79e08ecc2ca6ccab79a6bef3ec51a435"
+    },
+    {
+      "file": "research/line-style-authoring-evidence.md",
+      "sha256": "8bda30a20fda5e9588ac08c554cbaa011b07907218e0369cf2ebf1c616d143c5"
+    }
+  ],
+  "verification": {
+    "unit": {
+      "new": 9,
+      "existing": 15,
+      "passed": 24,
+      "log": ".build/line-style-authoring-unit-final.log"
+    },
+    "typecheck": {
+      "exitCode": 0,
+      "log": ".build/line-style-authoring-typecheck-final.log"
+    },
+    "browser": {
+      "newWorkflows": 4,
+      "existingWorkflows": 4,
+      "distinctPassed": 8,
+      "firstRun": {
+        "passed": 7,
+        "failed": 1,
+        "log": ".build/line-style-authoring-focused.log"
+      },
+      "fixedRegression": {
+        "passed": 1,
+        "failed": 0,
+        "log": ".build/line-style-authoring-mixed-fix.log"
+      },
+      "failure": "App second text-style application restored unsupported arrow fields onto mixed-selected input; same filter now applied at both sites."
+    }
+  },
+  "capabilities": "Shared createLineStyleRenderer supportsPattern/supportsSides/supportsEnds; no independent cap/join author field",
+  "boundaries": [
+    "No full suite/build/package in this author subtask.",
+    "Stored/UI behavior verification is not native arrow geometry or dash pixel evidence.",
+    "Native GUI capture remains unavailable."
+  ]
+}

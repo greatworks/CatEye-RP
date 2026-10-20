@@ -1,0 +1,554 @@
+{
+  "version": 1,
+  "target": "Axure RP 11.0.0.4150",
+  "packageSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "extractionEvidence": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "files": [
+    {
+      "file": "repeater.js",
+      "sourcePath": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "bytes": 122627
+    },
+    {
+      "file": "action.js",
+      "sourcePath": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    },
+    {
+      "file": "doc.js",
+      "sourcePath": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1",
+      "bytes": 41976
+    },
+    {
+      "file": "variables.js",
+      "sourcePath": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\variables.js",
+      "sha256": "91c71787560b88e597b6baf934bd68075597901afccf4787b6aa9d8c43453188",
+      "bytes": 6971
+    },
+    {
+      "file": "sto.js",
+      "sourcePath": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\sto.js",
+      "sha256": "c1ff17b0ed8a2e3a34cba550c7f4e9447827d131e38542d397e686c0e0b6b9b6",
+      "bytes": 9159
+    },
+    {
+      "file": "expr.js",
+      "sourcePath": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6",
+      "bytes": 29187
+    }
+  ],
+  "excerpts": [
+    {
+      "file": "expr.js",
+      "startLine": 100,
+      "endLine": 115,
+      "purpose": "boolean-and-path-targets",
+      "text": "    _exprHandlers.booleanLiteral = function(expr) {\n        return expr.value;\n    };\n\n    _exprHandlers.nullLiteral = function() { return null; };\n\n    _exprHandlers.pathLiteral = function(expr, eventInfo) {\n        if(expr.isThis) return [eventInfo.srcElement];\n        if(expr.isFocused && window.lastFocusedControl) {\n            $ax('#' + window.lastFocusedControl).focus();\n            return [window.lastFocusedControl];\n        }\n        if(expr.isTarget) return [eventInfo.targetElement];\n\n        return $ax.getElementIdsFromPath(expr.value, eventInfo);\n    };"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 127,
+      "endLine": 184,
+      "purpose": "fcall-per-target-evaluation",
+      "text": "    _exprHandlers.fcall = function(expr, eventInfo) {\n        var oldTarget = eventInfo.targetElement;\n        var targets = [];\n        var fcallArgs = [];\n        var exprArgs = expr.arguments;\n        for(var i = 0; i < expr.arguments.length; i++) {\n            var exprArg = exprArgs[i];\n            var fcallArg = '';\n            if(targets.length) {\n                for(var j = 0; j < targets.length; j++) {\n                    if(exprArg == null) {\n                        fcallArgs[j][i] = null;\n                        continue;\n                    }\n                    eventInfo.targetElement = targets[j];\n                    fcallArg = _evaluateExpr(exprArg, eventInfo);\n                    if(typeof (fcallArg) == 'undefined') return '';\n                    fcallArgs[j][i] = fcallArg;\n                }\n            } else {\n                if(exprArg == null) {\n                    fcallArgs[i] = null;\n                    continue;\n                }\n                fcallArg = _evaluateExpr(exprArg, eventInfo);\n                if(typeof (fcallArg) == 'undefined') return '';\n                fcallArgs[i] = fcallArg;\n            }\n\n            // We do support null exprArgs...\n            // TODO: This makes 2 assumptions that may change in the future. 1. The pathLiteral is the always the first arg. 2. there is always only 1 pathLiteral\n            if(exprArg && exprArg.exprType == 'pathLiteral') {\n                targets = fcallArg;\n\n                // fcallArgs is now an array of an array of args\n                for(j = 0; j < targets.length; j++) fcallArgs[j] = [[fcallArg[j]]];\n            }\n        }\n\n        // we want to preserve the target element from outside this function.\n        eventInfo.targetElement = oldTarget;\n\n        var retval = '';\n        if(targets.length) {\n            // Go backwards so retval is the first item.\n            for(i = targets.length - 1; i >= 0; i--) {\n                var args = fcallArgs[i];\n                // Add event info to the end\n                args[args.length] = eventInfo;\n                retval = _exprFunctions[expr.functionName].apply(this, args);\n            }\n        } else fcallArgs[fcallArgs.length] = eventInfo;\n        return targets.length ? retval : _exprFunctions[expr.functionName].apply(this, fcallArgs);\n    };\n\n    _exprHandlers.globalVariableLiteral = function(expr) {\n        return expr.variableName;\n    };"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 204,
+      "endLine": 244,
+      "purpose": "per-match-failure-boundary",
+      "text": "    var _substituteSTOs = function(expr, eventInfo) {\n        //first evaluate the local variables\n        var scope = {};\n        for(var varName in expr.localVariables) {\n            scope[varName] = $ax.expr.evaluateExpr(expr.localVariables[varName], eventInfo);\n        }\n\n        // TODO: [ben] Date and data object (obj with info for url or image) both need to return non-strings.\n        var i = 0;\n        var retval;\n        var retvalString = expr.value.replace(/\\[\\[(?!\\[)(.*?)\\]\\](?=\\]*)/g, function(match) {\n            var sto = expr.stos[i++];\n            if(sto.sto == 'error') return match;\n            try {\n                var result = $ax.evaluateSTO(sto, scope, eventInfo);\n            } catch(e) {\n                return match;\n            }\n\n            if((result instanceof Object) && i == 1 && expr.value.substring(0, 2) == '[[' &&\n                expr.value.substring(expr.value.length - 2) == ']]') {\n                // If the result was an object, this was the first result, and the whole thing was this expresion.\n                retval = result;\n            }\n            return ((result instanceof Object) && (result.label || result.text)) || result;\n        });\n        // If more than one group returned, the object is not valid\n        if(i != 1) retval = false;\n        return retval || retvalString;\n    };\n\n    _exprHandlers.htmlLiteral = function (expr, eventInfo) {\n        eventInfo.htmlLiteral = true;\n        var html = _substituteSTOs(expr, eventInfo);\n        eventInfo.htmlLiteral = false\n        return html;\n    };\n\n    _exprHandlers.stringLiteral = function(expr, eventInfo) {\n        return _substituteSTOs(expr, eventInfo);\n    };"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 285,
+      "endLine": 300,
+      "purpose": "variable-and-form-setters",
+      "text": "    _exprFunctions.SetGlobalVariableValue = function(varName, value) {\n        $ax.globalVariableProvider.setVariableValue(varName, value);\n    };\n\n    _exprFunctions.SetWidgetFormText = function(elementIds, value) {\n        for(var i = 0; i < elementIds.length; i++) {\n            var elementId = elementIds[i];\n            var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');\n\n            var obj = $jobj(inputId);\n            if(obj.val() == value || (value == '' && $ax.placeholderManager.isActive(elementId))) return;\n            obj.val(value);\n            $ax.placeholderManager.updatePlaceholder(elementId, !value);\n            if($ax.event.HasTextChanged($ax.getObjectFromElementId(elementId))) $ax.event.TryFireTextChanged(elementId);\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 316,
+      "endLine": 330,
+      "purpose": "rich-text-scalar-conversion",
+      "text": "    _exprFunctions.SetWidgetRichText = function(ids, value, plain) {\n        // Converts dates, widgetinfo, and the like to strings.\n        value = _exprFunctions.ToString(value);\n\n        //Replace any newlines with line breaks\n        var finalValue = value.replace(/\\r\\n/g, '<br>').replace(/\\n/g, '<br>');\n\n        for(var i = 0; i < ids.length; i++) {\n            var id = ids[i];\n\n            // If calling this on button shape, get the id of the rich text panel inside instead\n            if($obj(id).type !== $ax.constants.LINK_TYPE) id = $ax.GetTextPanelId(id, true);\n\n            var element = window.document.getElementById(id);\n            $ax.visibility.SetVisible(element, value != '');"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 753,
+      "endLine": 764,
+      "purpose": "evaluateExpr-no-global-catch",
+      "text": "    _exprFunctions.ToString = function(value) {\n        if(value.isWidget) {\n            return value.text;\n        }\n        return String(value);\n    };\n\n    var _evaluateExpr = $ax.expr.evaluateExpr = function(expr, eventInfo, toString) {\n        if(expr === undefined || expr === null) return undefined;\n        var result = _exprHandlers[expr.exprType](expr, eventInfo);\n        return toString ? _exprFunctions.ToString(result) : result;\n    };"
+    },
+    {
+      "file": "sto.js",
+      "startLine": 90,
+      "endLine": 161,
+      "purpose": "literal-variable-column-metadata-access",
+      "text": "    var _stoHandlers = {};\n\n    _stoHandlers.literal = function(sto, scope, eventInfo) {\n        return sto.value;\n    };\n\n    //need angle bracket syntax because var is a reserved word\n    _stoHandlers['var'] = function(sto, scope, eventInfo) {\n        // Can't us 'A || B' here, because the first value can be false, true, or empty string and still be valid.\n        var retVal = scope.hasOwnProperty(sto.name) ? scope[sto.name]  : $ax.globalVariableProvider.getVariableValue(sto.name, eventInfo);\n        // Handle desired type here?\n        \n        if(retVal && retVal.exprType) {\n            retVal = $ax.expr.evaluateExpr(retVal, eventInfo);\n        }\n        \n        if((sto.desiredType == 'int' || sto.desiredType == 'float')) {\n            var num = new Number(retVal);\n            retVal = isNaN(num.valueOf()) ? retVal : num;\n        }\n\n\n        return retVal;\n    };\n\n    //TODO: Perhaps repeaterId can be detirmined at generation, and stored in the sto info.\n    _stoHandlers.item = function(sto, scope, eventInfo, prop) {\n        prop = prop || (eventInfo.data ? 'data' : eventInfo.link ? 'url' : eventInfo.image ? 'img' : 'text');\n        var id = sto.isTarget || !$ax.repeater.hasData(eventInfo.srcElement, sto.name) ? eventInfo.targetElement : eventInfo.srcElement;\n        return getData(eventInfo, id, sto.name, prop);\n    };\n\n    var getData = function(eventInfo, id, name, prop) {\n        var repeaterId = $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(id));\n        var itemId = $ax.repeater.getItemIdFromElementId(id);\n        return $ax.repeater.getData(eventInfo, repeaterId, itemId, name, prop);\n    };\n\n    _stoHandlers.paren = function(sto, scope, eventInfo) {\n        return _evaluateSTO(sto.innerSTO, scope, eventInfo);\n    };\n\n    _stoHandlers.fCall = function(sto, scope, eventInfo) {\n        //TODO: [mas] handle required type\n        var thisObj = _evaluateSTO(sto.thisSTO, scope, eventInfo);\n        if(sto.thisSTO.desiredType == 'string' && sto.thisSTO.computedType != 'string') thisObj = thisObj.toString();\n        \n        var args = [];\n        for(var i = 0; i < sto.arguments.length; i++) {\n            args[i] = _evaluateSTO(sto.arguments[i], scope, eventInfo);\n        }\n        var fn = (funcs.hasOwnProperty(sto.func) && funcs[sto.func]) || thisObj[sto.func];\n        return fn.apply(thisObj, args);\n    };\n\n    _stoHandlers.propCall = function(sto, scope, eventInfo) {\n        //TODO: [mas] handle required type\n        if((sto.prop == 'url' || sto.prop == 'img') && sto.thisSTO.sto == 'item') return _stoHandlers.item(sto.thisSTO, scope, eventInfo, sto.prop);\n        var thisObj = _evaluateSTO(sto.thisSTO, scope, eventInfo);\n\n        // calculate cursor offset for elements that are located relative to their parents\n        if (sto.thisSTO.name == 'cursor') {\n            var cursorOffset = $ax.public.fn.getCursorOffset(eventInfo.targetElement);\n            thisObj = {\n                x: thisObj.x - cursorOffset.x,\n                y: thisObj.y - cursorOffset.y,\n            };\n        }\n\n        var prop = thisObj[sto.prop] instanceof Function ? thisObj[sto.prop]() : thisObj[sto.prop];\n        return prop;\n    };"
+    },
+    {
+      "file": "sto.js",
+      "startLine": 216,
+      "endLine": 234,
+      "purpose": "casts",
+      "text": "    var _evaluateSTO = function(sto, scope, eventInfo) {\n        if(sto.sto == 'error') return undefined;\n        return _tryEscapeRichText(castSto(_stoHandlers[sto.sto](sto, scope, eventInfo), sto), eventInfo);\n    };\n    $ax.evaluateSTO = _evaluateSTO;\n\n    var castSto = function(val, sto) {\n        var type = sto.computedType || sto.desiredType;\n        if(type == 'string') val = String(val);\n        else if(type == 'date' && !(val instanceof Date)) val = new Date(val);\n        else if(type == 'int' || type == 'float') val = Number(val);\n        else if(type == 'bool') val = Boolean(val);\n\n        return val;\n    };\n\n    var _tryEscapeRichText = function(text, eventInfo) {\n        return eventInfo.htmlLiteral ? _escapeRichText(text) : text;\n    };"
+    },
+    {
+      "file": "variables.js",
+      "startLine": 33,
+      "endLine": 85,
+      "purpose": "source-item-fallback",
+      "text": "    var getVariableValue = function(variable, eventInfo, ignoreDefaultsForLinkUrl) {\n        variable = variable.toLowerCase();\n        if(_globalVariableValues[variable] !== undefined) {\n            //If this is for the GetLinkUrl function and \n            //the current value of the global variable is the same as the default defined in the document, don't return it\n            if(ignoreDefaultsForLinkUrl == true && $ax.document.globalVariables[variable] == _globalVariableValues[variable]) {\n                return null;\n            }\n\n            return _globalVariableValues[variable];\n        }\n        if($ax.document.globalVariables[variable] !== undefined) return ignoreDefaultsForLinkUrl == true ? null : $ax.document.globalVariables[variable];\n        switch(variable) {\n            case \"pagename\": return $ax.pageData.page.name;\n\n            case \"now\": return eventInfo.now;\n            case \"gendate\": return $ax.pageData.generationDate;\n\n            case \"dragx\": return $ax.drag.GetDragX();\n            case \"dragy\": return $ax.drag.GetDragY();\n            case \"totaldragx\": return $ax.drag.GetTotalDragX();\n            case \"totaldragy\": return $ax.drag.GetTotalDragY();\n            case \"dragtime\": return $ax.drag.GetDragTime();\n\n            case \"math\": return Math;\n            case \"date\": return Date;\n\n            case \"window\": return eventInfo && eventInfo.window;\n            case \"this\": return eventInfo && eventInfo.thiswidget && $ax.getWidgetInfo(eventInfo.thiswidget.elementId);\n            case \"item\": return (eventInfo && eventInfo.item && eventInfo.item.valid && eventInfo.item) || getVariableValue('targetitem', eventInfo, ignoreDefaultsForLinkUrl);\n            case \"targetitem\": return eventInfo && eventInfo.targetElement && $ax.getItemInfo(eventInfo.targetElement);\n            case \"repeater\": return eventInfo && eventInfo.repeater;\n            case \"target\": return eventInfo && eventInfo.targetElement && $ax.getWidgetInfo(eventInfo.targetElement);\n            case \"cursor\": return eventInfo && eventInfo.cursor;\n            default:\n                var gen = variable.substr(0, 3) == \"gen\";\n                var date = gen ? $ax.pageData.generationDate : new Date();\n                var prop = gen ? variable.substr(3) : variable;\n                switch(prop) {\n                    case \"day\": return date.getDate();\n                    case \"month\": return date.getMonth() + 1;\n                    case \"monthname\": return $ax.getMonthName(date.getMonth());\n                    case \"dayofweek\": return $ax.getDayOfWeek(date.getDay());\n                    case \"year\": return date.getFullYear();\n                    case \"time\": return date.toLocaleTimeString();\n                    case \"hours\": return date.getHours();\n                    case \"minutes\": return date.getMinutes();\n                    case \"seconds\": return date.getSeconds();\n                    default: return '';\n                }\n        }\n    };\n    _globalVariableProvider.getVariableValue = getVariableValue;"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 221,
+      "endLine": 244,
+      "purpose": "actual-target-list",
+      "text": "        var _getElementsIdFromEventAndScriptId = function(eventInfo, scriptId) {\n            var itemId = eventInfo && $ax.repeater.getItemIdFromElementId(eventInfo.srcElement);\n            var target = false;\n            // Try to get itemId from target if you can't get it from source.\n            if(!itemId) {\n                itemId = eventInfo && eventInfo.targetElement && $ax.repeater.getItemIdFromElementId(eventInfo.targetElement);\n                if(itemId) target = true;\n            }\n\n            var parentRepeater = $ax.getParentRepeaterFromScriptId(scriptId);\n            if(parentRepeater && scriptId != parentRepeater) {\n                if(itemId && (!eventInfo || parentRepeater == $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(target ? eventInfo.targetElement : eventInfo.srcElement)))) {\n                    return [$ax.repeater.createElementId(scriptId, itemId)];\n                }\n                var elementIds = [];\n                var itemIds = $ax.getItemIdsForRepeater(parentRepeater);\n                if(!itemIds) return [];\n\n                for(var i = 0; i < itemIds.length; i++) elementIds[i] = $ax.repeater.createElementId(scriptId, itemIds[i]);\n                return elementIds;\n            }\n            return [scriptId];\n        };\n        $ax.getElementIdsFromEventAndScriptId = _getElementsIdFromEventAndScriptId;"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 328,
+      "endLine": 347,
+      "purpose": "item-info",
+      "text": "        var _getItemInfo = function(elementId) {\n            if(!elementId) return { valid: false };\n\n            elementId = _getParentElement(elementId);\n\n            var index = $ax.repeater.getItemIdFromElementId(elementId);\n            if(!index) return { valid: false };\n\n            var item = { valid: true };\n\n            var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n            var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);\n            item.repeater = repeaterInfoCache[repeaterId] ? repeaterInfoCache[repeaterId] : _getWidgetInfo(repeaterId);\n            $ax.repeater.setDisplayProps(item, repeaterId, index);\n            item.ismarked = $ax.repeater.isEditItem(repeaterId, index);\n            item.isvisible = Boolean($jobj(elementId).length);\n\n            return item;\n        };\n        $ax.getItemInfo = _getItemInfo;"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 605,
+      "endLine": 625,
+      "purpose": "display-properties",
+      "text": "    _repeaterManager.setDisplayProps = function(obj, repeaterId, itemIndex) {\n        var data = repeaterToActiveDataSet[repeaterId];\n        var info = repeaterToPageInfo[repeaterId];\n        var start = 0;\n        var end = data.length;\n        if(!info.noLimit) {\n            start = Math.min(end, info.itemsPerPage * (info.currPage - 1));\n            end = Math.min(end, start + info.itemsPerPage);\n        }\n        var count = end - start;\n        var index = -1;\n        for(var i = 0; i < count; i++) {\n            if(data[start + i].index == itemIndex) index = i + 1;\n        }\n        if(index == -1) return;\n        obj.index = index;\n        obj.isfirst = index == 1;\n        obj.islast = index == end - start;\n        obj.iseven = index % 2 == 0;\n        obj.isodd = index % 2 == 1;\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1291,
+      "endLine": 1316,
+      "purpose": "data-read-and-schema-check",
+      "text": "    var _getDataFromDataSet = function (eventInfo, repeaterId, itemId, propName, type) {\n        var row = undefined;\n        var deleteMap = eventInfo && eventInfo.repeaterDeleteMap && eventInfo.repeaterDeleteMap[repeaterId];\n        if(deleteMap) row = deleteMap.idToRow[itemId];\n\n        if(!row) {\n            var itemNum = _getRealItemId(eventInfo, repeaterId, Number(itemId));\n            row = repeaterToCurrentDataSet[repeaterId][itemNum];\n        }\n        // Default to obj with text as empty string, as we don't generate the data for empty props\n        var data = row[propName] || { text: '' };\n        //For now text is always the default. May change this to depend on context.\n        switch(type) {\n            case 'data': return data.type == 'text' ? data.text : data\n            case 'img': return (data.img && data.img[$ax.adaptive.getSketchKey()]) || data.text;\n            default: return (type && data[type]) || data.text;\n        }\n        //return type == 'data' && data.type != 'text' ? data : (type && data[type]) || data['text'];\n    };\n    _repeaterManager.getData = _getDataFromDataSet;\n\n    _repeaterManager.hasData = function(id, propName) {\n        if(!id || !_getItemIdFromElementId(id)) return false;\n        var repeaterId = $ax.getParentRepeaterFromScriptId(_getScriptIdFromElementId(id));\n        return Boolean(repeaterToCurrentDataSet[repeaterId] && repeaterToCurrentDataSet[repeaterId].props.indexOf(propName) != -1);\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1332,
+      "endLine": 1362,
+      "purpose": "delete-map-and-add-row",
+      "text": "    var _getRealItemId = function(eventInfo, repeaterId, itemId) {\n        var deletedBefore = 0;\n        var map = eventInfo.repeaterDeleteMap && eventInfo.repeaterDeleteMap[repeaterId];\n        var deletedIds = map && map.deletedIds;\n        if(!deletedIds) return itemId - 1;\n\n        for(var i = 0; i < deletedIds.length; i++) if (deletedIds[i] < itemId) deletedBefore++;\n        return itemId - deletedBefore - 1;\n    }\n\n    var _addItemToDataSet = function(repeaterId, row, itemEventInfo) {\n        itemEventInfo.data = true;\n        var oldTarget = itemEventInfo.targetElement;\n        itemEventInfo.targetElement = repeaterId;\n        var dataSet = repeaterToLocalDataSet[repeaterId];\n\n        for(var propName in row) {\n            if(!row.hasOwnProperty(propName)) continue;\n            var prop = row[propName];\n            if(prop.type == 'literal') {\n                var retval = $ax.expr.evaluateExpr(prop.literal, itemEventInfo);\n                if(typeof (retval) == 'string' || retval instanceof Date) retval = { type: 'text', text: retval };\n                row[propName] = retval;\n            }\n        }\n\n        itemEventInfo.targetElement = oldTarget;\n        dataSet[dataSet.length] = row;\n        itemEventInfo.data = false;\n    };\n    _repeaterManager.addItem = _addItemToDataSet;"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1483,
+      "endLine": 1490,
+      "purpose": "create-instance-id",
+      "text": "    var _createElementId = function(scriptId, itemId) {\n        if(!itemId) return scriptId;\n        var i = scriptId.indexOf('_');\n        var sections = i > -1 ? [scriptId.substring(0, i), scriptId.substring(i + 1)] : [scriptId];\n        var retval = sections[0] + '-' + itemId;\n        return sections.length > 1 ? retval + '_' + sections[1] : retval;\n    };\n    _repeaterManager.createElementId = _createElementId;"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1503,
+      "endLine": 1519,
+      "purpose": "parse-instance-id",
+      "text": "    var _getScriptIdFromElementId = function(elementId) {\n        if(!elementId) return elementId;\n        var sections = elementId.split('-');\n        var retval = sections[0];\n        if(sections.length <= 1) return retval;\n        sections = sections[1].split('_');\n        return sections.length > 1 ? retval + '_' + sections[1] : retval;\n    };\n    _repeaterManager.getScriptIdFromElementId = _getScriptIdFromElementId;\n\n    var _getItemIdFromElementId = function(elementId) {\n        var sections = elementId.split('-');\n        if(sections.length < 2) return '';\n        sections = sections[1].split('_');\n        return sections[0];\n    };\n    _repeaterManager.getItemIdFromElementId = _getItemIdFromElementId;"
+    },
+    {
+      "file": "action.js",
+      "startLine": 370,
+      "endLine": 378,
+      "purpose": "set-function-expression",
+      "text": "    _actionHandlers.expr = function(eventInfo, actions, index) {\n        var action = actions[index];\n\n        $ax.expr.evaluateExpr(action.expr, eventInfo); //this should be a block\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    _actionHandlers.setFunction = _actionHandlers.expr;"
+    },
+    {
+      "file": "action.js",
+      "startLine": 1793,
+      "endLine": 1808,
+      "purpose": "add-row-action-entry",
+      "text": "    _actionHandlers.addItemsToDataSet = function(eventInfo, actions, index) {\n        var action = actions[index];\n        for(var i = 0; i < action.dataSetsToAddTo.length; i++) {\n            var datasetInfo = action.dataSetsToAddTo[i];\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var id = $ax.getElementIdsFromPath(datasetInfo.path, eventInfo)[0];\n            if(!id || _ignoreAction(id)) continue;\n            var dataset = datasetInfo.data;\n\n            for(var j = 0; j < dataset.length; j++) $ax.repeater.addItem(id, $ax.deepCopy(dataset[j]), eventInfo);\n            if(dataset.length) _addRefresh(id);\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };"
+    }
+  ],
+  "executionSpans": [
+    [
+      "repeater.js",
+      605,
+      625
+    ],
+    [
+      "repeater.js",
+      1291,
+      1316
+    ],
+    [
+      "repeater.js",
+      1332,
+      1362
+    ],
+    [
+      "repeater.js",
+      1483,
+      1490
+    ],
+    [
+      "repeater.js",
+      1503,
+      1519
+    ],
+    [
+      "doc.js",
+      221,
+      244
+    ],
+    [
+      "doc.js",
+      328,
+      347
+    ],
+    [
+      "variables.js",
+      33,
+      85
+    ],
+    [
+      "sto.js",
+      90,
+      161
+    ],
+    [
+      "sto.js",
+      216,
+      234
+    ],
+    [
+      "expr.js",
+      100,
+      115
+    ],
+    [
+      "expr.js",
+      127,
+      184
+    ],
+    [
+      "expr.js",
+      204,
+      244
+    ],
+    [
+      "expr.js",
+      285,
+      300
+    ],
+    [
+      "expr.js",
+      753,
+      764
+    ]
+  ],
+  "engine": {
+    "node": "v24.18.0"
+  },
+  "method": "Only exact SHA-pinned original function slices run in isolated VM; scalar AST shapes are explicitly synthesized without compiler type metadata except named cast sensitivity experiment. Not generated original compiler output.",
+  "mocks": [
+    "Rich text setter is a recording sink; original fcall and actual form/variable setters are run.",
+    "Target/script parent map, row IDs, datasets and visibility are fixture bridges; getItemInfo/setDisplayProps/getData/hasData/target enumeration are original.",
+    "getWidgetInfo returns only a deterministic element ID and data count; no full DOM or component/nested repeater resolution.",
+    "No original AST compiler, rich-text HTML escaping, native app, browser or complete dispatcher is executed."
+  ],
+  "experiments": [
+    {
+      "name": "invalid-Item-setText-ordinary-target",
+      "pass": true,
+      "actual": {
+        "sinks": [
+          {
+            "kind": "richText",
+            "ids": [
+              "outside"
+            ],
+            "value": "G=OK|V=false|I=undefined|N=[[Item.Name]]|M=[[Item.Missing]]|TV=false|TI=undefined|TN=[[TargetItem.Name]]|TM=[[TargetItem.Missing]]|Z=OK",
+            "restoredTarget": null
+          }
+        ],
+        "target": null
+      }
+    },
+    {
+      "name": "invalid-Item-setText-other-repeater-rows",
+      "pass": true,
+      "actual": {
+        "sinks": [
+          {
+            "kind": "richText",
+            "ids": [
+              "tw-2"
+            ],
+            "value": "G=OK|V=true|I=2|N=Beta|M=|TV=true|TI=2|TN=Beta|TM=|Z=OK",
+            "restoredTarget": null
+          },
+          {
+            "kind": "richText",
+            "ids": [
+              "tw-1"
+            ],
+            "value": "G=OK|V=true|I=1|N=Alpha|M=|TV=true|TI=1|TN=Alpha|TM=|Z=OK",
+            "restoredTarget": null
+          }
+        ],
+        "target": null
+      }
+    },
+    {
+      "name": "invalid-Item-setVariable-no-target",
+      "pass": true,
+      "actual": [
+        {
+          "kind": "variable",
+          "key": "Out",
+          "value": "G=OK|V=[[Item.valid]]|I=[[Item.index]]|N=[[Item.Name]]|M=[[Item.Missing]]|TV=[[TargetItem.valid]]|TI=[[TargetItem.index]]|TN=[[TargetItem.Name]]|TM=[[TargetItem.Missing]]|Z=OK"
+        }
+      ]
+    },
+    {
+      "name": "invalid-Item-addRow-container-target",
+      "pass": true,
+      "actual": {
+        "row": {
+          "Name": {
+            "type": "text",
+            "text": "G=OK|V=false|I=undefined|N=[[Item.Name]]|M=[[Item.Missing]]|TV=false|TI=undefined|TN=[[TargetItem.Name]]|TM=[[TargetItem.Missing]]|Z=OK"
+          }
+        },
+        "target": "tw-2",
+        "data": false
+      }
+    },
+    {
+      "name": "absent-Item-setText-ordinary-target",
+      "pass": true,
+      "actual": {
+        "sinks": [
+          {
+            "kind": "richText",
+            "ids": [
+              "outside"
+            ],
+            "value": "G=OK|V=false|I=undefined|N=[[Item.Name]]|M=[[Item.Missing]]|TV=false|TI=undefined|TN=[[TargetItem.Name]]|TM=[[TargetItem.Missing]]|Z=OK",
+            "restoredTarget": null
+          }
+        ],
+        "target": null
+      }
+    },
+    {
+      "name": "absent-Item-setText-other-repeater-rows",
+      "pass": true,
+      "actual": {
+        "sinks": [
+          {
+            "kind": "richText",
+            "ids": [
+              "tw-2"
+            ],
+            "value": "G=OK|V=true|I=2|N=Beta|M=|TV=true|TI=2|TN=Beta|TM=|Z=OK",
+            "restoredTarget": null
+          },
+          {
+            "kind": "richText",
+            "ids": [
+              "tw-1"
+            ],
+            "value": "G=OK|V=true|I=1|N=Alpha|M=|TV=true|TI=1|TN=Alpha|TM=|Z=OK",
+            "restoredTarget": null
+          }
+        ],
+        "target": null
+      }
+    },
+    {
+      "name": "absent-Item-setVariable-no-target",
+      "pass": true,
+      "actual": [
+        {
+          "kind": "variable",
+          "key": "Out",
+          "value": "G=OK|V=[[Item.valid]]|I=[[Item.index]]|N=[[Item.Name]]|M=[[Item.Missing]]|TV=[[TargetItem.valid]]|TI=[[TargetItem.index]]|TN=[[TargetItem.Name]]|TM=[[TargetItem.Missing]]|Z=OK"
+        }
+      ]
+    },
+    {
+      "name": "absent-Item-addRow-container-target",
+      "pass": true,
+      "actual": {
+        "row": {
+          "Name": {
+            "type": "text",
+            "text": "G=OK|V=false|I=undefined|N=[[Item.Name]]|M=[[Item.Missing]]|TV=false|TI=undefined|TN=[[TargetItem.Name]]|TM=[[TargetItem.Missing]]|Z=OK"
+          }
+        },
+        "target": "tw-2",
+        "data": false
+      }
+    },
+    {
+      "name": "actual-form-setter-gets-identical-string",
+      "pass": true,
+      "actual": {
+        "outside_input": "G=OK|V=false|I=undefined|N=[[Item.Name]]|M=[[Item.Missing]]|TV=false|TI=undefined|TN=[[TargetItem.Name]]|TM=[[TargetItem.Missing]]|Z=OK"
+      }
+    },
+    {
+      "name": "setVariable-retains-inherited-target-it-does-not-clear-it",
+      "pass": true,
+      "actual": {
+        "sinks": [
+          {
+            "kind": "variable",
+            "key": "Out",
+            "value": "G=OK|V=true|I=2|N=Beta|M=|TV=true|TI=2|TN=Beta|TM=|Z=OK"
+          }
+        ],
+        "target": "tw-2"
+      }
+    },
+    {
+      "name": "ordinary-setText-does-not-leak-target-to-next-setVariable",
+      "pass": true,
+      "actual": [
+        {
+          "kind": "richText",
+          "ids": [
+            "outside"
+          ],
+          "value": "G=OK|V=false|I=undefined|N=[[Item.Name]]|M=[[Item.Missing]]|TV=false|TI=undefined|TN=[[TargetItem.Name]]|TM=[[TargetItem.Missing]]|Z=OK",
+          "restoredTarget": null
+        },
+        {
+          "kind": "variable",
+          "key": "Out",
+          "value": "G=OK|V=[[Item.valid]]|I=[[Item.index]]|N=[[Item.Name]]|M=[[Item.Missing]]|TV=[[TargetItem.valid]]|TI=[[TargetItem.index]]|TN=[[TargetItem.Name]]|TM=[[TargetItem.Missing]]|Z=OK"
+        }
+      ]
+    },
+    {
+      "name": "row-target-setText-restores-old-target-before-next-setVariable",
+      "pass": true,
+      "actual": {
+        "sinks": [
+          {
+            "kind": "richText",
+            "ids": [
+              "tw-2"
+            ],
+            "value": "G=OK|V=true|I=2|N=Beta|M=|TV=true|TI=2|TN=Beta|TM=|Z=OK",
+            "restoredTarget": "outside"
+          },
+          {
+            "kind": "richText",
+            "ids": [
+              "tw-1"
+            ],
+            "value": "G=OK|V=true|I=1|N=Alpha|M=|TV=true|TI=1|TN=Alpha|TM=|Z=OK",
+            "restoredTarget": "outside"
+          },
+          {
+            "kind": "variable",
+            "key": "Out",
+            "value": "G=OK|V=false|I=undefined|N=[[Item.Name]]|M=[[Item.Missing]]|TV=false|TI=undefined|TN=[[TargetItem.Name]]|TM=[[TargetItem.Missing]]|Z=OK"
+          }
+        ],
+        "target": "outside"
+      }
+    },
+    {
+      "name": "one-match-failure-preserves-only-that-match",
+      "pass": true,
+      "actual": "OK:[[Item.index]]:OK"
+    },
+    {
+      "name": "synthetic-error-STO-preserves-only-its-match",
+      "pass": true,
+      "actual": "OK:[[broken]]:OK"
+    },
+    {
+      "name": "replacement-is-not-recursively-interpolated",
+      "pass": true,
+      "actual": "[[Item.index]]/OK"
+    },
+    {
+      "name": "missing-leaf-is-undefined-missing-parent-throws",
+      "pass": true,
+      "actual": "I=undefined/R=[[Item.Repeater.dataCount]]"
+    },
+    {
+      "name": "valid-row-missing-cell-empty-and-column-fallback",
+      "pass": true,
+      "actual": "Source///Alpha/"
+    },
+    {
+      "name": "existing-source-column-wins-even-if-source-row-no-longer-exists",
+      "pass": true,
+      "actual": "OK/[[Item.Name]]//Alpha"
+    },
+    {
+      "name": "valid-source-addRow-columns-source-not-target",
+      "pass": true,
+      "actual": {
+        "Name": {
+          "type": "text",
+          "text": "Source/[[TargetItem.Name]]"
+        }
+      }
+    },
+    {
+      "name": "data-context-missing-cell-is-empty-text-object-not-scalar",
+      "pass": true,
+      "actual": {
+        "Missing": {
+          "text": ""
+        }
+      }
+    },
+    {
+      "name": "synthetic-missing-STO-is-outside-per-match-catch",
+      "pass": true,
+      "actual": {
+        "ok": false,
+        "error": "TypeError"
+      }
+    },
+    {
+      "name": "synthetic-local-expression-error-is-outside-per-match-catch",
+      "pass": true,
+      "actual": {
+        "ok": false,
+        "error": "TypeError"
+      }
+    },
+    {
+      "name": "synthetic-cast-sensitivity-is-not-compiler-output-evidence",
+      "pass": true,
+      "actual": [
+        "undefined",
+        "undefined",
+        "false",
+        "NaN"
+      ]
+    },
+    {
+      "name": "typed-cast-does-not-rescue-absent-parent-property-access",
+      "pass": true,
+      "actual": [
+        "[[Item.index]]",
+        "[[Item.index]]",
+        "[[Item.index]]"
+      ]
+    },
+    {
+      "name": "empty-target-repeater-enumerates-no-row-instances",
+      "pass": true,
+      "actual": []
+    }
+  ]
+}

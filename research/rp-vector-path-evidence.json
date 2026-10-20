@@ -1,0 +1,3988 @@
+{
+  "createdAt": "2026-10-13T12:05:08.689Z",
+  "target": "Axure RP 11.0.0.4150",
+  "method": "Read-only CIL from PEReader; no DLL execution or original GUI; raw call scans only locate subsequently decoded methods",
+  "assemblySha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+  "packageSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "reaExtractionEvidence": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "findings": {
+    "edge": "previous.HigherSegmentExists controls previous -> current, including final -> first",
+    "line": "Both relevant handles absent; equal endpoints omitted by J5vd",
+    "cubic": "At least one relevant handle present; each missing side falls back to its own anchor",
+    "partialNaN": "Any-axis and both-axis tests differ across native chains; unsupported boundary",
+    "closed": "Final outgoing flag enables last -> first; Axvg Closed also reads final flag",
+    "fill": "Ordinary SVG fill explicitly passes FillRuleSvg.NonZero (0)",
+    "openFill": "Fill straightens unmaterialized edges and closes contours; stroke keeps gaps",
+    "interiorBreak": "Single shared fill/stroke SVG list cannot generally express separate native closure; reject or separate geometry",
+    "transform": "Bilinear sizing-rectangle interpolation; handles outside unit square preserved",
+    "shape": "Only Shape300 uses cached control points directly; other shapes regenerate before serialization",
+    "emptyText": "RP11 VectorShape enums share TextRect serializer; legacy9 schema not established"
+  },
+  "enums": [
+    {
+      "Type": "Axure.Axvg.Graphics.PathDataType",
+      "Fields": [
+        {
+          "Name": "value__",
+          "Constant": null
+        },
+        {
+          "Name": "Start",
+          "Constant": "00000000"
+        },
+        {
+          "Name": "End",
+          "Constant": "01000000"
+        },
+        {
+          "Name": "Line",
+          "Constant": "02000000"
+        },
+        {
+          "Name": "Bezier",
+          "Constant": "03000000"
+        },
+        {
+          "Name": "Arc",
+          "Constant": "04000000"
+        }
+      ]
+    },
+    {
+      "Type": "Axure.Axvg.Graphics.WindingRule",
+      "Fields": [
+        {
+          "Name": "value__",
+          "Constant": null
+        },
+        {
+          "Name": "NonZero",
+          "Constant": "00000000"
+        },
+        {
+          "Name": "EvenOdd",
+          "Constant": "01000000"
+        },
+        {
+          "Name": "Unspecified",
+          "Constant": "02000000"
+        }
+      ]
+    },
+    {
+      "Type": "Axure.Platform.Drawing.PathDataType",
+      "Fields": [
+        {
+          "Name": "value__",
+          "Constant": null
+        },
+        {
+          "Name": "Arc",
+          "Constant": "00000000"
+        },
+        {
+          "Name": "Close",
+          "Constant": "01000000"
+        },
+        {
+          "Name": "Ellipse",
+          "Constant": "02000000"
+        },
+        {
+          "Name": "Line",
+          "Constant": "03000000"
+        },
+        {
+          "Name": "Transform",
+          "Constant": "04000000"
+        },
+        {
+          "Name": "Curve",
+          "Constant": "05000000"
+        },
+        {
+          "Name": "Bezier",
+          "Constant": "06000000"
+        },
+        {
+          "Name": "TrueArc",
+          "Constant": "07000000"
+        },
+        {
+          "Name": "PolyBezier",
+          "Constant": "08000000"
+        },
+        {
+          "Name": "AxisAlignedRect",
+          "Constant": "09000000"
+        }
+      ]
+    },
+    {
+      "Type": "Axure.Platform.Drawing.FillRuleSvg",
+      "Fields": [
+        {
+          "Name": "value__",
+          "Constant": null
+        },
+        {
+          "Name": "NonZero",
+          "Constant": "00000000"
+        },
+        {
+          "Name": "EvenOdd",
+          "Constant": "01000000"
+        },
+        {
+          "Name": "Unspecified",
+          "Constant": "02000000"
+        }
+      ]
+    }
+  ],
+  "sampleSources": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+      "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Flow.rplib",
+      "sha256": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Icons.rplib",
+      "sha256": "83f450088f81f6047dfb196919fff3a4aae2f3adb56668da4d4c8cfd3b813bda"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Quick Win.rp",
+      "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+      "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72"
+    },
+    {
+      "file": "research/samples/the-basics-tab-menu.rp",
+      "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4"
+    },
+    {
+      "file": "research/samples/complex-interactions-required-fields.rp",
+      "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c"
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "file": "research/rp-vector-path-array-converter-cil.json",
+      "sha256": "afca36feaddb3f44294936e64d0c0306d417a6dc79f3af38ed48ef07cd7fe5ee"
+    },
+    {
+      "file": "research/rp-vector-path-axvg-builder-cil.json",
+      "sha256": "ff8d8bfc9247cf97d87554e64b288b562f79356296889673694c54b7be5c0a9e"
+    },
+    {
+      "file": "research/rp-vector-path-callers.json",
+      "sha256": "facabe47536edbad79d87962675bf85070cc6a78f8b013ac147971f6c317d336"
+    },
+    {
+      "file": "research/rp-vector-path-close-cil.json",
+      "sha256": "ae2fa2e45417ab62f3790a4d22b2a8de56e3117e446340a763fc2904c22a8305"
+    },
+    {
+      "file": "research/rp-vector-path-controlpoint-cil.json",
+      "sha256": "8aebb034288a2909b1dc0ecb61f0108aa1c520430659b74c98ae50a89441223b"
+    },
+    {
+      "file": "research/rp-vector-path-data-converter-cil.json",
+      "sha256": "73dad5d516591f4d91e9c2b4936107a2da1978e6d9642cc82729c2b1aefc0977"
+    },
+    {
+      "file": "research/rp-vector-path-drawing-builder-cil.json",
+      "sha256": "e7c89fd9e4b0c46ecb6c983d7debabe4dec8cda8946204412e062eec69c009be"
+    },
+    {
+      "file": "research/rp-vector-path-drawing-callers.json",
+      "sha256": "e195d894bf3da0dd8035e0f84344536289c9f3b1de4fc59823536516e44713c9"
+    },
+    {
+      "file": "research/rp-vector-path-enums.json",
+      "sha256": "0861dac4c9114c2e22d1eb5d895fc3e948658853a8751f71cd9d17d809b750d5"
+    },
+    {
+      "file": "research/rp-vector-path-fill-callers.json",
+      "sha256": "081a0405e11bd51727f2e4497648408439512125d1256375ebbec664a6ee6b1a"
+    },
+    {
+      "file": "research/rp-vector-path-fill-cil.json",
+      "sha256": "3227fcb7f3965b070e4acb9489ca8b2776eb9d7bda68fcc2ab25c738f82f7c28"
+    },
+    {
+      "file": "research/rp-vector-path-fill-command-cil.json",
+      "sha256": "e7e9092bb1dd923c2e6aee06444bcd27751b79b700ec85d82347210076114626"
+    },
+    {
+      "file": "research/rp-vector-path-fill-curves-cil.json",
+      "sha256": "e9bbe306ce1665b81ac22e6ee6a90435282f9d238508442a20662d135d2879c1"
+    },
+    {
+      "file": "research/rp-vector-path-fill-dispatch-cil.json",
+      "sha256": "f5dee4dc36a1f1c9879b2cf1cdfbf0fe3dbd5922db522666c01704754b94643e"
+    },
+    {
+      "file": "research/rp-vector-path-fill-dispatch2-cil.json",
+      "sha256": "27b239b3fb1a729da5dba78d15e5496352e9c13f25d5f8e2fb84790649aadabc"
+    },
+    {
+      "file": "research/rp-vector-path-fill-signatures.json",
+      "sha256": "686751202a072a70194523fa3814d38d8b603fba1bb2ddda96e5d9d9989d1cb1"
+    },
+    {
+      "file": "research/rp-vector-path-inset-cil.json",
+      "sha256": "a7b1b636df39f56b86f5b295d1bbd85348c90226c9bcac593dce5c10d8e07600"
+    },
+    {
+      "file": "research/rp-vector-path-path-segments-cil.json",
+      "sha256": "818a897923d28c262302194a1f7caca0a26db2ecd5cc1596ee2e509b4deb8d73"
+    },
+    {
+      "file": "research/rp-vector-path-platform-builder-cil.json",
+      "sha256": "1b8c61b4e194272db616776402b875837fe5b7ae64061f649aaab8b64dad7f22"
+    },
+    {
+      "file": "research/rp-vector-path-point-cil.json",
+      "sha256": "3f45a9c367f3e6ee552758edfeaa63536e0880fd723b05a2f42e4ab2c37e3736"
+    },
+    {
+      "file": "research/rp-vector-path-point-transform-cil.json",
+      "sha256": "e7240fe4a844d31c6bd651d6bf425463e421207dfe494ce21d60c84bfa7409f4"
+    },
+    {
+      "file": "research/rp-vector-path-reader-callers.json",
+      "sha256": "d3d76961c39c378cad9728b6443f8bb42e1fae2176acd8c5b5fb757a72524cc4"
+    },
+    {
+      "file": "research/rp-vector-path-render-dispatch-cil.json",
+      "sha256": "5f654d7b42fbfa2415287ff1f7b952700bc608efd7eaa21720197c60c01d1ebd"
+    },
+    {
+      "file": "research/rp-vector-path-rp-to-axvg-cil.json",
+      "sha256": "9dbd52ea20d59553a05093d441d1445686440dbf26a8b45527b904e273a5cfb0"
+    },
+    {
+      "file": "research/rp-vector-path-scale-cil.json",
+      "sha256": "5d256d8ac6e627d1d93d18e177e8918d41185f89b9233e1b0bff4d45e94c4db2"
+    },
+    {
+      "file": "research/rp-vector-path-segment-ctor-cil.json",
+      "sha256": "c83387e59c723fe9269bd63941f6513d6606e5738861eb5cef56a16a177700b5"
+    },
+    {
+      "file": "research/rp-vector-path-shape-predicate-cil.json",
+      "sha256": "f9c3b612c2a4d7b20cb39ee5f5cbd69187d303ed362aab382a1398607c6293fc"
+    },
+    {
+      "file": "research/rp-vector-path-svg-dispatch-callers.json",
+      "sha256": "8d02bc3d31429ac94bf10d632c5ec8ebe5c0e948ee487d42e82fb9ce391c2d42"
+    },
+    {
+      "file": "research/rp-vector-path-svg-fill-cil.json",
+      "sha256": "2a672d5a5149d4f27af626581d884f17560863551d76c8cd19ef0dc24831cf80"
+    },
+    {
+      "file": "research/rp-vector-path-svg-paint-cil.json",
+      "sha256": "7ebb4b79026de44b455b7aba255709bd3b37247b442d0404431a8fad294b571a"
+    },
+    {
+      "file": "research/rp-vector-path-svg-path-cil.json",
+      "sha256": "befdd01fa3a7dcb101882ba1f58565669aaca3039e60f2d41aecec6a5a5947a6"
+    },
+    {
+      "file": "research/rp-vector-path-vector-cil.json",
+      "sha256": "d9ea4d127e1eb2a728c864cb8390b0cf8b59bcd6b734a8af1b49aee27f2f2154"
+    },
+    {
+      "file": "research/rp-vector-path-vector-drawing-cil.json",
+      "sha256": "9a34e1f5bcecab1809191bfb968758f991c3d9c8cc18620a6e695d210b85b782"
+    },
+    {
+      "file": "research/rp-vector-path-vector-paint-cil.json",
+      "sha256": "7e84302abea8825b0e14d31c5a19e231ae6c613bc8ca082207a7482bd91f452e"
+    },
+    {
+      "file": "research/rp-vector-path-widget-transform-cil.json",
+      "sha256": "3b92524a582b37ce5b4d3fa2960d189046c536f6de2dee502ea3c1849f5edda0"
+    },
+    {
+      "file": "research/rp-vector-path-world-lambda-cil.json",
+      "sha256": "c677217dde7009c1f558bb2472f6c2cb5e296dc4a615c97d9a64996c3bcf665f"
+    },
+    {
+      "file": "research/rp-vector-path-world-scale-cil.json",
+      "sha256": "547aa38153cc4430c1f26bf4df96fc198a2f813d2643a2a0bb852addf47b9cf4"
+    }
+  ],
+  "excerpts": [
+    {
+      "file": "research/rp-vector-path-platform-builder-cil.json",
+      "type": "R5v6.L5vW",
+      "method": "J5vd",
+      "token": 100722490,
+      "ilRanges": [
+        [
+          7,
+          258
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "newobj",
+          "Operand": 167795532,
+          "Resolved": "TypeSpecification:1B0012B6::.ctor"
+        },
+        {
+          "Offset": 12,
+          "Op": "stloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 13,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 14,
+          "Op": "call",
+          "Operand": 721424272,
+          "Resolved": "CbiJ.Bbib::Last<generic>"
+        },
+        {
+          "Offset": 19,
+          "Op": "stloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 20,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 21,
+          "Op": "callvirt",
+          "Operand": 167791895,
+          "Resolved": "TypeSpecification:1B000800::GetEnumerator"
+        },
+        {
+          "Offset": 26,
+          "Op": "stloc.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 27,
+          "Op": "br",
+          "Operand": 226,
+          "Resolved": null
+        },
+        {
+          "Offset": 32,
+          "Op": "ldloca.s",
+          "Operand": 2,
+          "Resolved": null
+        },
+        {
+          "Offset": 34,
+          "Op": "call",
+          "Operand": 167791897,
+          "Resolved": "TypeSpecification:1B000F43::get_Current"
+        },
+        {
+          "Offset": 39,
+          "Op": "stloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 40,
+          "Op": "ldloca.s",
+          "Operand": 1,
+          "Resolved": null
+        },
+        {
+          "Offset": 42,
+          "Op": "call",
+          "Operand": 100719020,
+          "Resolved": "F5Ek.z5EE::o5Eh"
+        },
+        {
+          "Offset": 47,
+          "Op": "brtrue",
+          "Operand": 59,
+          "Resolved": null
+        },
+        {
+          "Offset": 52,
+          "Op": "ldloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 53,
+          "Op": "stloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 54,
+          "Op": "br",
+          "Operand": 226,
+          "Resolved": null
+        },
+        {
+          "Offset": 59,
+          "Op": "ldloca.s",
+          "Operand": 1,
+          "Resolved": null
+        },
+        {
+          "Offset": 61,
+          "Op": "ldflda",
+          "Operand": 67133331,
+          "Resolved": "F5Ek.z5EE::a5EO"
+        },
+        {
+          "Offset": 66,
+          "Op": "call",
+          "Operand": 100721940,
+          "Resolved": "m5wr.f5wV::c5ww"
+        },
+        {
+          "Offset": 71,
+          "Op": "stloc.s",
+          "Operand": 4,
+          "Resolved": null
+        },
+        {
+          "Offset": 73,
+          "Op": "ldloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 74,
+          "Op": "ldfld",
+          "Operand": 67133330,
+          "Resolved": "F5Ek.z5EE::E5Ed"
+        },
+        {
+          "Offset": 79,
+          "Op": "stloc.s",
+          "Operand": 6,
+          "Resolved": null
+        },
+        {
+          "Offset": 81,
+          "Op": "ldloca.s",
+          "Operand": 6,
+          "Resolved": null
+        },
+        {
+          "Offset": 83,
+          "Op": "call",
+          "Operand": 100721940,
+          "Resolved": "m5wr.f5wV::c5ww"
+        },
+        {
+          "Offset": 88,
+          "Op": "stloc.s",
+          "Operand": 5,
+          "Resolved": null
+        },
+        {
+          "Offset": 90,
+          "Op": "ldloc.s",
+          "Operand": 4,
+          "Resolved": null
+        },
+        {
+          "Offset": 92,
+          "Op": "ldloc.s",
+          "Operand": 5,
+          "Resolved": null
+        },
+        {
+          "Offset": 94,
+          "Op": "and",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 95,
+          "Op": "brfalse",
+          "Operand": 150,
+          "Resolved": null
+        },
+        {
+          "Offset": 100,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 101,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 106,
+          "Op": "ldloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 107,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 112,
+          "Op": "call",
+          "Operand": 100721976,
+          "Resolved": "m5wr.f5wV::op_Inequality"
+        },
+        {
+          "Offset": 117,
+          "Op": "brfalse",
+          "Operand": 224,
+          "Resolved": null
+        },
+        {
+          "Offset": 122,
+          "Op": "ldloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 123,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 124,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 129,
+          "Op": "ldloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 130,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 135,
+          "Op": "newobj",
+          "Operand": 100719965,
+          "Resolved": ".R1Ft::.ctor"
+        },
+        {
+          "Offset": 140,
+          "Op": "callvirt",
+          "Operand": 167795535,
+          "Resolved": "TypeSpecification:1B0012B6::Add"
+        },
+        {
+          "Offset": 145,
+          "Op": "br",
+          "Operand": 224,
+          "Resolved": null
+        },
+        {
+          "Offset": 150,
+          "Op": "ldloc.s",
+          "Operand": 4,
+          "Resolved": null
+        },
+        {
+          "Offset": 152,
+          "Op": "brtrue",
+          "Operand": 168,
+          "Resolved": null
+        },
+        {
+          "Offset": 157,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 158,
+          "Op": "ldfld",
+          "Operand": 67133331,
+          "Resolved": "F5Ek.z5EE::a5EO"
+        },
+        {
+          "Offset": 163,
+          "Op": "br",
+          "Operand": 174,
+          "Resolved": null
+        },
+        {
+          "Offset": 168,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 169,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 174,
+          "Op": "stloc.s",
+          "Operand": 7,
+          "Resolved": null
+        },
+        {
+          "Offset": 176,
+          "Op": "ldloc.s",
+          "Operand": 5,
+          "Resolved": null
+        },
+        {
+          "Offset": 178,
+          "Op": "brtrue",
+          "Operand": 194,
+          "Resolved": null
+        },
+        {
+          "Offset": 183,
+          "Op": "ldloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 184,
+          "Op": "ldfld",
+          "Operand": 67133330,
+          "Resolved": "F5Ek.z5EE::E5Ed"
+        },
+        {
+          "Offset": 189,
+          "Op": "br",
+          "Operand": 200,
+          "Resolved": null
+        },
+        {
+          "Offset": 194,
+          "Op": "ldloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 195,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 200,
+          "Op": "stloc.s",
+          "Operand": 8,
+          "Resolved": null
+        },
+        {
+          "Offset": 202,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 203,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 208,
+          "Op": "ldloc.s",
+          "Operand": 7,
+          "Resolved": null
+        },
+        {
+          "Offset": 210,
+          "Op": "ldloc.s",
+          "Operand": 8,
+          "Resolved": null
+        },
+        {
+          "Offset": 212,
+          "Op": "ldloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 213,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 218,
+          "Op": "ldloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 219,
+          "Op": "call",
+          "Operand": 100722486,
+          "Resolved": "R5v6.L5vW::h5vm"
+        },
+        {
+          "Offset": 224,
+          "Op": "ldloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 225,
+          "Op": "stloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 226,
+          "Op": "ldloca.s",
+          "Operand": 2,
+          "Resolved": null
+        },
+        {
+          "Offset": 228,
+          "Op": "call",
+          "Operand": 167791896,
+          "Resolved": "TypeSpecification:1B000F43::MoveNext"
+        },
+        {
+          "Offset": 233,
+          "Op": "brtrue",
+          "Operand": 32,
+          "Resolved": null
+        },
+        {
+          "Offset": 238,
+          "Op": "leave",
+          "Operand": 257,
+          "Resolved": null
+        },
+        {
+          "Offset": 243,
+          "Op": "ldloca.s",
+          "Operand": 2,
+          "Resolved": null
+        },
+        {
+          "Offset": 245,
+          "Op": "constrained.",
+          "Operand": 452988739,
+          "Resolved": "TypeSpecification:1B000F43"
+        },
+        {
+          "Offset": 251,
+          "Op": "callvirt",
+          "Operand": 167772304,
+          "Resolved": "System.IDisposable::Dispose"
+        },
+        {
+          "Offset": 256,
+          "Op": "endfinally",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 257,
+          "Op": "ldloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 258,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-point-cil.json",
+      "type": "m5wr.f5wV",
+      "method": "m5wf",
+      "token": 100721939,
+      "ilRanges": [
+        [
+          7,
+          84
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldc.i4",
+          "Operand": 128128,
+          "Resolved": null
+        },
+        {
+          "Offset": 12,
+          "Op": "ldc.i4",
+          "Operand": 309803,
+          "Resolved": null
+        },
+        {
+          "Offset": 17,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 18,
+          "Op": "ldc.i4",
+          "Operand": -181675,
+          "Resolved": null
+        },
+        {
+          "Offset": 23,
+          "Op": "beq",
+          "Operand": 47,
+          "Resolved": null
+        },
+        {
+          "Offset": 28,
+          "Op": "br",
+          "Operand": 33,
+          "Resolved": null
+        },
+        {
+          "Offset": 33,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 34,
+          "Op": "call",
+          "Operand": 100721936,
+          "Resolved": "m5wr.f5wV::I5wY"
+        },
+        {
+          "Offset": 39,
+          "Op": "call",
+          "Operand": 167784878,
+          "Resolved": "System.Double::IsNaN"
+        },
+        {
+          "Offset": 44,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 45,
+          "Op": "ldc.i4.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 46,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 47,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 48,
+          "Op": "call",
+          "Operand": 100721934,
+          "Resolved": "m5wr.f5wV::s5wU"
+        },
+        {
+          "Offset": 53,
+          "Op": "call",
+          "Operand": 167784878,
+          "Resolved": "System.Double::IsNaN"
+        },
+        {
+          "Offset": 58,
+          "Op": "brfalse",
+          "Operand": 45,
+          "Resolved": null
+        },
+        {
+          "Offset": 63,
+          "Op": "ldc.i4",
+          "Operand": 211401,
+          "Resolved": null
+        },
+        {
+          "Offset": 68,
+          "Op": "ldc.i4",
+          "Operand": 573132,
+          "Resolved": null
+        },
+        {
+          "Offset": 73,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 74,
+          "Op": "ldc.i4",
+          "Operand": -361731,
+          "Resolved": null
+        },
+        {
+          "Offset": 79,
+          "Op": "beq",
+          "Operand": 33,
+          "Resolved": null
+        },
+        {
+          "Offset": 84,
+          "Op": "br",
+          "Operand": 33,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-point-cil.json",
+      "type": "m5wr.f5wV",
+      "method": "c5ww",
+      "token": 100721940,
+      "ilRanges": [
+        [
+          7,
+          82
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldc.i4",
+          "Operand": 191889,
+          "Resolved": null
+        },
+        {
+          "Offset": 12,
+          "Op": "ldc.i4",
+          "Operand": 526231,
+          "Resolved": null
+        },
+        {
+          "Offset": 17,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 18,
+          "Op": "ldc.i4",
+          "Operand": -334340,
+          "Resolved": null
+        },
+        {
+          "Offset": 23,
+          "Op": "beq",
+          "Operand": 69,
+          "Resolved": null
+        },
+        {
+          "Offset": 28,
+          "Op": "br",
+          "Operand": 33,
+          "Resolved": null
+        },
+        {
+          "Offset": 33,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 34,
+          "Op": "call",
+          "Operand": 100721934,
+          "Resolved": "m5wr.f5wV::s5wU"
+        },
+        {
+          "Offset": 39,
+          "Op": "call",
+          "Operand": 167784878,
+          "Resolved": "System.Double::IsNaN"
+        },
+        {
+          "Offset": 44,
+          "Op": "brtrue",
+          "Operand": 81,
+          "Resolved": null
+        },
+        {
+          "Offset": 49,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        },
+        {
+          "Offset": 54,
+          "Op": "ldfld",
+          "Operand": 67142282,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_81289e05be74447482e7a8fd4d27d340"
+        },
+        {
+          "Offset": 59,
+          "Op": "brtrue",
+          "Operand": 69,
+          "Resolved": null
+        },
+        {
+          "Offset": 64,
+          "Op": "br",
+          "Operand": 69,
+          "Resolved": null
+        },
+        {
+          "Offset": 69,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 70,
+          "Op": "call",
+          "Operand": 100721936,
+          "Resolved": "m5wr.f5wV::I5wY"
+        },
+        {
+          "Offset": 75,
+          "Op": "call",
+          "Operand": 167784878,
+          "Resolved": "System.Double::IsNaN"
+        },
+        {
+          "Offset": 80,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 81,
+          "Op": "ldc.i4.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 82,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-data-converter-cil.json",
+      "type": "<>c",
+      "method": "<GetAxvgPathDataArray>b__27_0",
+      "token": 100692679,
+      "ilRanges": [
+        [
+          33,
+          78
+        ],
+        [
+          110,
+          128
+        ],
+        [
+          164,
+          178
+        ],
+        [
+          199,
+          211
+        ],
+        [
+          229,
+          255
+        ],
+        [
+          255,
+          275
+        ],
+        [
+          294,
+          330
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 33,
+          "Op": "newobj",
+          "Operand": 100692742,
+          "Resolved": "Axure.Axvg.Graphics.BezierData::.ctor"
+        },
+        {
+          "Offset": 38,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 39,
+          "Op": "ldc.i4.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 40,
+          "Op": "callvirt",
+          "Operand": 100692910,
+          "Resolved": "Axure.Axvg.Graphics.PathData::set_Type"
+        },
+        {
+          "Offset": 45,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 46,
+          "Op": "ldloc.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 48,
+          "Op": "callvirt",
+          "Operand": 100692741,
+          "Resolved": "Axure.Axvg.Graphics.BezierData::set_HigherHandle"
+        },
+        {
+          "Offset": 53,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 54,
+          "Op": "ldloc.s",
+          "Operand": 1,
+          "Resolved": null
+        },
+        {
+          "Offset": 56,
+          "Op": "callvirt",
+          "Operand": 100692739,
+          "Resolved": "Axure.Axvg.Graphics.BezierData::set_LowerHandle"
+        },
+        {
+          "Offset": 61,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 62,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 63,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 68,
+          "Op": "call",
+          "Operand": 100692645,
+          "Resolved": "Axure.Axvg.RPToAxvg.RPFormatExtensions::TJcP"
+        },
+        {
+          "Offset": 73,
+          "Op": "callvirt",
+          "Operand": 100692737,
+          "Resolved": "Axure.Axvg.Graphics.BezierData::set_To"
+        },
+        {
+          "Offset": 78,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 110,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 111,
+          "Op": "ldfld",
+          "Operand": 67133331,
+          "Resolved": "F5Ek.z5EE::a5EO"
+        },
+        {
+          "Offset": 116,
+          "Op": "call",
+          "Operand": 100692645,
+          "Resolved": "Axure.Axvg.RPToAxvg.RPFormatExtensions::TJcP"
+        },
+        {
+          "Offset": 121,
+          "Op": "newobj",
+          "Operand": 167788664,
+          "Resolved": "TypeSpecification:1B000B8A::.ctor"
+        },
+        {
+          "Offset": 126,
+          "Op": "br",
+          "Operand": 294,
+          "Resolved": null
+        },
+        {
+          "Offset": 164,
+          "Op": "ldarga.s",
+          "Operand": 1,
+          "Resolved": null
+        },
+        {
+          "Offset": 166,
+          "Op": "ldflda",
+          "Operand": 67133330,
+          "Resolved": "F5Ek.z5EE::E5Ed"
+        },
+        {
+          "Offset": 171,
+          "Op": "call",
+          "Operand": 100721940,
+          "Resolved": "m5wr.f5wV::c5ww"
+        },
+        {
+          "Offset": 176,
+          "Op": "brfalse",
+          "Operand": 229,
+          "Resolved": null
+        },
+        {
+          "Offset": 201,
+          "Op": "ldloca.s",
+          "Operand": 2,
+          "Resolved": null
+        },
+        {
+          "Offset": 203,
+          "Op": "initobj",
+          "Operand": 452987786,
+          "Resolved": "TypeSpecification:1B000B8A"
+        },
+        {
+          "Offset": 209,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        },
+        {
+          "Offset": 229,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 230,
+          "Op": "ldfld",
+          "Operand": 67133330,
+          "Resolved": "F5Ek.z5EE::E5Ed"
+        },
+        {
+          "Offset": 235,
+          "Op": "call",
+          "Operand": 100692645,
+          "Resolved": "Axure.Axvg.RPToAxvg.RPFormatExtensions::TJcP"
+        },
+        {
+          "Offset": 240,
+          "Op": "newobj",
+          "Operand": 167788664,
+          "Resolved": "TypeSpecification:1B000B8A::.ctor"
+        },
+        {
+          "Offset": 245,
+          "Op": "br",
+          "Operand": 318,
+          "Resolved": null
+        },
+        {
+          "Offset": 250,
+          "Op": "br",
+          "Operand": 136,
+          "Resolved": null
+        },
+        {
+          "Offset": 255,
+          "Op": "ldarga.s",
+          "Operand": 1,
+          "Resolved": null
+        },
+        {
+          "Offset": 257,
+          "Op": "ldflda",
+          "Operand": 67133331,
+          "Resolved": "F5Ek.z5EE::a5EO"
+        },
+        {
+          "Offset": 262,
+          "Op": "call",
+          "Operand": 100721940,
+          "Resolved": "m5wr.f5wV::c5ww"
+        },
+        {
+          "Offset": 267,
+          "Op": "brtrue",
+          "Operand": 201,
+          "Resolved": null
+        },
+        {
+          "Offset": 272,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        },
+        {
+          "Offset": 294,
+          "Op": "stloc.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 296,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        },
+        {
+          "Offset": 301,
+          "Op": "ldfld",
+          "Operand": 67142341,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_89f2fb3ee01f452d971fab66d8baace3"
+        },
+        {
+          "Offset": 306,
+          "Op": "brfalse",
+          "Operand": 164,
+          "Resolved": null
+        },
+        {
+          "Offset": 311,
+          "Op": "br",
+          "Operand": 292,
+          "Resolved": null
+        },
+        {
+          "Offset": 316,
+          "Op": "ldloc.s",
+          "Operand": 2,
+          "Resolved": null
+        },
+        {
+          "Offset": 318,
+          "Op": "stloc.s",
+          "Operand": 1,
+          "Resolved": null
+        },
+        {
+          "Offset": 320,
+          "Op": "ldc.i4",
+          "Operand": 129922,
+          "Resolved": null
+        },
+        {
+          "Offset": 325,
+          "Op": "ldc.i4",
+          "Operand": 174131,
+          "Resolved": null
+        },
+        {
+          "Offset": 330,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-array-converter-cil.json",
+      "type": "<>c__DisplayClass26_0",
+      "method": "<GetAxvgPathArray>b__0",
+      "token": 100692691,
+      "ilRanges": [
+        [
+          7,
+          68
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "newobj",
+          "Operand": 100692906,
+          "Resolved": "Axure.Axvg.Graphics.Path::.ctor"
+        },
+        {
+          "Offset": 12,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 13,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 14,
+          "Op": "call",
+          "Operand": 100692668,
+          "Resolved": "Axure.Axvg.RPToAxvg.RPFormatExtensions::dJcl"
+        },
+        {
+          "Offset": 19,
+          "Op": "callvirt",
+          "Operand": 100692905,
+          "Resolved": "Axure.Axvg.Graphics.Path::set_Data"
+        },
+        {
+          "Offset": 24,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 25,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 26,
+          "Op": "ldfld",
+          "Operand": 67122441,
+          "Resolved": ".<>c__DisplayClass26_0::endDecoration"
+        },
+        {
+          "Offset": 31,
+          "Op": "callvirt",
+          "Operand": 100692901,
+          "Resolved": "Axure.Axvg.Graphics.Path::set_EndDecoration"
+        },
+        {
+          "Offset": 36,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 37,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 38,
+          "Op": "ldfld",
+          "Operand": 67122442,
+          "Resolved": ".<>c__DisplayClass26_0::startDecoration"
+        },
+        {
+          "Offset": 43,
+          "Op": "callvirt",
+          "Operand": 100692899,
+          "Resolved": "Axure.Axvg.Graphics.Path::set_StartDecoration"
+        },
+        {
+          "Offset": 48,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 49,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 50,
+          "Op": "call",
+          "Operand": 721422521,
+          "Resolved": "System.Linq.Enumerable::LastOrDefault<generic>"
+        },
+        {
+          "Offset": 55,
+          "Op": "stloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 56,
+          "Op": "ldloca.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 58,
+          "Op": "call",
+          "Operand": 100719020,
+          "Resolved": "F5Ek.z5EE::o5Eh"
+        },
+        {
+          "Offset": 63,
+          "Op": "callvirt",
+          "Operand": 100692903,
+          "Resolved": "Axure.Axvg.Graphics.Path::set_Closed"
+        },
+        {
+          "Offset": 68,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-segment-ctor-cil.json",
+      "type": "Q5hy.I5hl",
+      "method": ".ctor",
+      "token": 100720124,
+      "ilRanges": [
+        [
+          17,
+          43
+        ],
+        [
+          74,
+          82
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 17,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 18,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 19,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 24,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 25,
+          "Op": "ldfld",
+          "Operand": 67133331,
+          "Resolved": "F5Ek.z5EE::a5EO"
+        },
+        {
+          "Offset": 30,
+          "Op": "ldarg.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 31,
+          "Op": "ldfld",
+          "Operand": 67133330,
+          "Resolved": "F5Ek.z5EE::E5Ed"
+        },
+        {
+          "Offset": 36,
+          "Op": "ldarg.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 37,
+          "Op": "ldfld",
+          "Operand": 67133329,
+          "Resolved": "F5Ek.z5EE::g5Eq"
+        },
+        {
+          "Offset": 42,
+          "Op": "ldarg.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 43,
+          "Op": "call",
+          "Operand": 100720125,
+          "Resolved": "Q5hy.I5hl::.ctor"
+        },
+        {
+          "Offset": 74,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 75,
+          "Op": "ldarga.s",
+          "Operand": 1,
+          "Resolved": null
+        },
+        {
+          "Offset": 77,
+          "Op": "call",
+          "Operand": 100719020,
+          "Resolved": "F5Ek.z5EE::o5Eh"
+        },
+        {
+          "Offset": 82,
+          "Op": "stfld",
+          "Operand": 67133800,
+          "Resolved": "Q5hy.I5hl::Y5XV"
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-segment-ctor-cil.json",
+      "type": "Q5hy.I5hl",
+      "method": ".ctor",
+      "token": 100720125,
+      "ilRanges": [
+        [
+          270,
+          296
+        ],
+        [
+          321,
+          347
+        ],
+        [
+          372,
+          392
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 270,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 271,
+          "Op": "ldarga.s",
+          "Operand": 2,
+          "Resolved": null
+        },
+        {
+          "Offset": 273,
+          "Op": "call",
+          "Operand": 100721939,
+          "Resolved": "m5wr.f5wV::m5wf"
+        },
+        {
+          "Offset": 278,
+          "Op": "brfalse",
+          "Operand": 295,
+          "Resolved": null
+        },
+        {
+          "Offset": 283,
+          "Op": "ldarga.s",
+          "Operand": 3,
+          "Resolved": null
+        },
+        {
+          "Offset": 285,
+          "Op": "call",
+          "Operand": 100721939,
+          "Resolved": "m5wr.f5wV::m5wf"
+        },
+        {
+          "Offset": 290,
+          "Op": "br",
+          "Operand": 296,
+          "Resolved": null
+        },
+        {
+          "Offset": 295,
+          "Op": "ldc.i4.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 296,
+          "Op": "stfld",
+          "Operand": 67134776,
+          "Resolved": "N5lc.N5lk::I5l4"
+        },
+        {
+          "Offset": 321,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 322,
+          "Op": "ldarga.s",
+          "Operand": 3,
+          "Resolved": null
+        },
+        {
+          "Offset": 324,
+          "Op": "call",
+          "Operand": 100721939,
+          "Resolved": "m5wr.f5wV::m5wf"
+        },
+        {
+          "Offset": 329,
+          "Op": "brfalse",
+          "Operand": 339,
+          "Resolved": null
+        },
+        {
+          "Offset": 334,
+          "Op": "br",
+          "Operand": 345,
+          "Resolved": null
+        },
+        {
+          "Offset": 339,
+          "Op": "ldarg.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 340,
+          "Op": "br",
+          "Operand": 347,
+          "Resolved": null
+        },
+        {
+          "Offset": 345,
+          "Op": "ldarg.s",
+          "Operand": 4,
+          "Resolved": null
+        },
+        {
+          "Offset": 347,
+          "Op": "stfld",
+          "Operand": 67133788,
+          "Resolved": "Q5hy.I5hl::e5aw"
+        },
+        {
+          "Offset": 372,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 373,
+          "Op": "ldarga.s",
+          "Operand": 2,
+          "Resolved": null
+        },
+        {
+          "Offset": 375,
+          "Op": "call",
+          "Operand": 100721939,
+          "Resolved": "m5wr.f5wV::m5wf"
+        },
+        {
+          "Offset": 380,
+          "Op": "brtrue",
+          "Operand": 391,
+          "Resolved": null
+        },
+        {
+          "Offset": 385,
+          "Op": "ldarg.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 386,
+          "Op": "br",
+          "Operand": 392,
+          "Resolved": null
+        },
+        {
+          "Offset": 391,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 392,
+          "Op": "stfld",
+          "Operand": 67133789,
+          "Resolved": "Q5hy.I5hl::w5au"
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-fill-dispatch2-cil.json",
+      "type": "YHFL.vHFD",
+      "method": "QHFh",
+      "token": 100723365,
+      "ilRanges": [
+        [
+          256,
+          326
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 256,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 257,
+          "Op": "ldfld",
+          "Operand": 67135265,
+          "Resolved": "YHFL.vHFD::oHjG"
+        },
+        {
+          "Offset": 262,
+          "Op": "call",
+          "Operand": 721424766,
+          "Resolved": "CbiJ.Bbib::PbPU<generic>"
+        },
+        {
+          "Offset": 267,
+          "Op": "brfalse",
+          "Operand": 849,
+          "Resolved": null
+        },
+        {
+          "Offset": 272,
+          "Op": "ldloc.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 274,
+          "Op": "ldarg.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 275,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 276,
+          "Op": "ldfld",
+          "Operand": 67135269,
+          "Resolved": "YHFL.vHFD::fHjF"
+        },
+        {
+          "Offset": 281,
+          "Op": "box",
+          "Operand": 33559155,
+          "Resolved": "h5uH.j5u5"
+        },
+        {
+          "Offset": 286,
+          "Op": "ldc.i4.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 287,
+          "Op": "callvirt",
+          "Operand": 100720811,
+          "Resolved": "x5UG.t5Oz::b3bV"
+        },
+        {
+          "Offset": 292,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 293,
+          "Op": "ldfld",
+          "Operand": 67135265,
+          "Resolved": "YHFL.vHFD::oHjG"
+        },
+        {
+          "Offset": 298,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 299,
+          "Op": "ldftn",
+          "Operand": 100723376,
+          "Resolved": "YHFL.vHFD::xHFY"
+        },
+        {
+          "Offset": 305,
+          "Op": "newobj",
+          "Operand": 167796567,
+          "Resolved": "TypeSpecification:1B001437::.ctor"
+        },
+        {
+          "Offset": 310,
+          "Op": "call",
+          "Operand": 721424741,
+          "Resolved": "CbiJ.Bbib::Select<generic>"
+        },
+        {
+          "Offset": 315,
+          "Op": "call",
+          "Operand": 721424686,
+          "Resolved": "CbiJ.Bbib::Sb73<generic>"
+        },
+        {
+          "Offset": 320,
+          "Op": "ldc.i4.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 321,
+          "Op": "callvirt",
+          "Operand": 100721050,
+          "Resolved": "s5Z4.s5ZY::G3jJ"
+        },
+        {
+          "Offset": 326,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-svg-paint-cil.json",
+      "type": "HHbr.dHbV",
+      "method": "G3jJ",
+      "token": 100723564,
+      "ilRanges": [
+        [
+          7,
+          56
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 8,
+          "Op": "call",
+          "Operand": 100723595,
+          "Resolved": "HHbr.dHbV::pHbZ"
+        },
+        {
+          "Offset": 13,
+          "Op": "stloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 14,
+          "Op": "ldc.r8",
+          "Operand": "NaN",
+          "Resolved": null
+        },
+        {
+          "Offset": 23,
+          "Op": "ldnull",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 24,
+          "Op": "ldnull",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 25,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 26,
+          "Op": "call",
+          "Operand": 100723851,
+          "Resolved": "gH9c.KH9k::SH9D"
+        },
+        {
+          "Offset": 31,
+          "Op": "ldc.i4.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 32,
+          "Op": "newobj",
+          "Operand": 100720685,
+          "Resolved": "e5dd.E5dq::.ctor"
+        },
+        {
+          "Offset": 37,
+          "Op": "stloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 38,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 39,
+          "Op": "ldarg.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 40,
+          "Op": "ldloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 41,
+          "Op": "callvirt",
+          "Operand": 100720708,
+          "Resolved": "e5dd.E5dq::M5do"
+        },
+        {
+          "Offset": 46,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 47,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 48,
+          "Op": "ldc.i4.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 49,
+          "Op": "ldloca.s",
+          "Operand": 2,
+          "Resolved": null
+        },
+        {
+          "Offset": 51,
+          "Op": "callvirt",
+          "Operand": 100720709,
+          "Resolved": "e5dd.E5dq::I5dz"
+        },
+        {
+          "Offset": 56,
+          "Op": "stfld",
+          "Operand": 67135350,
+          "Resolved": "HHbr.dHbV::cHJM"
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-svg-path-cil.json",
+      "type": "e5dd.E5dq",
+      "method": "M5do",
+      "token": 100720708,
+      "ilRanges": [
+        [
+          7,
+          65
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 8,
+          "Op": "callvirt",
+          "Operand": 167795689,
+          "Resolved": "TypeSpecification:1B0012F9::GetEnumerator"
+        },
+        {
+          "Offset": 13,
+          "Op": "stloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 14,
+          "Op": "br",
+          "Operand": 38,
+          "Resolved": null
+        },
+        {
+          "Offset": 19,
+          "Op": "ldloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 20,
+          "Op": "callvirt",
+          "Operand": 167795690,
+          "Resolved": "TypeSpecification:1B0012FA::get_Current"
+        },
+        {
+          "Offset": 25,
+          "Op": "stloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 26,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 27,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 28,
+          "Op": "callvirt",
+          "Operand": 100719848,
+          "Resolved": "v575.R57t::H52S"
+        },
+        {
+          "Offset": 33,
+          "Op": "call",
+          "Operand": 100720714,
+          "Resolved": "e5dd.E5dq::F5OF"
+        },
+        {
+          "Offset": 38,
+          "Op": "ldloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 39,
+          "Op": "callvirt",
+          "Operand": 167772305,
+          "Resolved": "System.Collections.IEnumerator::MoveNext"
+        },
+        {
+          "Offset": 44,
+          "Op": "brtrue",
+          "Operand": 19,
+          "Resolved": null
+        },
+        {
+          "Offset": 49,
+          "Op": "leave",
+          "Operand": 67,
+          "Resolved": null
+        },
+        {
+          "Offset": 54,
+          "Op": "ldloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 55,
+          "Op": "brfalse",
+          "Operand": 66,
+          "Resolved": null
+        },
+        {
+          "Offset": 60,
+          "Op": "ldloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 61,
+          "Op": "callvirt",
+          "Operand": 167772304,
+          "Resolved": "System.IDisposable::Dispose"
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-svg-path-cil.json",
+      "type": "e5dd.E5dq",
+      "method": "I5dz",
+      "token": 100720709,
+      "ilRanges": [
+        [
+          33,
+          70
+        ],
+        [
+          292,
+          307
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 33,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 34,
+          "Op": "call",
+          "Operand": 100720643,
+          "Resolved": "Q5qU.q5qO::W5qo"
+        },
+        {
+          "Offset": 39,
+          "Op": "ldc.i4.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 40,
+          "Op": "beq",
+          "Operand": 392,
+          "Resolved": null
+        },
+        {
+          "Offset": 45,
+          "Op": "ldc.i4",
+          "Operand": 185793,
+          "Resolved": null
+        },
+        {
+          "Offset": 50,
+          "Op": "ldc.i4",
+          "Operand": 224208,
+          "Resolved": null
+        },
+        {
+          "Offset": 55,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 56,
+          "Op": "ldc.i4",
+          "Operand": -38414,
+          "Resolved": null
+        },
+        {
+          "Offset": 61,
+          "Op": "beq",
+          "Operand": 33,
+          "Resolved": null
+        },
+        {
+          "Offset": 66,
+          "Op": "br",
+          "Operand": 293,
+          "Resolved": null
+        },
+        {
+          "Offset": 292,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 293,
+          "Op": "ldloc.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 295,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 296,
+          "Op": "call",
+          "Operand": 100720643,
+          "Resolved": "Q5qU.q5qO::W5qo"
+        },
+        {
+          "Offset": 301,
+          "Op": "call",
+          "Operand": 100720644,
+          "Resolved": "Q5qU.q5qO::O5qZ"
+        },
+        {
+          "Offset": 306,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-fill-curves-cil.json",
+      "type": "YHFL.vHFD",
+      "method": "lHF2",
+      "token": 100723364,
+      "ilRanges": [
+        [
+          7,
+          91
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldc.i4",
+          "Operand": 250214,
+          "Resolved": null
+        },
+        {
+          "Offset": 12,
+          "Op": "ldc.i4",
+          "Operand": 560183,
+          "Resolved": null
+        },
+        {
+          "Offset": 17,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 18,
+          "Op": "ldc.i4",
+          "Operand": -309961,
+          "Resolved": null
+        },
+        {
+          "Offset": 23,
+          "Op": "beq",
+          "Operand": 33,
+          "Resolved": null
+        },
+        {
+          "Offset": 28,
+          "Op": "br",
+          "Operand": 59,
+          "Resolved": null
+        },
+        {
+          "Offset": 33,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 34,
+          "Op": "ldfld",
+          "Operand": 67134772,
+          "Resolved": "N5lc.N5lk::O5lO"
+        },
+        {
+          "Offset": 39,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 40,
+          "Op": "ldfld",
+          "Operand": 67134771,
+          "Resolved": "N5lc.N5lk::x5ld"
+        },
+        {
+          "Offset": 45,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 46,
+          "Op": "ldfld",
+          "Operand": 67134775,
+          "Resolved": "N5lc.N5lk::i5lY"
+        },
+        {
+          "Offset": 51,
+          "Op": "newobj",
+          "Operand": 100720129,
+          "Resolved": "Q5hy.I5hl::.ctor"
+        },
+        {
+          "Offset": 56,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 57,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 58,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 59,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 60,
+          "Op": "ldfld",
+          "Operand": 67133800,
+          "Resolved": "Q5hy.I5hl::Y5XV"
+        },
+        {
+          "Offset": 65,
+          "Op": "brtrue",
+          "Operand": 57,
+          "Resolved": null
+        },
+        {
+          "Offset": 70,
+          "Op": "ldc.i4",
+          "Operand": 65015,
+          "Resolved": null
+        },
+        {
+          "Offset": 75,
+          "Op": "ldc.i4",
+          "Operand": 419561,
+          "Resolved": null
+        },
+        {
+          "Offset": 80,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 81,
+          "Op": "ldc.i4",
+          "Operand": -354546,
+          "Resolved": null
+        },
+        {
+          "Offset": 86,
+          "Op": "beq",
+          "Operand": 33,
+          "Resolved": null
+        },
+        {
+          "Offset": 91,
+          "Op": "br",
+          "Operand": 33,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-fill-curves-cil.json",
+      "type": "YHFL.vHFD",
+      "method": "xHFY",
+      "token": 100723376,
+      "ilRanges": [
+        [
+          7,
+          16
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 8,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 9,
+          "Op": "ldc.i4.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 10,
+          "Op": "ldc.i4.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 11,
+          "Op": "call",
+          "Operand": 721424769,
+          "Resolved": "YHFL.vHFD::CHFd<generic>"
+        },
+        {
+          "Offset": 16,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-fill-command-cil.json",
+      "type": "YHFL.vHFD",
+      "method": "CHFd",
+      "token": 100723372,
+      "ilRanges": [
+        [
+          133,
+          198
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 133,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 134,
+          "Op": "ldloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 135,
+          "Op": "ldsfld",
+          "Operand": 167796651,
+          "Resolved": "TypeSpecification:1B001457::<>9__41_1"
+        },
+        {
+          "Offset": 140,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 141,
+          "Op": "brtrue",
+          "Operand": 169,
+          "Resolved": null
+        },
+        {
+          "Offset": 146,
+          "Op": "pop",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 147,
+          "Op": "ldsfld",
+          "Operand": 167796649,
+          "Resolved": "TypeSpecification:1B001457::<>9"
+        },
+        {
+          "Offset": 152,
+          "Op": "ldftn",
+          "Operand": 167796652,
+          "Resolved": "TypeSpecification:1B001457::<GetRenderPathsArc>b__41_1"
+        },
+        {
+          "Offset": 158,
+          "Op": "newobj",
+          "Operand": 167795720,
+          "Resolved": "TypeSpecification:1B001309::.ctor"
+        },
+        {
+          "Offset": 163,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 164,
+          "Op": "stsfld",
+          "Operand": 167796651,
+          "Resolved": "TypeSpecification:1B001457::<>9__41_1"
+        },
+        {
+          "Offset": 169,
+          "Op": "call",
+          "Operand": 721424415,
+          "Resolved": "CbiJ.Bbib::Select<generic>"
+        },
+        {
+          "Offset": 174,
+          "Op": "call",
+          "Operand": 721424308,
+          "Resolved": "CbiJ.Bbib::Sb73<generic>"
+        },
+        {
+          "Offset": 179,
+          "Op": "ldc.i4.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 180,
+          "Op": "callvirt",
+          "Operand": 100719886,
+          "Resolved": "v575.R57t::P57v"
+        },
+        {
+          "Offset": 185,
+          "Op": "ldarg.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 186,
+          "Op": "brfalse",
+          "Operand": 197,
+          "Resolved": null
+        },
+        {
+          "Offset": 191,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 192,
+          "Op": "callvirt",
+          "Operand": 100719862,
+          "Resolved": "v575.R57t::a572"
+        },
+        {
+          "Offset": 197,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 198,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-render-dispatch-cil.json",
+      "type": "YHFL.vHFD",
+      "method": "nHFe",
+      "token": 100723358,
+      "ilRanges": [
+        [
+          1760,
+          1813
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 1760,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 1761,
+          "Op": "ldfld",
+          "Operand": 67135265,
+          "Resolved": "YHFL.vHFD::oHjG"
+        },
+        {
+          "Offset": 1766,
+          "Op": "ldloc.s",
+          "Operand": 11,
+          "Resolved": null
+        },
+        {
+          "Offset": 1768,
+          "Op": "ldsfld",
+          "Operand": 67135291,
+          "Resolved": ".<>O::<0>__StraightenUnmaterialized"
+        },
+        {
+          "Offset": 1773,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 1774,
+          "Op": "brfalse",
+          "Operand": 1784,
+          "Resolved": null
+        },
+        {
+          "Offset": 1779,
+          "Op": "br",
+          "Operand": 1803,
+          "Resolved": null
+        },
+        {
+          "Offset": 1784,
+          "Op": "pop",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 1785,
+          "Op": "ldnull",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 1786,
+          "Op": "ldftn",
+          "Operand": 100723364,
+          "Resolved": "YHFL.vHFD::lHF2"
+        },
+        {
+          "Offset": 1792,
+          "Op": "newobj",
+          "Operand": 167796182,
+          "Resolved": "TypeSpecification:1B00139D::.ctor"
+        },
+        {
+          "Offset": 1797,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 1798,
+          "Op": "stsfld",
+          "Operand": 67135291,
+          "Resolved": ".<>O::<0>__StraightenUnmaterialized"
+        },
+        {
+          "Offset": 1803,
+          "Op": "call",
+          "Operand": 721424569,
+          "Resolved": "CbiJ.Bbib::Select<generic>"
+        },
+        {
+          "Offset": 1808,
+          "Op": "call",
+          "Operand": 721424339,
+          "Resolved": "CbiJ.Bbib::Sb73<generic>"
+        },
+        {
+          "Offset": 1813,
+          "Op": "callvirt",
+          "Operand": 167775426,
+          "Resolved": "TypeSpecification:1B0001E7::Add"
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-path-segments-cil.json",
+      "type": "v575.R57t",
+      "method": "u57o",
+      "token": 100719889,
+      "ilRanges": [
+        [
+          261,
+          417
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 261,
+          "Op": "ldloca.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 263,
+          "Op": "call",
+          "Operand": 100719020,
+          "Resolved": "F5Ek.z5EE::o5Eh"
+        },
+        {
+          "Offset": 268,
+          "Op": "brfalse",
+          "Operand": 328,
+          "Resolved": null
+        },
+        {
+          "Offset": 273,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 274,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 275,
+          "Op": "ldc.i4.4",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 276,
+          "Op": "newarr",
+          "Operand": 33559152,
+          "Resolved": "m5wr.f5wV"
+        },
+        {
+          "Offset": 281,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 282,
+          "Op": "ldc.i4.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 283,
+          "Op": "ldloc.s",
+          "Operand": 5,
+          "Resolved": null
+        },
+        {
+          "Offset": 285,
+          "Op": "stelem",
+          "Operand": 33559152,
+          "Resolved": "m5wr.f5wV"
+        },
+        {
+          "Offset": 290,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 291,
+          "Op": "ldc.i4.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 292,
+          "Op": "ldloc.s",
+          "Operand": 7,
+          "Resolved": null
+        },
+        {
+          "Offset": 294,
+          "Op": "stelem",
+          "Operand": 33559152,
+          "Resolved": "m5wr.f5wV"
+        },
+        {
+          "Offset": 299,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 300,
+          "Op": "ldc.i4.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 301,
+          "Op": "ldloc.s",
+          "Operand": 8,
+          "Resolved": null
+        },
+        {
+          "Offset": 303,
+          "Op": "stelem",
+          "Operand": 33559152,
+          "Resolved": "m5wr.f5wV"
+        },
+        {
+          "Offset": 308,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 309,
+          "Op": "ldc.i4.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 310,
+          "Op": "ldloc.s",
+          "Operand": 6,
+          "Resolved": null
+        },
+        {
+          "Offset": 312,
+          "Op": "stelem",
+          "Operand": 33559152,
+          "Resolved": "m5wr.f5wV"
+        },
+        {
+          "Offset": 317,
+          "Op": "ldc.i4.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 318,
+          "Op": "call",
+          "Operand": 100719866,
+          "Resolved": "v575.R57t::J57X"
+        },
+        {
+          "Offset": 323,
+          "Op": "br",
+          "Operand": 358,
+          "Resolved": null
+        },
+        {
+          "Offset": 328,
+          "Op": "ldc.i4.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 329,
+          "Op": "stloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 330,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 331,
+          "Op": "call",
+          "Operand": 721424309,
+          "Resolved": "CbiJ.Bbib::nbPd<generic>"
+        },
+        {
+          "Offset": 336,
+          "Op": "brfalse",
+          "Operand": 358,
+          "Resolved": null
+        },
+        {
+          "Offset": 341,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 342,
+          "Op": "call",
+          "Operand": 721424310,
+          "Resolved": "CbiJ.Bbib::Last<generic>"
+        },
+        {
+          "Offset": 347,
+          "Op": "castclass",
+          "Operand": 33558918,
+          "Resolved": ".P1Fk"
+        },
+        {
+          "Offset": 352,
+          "Op": "ldc.i4.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 353,
+          "Op": "stfld",
+          "Operand": 67133681,
+          "Resolved": ".P1Fk::D1FK"
+        },
+        {
+          "Offset": 358,
+          "Op": "ldloc.s",
+          "Operand": 4,
+          "Resolved": null
+        },
+        {
+          "Offset": 360,
+          "Op": "stloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 361,
+          "Op": "ldloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 362,
+          "Op": "ldc.i4.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 363,
+          "Op": "add",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 364,
+          "Op": "stloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 365,
+          "Op": "ldloc.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 366,
+          "Op": "ldarg.3",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 367,
+          "Op": "callvirt",
+          "Operand": 167784274,
+          "Resolved": "TypeSpecification:1B000800::get_Count"
+        },
+        {
+          "Offset": 372,
+          "Op": "ble",
+          "Operand": 69,
+          "Resolved": null
+        },
+        {
+          "Offset": 377,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 378,
+          "Op": "call",
+          "Operand": 721424309,
+          "Resolved": "CbiJ.Bbib::nbPd<generic>"
+        },
+        {
+          "Offset": 383,
+          "Op": "brfalse",
+          "Operand": 405,
+          "Resolved": null
+        },
+        {
+          "Offset": 388,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 389,
+          "Op": "call",
+          "Operand": 721424310,
+          "Resolved": "CbiJ.Bbib::Last<generic>"
+        },
+        {
+          "Offset": 394,
+          "Op": "castclass",
+          "Operand": 33558918,
+          "Resolved": ".P1Fk"
+        },
+        {
+          "Offset": 399,
+          "Op": "ldc.i4.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 400,
+          "Op": "stfld",
+          "Operand": 67133681,
+          "Resolved": ".P1Fk::D1FK"
+        },
+        {
+          "Offset": 405,
+          "Op": "ldloc.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 406,
+          "Op": "brfalse",
+          "Operand": 417,
+          "Resolved": null
+        },
+        {
+          "Offset": 411,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 412,
+          "Op": "call",
+          "Operand": 100719862,
+          "Resolved": "v575.R57t::a572"
+        },
+        {
+          "Offset": 417,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-shape-predicate-cil.json",
+      "type": "GSqK.cSqL",
+      "method": "DSO4",
+      "token": 100708406,
+      "ilRanges": [
+        [
+          7,
+          15
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 8,
+          "Op": "ldc.i4",
+          "Operand": 300,
+          "Resolved": null
+        },
+        {
+          "Offset": 13,
+          "Op": "ceq",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 15,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-vector-cil.json",
+      "type": "Axure.DocumentModel.Objects.VectorShape",
+      "method": "LN4g",
+      "token": 100702676,
+      "ilRanges": [
+        [
+          7,
+          43
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 8,
+          "Op": "call",
+          "Operand": 100702789,
+          "Resolved": "Axure.DocumentModel.Objects.VectorShape::get_Shape"
+        },
+        {
+          "Offset": 13,
+          "Op": "call",
+          "Operand": 100708406,
+          "Resolved": "GSqK.cSqL::DSO4"
+        },
+        {
+          "Offset": 18,
+          "Op": "brtrue",
+          "Operand": 37,
+          "Resolved": null
+        },
+        {
+          "Offset": 23,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 24,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 25,
+          "Op": "ldnull",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 26,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 27,
+          "Op": "call",
+          "Operand": 100702679,
+          "Resolved": "Axure.DocumentModel.Objects.VectorShape::jN4k"
+        },
+        {
+          "Offset": 32,
+          "Op": "call",
+          "Operand": 100702683,
+          "Resolved": "Axure.DocumentModel.Objects.VectorShape::DN4W"
+        },
+        {
+          "Offset": 37,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 38,
+          "Op": "ldfld",
+          "Operand": 67126999,
+          "Resolved": "Axure.DocumentModel.Objects.VectorShape::cN89"
+        },
+        {
+          "Offset": 43,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-vector-cil.json",
+      "type": "Axure.DocumentModel.Objects.VectorShape",
+      "method": "jN4k",
+      "token": 100702679,
+      "ilRanges": [
+        [
+          7,
+          97
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 8,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 9,
+          "Op": "brtrue",
+          "Operand": 21,
+          "Resolved": null
+        },
+        {
+          "Offset": 14,
+          "Op": "pop",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 15,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 16,
+          "Op": "callvirt",
+          "Operand": 100695395,
+          "Resolved": "kJm2.KJm7::get_SizingRect"
+        },
+        {
+          "Offset": 21,
+          "Op": "starg.s",
+          "Operand": 1,
+          "Resolved": null
+        },
+        {
+          "Offset": 23,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 24,
+          "Op": "call",
+          "Operand": 100695581,
+          "Resolved": "kJm2.KJm7::hJOT"
+        },
+        {
+          "Offset": 29,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 30,
+          "Op": "callvirt",
+          "Operand": 100722027,
+          "Resolved": "O5ut.K5u9::j3jh"
+        },
+        {
+          "Offset": 35,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 36,
+          "Op": "callvirt",
+          "Operand": 100722026,
+          "Resolved": "O5ut.K5u9::P3j2"
+        },
+        {
+          "Offset": 41,
+          "Op": "call",
+          "Operand": 167774824,
+          "Resolved": "System.Math::Min"
+        },
+        {
+          "Offset": 46,
+          "Op": "call",
+          "Operand": 167774824,
+          "Resolved": "System.Math::Min"
+        },
+        {
+          "Offset": 51,
+          "Op": "stloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 52,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 53,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 54,
+          "Op": "call",
+          "Operand": 100702789,
+          "Resolved": "Axure.DocumentModel.Objects.VectorShape::get_Shape"
+        },
+        {
+          "Offset": 59,
+          "Op": "ldloc.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 60,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 61,
+          "Op": "call",
+          "Operand": 100695584,
+          "Resolved": "kJm2.KJm7::GJOu"
+        },
+        {
+          "Offset": 66,
+          "Op": "ldarg.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 67,
+          "Op": "add",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 68,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 69,
+          "Op": "call",
+          "Operand": 100695273,
+          "Resolved": "kJm2.KJm7::mJqb"
+        },
+        {
+          "Offset": 74,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 75,
+          "Op": "ldfld",
+          "Operand": 67127027,
+          "Resolved": "Axure.DocumentModel.Objects.VectorShape::sN8m"
+        },
+        {
+          "Offset": 80,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 81,
+          "Op": "call",
+          "Operand": 100695598,
+          "Resolved": "kJm2.KJm7::QJUF"
+        },
+        {
+          "Offset": 86,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 87,
+          "Op": "call",
+          "Operand": 100695599,
+          "Resolved": "kJm2.KJm7::lJUj"
+        },
+        {
+          "Offset": 92,
+          "Op": "call",
+          "Operand": 100722530,
+          "Resolved": "R5v6.L5vW::w5Qk"
+        },
+        {
+          "Offset": 97,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-scale-cil.json",
+      "type": "T5pS.d5pN",
+      "method": "A5ph",
+      "token": 100720533,
+      "ilRanges": [
+        [
+          7,
+          53
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 8,
+          "Op": "callvirt",
+          "Operand": 100722014,
+          "Resolved": "O5ut.K5u9::n3bc"
+        },
+        {
+          "Offset": 13,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 14,
+          "Op": "callvirt",
+          "Operand": 100722015,
+          "Resolved": "O5ut.K5u9::G3bW"
+        },
+        {
+          "Offset": 19,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 20,
+          "Op": "call",
+          "Operand": 100720547,
+          "Resolved": "T5pS.d5pN::D5pZ"
+        },
+        {
+          "Offset": 25,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 26,
+          "Op": "callvirt",
+          "Operand": 100722016,
+          "Resolved": "O5ut.K5u9::B3b6"
+        },
+        {
+          "Offset": 31,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 32,
+          "Op": "callvirt",
+          "Operand": 100722017,
+          "Resolved": "O5ut.K5u9::u3bD"
+        },
+        {
+          "Offset": 37,
+          "Op": "ldarg.1",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 38,
+          "Op": "call",
+          "Operand": 100720547,
+          "Resolved": "T5pS.d5pN::D5pZ"
+        },
+        {
+          "Offset": 43,
+          "Op": "stloc.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 45,
+          "Op": "ldloc.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 47,
+          "Op": "ldarg.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 48,
+          "Op": "call",
+          "Operand": 100720547,
+          "Resolved": "T5pS.d5pN::D5pZ"
+        },
+        {
+          "Offset": 53,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-inset-cil.json",
+      "type": "T5pS.d5pN",
+      "method": "D5pZ",
+      "token": 100720547,
+      "ilRanges": [
+        [
+          7,
+          62
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 7,
+          "Op": "ldarga.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 9,
+          "Op": "call",
+          "Operand": 100721934,
+          "Resolved": "m5wr.f5wV::s5wU"
+        },
+        {
+          "Offset": 14,
+          "Op": "ldarga.s",
+          "Operand": 1,
+          "Resolved": null
+        },
+        {
+          "Offset": 16,
+          "Op": "call",
+          "Operand": 100721934,
+          "Resolved": "m5wr.f5wV::s5wU"
+        },
+        {
+          "Offset": 21,
+          "Op": "ldarga.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 23,
+          "Op": "call",
+          "Operand": 100721934,
+          "Resolved": "m5wr.f5wV::s5wU"
+        },
+        {
+          "Offset": 28,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 29,
+          "Op": "ldarg.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 30,
+          "Op": "mul",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 31,
+          "Op": "add",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 32,
+          "Op": "ldarga.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 34,
+          "Op": "call",
+          "Operand": 100721936,
+          "Resolved": "m5wr.f5wV::I5wY"
+        },
+        {
+          "Offset": 39,
+          "Op": "ldarga.s",
+          "Operand": 1,
+          "Resolved": null
+        },
+        {
+          "Offset": 41,
+          "Op": "call",
+          "Operand": 100721936,
+          "Resolved": "m5wr.f5wV::I5wY"
+        },
+        {
+          "Offset": 46,
+          "Op": "ldarga.s",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 48,
+          "Op": "call",
+          "Operand": 100721936,
+          "Resolved": "m5wr.f5wV::I5wY"
+        },
+        {
+          "Offset": 53,
+          "Op": "sub",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 54,
+          "Op": "ldarg.2",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 55,
+          "Op": "mul",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 56,
+          "Op": "add",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 57,
+          "Op": "newobj",
+          "Operand": 100721941,
+          "Resolved": "m5wr.f5wV::.ctor"
+        },
+        {
+          "Offset": 62,
+          "Op": "ret",
+          "Operand": null,
+          "Resolved": null
+        }
+      ]
+    },
+    {
+      "file": "research/rp-vector-path-vector-drawing-cil.json",
+      "type": "Axure.DocumentModel.Objects.VectorShape",
+      "method": "NIwY",
+      "token": 100702762,
+      "ilRanges": [
+        [
+          345,
+          351
+        ],
+        [
+          401,
+          465
+        ]
+      ],
+      "instructions": [
+        {
+          "Offset": 345,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 346,
+          "Op": "call",
+          "Operand": 100702405,
+          "Resolved": "Axure.DocumentModel.Objects.TextRectObject::NIwY"
+        },
+        {
+          "Offset": 351,
+          "Op": "ldsfld",
+          "Operand": 67142340,
+          "Resolved": ".<Module>{7f12322c-de17-4be8-971e-e63a5974a7e7}::m_b6418ac2b08242cebcba41792083cd1c"
+        },
+        {
+          "Offset": 401,
+          "Op": "ldarg.0",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 402,
+          "Op": "ldc.r8",
+          "Operand": 0,
+          "Resolved": null
+        },
+        {
+          "Offset": 411,
+          "Op": "call",
+          "Operand": 100702676,
+          "Resolved": "Axure.DocumentModel.Objects.VectorShape::LN4g"
+        },
+        {
+          "Offset": 416,
+          "Op": "ldsfld",
+          "Operand": 67127068,
+          "Resolved": ".<>c::<>9__137_0"
+        },
+        {
+          "Offset": 421,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 422,
+          "Op": "brfalse",
+          "Operand": 432,
+          "Resolved": null
+        },
+        {
+          "Offset": 427,
+          "Op": "br",
+          "Operand": 455,
+          "Resolved": null
+        },
+        {
+          "Offset": 432,
+          "Op": "pop",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 433,
+          "Op": "ldsfld",
+          "Operand": 67127031,
+          "Resolved": ".<>c::<>9"
+        },
+        {
+          "Offset": 438,
+          "Op": "ldftn",
+          "Operand": 100702864,
+          "Resolved": ".<>c::<CommitObjectData>b__137_0"
+        },
+        {
+          "Offset": 444,
+          "Op": "newobj",
+          "Operand": 167791930,
+          "Resolved": "TypeSpecification:1B000F49::.ctor"
+        },
+        {
+          "Offset": 449,
+          "Op": "dup",
+          "Operand": null,
+          "Resolved": null
+        },
+        {
+          "Offset": 450,
+          "Op": "stsfld",
+          "Operand": 67127068,
+          "Resolved": ".<>c::<>9__137_0"
+        },
+        {
+          "Offset": 455,
+          "Op": "call",
+          "Operand": 721423482,
+          "Resolved": "CbiJ.Bbib::Select<generic>"
+        },
+        {
+          "Offset": 460,
+          "Op": "newobj",
+          "Operand": 100716233,
+          "Resolved": "Atph.ttp2::.ctor"
+        },
+        {
+          "Offset": 465,
+          "Op": "callvirt",
+          "Operand": 100716031,
+          "Resolved": "MtXw.StXT::jtme"
+        }
+      ]
+    }
+  ],
+  "unknowns": [
+    "Final native stroke displacement, snapping, cap/join/dash and rasterization parity",
+    "General interior-break fill/stroke representation",
+    "Old-schema empty-text recovery",
+    "Malformed anchor repair flag calling context",
+    "SmartControlPoints shape-specific regeneration"
+  ]
+}
