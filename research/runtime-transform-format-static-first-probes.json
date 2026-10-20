@@ -1,0 +1,1131 @@
+{
+  "method": "Bounded original-CIL control flow replay, not original DLL execution. CLR field defaults supplied explicitly. StringLiteral construction/BJC9, binary expression TJMo, scope Save, and boundary STOS callback are named controlled sinks. The boundary formula is not executed or claimed complete.",
+  "originalAxureGuiCompared": false,
+  "checks": {
+    "total": 60,
+    "passed": 31
+  },
+  "sources": [
+    {
+      "file": "research/runtime-transform-format-move-info-cil.json",
+      "sha256": "5cd2185893a93f3fdb0b8a508f12533b9744df7403aa1fbf5cac9e095c3c9bcd"
+    },
+    {
+      "file": "research/runtime-transform-format-size-info-cil.json",
+      "sha256": "c2cd6c87fb97d532fc00fa255980cea80098b533f779d2ab033d3e4f2b7da79c"
+    },
+    {
+      "file": "research/runtime-transform-format-move-generator-cil.json",
+      "sha256": "16853cc15ab73025097f504ac88babe375e877d6db5d6406a979bb9e7ac67af9"
+    },
+    {
+      "file": "research/runtime-transform-format-size-generator-cil.json",
+      "sha256": "3fd439577c67019b2dd7bf5377ce3266248baa0f67aefc7fa3c618dbbcfb9055"
+    },
+    {
+      "file": "research/runtime-transform-format-metadata.json",
+      "sha256": "46870b7a7dd08523d5b6407c92253ce909fdc7623d2e6c594410ccd48b408208"
+    },
+    {
+      "file": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    },
+    {
+      "file": "research/text-autofit-native-literals.mjs",
+      "sha256": "2b8f2adee7d6e1ac5ac4e0188edf616057d1e129071b9818eb4900dfbf9e3091"
+    },
+    {
+      "file": "research/text-autofit-native-literals.bin",
+      "sha256": "9f43dae4b33ade6e7f48d90bbe882de7ab529db13782d1df2184fa122b61b542"
+    }
+  ],
+  "results": [
+    {
+      "name": "Move constructor preserves mode argument, initializes zero coordinates, None easing, Straight trajectory and caller duration",
+      "passed": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    BoundaryCondition: null,\n    Duration: 500,\n    Easing: 0,\n-   MoveTrajectory: 0,\n    MoveType: 1,\n    XValue: {\n      literal: '0'\n    },\n    YValue: {\n"
+    },
+    {
+      "name": "Set Size constructor uses caller dimensions and top-left anchor with None easing",
+      "passed": false,
+      "error": "Unhandled call z5Sv.B5Sy::w5SQ at 100705598:154"
+    },
+    {
+      "name": "Move generated mode 0 trajectory 0 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'straight'\n"
+    },
+    {
+      "name": "Move generated mode 0 trajectory 0 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 0 trajectory 1 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 0 trajectory 1 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 0 trajectory 2 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcAntiClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 0 trajectory 2 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 1 trajectory 0 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'straight'\n"
+    },
+    {
+      "name": "Move generated mode 1 trajectory 0 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 1 trajectory 1 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 1 trajectory 1 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 1 trajectory 2 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcAntiClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 1 trajectory 2 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 2 trajectory 0 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'straight'\n"
+    },
+    {
+      "name": "Move generated mode 2 trajectory 0 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 2 trajectory 1 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 2 trajectory 1 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 2 trajectory 2 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcAntiClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 2 trajectory 2 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 3 trajectory 0 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'straight'\n"
+    },
+    {
+      "name": "Move generated mode 3 trajectory 0 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 3 trajectory 1 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 3 trajectory 1 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 3 trajectory 2 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcAntiClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 3 trajectory 2 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 4 trajectory 0 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'straight'\n"
+    },
+    {
+      "name": "Move generated mode 4 trajectory 0 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 4 trajectory 1 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 4 trajectory 1 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 4 trajectory 2 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcAntiClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 4 trajectory 2 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 5 trajectory 0 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'straight'\n"
+    },
+    {
+      "name": "Move generated mode 5 trajectory 0 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 5 trajectory 1 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 5 trajectory 1 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 5 trajectory 2 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcAntiClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 5 trajectory 2 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 6 trajectory 0 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'straight'\n"
+    },
+    {
+      "name": "Move generated mode 6 trajectory 0 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 6 trajectory 1 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 6 trajectory 1 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 6 trajectory 2 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcAntiClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 6 trajectory 2 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 7 trajectory 0 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'straight'\n"
+    },
+    {
+      "name": "Move generated mode 7 trajectory 0 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 7 trajectory 1 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 7 trajectory 1 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 7 trajectory 2 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcAntiClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 7 trajectory 2 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 8 trajectory 0 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'straight'\n"
+    },
+    {
+      "name": "Move generated mode 8 trajectory 0 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 8 trajectory 1 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 8 trajectory 1 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Move generated mode 8 trajectory 2 easing 0",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'arcAntiClockwise'\n"
+    },
+    {
+      "name": "Move generated mode 8 trajectory 2 easing 2",
+      "passed": true
+    },
+    {
+      "name": "Size generator exact expressions and always-present easing/duration 0",
+      "passed": true
+    },
+    {
+      "name": "Size generator exact expressions and always-present easing/duration 1",
+      "passed": true
+    },
+    {
+      "name": "Size generator exact expressions and always-present easing/duration 2",
+      "passed": true
+    },
+    {
+      "name": "Size generator exact expressions and always-present easing/duration 32",
+      "passed": true
+    }
+  ],
+  "outputs": [
+    {
+      "kind": "move-generator",
+      "mode": 0,
+      "trajectory": 0,
+      "easing": 2,
+      "output": {
+        "moveType": "location",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "straight"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 0,
+      "trajectory": 1,
+      "easing": 2,
+      "output": {
+        "moveType": "location",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 0,
+      "trajectory": 2,
+      "easing": 2,
+      "output": {
+        "moveType": "location",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcAntiClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 1,
+      "trajectory": 0,
+      "easing": 2,
+      "output": {
+        "moveType": "delta",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "straight"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 1,
+      "trajectory": 1,
+      "easing": 2,
+      "output": {
+        "moveType": "delta",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 1,
+      "trajectory": 2,
+      "easing": 2,
+      "output": {
+        "moveType": "delta",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcAntiClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 2,
+      "trajectory": 0,
+      "easing": 2,
+      "output": {
+        "moveType": "drag",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "straight"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 2,
+      "trajectory": 1,
+      "easing": 2,
+      "output": {
+        "moveType": "drag",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 2,
+      "trajectory": 2,
+      "easing": 2,
+      "output": {
+        "moveType": "drag",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcAntiClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 3,
+      "trajectory": 0,
+      "easing": 2,
+      "output": {
+        "moveType": "dragX",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "straight"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 3,
+      "trajectory": 1,
+      "easing": 2,
+      "output": {
+        "moveType": "dragX",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 3,
+      "trajectory": 2,
+      "easing": 2,
+      "output": {
+        "moveType": "dragX",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcAntiClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 4,
+      "trajectory": 0,
+      "easing": 2,
+      "output": {
+        "moveType": "dragY",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "straight"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 4,
+      "trajectory": 1,
+      "easing": 2,
+      "output": {
+        "moveType": "dragY",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 4,
+      "trajectory": 2,
+      "easing": 2,
+      "output": {
+        "moveType": "dragY",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcAntiClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 5,
+      "trajectory": 0,
+      "easing": 2,
+      "output": {
+        "moveType": "locationBeforeDrag",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "straight"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 5,
+      "trajectory": 1,
+      "easing": 2,
+      "output": {
+        "moveType": "locationBeforeDrag",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 5,
+      "trajectory": 2,
+      "easing": 2,
+      "output": {
+        "moveType": "locationBeforeDrag",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcAntiClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 6,
+      "trajectory": 0,
+      "easing": 2,
+      "output": {
+        "moveType": "withThis",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "straight"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 6,
+      "trajectory": 1,
+      "easing": 2,
+      "output": {
+        "moveType": "withThis",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 6,
+      "trajectory": 2,
+      "easing": 2,
+      "output": {
+        "moveType": "withThis",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcAntiClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 7,
+      "trajectory": 0,
+      "easing": 2,
+      "output": {
+        "moveType": "sizeDeltaX",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "straight"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 7,
+      "trajectory": 1,
+      "easing": 2,
+      "output": {
+        "moveType": "sizeDeltaX",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 7,
+      "trajectory": 2,
+      "easing": 2,
+      "output": {
+        "moveType": "sizeDeltaX",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcAntiClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 8,
+      "trajectory": 0,
+      "easing": 2,
+      "output": {
+        "moveType": "sizeDeltaY",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "straight"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 8,
+      "trajectory": 1,
+      "easing": 2,
+      "output": {
+        "moveType": "sizeDeltaY",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcClockwise"
+        }
+      }
+    },
+    {
+      "kind": "move-generator",
+      "mode": 8,
+      "trajectory": 2,
+      "easing": 2,
+      "output": {
+        "moveType": "sizeDeltaY",
+        "xValue": {
+          "literal": "[[X]]"
+        },
+        "yValue": {
+          "literal": "[[Y]]"
+        },
+        "options": {
+          "boundaryExpr": {
+            "boundary": {
+              "ast": "boundary fixture"
+            }
+          },
+          "boundaryStos": {
+            "compilerSink": "sNQv boundary STOS + scope"
+          },
+          "easing": "linear",
+          "duration": 1234,
+          "trajectory": "arcAntiClockwise"
+        }
+      }
+    },
+    {
+      "kind": "size-generator",
+      "easing": 0,
+      "output": {
+        "width": {
+          "literal": "[[Target.width+7]]"
+        },
+        "height": {
+          "literal": "[[Window.height-Target.y]]"
+        },
+        "anchor": "bottom right",
+        "easing": "none",
+        "duration": 1234
+      }
+    },
+    {
+      "kind": "size-generator",
+      "easing": 1,
+      "output": {
+        "width": {
+          "literal": "[[Target.width+7]]"
+        },
+        "height": {
+          "literal": "[[Window.height-Target.y]]"
+        },
+        "anchor": "bottom right",
+        "easing": "swing",
+        "duration": 1234
+      }
+    },
+    {
+      "kind": "size-generator",
+      "easing": 2,
+      "output": {
+        "width": {
+          "literal": "[[Target.width+7]]"
+        },
+        "height": {
+          "literal": "[[Window.height-Target.y]]"
+        },
+        "anchor": "bottom right",
+        "easing": "linear",
+        "duration": 1234
+      }
+    },
+    {
+      "kind": "size-generator",
+      "easing": 32,
+      "output": {
+        "width": {
+          "literal": "[[Target.width+7]]"
+        },
+        "height": {
+          "literal": "[[Window.height-Target.y]]"
+        },
+        "anchor": "bottom right",
+        "easing": "easeInOutBounce",
+        "duration": 1234
+      }
+    }
+  ]
+}

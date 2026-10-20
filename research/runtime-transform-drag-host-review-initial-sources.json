@@ -1,0 +1,55 @@
+{
+  "capturedAt": "2026-10-20T05:50:19.801Z",
+  "sources": [
+    {
+      "path": "src/runtime/drag-input.ts",
+      "sha256": "41f8088036694bc99a2f4b0b27a078e63cf90af576341025ec09b4fe09e64767",
+      "hooks": [
+        {
+          "line": 17,
+          "text": "export function bindRuntimeDrag(document: Document, runtime: RuntimeDragInput, onError: (error: unknown) => void): DragInputController {"
+        }
+      ]
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "86772c6fae80365c7178141ccdd0e990176ab9843b63ffd1a43c73eeed8ce4c5",
+      "hooks": [
+        {
+          "line": 15,
+          "text": "import { bindRuntimeDrag, type DragInputController } from '../runtime/drag-input';"
+        },
+        {
+          "line": 48,
+          "text": "    const drag=bindRuntimeDrag(globalThis.document,session,cause=>setError(String(cause)));dragInput.current=drag;"
+        },
+        {
+          "line": 85,
+          "text": "    session.subscribe(()=>{if(drag.hasActiveDrag()&&!session.state().motionState?.drag?.started)drag.cancel();setRuntime(structuredClone(session.state()))});"
+        }
+      ]
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "34b4fd9ed344175d3261d6290946151d787fbddce269d758813fc1aced9a1ce9",
+      "hooks": [
+        {
+          "line": 3188,
+          "text": "export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRuntime, host: HTMLElement, pathData?: (path: VectorPath, width: number, height: number) => string, options: { frames?: InlineFrameHost; embedded?: boolean; previewImages?: boolean; shadows?: ShadowRenderer; gradients?: GradientRenderer; lines?: LineStyleRenderer; shapeText?: ShapeTextRenderer; shapeTextMeasure?: import('./shape-text-measure').ShapeTextMeasurer; dragInput?: typeof import('./drag-input').bindRuntimeDrag } = {}): void {"
+        },
+        {
+          "line": 3239,
+          "text": "  window.addEventListener('pagehide', () => drag?.dispose(), { once: true });"
+        },
+        {
+          "line": 3689,
+          "text": "  const schedule = () => { if (drag?.hasActiveDrag() && !runtime.state().motionState?.drag?.started) drag.cancel(); if (!renderPending) { renderPending = true; queueMicrotask(safeRender); } };"
+        },
+        {
+          "line": 3690,
+          "text": "  runtime.subscribe(schedule); report(runtime.start()); safeRender();"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "reviewedAt": "2026-10-15T12:20:46.121Z",
+  "blockingFindings": [],
+  "evidence": [
+    {
+      "file": "research/adaptive-placement-authoring-implementation.json",
+      "sha256": "82d34e02c852d06828bfb76a3645165f64abce7200ba555fe3b3908adddf2beb"
+    },
+    {
+      "file": "research/adaptive-placement-runtime-implementation.json",
+      "sha256": "f169880089e2f28234227ece226a8332623de0bb7982f5aa5c1c8217da863e57"
+    },
+    {
+      "file": "research/adaptive-placement-format-implementation.json",
+      "sha256": "c2cc972ede81288013a2345f3156d875708858659dc91b7f4ed0659b29b23b3c"
+    },
+    {
+      "file": "research/adaptive-placement-corpus-audit.json",
+      "sha256": "a4911e428e03aa416259b889659890b51176f2f9565f4a40e98acf43da1f2d2a"
+    },
+    {
+      "file": ".build/adaptive-placement-unit-release-first.json",
+      "sha256": "56d1a29abfd695cf06f8dd52c69139b0684885e72e7b96993e458c975f0e53dc"
+    },
+    {
+      "file": ".build/adaptive-placement-parser-release-first.log",
+      "sha256": "acf7f123ef2b848e103b6d1a836060df78d26f1fea7308dd4c68da230bfb40ee"
+    },
+    {
+      "file": ".build/adaptive-placement-unit-release.json",
+      "sha256": "b8f470712a595e46d8d66740d3164ca8813c67eef45aecc5bf8ea9118853db83"
+    },
+    {
+      "file": ".build/adaptive-placement-parser-release.log",
+      "sha256": "476bf72cac6a0fcb466602d5ed699fec9b2eda9a1493230f4c458d5bb0829b17"
+    },
+    {
+      "file": ".build/adaptive-placement-confirmed-e2e.json",
+      "sha256": "d3c0971969a02dd76ea4bc700a474436d922f4ac368c65822997108419028dd4"
+    },
+    {
+      "file": ".build/adaptive-placement-release-e2e.json",
+      "sha256": "661ec65604a3edcb73a511743a7d77c9605cfc48e9139cd92e156d5dedda9f77"
+    },
+    {
+      "file": ".build/adaptive-placement-desktop-audit.json",
+      "sha256": "a6c1ee9699d4572174e389f398311fcc96989280df85b014f748d3f2beb5c66d"
+    },
+    {
+      "file": ".build/adaptive-placement-smoke-runs.json",
+      "sha256": "93f358fe07e6c0a64e75dd07a3c44960e2e0b3dc923899785d4445738d6d2a76"
+    }
+  ],
+  "review": {
+    "scope": "Independent cross-layer review of full-graph placement editing, typed native recovery, render persistence, targeting and exact-package delivery.",
+    "correctedFindings": [
+      {
+        "finding": "Native P111 was previously treated as an unsupported property; its raw carrier is a numeric enum, not Boolean.",
+        "resolution": "Strict 0/1/2 decoding and raw source reprojection with explicit view resets; old unknown=0 and inactive Boolean test fixtures corrected, preserving all unrelated negative cases."
+      },
+      {
+        "finding": "Base direct placement recovery lacked an explicit source-package version bound.",
+        "resolution": "Reader and second boundary require verified [11,0,0,0] for new direct/local P111 recovery; old complete true cache behavior remains unchanged."
+      },
+      {
+        "finding": "Outline placement could be blocked by stale selected-cell state.",
+        "resolution": "Explicit Outline targets use their own root validation; real browser case proves placement and restore after cell selection."
+      },
+      {
+        "finding": "Imported fit-to-content panel bounds still counted an unplaced child.",
+        "resolution": "Red regression reproduced 300x170; importer excludes placed:false and retains the existing 1x1 saved-schema minimum. Added raw child-carrier and placed-sibling cases."
+      }
+    ],
+    "historicalSourcePolicy": "Authoring research cites pre-change source hashes; those are matched to the frozen prior audit, not falsely claimed as current source bytes.",
+    "originalGuiCompared": false
+  },
+  "tests": {
+    "unit": 3242,
+    "parser": 633,
+    "productionBrowser": 256,
+    "confirmedBrowser": 14
+  },
+  "limitations": [
+    "Full Axure RP 11 reconstruction remains incomplete; this stage implements ordinary adaptive placement only.",
+    "Original editor canvas interactions and pixel equivalence remain unverified after the screenshot/input bridge failure.",
+    "None of the eleven original samples supplies direct/local P111 FALSE or IGNORE; positive raw-carrier cases are explicitly synthetic and not Axure-saved or Axure-accepted files.",
+    "Native placement recovery is restricted to verified RP11 direct MyStyle/local declarations; nontrue named/cache provider chains, special Layer/RDO/master propagation and contained descendants remain outside that subset.",
+    "The all-views control covers placement, insertion and deletion; general Affect All Views visual editing and clipboard adaptive-map migration remain incomplete.",
+    "Preserving mounted iframe identity is an implementation policy tested in the reconstruction; the original frame network lifecycle under Unplace has not been measured.",
+    "The document schema retains the existing minimum saved dimension of 1; a fit container with no placed content does not claim a native zero-sized saved rectangle.",
+    "Native RP write-back, complete cloud/team services, original device shell and full product parity remain unsupported."
+  ]
+}

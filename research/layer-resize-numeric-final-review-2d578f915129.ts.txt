@@ -1,0 +1,267 @@
+import type { Widget, WidgetType } from './types';
+import { resolveResizePins } from './resize-pins';
+import {
+  solveAuthorResize, getAuthorResizeBounds, applyAuthorResizePins,
+  hasAuthorResizePins, hasAuthorResizePinEdges,
+  type AuthorResizePinInfo, type AuthorResizePoint, type AuthorResizeRect,
+} from './author-resize-solver';
+
+export type AuthorLayerResizeHandle = 1 | 2 | 3 | 4 | 6 | 8 | 9 | 12;
+export type AuthorLayerBounds = AuthorResizeRect;
+export interface AuthorLayerResizeRequest {
+  /** Immutable, effective current-view tree. Layer members share their page/state coordinates. */
+  layer: Widget;
+  delta: AuthorResizePoint;
+  handle: AuthorLayerResizeHandle;
+  /** Shared old selection bounds in the same page/state scope; defaults to this root's bounds. */
+  selectionRect?: AuthorLayerBounds;
+  /** Defaults to the native handle axes (W/E=1, N/S=2, corners=3). */
+  freedom?: 0 | 1 | 2 | 3;
+  orientation?: 0 | 1 | 2 | 3;
+  preserveAspect?: boolean;
+  modifiers?: { control?: boolean; alt?: boolean; shift?: boolean };
+  overrideLocked?: boolean;
+  /** Layer entered for editing, not the selected resize root. */
+  currentLayerId?: string;
+  backgroundIds?: readonly string[];
+}
+export interface AuthorLayerResizePatch {
+  id: string;
+  /** Location and Size are independent pairs: absent pairs must remain inherited. */
+  geometry?: Partial<AuthorLayerBounds>;
+  /** Shared content; the host writes this to the base widget, not the adaptive map. */
+  shapeText?: NonNullable<Widget['shapeText']>;
+}
+export interface AuthorLayerResizeTrace {
+  id: string;
+  pass: 'root' | 'contact' | 'remaining';
+  parentRect: AuthorLayerBounds;
+  originalRect: AuthorLayerBounds;
+  originalBounds: AuthorLayerBounds;
+  delta: AuthorResizePoint;
+  pin?: AuthorResizePinInfo;
+  requested: AuthorLayerBounds;
+}
+export type AuthorLayerResizeResult =
+  | { ok: true; layer: Widget; patches: AuthorLayerResizePatch[]; trace: AuthorLayerResizeTrace[] }
+  | { ok: false; code: string; reason: string; widgetIds: string[] };
+
+const ORDINARY = new Set<WidgetType>([
+  'box', 'ellipse', 'path', 'text', 'button', 'image', 'placeholder', 'line',
+  'input', 'textarea', 'select', 'hotspot', 'inlineFrame',
+]);
+const HANDLES = new Set<number>([1, 2, 3, 4, 6, 8, 9, 12]);
+const EPSILON = 1e-5, CONTACT_EPSILON = 1e-4, LIMIT = 100_000;
+const rect = (w: AuthorLayerBounds): AuthorLayerBounds => ({ x: w.x, y: w.y, width: w.width, height: w.height });
+const zero = (r: AuthorLayerBounds): AuthorLayerBounds => ({ x: 0, y: 0, width: r.width, height: r.height });
+const relative = (r: AuthorLayerBounds, p: AuthorLayerBounds): AuthorLayerBounds => ({ ...r, x: r.x - p.x, y: r.y - p.y });
+const near = (a: number, b: number) => Math.abs(a - b) < EPSILON;
+const finiteRect = (r: AuthorLayerBounds) => Object.values(r).every(Number.isFinite);
+const validRect = (r: AuthorLayerBounds) => finiteRect(r)
+  && Math.abs(r.x) <= LIMIT && Math.abs(r.y) <= LIMIT
+  && r.width >= 1 && r.height >= 1 && r.width <= LIMIT && r.height <= LIMIT;
+function union(frames: AuthorLayerBounds[]): AuthorLayerBounds {
+  const left = Math.min(...frames.map(r => r.x)), top = Math.min(...frames.map(r => r.y));
+  return {
+    x: left, y: top,
+    width: Math.max(...frames.map(r => r.x + r.width)) - left,
+    height: Math.max(...frames.map(r => r.y + r.height)) - top,
+  };
+}
+function touches(a: AuthorLayerBounds, b: AuthorLayerBounds): boolean {
+  return Math.abs(a.x - b.x) < CONTACT_EPSILON || Math.abs(a.y - b.y) < CONTACT_EPSILON
+    || Math.abs(a.x + a.width - b.x - b.width) < CONTACT_EPSILON
+    || Math.abs(a.y + a.height - b.y - b.height) < CONTACT_EPSILON;
+}
+class PlanFailure extends Error {
+  constructor(readonly code: string, message: string, readonly widgetIds: string[]) { super(message); }
+}
+interface Snapshot {
+  widget: Widget;
+  frame: AuthorLayerBounds;
+  bounds: AuthorLayerBounds;
+  parent?: Snapshot;
+  children: Snapshot[];
+  contacts: Snapshot[];
+}
+
+/**
+ * obNM.jbNm's Layer branch, from retained RP11 CIL. This plans all writes before
+ * exposing them. It does not emulate the native history/notification subsystem.
+ * See research/layer-resize-controller-evidence.md and the independent solver.
+ */
+export function planAuthorLayerResize(request: AuthorLayerResizeRequest): AuthorLayerResizeResult {
+  const fail = (code: string, message: string, ids: string[] = [request.layer.id]): never => {
+    throw new PlanFailure(code, message, ids);
+  };
+  try {
+    if (request.layer.type !== 'layer' || !request.layer.layer) fail('not-layer', 'Select a Layer to resize.');
+    if (!Number.isFinite(request.delta.x) || !Number.isFinite(request.delta.y)
+      || !HANDLES.has(request.handle) || ![0, 1, 2, 3].includes(request.freedom ?? 3)
+      || ![0, 1, 2, 3].includes(request.orientation ?? 3)) {
+      fail('invalid-request', 'Resize deltas and native handle options must be finite and valid.');
+    }
+    const ids = new Set<string>(), unsupported: string[] = [];
+    const snapshot = (widget: Widget, parent?: Snapshot, depth = 0): Snapshot => {
+      if (depth > 12 || ids.size >= 10_000) fail('model-limit', 'The resize tree exceeds the document limits.', [widget.id]);
+      if (ids.has(widget.id)) fail('duplicate-id', 'Resize members must have unique identities.', [widget.id]);
+      ids.add(widget.id);
+      if (!Number.isFinite(widget.rotation) || Math.abs(widget.rotation) > LIMIT) {
+        fail('invalid-frame', 'A member has an invalid rotation.', [widget.id]);
+      }
+      const node: Snapshot = { widget, frame: rect(widget), bounds: rect(widget), parent, children: [], contacts: [] };
+      if (widget.type === 'layer') {
+        if (!widget.layer?.widgets.length) fail('empty-layer', 'An empty Layer has no resize frame.', [widget.id]);
+        node.children = widget.layer!.widgets.map(child => snapshot(child, node, depth + 1));
+        node.frame = union(node.children.map(child => child.bounds));
+        node.bounds = rect(node.frame); // Layer's independent stored degree is not an author wrapper transform.
+        if (!validRect(node.frame)) fail('invalid-frame', 'A Layer has a zero, nonfinite or out-of-range resize frame.', [widget.id]);
+        node.contacts = node.children.filter(child => touches(child.bounds, node.frame));
+      } else {
+        if (!ORDINARY.has(widget.type) || widget.states || widget.repeater || widget.table
+          || widget.menu || widget.tree || widget.treeNode || widget.layer || widget.componentInstance) unsupported.push(widget.id);
+        if (!validRect(node.frame)) fail('invalid-frame', 'A member has a zero, nonfinite or out-of-range frame.', [widget.id]);
+        node.bounds = getAuthorResizeBounds(node.frame, widget.rotation);
+        if (!finiteRect(node.bounds)) fail('invalid-frame', 'A member has nonfinite rotated bounds.', [widget.id]);
+      }
+      return node;
+    };
+    const root = snapshot(request.layer);
+    if (unsupported.length) fail('unsupported-widget',
+      'This Layer contains a control whose native author resize behavior is not implemented.', unsupported);
+    const selection = request.selectionRect ? rect(request.selectionRect) : rect(root.frame);
+    if (!validRect(selection)
+      || selection.x > root.frame.x + EPSILON || selection.y > root.frame.y + EPSILON
+      || selection.x + selection.width < root.frame.x + root.frame.width - EPSILON
+      || selection.y + selection.height < root.frame.y + root.frame.height - EPSILON) {
+      fail('invalid-selection', 'The old selection frame must be finite, positive and contain the selected Layer.');
+    }
+
+    const patches: AuthorLayerResizePatch[] = [], trace: AuthorLayerResizeTrace[] = [];
+    const updated = new Map<string, Widget>(), backgrounds = new Set(request.backgroundIds ?? []);
+    // obNM ctor -> MSON derives TI8l from the active handle. Explicit freedom
+    // remains available for callers that already supply a native controller context.
+    const freedom = request.freedom ?? ((request.handle & 5 ? 1 : 0) | (request.handle & 10 ? 2 : 0));
+    const orientation = request.orientation ?? 3;
+    const overridePins = !!request.modifiers?.control && !!request.modifiers?.alt && !request.modifiers?.shift;
+    function locked(node: Snapshot, selectedRoot = false): boolean {
+      if (backgrounds.has(node.widget.id)) return true;
+      if (!selectedRoot && node.parent && node.parent.widget.id !== request.currentLayerId) return locked(node.parent);
+      return node.widget.locked;
+    }
+    function pinFor(node: Snapshot, oldParent: AuthorLayerBounds, newParent: AuthorLayerBounds): AuthorResizePinInfo {
+      const stored = resolveResizePins(node.widget.style);
+      // All admitted ordinary classes and Layer have both fixed-size capabilities.
+      const h = { none: 0, left: 1, right: 4, both: 5, center: 256 } as const;
+      const v = { none: 0, top: 2, bottom: 8, both: 10, center: 512 } as const;
+      return {
+        horizontal: overridePins ? 0 : h[stored.pinHorizontal],
+        vertical: overridePins ? 0 : v[stored.pinVertical],
+        fixedWidth: overridePins ? false : stored.fixedWidth,
+        fixedHeight: overridePins ? false : stored.fixedHeight,
+        originalParentRect: rect(oldParent), newParentRect: rect(newParent),
+      };
+    }
+    function check(r: AuthorLayerBounds, node: Snapshot): AuthorLayerBounds {
+      if (!validRect(r)) fail('invalid-result',
+        'The resize would produce a zero, nonfinite or out-of-range member frame.', [node.widget.id]);
+      return r;
+    }
+    function frames(node: Snapshot, location?: AuthorResizePoint) {
+      return location && node.parent
+        ? { originalRect: relative(node.frame, node.parent.frame), originalBounds: relative(node.bounds, node.parent.bounds) }
+        : { originalRect: rect(node.frame), originalBounds: rect(node.bounds) };
+    }
+    function project(node: Snapshot, delta: AuthorResizePoint, parentRect: AuthorLayerBounds,
+      pin: AuthorResizePinInfo | undefined, scaling: boolean, location?: AuthorResizePoint): AuthorLayerBounds {
+      const source = frames(node, location);
+      const result = solveAuthorResize({
+        ...source, delta, parentRect, handle: request.handle, freedom, orientation,
+        preserveAspect: scaling && !hasAuthorResizePins(pin), pin,
+        rotation: node.widget.type === 'layer' ? 0 : node.widget.rotation,
+      });
+      if (!result.finite) fail('invalid-result', 'The native resize calculation produced a nonfinite result.', [node.widget.id]);
+      return location ? { ...result.rect, x: result.rect.x + location.x, y: result.rect.y + location.y } : result.rect;
+    }
+    function visit(node: Snapshot, delta: AuthorResizePoint, parentRect: AuthorLayerBounds,
+      pin: AuthorResizePinInfo | undefined, scaling: boolean, location: AuthorResizePoint | undefined,
+      pass: AuthorLayerResizeTrace['pass']) {
+      if (locked(node, node === root) && (!request.overrideLocked || backgrounds.has(node.widget.id))) return;
+      const nextScaling = scaling && !hasAuthorResizePins(pin);
+      // Native fit writes precede geometry. Plan them without touching shared input.
+      let shapeText = node.widget.shapeText;
+      if (shapeText && ['box', 'ellipse', 'path'].includes(node.widget.type)) {
+        const stored = resolveResizePins(node.widget.style), respectFixed = node !== root;
+        const next = { ...shapeText };
+        if (next.autoFitWidth && (freedom & 1) && !(respectFixed && stored.fixedWidth)) next.autoFitWidth = Math.abs(delta.x) < EPSILON;
+        if (next.autoFitHeight && (freedom & 2) && !(respectFixed && stored.fixedHeight)) next.autoFitHeight = Math.abs(delta.y) < EPSILON;
+        if (next.autoFitWidth !== shapeText.autoFitWidth || next.autoFitHeight !== shapeText.autoFitHeight) shapeText = next;
+      }
+      const requested = check(project(node, delta, parentRect, pin, scaling, location), node);
+      trace.push({ id: node.widget.id, pass, ...frames(node, location), parentRect: rect(parentRect), delta: { ...delta }, pin, requested });
+      if (node.widget.type !== 'layer') {
+        // The second native gate uses inherited lock context even for an ordinary selected root.
+        if ((locked(node) && !request.overrideLocked) || backgrounds.has(node.widget.id)) return;
+        const geometry: Partial<AuthorLayerBounds> = {};
+        if (!near(requested.x, node.frame.x) || !near(requested.y, node.frame.y)) Object.assign(geometry, { x: requested.x, y: requested.y });
+        if (!near(requested.width, node.frame.width) || !near(requested.height, node.frame.height)) Object.assign(geometry, { width: requested.width, height: requested.height });
+        const patch: AuthorLayerResizePatch = { id: node.widget.id };
+        if (Object.keys(geometry).length) patch.geometry = geometry;
+        if (shapeText !== node.widget.shapeText) patch.shapeText = shapeText;
+        if (patch.geometry || patch.shapeText) {
+          patches.push(patch);
+          updated.set(node.widget.id, { ...node.widget, ...geometry, ...(patch.shapeText ? { shapeText: patch.shapeText } : {}) });
+        }
+        return;
+      }
+      const oldParent = zero(node.frame), newParent = zero(requested);
+      const dw = node.frame.width - requested.width, dh = node.frame.height - requested.height;
+      const childDelta = {
+        x: request.handle & 1 ? Math.min(dw, node.frame.width) : Math.max(-dw, -node.frame.width),
+        y: request.handle & 2 ? Math.min(dh, node.frame.height) : Math.max(-dh, -node.frame.height),
+      };
+      const candidates = node.contacts.map(child => {
+        const pins = pinFor(child, oldParent, newParent);
+        const frame = check(project(child, childDelta, oldParent, pins, nextScaling, { x: 0, y: 0 }), child);
+        return getAuthorResizeBounds(frame, child.widget.type === 'layer' ? 0 : child.widget.rotation);
+      });
+      if (!candidates.length) fail('no-contact-frame', 'The Layer has no source-backed contacting resize members.', [node.widget.id]);
+      const candidate = check(union(candidates), node);
+      let origin = { x: requested.x, y: requested.y };
+      if (pin && hasAuthorResizePinEdges(pin)
+        && (!near(candidate.width, requested.width) || !near(candidate.height, requested.height))) {
+        const corrected = applyAuthorResizePins(frames(node, location).originalBounds,
+          { ...origin, width: candidate.width, height: candidate.height }, pin, request.handle);
+        // jbNm adds the optional parent location after mNwa, even though requested already has it.
+        if (pin.horizontal && !near(candidate.width, requested.width)) origin.x = corrected.x + (location?.x ?? 0);
+        if (pin.vertical && !near(candidate.height, requested.height)) origin.y = corrected.y + (location?.y ?? 0);
+      }
+      const contacts = new Set(node.contacts);
+      for (const child of node.contacts) visit(child, childDelta, oldParent, pinFor(child, oldParent, newParent), nextScaling, origin, 'contact');
+      for (const child of node.children) if (!contacts.has(child)) {
+        visit(child, childDelta, oldParent, pinFor(child, oldParent, zero(candidate)), nextScaling, origin, 'remaining');
+      }
+    }
+    // CbNX clamps before dispatching all selected roots against the same old
+    // selection. Without this, the numeric solver can reflect an overdrag into
+    // a positive-size rectangle. Zero-sized results still fail our model guard.
+    const delta = {
+      x: request.handle & 1 ? Math.min(request.delta.x, selection.width) : Math.max(request.delta.x, -selection.width),
+      y: request.handle & 2 ? Math.min(request.delta.y, selection.height) : Math.max(request.delta.y, -selection.height),
+    };
+    visit(root, delta, selection, undefined, !!request.preserveAspect, undefined, 'root');
+    const materialize = (node: Snapshot): Widget => {
+      if (node.widget.type !== 'layer') return updated.get(node.widget.id) ?? node.widget;
+      const widgets = node.children.map(materialize);
+      const bounds = union(widgets.map(widget => widget.type === 'layer' ? rect(widget) : getAuthorResizeBounds(rect(widget), widget.rotation)));
+      check(bounds, node);
+      if (widgets.every((w, i) => w === node.children[i].widget)
+        && (Object.keys(bounds) as (keyof AuthorLayerBounds)[]).every(key => node.widget[key] === bounds[key])) return node.widget;
+      return { ...node.widget, ...bounds, layer: { ...node.widget.layer!, widgets } };
+    };
+    return { ok: true, layer: materialize(root), patches, trace };
+  } catch (error) {
+    if (error instanceof PlanFailure) return { ok: false, code: error.code, reason: error.message, widgetIds: error.widgetIds };
+    throw error;
+  }
+}

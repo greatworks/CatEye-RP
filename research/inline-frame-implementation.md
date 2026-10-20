@@ -1,0 +1,29 @@
+# Inline frame implementation scope
+
+This stage adds actual embedded pages to the independent prototype editor. The reference is the retained Axure RP 11.0.0.4150 distribution, with pinned format and runtime evidence in the sibling reports. The original editor's `Untitled` window and menu accessibility were observed; previously unavailable input geometry and capture prevent a full desktop or pixel comparison. Original-function probes use exact distributed functions in isolated JavaScript VMs with mocked navigation sinks; browser tests exercise the independent implementation, not the complete original GUI.
+
+## Authoring and document model
+
+The `inlineFrame` widget stores a typed, literal destination: a project page identity, an HTTP/HTTPS URL, or a local file path. Omission means a blank frame. Browser border and scrolling are separate from ordinary shape strokes. Preview images belong only to the authoring canvas. The Video and Map illustrations are independently drawn; custom previews embed static PNG, JPEG, WebP or GIF bytes. The canvas never loads the real destination.
+
+The library inserts a 300×170 frame matching the saved Default.rplib sample. Its saved preview is None; the native constructor separately initializes Custom, so None is a deliberate library-based authoring choice and is not asserted to be every native creation path. Target dialogs validate a draft and commit once with Apply; Cancel preserves the document. Targets, preview data and behavior are shared across adaptive views; ordinary frame placement, dimensions and visibility can vary. Copy and component materialization remap frame identities and widget action targets while preserving referenced page identities. Missing page references remain visible for repair.
+
+`Open link in frame` uses a structured destination plus either a widget target or an explicit parent scope. These are not ambiguous strings in a common ID namespace. Frame URLs are literal and cannot execute expressions. Local filenames are preserved without reading the file during authoring. Raw path characters such as `#`, `?` and `%` are encoded as filename characters; explicit file URLs can carry a fragment. Target files are not copied into the project or export automatically.
+
+## Playback
+
+Preview and exported HTML share an independently implemented frame host. Internal project pages run in real sandboxed frames with their own variables and transient control state. Loading is lazy so a document does not recursively expand into a huge HTML string. Repeated navigation to the same destination still reloads it; navigation actions proceed without waiting for frame load. Ordinary changes elsewhere preserve the existing browsing context. Page lifecycle, repeater refresh and explicit navigation dispose or reset the appropriate instances.
+
+Editor preview loads a fixed, self-contained player HTML whose inline script is authorized by its exact build hash, retaining the editor's self-only script policy. Opaque local-file frames cannot fetch a second local script or navigate nested local-file players, so nested pages reuse the same fixed HTML and script hash in isolated inline documents. Development and production use the same builder. Offline export uses its portable inline child documents and shares the root stylesheet without storing a second copy of font bytes. A one-time source-and-token handshake transfers project data only to the intended internal player. Internal page nesting stops at cycles, six levels, or a distributed 32-frame loading budget; these are implementation bounds rather than observed native limits.
+
+Navigation inside an embedded project page stays in that frame unless Parent frame is selected. Parent navigation addresses the immediate containing prototype. In editor preview, external navigation uses the existing preview window host so it cannot replace the editor. Internal messages validate the sending frame and a per-instance token; arbitrary external frame messages do not navigate the editor.
+
+Frames do not receive Electron file APIs, Node integration, or same-origin access to the editor. The preload exposes the desktop bridge only to the main frame, and every desktop IPC handler also checks the sender frame. External pages load through normal iframe/browser rules: site CSP and frame restrictions are not bypassed. Sandboxed third-party pages that require same-origin access, cookies or broader capabilities may behave differently from the native unsandboxed player. Local files require file-based playback and remain subject to host/browser restrictions.
+
+## Native recovery and boundaries
+
+The admitted native subset is the single witnessed Default.rplib frame with explicit location/size, an empty web target, border enabled, automatic scrolling, None preview and no custom image. Nonempty native targets, custom images and unsupported properties reject atomically rather than silently losing data. The 11-sample audit confirms one additional top-level recovery and preservation of the previously recovered tree, menu, table and hyperlink graphs.
+
+Native runtime source additionally supports navigation-time variable snapshots. This stage keeps separate frame runtime state and does not claim support for that snapshot option, dynamic destination expressions, every generator setting, browser-history semantics, arbitrary third-party parent-frame messaging, or exact native authoring gestures. Recursive frame containment is bounded in this implementation. Native RP/RPLIB writing, full original UI, advanced widget coverage, cloud/team collaboration and macOS remain unfinished. No proprietary Axure code or preview artwork is bundled.
+
+Final source, native evidence, original-function probes, production browser results, packaged smoke checks and release hashes are recorded in `inline-frame-verification.json` after verification.

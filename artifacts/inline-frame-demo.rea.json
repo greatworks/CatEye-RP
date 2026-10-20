@@ -1,0 +1,929 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "inline-frame-demo",
+  "name": "Inline frames · independent embedded pages",
+  "pages": [
+    {
+      "id": "frame-home",
+      "name": "Workspace",
+      "width": 1120,
+      "height": 850,
+      "background": "#f4f7fb",
+      "widgets": [
+        {
+          "id": "frame-heading",
+          "type": "text",
+          "name": "frame-heading",
+          "text": "Two frames. Two independent workspaces.",
+          "notes": "",
+          "x": 48,
+          "y": 36,
+          "rotation": 0,
+          "width": 1020,
+          "height": 48,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 28,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-description",
+          "type": "text",
+          "name": "frame-description",
+          "text": "Each embedded page has its own interactions and variables. Try the controls inside either frame.",
+          "notes": "",
+          "x": 48,
+          "y": 98,
+          "rotation": 0,
+          "width": 1010,
+          "height": 50,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 15,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-left-heading",
+          "type": "text",
+          "name": "frame-left-heading",
+          "text": "LEFT WORKSPACE",
+          "notes": "",
+          "x": 48,
+          "y": 165,
+          "rotation": 0,
+          "width": 450,
+          "height": 30,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-right-heading",
+          "type": "text",
+          "name": "frame-right-heading",
+          "text": "RIGHT WORKSPACE",
+          "notes": "",
+          "x": 580,
+          "y": 165,
+          "rotation": 0,
+          "width": 450,
+          "height": 30,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-left",
+          "type": "inlineFrame",
+          "name": "frame-left",
+          "text": "",
+          "notes": "",
+          "inlineFrame": {
+            "hideBorders": true,
+            "scrolling": "auto",
+            "preview": {
+              "kind": "none"
+            },
+            "target": {
+              "kind": "page",
+              "pageId": "frame-catalog"
+            }
+          },
+          "x": 48,
+          "y": 202,
+          "rotation": 0,
+          "width": 492,
+          "height": 364,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-right",
+          "type": "inlineFrame",
+          "name": "frame-right",
+          "text": "",
+          "notes": "",
+          "inlineFrame": {
+            "hideBorders": true,
+            "scrolling": "auto",
+            "preview": {
+              "kind": "none"
+            },
+            "target": {
+              "kind": "page",
+              "pageId": "frame-catalog"
+            }
+          },
+          "x": 580,
+          "y": 202,
+          "rotation": 0,
+          "width": 492,
+          "height": 364,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-show-detail",
+          "type": "button",
+          "name": "Show detail in left frame",
+          "text": "Show detail in left frame",
+          "notes": "",
+          "x": 48,
+          "y": 610,
+          "rotation": 0,
+          "width": 252,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "frame-case-1",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "frame-action-2",
+                  "type": "openLinkInFrame",
+                  "targetId": "frame-left",
+                  "frameScope": "widget",
+                  "frameTarget": {
+                    "kind": "page",
+                    "pageId": "frame-detail"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "frame-reload",
+          "type": "button",
+          "name": "Reload left workspace",
+          "text": "Reload left workspace",
+          "notes": "",
+          "x": 320,
+          "y": 610,
+          "rotation": 0,
+          "width": 232,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "frame-case-3",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "frame-action-4",
+                  "type": "openLinkInFrame",
+                  "targetId": "frame-left",
+                  "frameScope": "widget",
+                  "frameTarget": {
+                    "kind": "page",
+                    "pageId": "frame-catalog"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "frame-sibling-update",
+          "type": "button",
+          "name": "Update outer text",
+          "text": "Update outer text",
+          "notes": "",
+          "x": 580,
+          "y": 610,
+          "rotation": 0,
+          "width": 226,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "frame-case-5",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "frame-action-6",
+                  "type": "setText",
+                  "targetId": "frame-outer-status",
+                  "value": "Outer text updated; both embedded pages keep their state."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "frame-outer-status",
+          "type": "text",
+          "name": "frame-outer-status",
+          "text": "Outer page is ready.",
+          "notes": "",
+          "x": 48,
+          "y": 691,
+          "rotation": 0,
+          "width": 1000,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-footnote",
+          "type": "text",
+          "name": "frame-footnote",
+          "text": "Editor preview images are authoring aids; embedded pages are loaded only during playback.",
+          "notes": "",
+          "x": 48,
+          "y": 770,
+          "rotation": 0,
+          "width": 1020,
+          "height": 48,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    },
+    {
+      "id": "frame-catalog",
+      "name": "Embedded workspace",
+      "width": 490,
+      "height": 360,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "frame-child-heading",
+          "type": "text",
+          "name": "frame-child-heading",
+          "text": "Embedded workspace",
+          "notes": "",
+          "x": 26,
+          "y": 24,
+          "rotation": 0,
+          "width": 435,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 22,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-child-description",
+          "type": "text",
+          "name": "frame-child-description",
+          "text": "This is a real embedded prototype page.",
+          "notes": "",
+          "x": 26,
+          "y": 76,
+          "rotation": 0,
+          "width": 435,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-child-count",
+          "type": "text",
+          "name": "frame-child-count",
+          "text": "Count: 0",
+          "notes": "",
+          "x": 26,
+          "y": 124,
+          "rotation": 0,
+          "width": 260,
+          "height": 36,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-child-increment",
+          "type": "button",
+          "name": "Add one",
+          "text": "Add one",
+          "notes": "",
+          "x": 26,
+          "y": 178,
+          "rotation": 0,
+          "width": 140,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "frame-case-10",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "frame-action-11",
+                  "type": "setVariable",
+                  "targetId": "FrameCount",
+                  "value": "[[FrameCount + 1]]"
+                },
+                {
+                  "id": "frame-action-12",
+                  "type": "setText",
+                  "targetId": "frame-child-count",
+                  "value": "Count: [[FrameCount]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "frame-child-detail",
+          "type": "button",
+          "name": "Open detail here",
+          "text": "Open detail here",
+          "notes": "",
+          "x": 184,
+          "y": 178,
+          "rotation": 0,
+          "width": 230,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "frame-case-13",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "frame-action-14",
+                  "type": "openPage",
+                  "targetId": "frame-detail"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "frame-child-parent",
+          "type": "button",
+          "name": "Navigate parent frame",
+          "text": "Navigate parent frame",
+          "notes": "",
+          "x": 26,
+          "y": 240,
+          "rotation": 0,
+          "width": 388,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "frame-case-15",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "frame-action-16",
+                  "type": "openLinkInFrame",
+                  "frameScope": "parent",
+                  "frameTarget": {
+                    "kind": "page",
+                    "pageId": "frame-parent-destination"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "frame-child-note",
+          "type": "text",
+          "name": "frame-child-note",
+          "text": "Navigation here leaves the other workspace unchanged.",
+          "notes": "",
+          "x": 26,
+          "y": 304,
+          "rotation": 0,
+          "width": 435,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [
+        {
+          "id": "frame-case-7",
+          "event": "load",
+          "name": "load",
+          "enabled": true,
+          "conditions": [],
+          "conditionMode": "all",
+          "actions": [
+            {
+              "id": "frame-action-8",
+              "type": "setVariable",
+              "targetId": "FrameCount",
+              "value": "[[FrameCount + 1]]"
+            },
+            {
+              "id": "frame-action-9",
+              "type": "setText",
+              "targetId": "frame-child-count",
+              "value": "Count: [[FrameCount]]"
+            }
+          ]
+        }
+      ],
+      "adaptiveViews": []
+    },
+    {
+      "id": "frame-detail",
+      "name": "Embedded detail",
+      "width": 490,
+      "height": 360,
+      "background": "#f0f4ff",
+      "widgets": [
+        {
+          "id": "frame-detail-heading",
+          "type": "text",
+          "name": "frame-detail-heading",
+          "text": "Detail page",
+          "notes": "",
+          "x": 26,
+          "y": 28,
+          "rotation": 0,
+          "width": 435,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 26,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-detail-copy",
+          "type": "text",
+          "name": "frame-detail-copy",
+          "text": "Only this embedded page has navigated.",
+          "notes": "",
+          "x": 26,
+          "y": 98,
+          "rotation": 0,
+          "width": 430,
+          "height": 58,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-detail-back",
+          "type": "button",
+          "name": "Back to workspace",
+          "text": "Back to workspace",
+          "notes": "",
+          "x": 26,
+          "y": 190,
+          "rotation": 0,
+          "width": 270,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "frame-case-17",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "frame-action-18",
+                  "type": "openPage",
+                  "targetId": "frame-catalog"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    },
+    {
+      "id": "frame-parent-destination",
+      "name": "Parent destination",
+      "width": 1120,
+      "height": 700,
+      "background": "#f4f7fb",
+      "widgets": [
+        {
+          "id": "frame-parent-heading",
+          "type": "text",
+          "name": "frame-parent-heading",
+          "text": "Parent frame navigation worked",
+          "notes": "",
+          "x": 48,
+          "y": 50,
+          "rotation": 0,
+          "width": 1010,
+          "height": 52,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 30,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-parent-description",
+          "type": "text",
+          "name": "frame-parent-description",
+          "text": "The containing prototype navigated. The editor document remains unchanged.",
+          "notes": "",
+          "x": 48,
+          "y": 138,
+          "rotation": 0,
+          "width": 1000,
+          "height": 60,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#23354b",
+            "fontSize": 17,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "frame-parent-back",
+          "type": "button",
+          "name": "Return to both workspaces",
+          "text": "Return to both workspaces",
+          "notes": "",
+          "x": 48,
+          "y": 240,
+          "rotation": 0,
+          "width": 300,
+          "height": 42,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "frame-case-19",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "frame-action-20",
+                  "type": "openPage",
+                  "targetId": "frame-home"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {
+    "FrameCount": "0"
+  },
+  "styles": []
+}

@@ -1,0 +1,985 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "c9240db9-b9a2-4b04-be3e-01d62d945b9a",
+  "name": "Named filters and sorts",
+  "caseSelection": "never",
+  "pages": [
+    {
+      "id": "cb45e4fc-6142-4b55-a2e2-bf2e87edcf7c",
+      "name": "Page 1",
+      "width": 1040,
+      "height": 1000,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "519d02fa-8760-4012-b46f-eb16a74512a9",
+          "type": "text",
+          "name": "Instructions",
+          "text": "Combine named filters, change priorities, and keep marked rows.",
+          "x": 40,
+          "y": 30,
+          "width": 930,
+          "height": 45,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+          "type": "repeater",
+          "name": "Catalog",
+          "text": "",
+          "x": 40,
+          "y": 110,
+          "width": 880,
+          "height": 300,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "98821a8b-cf66-41ab-824e-16c1cbab9c2f",
+              "name": "load",
+              "event": "load",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "addSort",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"price\",\"column\":\"Cost\",\"direction\":\"asc\",\"dataType\":\"number\",\"toggle\":false,\"removeOthers\":false}",
+                  "id": "98e5fb5f-5fa5-4b81-b702-f074849148cf"
+                }
+              ]
+            },
+            {
+              "id": "65c6d4ec-41be-48c5-bf06-afdcd7b4a9e5",
+              "name": "itemLoad",
+              "event": "itemLoad",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "setSelected",
+                  "targetId": "48d6cfe5-d2f6-425e-9f9b-71952d7e7318",
+                  "value": "[[Item.isMarked]]",
+                  "id": "ebab48be-c116-4100-858a-5a5063f3ad52"
+                }
+              ]
+            }
+          ],
+          "repeater": {
+            "columns": [
+              "ID",
+              "Team",
+              "Name",
+              "Cost"
+            ],
+            "rows": [
+              {
+                "ID": "A",
+                "Team": "red",
+                "Name": "Item2",
+                "Cost": "10"
+              },
+              {
+                "ID": "B",
+                "Team": "blue",
+                "Name": "Item10",
+                "Cost": "2"
+              },
+              {
+                "ID": "C",
+                "Team": "red",
+                "Name": "Item1",
+                "Cost": "5"
+              },
+              {
+                "ID": "D",
+                "Team": "green",
+                "Name": "Item3",
+                "Cost": "8"
+              },
+              {
+                "ID": "E",
+                "Team": "blue",
+                "Name": "Item20",
+                "Cost": "20"
+              }
+            ],
+            "template": [
+              {
+                "id": "48d6cfe5-d2f6-425e-9f9b-71952d7e7318",
+                "type": "checkbox",
+                "name": "Mark product",
+                "text": "",
+                "x": 12,
+                "y": 10,
+                "width": 35,
+                "height": 34,
+                "rotation": 0,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": [
+                  {
+                    "id": "70928b63-832d-4346-bb0d-0a0734b645a1",
+                    "name": "select",
+                    "event": "select",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "type": "markRows",
+                        "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                        "value": "{\"row\":\"this\"}",
+                        "id": "2e530cdf-b78f-44f7-bba6-7c9bcfabdf14"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "a82691ad-3219-423b-a7b4-7f2ce448054b",
+                    "name": "unselect",
+                    "event": "unselect",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "type": "unmarkRows",
+                        "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                        "value": "{\"row\":\"this\"}",
+                        "id": "5105d920-f9b2-4277-98d1-cfaa91f78b1f"
+                      }
+                    ]
+                  }
+                ],
+                "checked": false
+              },
+              {
+                "id": "d44ff323-a56c-4940-8ff5-81709645b5de",
+                "type": "text",
+                "name": "Product",
+                "text": "[[Item.ID]] · [[Item.Team]] · [[Item.Name]] · [[Item.Cost]]",
+                "x": 70,
+                "y": 10,
+                "width": 780,
+                "height": 34,
+                "rotation": 0,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": []
+              }
+            ],
+            "itemHeight": 54,
+            "gap": 2,
+            "pagination": {
+              "itemsPerPage": 3,
+              "startPage": 1
+            }
+          }
+        },
+        {
+          "id": "2e186366-e5b7-4ef2-bd6f-49a234cace7a",
+          "type": "button",
+          "name": "Red rule",
+          "text": "Red rule",
+          "x": 40,
+          "y": 470,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "591bbf9a-87be-425b-bf1a-b92a396efffb",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "addFilter",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"color\",\"expression\":\"[[TargetItem.Team == \\\"red\\\"]]\",\"column\":\"Team\",\"mode\":\"smart\",\"removeOthers\":false}",
+                  "id": "74228182-d2b7-4cdb-956b-a6c085684ca4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c49d9d62-5275-4a4f-8812-dd8f3a8c791f",
+          "type": "button",
+          "name": "Blue alternative",
+          "text": "Blue alternative",
+          "x": 285,
+          "y": 470,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "991a6ff4-b5af-489d-9cef-c9e7abbc8d17",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "addFilter",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"color\",\"expression\":\"[[TargetItem.Team == \\\"blue\\\"]]\",\"column\":\"Team\",\"mode\":\"smart\",\"removeOthers\":false}",
+                  "id": "589b477f-6f9b-4ec3-a1a4-75653a2d9c6b"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "6153d36b-2ab6-48cb-833b-a5855fe3d8cf",
+          "type": "button",
+          "name": "Minimum 6",
+          "text": "Minimum 6",
+          "x": 530,
+          "y": 470,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "05e7425d-7d07-458d-88fc-84566331fc46",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "setVariable",
+                  "targetId": "Threshold",
+                  "value": "6",
+                  "id": "8b373e80-ca9c-43ff-ae46-aafa0a9b33af"
+                },
+                {
+                  "type": "addFilter",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"minimum\",\"expression\":\"[[TargetItem.Cost >= Threshold]]\",\"column\":\"Cost\",\"mode\":\"smart\",\"removeOthers\":false}",
+                  "id": "7695f03d-35e6-4a32-81a0-cb4c74787268"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ba512748-b0ac-4564-a356-8bc82f8336b4",
+          "type": "button",
+          "name": "Set threshold 12",
+          "text": "Set threshold 12",
+          "x": 775,
+          "y": 470,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "c30051a4-c5c4-4a2c-9ec0-655ebadca0ce",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "setVariable",
+                  "targetId": "Threshold",
+                  "value": "12",
+                  "id": "5b110341-57d6-4681-8608-2a66edbb801a"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b8306488-d01e-4b35-a13a-c215dcc20563",
+          "type": "button",
+          "name": "Refresh rules",
+          "text": "Refresh rules",
+          "x": 40,
+          "y": 538,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "38da0ccf-9656-4350-9c98-6df2308802fe",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "removeFilter",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"missing\"}",
+                  "id": "046053be-844a-40b3-9591-6f1e59fe58ef"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c017fcc3-3551-4755-9259-4550ac888c14",
+          "type": "button",
+          "name": "Remove colors",
+          "text": "Remove colors",
+          "x": 285,
+          "y": 538,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "4a15c3a5-e87d-4997-975f-d5d4f13c2fb8",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "removeFilter",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"color\"}",
+                  "id": "8325c049-8353-4735-9dc4-9c00abb93535"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1206d1ec-384f-4f1f-a36c-d20e0c8888a9",
+          "type": "button",
+          "name": "Clear filters",
+          "text": "Clear filters",
+          "x": 530,
+          "y": 538,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "a71100bb-863e-4922-82ea-f6fc41dfc825",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "removeFilter",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"all\":true}",
+                  "id": "413874ca-f5ed-4d97-afc2-70e3daef4758"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4952a86b-35a3-4fdf-b7e8-95405649756a",
+          "type": "button",
+          "name": "Sort names",
+          "text": "Sort names",
+          "x": 775,
+          "y": 538,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "6e078247-8948-4c8f-a883-2efee2877310",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "addSort",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"name\",\"column\":\"Name\",\"direction\":\"asc\",\"dataType\":\"natural\",\"toggle\":false,\"removeOthers\":false}",
+                  "id": "d4f937a7-c97e-4416-9096-084bd5d7f798"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab6a8dfc-b974-4b8e-b617-2dafbff963bb",
+          "type": "button",
+          "name": "Toggle names",
+          "text": "Toggle names",
+          "x": 40,
+          "y": 606,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "de80eef9-aa2a-4bba-88ea-d57e2b858dcd",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "addSort",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"name\",\"column\":\"Name\",\"direction\":\"asc\",\"dataType\":\"natural\",\"toggle\":true,\"removeOthers\":false}",
+                  "id": "6a5e0488-1f5f-4e44-a2d0-defe7f1658e1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bb8cdb5a-2132-4b32-baa7-171872d3ca25",
+          "type": "button",
+          "name": "Remove name sort",
+          "text": "Remove name sort",
+          "x": 285,
+          "y": 606,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "7708abf2-f663-4534-9705-206f9153301b",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "removeSort",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"name\"}",
+                  "id": "50d6c9c8-77ab-40db-afe5-2c462197fe8c"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "afa84de9-7b07-4021-99fb-69236a8ab966",
+          "type": "button",
+          "name": "Clear sorts",
+          "text": "Clear sorts",
+          "x": 530,
+          "y": 606,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "8e171ec7-ea82-4d3f-8ec6-b71f3d8b9df1",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "removeSort",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"all\":true}",
+                  "id": "5a343919-330e-4f2d-bef7-58bc104b06d1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a71bc73a-e34d-4274-8dd5-9e2a65f0efe3",
+          "type": "button",
+          "name": "Show all",
+          "text": "Show all",
+          "x": 775,
+          "y": 606,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "bf992caf-42bc-499c-9e1b-b83e8267f516",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "setItemsPerPage",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "all",
+                  "id": "a568f6a9-94c1-48f5-9676-f5024c14d572"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "71720ce2-0821-4d06-b83c-db669b97bd9a",
+          "type": "button",
+          "name": "Empty result",
+          "text": "Empty result",
+          "x": 40,
+          "y": 674,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "5ceaa2a5-535a-493c-b516-58e68c7d5a86",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "addFilter",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"empty\",\"expression\":\"[[false]]\",\"mode\":\"smart\",\"removeOthers\":false}",
+                  "id": "52864917-98fa-4186-b7b8-cc91cb361329"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b22222d3-7843-4fc3-8a9e-8e0ae436d6c7",
+          "type": "button",
+          "name": "Next page",
+          "text": "Next page",
+          "x": 285,
+          "y": 674,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "8e3235c9-f310-45d9-8207-bd1d3b94e7c4",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "setRepeaterPage",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "next",
+                  "id": "918a9ee9-9cc5-4381-ab40-0ef3353906f1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d05c66eb-6f2a-4a11-8e86-47589f9360e9",
+          "type": "button",
+          "name": "Three per page",
+          "text": "Three per page",
+          "x": 530,
+          "y": 674,
+          "width": 220,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "4c3a4540-8b2c-491b-97c1-b5acd9947c55",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "setItemsPerPage",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "3",
+                  "id": "91ce3325-dab4-4284-bb4c-d74b840e0b2f"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5c1eebb5-4f0f-436c-8fc0-c5f78b29bcb9",
+          "type": "input",
+          "name": "Search names",
+          "text": "",
+          "x": 40,
+          "y": 810,
+          "width": 400,
+          "height": 44,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "e701b263-e232-43f4-96c1-6437b4609a3f",
+              "name": "change",
+              "event": "change",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "type": "removeFilter",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"search\"}",
+                  "id": "d4c76182-e766-4f85-9cc5-5259d5cb5b6e"
+                },
+                {
+                  "type": "addFilter",
+                  "targetId": "f1de172c-fee5-4bda-9795-5a1e1a2c0ad6",
+                  "value": "{\"name\":\"search\",\"expression\":\"[[contains(lower(TargetItem.Name), lower(This.text))]]\",\"mode\":\"smart\",\"removeOthers\":false}",
+                  "id": "41cad3a0-0ee2-4f46-9d17-4690f5ca90bb"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "components": [],
+  "variables": {
+    "Threshold": "0"
+  },
+  "styles": []
+}

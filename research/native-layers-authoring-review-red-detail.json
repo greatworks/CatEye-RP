@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-10-20T07:24:33.439Z",
+  "kind": "read-only independent Layer author/model review",
+  "originalAxureGuiCompared": false,
+  "productEdited": false,
+  "probeKind": "direct source model calls and React server markup; no browser, DLL or GUI execution",
+  "sources": [
+    {
+      "file": "src/model/widget-structure.ts",
+      "sha256": "5e53d1b2dd26c3b4ae559a981c969aa6c9482d7ff46383eb9e202c813b731aae"
+    },
+    {
+      "file": "src/model/layer-geometry.ts",
+      "sha256": "97298a9f5dd5fabb21ca94f3140cb3360ca66fde57e52c96bd7bb1e509479959"
+    },
+    {
+      "file": "src/model/document.ts",
+      "sha256": "c6d40e9cf5f0db6550be870242fcf87bd374e7b88c38bb6b9cd97f2bc519dd39"
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "cc122a5fc0923e990dfb5973cbef1b5042600b9d782625cc49c9571decf59c01"
+    },
+    {
+      "file": "src/model/components.ts",
+      "sha256": "971cd4c7fe4605a8f4be042b14f572de8074966d6237a9f4e115a80223b0c051"
+    },
+    {
+      "file": "src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+    },
+    {
+      "file": "src/App.tsx",
+      "sha256": "db47e5d49e321c8ac9ff5b87c21b507baae398d2ea101991df5cdb85e4fd816e"
+    },
+    {
+      "file": "src/components/WidgetView.tsx",
+      "sha256": "dcba451039f33f694447bf6a7d6408258409381181b6250746b0dab954a916b8"
+    },
+    {
+      "file": "src/components/Inspector.tsx",
+      "sha256": "58d12f0b7ff92509f33714dd86a51a974709c258f679926c65cf3ea173b5bfa6"
+    },
+    {
+      "file": "src/components/LayerEditor.tsx",
+      "sha256": "de8bf968bea5a418c04c59768c12561b7cdbf83f2fbb1eeb80ba7a9a2f64bbcf"
+    },
+    {
+      "file": "tests/native-layers-model.test.ts",
+      "sha256": "20d7d0a4200a30a8913500f6bb80ace185c80d1e1c75816b29040d82ce5206d6"
+    },
+    {
+      "file": "tests/e2e/native-layers-authoring.spec.ts",
+      "sha256": "c265f358c3522bea5a281b4211cfa38153572579adfbfe7a22206cbe2a73a594"
+    },
+    {
+      "file": "src/model/rich-text.ts",
+      "sha256": "01fa723e9e158cb16125753c5993fd2e86a370133b0a246cccced8d578d6863f"
+    }
+  ],
+  "sourceStableDuringProbe": true,
+  "checks": {
+    "total": 9,
+    "passed": 8
+  },
+  "results": [
+    {
+      "name": "negative member union excludes nested degrees, effects and origin",
+      "passed": true
+    },
+    {
+      "name": "nested clone offsets shared coordinates once and preserves panel/repeater local coordinates",
+      "passed": true
+    },
+    {
+      "name": "grouping in child view preserves base and unrelated view local declarations",
+      "passed": true
+    },
+    {
+      "name": "all-views grouping is structural and does not clear unchanged member declarations",
+      "passed": true
+    },
+    {
+      "name": "deleting a nested group prunes active and inactive shared maps",
+      "passed": true
+    },
+    {
+      "name": "cloning group remaps legacy group and rich link, action, submit and local-binding references",
+      "passed": true
+    },
+    {
+      "name": "component child deletion through group synchronizes siblings and prunes inactive maps",
+      "passed": true
+    },
+    {
+      "name": "repeater rich text row projection occurs once through nested groups",
+      "passed": true
+    },
+    {
+      "name": "named adaptive rich formatting is identical outside and inside a group",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Group run still uses 14px: <div class=\"layer-contents\" style=\"position:absolute;left:-100px;top:-80px;width:0;height:0;overflow:visible\"><div data-layer-member-id=\"rich\" class=\"widget text\" style=\"position:absolute;left:100px;top:80px;width:80px;height:30px;transform:rotate(0deg);background-color:transparent;background-image:none;background-size:100% 100%;background-origin:border-box;background-repeat:no-repeat;border-style:solid;border-color:#b8bdc7;border-width:0;border-radius:0;color:#ff0000;font-size:32px;font-family:Arial;font-weight:400;font-style:normal;text-align:left;opacity:1;box-sizing:border-box;box-shadow:none;text-shadow:none;overflow:hidden\"><span class=\"widget-text\" style=\"text-shadow:none\"><span class=\"rich-text-content\" style=\"display:block;width:100%;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere\"><span data-rich-paragraph=\"0\" style=\"display:block;margin:0\"><span data-rich-run=\"0\" style=\"font-size:14px;color:#000000;text-decoration-line:none\">Rich</span></span></span></span></div></div>\nEntered group: <span class=\"widget-text\" style=\"text-shadow:none\"><span class=\"rich-text-content\" style=\"display:block;width:100%;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere\"><span data-rich-paragraph=\"0\" style=\"display:block;margin:0\"><span data-rich-run=\"0\" style=\"font-size:32px;color:#ff0000;text-decoration-line:none\">Rich</span></span></span></span>",
+      "stack": "AssertionError [ERR_ASSERTION]: Group run still uses 14px: <div class=\"layer-contents\" style=\"position:absolute;left:-100px;top:-80px;width:0;height:0;overflow:visible\"><div data-layer-member-id=\"rich\" class=\"widget text\" style=\"position:absolute;left:100px;top:80px;width:80px;height:30px;transform:rotate(0deg);background-color:transparent;background-image:none;background-size:100% 100%;background-origin:border-box;background-repeat:no-repeat;border-style:solid;border-color:#b8bdc7;border-width:0;border-radius:0;color:#ff0000;font-size:32px;font-family:Arial;font-weight:400;font-style:normal;text-align:left;opacity:1;box-sizing:border-box;box-shadow:none;text-shadow:none;overflow:hidden\"><span class=\"widget-text\" style=\"text-shadow:none\"><span class=\"rich-text-content\" style=\"display:block;width:100%;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere\"><span data-rich-paragraph=\"0\" style=\"display:block;margin:0\"><span data-rich-run=\"0\" style=\"font-size:14px;color:#000000;text-decoration-line:none\">Rich</span></span></span></span></div></div>\nEntered group: <span class=\"widget-text\" style=\"text-shadow:none\"><span class=\"rich-text-content\" style=\"display:block;width:100%;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere\"><span data-rich-paragraph=\"0\" style=\"display:block;margin:0\"><span data-rich-run=\"0\" style=\"font-size:32px;color:#ff0000;text-decoration-line:none\">Rich</span></span></span></span>\n    at file:///D:/WSCodex/REA/research/native-layers-authoring-review-probe.mjs:146:12\n    at check (file:///D:/WSCodex/REA/research/native-layers-authoring-review-probe.mjs:21:24)\n    at file:///D:/WSCodex/REA/research/native-layers-authoring-review-probe.mjs:134:3"
+    }
+  ],
+  "blockingFindings": [
+    {
+      "name": "named adaptive rich formatting is identical outside and inside a group",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Group run still uses 14px: <div class=\"layer-contents\" style=\"position:absolute;left:-100px;top:-80px;width:0;height:0;overflow:visible\"><div data-layer-member-id=\"rich\" class=\"widget text\" style=\"position:absolute;left:100px;top:80px;width:80px;height:30px;transform:rotate(0deg);background-color:transparent;background-image:none;background-size:100% 100%;background-origin:border-box;background-repeat:no-repeat;border-style:solid;border-color:#b8bdc7;border-width:0;border-radius:0;color:#ff0000;font-size:32px;font-family:Arial;font-weight:400;font-style:normal;text-align:left;opacity:1;box-sizing:border-box;box-shadow:none;text-shadow:none;overflow:hidden\"><span class=\"widget-text\" style=\"text-shadow:none\"><span class=\"rich-text-content\" style=\"display:block;width:100%;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere\"><span data-rich-paragraph=\"0\" style=\"display:block;margin:0\"><span data-rich-run=\"0\" style=\"font-size:14px;color:#000000;text-decoration-line:none\">Rich</span></span></span></span></div></div>\nEntered group: <span class=\"widget-text\" style=\"text-shadow:none\"><span class=\"rich-text-content\" style=\"display:block;width:100%;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere\"><span data-rich-paragraph=\"0\" style=\"display:block;margin:0\"><span data-rich-run=\"0\" style=\"font-size:32px;color:#ff0000;text-decoration-line:none\">Rich</span></span></span></span>",
+      "stack": "AssertionError [ERR_ASSERTION]: Group run still uses 14px: <div class=\"layer-contents\" style=\"position:absolute;left:-100px;top:-80px;width:0;height:0;overflow:visible\"><div data-layer-member-id=\"rich\" class=\"widget text\" style=\"position:absolute;left:100px;top:80px;width:80px;height:30px;transform:rotate(0deg);background-color:transparent;background-image:none;background-size:100% 100%;background-origin:border-box;background-repeat:no-repeat;border-style:solid;border-color:#b8bdc7;border-width:0;border-radius:0;color:#ff0000;font-size:32px;font-family:Arial;font-weight:400;font-style:normal;text-align:left;opacity:1;box-sizing:border-box;box-shadow:none;text-shadow:none;overflow:hidden\"><span class=\"widget-text\" style=\"text-shadow:none\"><span class=\"rich-text-content\" style=\"display:block;width:100%;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere\"><span data-rich-paragraph=\"0\" style=\"display:block;margin:0\"><span data-rich-run=\"0\" style=\"font-size:14px;color:#000000;text-decoration-line:none\">Rich</span></span></span></span></div></div>\nEntered group: <span class=\"widget-text\" style=\"text-shadow:none\"><span class=\"rich-text-content\" style=\"display:block;width:100%;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere\"><span data-rich-paragraph=\"0\" style=\"display:block;margin:0\"><span data-rich-run=\"0\" style=\"font-size:32px;color:#ff0000;text-decoration-line:none\">Rich</span></span></span></span>\n    at file:///D:/WSCodex/REA/research/native-layers-authoring-review-probe.mjs:146:12\n    at check (file:///D:/WSCodex/REA/research/native-layers-authoring-review-probe.mjs:21:24)\n    at file:///D:/WSCodex/REA/research/native-layers-authoring-review-probe.mjs:134:3"
+    }
+  ]
+}

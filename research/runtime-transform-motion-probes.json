@@ -1,0 +1,2732 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-20T04:46:55.135Z",
+  "kind": "exact retained JavaScript slices in NodeVM with recording sinks",
+  "sources": [
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/move.js",
+      "sha256": "c823954b5ed5862d56176b8984837e8f26588540ee4768d4483d68a399b95644",
+      "bytes": 22052
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "bytes": 79505
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3",
+      "bytes": 101724
+    }
+  ],
+  "slices": [
+    {
+      "file": "action.js",
+      "from": 5,
+      "through": 12,
+      "sha256": "dd7baf6a685565e4186a7030057a90d8f5f92e303f7390c92d7a06ac465e7efd"
+    },
+    {
+      "file": "action.js",
+      "from": 143,
+      "through": 349,
+      "sha256": "f15477cf87a154322fbb906738b80cc962b6a2b95273469e7051acf785ff1cb4"
+    },
+    {
+      "file": "action.js",
+      "from": 143,
+      "through": 146,
+      "sha256": "2e938d003fa5744dba79e4cb228d42b2e37d301156a6c804fa80c4016d265550"
+    },
+    {
+      "file": "action.js",
+      "from": 866,
+      "through": 1042,
+      "sha256": "17364f4a2012d6cccfca215123ac6261296c11fe26c9a8fc6003e5b707565941"
+    },
+    {
+      "file": "action.js",
+      "from": 1061,
+      "through": 1065,
+      "sha256": "454a96929bf77cc39eba65c927c5eee9395896f5456c82476a4c81ebe8cf880c"
+    },
+    {
+      "file": "action.js",
+      "from": 1082,
+      "through": 1256,
+      "sha256": "dc047cdb1118acf1ed37c29c8f34ae8732200a712e894c97c74375aaba122eff"
+    },
+    {
+      "file": "action.js",
+      "from": 1286,
+      "through": 1506,
+      "sha256": "4d49ba999edc40cb4ef49773f507e6eaac2db02f1eb5504cf7d6d6c23b6ba55e"
+    },
+    {
+      "file": "action.js",
+      "from": 1528,
+      "through": 1551,
+      "sha256": "71878978806c361f3f320aff8fa36cb745f57ed592b086868fd8df1d44a59ef6"
+    },
+    {
+      "file": "action.js",
+      "from": 1571,
+      "through": 1651,
+      "sha256": "ab8cf615d0eabdb0d6f370b4b40872f08261dc5007ec61108850cd3108e8f799"
+    }
+  ],
+  "script": {
+    "path": "research/runtime-transform-motion-probe.mjs",
+    "sha256": "7c48282529ad11b73277e6721cb751bfad07eafa9d59d6225d66e76873b007d8"
+  },
+  "substitutions": [
+    "Batch consumers record calls; they do not execute real animation queues.",
+    "Geometry probe runs ordinary _addResize/_addRotate and exact helper functions; _addAnimations runs collected callbacks immediately.",
+    "CSS size, current angle, AABB, expression values, events and element identity are explicit numeric sinks.",
+    "resize/rotate/circularMoveAndRotate consumers record requested CSS/arguments, not real animated DOM results.",
+    "No vendor GUI, DLL invocation, browser, product test/build/package, or network request."
+  ],
+  "totals": {
+    "total": 33,
+    "passed": 33,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "triple order move/resize/rotate",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": {
+        "beforeFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 70
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "len": 100,
+                "end": 40
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          }
+        ],
+        "afterFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 70
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "len": 100,
+                "end": 40
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "easeInQuad",
+              "duration": 30,
+              "stop": {
+                "start": 40,
+                "end": 70,
+                "len": 70
+              },
+              "rotateStop": {
+                "start": 40,
+                "end": 70,
+                "len": 100
+              }
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            },
+            "options": {
+              "easing": "easeOutBounce",
+              "duration": 30,
+              "stop": {
+                "start": 70,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "triple order move/rotate/resize",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": {
+        "beforeFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "len": 70,
+                "end": 40
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          }
+        ],
+        "afterFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "len": 70,
+                "end": 40
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "easeInQuad",
+              "duration": 30,
+              "stop": {
+                "start": 40,
+                "end": 70,
+                "len": 70
+              },
+              "rotateStop": {
+                "start": 40,
+                "end": 70,
+                "len": 100
+              }
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            },
+            "options": {
+              "easing": "easeOutBounce",
+              "duration": 30,
+              "stop": {
+                "start": 70,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "triple order resize/move/rotate",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": {
+        "beforeFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 70
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "len": 100,
+                "end": 40
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          }
+        ],
+        "afterFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 70
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "len": 100,
+                "end": 40
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "easeInQuad",
+              "duration": 30,
+              "stop": {
+                "start": 40,
+                "end": 70,
+                "len": 70
+              },
+              "rotateStop": {
+                "start": 40,
+                "end": 70,
+                "len": 100
+              }
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            },
+            "options": {
+              "easing": "easeOutBounce",
+              "duration": 30,
+              "stop": {
+                "start": 70,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "triple order resize/rotate/move",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": {
+        "beforeFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 70
+              },
+              "moveStop": {
+                "start": 0,
+                "len": 40,
+                "end": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          }
+        ],
+        "afterFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 70
+              },
+              "moveStop": {
+                "start": 0,
+                "len": 40,
+                "end": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "easeInQuad",
+              "duration": 30,
+              "stop": {
+                "start": 40,
+                "end": 70,
+                "len": 70
+              },
+              "rotateStop": {
+                "start": 40,
+                "end": 70,
+                "len": 100
+              }
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            },
+            "options": {
+              "easing": "easeOutBounce",
+              "duration": 30,
+              "stop": {
+                "start": 70,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "triple order rotate/move/resize",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": {
+        "beforeFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "len": 70,
+                "end": 40
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          }
+        ],
+        "afterFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "len": 70,
+                "end": 40
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 40,
+                "len": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "easeInQuad",
+              "duration": 30,
+              "stop": {
+                "start": 40,
+                "end": 70,
+                "len": 70
+              },
+              "rotateStop": {
+                "start": 40,
+                "end": 70,
+                "len": 100
+              }
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            },
+            "options": {
+              "easing": "easeOutBounce",
+              "duration": 30,
+              "stop": {
+                "start": 70,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "triple order rotate/resize/move",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": {
+        "beforeFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 70
+              },
+              "moveStop": {
+                "start": 0,
+                "len": 40,
+                "end": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          }
+        ],
+        "afterFlush": [
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "linear",
+              "duration": 40,
+              "stop": {
+                "start": 0,
+                "end": 40,
+                "len": 70
+              },
+              "moveStop": {
+                "start": 0,
+                "len": 40,
+                "end": 40
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 40,
+                "len": 100
+              }
+            },
+            "move": {
+              "label": "move",
+              "options": {
+                "duration": 40,
+                "easing": "linear"
+              },
+              "moveType": "delta",
+              "xValue": 100,
+              "yValue": 20
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "resize",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "resize",
+              "width": 300,
+              "height": 160,
+              "duration": 70,
+              "easing": "easeInQuad",
+              "anchor": "top left"
+            },
+            "options": {
+              "easing": "easeInQuad",
+              "duration": 30,
+              "stop": {
+                "start": 40,
+                "end": 70,
+                "len": 70
+              },
+              "rotateStop": {
+                "start": 40,
+                "end": 70,
+                "len": 100
+              }
+            },
+            "rotate": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            }
+          },
+          {
+            "kind": "rotate",
+            "id": "a",
+            "eventTag": "same-event",
+            "info": {
+              "label": "rotate",
+              "options": {
+                "duration": 100,
+                "easing": "easeOutBounce"
+              },
+              "degree": 90,
+              "rotateType": "delta",
+              "offsetX": 0,
+              "offsetY": 0,
+              "anchor": "center"
+            },
+            "options": {
+              "easing": "easeOutBounce",
+              "duration": 30,
+              "stop": {
+                "start": 70,
+                "end": 100,
+                "len": 100
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "pair move/resize",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "resize",
+          "id": "a",
+          "info": {
+            "label": "resize",
+            "width": 300,
+            "height": 160,
+            "duration": 100,
+            "easing": "easeInQuad",
+            "anchor": "top left"
+          },
+          "options": {
+            "easing": "linear",
+            "duration": 40,
+            "stop": {
+              "start": 0,
+              "end": 40,
+              "len": 100
+            },
+            "moveStop": {
+              "start": 0,
+              "end": 40,
+              "len": 40
+            }
+          },
+          "move": {
+            "label": "move",
+            "options": {
+              "duration": 40,
+              "easing": "linear"
+            },
+            "moveType": "delta",
+            "xValue": 100,
+            "yValue": 20
+          }
+        },
+        {
+          "kind": "resize",
+          "id": "a",
+          "info": {
+            "label": "resize",
+            "width": 300,
+            "height": 160,
+            "duration": 100,
+            "easing": "easeInQuad",
+            "anchor": "top left"
+          },
+          "options": {
+            "easing": "easeInQuad",
+            "duration": 60,
+            "stop": {
+              "start": 40,
+              "end": 100,
+              "len": 100
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "pair move/rotate",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "rotate",
+          "id": "a",
+          "info": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          },
+          "options": {
+            "easing": "linear",
+            "duration": 40,
+            "stop": {
+              "start": 0,
+              "end": 40,
+              "len": 100
+            },
+            "moveStop": {
+              "start": 0,
+              "end": 40,
+              "len": 40
+            }
+          },
+          "move": {
+            "label": "move",
+            "options": {
+              "duration": 40,
+              "easing": "linear"
+            },
+            "moveType": "delta",
+            "xValue": 100,
+            "yValue": 20
+          }
+        },
+        {
+          "kind": "rotate",
+          "id": "a",
+          "info": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          },
+          "options": {
+            "easing": "easeOutBounce",
+            "duration": 60,
+            "stop": {
+              "start": 40,
+              "end": 100,
+              "len": 100
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "pair resize/rotate",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "resize",
+          "id": "a",
+          "info": {
+            "label": "resize",
+            "width": 300,
+            "height": 160,
+            "duration": 40,
+            "easing": "easeInQuad",
+            "anchor": "top left"
+          },
+          "options": {
+            "easing": "easeInQuad",
+            "duration": 40,
+            "stop": {
+              "start": 0,
+              "end": 40,
+              "len": 40
+            },
+            "rotateStop": {
+              "start": 0,
+              "end": 40,
+              "len": 100
+            }
+          },
+          "rotate": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          }
+        },
+        {
+          "kind": "rotate",
+          "id": "a",
+          "info": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          },
+          "options": {
+            "easing": "easeOutBounce",
+            "duration": 60,
+            "stop": {
+              "start": 40,
+              "end": 100,
+              "len": 100
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "two move requests split across resize and rotate",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "resize",
+          "id": "a",
+          "info": {
+            "label": "resize",
+            "width": 300,
+            "height": 160,
+            "duration": 70,
+            "easing": "easeInQuad",
+            "anchor": "top left"
+          },
+          "options": {
+            "easing": "linear",
+            "duration": 40,
+            "stop": {
+              "start": 0,
+              "end": 40,
+              "len": 70
+            },
+            "moveStop": {
+              "start": 0,
+              "end": 40,
+              "len": 40
+            },
+            "rotateStop": {
+              "start": 0,
+              "len": 100,
+              "end": 40
+            }
+          },
+          "move": {
+            "label": "move",
+            "options": {
+              "duration": 40,
+              "easing": "linear"
+            },
+            "moveType": "delta",
+            "xValue": 100,
+            "yValue": 20
+          },
+          "rotate": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          }
+        },
+        {
+          "kind": "resize",
+          "id": "a",
+          "info": {
+            "label": "resize",
+            "width": 300,
+            "height": 160,
+            "duration": 70,
+            "easing": "easeInQuad",
+            "anchor": "top left"
+          },
+          "options": {
+            "easing": "linear",
+            "duration": 30,
+            "stop": {
+              "start": 40,
+              "end": 70,
+              "len": 70
+            },
+            "moveStop": {
+              "start": 0,
+              "end": 30,
+              "len": 40
+            },
+            "rotateStop": {
+              "start": 40,
+              "len": 100,
+              "end": 70
+            }
+          },
+          "move": {
+            "label": "move",
+            "options": {
+              "duration": 40,
+              "easing": "linear"
+            },
+            "moveType": "delta",
+            "xValue": 100,
+            "yValue": 20
+          },
+          "rotate": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          }
+        },
+        {
+          "kind": "rotate",
+          "id": "a",
+          "info": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          },
+          "options": {
+            "easing": "linear",
+            "duration": 10,
+            "stop": {
+              "start": 70,
+              "end": 80,
+              "len": 100
+            },
+            "moveStop": {
+              "start": 30,
+              "end": 40,
+              "len": 40
+            }
+          },
+          "move": {
+            "label": "move",
+            "options": {
+              "duration": 40,
+              "easing": "linear"
+            },
+            "moveType": "delta",
+            "xValue": 100,
+            "yValue": 20
+          }
+        },
+        {
+          "kind": "rotate",
+          "id": "a",
+          "info": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          },
+          "options": {
+            "easing": "easeOutBounce",
+            "duration": 20,
+            "stop": {
+              "start": 80,
+              "end": 100,
+              "len": 100
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "instant operation is dispatched before unrelated animated batch",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "resize",
+          "id": "a",
+          "info": {
+            "label": "resize",
+            "width": 300,
+            "height": 160,
+            "duration": 500,
+            "easing": "none",
+            "anchor": "top left"
+          },
+          "options": {
+            "easing": "none",
+            "duration": 0,
+            "stop": {
+              "instant": true
+            }
+          }
+        },
+        {
+          "kind": "rotate",
+          "id": "a",
+          "info": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          },
+          "options": {
+            "easing": "easeOutBounce",
+            "duration": 100,
+            "stop": {
+              "start": 0,
+              "end": 100,
+              "len": 100
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "separate event batches do not combine same target",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "move",
+          "id": "a",
+          "eventTag": "a",
+          "info": {
+            "label": "move",
+            "options": {
+              "duration": 40,
+              "easing": "linear"
+            },
+            "moveType": "delta",
+            "xValue": 100,
+            "yValue": 20
+          },
+          "options": {
+            "easing": "linear",
+            "duration": 40,
+            "stop": {
+              "start": 0,
+              "end": 40,
+              "len": 40
+            }
+          }
+        },
+        {
+          "kind": "rotate",
+          "id": "a",
+          "eventTag": "b",
+          "info": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          },
+          "options": {
+            "easing": "easeOutBounce",
+            "duration": 100,
+            "stop": {
+              "start": 0,
+              "end": 100,
+              "len": 100
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "concrete IDs have separate batches",
+      "family": "exact batch planner",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "move",
+          "id": "row-1",
+          "info": {
+            "label": "move",
+            "options": {
+              "duration": 40,
+              "easing": "linear"
+            },
+            "moveType": "delta",
+            "xValue": 100,
+            "yValue": 20
+          },
+          "options": {
+            "easing": "linear",
+            "duration": 40,
+            "stop": {
+              "start": 0,
+              "end": 40,
+              "len": 40
+            }
+          }
+        },
+        {
+          "kind": "rotate",
+          "id": "row-2",
+          "info": {
+            "label": "rotate",
+            "options": {
+              "duration": 100,
+              "easing": "easeOutBounce"
+            },
+            "degree": 90,
+            "rotateType": "delta",
+            "offsetX": 0,
+            "offsetY": 0,
+            "anchor": "center"
+          },
+          "options": {
+            "easing": "easeOutBounce",
+            "duration": 100,
+            "stop": {
+              "start": 0,
+              "end": 100,
+              "len": 100
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "real changed size slice end 100",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "input": {
+          "old": [
+            200,
+            100
+          ],
+          "requested": [
+            300,
+            160
+          ],
+          "slice": {
+            "start": 0,
+            "end": 100,
+            "len": 100
+          }
+        },
+        "css": {
+          "height": 160,
+          "width": 300,
+          "left": 100,
+          "top": 100,
+          "deltaX": 0,
+          "deltaY": 0
+        },
+        "calls": [
+          {
+            "kind": "reservations",
+            "entries": [
+              {
+                "id": "a",
+                "type": 4
+              }
+            ]
+          },
+          {
+            "kind": "evaluate",
+            "expr": 300,
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": 160,
+            "target": "a"
+          },
+          {
+            "kind": "resize",
+            "css": {
+              "height": 160,
+              "width": 300,
+              "left": 100,
+              "top": 100,
+              "deltaX": 0,
+              "deltaY": 0
+            },
+            "info": {
+              "width": 300,
+              "height": 160,
+              "anchor": "top left",
+              "duration": 100,
+              "easing": "linear"
+            },
+            "flags": [
+              true,
+              null
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "real changed size slice end 50",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "input": {
+          "old": [
+            200,
+            100
+          ],
+          "requested": [
+            300,
+            160
+          ],
+          "slice": {
+            "start": 0,
+            "end": 50,
+            "len": 100
+          }
+        },
+        "css": {
+          "height": 115,
+          "width": 225,
+          "left": 100,
+          "top": 100,
+          "deltaX": 0,
+          "deltaY": 0
+        },
+        "calls": [
+          {
+            "kind": "reservations",
+            "entries": [
+              {
+                "id": "a",
+                "type": 4
+              }
+            ]
+          },
+          {
+            "kind": "evaluate",
+            "expr": 300,
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": 160,
+            "target": "a"
+          },
+          {
+            "kind": "resize",
+            "css": {
+              "height": 115,
+              "width": 225,
+              "left": 100,
+              "top": 100,
+              "deltaX": 0,
+              "deltaY": 0
+            },
+            "info": {
+              "width": 300,
+              "height": 160,
+              "anchor": "top left",
+              "duration": 100,
+              "easing": "linear"
+            },
+            "flags": [
+              true,
+              null
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "real changed size slice end 40",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "input": {
+          "old": [
+            200,
+            100
+          ],
+          "requested": [
+            300,
+            160
+          ],
+          "slice": {
+            "start": 0,
+            "end": 40,
+            "len": 100
+          }
+        },
+        "css": {
+          "height": 109.6,
+          "width": 216,
+          "left": 100,
+          "top": 100,
+          "deltaX": 0,
+          "deltaY": 0
+        },
+        "calls": [
+          {
+            "kind": "reservations",
+            "entries": [
+              {
+                "id": "a",
+                "type": 4
+              }
+            ]
+          },
+          {
+            "kind": "evaluate",
+            "expr": 300,
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": 160,
+            "target": "a"
+          },
+          {
+            "kind": "resize",
+            "css": {
+              "height": 109.6,
+              "width": 216,
+              "left": 100,
+              "top": 100,
+              "deltaX": 0,
+              "deltaY": 0
+            },
+            "info": {
+              "width": 300,
+              "height": 160,
+              "anchor": "top left",
+              "duration": 100,
+              "easing": "linear"
+            },
+            "flags": [
+              true,
+              null
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "changed-size rotate direction true",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "reservations",
+          "entries": [
+            {
+              "id": "a",
+              "type": 4
+            },
+            {
+              "id": "a",
+              "type": 5
+            }
+          ]
+        },
+        {
+          "kind": "evaluate",
+          "expr": 300,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 160,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 0,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 0,
+          "target": "a"
+        },
+        {
+          "kind": "event",
+          "id": "a",
+          "name": "onRotate"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 90,
+          "target": "a"
+        },
+        {
+          "kind": "rotate",
+          "args": [
+            90,
+            "linear",
+            100,
+            false,
+            true
+          ]
+        },
+        {
+          "kind": "resize",
+          "css": {
+            "height": 160,
+            "width": 300,
+            "left": 100,
+            "top": 100,
+            "deltaX": 0,
+            "deltaY": 0
+          },
+          "info": {
+            "width": 300,
+            "height": 160,
+            "anchor": "top left",
+            "duration": 100,
+            "easing": "linear"
+          },
+          "flags": [
+            true,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "changed-size rotate direction false",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "reservations",
+          "entries": [
+            {
+              "id": "a",
+              "type": 4
+            },
+            {
+              "id": "a",
+              "type": 5
+            }
+          ]
+        },
+        {
+          "kind": "evaluate",
+          "expr": 300,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 160,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 0,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 0,
+          "target": "a"
+        },
+        {
+          "kind": "event",
+          "id": "a",
+          "name": "onRotate"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 90,
+          "target": "a"
+        },
+        {
+          "kind": "rotate",
+          "args": [
+            90,
+            "linear",
+            100,
+            false,
+            true
+          ]
+        },
+        {
+          "kind": "resize",
+          "css": {
+            "height": 160,
+            "width": 300,
+            "left": 100,
+            "top": 100,
+            "deltaX": 0,
+            "deltaY": 0
+          },
+          "info": {
+            "width": 300,
+            "height": 160,
+            "anchor": "top left",
+            "duration": 100,
+            "easing": "linear"
+          },
+          "flags": [
+            true,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "resize anchor top left",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "anchor": "top left",
+        "css": {
+          "height": 160,
+          "width": 300,
+          "left": 100,
+          "top": 100,
+          "deltaX": 0,
+          "deltaY": 0
+        }
+      }
+    },
+    {
+      "name": "resize anchor top",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "anchor": "top",
+        "css": {
+          "height": 160,
+          "width": 300,
+          "left": 50,
+          "top": 100,
+          "deltaX": -50,
+          "deltaY": 0
+        }
+      }
+    },
+    {
+      "name": "resize anchor top right",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "anchor": "top right",
+        "css": {
+          "height": 160,
+          "width": 300,
+          "left": 0,
+          "top": 100,
+          "deltaX": -100,
+          "deltaY": 0
+        }
+      }
+    },
+    {
+      "name": "resize anchor left",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "anchor": "left",
+        "css": {
+          "height": 160,
+          "width": 300,
+          "left": 100,
+          "top": 70,
+          "deltaX": 0,
+          "deltaY": -30
+        }
+      }
+    },
+    {
+      "name": "resize anchor center",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "anchor": "center",
+        "css": {
+          "height": 160,
+          "width": 300,
+          "left": 50,
+          "top": 70,
+          "deltaX": -50,
+          "deltaY": -30
+        }
+      }
+    },
+    {
+      "name": "resize anchor right",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "anchor": "right",
+        "css": {
+          "height": 160,
+          "width": 300,
+          "left": 0,
+          "top": 70,
+          "deltaX": -100,
+          "deltaY": -30
+        }
+      }
+    },
+    {
+      "name": "resize anchor bottom left",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "anchor": "bottom left",
+        "css": {
+          "height": 160,
+          "width": 300,
+          "left": 100,
+          "top": 40,
+          "deltaX": 0,
+          "deltaY": -60
+        }
+      }
+    },
+    {
+      "name": "resize anchor bottom",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "anchor": "bottom",
+        "css": {
+          "height": 160,
+          "width": 300,
+          "left": 50,
+          "top": 40,
+          "deltaX": -50,
+          "deltaY": -60
+        }
+      }
+    },
+    {
+      "name": "resize anchor bottom right",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": {
+        "anchor": "bottom right",
+        "css": {
+          "height": 160,
+          "width": 300,
+          "left": 0,
+          "top": 40,
+          "deltaX": -100,
+          "deltaY": -60
+        }
+      }
+    },
+    {
+      "name": "resize+rotate anchors use current AABB unlike rotate-only unrotated CSS",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "reservations",
+          "entries": [
+            {
+              "id": "a",
+              "type": 4
+            },
+            {
+              "id": "a",
+              "type": 5
+            }
+          ]
+        },
+        {
+          "kind": "evaluate",
+          "expr": 300,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 160,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 0,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 0,
+          "target": "a"
+        },
+        {
+          "kind": "event",
+          "id": "a",
+          "name": "onRotate"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 90,
+          "target": "a"
+        },
+        {
+          "kind": "circular",
+          "args": [
+            90,
+            {
+              "easing": "linear",
+              "duration": 100,
+              "stop": {
+                "start": 0,
+                "end": 100,
+                "len": 100
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 100,
+                "len": 100
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 100,
+                "len": 100
+              }
+            },
+            300,
+            200,
+            true,
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 50,
+              "y": -30
+            }
+          ]
+        },
+        {
+          "kind": "resize",
+          "css": {
+            "height": 160,
+            "width": 300,
+            "deltaX": 0,
+            "deltaY": 0
+          },
+          "info": {
+            "width": 300,
+            "height": 160,
+            "anchor": "top left",
+            "duration": 100,
+            "easing": "linear"
+          },
+          "flags": [
+            true,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "offcenter orbit receives resize-anchor shift and raw slice resizeOffset",
+      "family": "exact ordinary resize dispatch and CSS",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "reservations",
+          "entries": [
+            {
+              "id": "a",
+              "type": 4
+            },
+            {
+              "id": "a",
+              "type": 5
+            },
+            {
+              "id": "a",
+              "type": 1
+            }
+          ]
+        },
+        {
+          "kind": "evaluate",
+          "expr": 300,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 160,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 40,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 20,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 0,
+          "target": "a"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 0,
+          "target": "a"
+        },
+        {
+          "kind": "event",
+          "id": "a",
+          "name": "onRotate"
+        },
+        {
+          "kind": "evaluate",
+          "expr": 90,
+          "target": "a"
+        },
+        {
+          "kind": "circular",
+          "args": [
+            90,
+            {
+              "easing": "linear",
+              "duration": 100,
+              "stop": {
+                "start": 0,
+                "end": 100,
+                "len": 100
+              },
+              "rotateStop": {
+                "start": 0,
+                "end": 100,
+                "len": 100
+              },
+              "moveStop": {
+                "start": 0,
+                "end": 100,
+                "len": 100
+              }
+            },
+            300,
+            100,
+            true,
+            {
+              "x": -60,
+              "y": -40,
+              "moveTo": false
+            },
+            {
+              "x": 50,
+              "y": -30
+            }
+          ]
+        },
+        {
+          "kind": "event",
+          "id": "a",
+          "name": "onMove"
+        },
+        {
+          "kind": "resize",
+          "css": {
+            "height": 160,
+            "width": 300,
+            "deltaX": -160,
+            "deltaY": -100
+          },
+          "info": {
+            "width": 300,
+            "height": 160,
+            "anchor": "bottom right",
+            "duration": 100,
+            "easing": "linear"
+          },
+          "flags": [
+            true,
+            {
+              "moveType": "delta",
+              "xValue": 40,
+              "yValue": 20,
+              "options": {
+                "duration": 100,
+                "easing": "linear"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "resize route evaluates degree after onRotate; rotate route before",
+      "family": "exact evaluation ordering",
+      "passed": true,
+      "observed": {
+        "resizeRoute": [
+          {
+            "kind": "reservations",
+            "entries": [
+              {
+                "id": "a",
+                "type": 4
+              },
+              {
+                "id": "a",
+                "type": 5
+              }
+            ]
+          },
+          {
+            "kind": "evaluate",
+            "expr": 300,
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": 160,
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": 0,
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": 0,
+            "target": "a"
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "name": "onRotate"
+          },
+          {
+            "kind": "evaluate",
+            "expr": "$degree",
+            "target": "a"
+          },
+          {
+            "kind": "rotate",
+            "args": [
+              180,
+              "linear",
+              100,
+              false,
+              true
+            ]
+          },
+          {
+            "kind": "resize",
+            "css": {
+              "height": 160,
+              "width": 300,
+              "left": 100,
+              "top": 100,
+              "deltaX": 0,
+              "deltaY": 0
+            },
+            "info": {
+              "width": 300,
+              "height": 160,
+              "anchor": "top left",
+              "duration": 100,
+              "easing": "linear"
+            },
+            "flags": [
+              true,
+              0
+            ]
+          }
+        ],
+        "rotateRoute": [
+          {
+            "kind": "reservations",
+            "entries": [
+              {
+                "id": "a",
+                "type": 5
+              },
+              {
+                "id": "a",
+                "type": 1
+              }
+            ]
+          },
+          {
+            "kind": "evaluate",
+            "expr": "$degree",
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": 0,
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": 0,
+            "target": "a"
+          },
+          {
+            "kind": "event",
+            "id": "a",
+            "name": "onRotate"
+          },
+          {
+            "kind": "rotate",
+            "args": [
+              90,
+              "linear",
+              100,
+              false,
+              true
+            ]
+          },
+          {
+            "kind": "release",
+            "id": "a",
+            "type": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "size coercion and cached result reuse",
+      "family": "exact size evaluator",
+      "passed": true,
+      "observed": {
+        "first": {
+          "width": 200,
+          "height": 0
+        },
+        "second": {
+          "width": 200,
+          "height": 0
+        },
+        "calls": [
+          {
+            "kind": "evaluate",
+            "expr": "",
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": -20,
+            "target": "a"
+          }
+        ]
+      }
+    },
+    {
+      "name": "size nonnumeric falls back to old dimensions; fractional is not rounded here",
+      "family": "exact size evaluator",
+      "passed": true,
+      "observed": {
+        "value": {
+          "width": 200,
+          "height": 12.25
+        },
+        "calls": [
+          {
+            "kind": "evaluate",
+            "expr": "bad",
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": 12.25,
+            "target": "a"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Move expression is cached over its slices and clears at final slice",
+      "family": "exact move evaluator",
+      "passed": true,
+      "observed": {
+        "first": {
+          "x": 40,
+          "y": 8,
+          "moveTo": false
+        },
+        "second": {
+          "x": 60,
+          "y": 12,
+          "moveTo": false
+        },
+        "calls": [
+          {
+            "kind": "evaluate",
+            "expr": "$x",
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "expr": 20,
+            "target": "a"
+          }
+        ]
+      }
+    }
+  ]
+}

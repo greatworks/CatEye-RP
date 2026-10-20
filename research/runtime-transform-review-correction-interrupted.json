@@ -1,0 +1,14 @@
+{
+  "status": "source-stability guard interrupted the first broad correction rerun",
+  "command": "node research/runtime-transform-review-probe.mjs research/runtime-transform-review-probes-correction.json",
+  "exitCode": 1,
+  "outputFileWritten": false,
+  "error": {
+    "name": "AssertionError",
+    "message": "source changed during review: src/model/types.ts",
+    "startSha256": "116e312dabdda7f7279b29be23c4fbd29733b9fde441c4079efc5cdf49d394c8",
+    "endSha256": "877e6e4327593096c32abbb88f33f91ef2fd0f2e34e406c4994a82406415197c",
+    "location": "research/runtime-transform-review-probe.mjs:91:38"
+  },
+  "interpretation": "The parent concurrently expanded types. This is not a product assertion failure and no stable model review is claimed for that run. The subsequent correction probe binds expressions.ts alone and avoids reviewing the unfinished new core or schema expansion."
+}

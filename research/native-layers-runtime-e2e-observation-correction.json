@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-20T07:20:21.161Z",
+  "stage": "native-layers",
+  "scope": "test-only observation correction",
+  "priorManifest": {
+    "path": "research/native-layers-runtime-implementation.json",
+    "bytes": 12247,
+    "sha256": "08b269171e27481bd156504caf62a493c0ee3c3d88b19930ea4ac64dc63eef79"
+  },
+  "before": {
+    "path": ".build/native-layers-runtime-e2e-first.ts",
+    "bytes": 6405,
+    "sha256": "4f7acbc4b5eda7303a94bf8ec110ab034ff9efd3fd427ba94a1bc269186d0a15"
+  },
+  "after": {
+    "path": "tests/e2e/native-layers-runtime.spec.ts",
+    "bytes": 6348,
+    "sha256": "894cee170b77a10b844e3114707157f340eee0b88def11468823c274051eb3c4"
+  },
+  "reason": "Preview repeater rows expose data-row-id on ancestor wrappers; only the portable mount attaches data-row-context to each widget. The shared final observation incorrectly parsed an absent Preview attribute. Record each actual row geometry using the existing geometry() helper instead.",
+  "unchanged": "All action sequences, coordinate and state assertions, four-row isolation checks, iframe checks, save readback, and error/request assertions are byte-for-byte unchanged outside this one observation expression.",
+  "productionUnchanged": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "bytes": 322679,
+      "sha256": "5d8cb997dd29745add36a3270c40c7c743342a0621da1a001403544e8d651128"
+    },
+    {
+      "path": "src/runtime/engine.ts",
+      "bytes": 7588,
+      "sha256": "9df0fab611180061800d823172452b62ca18bb8a0375666066af9ef6604fb040"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "bytes": 25283,
+      "sha256": "aedf707cf12d3c460271723a86c47a750c670de9b884bb9555131cb35dfa8c1b"
+    },
+    {
+      "path": "src/runtime/inline-frame-runtime.ts",
+      "bytes": 11090,
+      "sha256": "474a0b36fb9170b8aa0b5c8ffaf97c3dac3e9a1557be4bda2cb0b0f48885fa7c"
+    }
+  ],
+  "firstProductionRun": {
+    "path": ".build/native-layers-focused-e2e.json",
+    "bytes": 29513,
+    "sha256": "2026d02338ca3dd0d815468693a8ffde48267af3e0a8f197c3d158b0b13cd04f",
+    "stats": {
+      "startTime": "2026-10-20T07:15:34.754Z",
+      "duration": 50635.384,
+      "expected": 19,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "classification": "Preview reached final observation after all exercise assertions passed; offline passed. Correction does not claim a new browser pass."
+  },
+  "validation": {
+    "exactSingleExpressionDiff": true,
+    "previousTestBytesVerified": true,
+    "productionHashesUnchanged": true,
+    "testDiscovery": {
+      "path": ".build/native-layers-runtime-observation-correction-list.log",
+      "bytes": 311,
+      "sha256": "985a56a00a31dfc87b6df0e9c8fb1f453446bb73c0b4abcace467d9543515678",
+      "exitCode": 0,
+      "tests": 2
+    },
+    "browser": "Parent runs unified production suite; no independent browser launched."
+  }
+}

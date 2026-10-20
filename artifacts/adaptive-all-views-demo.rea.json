@@ -1,0 +1,264 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "55ea056d-790b-4085-a034-7a077aa2a496",
+  "name": "Affect all views authoring",
+  "pages": [
+    {
+      "id": "be54ee06-c527-4555-872b-5fbd136abd2b",
+      "name": "Page 1",
+      "width": 1200,
+      "height": 900,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "all-views-target",
+          "type": "box",
+          "name": "All views target",
+          "text": "All views target",
+          "notes": "",
+          "x": 40,
+          "y": 80,
+          "rotation": 0,
+          "width": 180,
+          "height": 60,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ccddff",
+            "fillGradient": {
+              "type": "linear",
+              "start": {
+                "x": 0,
+                "y": 0
+              },
+              "end": {
+                "x": 1,
+                "y": 1
+              },
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#ccddff"
+                },
+                {
+                  "offset": 1,
+                  "color": "#ffffff"
+                }
+              ]
+            },
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "textPadding": [
+              1,
+              45,
+              3,
+              4
+            ]
+          },
+          "interactions": [],
+          "selectedStyle": {
+            "color": "#aa0000"
+          }
+        },
+        {
+          "id": "all-views-untouched",
+          "type": "box",
+          "name": "Untouched widget",
+          "text": "Untouched widget",
+          "notes": "",
+          "x": 340,
+          "y": 300,
+          "rotation": 0,
+          "width": 180,
+          "height": 90,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViewSetId": "all-views-set",
+      "adaptiveViews": [],
+      "adaptiveOverrides": {
+        "all-tablet": {
+          "all-views-target": {
+            "x": 60,
+            "y": 110,
+            "width": 220,
+            "style": {
+              "fill": "#aabbcc",
+              "fontSize": 19
+            },
+            "textPaddingSides": {
+              "top": 5,
+              "bottom": 7,
+              "left": 8
+            }
+          },
+          "all-views-untouched": {
+            "hidden": true,
+            "style": {
+              "fill": "#aaff00"
+            }
+          }
+        },
+        "all-phone": {
+          "all-views-target": {
+            "x": 80,
+            "y": 140,
+            "height": 90,
+            "style": {
+              "fill": "#ddeeff",
+              "color": "#123456"
+            },
+            "stateStyles": {
+              "mouseOver": {
+                "opacity": 0.6
+              }
+            },
+            "textPaddingSides": {
+              "top": 11,
+              "bottom": 13,
+              "left": 14
+            }
+          }
+        },
+        "all-other": {
+          "all-views-target": {
+            "x": 100,
+            "y": 200,
+            "style": {
+              "fillGradient": {
+                "type": "linear",
+                "start": {
+                  "x": 0,
+                  "y": 0
+                },
+                "end": {
+                  "x": 1,
+                  "y": 1
+                },
+                "stops": [
+                  {
+                    "offset": 0,
+                    "color": "#ccddff"
+                  },
+                  {
+                    "offset": 1,
+                    "color": "#ffffff"
+                  }
+                ]
+              },
+              "stroke": "#998877"
+            },
+            "textPaddingSides": {
+              "top": 21,
+              "bottom": 23,
+              "left": 24
+            }
+          }
+        },
+        "inactive-view": {
+          "all-views-target": {
+            "x": 230,
+            "y": 250,
+            "placed": false,
+            "style": {
+              "fill": "#bbccdd",
+              "fillGradient": {
+                "type": "linear",
+                "start": {
+                  "x": 0,
+                  "y": 0
+                },
+                "end": {
+                  "x": 1,
+                  "y": 1
+                },
+                "stops": [
+                  {
+                    "offset": 0,
+                    "color": "#ccddff"
+                  },
+                  {
+                    "offset": 1,
+                    "color": "#ffffff"
+                  }
+                ]
+              },
+              "radius": 12
+            },
+            "stateStyles": {
+              "focused": {
+                "stroke": "#dd0000"
+              }
+            },
+            "textPaddingSides": {
+              "top": 31,
+              "bottom": 33,
+              "left": 34
+            }
+          }
+        }
+      }
+    }
+  ],
+  "adaptiveViewSets": [
+    {
+      "id": "all-views-set",
+      "name": "Authoring set",
+      "baseSize": {
+        "width": 1200,
+        "height": 0
+      },
+      "views": [
+        {
+          "id": "all-tablet",
+          "name": "Tablet",
+          "width": 768,
+          "height": 0
+        },
+        {
+          "id": "all-phone",
+          "name": "Phone",
+          "width": 390,
+          "height": 0,
+          "baseViewId": "all-tablet"
+        },
+        {
+          "id": "all-other",
+          "name": "Other branch",
+          "width": 600,
+          "height": 0
+        }
+      ]
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

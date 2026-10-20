@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 1,
+  "stage": "layer-resize-controller-implementation",
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "fullAxureParity": false,
+  "source": {
+    "file": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/AxureRP11.dll",
+    "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+    "version": "11.0.0.4150"
+  },
+  "production": {
+    "file": "src/model/author-layer-resize.ts",
+    "sha256": "2d578f9151299197e9efb0e0f690449705991331f97a091860932e483e620bc6"
+  },
+  "tests": {
+    "file": "tests/author-layer-resize.test.ts",
+    "sha256": "2c9c81dd5abb59fe189f9de3efeea59ac450901e5b72cd17cefd85d7539be052"
+  },
+  "summary": {
+    "productTests": {
+      "total": 145,
+      "passed": 145,
+      "failed": 0
+    },
+    "typecheckExitCode": 0,
+    "controllerCases": 142,
+    "numericCases": 5004,
+    "composedLowerLevelCases": 78,
+    "entryReplay": {
+      "total": 54,
+      "policyCases": 32,
+      "composedCases": 22,
+      "passed": 54,
+      "failed": 0
+    },
+    "frozenControllerReferencesVerified": 44
+  },
+  "api": {
+    "name": "planAuthorLayerResize",
+    "authoritativeInput": "delta + handle",
+    "coordinates": "nearest page/state scope; Layer location is not accumulated",
+    "selectionRect": "optional common old visible selection bounds; default root derived frame",
+    "defaultFreedom": "W/E = 1, N/S = 2, corners = 3; explicit native freedom retained",
+    "currentAdaptiveOnly": true,
+    "shapeTextShared": true,
+    "atomicFailure": true,
+    "geometryPatch": "complete changed Location/Size pairs; each pair preserves omission under native strict 1e-5 equality"
+  },
+  "sourceMethods": [
+    {
+      "token": 100686217,
+      "name": "obNM constructor",
+      "role": "MSON(handle) to movement freedom",
+      "il": "0x6D–0x74"
+    },
+    {
+      "token": 100708345,
+      "name": "MSON",
+      "role": "Left/Right -> horizontal; Top/Bottom -> vertical"
+    },
+    {
+      "token": 100686248,
+      "name": "CbNX",
+      "role": "common selection frame and entry clamp then ordered roots",
+      "il": "0x2F4–0x3C3"
+    },
+    {
+      "token": 100686207,
+      "name": "TbN1 constructor",
+      "role": "ordered membership/contact subset"
+    },
+    {
+      "token": 100686249,
+      "name": "jbNm",
+      "role": "two-pass member resize, immutable snapshots and lock/fit gates"
+    },
+    {
+      "token": 100686251,
+      "name": "ubNp",
+      "role": "contacting member predictions"
+    },
+    {
+      "token": 100686252,
+      "name": "kbNq",
+      "role": "pin/fixed facts and exact Control+Alt bypass"
+    },
+    {
+      "token": 100686253,
+      "name": "JbNd",
+      "role": "fit effects before geometry"
+    },
+    {
+      "token": 100695371,
+      "name": "YJ0S",
+      "role": "ordinary Size then Location current provider writes"
+    },
+    {
+      "token": 100720526,
+      "name": "k5pM",
+      "role": "candidate union"
+    },
+    {
+      "token": 100720611,
+      "name": "BoundingRect fold",
+      "role": "union reducer"
+    },
+    {
+      "token": 100720524,
+      "name": "H5px",
+      "role": "finite positive rectangle min/max union"
+    }
+  ],
+  "supported": [
+    "layer nesting",
+    "box",
+    "ellipse",
+    "path",
+    "text",
+    "button",
+    "image",
+    "placeholder",
+    "line",
+    "input",
+    "textarea",
+    "select",
+    "hotspot",
+    "inlineFrame"
+  ],
+  "unsupported": [
+    "panel",
+    "repeater",
+    "table/tableCell",
+    "menu",
+    "tree/treeNode",
+    "checkbox/radio",
+    "component instances and embedded compound payloads",
+    "new Connector behavior",
+    "native ImageBox FitToImage flag not represented in the current model"
+  ],
+  "limitations": [
+    "Static CIL interpretation only; no original assembly or GUI execution",
+    "Native selection discovery, editor visibility overrides and hidden/unplaced selected-root differences between KJYm and SJYh remain outside the ordinary visible-selection entry",
+    "Native undo/notification/snapping behavior not executed; host history is independently implemented",
+    "Product minimum dimension 1, coordinate/dimension bound 100000, depth/node and ID guards are document constraints",
+    "Zero and empty resize trees/results are rejected atomically rather than claimed native-equivalent",
+    "Inspector each-root requested size is an explicit product policy; pointer multi-root requires common selectionRect"
+  ],
+  "failures": {
+    "baseline107": {
+      "file": ".build/layer-resize-controller-before-crossing/layer-resize-controller-planner-origin-first.json",
+      "sha256": "231d46c740ec590895207e8835750c833ed9883d8111221874c4e0b59eb7febf"
+    },
+    "beforeSource": {
+      "file": ".build/layer-resize-controller-before-crossing/author-layer-resize.ts",
+      "sha256": "642b075a7a3f86a030588a14f1775b20356c9a5ea24115d59dae29999a9b6f04"
+    },
+    "crossing": {
+      "file": ".build/layer-resize-controller-planner-crossing-red.json",
+      "sha256": "6e1a9f0e764e57a155821f41b05049ff3945485844fcd1895df8eee2acfb6d17",
+      "total": 114,
+      "failed": 4
+    },
+    "entry": {
+      "file": ".build/layer-resize-controller-planner-entry-red.json",
+      "sha256": "335e7a731ef2ea228f0f4b2c24a38b42e67d32f69e53fb3e3c50a6ba00380822",
+      "total": 123,
+      "failed": 13
+    },
+    "accepted": {
+      "file": ".build/layer-resize-controller-planner-accepted.json",
+      "sha256": "4261a52a1247c39f38d147091d439f2ec251df403394f552ba8a274b025d8f42",
+      "total": 145,
+      "passed": 145,
+      "failed": 0
+    }
+  },
+  "sources": [
+    {
+      "file": "src/model/author-layer-resize.ts",
+      "sha256": "2d578f9151299197e9efb0e0f690449705991331f97a091860932e483e620bc6"
+    },
+    {
+      "file": "tests/author-layer-resize.test.ts",
+      "sha256": "2c9c81dd5abb59fe189f9de3efeea59ac450901e5b72cd17cefd85d7539be052"
+    },
+    {
+      "file": "src/model/author-resize-solver.ts",
+      "sha256": "95d2b05236c850976cc2f1230319ad6bd23b468b6de7fb4fffb2b7ed2bb6fb10"
+    },
+    {
+      "file": "src/model/resize-pins.ts",
+      "sha256": "40b464deec19c57547b0d8caa16a58900f4701742891c2bcb093e801ce2371c0"
+    },
+    {
+      "file": "src/model/types.ts",
+      "sha256": "226a7068ddf0626587494f2bb30577ab8268241a497ea5cc0b6298f8c18a702d"
+    },
+    {
+      "file": "src/model/document.ts",
+      "sha256": "91a2c145f801bee4e9a7130f37e93145eba812ae0842ca193f9165fc6b3ae1c3"
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "110ae6811273c8f074f2246f5cf67702d32879d122fe04ff57fdad8dd39ec8d5"
+    },
+    {
+      "file": "research/layer-resize-controller-manifest.json",
+      "sha256": "f248078274cb16687b244e2a2ca977c76ab0bc3d8da304752d90b5729b559c0b"
+    },
+    {
+      "file": "research/layer-resize-controller-evidence.json",
+      "sha256": "30f31bd677523bfc7bc60ffad5284f4f54e47a5debb364c0c1a5ffcaa72d5821"
+    },
+    {
+      "file": "research/layer-resize-controller-evidence.md",
+      "sha256": "40560698d225fc4a8cb85d2bcdfe8219133acfa42d809e2dd64be97ddec53000"
+    },
+    {
+      "file": "research/layer-resize-controller-probe.mjs",
+      "sha256": "ca81115b3d6a92aabbe751b21c5427ebc7e0fe2093fe0265e988ba26c2416800"
+    },
+    {
+      "file": "research/layer-resize-controller-probes.json",
+      "sha256": "c28151283a9d335b4c78cfcd00c0d3bd1640453c7bd9de40ec17ec84dd573dd5"
+    },
+    {
+      "file": "research/layer-resize-numeric-evidence.json",
+      "sha256": "1f1eb4c631822f45d6045e163f266fbd99e5f2253dc391a8efe90d38be8c40e5"
+    },
+    {
+      "file": "research/layer-resize-numeric-evidence.md",
+      "sha256": "31e4ef95d119539bee0808b74e85d81d7c8d56d8faa4cb5878f44392ec19086c"
+    },
+    {
+      "file": "research/layer-resize-numeric-manifest.json",
+      "sha256": "e9ce3242c3f32bfacf3ccc007f0e1a26bf732eac042b08e783b200cc0fc24948"
+    },
+    {
+      "file": "research/layer-resize-numeric-replay.mjs",
+      "sha256": "5c7de39285e87c7ea4492666b38decf096873a8c0d9ce23898a8174027d6a20f"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "research/layer-resize-controller-planner-axis-cil.json",
+      "sha256": "103f11e052d0744525db97194237166d15bbef23366252be50d5fc7f362ec738"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-entry-cil.json",
+      "sha256": "78e2177e8fd92b6270f811a3883cf45a66d0469ca1bcb2ce049eb8082f1b24e6"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-entry-fixtures.json",
+      "sha256": "8151971d3065995440eee6d20e9836baf07da0a88ada07bde277df3a6d7caba7"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-entry-oracle.mjs",
+      "sha256": "b04edca476c4ad13277e4ebd2ba27f0c0ae3a63e156084aa17e061bc7d46080f"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-fixtures.json",
+      "sha256": "4f95adf10badc7e99ed37874640ce9279d82386c8a226b37898b8e88af1d42ef"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-host-cil.json",
+      "sha256": "b89512f7215cde03b19c52d3e28ea00f60607869f253ff4cae8c067410ece73c"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-metadata.json",
+      "sha256": "25f6d80ad84e0b360499e1f7635e5e1c40e79684cd9ebb26562b6de39e24fa02"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-metadata.ps1",
+      "sha256": "bec4b3fee68bad25213409b4fbd4f51dc19e55b8c9fc3535266df2ac98b96a9b"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-oracle.mjs",
+      "sha256": "c237e035138f5cb55e05bae4d9a4d0f0f923cc1e7880226a6546330aa56887f6"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-pointer-cil.json",
+      "sha256": "734dc7ae2534d15e9c6cb455dfa7790cfe09a50dbf7b5ff57dbbff5c7de5600b"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-selection-cil.json",
+      "sha256": "f96383d20cff304297aaed03ca30c53b46732053b2ac3dfc62599b536a1bd1ba"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-union-cil.json",
+      "sha256": "450523b27459704432eaa36fdae45123f43c4edb1f828d22c86a1d26f831bed6"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-union-fold-cil.json",
+      "sha256": "826bf5cadd5ef5f99060ac5f3b53de94aa7d9d58bc482dc00e3b7b72d2a17a84"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-union-pair-cil.json",
+      "sha256": "ec582f969f702c5f6d984693ef83feae0b82640b90a663b3f12ba810a7037fb0"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-visible-cil.json",
+      "sha256": "5571facf8b7e9fbedec108e834bab7b4f837bf0397e805fdcca8db7851963a63"
+    },
+    {
+      "file": "research/layer-resize-controller-planner-visible-inputs-cil.json",
+      "sha256": "45becbd98152965b17551e86fcee5b16a8b0ec267cf4415d88ead2f2e60c1983"
+    }
+  ],
+  "logs": [
+    {
+      "file": ".build/layer-resize-controller-planner-red.json",
+      "sha256": "adfef606ff08c80dfa9b7cea98f6916c3a2ed4c31757eae69345b838e1a483f1"
+    },
+    {
+      "file": ".build/layer-resize-controller-planner-red.log",
+      "sha256": "1dc78afa6e751c39ce90a7d6bfa17745a091210b8f33eb22b8445c605071804e"
+    },
+    {
+      "file": ".build/layer-resize-controller-planner-origin-first.json",
+      "sha256": "231d46c740ec590895207e8835750c833ed9883d8111221874c4e0b59eb7febf"
+    },
+    {
+      "file": ".build/layer-resize-controller-planner-crossing-red.json",
+      "sha256": "6e1a9f0e764e57a155821f41b05049ff3945485844fcd1895df8eee2acfb6d17"
+    },
+    {
+      "file": ".build/layer-resize-controller-planner-crossing-red.log",
+      "sha256": "dbaadd85a09a527a393aba999c91147ce0227540fad34cbe70bc69ed53840545"
+    },
+    {
+      "file": ".build/layer-resize-controller-planner-entry-red.json",
+      "sha256": "335e7a731ef2ea228f0f4b2c24a38b42e67d32f69e53fb3e3c50a6ba00380822"
+    },
+    {
+      "file": ".build/layer-resize-controller-planner-entry-red.log",
+      "sha256": "ab3c07207cdbab01409c1964b3e50934eac815ad78e5a8fb1c79f65ee93d2032"
+    },
+    {
+      "file": ".build/layer-resize-controller-planner-accepted.json",
+      "sha256": "4261a52a1247c39f38d147091d439f2ec251df403394f552ba8a274b025d8f42"
+    },
+    {
+      "file": ".build/layer-resize-controller-planner-accepted.log",
+      "sha256": "9d2f8cd65be70b50d9ccb096b3341d41db5583be4bfe2ae1169c0e6e9092fb6c"
+    },
+    {
+      "file": ".build/layer-resize-controller-planner-accepted-typecheck.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217"
+    },
+    {
+      "file": ".build/layer-resize-controller-planner-entry-oracle.log",
+      "sha256": "d3681843daae091c2e01f90fc2d01e9e72ae4d0f0306afa548726e72768d9623"
+    }
+  ],
+  "backups": [
+    {
+      "file": ".build/layer-resize-controller-before-crossing/author-layer-resize.test.ts",
+      "sha256": "cb03ade57787bfe50bd8da6e148f498b995357edb49d59176dea1629974d38ec"
+    },
+    {
+      "file": ".build/layer-resize-controller-before-crossing/author-layer-resize.ts",
+      "sha256": "642b075a7a3f86a030588a14f1775b20356c9a5ea24115d59dae29999a9b6f04"
+    },
+    {
+      "file": ".build/layer-resize-controller-before-crossing/layer-resize-controller-planner-crossing-red.json",
+      "sha256": "6e1a9f0e764e57a155821f41b05049ff3945485844fcd1895df8eee2acfb6d17"
+    },
+    {
+      "file": ".build/layer-resize-controller-before-crossing/layer-resize-controller-planner-crossing-red.log",
+      "sha256": "dbaadd85a09a527a393aba999c91147ce0227540fad34cbe70bc69ed53840545"
+    },
+    {
+      "file": ".build/layer-resize-controller-before-crossing/layer-resize-controller-planner-final.json",
+      "sha256": "26fe2fd477cc55639ba41ca212a30ef652e7fdea4f8d514ed9a94c7506cd5885"
+    },
+    {
+      "file": ".build/layer-resize-controller-before-crossing/layer-resize-controller-planner-origin-first.json",
+      "sha256": "231d46c740ec590895207e8835750c833ed9883d8111221874c4e0b59eb7febf"
+    },
+    {
+      "file": ".build/layer-resize-controller-before-crossing/layer-resize-controller-planner-origin-first.log",
+      "sha256": "941a2cf0cd364eebe94d3221e4ac36c3a04dceb6666fe4d0dac250ef3c6e8e93"
+    },
+    {
+      "file": ".build/layer-resize-controller-before-crossing/manifest.json",
+      "sha256": "fe736323cae1823f0426a274f306c440e444b80280bb7221d8f18fe6cef0e7fc"
+    }
+  ]
+}

@@ -1,0 +1,657 @@
+{
+  "version": 1,
+  "target": "Axure RP 11.0.0.4150",
+  "method": "Static inspection and SHA-pinned exact excerpts/functions executed in isolated VM with explicit mocks; not full application/browser execution",
+  "files": [
+    {
+      "name": "repeater.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "bytes": 122627,
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b"
+    },
+    {
+      "name": "action.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "bytes": 109376,
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3"
+    },
+    {
+      "name": "doc.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "bytes": 41976,
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1"
+    },
+    {
+      "name": "variables.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\variables.js",
+      "bytes": 6971,
+      "sha256": "91c71787560b88e597b6baf934bd68075597901afccf4787b6aa9d8c43453188"
+    },
+    {
+      "name": "sto.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\sto.js",
+      "bytes": 9159,
+      "sha256": "c1ff17b0ed8a2e3a34cba550c7f4e9447827d131e38542d397e686c0e0b6b9b6"
+    },
+    {
+      "name": "events.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "bytes": 101724,
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "name": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "bytes": 29187,
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "name": "utils.temp.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\utils.temp.js",
+      "bytes": 4588,
+      "sha256": "ef33a9174ea5b4cdcd48229f896195d2f67941116aa7eeae6308a99e02b4832f"
+    },
+    {
+      "name": "visibility.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\visibility.js",
+      "bytes": 66834,
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53"
+    }
+  ],
+  "excerpts": [
+    {
+      "file": "repeater.js",
+      "startLine": 73,
+      "endLine": 149,
+      "purpose": "refresh-start-old-count-new-bounds",
+      "text": "    var _refreshRepeater = function(repeaterId, eventInfo, refreshType, itemsPregen) {\n        if(!refreshType) refreshType = _refreshType.reset; // Set default\n        if(!repeatersReady) {\n            fullRefresh[repeaterId] = true;\n            return;\n        }\n\n        //disabling pregen\n        itemsPregen = false;\n\n        // Reset selected/disabled dictionaries upon reset, if necessary (reset must, persist can't, and preeval doesn't care because it hasn't been set up yet.\n        if(refreshType == _refreshType.reset) $ax.style.clearStateForRepeater(repeaterId);\n\n        // Don't show if you have a parent rdos thats limboed.\n        var rdoPath = $ax.getPathFromScriptId(repeaterId);\n        // Check each parent rdo through appropriate views to see if you are limboed\n        while (rdoPath.length > 0) {\n            if(!$ax.getScriptIdFromPath(rdoPath)) {\n                removeItems(repeaterId);\n                return;\n            }\n\n            $ax.splice(rdoPath, rdoPath.length - 1, 1);\n        }\n        \n        $ax.action.refreshStart(repeaterId);\n        $ax.style.ClearCacheForRepeater(repeaterId);\n\n        if($ax.visibility.limboIds[repeaterId]) {\n            removeItems(repeaterId);\n            $ax.dynamicPanelManager.fitParentPanel(repeaterId);\n            return;\n        }\n\n        // Remove delete map if there is one at this point\n        if(eventInfo && eventInfo.repeaterDeleteMap) delete eventInfo.repeaterDeleteMap[repeaterId];\n        var path = $ax.getPathFromScriptId(repeaterId);\n        path.pop();\n\n        if(eventInfo) {\n            eventInfo = $ax.eventCopy(eventInfo);\n        }\n\n        var obj = $ax.getObjectFromScriptId(repeaterId);\n        var propMap = obj.repeaterPropMap;\n        var previousItemCount = _repeaterManager.getItemCount(repeaterId);\n\n        //If there is no wrap, then set it to be above the number of rows\n        var viewId = $ax.adaptive.currentViewId || '';\n        var wrap = _getAdaptiveProp(propMap, 'wrap', viewId, repeaterId, obj);\n        var vertical = _getAdaptiveProp(propMap, 'vertical', viewId, repeaterId, obj);\n        //var offset = propMap[viewId];\n        var offset = propMap[_getViewIdFromPageViewId(viewId, repeaterId, obj)];\n\n        // Right now pregen only works for default adaptive view\n        if(viewId) itemsPregen = false;\n        var orderedIds = [];\n        if(itemsPregen) {\n            var repeaterChildren = $jobj(repeaterId).children();\n            // Start at 1 to skip script div child\n            for(var i = 1; i < repeaterChildren.length; i++) {\n                orderedIds.push(_getItemIdFromElementId($(repeaterChildren[i]).attr('id')));\n            }\n        } else orderedIds = getOrderedIds(repeaterId, eventInfo);\n        var ids = [];\n        var background = _getAdaptiveProp(propMap, 'backColor', viewId, repeaterId, obj);\n        var hasAltColor = _getAdaptiveProp(propMap, 'hasAltColor', viewId, repeaterId, obj);\n        var altColor = hasAltColor ? _getAdaptiveProp(propMap, 'altColor', viewId, repeaterId, obj) : undefined;\n        var useAlt = false;\n\n        if(itemsPregen) {\n            var start = 0;\n            var end = orderedIds.length;\n        } else {\n            var bounds = _getVisibleDataBounds(repeaterToPageInfo[repeaterId], itemsPregen ? obj.data.length : orderedIds.length);\n            start = bounds[0];\n            end = bounds[1];"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 225,
+      "endLine": 245,
+      "purpose": "reset-sizes-before-row-creation",
+      "text": "            var shown = $ax.visibility.IsIdVisible(repeaterId);\n            if(shown) document.getElementById(repeaterId).style.visibility = 'hidden';\n\n            //clean up old items as late as possible\n            removeItems(repeaterId);\n            resetItemSizes(repeaterId, offset, bounds, orderedIds, vertical, wrap);\n\n            var i = 0;\n            var startTop = paddingTop;\n            var startLeft = paddingLeft;\n            if(repeaterObj.css('box-sizing') == 'border-box') {\n                startTop -= $ax.getNumFromPx(repeaterObj.css('border-top-width')) || 0;\n                startLeft -= $ax.getNumFromPx(repeaterObj.css('border-left-width')) || 0;\n            }\n            var top = startTop;\n            var left = startLeft;\n            for(pos = start; pos < end; pos++) {\n                itemId = orderedIds[pos];\n\n                var itemElementId = _createElementId(repeaterId, itemId);\n                $ax.addItemIdToRepeater(itemId, repeaterId);"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 329,
+      "endLine": 375,
+      "purpose": "empty-sentinel-and-load-order",
+      "text": "        $ax.messageCenter.startCombineEventMessages();\n        $ax.cacheRepeaterInfo(repeaterId, $ax.getWidgetInfo(repeaterId));\n\n        //RP-1824 The Item Loaded interaction does not fire when last item of repeater is deleted\n        //Fire item looded event when all items are removed\n        var currentItemCount = _repeaterManager.getItemCount(repeaterId);\n        var deleteLastItems = previousItemCount > 0 && currentItemCount === 0;\n\n        //do the objects in the repeater do not repeatedly do this when setting text\n        var trap = $ax.expr.displayWidgetAndParents(repeaterId);\n\n        //$ax.style.startSuspendTextAlignment();\n        // Now load\n        for(pos = start; pos < end || deleteLastItems; pos++) {\n            itemId = orderedIds[pos];\n            itemElementId = _createElementId(repeaterId, itemId);\n            if (!preevalMap[orderedIds[pos]]) {\n                // Hide OnBeforeItemLoad event from the user\n                const wasTracing = $ax.messageCenter.getState('isTracing') === true;\n                // Make sure isTracing is false in case it was undefined\n                // Send 'tempStop' state to not clear accumulated events (during page loading)\n                $ax.messageCenter.setState('isTracing', 'tempStop');\n                $ax.event.raiseSyntheticEvent(itemElementId, 'onBeforeItemLoad', true);\n                if(wasTracing) $ax.messageCenter.setState('isTracing', wasTracing);\n                $ax.event.raiseSyntheticEvent(itemElementId, 'onItemLoad', true);\n            }\n            deleteLastItems = false;\n            $ax.loadDynamicPanelsAndMasters(obj.objects, path, itemId);\n        }\n\n        if(trap) trap();\n        //$ax.style.resumeSuspendTextAlignment();\n\n        $ax.removeCachedRepeaterInfo(repeaterId);\n        $ax.messageCenter.endCombineEventMessages();\n\n        // Reshow repeater if it was originally shown (load is complete by now)\n        if(shown && !itemsPregen) document.getElementById(repeaterId).style.visibility = 'inherit';\n\n        $ax.dynamicPanelManager.fitParentPanel(repeaterId);\n\n        // Need to reapply the state style after refresh for text styles, and for applying a non-default style that wasn't reset for certain refreshes (adaptive changed for example). This could be way more selective but doing a safe change for the moment\n        if(refreshType != _refreshType.preEval) $ax.style.updateStateClass(repeaterId);\n\n        // Right now we assume only one refresh at a time. If we can manually trigger refreshes, that may possibly change.\n        $ax.action.refreshEnd();\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 594,
+      "endLine": 669,
+      "purpose": "count-functions-and-page-clamp",
+      "text": "    _repeaterManager.getItemCount = function(repeaterId) {\n        var data = repeaterToActiveDataSet[repeaterId].length;\n        var info = repeaterToPageInfo[repeaterId];\n        if(!info.noLimit) {\n            var start = Math.min(data, info.itemsPerPage * info.currPage);\n            var end = Math.min(data, start + info.itemsPerPage);\n            data = end - start;\n        }\n        return data;\n    };\n\n    _repeaterManager.setDisplayProps = function(obj, repeaterId, itemIndex) {\n        var data = repeaterToActiveDataSet[repeaterId];\n        var info = repeaterToPageInfo[repeaterId];\n        var start = 0;\n        var end = data.length;\n        if(!info.noLimit) {\n            start = Math.min(end, info.itemsPerPage * (info.currPage - 1));\n            end = Math.min(end, start + info.itemsPerPage);\n        }\n        var count = end - start;\n        var index = -1;\n        for(var i = 0; i < count; i++) {\n            if(data[start + i].index == itemIndex) index = i + 1;\n        }\n        if(index == -1) return;\n        obj.index = index;\n        obj.isfirst = index == 1;\n        obj.islast = index == end - start;\n        obj.iseven = index % 2 == 0;\n        obj.isodd = index % 2 == 1;\n    };\n\n    var _getVisibleDataBounds = function(pageInfo, count) {\n        var retval = [0, count];\n        if(!pageInfo.noLimit) {\n            var end = pageInfo.itemsPerPage * pageInfo.currPage;\n            var start = end - pageInfo.itemsPerPage;\n\n            // If past the end, move to last page\n            if(start >= count) {\n                pageInfo.currPage = Math.floor((count - 1) / pageInfo.itemsPerPage) + 1;\n                if(pageInfo.currPage <= 0) pageInfo.currPage = 1;\n\n                end = pageInfo.itemsPerPage * pageInfo.currPage;\n                start = end - pageInfo.itemsPerPage;\n            }\n            end = Math.min(end, count);\n            retval[0] = start;\n            retval[1] = end;\n        }\n        return retval;\n    };\n\n    _repeaterManager.getVisibleDataCount = function(repeaterId) {\n        var bounds = _getVisibleDataBounds(repeaterToPageInfo[repeaterId], repeaterToActiveDataSet[repeaterId].length);\n        return bounds[1] - bounds[0];\n    };\n\n    _repeaterManager.getDataCount = function(repeaterId) {\n        return repeaterToCurrentDataSet[repeaterId].length;\n    };\n\n    var _getFilteredDataCount = _repeaterManager.getFilteredDataCount = function(repeaterId) {\n        return repeaterToActiveDataSet[repeaterId].length;\n    };\n\n    _repeaterManager.getPageCount = function(repeaterId) {\n        var info = repeaterToPageInfo[repeaterId];\n        return info.noLimit ? 1 : Math.ceil(_getFilteredDataCount(repeaterId) / info.itemsPerPage);\n    };\n\n    _repeaterManager.getPageIndex = function(repeaterId) {\n        var info = repeaterToPageInfo[repeaterId];\n        return info.noLimit ? 1 : info.currPage;\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1080,
+      "endLine": 1134,
+      "purpose": "row-size-initialization-and-resize-event",
+      "text": "    var repeaterSizes = {};\n    var resetItemSizes = function (repeaterId, itemSize, bounds, ids, vertical, wrap) {\n        var calcItem = !itemSize;\n        if(calcItem) itemSize = {};\n\n        var repeaterMap = {};\n        repeaterMap.vert = vertical;\n        var sizesMap = {};\n        var sizes = [];\n        var currSizes = wrap == -1 ? sizes : [];\n        for(var i = 0; i + bounds[0] < bounds[1]; i++) {\n            var itemId = ids[i + bounds[0]];\n            if(calcItem) {\n                var itemJobj = $jobj(_createElementId(repeaterId, itemId));\n                itemSize.width = $ax.getNumFromPx(itemJobj.css('width'));\n                itemSize.height = $ax.getNumFromPx(itemJobj.css('height'));\n            }\n\n            var size = { itemId: itemId, width: itemSize.width, height: itemSize.height };\n            currSizes.push(size);\n            sizesMap[size.itemId] = size;\n            if(currSizes.length == wrap) {\n                sizes.push(currSizes);\n                currSizes = [];\n            }\n        }\n        if (wrap != -1 && currSizes.length > 0) sizes.push(currSizes);\n        repeaterMap.sizes = sizes;\n        repeaterMap.sizesMap = sizesMap;\n        repeaterSizes[repeaterId] = repeaterMap;\n    };\n\n    _repeaterManager.getItemSize = function(repeaterId, itemId) {\n        var repeaterSize = repeaterSizes[repeaterId];\n        if (!repeaterSize) return false;\n        return repeaterSize.sizesMap[itemId];\n    }\n\n    _repeaterManager.setItemSize = function (repeaterId, itemId, width, height) {\n        var repeaterSize = repeaterSizes[repeaterId];\n        if(!repeaterSize) return false;\n        var size = repeaterSize.sizesMap[itemId];\n        var deltaX = width - size.width;\n        var deltaY = height - size.height;\n        if(!deltaX && !deltaY) return false;\n\n        repeaterSize.resized = true;\n\n        if(deltaX) _pushItems(repeaterId, itemId, deltaX, false, true);\n        if(deltaY) _pushItems(repeaterId, itemId, deltaY, true, true);\n\n        if(deltaX || deltaY) $ax.event.raiseSyntheticEvent(_createElementId(repeaterId, itemId), 'onItemResize');\n\n        return true;\n    }"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1136,
+      "endLine": 1289,
+      "purpose": "push-state-before-resize-event",
+      "text": "    var _pushItems = _repeaterManager.pushItems = function (repeaterId, itemId, delta, vertical, suppressFire) {\n        if(delta == 0) return;\n\n        // Update repeater item size\n        var prop = vertical ? 'height' : 'width';\n        var itemElementId = _createElementId(repeaterId, itemId);\n        var itemObj = $jobj(itemElementId);\n        itemObj.css(prop, $ax.getNumFromPx(itemObj.css(prop)) + delta);\n        $ax.visibility.setResizedSize(itemElementId, $ax.getNumFromPx(itemObj.css('width')), $ax.getNumFromPx(itemObj.css('height')));\n\n        var repeaterObj = $jobj(repeaterId);\n        var repeaterMap = repeaterSizes[repeaterId];\n        var sizes = repeaterMap.sizes;\n        var wrap = sizes[0].length != undefined;\n        var vert = repeaterMap.vert;\n\n        // Not wrapping, has to push in primary direction\n        if (!wrap && vert != vertical) {\n            var before = 0;\n            var after = 0;\n            var limit = 0;\n            for(var i = 0; i < sizes.length; i++) {\n                var size = sizes[i];\n                if(size.itemId == itemId) {\n                    before = size[prop];\n                    size[prop] += delta;\n                    after = size[prop];\n                } else {\n                    limit = limit ? Math.max(limit, size[prop]) : size[prop];\n                }\n            }\n\n            // Repeater delta is because an item can increase secondary direction, but if another item is already larger, then repeater size isn't effected.\n            var repeaterDelta = delta;\n            if(sizes.length != 1) {\n                if(after >= limit) repeaterDelta = after - Math.max(limit, before);\n                else if(before > limit) repeaterDelta = limit - before;\n                else repeaterDelta = 0;\n            }\n\n            _updateRepeaterSize(prop, repeaterObj, repeaterDelta, vert);\n\n            if(!suppressFire) $ax.event.raiseSyntheticEvent(_createElementId(repeaterId, itemId), 'onItemResize');\n            return;\n        }\n\n        var index = 0;\n        var index2 = 0;\n        // Get the indices first\n        if(wrap) {\n            outer:\n                for(; index < sizes.length; index++) {\n                    var innerSizes = sizes[index];\n                    for(index2 = 0; index2 < innerSizes.length; index2++) if(innerSizes[index2].itemId == itemId) break outer;\n                }\n        } else {\n            for(; index < sizes.length; index++) if(sizes[index].itemId == itemId) break;\n        }\n        // Find out who is being pushed\n        var itemIdsEffected = [];\n        if (vert == vertical) {\n            // To check for repeater resize, non-wrap is easy, for wrap you have to see if your new size is enough to effect the size given other col/row sizes.\n            repeaterDelta = delta;\n            if(wrap && sizes.length > 1) {\n                var viewId = $ax.adaptive.currentViewId || '';\n                var obj = $obj(repeaterId);\n                var spacing = _getAdaptiveProp(obj.repeaterPropMap, (vert ? 'vertical' : 'horizontal') + 'Spacing', viewId, repeaterId, obj);\n                for(i = 0; i < sizes.length; i++) {\n                    var rowColSize = 0;\n                    var rowCol = sizes[i];\n                    for(var j = 0; j < rowCol.length; j++) {\n                        if(j != 0) rowColSize += spacing;\n                        rowColSize += rowCol[j][prop];\n                    }\n\n                    if(i == index) {\n                        before = rowColSize;\n                        after = before + delta;\n                    } else {\n                        limit = limit ? Math.max(limit, rowColSize) : rowColSize;\n                    }\n                }\n\n                if(after >= limit) repeaterDelta = after - Math.max(limit, before);\n                else if (before > limit) repeaterDelta = limit - before;\n                else repeaterDelta = 0;\n            }\n\n            if (repeaterDelta) {\n                _updateRepeaterSize(prop, repeaterObj, repeaterDelta, vert);\n            }\n\n            // Done the hard part, calculating/updating new repeater size. Now just resize items and find what to push.\n            var array = wrap ? sizes[index] : sizes;\n            i = wrap ? index2 : index;\n            array[i][prop] += delta;\n\n            for(i++; i < array.length; i++) itemIdsEffected.push(array[i].itemId);\n        } else {\n            // Secondary push is more interesting. See how much your primary row/column is already pushing, if that changes\n            //  then effect all rows/columns after it\n\n            // Get the biggest one in the current row/column, ignoring the one we're changing\n            var biggest = 0;\n            var currSizes = sizes[index];\n            for(i = 0; i < currSizes.length; i++) {\n                if (i == index2) continue;\n\n                biggest = Math.max(biggest, currSizes[i][prop]);\n            }\n\n            var beforeSize = Math.max(biggest, currSizes[index2][prop]);\n            currSizes[index2][prop] += delta;\n            var afterSize = Math.max(biggest, currSizes[index2][prop]);\n\n            // Nothing pushed/pulled\n            if (afterSize == beforeSize) return;\n\n            for(i = index + 1; i < sizes.length; i++) {\n                currSizes = sizes[i];\n                for(j = 0; j < currSizes.length; j++) itemIdsEffected.push(currSizes[j].itemId);\n            }\n\n            // Delta is only how much the whole row/column changed\n            delta = afterSize - beforeSize;\n\n            // Repeater resize secondary is determined by the effective delta.\n            _updateRepeaterSize(prop, repeaterObj, delta, vert);\n        }\n\n        for(i = 0; i < itemIdsEffected.length; i++) {\n            var currItemId = itemIdsEffected[i];\n            var elementId = _createElementId(repeaterId, currItemId);\n            var loc = vertical ? 'top' : 'left';\n            var jobj = $jobj(elementId);\n            var currVal = $ax.getNumFromPx(jobj.css(loc));\n            jobj.css(loc, currVal + delta);\n            $ax.visibility.setMovedLocation(elementId, $ax.getNumFromPx(jobj.css('left')), $ax.getNumFromPx(jobj.css('top')));\n        }\n\n        if(!suppressFire) $ax.event.raiseSyntheticEvent(_createElementId(repeaterId, itemId), 'onItemResize');\n    }\n\n    var _updateRepeaterSize = function(prop, jobj, delta, vert) {\n        if (delta == 0) return;\n        var val = $ax.getNumFromPx(jobj.css(prop)) + delta;\n        var border = 0;\n        if(vert) border += $ax.getNumFromPx(jobj.css('border-top-width')) + $ax.getNumFromPx(jobj.css('border-bottom-width'));\n        else border += $ax.getNumFromPx(jobj.css('border-left-width')) + $ax.getNumFromPx(jobj.css('border-right-width'));\n        val += border;\n        jobj.css(prop, val);\n        $ax.visibility.setResizedSize(jobj.attr('id'), $ax.getNumFromPx(jobj.css('width')), $ax.getNumFromPx(jobj.css('height')));\n        $ax.dynamicPanelManager.fitParentPanel(jobj.attr('id'));\n    }"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1291,
+      "endLine": 1316,
+      "purpose": "column-read-and-has-data",
+      "text": "    var _getDataFromDataSet = function (eventInfo, repeaterId, itemId, propName, type) {\n        var row = undefined;\n        var deleteMap = eventInfo && eventInfo.repeaterDeleteMap && eventInfo.repeaterDeleteMap[repeaterId];\n        if(deleteMap) row = deleteMap.idToRow[itemId];\n\n        if(!row) {\n            var itemNum = _getRealItemId(eventInfo, repeaterId, Number(itemId));\n            row = repeaterToCurrentDataSet[repeaterId][itemNum];\n        }\n        // Default to obj with text as empty string, as we don't generate the data for empty props\n        var data = row[propName] || { text: '' };\n        //For now text is always the default. May change this to depend on context.\n        switch(type) {\n            case 'data': return data.type == 'text' ? data.text : data\n            case 'img': return (data.img && data.img[$ax.adaptive.getSketchKey()]) || data.text;\n            default: return (type && data[type]) || data.text;\n        }\n        //return type == 'data' && data.type != 'text' ? data : (type && data[type]) || data['text'];\n    };\n    _repeaterManager.getData = _getDataFromDataSet;\n\n    _repeaterManager.hasData = function(id, propName) {\n        if(!id || !_getItemIdFromElementId(id)) return false;\n        var repeaterId = $ax.getParentRepeaterFromScriptId(_getScriptIdFromElementId(id));\n        return Boolean(repeaterToCurrentDataSet[repeaterId] && repeaterToCurrentDataSet[repeaterId].props.indexOf(propName) != -1);\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1332,
+      "endLine": 1340,
+      "purpose": "column-read-real-item-id",
+      "text": "    var _getRealItemId = function(eventInfo, repeaterId, itemId) {\n        var deletedBefore = 0;\n        var map = eventInfo.repeaterDeleteMap && eventInfo.repeaterDeleteMap[repeaterId];\n        var deletedIds = map && map.deletedIds;\n        if(!deletedIds) return itemId - 1;\n\n        for(var i = 0; i < deletedIds.length; i++) if (deletedIds[i] < itemId) deletedBefore++;\n        return itemId - deletedBefore - 1;\n    }"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1483,
+      "endLine": 1519,
+      "purpose": "source-id-without-item",
+      "text": "    var _createElementId = function(scriptId, itemId) {\n        if(!itemId) return scriptId;\n        var i = scriptId.indexOf('_');\n        var sections = i > -1 ? [scriptId.substring(0, i), scriptId.substring(i + 1)] : [scriptId];\n        var retval = sections[0] + '-' + itemId;\n        return sections.length > 1 ? retval + '_' + sections[1] : retval;\n    };\n    _repeaterManager.createElementId = _createElementId;\n\n    var _getElementId = function(scriptId, childId) {\n        var elementId = scriptId;\n        if($ax.getParentRepeaterFromScriptId(scriptId)) {\n            // Must be in the same item as the child\n            var itemId = $ax.repeater.getItemIdFromElementId(childId);\n            elementId = $ax.repeater.createElementId(scriptId, itemId);\n        }\n        return elementId;\n    };\n    _repeaterManager.getElementId = _getElementId;\n\n    var _getScriptIdFromElementId = function(elementId) {\n        if(!elementId) return elementId;\n        var sections = elementId.split('-');\n        var retval = sections[0];\n        if(sections.length <= 1) return retval;\n        sections = sections[1].split('_');\n        return sections.length > 1 ? retval + '_' + sections[1] : retval;\n    };\n    _repeaterManager.getScriptIdFromElementId = _getScriptIdFromElementId;\n\n    var _getItemIdFromElementId = function(elementId) {\n        var sections = elementId.split('-');\n        if(sections.length < 2) return '';\n        sections = sections[1].split('_');\n        return sections[0];\n    };\n    _repeaterManager.getItemIdFromElementId = _getItemIdFromElementId;"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1590,
+      "endLine": 1626,
+      "purpose": "content-fit-to-item-size",
+      "text": "    var _fitParentPanel = function (widgetId) {\n\n        var parentLayerOrRdo = getParentLayerOrRdo(widgetId);\n        if(parentLayerOrRdo) {\n            var isLayer = $ax.public.fn.IsLayer($obj(parentLayerOrRdo).type);\n            if(isLayer) {\n                if(_updateLayerRectCache(parentLayerOrRdo)) _fitParentPanel(parentLayerOrRdo);\n                return;\n            } else {\n                if(_updateRdoRect(parentLayerOrRdo)) _fitParentPanel(parentLayerOrRdo);\n                return;\n            }\n        }\n\n        // Find parent panel if there is one.\n        var parentPanelInfo = getParentPanel(widgetId);\n        if(parentPanelInfo) {\n            var parentId = parentPanelInfo.parent;\n            _updateMobileScroll(parentId, parentPanelInfo.stateId, true);\n            if(_updateFitPanel(parentId, parentPanelInfo.state)) _fitParentPanel(parentId);\n            return;\n        }\n\n        // Otherwise, try to get parent repeater\n        var parentRepeaterId = $ax.getParentRepeaterFromElementId(widgetId);\n        var repeaterObj = $obj(parentRepeaterId);\n        if (repeaterObj && widgetId != parentRepeaterId && repeaterObj.repeaterPropMap.fitToContent) {\n            var itemId = $ax.repeater.getItemIdFromElementId(widgetId);\n            var containerId = $ax.repeater.createElementId(parentRepeaterId, itemId);\n            var childrenRect = $ax('#' + containerId).childrenBoundingRect();\n            $ax.repeater.setItemSize(parentRepeaterId, itemId, childrenRect.right, childrenRect.bottom);\n            return;\n        }\n\n        $ax.adaptive.updateMobileScrollOnBody();\n    };\n    _dynamicPanelManager.fitParentPanel = _fitParentPanel;"
+    },
+    {
+      "file": "action.js",
+      "startLine": 128,
+      "endLine": 141,
+      "purpose": "refresh-action-guard",
+      "text": "    var _refreshing = [];\n    _action.refreshStart = function(repeaterId) { _refreshing.push(repeaterId); };\n    _action.refreshEnd = function() { _refreshing.pop(); };\n\n    // TODO: [ben] Consider moving this to repeater.js\n    var _repeatersToRefresh = _action.repeatersToRefresh = [];\n    var _ignoreAction = function(repeaterId) {\n        for(var i = 0; i < _refreshing.length; i++) if(_refreshing[i] == repeaterId) return true;\n        return false;\n    };\n\n    var _addRefresh = function(repeaterId) {\n        if(_repeatersToRefresh.indexOf(repeaterId) == -1) _repeatersToRefresh.push(repeaterId);\n    };"
+    },
+    {
+      "file": "action.js",
+      "startLine": 351,
+      "endLine": 368,
+      "purpose": "wait-continuation",
+      "text": "    var _dispatchAction = $ax.action.dispatchAction = function(eventInfo, actions, currentIndex) {\n        currentIndex = currentIndex || 0;\n        //If no actions, you can bubble\n        if(currentIndex >= actions.length) return;\n        //actions are responsible for doing their own dispatching\n        _actionHandlers[actions[currentIndex].action](eventInfo, actions, currentIndex);\n    };\n\n    _actionHandlers.wait = function(eventInfo, actions, index) {\n        var action = actions[index];\n        var infoCopy = $ax.eventCopy(eventInfo);\n        window.setTimeout(function() {\n            infoCopy.now = new Date();\n            infoCopy.idToResizeMoveState = undefined;\n            _dispatchAction(infoCopy, actions, index + 1);\n            _action.flushAllResizeMoveActions(infoCopy);\n        }, action.waitTime);\n    };"
+    },
+    {
+      "file": "action.js",
+      "startLine": 1258,
+      "endLine": 1271,
+      "purpose": "explicit-this-item-resize",
+      "text": "    _actionHandlers.setWidgetSize = function(eventInfo, actions, index) {\n        var action = actions[index];\n        for(var i = 0; i < action.objectsToResize.length; i++) {\n            var resizeInfo = action.objectsToResize[i].sizeInfo;\n            var objPath = action.objectsToResize[i].objectPath;\n            if(objPath == 'thisItem') {\n                var thisId = eventInfo.srcElement;\n                var repeaterId = $ax.getParentRepeaterFromElementId(thisId);\n                var itemId = $ax.repeater.getItemIdFromElementId(thisId);\n                var currSize = $ax.repeater.getItemSize(repeaterId, itemId);\n                var newSize = _getSizeFromInfo(resizeInfo, eventInfo, currSize.width, currSize.height);\n                $ax.repeater.setItemSize(repeaterId, itemId, newSize.width, newSize.height);\n\n                continue;"
+    },
+    {
+      "file": "action.js",
+      "startLine": 1745,
+      "endLine": 1785,
+      "purpose": "mark-no-refresh-guard",
+      "text": "    _actionHandlers.modifyDataSetEditItems = function(eventInfo, actions, index) {\n        var action = actions[index];\n        var add = action.repeatersToAddTo;\n        var repeaters = add || action.repeatersToRemoveFrom;\n        var itemId;\n        for(var i = 0; i < repeaters.length; i++) {\n            var data = repeaters[i];\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var id = $ax.getElementIdsFromPath(data.path, eventInfo)[0];\n            if(!id) continue;\n\n            if(data.type == 'this') {\n                var scriptId = $ax.repeater.getScriptIdFromElementId(eventInfo.srcElement);\n                itemId = $ax.repeater.getItemIdFromElementId(eventInfo.srcElement);\n                var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);\n                if(add) $ax.repeater.addEditItems(repeaterId, [itemId]);\n                else $ax.repeater.removeEditItems(repeaterId, [itemId]);\n            } else if(data.type == 'all') {\n                var allItems = $ax.repeater.getAllItemIds(id);\n                if(add) $ax.repeater.addEditItems(id, allItems);\n                else $ax.repeater.removeEditItems(id, allItems);\n            } else {\n                var oldTarget = eventInfo.targetElement;\n                var itemIds = $ax.repeater.getAllItemIds(id);\n                var itemIdsToAdd = [];\n                for(var j = 0; j < itemIds.length; j++) {\n                    itemId = itemIds[j];\n                    eventInfo.targetElement = $ax.repeater.createElementId(id, itemId);\n                    if($ax.expr.evaluateExpr(data.rule, eventInfo) == \"true\") {\n                        itemIdsToAdd[itemIdsToAdd.length] = String(itemId);\n                    }\n                    eventInfo.targetElement = oldTarget;\n                }\n                if(add) $ax.repeater.addEditItems(id, itemIdsToAdd);\n                else $ax.repeater.removeEditItems(id, itemIdsToAdd);\n            }\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };"
+    },
+    {
+      "file": "action.js",
+      "startLine": 1793,
+      "endLine": 1839,
+      "purpose": "data-action-guard",
+      "text": "    _actionHandlers.addItemsToDataSet = function(eventInfo, actions, index) {\n        var action = actions[index];\n        for(var i = 0; i < action.dataSetsToAddTo.length; i++) {\n            var datasetInfo = action.dataSetsToAddTo[i];\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var id = $ax.getElementIdsFromPath(datasetInfo.path, eventInfo)[0];\n            if(!id || _ignoreAction(id)) continue;\n            var dataset = datasetInfo.data;\n\n            for(var j = 0; j < dataset.length; j++) $ax.repeater.addItem(id, $ax.deepCopy(dataset[j]), eventInfo);\n            if(dataset.length) _addRefresh(id);\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    _actionHandlers.deleteItemsFromDataSet = function(eventInfo, actions, index) {\n        var action = actions[index];\n        for(var i = 0; i < action.dataSetItemsToRemove.length; i++) {\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var deleteInfo = action.dataSetItemsToRemove[i];\n            var id = $ax.getElementIdsFromPath(deleteInfo.path, eventInfo)[0];\n            if(!id || _ignoreAction(id)) continue;\n            $ax.repeater.deleteItems(id, eventInfo, deleteInfo.type, deleteInfo.rule);\n            _addRefresh(id);\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    _actionHandlers.updateItemsInDataSet = function(eventInfo, actions, index) {\n        var action = actions[index];\n        for(var i = 0; i < action.dataSetsToUpdate.length; i++) {\n            var dataSet = action.dataSetsToUpdate[i];\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var id = $ax.getElementIdsFromPath(dataSet.path, eventInfo)[0];\n            if(!id || _ignoreAction(id)) continue;\n\n            $ax.repeater.updateEditItems(id, dataSet.props, eventInfo, dataSet.type, dataSet.rule);\n            _addRefresh(id);\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };"
+    },
+    {
+      "file": "action.js",
+      "startLine": 1936,
+      "endLine": 1997,
+      "purpose": "paging-action-guard-refresh",
+      "text": "    _actionHandlers.setRepeaterToPage = function(eventInfo, actions, index) {\n        var action = actions[index];\n\n        for(var i = 0; i < action.repeatersToSetPage.length; i++) {\n            var setPageInfo = action.repeatersToSetPage[i];\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var id = $ax.getElementIdsFromPath(setPageInfo.path, eventInfo)[0];\n            if(!id || _ignoreAction(id)) continue;\n\n            var oldTarget = eventInfo.targetElement;\n            eventInfo.targetElement = id;\n            $ax.repeater.setRepeaterToPage(id, setPageInfo.pageType, setPageInfo.pageValue, eventInfo);\n            eventInfo.targetElement = oldTarget;\n            _addRefresh(id);\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    _actionHandlers.setItemsPerRepeaterPage = function(eventInfo, actions, index) {\n        var action = actions[index];\n\n        for(var i = 0; i < action.repeatersToSetItemCount.length; i++) {\n            var setItemCountInfo = action.repeatersToSetItemCount[i];\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var id = $ax.getElementIdsFromPath(setItemCountInfo.path, eventInfo)[0];\n            if(!id || _ignoreAction(id)) continue;\n\n            if(setItemCountInfo.noLimit) $ax.repeater.setNoItemLimit(id);\n            else $ax.repeater.setItemLimit(id, setItemCountInfo.itemCountValue, eventInfo);\n            _addRefresh(id);\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    _actionHandlers.refreshRepeater = function(eventInfo, actions, index) {\n        // We use this as a psudo action now.\n        var action = actions[index];\n        for (var i = 0; i < action.repeatersToRefresh.length; i++) {\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[i], eventInfo)[0];\n            if(id) _tryRefreshRepeater(id, eventInfo);\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    var _tryRefreshRepeater = function(id, eventInfo) {\n        var idIndex = _repeatersToRefresh.indexOf(id);\n        if(idIndex == -1) return;\n\n        $ax.splice(_repeatersToRefresh, idIndex, 1);\n        $ax.repeater.refreshRepeater(id, eventInfo);\n    };\n\n    _action.tryRefreshRepeaters = function(ids, eventInfo) {\n        for(var i = 0; i < ids.length; i++) _tryRefreshRepeater(ids[i], eventInfo);\n    };"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 221,
+      "endLine": 244,
+      "purpose": "template-target-resolution",
+      "text": "        var _getElementsIdFromEventAndScriptId = function(eventInfo, scriptId) {\n            var itemId = eventInfo && $ax.repeater.getItemIdFromElementId(eventInfo.srcElement);\n            var target = false;\n            // Try to get itemId from target if you can't get it from source.\n            if(!itemId) {\n                itemId = eventInfo && eventInfo.targetElement && $ax.repeater.getItemIdFromElementId(eventInfo.targetElement);\n                if(itemId) target = true;\n            }\n\n            var parentRepeater = $ax.getParentRepeaterFromScriptId(scriptId);\n            if(parentRepeater && scriptId != parentRepeater) {\n                if(itemId && (!eventInfo || parentRepeater == $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(target ? eventInfo.targetElement : eventInfo.srcElement)))) {\n                    return [$ax.repeater.createElementId(scriptId, itemId)];\n                }\n                var elementIds = [];\n                var itemIds = $ax.getItemIdsForRepeater(parentRepeater);\n                if(!itemIds) return [];\n\n                for(var i = 0; i < itemIds.length; i++) elementIds[i] = $ax.repeater.createElementId(scriptId, itemIds[i]);\n                return elementIds;\n            }\n            return [scriptId];\n        };\n        $ax.getElementIdsFromEventAndScriptId = _getElementsIdFromEventAndScriptId;"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 291,
+      "endLine": 299,
+      "purpose": "event-item-snapshot",
+      "text": "            eventInfo.window = $ax.getWindowInfo();\n\n            eventInfo.thiswidget = _getWidgetInfo(eventInfo.srcElement);\n            eventInfo.item = _getItemInfo(eventInfo.srcElement);\n            eventInfo.dragInfo = $ax.drag.GetWidgetDragInfo();\n\n            return eventInfo;\n        };\n        $ax.getEventInfoFromEvent = _getEventInfoFromEvent;"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 328,
+      "endLine": 347,
+      "purpose": "invalid-item-info",
+      "text": "        var _getItemInfo = function(elementId) {\n            if(!elementId) return { valid: false };\n\n            elementId = _getParentElement(elementId);\n\n            var index = $ax.repeater.getItemIdFromElementId(elementId);\n            if(!index) return { valid: false };\n\n            var item = { valid: true };\n\n            var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n            var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);\n            item.repeater = repeaterInfoCache[repeaterId] ? repeaterInfoCache[repeaterId] : _getWidgetInfo(repeaterId);\n            $ax.repeater.setDisplayProps(item, repeaterId, index);\n            item.ismarked = $ax.repeater.isEditItem(repeaterId, index);\n            item.isvisible = Boolean($jobj(elementId).length);\n\n            return item;\n        };\n        $ax.getItemInfo = _getItemInfo;"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 349,
+      "endLine": 397,
+      "purpose": "this-repeater-properties",
+      "text": "        var _getWidgetInfo = function(elementId) {\n            if(!elementId) return { valid: false };\n\n            elementId = _getParentElement(elementId);\n\n            //var elementAxQuery = $ax('#' + elementId);\n            var elementQuery = $jobj(elementId);\n            var obj = $obj(elementId);\n            var widget = { valid: true, isWidget: true, obj: obj, elementQuery: elementQuery, isLayer: $ax.public.fn.IsLayer(obj.type) };\n            widget.elementId = elementId;\n            widget.name = widget.label = (elementQuery.data('label') ? elementQuery.data('label') : '');\n            //widget.text = $ax('#' + elementId).text();\n            if (widget.isLayer) {\n                widget.opacity = function() {\n                    var layerOpacity = elementQuery.attr('layer-opacity');\n                    if (layerOpacity) return Number(layerOpacity) * 100;\n                    return Number(elementQuery.css('opacity')) * 100;\n                }\n            } else {\n                widget.opacity = function() { return Number(elementQuery.css('opacity')) * 100; }\n            }\n            //widget.rotation = $ax.move.getRotationDegree(widget.elementId);\n            var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n            var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);\n            if(repeaterId) widget.repeater = $ax.public.fn.IsRepeater(obj.type) ? widget : _getWidgetInfo(repeaterId);\n            \n            // Right now only dynamic panel can scroll\n            if($ax.public.fn.IsDynamicPanel(obj.type)) {\n                var stateId = $ax.visibility.GetPanelState(elementId);\n                //can be empty when refreshing repeater and applying filter\n                if(stateId) {\n                    var stateQuery = $('#' + stateId);\n                    widget.scrollx = stateQuery.scrollLeft();\n                    widget.scrolly = stateQuery.scrollTop();\n                    //widget.stateQuery = stateQuery;\n                }\n            } else {\n                widget.scrollx = 0;\n                widget.scrolly = 0;\n            }\n\n            // repeater only props\n            if($ax.public.fn.IsRepeater(obj.type)) {\n                widget.visibleitemcount = repeaterIdToItemIds[scriptId] ? repeaterIdToItemIds[scriptId].length : $ax.repeater.getVisibleDataCount(scriptId);\n                widget.itemcount = $ax.repeater.getFilteredDataCount(scriptId);\n                widget.datacount = $ax.repeater.getDataCount(scriptId);\n                widget.pagecount = $ax.repeater.getPageCount(scriptId);\n                widget.pageindex = $ax.repeater.getPageIndex(scriptId);\n            }"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1701,
+      "endLine": 1716,
+      "purpose": "synthetic-event-entry",
+      "text": "    var _raiseSyntheticEvent = function (elementId, eventName, skipShowDescription, eventInfo, nonSynthetic) {\n        if ($ax.style.IsWidgetDisabled(elementId) && _shouldStopOnDisabledWidget(eventName)) return;\n        // Empty string used when this is an event directly on the page.\n        var dObj = elementId === '' ? $ax.pageData.page : $ax.getObjectFromElementId(elementId);\n        var axEventObject = dObj && dObj.interactionMap && dObj.interactionMap[eventName];\n        if (!axEventObject) return;\n        \n        eventInfo = eventInfo || $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), skipShowDescription, elementId);\n        //        $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, new Date().getTime());\n        _handleEvent(elementId, eventInfo, axEventObject, false, !nonSynthetic);\n    };\n    $ax.event.raiseSyntheticEvent = _raiseSyntheticEvent;\n\n    var _shouldStopOnDisabledWidget = function (eventName) {\n        var blackList = [\"onLongClick\"];\n        return blackList.some(x => x === eventName);"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1833,
+      "endLine": 1838,
+      "purpose": "load-wrapper",
+      "text": "    //onload everything now, not only dp and master\n    var _loadDynamicPanelsAndMasters = function (objects, path, itemId) {\n        fireEventThroughContainers('onLoad', objects, true, [$ax.constants.PAGE_TYPE, $ax.constants.REFERENCE_DIAGRAM_OBJECT_TYPE, $ax.constants.DYNAMIC_PANEL_TYPE],\n            [$ax.constants.ALL_TYPE], path, itemId);\n    };\n    $ax.loadDynamicPanelsAndMasters = _loadDynamicPanelsAndMasters;"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1921,
+      "endLine": 2018,
+      "purpose": "template-child-load-traversal",
+      "text": "    // Filters include page, referenceDiagramObject, dynamicPanel, and repeater.\n    var _callFilterCheck = function(callFilter, type) {\n        for(var index = 0; index < callFilter.length; index++) {\n            var currentType = callFilter[index];\n            if(currentType === $ax.constants.ALL_TYPE || currentType === type) return true;\n        }\n        return false;\n    };\n\n    var fireEventThroughContainers = function(eventName, objects, synthetic, searchFilter, callFilter, path, itemId) {\n        // TODO: may want to pass in this as a parameter. At that point, may want to convert some of them to an option parameter. For now this is the only case\n        var skipShowDescription = eventName == 'onLoad';\n\n        // If objects undefined, load page\n        if(!objects) {\n            if(_callFilterCheck(callFilter, $ax.constants.PAGE_TYPE)) {\n                //if scrolling, set direction, later master will know\n                if(eventName === \"onScroll\") {\n                    var currentScrollTop = ((SAFARI && IOS) || SHARE_APP) ? $('#ios-safari-html').scrollTop() : $(window).scrollTop();\n                    _event.windowScrollingUp = currentScrollTop < lastScrollTop;\n                    _event.windowScrollingDown = currentScrollTop > lastScrollTop;\n                }\n\n                fireEventForPageOrMaster('', eventName, $ax.pageData.page.interactionMap, true, skipShowDescription, synthetic);\n            }\n            if(searchFilter.indexOf($ax.constants.PAGE_TYPE) != -1) fireEventThroughContainers(eventName, $ax.pageData.page.diagram.objects, synthetic, searchFilter, callFilter);\n            //reset and save scrolling info at the end\n            if(currentScrollTop) {\n                lastScrollTop = currentScrollTop;\n                _event.windowScrollingUp = undefined;\n                _event.windowScrollingDown = undefined;\n            }\n\n            return;\n        }\n\n        if(!path) path = [];\n\n        var pathCopy = [];\n        for(var j = 0; j < path.length; j++) pathCopy[j] = path[j];\n\n        for(var i = 0; i < objects.length; i++) {\n            var obj = objects[i];\n            pathCopy[path.length] = obj.id;\n            if (!$ax.public.fn.IsReferenceDiagramObject(obj.type) && !$ax.public.fn.IsDynamicPanel(obj.type) && !$ax.public.fn.IsRepeater(obj.type) && !$ax.public.fn.IsLayer(obj.type)) {\n                if(_callFilterCheck(callFilter)) { //fire current event for all types\n                    if ($ax.public.fn.IsTable(obj.type) || $ax.public.fn.IsMenuObject(obj.type) || $ax.public.fn.IsTreeNodeObject(obj.type)) {\n                        _fireEventsForTableMenuAndTree(obj, eventName, skipShowDescription, undefined, path, !synthetic);\n                    } else {\n                        var scriptId = $ax.getScriptIdFromPath(pathCopy);\n                        if(scriptId && itemId) scriptId = $ax.repeater.createElementId(scriptId, itemId);\n                        $ax.event.raiseSyntheticEvent(scriptId, eventName, skipShowDescription, undefined, !synthetic);\n                    }\n                }\n                continue;\n            }\n\n            var objId = $ax.getScriptIdFromPath(pathCopy);\n            // If limboed, move on to next item\n            if(!objId) continue;\n            if(itemId) objId = $ax.repeater.createElementId(objId, itemId);\n\n            if($ax.public.fn.IsReferenceDiagramObject(obj.type)) {\n                if(_callFilterCheck(callFilter, $ax.constants.REFERENCE_DIAGRAM_OBJECT_TYPE)) {\n                    fireEventForPageOrMaster(objId, eventName, $ax.pageData.masters[obj.masterId].interactionMap, false, skipShowDescription, synthetic);\n                    if(eventName == \"onLoad\") $ax.event.raiseSyntheticEvent(objId, eventName, skipShowDescription, undefined, !synthetic);\n                }\n                if(searchFilter.indexOf($ax.constants.REFERENCE_DIAGRAM_OBJECT_TYPE) != -1) fireEventThroughContainers(eventName, $ax.pageData.masters[obj.masterId].diagram.objects, synthetic, searchFilter, callFilter, pathCopy, itemId);\n            } else if($ax.public.fn.IsDynamicPanel(obj.type)) {\n                if(_callFilterCheck(callFilter, $ax.constants.DYNAMIC_PANEL_TYPE)) $ax.event.raiseSyntheticEvent(objId, eventName, skipShowDescription, undefined, !synthetic);\n\n                if(searchFilter.indexOf($ax.constants.DYNAMIC_PANEL_TYPE) != -1) {\n                    var diagrams = obj.diagrams;\n                    for(var j = 0; j < diagrams.length; j++) {\n                        fireEventThroughContainers(eventName, diagrams[j].objects, synthetic, searchFilter, callFilter, path, itemId);\n                    }\n                }\n            } else if($ax.public.fn.IsRepeater(obj.type)) {\n                // TODO: possible an option for repeater item? Now fires overall for the repeater\n                if(_callFilterCheck(callFilter, $ax.constants.REPEATER)) $ax.event.raiseSyntheticEvent(objId, eventName, skipShowDescription, undefined, !synthetic);\n                if(searchFilter.indexOf($ax.constants.REPEATER) != -1) {\n                    var itemIds = $ax.getItemIdsForRepeater(objId);\n                    for(var j = 0; j < itemIds.length; j++) {\n                        fireEventThroughContainers(eventName, obj.objects, synthetic, searchFilter, callFilter, path, itemIds[j]);\n                    }\n                }\n            } else if($ax.public.fn.IsLayer(obj.type)) {\n                if(_callFilterCheck(callFilter, $ax.constants.LAYER_TYPE)) $ax.event.raiseSyntheticEvent(objId, eventName, skipShowDescription, undefined, !synthetic);\n\n                if(obj.objs && obj.objs.length > 0) {\n                    fireEventThroughContainers(eventName, obj.objs, synthetic, searchFilter, callFilter, path, itemId);\n                }\n            }\n        }\n\n        eventNesting -= 1;\n\n    }; // FOCUS stuff"
+    },
+    {
+      "file": "variables.js",
+      "startLine": 33,
+      "endLine": 85,
+      "purpose": "invalid-item-fallback",
+      "text": "    var getVariableValue = function(variable, eventInfo, ignoreDefaultsForLinkUrl) {\n        variable = variable.toLowerCase();\n        if(_globalVariableValues[variable] !== undefined) {\n            //If this is for the GetLinkUrl function and \n            //the current value of the global variable is the same as the default defined in the document, don't return it\n            if(ignoreDefaultsForLinkUrl == true && $ax.document.globalVariables[variable] == _globalVariableValues[variable]) {\n                return null;\n            }\n\n            return _globalVariableValues[variable];\n        }\n        if($ax.document.globalVariables[variable] !== undefined) return ignoreDefaultsForLinkUrl == true ? null : $ax.document.globalVariables[variable];\n        switch(variable) {\n            case \"pagename\": return $ax.pageData.page.name;\n\n            case \"now\": return eventInfo.now;\n            case \"gendate\": return $ax.pageData.generationDate;\n\n            case \"dragx\": return $ax.drag.GetDragX();\n            case \"dragy\": return $ax.drag.GetDragY();\n            case \"totaldragx\": return $ax.drag.GetTotalDragX();\n            case \"totaldragy\": return $ax.drag.GetTotalDragY();\n            case \"dragtime\": return $ax.drag.GetDragTime();\n\n            case \"math\": return Math;\n            case \"date\": return Date;\n\n            case \"window\": return eventInfo && eventInfo.window;\n            case \"this\": return eventInfo && eventInfo.thiswidget && $ax.getWidgetInfo(eventInfo.thiswidget.elementId);\n            case \"item\": return (eventInfo && eventInfo.item && eventInfo.item.valid && eventInfo.item) || getVariableValue('targetitem', eventInfo, ignoreDefaultsForLinkUrl);\n            case \"targetitem\": return eventInfo && eventInfo.targetElement && $ax.getItemInfo(eventInfo.targetElement);\n            case \"repeater\": return eventInfo && eventInfo.repeater;\n            case \"target\": return eventInfo && eventInfo.targetElement && $ax.getWidgetInfo(eventInfo.targetElement);\n            case \"cursor\": return eventInfo && eventInfo.cursor;\n            default:\n                var gen = variable.substr(0, 3) == \"gen\";\n                var date = gen ? $ax.pageData.generationDate : new Date();\n                var prop = gen ? variable.substr(3) : variable;\n                switch(prop) {\n                    case \"day\": return date.getDate();\n                    case \"month\": return date.getMonth() + 1;\n                    case \"monthname\": return $ax.getMonthName(date.getMonth());\n                    case \"dayofweek\": return $ax.getDayOfWeek(date.getDay());\n                    case \"year\": return date.getFullYear();\n                    case \"time\": return date.toLocaleTimeString();\n                    case \"hours\": return date.getHours();\n                    case \"minutes\": return date.getMinutes();\n                    case \"seconds\": return date.getSeconds();\n                    default: return '';\n                }\n        }\n    };\n    _globalVariableProvider.getVariableValue = getVariableValue;"
+    },
+    {
+      "file": "sto.js",
+      "startLine": 90,
+      "endLine": 161,
+      "purpose": "metadata-and-column-sto",
+      "text": "    var _stoHandlers = {};\n\n    _stoHandlers.literal = function(sto, scope, eventInfo) {\n        return sto.value;\n    };\n\n    //need angle bracket syntax because var is a reserved word\n    _stoHandlers['var'] = function(sto, scope, eventInfo) {\n        // Can't us 'A || B' here, because the first value can be false, true, or empty string and still be valid.\n        var retVal = scope.hasOwnProperty(sto.name) ? scope[sto.name]  : $ax.globalVariableProvider.getVariableValue(sto.name, eventInfo);\n        // Handle desired type here?\n        \n        if(retVal && retVal.exprType) {\n            retVal = $ax.expr.evaluateExpr(retVal, eventInfo);\n        }\n        \n        if((sto.desiredType == 'int' || sto.desiredType == 'float')) {\n            var num = new Number(retVal);\n            retVal = isNaN(num.valueOf()) ? retVal : num;\n        }\n\n\n        return retVal;\n    };\n\n    //TODO: Perhaps repeaterId can be detirmined at generation, and stored in the sto info.\n    _stoHandlers.item = function(sto, scope, eventInfo, prop) {\n        prop = prop || (eventInfo.data ? 'data' : eventInfo.link ? 'url' : eventInfo.image ? 'img' : 'text');\n        var id = sto.isTarget || !$ax.repeater.hasData(eventInfo.srcElement, sto.name) ? eventInfo.targetElement : eventInfo.srcElement;\n        return getData(eventInfo, id, sto.name, prop);\n    };\n\n    var getData = function(eventInfo, id, name, prop) {\n        var repeaterId = $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(id));\n        var itemId = $ax.repeater.getItemIdFromElementId(id);\n        return $ax.repeater.getData(eventInfo, repeaterId, itemId, name, prop);\n    };\n\n    _stoHandlers.paren = function(sto, scope, eventInfo) {\n        return _evaluateSTO(sto.innerSTO, scope, eventInfo);\n    };\n\n    _stoHandlers.fCall = function(sto, scope, eventInfo) {\n        //TODO: [mas] handle required type\n        var thisObj = _evaluateSTO(sto.thisSTO, scope, eventInfo);\n        if(sto.thisSTO.desiredType == 'string' && sto.thisSTO.computedType != 'string') thisObj = thisObj.toString();\n        \n        var args = [];\n        for(var i = 0; i < sto.arguments.length; i++) {\n            args[i] = _evaluateSTO(sto.arguments[i], scope, eventInfo);\n        }\n        var fn = (funcs.hasOwnProperty(sto.func) && funcs[sto.func]) || thisObj[sto.func];\n        return fn.apply(thisObj, args);\n    };\n\n    _stoHandlers.propCall = function(sto, scope, eventInfo) {\n        //TODO: [mas] handle required type\n        if((sto.prop == 'url' || sto.prop == 'img') && sto.thisSTO.sto == 'item') return _stoHandlers.item(sto.thisSTO, scope, eventInfo, sto.prop);\n        var thisObj = _evaluateSTO(sto.thisSTO, scope, eventInfo);\n\n        // calculate cursor offset for elements that are located relative to their parents\n        if (sto.thisSTO.name == 'cursor') {\n            var cursorOffset = $ax.public.fn.getCursorOffset(eventInfo.targetElement);\n            thisObj = {\n                x: thisObj.x - cursorOffset.x,\n                y: thisObj.y - cursorOffset.y,\n            };\n        }\n\n        var prop = thisObj[sto.prop] instanceof Function ? thisObj[sto.prop]() : thisObj[sto.prop];\n        return prop;\n    };"
+    },
+    {
+      "file": "sto.js",
+      "startLine": 216,
+      "endLine": 234,
+      "purpose": "typed-casts",
+      "text": "    var _evaluateSTO = function(sto, scope, eventInfo) {\n        if(sto.sto == 'error') return undefined;\n        return _tryEscapeRichText(castSto(_stoHandlers[sto.sto](sto, scope, eventInfo), sto), eventInfo);\n    };\n    $ax.evaluateSTO = _evaluateSTO;\n\n    var castSto = function(val, sto) {\n        var type = sto.computedType || sto.desiredType;\n        if(type == 'string') val = String(val);\n        else if(type == 'date' && !(val instanceof Date)) val = new Date(val);\n        else if(type == 'int' || type == 'float') val = Number(val);\n        else if(type == 'bool') val = Boolean(val);\n\n        return val;\n    };\n\n    var _tryEscapeRichText = function(text, eventInfo) {\n        return eventInfo.htmlLiteral ? _escapeRichText(text) : text;\n    };"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 204,
+      "endLine": 244,
+      "purpose": "failed-expression-retains-literal",
+      "text": "    var _substituteSTOs = function(expr, eventInfo) {\n        //first evaluate the local variables\n        var scope = {};\n        for(var varName in expr.localVariables) {\n            scope[varName] = $ax.expr.evaluateExpr(expr.localVariables[varName], eventInfo);\n        }\n\n        // TODO: [ben] Date and data object (obj with info for url or image) both need to return non-strings.\n        var i = 0;\n        var retval;\n        var retvalString = expr.value.replace(/\\[\\[(?!\\[)(.*?)\\]\\](?=\\]*)/g, function(match) {\n            var sto = expr.stos[i++];\n            if(sto.sto == 'error') return match;\n            try {\n                var result = $ax.evaluateSTO(sto, scope, eventInfo);\n            } catch(e) {\n                return match;\n            }\n\n            if((result instanceof Object) && i == 1 && expr.value.substring(0, 2) == '[[' &&\n                expr.value.substring(expr.value.length - 2) == ']]') {\n                // If the result was an object, this was the first result, and the whole thing was this expresion.\n                retval = result;\n            }\n            return ((result instanceof Object) && (result.label || result.text)) || result;\n        });\n        // If more than one group returned, the object is not valid\n        if(i != 1) retval = false;\n        return retval || retvalString;\n    };\n\n    _exprHandlers.htmlLiteral = function (expr, eventInfo) {\n        eventInfo.htmlLiteral = true;\n        var html = _substituteSTOs(expr, eventInfo);\n        eventInfo.htmlLiteral = false\n        return html;\n    };\n\n    _exprHandlers.stringLiteral = function(expr, eventInfo) {\n        return _substituteSTOs(expr, eventInfo);\n    };"
+    },
+    {
+      "file": "utils.temp.js",
+      "startLine": 5,
+      "endLine": 49,
+      "purpose": "event-copy",
+      "text": "    var _deepCopy = function (original, trackCopies, filter) {\n        if(trackCopies) {\n            var index = _getCopyIndex(original);\n            if(index != -1) return _originalToCopy[index][1];\n        }\n        var isArray = original instanceof Array;\n        var isObject = !(original instanceof Function) && !(original instanceof Date) && (original instanceof Object);\n        if(!isArray && !isObject) return original;\n        var copy = isArray ? [] : { };\n        if(trackCopies) _originalToCopy.push([original, copy]);\n        isArray ? deepCopyArray(original, trackCopies, copy, filter) : deepCopyObject(original, trackCopies, copy, filter);\n        return copy;\n    };\n    $ax.deepCopy = _deepCopy;\n\n    // Hacky way to copy event info. Copying dragInfo causes major issues due to infinite loops\n    // Hashmap doesn't map objects well. It just toStrings them, making them all the same key. This has to be slow...\n    var _originalToCopy = [];\n    var _getCopyIndex = function(original) {\n        for(var i = 0; i < _originalToCopy.length; i++) if(original === _originalToCopy[i][0]) return i;\n        return -1;\n    };\n\n    $ax.eventCopy = function(eventInfo) {\n        var copy = _deepCopy(eventInfo, true, ['dragInfo', 'elementQuery', 'obj']);\n        // reset the map. TODO: May need to reset elsewhere too, but this is the only way it's used currently\n        _originalToCopy = [];\n\n        return copy;\n    };\n\n    var deepCopyArray = function(original, trackCopies, copy, filter) {\n        for(var i = 0; i < original.length; i++) {\n            copy[i] = _deepCopy(original[i], trackCopies, filter);\n        }\n    };\n\n    var deepCopyObject = function(original, trackCopies, copy, filter) {\n        for(var key in original) {\n            if(!original.hasOwnProperty(key)) continue; // Continue if the prop was not put there like a dictionary, but just a native part of the object\n\n            if(filter && filter.indexOf[key] != -1) copy[key] = original[key]; // If that key is filtered out, skip recursion on it.\n            else copy[key] = _deepCopy(original[key], trackCopies, filter);\n        }\n    };"
+    },
+    {
+      "file": "visibility.js",
+      "startLine": 1392,
+      "endLine": 1394,
+      "purpose": "size-storage-not-event",
+      "text": "    $ax.visibility.setResizedSize = function(scriptId, width, height) {\n        _resizedIds[scriptId] = { width: width, height: height };\n    };"
+    }
+  ],
+  "probe": {
+    "count": 21,
+    "outcomes": [
+      {
+        "name": "initial-empty",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 0,
+          "currentItemCount": 0,
+          "trace": [],
+          "page": 1
+        }
+      },
+      {
+        "name": "unlimited-delete-all",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 3,
+          "currentItemCount": 0,
+          "trace": [
+            {
+              "id": "r",
+              "event": "onBeforeItemLoad"
+            },
+            {
+              "id": "r",
+              "event": "onItemLoad"
+            },
+            {
+              "id": "child",
+              "event": "onLoad"
+            }
+          ],
+          "page": 1
+        }
+      },
+      {
+        "name": "unlimited-filter-all",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 3,
+          "currentItemCount": 0,
+          "trace": [
+            {
+              "id": "r",
+              "event": "onBeforeItemLoad"
+            },
+            {
+              "id": "r",
+              "event": "onItemLoad"
+            },
+            {
+              "id": "child",
+              "event": "onLoad"
+            }
+          ],
+          "page": 1
+        }
+      },
+      {
+        "name": "already-empty-refresh",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 0,
+          "currentItemCount": 0,
+          "trace": [],
+          "page": 1
+        }
+      },
+      {
+        "name": "empty-to-nonempty",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 0,
+          "currentItemCount": 2,
+          "trace": [
+            {
+              "id": "r-1",
+              "event": "onBeforeItemLoad"
+            },
+            {
+              "id": "r-1",
+              "event": "onItemLoad"
+            },
+            {
+              "id": "child-1",
+              "event": "onLoad"
+            },
+            {
+              "id": "r-2",
+              "event": "onBeforeItemLoad"
+            },
+            {
+              "id": "r-2",
+              "event": "onItemLoad"
+            },
+            {
+              "id": "child-2",
+              "event": "onLoad"
+            }
+          ],
+          "page": 1
+        }
+      },
+      {
+        "name": "paged-first-has-next-page-delete-all",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 1,
+          "currentItemCount": 0,
+          "trace": [
+            {
+              "id": "r",
+              "event": "onBeforeItemLoad"
+            },
+            {
+              "id": "r",
+              "event": "onItemLoad"
+            },
+            {
+              "id": "child",
+              "event": "onLoad"
+            }
+          ],
+          "page": 1
+        }
+      },
+      {
+        "name": "paged-single-page-delete-all",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 0,
+          "currentItemCount": 0,
+          "trace": [],
+          "page": 1
+        }
+      },
+      {
+        "name": "paged-last-page-delete-all",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 0,
+          "currentItemCount": 0,
+          "trace": [],
+          "page": 1
+        }
+      },
+      {
+        "name": "paged-middle-delete-all",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 1,
+          "currentItemCount": 0,
+          "trace": [
+            {
+              "id": "r",
+              "event": "onBeforeItemLoad"
+            },
+            {
+              "id": "r",
+              "event": "onItemLoad"
+            },
+            {
+              "id": "child",
+              "event": "onLoad"
+            }
+          ],
+          "page": 1
+        }
+      },
+      {
+        "name": "paged-nonzero-shrink-no-extra",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 1,
+          "currentItemCount": 0,
+          "trace": [
+            {
+              "id": "r-1",
+              "event": "onBeforeItemLoad"
+            },
+            {
+              "id": "r-1",
+              "event": "onItemLoad"
+            },
+            {
+              "id": "child-1",
+              "event": "onLoad"
+            },
+            {
+              "id": "r-2",
+              "event": "onBeforeItemLoad"
+            },
+            {
+              "id": "r-2",
+              "event": "onItemLoad"
+            },
+            {
+              "id": "child-2",
+              "event": "onLoad"
+            }
+          ],
+          "page": 1
+        }
+      },
+      {
+        "name": "page-past-end-clamps-to-real-rows",
+        "pass": true,
+        "actual": {
+          "previousItemCount": 0,
+          "currentItemCount": 0,
+          "trace": [
+            {
+              "id": "r-3",
+              "event": "onBeforeItemLoad"
+            },
+            {
+              "id": "r-3",
+              "event": "onItemLoad"
+            },
+            {
+              "id": "child-3",
+              "event": "onLoad"
+            }
+          ],
+          "page": 2
+        }
+      },
+      {
+        "name": "empty-source-item-has-only-valid-false",
+        "pass": true,
+        "actual": {
+          "valid": false
+        }
+      },
+      {
+        "name": "empty-source-no-target-item-providers-undefined",
+        "pass": true,
+        "actual": {
+          "item": true,
+          "target": true
+        }
+      },
+      {
+        "name": "empty-property-string-interpolation-preserves-literal-without-target",
+        "pass": true,
+        "actual": [
+          "[[Item.valid]]",
+          "[[Item.index]]",
+          "[[Item.isfirst]]",
+          "[[Item.islast]]",
+          "[[Item.iseven]]",
+          "[[Item.isodd]]",
+          "[[Item.ismarked]]",
+          "[[Item.repeater]]"
+        ]
+      },
+      {
+        "name": "nonrow-target-invalid-metadata-casts-depend-on-sto-type",
+        "pass": true,
+        "actual": [
+          "undefined",
+          "false",
+          "NaN"
+        ]
+      },
+      {
+        "name": "empty-source-column-interpolation-retains-literal",
+        "pass": true,
+        "actual": [
+          "[[Item.Name]]",
+          "[[TargetItem.Name]]"
+        ]
+      },
+      {
+        "name": "empty-repeater-count-providers-unlimited-versus-paged",
+        "pass": true,
+        "actual": {
+          "unlimited": {
+            "data": 0,
+            "filtered": 0,
+            "visible": 0,
+            "pages": 1,
+            "page": 1
+          },
+          "paged": {
+            "data": 0,
+            "filtered": 0,
+            "visible": 0,
+            "pages": 0,
+            "page": 1
+          },
+          "filtered": {
+            "data": 3,
+            "filtered": 0,
+            "visible": 0,
+            "pages": 0,
+            "page": 1
+          }
+        }
+      },
+      {
+        "name": "item-resize-zero-delta-does-not-fire",
+        "pass": true,
+        "actual": {
+          "changed": false,
+          "trace": []
+        }
+      },
+      {
+        "name": "item-resize-fires-once-after-both-axes-and-sibling-layout",
+        "pass": true,
+        "actual": {
+          "changed": true,
+          "trace": [
+            {
+              "kind": "parent-fit",
+              "id": "r"
+            },
+            {
+              "kind": "parent-fit",
+              "id": "r"
+            },
+            {
+              "kind": "event",
+              "id": "r-1",
+              "event": "onItemResize",
+              "css": {
+                "r": {
+                  "width": 120,
+                  "height": 50
+                },
+                "r-1": {
+                  "width": 120,
+                  "height": 30,
+                  "left": 0,
+                  "top": 0
+                },
+                "r-2": {
+                  "width": 100,
+                  "height": 20,
+                  "left": 0,
+                  "top": 30
+                }
+              },
+              "size": {
+                "itemId": 1,
+                "width": 120,
+                "height": 30
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "empty-size-map-has-no-resizable-sentinel-item",
+        "pass": true,
+        "actual": {
+          "threw": true
+        }
+      },
+      {
+        "name": "empty-event-synchronous-add-blocked-but-wait-tail-runs-after-refresh",
+        "pass": true,
+        "actual": {
+          "blocked": true,
+          "scheduled": true,
+          "calls": [
+            {
+              "id": "r",
+              "row": {
+                "Name": "new"
+              },
+              "item": {
+                "valid": false
+              }
+            }
+          ],
+          "refreshes": [
+            "r"
+          ]
+        }
+      }
+    ],
+    "limitations": [
+      "Lifecycle probe executes actual count/bounds/load-loop/child-traversal sections, not the full DOM refresh function.",
+      "Size probe uses original size functions with mocked CSS and parent fitting.",
+      "Generated STO metadata is synthesized explicitly; arbitrary original expression compilation and rich text are not covered.",
+      "Wait probe replaces scheduler with a manually released callback and eventCopy with JSON-safe copy."
+    ]
+  }
+}

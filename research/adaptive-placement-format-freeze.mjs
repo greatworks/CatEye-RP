@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+const read=file=>JSON.parse(fs.readFileSync(file,'utf8').replace(/^\uFEFF/,''));
+const hash=file=>({file,sha256:createHash('sha256').update(fs.readFileSync(file)).digest('hex')});
+const census=read('research/adaptive-placement-format-census.json'),replay=read('research/adaptive-placement-format-replay.json');
+const files=fs.readdirSync('research').filter(f=>f.startsWith('adaptive-placement-format-')&&!/evidence\.json$|manifest\.json$/.test(f)).map(f=>'research/'+f);
+const dependencies=['research/samples/metadata-PName.json','research/adaptive-transition-placement-prop-cil.json','research/adaptive-transition-placement-effective-cil.json','research/adaptive-transition-placement-property-cil.json','research/adaptive-transition-placement-object-cil.json','research/selected-style-filter-json-entry.json','research/selected-style-filter-predicates.json','research/selected-style-filter-flag-helpers.json','research/text-autofit-dom-classes-cil.json','research/text-autofit-style-class-replay.mjs','research/text-autofit-native-literals.mjs'];
+for(const file of dependencies)if(!fs.existsSync(file))throw Error('Missing evidence dependency '+file);
+const evidence={originalAssemblyExecuted:false,originalGuiCompared:false,scope:'P111 storage, local writer and ordinary Base unplaced-class path',totals:census.totals,replay:replay.totals,enum:{IGNORE:0,TRUE:1,FALSE:2},eligibleNativeToPlaced:{0:false,1:true,2:false},unsupported:['Nontrue flattened default/named cached placement','Independent placement of contained/compound descendants','Page placement','General master ancestry and transient UnplacedOverride reconstruction'],samples:census.samples.map(({file,sha256})=>({file,sha256})),files:[...files,...dependencies].map(hash)};
+fs.writeFileSync('research/adaptive-placement-format-evidence.json',JSON.stringify(evidence,null,2)+'\n');
+const manifest={files:[...files,...dependencies,'research/adaptive-placement-format-evidence.json'].map(hash),samples:evidence.samples};
+fs.writeFileSync('research/adaptive-placement-format-manifest.json',JSON.stringify(manifest,null,2)+'\n');
+for(const {file,sha256}of [...manifest.files,...manifest.samples])if(hash(file).sha256!==sha256)throw Error('Hash mismatch '+file);
+console.log(JSON.stringify({totals:census.totals,replay:replay.totals,verifiedHashes:manifest.files.length+manifest.samples.length,evidence:hash('research/adaptive-placement-format-evidence.json'),manifest:hash('research/adaptive-placement-format-manifest.json')}));

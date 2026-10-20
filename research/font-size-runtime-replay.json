@@ -1,0 +1,1304 @@
+{
+  "timestamp": "2026-10-13T23:40:42.278Z",
+  "method": "Bounded static CIL interpretation; original assembly is neither loaded nor executed",
+  "sources": [
+    {
+      "path": "research/font-size-runtime-css-cil.json",
+      "sha256": "a3ed295eacb600a8fdee2e700c4cbad4aa000eeddbbd96c872300196c4837d31"
+    },
+    {
+      "path": "research/font-size-runtime-conversion-cil.json",
+      "sha256": "eab98d7146c668c97b4a3e9fa5adcf05447a517beae1dc70d6daa7f228016f83"
+    },
+    {
+      "path": "research/font-size-runtime-round-cil.json",
+      "sha256": "e237d4566483d6c29125685feb4bafd7e307a4a51bd0e1a772596b7276589008"
+    },
+    {
+      "path": "research/font-style-format-run-base-cil.json",
+      "sha256": "20c0cbf19ce5f082baaa4401c19b09b6bfcb021db599e4713d119586b83679b0"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128"
+    },
+    {
+      "path": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    }
+  ],
+  "boundaries": [
+    "sIho returns a symbolic key; CSS literal suffix was not decrypted",
+    "Math.Round is independently modelled for tested non-midpoint decimal inputs using AwayFromZero; not exhaustive binary-double tie parity",
+    "P2 provider equality sink uses epsilon compare for cases safely away from threshold; no claim for exact epsilon boundary",
+    "No original DOM, font metric or auto-fit pixel execution"
+  ],
+  "results": [
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 0,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          0
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 0.75,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          1
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 9.75,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          13
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 10.5,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          14
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 13.5,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          18
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 15,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          20
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 15.75,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          21
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 16.5,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          22
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 21,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          28
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 24,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          32
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 28.333,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          37.777
+        ]
+      }
+    },
+    {
+      "name": "HTML font-size formatter numeric operand",
+      "input": 384,
+      "output": {
+        "format": {
+          "opaqueStringKey": 351510
+        },
+        "values": [
+          512
+        ]
+      }
+    },
+    {
+      "name": "Run ValueAsObject(P2) compares style before emitting raw run size",
+      "run": 21,
+      "base": 15,
+      "od": true,
+      "expected": 21,
+      "observed": 21
+    },
+    {
+      "name": "Run ValueAsObject(P2) compares style before emitting raw run size",
+      "run": 21,
+      "base": 21,
+      "od": true,
+      "expected": null,
+      "observed": null
+    },
+    {
+      "name": "Run ValueAsObject(P2) compares style before emitting raw run size",
+      "run": 21,
+      "base": 15,
+      "od": false,
+      "expected": 21,
+      "observed": 21
+    },
+    {
+      "name": "Run ValueAsObject(P2) compares style before emitting raw run size",
+      "run": 15,
+      "base": 15,
+      "od": true,
+      "expected": null,
+      "observed": null
+    },
+    {
+      "name": "Run ValueAsObject(P2) compares style before emitting raw run size",
+      "run": 15.75,
+      "base": 15,
+      "od": true,
+      "expected": 15.75,
+      "observed": 15.75
+    }
+  ],
+  "traces": [
+    {
+      "token": 100688822,
+      "arguments": [
+        0,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        0,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        0,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        1,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        0.75,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        0.75,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        13,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        9.75,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        9.75,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        14,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        10.5,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        10.5,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        18,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        13.5,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        13.5,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        20,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        15,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        15,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        21,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        15.75,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        15.75,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        22,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        16.5,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        16.5,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        28,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        21,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        21,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        32,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        24,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        24,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        37.77733333333333,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        28.333,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        28.333,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100688822,
+      "arguments": [
+        512,
+        3,
+        1
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        15
+      ]
+    },
+    {
+      "token": 100719575,
+      "arguments": [
+        384,
+        72
+      ],
+      "offsets": [
+        0,
+        7,
+        8,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        27
+      ]
+    },
+    {
+      "token": 100699304,
+      "arguments": [
+        384,
+        {
+          "unusedContext": true
+        }
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        24,
+        29,
+        34,
+        35,
+        40,
+        41,
+        46,
+        47,
+        48,
+        49,
+        58,
+        63,
+        68,
+        69,
+        74
+      ]
+    },
+    {
+      "token": 100707849,
+      "arguments": [
+        {
+          "size": 21,
+          "base": {
+            "size": 15,
+            "od": true
+          }
+        },
+        2
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        768,
+        769,
+        771,
+        776,
+        781,
+        786,
+        787,
+        792,
+        661,
+        662,
+        663,
+        664,
+        545,
+        546,
+        551,
+        556,
+        561,
+        566,
+        571,
+        576,
+        117,
+        118,
+        123,
+        128,
+        129,
+        134,
+        143,
+        148,
+        153,
+        158,
+        163,
+        802,
+        1043,
+        1044,
+        1049,
+        1054,
+        1059
+      ]
+    },
+    {
+      "token": 100707849,
+      "arguments": [
+        {
+          "size": 21,
+          "base": {
+            "size": 21,
+            "od": true
+          }
+        },
+        2
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        768,
+        769,
+        771,
+        776,
+        781,
+        786,
+        787,
+        792,
+        661,
+        662,
+        663,
+        664,
+        545,
+        546,
+        551,
+        556,
+        561,
+        566,
+        571,
+        576,
+        117,
+        118,
+        123,
+        128,
+        129,
+        134,
+        143,
+        148,
+        633,
+        635,
+        641,
+        646,
+        651,
+        207,
+        209,
+        1054,
+        1059
+      ]
+    },
+    {
+      "token": 100707849,
+      "arguments": [
+        {
+          "size": 21,
+          "base": {
+            "size": 15,
+            "od": false
+          }
+        },
+        2
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        768,
+        769,
+        771,
+        776,
+        781,
+        786,
+        787,
+        792,
+        661,
+        662,
+        663,
+        664,
+        545,
+        546,
+        551,
+        556,
+        1043,
+        1044,
+        1049,
+        1054,
+        1059
+      ]
+    },
+    {
+      "token": 100707849,
+      "arguments": [
+        {
+          "size": 15,
+          "base": {
+            "size": 15,
+            "od": true
+          }
+        },
+        2
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        768,
+        769,
+        771,
+        776,
+        781,
+        786,
+        787,
+        792,
+        661,
+        662,
+        663,
+        664,
+        545,
+        546,
+        551,
+        556,
+        561,
+        566,
+        571,
+        576,
+        117,
+        118,
+        123,
+        128,
+        129,
+        134,
+        143,
+        148,
+        633,
+        635,
+        641,
+        646,
+        651,
+        207,
+        209,
+        1054,
+        1059
+      ]
+    },
+    {
+      "token": 100707849,
+      "arguments": [
+        {
+          "size": 15.75,
+          "base": {
+            "size": 15,
+            "od": true
+          }
+        },
+        2
+      ],
+      "offsets": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        768,
+        769,
+        771,
+        776,
+        781,
+        786,
+        787,
+        792,
+        661,
+        662,
+        663,
+        664,
+        545,
+        546,
+        551,
+        556,
+        561,
+        566,
+        571,
+        576,
+        117,
+        118,
+        123,
+        128,
+        129,
+        134,
+        143,
+        148,
+        153,
+        158,
+        163,
+        802,
+        1043,
+        1044,
+        1049,
+        1054,
+        1059
+      ]
+    }
+  ]
+}

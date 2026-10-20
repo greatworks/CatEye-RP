@@ -1,0 +1,814 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "transform-demo",
+  "name": "Motion · timing, local widgets and drag",
+  "pages": [
+    {
+      "id": "transform-home",
+      "name": "Motion lab",
+      "width": 1120,
+      "height": 860,
+      "background": "#f5f7fb",
+      "widgets": [
+        {
+          "id": "transform-title",
+          "type": "text",
+          "name": "Motion lab",
+          "text": "Motion lab",
+          "notes": "",
+          "x": 48,
+          "y": 25,
+          "rotation": 0,
+          "width": 1000,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 30,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "transform-intro",
+          "type": "text",
+          "name": "Combined animation, ordered local targets and independent drag instances.",
+          "text": "Combined animation, ordered local targets and independent drag instances.",
+          "notes": "",
+          "x": 48,
+          "y": 76,
+          "rotation": 0,
+          "width": 1000,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "transform-combined",
+          "type": "box",
+          "name": "MOVE + SIZE + ROTATE",
+          "text": "MOVE + SIZE + ROTATE",
+          "notes": "",
+          "x": 100,
+          "y": 170,
+          "rotation": 0,
+          "width": 200,
+          "height": 100,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#2563eb",
+            "stroke": "#1d4ed8",
+            "strokeWidth": 1,
+            "radius": 8,
+            "color": "#fff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "transform-first",
+          "type": "box",
+          "name": "FIRST",
+          "text": "FIRST",
+          "notes": "",
+          "x": 600,
+          "y": 160,
+          "rotation": 0,
+          "width": 100,
+          "height": 50,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "transform-second",
+          "type": "box",
+          "name": "SECOND",
+          "text": "SECOND",
+          "notes": "",
+          "x": 820,
+          "y": 160,
+          "rotation": 0,
+          "width": 100,
+          "height": 50,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "transform-ordered",
+          "type": "button",
+          "name": "Move ordered targets",
+          "text": "Move ordered targets",
+          "notes": "",
+          "x": 600,
+          "y": 250,
+          "rotation": 0,
+          "width": 210,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "transform-ordered-click",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "transform-ordered-click-0",
+                  "type": "move",
+                  "move": {
+                    "targets": [
+                      {
+                        "target": {
+                          "kind": "widget",
+                          "id": "transform-first"
+                        },
+                        "mode": "location",
+                        "x": {
+                          "text": "[[Track.x + 10]]",
+                          "bindings": {
+                            "track": {
+                              "kind": "widget",
+                              "targetId": "transform-second"
+                            }
+                          }
+                        },
+                        "y": {
+                          "text": "225"
+                        },
+                        "trajectory": "straight",
+                        "easing": "none",
+                        "duration": 500
+                      },
+                      {
+                        "target": {
+                          "kind": "widget",
+                          "id": "transform-second"
+                        },
+                        "mode": "delta",
+                        "x": {
+                          "text": "-20"
+                        },
+                        "y": {
+                          "text": ""
+                        },
+                        "trajectory": "straight",
+                        "easing": "none",
+                        "duration": 500
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "transform-combine",
+          "type": "button",
+          "name": "Move · size · rotate",
+          "text": "Move · size · rotate",
+          "notes": "",
+          "x": 48,
+          "y": 430,
+          "rotation": 0,
+          "width": 210,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "transform-combine-click",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "transform-combine-click-0",
+                  "type": "move",
+                  "move": {
+                    "targets": [
+                      {
+                        "target": {
+                          "kind": "widget",
+                          "id": "transform-combined"
+                        },
+                        "mode": "delta",
+                        "x": {
+                          "text": "40"
+                        },
+                        "y": {
+                          "text": "20"
+                        },
+                        "trajectory": "straight",
+                        "easing": "linear",
+                        "duration": 240
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "transform-combine-click-1",
+                  "type": "resize",
+                  "resize": {
+                    "targets": [
+                      {
+                        "target": {
+                          "kind": "widget",
+                          "id": "transform-combined"
+                        },
+                        "width": {
+                          "text": "300"
+                        },
+                        "height": {
+                          "text": "160"
+                        },
+                        "anchor": "top left",
+                        "easing": "linear",
+                        "duration": 420
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "transform-combine-click-2",
+                  "type": "rotate",
+                  "rotate": {
+                    "mode": "by",
+                    "degrees": "90",
+                    "clockwise": true,
+                    "anchor": "center",
+                    "offsetX": "0",
+                    "offsetY": "0",
+                    "easing": "linear",
+                    "duration": 600
+                  },
+                  "targetId": "transform-combined"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "transform-drag",
+          "type": "box",
+          "name": "DRAG ME",
+          "text": "DRAG ME",
+          "notes": "",
+          "x": 600,
+          "y": 360,
+          "rotation": 0,
+          "width": 140,
+          "height": 56,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#0f766e",
+            "stroke": "#115e59",
+            "strokeWidth": 1,
+            "radius": 8,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "transform-drag-drag",
+              "event": "drag",
+              "name": "drag",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "transform-drag-drag-0",
+                  "type": "move",
+                  "move": {
+                    "targets": [
+                      {
+                        "target": {
+                          "kind": "this"
+                        },
+                        "mode": "drag",
+                        "x": {
+                          "text": "40"
+                        },
+                        "y": {
+                          "text": "20"
+                        },
+                        "trajectory": "straight",
+                        "easing": "none",
+                        "duration": 500
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "transform-drag-dragDrop",
+              "event": "dragDrop",
+              "name": "dragDrop",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "transform-drag-dragDrop-0",
+                  "type": "setText",
+                  "targetId": "transform-drag-status",
+                  "value": "Dropped [[DragX]],[[TotalDragX]]"
+                }
+              ]
+            },
+            {
+              "id": "transform-drag-click",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "transform-drag-click-0",
+                  "type": "setText",
+                  "targetId": "transform-drag-status",
+                  "value": "Clicked"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "transform-drag-status",
+          "type": "text",
+          "name": "Ready",
+          "text": "Ready",
+          "notes": "",
+          "x": 800,
+          "y": 370,
+          "rotation": 0,
+          "width": 280,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "transform-repeater-title",
+          "type": "text",
+          "name": "REPEATER · INDEPENDENT ROWS",
+          "text": "REPEATER · INDEPENDENT ROWS",
+          "notes": "",
+          "x": 48,
+          "y": 475,
+          "rotation": 0,
+          "width": 600,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "transform-repeater",
+          "type": "repeater",
+          "name": "",
+          "text": "",
+          "notes": "",
+          "x": 48,
+          "y": 520,
+          "rotation": 0,
+          "width": 620,
+          "height": 190,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "First row"
+              },
+              {
+                "Name": "Second row"
+              }
+            ],
+            "template": [
+              {
+                "id": "transform-row-drag",
+                "type": "box",
+                "name": "[[Item.Name]]",
+                "text": "[[Item.Name]]",
+                "notes": "",
+                "x": 14,
+                "y": 12,
+                "rotation": 0,
+                "width": 140,
+                "height": 56,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#0f766e",
+                  "stroke": "#115e59",
+                  "strokeWidth": 1,
+                  "radius": 8,
+                  "color": "#ffffff",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "transform-row-drag-drag",
+                    "event": "drag",
+                    "name": "drag",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "transform-row-drag-drag-0",
+                        "type": "move",
+                        "move": {
+                          "targets": [
+                            {
+                              "target": {
+                                "kind": "this"
+                              },
+                              "mode": "drag",
+                              "x": {
+                                "text": "40"
+                              },
+                              "y": {
+                                "text": "20"
+                              },
+                              "trajectory": "straight",
+                              "easing": "none",
+                              "duration": 500
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "transform-row-note",
+                "type": "text",
+                "name": "Drag this row independently",
+                "text": "Drag this row independently",
+                "notes": "",
+                "x": 210,
+                "y": 22,
+                "rotation": 0,
+                "width": 320,
+                "height": 34,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#334155",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": []
+              }
+            ],
+            "itemHeight": 92,
+            "gap": 2
+          }
+        },
+        {
+          "id": "transform-frame",
+          "type": "inlineFrame",
+          "name": "",
+          "text": "",
+          "notes": "",
+          "inlineFrame": {
+            "hideBorders": false,
+            "scrolling": "auto",
+            "preview": {
+              "kind": "none"
+            },
+            "target": {
+              "kind": "page",
+              "pageId": "transform-child"
+            }
+          },
+          "x": 760,
+          "y": 520,
+          "rotation": 0,
+          "width": 312,
+          "height": 232,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "transform-footer",
+          "type": "text",
+          "name": "Restart the prototype to restore all positions, sizes and angles.",
+          "text": "Restart the prototype to restore all positions, sizes and angles.",
+          "notes": "",
+          "x": 48,
+          "y": 795,
+          "rotation": 0,
+          "width": 1000,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveSelection": "native-size",
+      "adaptiveBaseSize": {
+        "width": 0,
+        "height": 0
+      },
+      "adaptiveViews": []
+    },
+    {
+      "id": "transform-child",
+      "name": "Embedded motion",
+      "width": 310,
+      "height": 230,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "transform-child-title",
+          "type": "text",
+          "name": "Independent frame",
+          "text": "Independent frame",
+          "notes": "",
+          "x": 20,
+          "y": 12,
+          "rotation": 0,
+          "width": 270,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#334155",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "transform-child-drag",
+          "type": "box",
+          "name": "DRAG IN FRAME",
+          "text": "DRAG IN FRAME",
+          "notes": "",
+          "x": 30,
+          "y": 70,
+          "rotation": 0,
+          "width": 140,
+          "height": 56,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#0f766e",
+            "stroke": "#115e59",
+            "strokeWidth": 1,
+            "radius": 8,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "transform-child-drag-drag",
+              "event": "drag",
+              "name": "drag",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "transform-child-drag-drag-0",
+                  "type": "move",
+                  "move": {
+                    "targets": [
+                      {
+                        "target": {
+                          "kind": "this"
+                        },
+                        "mode": "drag",
+                        "x": {
+                          "text": "40"
+                        },
+                        "y": {
+                          "text": "20"
+                        },
+                        "trajectory": "straight",
+                        "easing": "none",
+                        "duration": 500
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveSelection": "native-size",
+      "adaptiveBaseSize": {
+        "width": 0,
+        "height": 0
+      },
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

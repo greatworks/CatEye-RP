@@ -1,0 +1,88 @@
+{
+  "reviewedAt": "2026-10-15T13:10:57.695Z",
+  "scope": "Integration review for this staged authoring change; final package acceptance is separately enforced by verify-adaptive-all-views.mjs.",
+  "blockingFindings": [],
+  "closedFindings": [
+    {
+      "id": "AAV-REVIEW-01",
+      "issue": "Mixed selection copies non-edited padding sides from the first widget and clears their view declarations.",
+      "resolution": "Inspector supplies single-side intent; App resolves that intent against each target. Equal-value targets retain all declarations. Original failed source and candidate bytes are retained.",
+      "evidence": [
+        "research/adaptive-all-views-independent-review.json",
+        "research/adaptive-all-views-correction-review.json",
+        ".build/adaptive-all-views-multiselect-red-e2e.json",
+        ".build/adaptive-all-views-focused-final-e2e.json"
+      ]
+    },
+    {
+      "id": "AAV-LEGACY-ASSERTION",
+      "issue": "Old test asserted full tuple storage after a local edit.",
+      "resolution": "Assert sparse storage plus complete effective tuple after save/reopen and unchanged Base. First complete run retained with one failure; final complete unit run passes."
+    },
+    {
+      "id": "AAV-P21-FIRST-ADD",
+      "issue": "A blanket global effect edit did not preserve the original first-effect branch.",
+      "resolution": "Empty prior effective state graph uses current-view slot; existing graphs use whole-map global update. Dedicated CIL evidence and model/browser cases retained."
+    }
+  ],
+  "limitations": [
+    "Original Axure GUI/canvas operations and pixel equivalence remain unverified; this stage uses static CIL evidence and independent product tests.",
+    "Native Layer/master/contained-owner, temporary provider, and named-style special propagation are not fully reproduced.",
+    "Arbitrary four-corner radii and four-side widths remain product extensions, not native uniform-value plus visibility-mask equivalence.",
+    "Complete RP/RPLIB import, native write-back and full Axure feature parity are unfinished."
+  ],
+  "evidence": [
+    {
+      "path": "research/adaptive-all-views-authoring-evidence.json",
+      "sha256": "4d446341488259f55c1ff3bccf70da4c966b2030901b6b28787917a5d3e532d7"
+    },
+    {
+      "path": "research/adaptive-all-views-effects-manifest.json",
+      "sha256": "d16100fb544976537b87fb956f3d7a8c5726d31a4e40821b0cb3cf8dd743d888"
+    },
+    {
+      "path": "research/adaptive-all-views-authoring-implementation.json",
+      "sha256": "147b8917b0c7ae4e1641521d114f32f6ab5535eb8b29b0cbcf09fbf74df92d0f"
+    },
+    {
+      "path": "research/adaptive-all-views-independent-review.json",
+      "sha256": "9727ba029b7ed9b2bcfe4cddc2cac807ce2cf1ca53911a8b31fa0f8809916616"
+    },
+    {
+      "path": "research/adaptive-all-views-padding-selection-correction.json",
+      "sha256": "3099a95d055a58ee3b4eed99954197036c8d841b0c26cfc2e8f8e9d3052b60d7"
+    },
+    {
+      "path": "research/adaptive-all-views-correction-review.json",
+      "sha256": "c718442ba5e48b995d81d0ac3f1e221a215b5711a751ba294d0fe2f5dcca21f5"
+    },
+    {
+      "path": ".build/adaptive-all-views-multiselect-red-binding.json",
+      "sha256": "22dbc479a8a3c23fcf2324c8fb48f249292f13a37770af706465d2d77561b6f5"
+    },
+    {
+      "path": ".build/adaptive-all-views-focused-final-e2e.json",
+      "sha256": "5e3385770810fe115d7ef0e42640eba31cee5b7e15340519e6da347e59503bb3"
+    },
+    {
+      "path": ".build/adaptive-all-views-unit-final.json",
+      "sha256": "fbe9de10781e27f28e590e4e0bcd744a0dccdb1aadb936b78d268991704aa55e"
+    },
+    {
+      "path": ".build/adaptive-all-views-runtime-red.json",
+      "sha256": "5f4d40818b569407891fbc139bd18fe740f69e3adc795013cdccbfbd0a355501"
+    },
+    {
+      "path": ".build/adaptive-all-views-unit.json",
+      "sha256": "19ad1fd9dc69457e90be0be86877d0c0da4aed562e6d8678c69490caf71f0ea8"
+    },
+    {
+      "path": ".build/adaptive-all-views-desktop-audit.json",
+      "sha256": "4640b97d9690abeba71f6e3cf2439def2a0932701d4c9f31b248875a2e239781"
+    },
+    {
+      "path": ".build/adaptive-all-views-visual-review.json",
+      "sha256": "d58e9c49faf7aeb950ebdc5586c16f8f1ed4d46ad892f1b323d9657f14c0b780"
+    }
+  ]
+}

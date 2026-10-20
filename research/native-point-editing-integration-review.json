@@ -1,0 +1,114 @@
+{
+  "reviewedAt": "2026-10-15T16:50:35.213Z",
+  "blockingFindings": [],
+  "productionChanges": [
+    {
+      "file": "src/App.tsx",
+      "sha256": "8bd415064cfbe7a237473e0e8eb3e83cfc5a0eb3573a0939a0d2654b0a9fc092",
+      "before": {
+        "path": ".build/before-native-point-editing/src/App.tsx",
+        "sha256": "0c403f7febd14ce1cffd89a295c6e4ab4afa9e433711e98d1f251b3c0b42f34a"
+      }
+    },
+    {
+      "file": "src/components/CanvasVectorTools.tsx",
+      "sha256": "1236da274e59e765ff247cdb0e5a3131f3eeb78c9c34ac55dbe1c2ed7d547225",
+      "before": {
+        "path": ".build/before-native-point-editing/src/components/CanvasVectorTools.tsx",
+        "sha256": "22bce24a12fd63cea6edead6dc1f87cce3fa0c33106b003034defe0bcf8a6734"
+      }
+    },
+    {
+      "file": "src/components/Inspector.tsx",
+      "sha256": "0a96d36e485ca5e3a47b09326c68f9e4709f7e8ecf1400178588fe90ba0b4d88",
+      "before": {
+        "path": ".build/before-native-point-editing/src/components/Inspector.tsx",
+        "sha256": "2ab40ccd6d9be601e516cb4633e171a84318e29c28d1016aab11366f3defbf58"
+      }
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "0581444169bd91244d6ab56dd2ad2850675fc54734f4b4b33ffbe8de8ec16a82",
+      "before": {
+        "path": ".build/before-native-point-editing/src/model/adaptive.ts",
+        "sha256": "4be2be441f5c48e5753a16bda4c8d0a92f8030a0ab9b3a911b9885148238a2a6"
+      }
+    },
+    {
+      "file": "src/model/vector-authoring.ts",
+      "sha256": "3a11a65829362183b40407adb5543dbc38dcf9560709578ee5d3f8dc19af697c",
+      "before": null
+    }
+  ],
+  "findings": [
+    "Five production files implement one editing geometry resolver, unsupported-entry reason, shared-content commit, and all authoring entry points. Runtime/renderers and native readers are unchanged.",
+    "Dedicated command preserves every source property except the target type/path. Derived ordinary adaptive geometry is shared deliberately; temporary state previews do not enter it.",
+    "Point entry/no-op/cancel are independent transaction policies; CIL evidence does not substitute for native GUI gesture observation.",
+    "First browser integration failures were floating-point-only oracles; retained red reports show observed values. Tests now compare every expected numeric coordinate with 1e-12 precision while other saved fields remain exact.",
+    "Old artifact bytes and evidence are preserved; the executable package tested is the package prepared for publication."
+  ],
+  "limitations": [
+    "Partial-border and independent-corner parameter editing is gated.",
+    "Native rebounding/rotation/AutoFit=false point-commit effects are not implemented.",
+    "Original UI screenshot capture times out; original pixel/interaction parity is unverified.",
+    "Full Axure parity remains incomplete."
+  ],
+  "sources": [
+    {
+      "path": "research/native-point-editing-evidence.json",
+      "sha256": "7b2847d851d8b6a41d2df3a9f36bf30f3b8a606db5a1975332c876da47369166"
+    },
+    {
+      "path": "research/native-point-editing-format-manifest.json",
+      "sha256": "bcb76945cd38de4ab3517bd24c42a61d6833492d9a9f56640ae8d8e9002e02fc"
+    },
+    {
+      "path": "research/native-point-editing-final-review.json",
+      "sha256": "30cdd73af8121c1ef1fd9c20806764e4d03b13f7c3e7c2971d6794a54fa9de4e"
+    },
+    {
+      "path": "research/native-point-editing-authoring-implementation.json",
+      "sha256": "f794419aad334d6d93ee0fb18f6475dfecd9eefdb1f32c7628acf3d19b60eb50"
+    },
+    {
+      "path": "research/native-point-editing-implementation.md",
+      "sha256": "33ea5bf2704d77a207834ff6f0aab0972eca10924e73b569c918778edeab1284"
+    },
+    {
+      "path": ".build/native-point-editing-unit-final.json",
+      "sha256": "ed8fba32fd8dfe1364ca4daa1f24a30b27a4ccb4719674465017980e2a7e2f73"
+    },
+    {
+      "path": ".build/native-point-editing-parser-final.tap",
+      "sha256": "7410be98c0315865623b8c859a1ff3463235ea760edfeaac830ad92e066b75da"
+    },
+    {
+      "path": ".build/native-point-editing-typecheck-run.json",
+      "sha256": "31eb27833c069a1822256882633157d1d556709b743046425c2ca07f4fbd3924"
+    },
+    {
+      "path": ".build/native-point-editing-validated-e2e.json",
+      "sha256": "257807d50df271ddc0c89106eea326fc057fd052eee679ed8c05313f37d23053"
+    },
+    {
+      "path": ".build/native-point-editing-release-e2e.json",
+      "sha256": "cab49e6ff3b69919c2547af16bf81b2322f64a883b0b985c32295e869fc16a26"
+    },
+    {
+      "path": ".build/native-point-editing-desktop-audit.json",
+      "sha256": "360541572ffec60b183c5ad0017dc8302c87802fab83c9c28372ddc1c0540a6b"
+    },
+    {
+      "path": ".build/native-point-editing-smoke-runs.json",
+      "sha256": "18f77349c48486cd1007f5d45124731e85f7b3e1859e05848307b8de56d1cfdb"
+    },
+    {
+      "path": ".build/native-point-editing-bundle-audit.json",
+      "sha256": "6c90566403c319b1cb0fdc772587abdf53f65fb0c4b3e853bf03027775b85c37"
+    },
+    {
+      "path": ".build/native-point-editing-visual-review.json",
+      "sha256": "a10e00be7deb92a6456f6dc406d91027e35b8e7b363ae7d7460b3d5d4b961ad0"
+    }
+  ]
+}

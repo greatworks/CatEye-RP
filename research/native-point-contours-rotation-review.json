@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-17T11:26:42.744Z",
+  "status": "pass",
+  "kind": "independent read-only rotation/topology implementation review",
+  "findings": [],
+  "sources": [
+    {
+      "path": "src/model/vector-commit.ts",
+      "sha256": "056eb17a8fdf60dc819a12b6b59c116b167a883acea75607dd8a8affce3a8fcc"
+    },
+    {
+      "path": "src/model/vector-contours.ts",
+      "sha256": "0fe9ab8aceb1bfcfefcf79de872e0726e86633873e4d72a120176c4ad600fafa"
+    },
+    {
+      "path": "src/model/vector-editing.ts",
+      "sha256": "5beb656467c33b73b6a0425bb003a78f2325127f6f4c4c2a7e3bc4b9b028512d"
+    },
+    {
+      "path": "src/model/vector.ts",
+      "sha256": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147"
+    },
+    {
+      "path": "src/model/vector-authoring.ts",
+      "sha256": "3a11a65829362183b40407adb5543dbc38dcf9560709578ee5d3f8dc19af697c"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "b6ad359478286e201469fcf26cc698076f0ecd08bf4dc386ca57b6ba96611da0"
+    },
+    {
+      "path": "src/components/CanvasVectorTools.tsx",
+      "sha256": "ce1af980044c8adb9f90b38c4da7b428bdb7adaaebf83662132af50b18096a27"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "c55baefbda6d61e6a6b880f5e306ed83298fccf1dfb5ecd43ea182340fe504d6"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c204576a681ad3e5bf8c9fe1f8d2ea0d36f4dd59be5b9118571744c307ecd109"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/native-point-contours-rotation-evidence.md",
+      "sha256": "915a637a5ee1ae19527dcf28e5f00cfe400ecc9ea740ee1c844d751bee678430"
+    },
+    {
+      "path": "research/native-point-contours-rotation-evidence.json",
+      "sha256": "6e8d853fe6f70a77a78214b909025a68a0c024d70c5de65655f4656ea65a94bc"
+    },
+    {
+      "path": "research/native-point-contours-topology-probes.json",
+      "sha256": "00d22ad1bc821e33bde7ecef15ce3e7edb8a5d1daf89c29d96243f18ad82c1d6"
+    },
+    {
+      "path": "research/native-point-contours-integration-review-probe.mjs",
+      "sha256": "43a84191786eeee0bd084adc173bcdcbb2c090c47c9b459bb187b208c5d386a7"
+    },
+    {
+      "path": "research/native-point-contours-integration-review-first.json",
+      "sha256": "0b6afc76655e133456c0a55f607df5c24921fc576a74d07c9f163adeaaf633d8"
+    },
+    {
+      "path": "research/native-point-contours-rotation-review-probe.mjs",
+      "sha256": "a95ffc65503e399d6ad2bf29a538063f411fa8e76b3f49dd1a04dbd3709cfcbc"
+    },
+    {
+      "path": "research/native-point-contours-rotation-review-probe.json",
+      "sha256": "89774f3c156cd4c79a9bdaa04cc816868c1e545bbd52f78ce10c5a084808c6ea"
+    },
+    {
+      "path": "research/native-point-contours-order-review-probe.mjs",
+      "sha256": "b35859300ebf3fbd8fd53be965b43dce2f254b5b9e73c83844f0af4418ab8e33"
+    },
+    {
+      "path": "research/native-point-contours-order-review-probe.json",
+      "sha256": "241d4ec223126a5c4ea419bd43c71aaa312b5d57d6760a1efd35a687ae172059"
+    },
+    {
+      "path": "research/native-point-contours-rotation-review-final-probe.mjs",
+      "sha256": "a2e4464c7bc9de401a44d2fbc2036ad9ab05f1d5ab236b4734db5031fcfd06e8"
+    },
+    {
+      "path": "research/native-point-contours-rotation-review-final-probe.json",
+      "sha256": "bd9e6d818ef7aa138cd4518aee6069e5f82f3b6836be0cd7a26a3cf660d9f52b"
+    },
+    {
+      "path": "research/native-point-contours-order-review-final-probe.mjs",
+      "sha256": "5912fb6e3225ff56d20a8c7f178d093a9fd8993a0874a9af350438d0fff3d316"
+    },
+    {
+      "path": "research/native-point-contours-order-review-final-probe.json",
+      "sha256": "70d16e4cbdd5be28ca3437fe93bbcd089fbd8af84fb0ab6c2bf8c4af6d49bb1e"
+    },
+    {
+      "path": "research/native-point-contours-rotation-review.md",
+      "sha256": "f785aa2c97a27e8397b37615c817bdcc2fb2eea15a3a5c3225d958abf9f0134b"
+    }
+  ],
+  "checks": {
+    "sourceDifferential": {
+      "passed": 69,
+      "total": 69
+    },
+    "boundedOperationOrder": {
+      "withinTolerance": 231,
+      "total": 231,
+      "discrepancies": 0
+    },
+    "sourceStableDuringBothRuns": true
+  },
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "productEdited": false,
+  "testsEdited": false,
+  "limits": [
+    "No claim of complete CLR floating point operation-order equivalence.",
+    "M/L/C/Z inactive native handles are outside the representation; the explicit adapter is retained.",
+    "General affine transforms, empty command arrays, native history and browser/package workflow are not covered by this read-only review."
+  ]
+}

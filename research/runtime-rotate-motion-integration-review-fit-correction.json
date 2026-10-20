@@ -1,0 +1,706 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-20T04:35:21.802Z",
+  "kind": "independent current product factory in NodeVM with deterministic timer; no vendor code, GUI, browser, or build executed",
+  "sources": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "d3ae996c5407e21fc3c944100850d2c3ed8a9db27e213e47a7991372c0bda95c"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "976ecdd306aedb50e29dde60dc274d84e75433cd7379ffd7a8f55b0d0edf10cc"
+    },
+    {
+      "path": "tests/runtime-rotate.test.ts",
+      "sha256": "9a1f6e55c14a5ecac2a252ea527e59f54d8ce96628a40396d09874e2534f1c03"
+    }
+  ],
+  "sourceStableDuringRun": true,
+  "probe": {
+    "path": "D:\\WSCodex\\REA\\research\\runtime-rotate-motion-integration-review-probe.mjs",
+    "sha256": "f3d18ece8f114dab5db7ed967f92c34f3811e1929e4d83d46ca914b1d32c8b5c"
+  },
+  "evidence": [
+    {
+      "path": "research/runtime-rotate-motion-evidence.json",
+      "sha256": "17d148d2efab657b6e1d9366645dfafe0a036fe39aa66509042081115ecfd63e"
+    },
+    {
+      "path": "research/runtime-rotate-motion-probes.json",
+      "sha256": "4175a7ba6360103caaba3dd4083b90cee8f1f2aa0b47ba344417038fdce2fa37"
+    }
+  ],
+  "checks": {
+    "total": 43,
+    "passed": 43,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "independent queued-start failure rejects its owner, not prior completed motion",
+      "passed": true,
+      "observed": {
+        "first": {
+          "status": "fulfilled"
+        },
+        "second": {
+          "status": "rejected",
+          "message": "Expression error: division by zero"
+        },
+        "angle": 90,
+        "pendingTimers": 0,
+        "passed": true
+      }
+    },
+    {
+      "name": "group logical angle is rolled back with a failed transaction",
+      "passed": true,
+      "observed": {
+        "failed": {
+          "status": "rejected",
+          "message": "Expression error: division by zero"
+        },
+        "retry": {
+          "status": "fulfilled"
+        },
+        "afterFailure": {
+          "x": 100,
+          "y": 100,
+          "rotation": 0
+        },
+        "afterRetry": {
+          "x": 200,
+          "y": 0,
+          "rotation": 90
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "selected shadow is used for initial orbit geometry",
+      "passed": true,
+      "observed": {
+        "status": {
+          "status": "fulfilled"
+        },
+        "position": {
+          "x": 120,
+          "y": 60,
+          "rotation": 90
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "negative shadow orbit preserves the separately cached moved origin across frames",
+      "passed": true,
+      "observed": {
+        "status": {
+          "status": "fulfilled"
+        },
+        "samples": [
+          {
+            "degree": 22.5,
+            "x": 98.45677970101053,
+            "y": 87.75829235416018
+          },
+          {
+            "degree": 45,
+            "x": 101.7157287525381,
+            "y": 75.85786437626905
+          },
+          {
+            "degree": 67.5,
+            "x": 109.28070170393448,
+            "y": 66.1104483483123
+          },
+          {
+            "degree": 90,
+            "x": 120.00000000000006,
+            "y": 60.00000000000003
+          }
+        ],
+        "expected": {
+          "x": 120,
+          "y": 60,
+          "rotation": 90
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "public expression geometry reads moved cache, not painted CSS location",
+      "passed": true,
+      "observed": {
+        "status": {
+          "status": "fulfilled"
+        },
+        "read": {
+          "status": "fulfilled"
+        },
+        "values": [
+          104.00000000000006,
+          34.00000000000003,
+          200,
+          100,
+          90
+        ],
+        "expected": [
+          104,
+          34,
+          200,
+          100,
+          90
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing linear at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 45,
+        "expected": 45,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing swing at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 26.360389693210717,
+        "expected": 26.360389693210717,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInQuad at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 11.25,
+        "expected": 11.25,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeOutQuad at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 78.75,
+        "expected": 78.75,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInOutQuad at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 22.5,
+        "expected": 22.5,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInCubic at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 2.8125,
+        "expected": 2.8125,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeOutCubic at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 104.0625,
+        "expected": 104.0625,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInOutCubic at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 11.25,
+        "expected": 11.25,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInQuart at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 0.703125,
+        "expected": 0.703125,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeOutQuart at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 123.046875,
+        "expected": 123.046875,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInOutQuart at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 5.625,
+        "expected": 5.625,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInQuint at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 0.17578125,
+        "expected": 0.17578125,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeOutQuint at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 137.28515625,
+        "expected": 137.28515625,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInOutQuint at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 2.8125,
+        "expected": 2.8125,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInExpo at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 0.0439453125,
+        "expected": 0.0439453125,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeOutExpo at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 147.9638671875,
+        "expected": 147.9638671875,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInOutExpo at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 1.40625,
+        "expected": 1.40625,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInSine at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 13.701684147968386,
+        "expected": 13.701684147968386,
+        "final": 179.99999999999997,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeOutSine at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 68.88301782571617,
+        "expected": 68.88301782571617,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInOutSine at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 26.360389693210717,
+        "expected": 26.360389693210717,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInCirc at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 5.715749420666234,
+        "expected": 5.715749420666234,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeOutCirc at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 119.05880899790658,
+        "expected": 119.05880899790658,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInOutCirc at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 12.057713659400527,
+        "expected": 12.057713659400527,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInElastic at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 2.8125,
+        "expected": 2.8125,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeOutElastic at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 202.5,
+        "expected": 202.5,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInOutElastic at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": -2.8125000000000036,
+        "expected": -2.8125000000000036,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInBack at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": -14.0625,
+        "expected": -14.0625,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeOutBack at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 154.6875,
+        "expected": 154.6875,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInOutBack at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": -11.25,
+        "expected": -11.25,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInBounce at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 4.921875000000001,
+        "expected": 4.921875000000001,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeOutBounce at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 85.078125,
+        "expected": 85.078125,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "retained easing easeInOutBounce at quarter progress",
+      "passed": true,
+      "observed": {
+        "quarter": 21.09375,
+        "expected": 21.09375,
+        "final": 180,
+        "status": {
+          "status": "fulfilled"
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "live fractional-angle getter differs from integer full turns",
+      "passed": true,
+      "observed": {
+        "actual": [
+          {
+            "angle": 720,
+            "result": 735,
+            "status": {
+              "status": "fulfilled"
+            }
+          },
+          {
+            "angle": 720.5,
+            "result": 15.5,
+            "status": {
+              "status": "fulfilled"
+            }
+          },
+          {
+            "angle": -90.5,
+            "result": 284.5,
+            "status": {
+              "status": "fulfilled"
+            }
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "name": "flat group angle survives an adaptive CSS reset",
+      "passed": true,
+      "observed": {
+        "first": {
+          "status": "fulfilled"
+        },
+        "second": {
+          "status": "fulfilled"
+        },
+        "afterReset": 12,
+        "angle": 102,
+        "passed": true
+      }
+    },
+    {
+      "name": "snapshot restore retains flat group To angle independently from member rotation",
+      "passed": true,
+      "observed": {
+        "firstTask": {
+          "status": "fulfilled"
+        },
+        "secondTask": {
+          "status": "fulfilled"
+        },
+        "angle": 180,
+        "frame": {
+          "x": 300,
+          "y": 100
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "snapshot restore retains negative shadow moved cache for a later offset action",
+      "passed": true,
+      "observed": {
+        "status": {
+          "status": "fulfilled"
+        },
+        "expected": {
+          "x": 160,
+          "y": 80,
+          "rotation": 180
+        },
+        "actual": {
+          "x": 160,
+          "y": 80,
+          "rotation": 180
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "Rotate completion parent-fit respects zero destination cache fallback",
+      "passed": true,
+      "observed": {
+        "status": {
+          "status": "fulfilled"
+        },
+        "before": {
+          "width": 211.60254037844388,
+          "height": 143.30127018922192
+        },
+        "after": {
+          "width": 211.60254037844388,
+          "height": 143.30127018922192
+        },
+        "expected": {
+          "width": 211.60254037844388,
+          "height": 143.30127018922195
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "Rotate completion emits Resize when fitting parent dimensions change",
+      "passed": true,
+      "observed": {
+        "status": {
+          "status": "fulfilled"
+        },
+        "after": {
+          "width": 150,
+          "height": 150
+        },
+        "resizeEvents": 1,
+        "expected": {
+          "width": 150,
+          "height": 150,
+          "resizeEvents": 1
+        },
+        "passed": true
+      }
+    }
+  ],
+  "limits": [
+    "Failure rollback is product policy, not an observed vendor transaction contract.",
+    "Flat sibling group support is an independent compatibility mapping.",
+    "Selected-shadow case only checks one instantaneous step; multi-step cache topology needs separate exact-source composition."
+  ]
+}

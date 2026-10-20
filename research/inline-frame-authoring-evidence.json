@@ -1,0 +1,84 @@
+{
+  "milestone": "inline-frame-authoring",
+  "status": "focused authoring checks passed; no full-suite or packaging run by this agent",
+  "sources": [
+    {
+      "url": "https://docs.axure.com/axure-rp/reference/inline-frames/",
+      "scope": "Authoring targets, border and scrolling controls, canvas previews, and opening links in specific or parent frames."
+    },
+    {
+      "path": "research/inline-frame-format-metadata.json",
+      "scope": "Default library frame dimensions, saved border/scroll/preview settings and enum values."
+    },
+    {
+      "path": "research/inline-frame-format-object-cil.json",
+      "scope": "Native constructor evidence: preview Custom differs from saved Default library preview None."
+    }
+  ],
+  "implementation": [
+    "src/App.tsx",
+    "src/components/Inspector.tsx",
+    "src/components/WidgetView.tsx",
+    "src/components/FrameTargetEditor.tsx",
+    "src/components/FrameTargetEditor.css"
+  ],
+  "authoringContract": {
+    "targetDialog": "Page, literal HTTP(S) URL or local-file path; Apply validates before one commit, Cancel leaves the document unchanged. Missing page references remain visible and preserved.",
+    "canvas": "Passive none/video/map/custom thumbnails only. No iframe is created and the target is not loaded by authoring thumbnails.",
+    "previewImages": "Custom preview accepts inline PNG/JPEG/WebP/GIF only, within the existing image budget. Video and map are independently drawn SVG illustrations.",
+    "mixedSelection": "Inline-frame configuration changes only the current frame; unrelated frames and form controls retain their data.",
+    "action": "Open link in frame offers only inline-frame widget targets or a separate Parent frame scope. Parent scope removes targetId.",
+    "incompleteActionReview": [
+      "Changing an action to openLinkInFrame initializes a complete page target and the first existing frame, or Parent scope if no frame exists.",
+      "The empty widget-target option is disabled; unavailable existing targets are retained rather than silently replaced.",
+      "The target dialog stores invalid or incomplete URL/file edits locally until validation succeeds; Cancel performs no action mutation.",
+      "Changing to another action clears frameTarget/frameScope along with the normal action-specific fields."
+    ]
+  },
+  "checks": [
+    {
+      "command": "npx vitest run tests/inline-frame-authoring.test.ts",
+      "result": "4 passed / 4",
+      "log": ".build/inline-frame-authoring-unit.log",
+      "coverage": "Passive rendering in all preview modes, runtime omission of author thumbnails, frame-specific Inspector controls, target summaries and target filtering."
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "exit 0",
+      "log": ".build/inline-frame-authoring-typecheck.log"
+    },
+    {
+      "command": "npx playwright test tests/e2e/inline-frame-authoring.spec.ts --output=test-results/inline-frame-authoring --reporter=list",
+      "result": "2 passed; 1 stopped at an incorrect option-disabled matcher",
+      "log": ".build/inline-frame-authoring-focused.log",
+      "coverage": "Library creation, double-click target editing rather than text editing, page/URL/file authoring, validation, Cancel/Apply/Undo/Redo, all canvas preview types, embedded custom image, mixed selection, real downloaded project save and reopen.",
+      "failureDisposition": "The trace showed <option value=\"\" disabled> while toBeDisabled reported enabled. Only the test assertion changed to toHaveJSProperty('disabled', true); no product behavior changed."
+    },
+    {
+      "command": "npx playwright test tests/e2e/inline-frame-authoring.spec.ts -g \"Open link in frame\" --output=test-results/inline-frame-authoring-action --reporter=list",
+      "result": "1 passed / 1; exit 0; all three distinct authoring workflows have passed across the two batches",
+      "log": ".build/inline-frame-authoring-action.log",
+      "coverage": "Missing page preservation, frame-only target picker, validated URL action target, atomic cancellation, Parent scope, undo/redo and downloaded project save/reopen."
+    }
+  ],
+  "boundaries": [
+    "No original Axure GUI capture is available; these checks demonstrate this implementation's behavior, not pixel-equivalent native UI.",
+    "New frame preview None is aligned with the real Default library object. The native constructor uses Custom, so None is not claimed to be the native factory default.",
+    "Local file paths are saved literally; files are not copied or embedded. An HTTP-served browser preview cannot load local-file targets.",
+    "Authoring checks assert no iframe and zero requests to the entered test target host. Actual embedded-page/URL/file runtime behavior is covered separately by the runtime owner.",
+    "This agent did not execute a full browser suite, production build, Windows packaging or desktop smoke."
+  ],
+  "testFiles": [
+    "tests/inline-frame-authoring.test.ts",
+    "tests/e2e/inline-frame-authoring.spec.ts"
+  ],
+  "sourceSha256": {
+    "src/App.tsx": "a38619c0b04451538eb42ec27ac30e36e30908b5b30acdcfe4277084cfb6ee84",
+    "src/components/Inspector.tsx": "84a8addfe996512ac9679cbbf89baf722d1d5dd9be83cd6a0a0dc3c57b1957ed",
+    "src/components/WidgetView.tsx": "034fd22afd5484f6f366755aafab24c71c71d37279c4d95a4ec8885f958d10f1",
+    "src/components/FrameTargetEditor.tsx": "9cb217139dba92074e8e56b874bd84d27a96a32d11777319e86d8e0e79211e37",
+    "src/components/FrameTargetEditor.css": "9af86a2628f221a567a4f9c85705a9d0a0064a0fc64e2218fd6291a3fe3441fa",
+    "tests/inline-frame-authoring.test.ts": "1e84f0c0865e5cdea3bb24a8db93c5c7404a13e88b93a968e1a88adf28f50152",
+    "tests/e2e/inline-frame-authoring.spec.ts": "d4b108aeb4e6190dc9747ebc68d24cf01c5bfb972b13c6de532a90b963a12fa1"
+  }
+}

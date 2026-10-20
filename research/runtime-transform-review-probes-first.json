@@ -1,0 +1,296 @@
+{
+  "capturedAt": "2026-10-20T05:28:56.320Z",
+  "execution": "Pinned original complete expr/sto/variables + exact action helper in Node VM; current source loaded with Vite SSR, plus serialized interpreter. No browser or DLL execution.",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6",
+      "bytes": 29187
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\sto.js",
+      "sha256": "c1ff17b0ed8a2e3a34cba550c7f4e9447827d131e38542d397e686c0e0b6b9b6",
+      "bytes": 9159
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\variables.js",
+      "sha256": "91c71787560b88e597b6baf934bd68075597901afccf4787b6aa9d8c43453188",
+      "bytes": 6971
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    }
+  ],
+  "implementation": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "116e312dabdda7f7279b29be23c4fbd29733b9fde441c4079efc5cdf49d394c8",
+      "bytes": 20679
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "fffd2ad491663cdbf9680641ecaff2587a7520f751d8b952c20738328c7caa49",
+      "bytes": 104678
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "8ced8724a1e48ca0e93c6cc84ce94739063dd05ca0e8b3fc0ee1538d4f4eaa88",
+      "bytes": 18563
+    },
+    {
+      "path": "src/model/components.ts",
+      "sha256": "b3f1119dbd80d735eac9c4ca4648fd035753895855458141878ac5287035101e",
+      "bytes": 9673
+    },
+    {
+      "path": "tests/runtime-transform-model.test.ts",
+      "sha256": "5c0657f6823882253ca9ad481e53a78fc2ac04bb0034e4ea2e802308b3fcd089",
+      "bytes": 10332
+    },
+    {
+      "path": "tests/expressions.test.ts",
+      "sha256": "c22d280ab8d3514c2f74aca0c1d85e03df51f1ad838d766a78983256c7c47815",
+      "bytes": 18195
+    },
+    {
+      "path": "tests/runtime-transform-expressions.test.ts",
+      "sha256": "ba5624819f961e1ee3fc21f442efb873f42943ef1fa3fbc3f743e3d06703beb9",
+      "bytes": 4424
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/runtime-transform-expression-probe.mjs",
+      "sha256": "0780410a9ba6c72fa6a2aa91f76fd6c9813214bb66861a8cf5c2c458ad6deb53",
+      "bytes": 10089
+    },
+    {
+      "path": "research/runtime-transform-expression-final-probes.json",
+      "sha256": "570310aa1dc1ad2395a4351b0baa19e8ba8e5b43d5cbb0fb6bef6ff6b12a86f7",
+      "bytes": 8925
+    },
+    {
+      "path": "research/runtime-transform-bindings-evidence.json",
+      "sha256": "f7ecf150e9f0f2c81ed41392cfaf1666f31471660c231c73251b3b3cb105cc92",
+      "bytes": 301366
+    }
+  ],
+  "script": {
+    "path": "research\\runtime-transform-review-probe.mjs",
+    "sha256": "d1df4c4bdb7174dcbec4eb6fc41dad8d6bf1ab200f6956776e0b7fa3c4dfed52",
+    "bytes": 9809
+  },
+  "summary": {
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "confirmedMismatches": 4
+  },
+  "results": [
+    {
+      "name": "RTRANS-REVIEW-01 missing.width || 10",
+      "passed": true,
+      "observed": {
+        "native": {
+          "direct": {
+            "kind": "error",
+            "name": "TypeError"
+          },
+          "stringLiteral": "[[missing.width || 10]]"
+        },
+        "module": {
+          "kind": "value",
+          "value": "10"
+        },
+        "serialized": {
+          "kind": "value",
+          "value": "10"
+        },
+        "parity": false,
+        "status": "confirmed mismatch"
+      }
+    },
+    {
+      "name": "RTRANS-REVIEW-01 (!missing.width) + 10",
+      "passed": true,
+      "observed": {
+        "native": {
+          "direct": {
+            "kind": "error",
+            "name": "TypeError"
+          },
+          "stringLiteral": "[[(!missing.width) + 10]]"
+        },
+        "module": {
+          "kind": "value",
+          "value": "11"
+        },
+        "serialized": {
+          "kind": "value",
+          "value": "11"
+        },
+        "parity": false,
+        "status": "confirmed mismatch"
+      }
+    },
+    {
+      "name": "RTRANS-REVIEW-01 (missing.width == 0) + 10",
+      "passed": true,
+      "observed": {
+        "native": {
+          "direct": {
+            "kind": "error",
+            "name": "TypeError"
+          },
+          "stringLiteral": "[[(missing.width == 0) + 10]]"
+        },
+        "module": {
+          "kind": "value",
+          "value": "10"
+        },
+        "serialized": {
+          "kind": "value",
+          "value": "10"
+        },
+        "parity": false,
+        "status": "confirmed mismatch"
+      }
+    },
+    {
+      "name": "RTRANS-REVIEW-01 missing.width && 10",
+      "passed": true,
+      "observed": {
+        "native": {
+          "direct": {
+            "kind": "error",
+            "name": "TypeError"
+          },
+          "stringLiteral": "[[missing.width && 10]]"
+        },
+        "module": {
+          "kind": "value",
+          "value": "undefined"
+        },
+        "serialized": {
+          "kind": "value",
+          "value": "undefined"
+        },
+        "parity": false,
+        "status": "confirmed mismatch"
+      }
+    },
+    {
+      "name": "undefined control false && missing.width",
+      "passed": true,
+      "observed": {
+        "native": "false",
+        "actual": "false"
+      }
+    },
+    {
+      "name": "undefined control true || missing.width",
+      "passed": true,
+      "observed": {
+        "native": "true",
+        "actual": "true"
+      }
+    },
+    {
+      "name": "undefined control missing.width + 10",
+      "passed": true,
+      "observed": {
+        "native": "undefined10",
+        "actual": "undefined10"
+      }
+    },
+    {
+      "name": "undefined control missing.width - 10",
+      "passed": true,
+      "observed": {
+        "native": "NaN",
+        "actual": "NaN"
+      }
+    },
+    {
+      "name": "clone scopes across nested panel and hyperlink actions",
+      "passed": true,
+      "observed": {
+        "localRemapped": true,
+        "externalPreserved": true,
+        "quotedTextPreserved": true,
+        "originalUnchanged": true
+      }
+    },
+    {
+      "name": "unsafe alias constructor rejected",
+      "passed": true,
+      "observed": {
+        "rejected": true
+      }
+    },
+    {
+      "name": "unsafe alias __proto__ rejected",
+      "passed": true,
+      "observed": {
+        "rejected": true
+      }
+    },
+    {
+      "name": "unsafe alias prototype rejected",
+      "passed": true,
+      "observed": {
+        "rejected": true
+      }
+    },
+    {
+      "name": "no arbitrary evaluation track.constructor",
+      "passed": true,
+      "observed": {
+        "rejectedBeforeProvider": true
+      }
+    },
+    {
+      "name": "no arbitrary evaluation globalThis.process",
+      "passed": true,
+      "observed": {
+        "rejectedBeforeProvider": true
+      }
+    },
+    {
+      "name": "no arbitrary evaluation window.location",
+      "passed": true,
+      "observed": {
+        "rejectedBeforeProvider": true
+      }
+    },
+    {
+      "name": "no arbitrary evaluation process.exit()",
+      "passed": true,
+      "observed": {
+        "rejectedBeforeProvider": true
+      }
+    },
+    {
+      "name": "no arbitrary evaluation (1).constructor(\"x\")",
+      "passed": true,
+      "observed": {
+        "rejectedBeforeProvider": true
+      }
+    },
+    {
+      "name": "no arbitrary evaluation value(\"__proto__\")",
+      "passed": true,
+      "observed": {
+        "rejectedBeforeProvider": true
+      }
+    }
+  ],
+  "limitations": [
+    "Controlled STO carriers are not generated by the original native expression compiler.",
+    "Geometry/text providers and event context use the explicitly documented parent probe facade.",
+    "The in-progress core action consumer and browser were intentionally not reviewed.",
+    "A rejected invalid input is an independent bounded-product policy; it does not prove full original error handling."
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "version": 1,
+  "target": "Axure RP 11.0.0.4150",
+  "method": "Read-only static source plus isolated SHA-pinned function probes with explicit mocks; no original app execution",
+  "files": [
+    {
+      "name": "repeater.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "bytes": 122627,
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b"
+    },
+    {
+      "name": "action.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "bytes": 109376,
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3"
+    },
+    {
+      "name": "doc.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "bytes": 41976,
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1"
+    },
+    {
+      "name": "variables.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\variables.js",
+      "bytes": 6971,
+      "sha256": "91c71787560b88e597b6baf934bd68075597901afccf4787b6aa9d8c43453188"
+    },
+    {
+      "name": "sto.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\sto.js",
+      "bytes": 9159,
+      "sha256": "c1ff17b0ed8a2e3a34cba550c7f4e9447827d131e38542d397e686c0e0b6b9b6"
+    }
+  ],
+  "excerpts": [
+    {
+      "file": "repeater.js",
+      "startLine": 13,
+      "endLine": 44,
+      "purpose": "initialization",
+      "text": "    //This is a mapping of current editItems\n    var repeaterToEditItems = {};\n    //This is a mapping of current filters\n    var repeaterToFilters = {};\n    // This is a mapping of current sorts\n    var repeaterToSorts = {};\n    // This is a mapping of repeater page info\n    var repeaterToPageInfo = {};\n\n    //Hopefully this can be simplified, but for now I think 3 are needed.\n    //This is the data set that is owned by this repeater. The repeater may or may not reference this data set, and others can reference it.\n    var repeaterToLocalDataSet = {};\n    //This is the data set referenced by the repeater. It is not a copy of the local data set, but a reference to a local data set (or eventually a global data set could be referenced).\n    var repeaterToCurrentDataSet = {};\n    //This is a copy of the current data set, that is replaced whenever a set or refresh is done.\n    var repeaterToActiveDataSet = {};\n    var _loadRepeaters = function() {\n        $ax(function(obj) { \n            return $ax.public.fn.IsRepeater(obj.type);\n        }).each(function(obj, repeaterId) {\n            repeaterToLocalDataSet[repeaterId] = $ax.deepCopy(obj.data);\n            repeaterToLocalDataSet[repeaterId].props = obj.dataProps;\n            repeaterToEditItems[repeaterId] = [];\n\n            _initPageInfo(obj, repeaterId);\n\n            _setRepeaterDataSet(repeaterId, repeaterId);\n            var initialItemIds = obj.repeaterPropMap.itemIds;\n            for (var i = 0; i < initialItemIds.length; i++) $ax.addItemIdToRepeater(initialItemIds[i], repeaterId);\n            $ax.visibility.initRepeater(repeaterId);\n        });\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 59,
+      "endLine": 84,
+      "purpose": "dataset-reference-and-reset",
+      "text": "    var repeatersHaveNewDataSet = [];\n    var _setRepeaterDataSet = function(repeaterId, dataSetId) {\n        //TODO: No idea about how global data sets will be handled...\n        repeaterToCurrentDataSet[repeaterId] = repeaterToLocalDataSet[dataSetId];\n        repeaterToActiveDataSet[repeaterId] = getActiveDataSet(repeaterId);\n        repeaterToFilters[repeaterId] = [];\n        repeaterToSorts[repeaterId] = [];\n\n\n        // Not using this currently\n        //        if(repeatersHaveNewDataSet.indexOf(repeaterId) == -1) repeatersHaveNewDataSet[repeatersHaveNewDataSet.length] = repeaterId;\n    };\n    _repeaterManager.setDataSet = _setRepeaterDataSet;\n\n    var _refreshRepeater = function(repeaterId, eventInfo, refreshType, itemsPregen) {\n        if(!refreshType) refreshType = _refreshType.reset; // Set default\n        if(!repeatersReady) {\n            fullRefresh[repeaterId] = true;\n            return;\n        }\n\n        //disabling pregen\n        itemsPregen = false;\n\n        // Reset selected/disabled dictionaries upon reset, if necessary (reset must, persist can't, and preeval doesn't care because it hasn't been set up yet.\n        if(refreshType == _refreshType.reset) $ax.style.clearStateForRepeater(repeaterId);"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 605,
+      "endLine": 625,
+      "purpose": "display-properties",
+      "text": "    _repeaterManager.setDisplayProps = function(obj, repeaterId, itemIndex) {\n        var data = repeaterToActiveDataSet[repeaterId];\n        var info = repeaterToPageInfo[repeaterId];\n        var start = 0;\n        var end = data.length;\n        if(!info.noLimit) {\n            start = Math.min(end, info.itemsPerPage * (info.currPage - 1));\n            end = Math.min(end, start + info.itemsPerPage);\n        }\n        var count = end - start;\n        var index = -1;\n        for(var i = 0; i < count; i++) {\n            if(data[start + i].index == itemIndex) index = i + 1;\n        }\n        if(index == -1) return;\n        obj.index = index;\n        obj.isfirst = index == 1;\n        obj.islast = index == end - start;\n        obj.iseven = index % 2 == 0;\n        obj.isodd = index % 2 == 1;\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 671,
+      "endLine": 693,
+      "purpose": "copy-filter-sort",
+      "text": "    var getActiveDataSet = function(repeaterId) {\n        var active = $ax.deepCopy(repeaterToCurrentDataSet[repeaterId]);\n        // Set up 1 indexing each item.\n        for(var i = 0; i < active.length; i++) active[i].index = i + 1;\n        return active;\n    };\n\n    const SORT_TYPE_NUMERIC = 0x1;\n    const SORT_TYPE_ALPHA = 0x2;\n    const SORT_TYPE_ALPHA_CASE = 0x3;\n    const SORT_TYPE_ALPHANUMERIC = 0x4;\n    const SORT_TYPE_DATE1 = 0x10;\n    const SORT_TYPE_DATE2 = 0x11;\n    const SORT_TYPE_DATE3 = 0x12;\n\n    var getOrderedIds = function(repeaterId, eventInfo) {\n        var data = repeaterToActiveDataSet[repeaterId] = getActiveDataSet(repeaterId);\n\n        // Filter first so less to sort\n        applyFilter(repeaterId, data, eventInfo);\n\n        // Sort next\n        var sorts = repeaterToSorts[repeaterId] || [];"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 929,
+      "endLine": 941,
+      "purpose": "filter-expression-context",
+      "text": "    var _evaluateFilter = function (filter, eventInfo) {\n        const result = $ax.expr.evaluateExpr(filter.filter ? filter.filter : filter.condition, eventInfo);\n        if (result === true) return true;\n        return result == 'true';\n    };\n\n    var _updateEventInfoForFilter = function (repeaterId, filter, eventInfo, idToWidgetInfo, itemIndex) {\n        eventInfo.targetElement = _createElementId(repeaterId, itemIndex);\n        eventInfo.srcElement = filter.thisId;\n        if (!idToWidgetInfo[eventInfo.srcElement]) idToWidgetInfo[eventInfo.srcElement] = $ax.getWidgetInfo(eventInfo.srcElement);\n        eventInfo.thiswidget = idToWidgetInfo[eventInfo.srcElement];\n        eventInfo.item = $ax.getItemInfo(eventInfo.srcElement);\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1015,
+      "endLine": 1068,
+      "purpose": "pagination-does-not-mutate-marks",
+      "text": "    var _setRepeaterToPage = function(repeaterId, type, value, eventInfo) {\n        var pageInfo = repeaterToPageInfo[repeaterId];\n        // page doesn't matter if there is no limit.\n        if(pageInfo.noLimit) return;\n\n        var dataSet = repeaterToActiveDataSet[repeaterId];\n        if(!dataSet) dataSet = repeaterToCurrentDataSet[repeaterId];\n        var lastPage = Math.max(1, Math.ceil(dataSet.length / pageInfo.itemsPerPage));\n\n        if(type == 'Value') {\n            var val = Number($ax.expr.evaluateExpr(value, eventInfo));\n            // if invalid, default to 1, otherwise, clamp the value\n            if(isNaN(val)) val = 1;\n            else if(val < 1) val = 1;\n            else if(val > lastPage) val = lastPage;\n\n            pageInfo.currPage = val;\n        } else if(type == 'Previous') {\n            if(pageInfo.currPage > 1) pageInfo.currPage--;\n        } else if(type == 'Next') {\n            if(pageInfo.currPage < lastPage) pageInfo.currPage++;\n        } else if(type == 'Last') {\n            pageInfo.currPage = lastPage;\n        } else {\n            console.log('Unknown type');\n        }\n    };\n    _repeaterManager.setRepeaterToPage = _setRepeaterToPage;\n\n    var _setNoItemLimit = function(repeaterId) {\n        var pageInfo = repeaterToPageInfo[repeaterId];\n        delete pageInfo.currPage;\n        delete pageInfo.itemsPerPage;\n        pageInfo.noLimit = true;\n    };\n    _repeaterManager.setNoItemLimit = _setNoItemLimit;\n\n    var _setItemLimit = function(repeaterId, value, eventInfo) {\n        var pageInfo = repeaterToPageInfo[repeaterId];\n\n        if(pageInfo.noLimit) {\n            pageInfo.noLimit = false;\n            pageInfo.currPage = 1;\n        }\n\n        var oldTarget = eventInfo.targetElement;\n        eventInfo.targetElement = repeaterId;\n        var itemLimit = Number($ax.expr.evaluateExpr(value, eventInfo));\n        eventInfo.targetElement = oldTarget;\n        if(isNaN(itemLimit)) itemLimit = 20;\n        else if(itemLimit < 1) itemLimit = 1;\n        pageInfo.itemsPerPage = itemLimit;\n    };\n    _repeaterManager.setItemLimit = _setItemLimit;"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1291,
+      "endLine": 1309,
+      "purpose": "column-data-live-read",
+      "text": "    var _getDataFromDataSet = function (eventInfo, repeaterId, itemId, propName, type) {\n        var row = undefined;\n        var deleteMap = eventInfo && eventInfo.repeaterDeleteMap && eventInfo.repeaterDeleteMap[repeaterId];\n        if(deleteMap) row = deleteMap.idToRow[itemId];\n\n        if(!row) {\n            var itemNum = _getRealItemId(eventInfo, repeaterId, Number(itemId));\n            row = repeaterToCurrentDataSet[repeaterId][itemNum];\n        }\n        // Default to obj with text as empty string, as we don't generate the data for empty props\n        var data = row[propName] || { text: '' };\n        //For now text is always the default. May change this to depend on context.\n        switch(type) {\n            case 'data': return data.type == 'text' ? data.text : data\n            case 'img': return (data.img && data.img[$ax.adaptive.getSketchKey()]) || data.text;\n            default: return (type && data[type]) || data.text;\n        }\n        //return type == 'data' && data.type != 'text' ? data : (type && data[type]) || data['text'];\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1318,
+      "endLine": 1481,
+      "purpose": "row-mutation-and-mark-membership",
+      "text": "    var _getEventDeleteData = function(eventInfo, repeaterId) {\n        var repeaterDeleteMap = eventInfo.repeaterDeleteMap;\n        if(!repeaterDeleteMap) repeaterDeleteMap = eventInfo.repeaterDeleteMap = {};\n\n        var myDeleteMap = repeaterDeleteMap[repeaterId];\n        if(!myDeleteMap) {\n            myDeleteMap = repeaterDeleteMap[repeaterId] = {};\n            myDeleteMap.deletedIds = [];\n            myDeleteMap.idToRow = {};\n        }\n\n        return myDeleteMap;\n    };\n\n    var _getRealItemId = function(eventInfo, repeaterId, itemId) {\n        var deletedBefore = 0;\n        var map = eventInfo.repeaterDeleteMap && eventInfo.repeaterDeleteMap[repeaterId];\n        var deletedIds = map && map.deletedIds;\n        if(!deletedIds) return itemId - 1;\n\n        for(var i = 0; i < deletedIds.length; i++) if (deletedIds[i] < itemId) deletedBefore++;\n        return itemId - deletedBefore - 1;\n    }\n\n    var _addItemToDataSet = function(repeaterId, row, itemEventInfo) {\n        itemEventInfo.data = true;\n        var oldTarget = itemEventInfo.targetElement;\n        itemEventInfo.targetElement = repeaterId;\n        var dataSet = repeaterToLocalDataSet[repeaterId];\n\n        for(var propName in row) {\n            if(!row.hasOwnProperty(propName)) continue;\n            var prop = row[propName];\n            if(prop.type == 'literal') {\n                var retval = $ax.expr.evaluateExpr(prop.literal, itemEventInfo);\n                if(typeof (retval) == 'string' || retval instanceof Date) retval = { type: 'text', text: retval };\n                row[propName] = retval;\n            }\n        }\n\n        itemEventInfo.targetElement = oldTarget;\n        dataSet[dataSet.length] = row;\n        itemEventInfo.data = false;\n    };\n    _repeaterManager.addItem = _addItemToDataSet;\n\n    var _deleteItemsFromDataSet = function(repeaterId, eventInfo, type, rule) {\n        var dataSet = repeaterToCurrentDataSet[repeaterId];\n        var deleteDataMap = _getEventDeleteData(eventInfo, repeaterId);\n        var items;\n\n        // Should always be this, marked, or rule.\n        if(type == 'this') items = [_getItemIdFromElementId(eventInfo.srcElement)];\n        else if(type == 'marked') items = $ax.deepCopy(repeaterToEditItems[repeaterId]);\n        else {\n            // This should be rule\n            var visibleData = repeaterToCurrentDataSet[repeaterId];\n            items = [];\n            var oldTarget = eventInfo.targetElement;\n            for(var i = 0; i < visibleData.length + deleteDataMap.deletedIds.length; i++) {\n                var index = i + 1;\n                if(deleteDataMap.deletedIds.indexOf(index) != -1) continue;\n\n                eventInfo.targetElement = _createElementId(repeaterId, index);\n                if($ax.expr.evaluateExpr(rule, eventInfo).toLowerCase() != 'true') continue;\n                items.push(index);\n            }\n            eventInfo.targetElement = oldTarget;\n        }\n        // Want them decending\n        items.sort(function(a, b) { return b - a; });\n        var editItems = repeaterToEditItems[repeaterId];\n\n        for(i = 0; i < items.length; i++) {\n            var itemId = items[i];\n\n            // Don't delete already deletedItem\n            if(deleteDataMap.deletedIds.indexOf(itemId) != -1) continue;\n            \n            var deletedRow = $ax.splice(dataSet, _getRealItemId(eventInfo, repeaterId, itemId), 1)[0];\n            deleteDataMap.deletedIds.push(itemId);\n            deleteDataMap.idToRow[itemId] = deletedRow;\n            for(var j = editItems.length - 1; j >= 0; j--) {\n                var editItem = editItems[j];\n                if(editItem == itemId) $ax.splice(editItems, j, 1);\n                else if(editItem > itemId) editItems[j] = editItem - 1;\n            }\n        }\n    };\n    _repeaterManager.deleteItems = _deleteItemsFromDataSet;\n\n    var _updateEditItemsInDataSet = function(repeaterId, propMap, eventInfo, type, rule) {\n        var oldTarget = eventInfo.targetElement;\n        var dataSet = repeaterToCurrentDataSet[repeaterId];\n        var items;\n\n        // Should always be this, marked, or rule.\n        if(type == 'this') items = [_getItemIdFromElementId(eventInfo.srcElement)];\n        else if(type == 'marked') items = repeaterToEditItems[repeaterId];\n        else {\n            // This should be rule\n            var currData = repeaterToCurrentDataSet[repeaterId];\n            items = [];\n            oldTarget = eventInfo.targetElement;\n            for(var i = 0; i < currData.length; i++) {\n                var index = i + 1;\n                eventInfo.targetElement = _createElementId(repeaterId, index);\n                if($ax.expr.evaluateExpr(rule, eventInfo).toLowerCase() != 'true') continue;\n                items.push(index);\n            }\n            eventInfo.targetElement = oldTarget;\n        }\n\n        eventInfo.data = true;\n        for(var prop in propMap) {\n            if(!propMap.hasOwnProperty(prop)) continue;\n            for(i = 0; i < items.length; i++) {\n                var data = propMap[prop];\n                var item = items[i];\n                if(data.type == 'literal') {\n                    eventInfo.targetElement = _createElementId(repeaterId, item);\n                    data = $ax.expr.evaluateExpr(data.literal, eventInfo);\n                    if(typeof (data) == 'object' && data.isWidget) data = data.text;\n                    if(typeof (data) == 'string') data = { type: 'text', text: data };\n                }\n                dataSet[_getRealItemId(eventInfo, repeaterId, item)][prop] = data;\n            }\n        }\n        eventInfo.targetElement = oldTarget;\n        eventInfo.data = false;\n    };\n    _repeaterManager.updateEditItems = _updateEditItemsInDataSet;\n\n    var _getAllItemIds = function(repeaterId) {\n        var retval = [];\n        var currDataSet = repeaterToCurrentDataSet[repeaterId];\n        for(var i = 0; i < currDataSet.length; i++) retval.push(i + 1);\n        return retval;\n    };\n    _repeaterManager.getAllItemIds = _getAllItemIds;\n\n    var _addEditItemToRepeater = function(repeaterId, itemIds) {\n        for(var i = 0; i < itemIds.length; i++) {\n            var itemId = Number(itemIds[i]);\n            var items = repeaterToEditItems[repeaterId];\n            if(items.indexOf(itemId) == -1) items[items.length] = itemId;\n        }\n    };\n    _repeaterManager.addEditItems = _addEditItemToRepeater;\n\n    var _removeEditItemFromRepeater = function(repeaterId, itemIds) {\n        for(var i = 0; i < itemIds.length; i++) {\n            var itemId = itemIds[i];\n            var items = repeaterToEditItems[repeaterId];\n            var index = items.indexOf(Number(itemId));\n            if(index != -1) $ax.splice(items, index, 1);\n        }\n    };\n    _repeaterManager.removeEditItems = _removeEditItemFromRepeater;\n\n    _repeaterManager.isEditItem = function(repeaterId, itemId) {\n        var items = repeaterToEditItems[repeaterId];\n        return items.indexOf(Number(itemId)) != -1;\n    };"
+    },
+    {
+      "file": "action.js",
+      "startLine": 128,
+      "endLine": 140,
+      "purpose": "refresh-guard",
+      "text": "    var _refreshing = [];\n    _action.refreshStart = function(repeaterId) { _refreshing.push(repeaterId); };\n    _action.refreshEnd = function() { _refreshing.pop(); };\n\n    // TODO: [ben] Consider moving this to repeater.js\n    var _repeatersToRefresh = _action.repeatersToRefresh = [];\n    var _ignoreAction = function(repeaterId) {\n        for(var i = 0; i < _refreshing.length; i++) if(_refreshing[i] == repeaterId) return true;\n        return false;\n    };\n\n    var _addRefresh = function(repeaterId) {\n        if(_repeatersToRefresh.indexOf(repeaterId) == -1) _repeatersToRefresh.push(repeaterId);"
+    },
+    {
+      "file": "action.js",
+      "startLine": 1745,
+      "endLine": 1785,
+      "purpose": "mark-unmark-action",
+      "text": "    _actionHandlers.modifyDataSetEditItems = function(eventInfo, actions, index) {\n        var action = actions[index];\n        var add = action.repeatersToAddTo;\n        var repeaters = add || action.repeatersToRemoveFrom;\n        var itemId;\n        for(var i = 0; i < repeaters.length; i++) {\n            var data = repeaters[i];\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var id = $ax.getElementIdsFromPath(data.path, eventInfo)[0];\n            if(!id) continue;\n\n            if(data.type == 'this') {\n                var scriptId = $ax.repeater.getScriptIdFromElementId(eventInfo.srcElement);\n                itemId = $ax.repeater.getItemIdFromElementId(eventInfo.srcElement);\n                var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);\n                if(add) $ax.repeater.addEditItems(repeaterId, [itemId]);\n                else $ax.repeater.removeEditItems(repeaterId, [itemId]);\n            } else if(data.type == 'all') {\n                var allItems = $ax.repeater.getAllItemIds(id);\n                if(add) $ax.repeater.addEditItems(id, allItems);\n                else $ax.repeater.removeEditItems(id, allItems);\n            } else {\n                var oldTarget = eventInfo.targetElement;\n                var itemIds = $ax.repeater.getAllItemIds(id);\n                var itemIdsToAdd = [];\n                for(var j = 0; j < itemIds.length; j++) {\n                    itemId = itemIds[j];\n                    eventInfo.targetElement = $ax.repeater.createElementId(id, itemId);\n                    if($ax.expr.evaluateExpr(data.rule, eventInfo) == \"true\") {\n                        itemIdsToAdd[itemIdsToAdd.length] = String(itemId);\n                    }\n                    eventInfo.targetElement = oldTarget;\n                }\n                if(add) $ax.repeater.addEditItems(id, itemIdsToAdd);\n                else $ax.repeater.removeEditItems(id, itemIdsToAdd);\n            }\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };"
+    },
+    {
+      "file": "action.js",
+      "startLine": 1793,
+      "endLine": 1839,
+      "purpose": "add-delete-update-refresh",
+      "text": "    _actionHandlers.addItemsToDataSet = function(eventInfo, actions, index) {\n        var action = actions[index];\n        for(var i = 0; i < action.dataSetsToAddTo.length; i++) {\n            var datasetInfo = action.dataSetsToAddTo[i];\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var id = $ax.getElementIdsFromPath(datasetInfo.path, eventInfo)[0];\n            if(!id || _ignoreAction(id)) continue;\n            var dataset = datasetInfo.data;\n\n            for(var j = 0; j < dataset.length; j++) $ax.repeater.addItem(id, $ax.deepCopy(dataset[j]), eventInfo);\n            if(dataset.length) _addRefresh(id);\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    _actionHandlers.deleteItemsFromDataSet = function(eventInfo, actions, index) {\n        var action = actions[index];\n        for(var i = 0; i < action.dataSetItemsToRemove.length; i++) {\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var deleteInfo = action.dataSetItemsToRemove[i];\n            var id = $ax.getElementIdsFromPath(deleteInfo.path, eventInfo)[0];\n            if(!id || _ignoreAction(id)) continue;\n            $ax.repeater.deleteItems(id, eventInfo, deleteInfo.type, deleteInfo.rule);\n            _addRefresh(id);\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    _actionHandlers.updateItemsInDataSet = function(eventInfo, actions, index) {\n        var action = actions[index];\n        for(var i = 0; i < action.dataSetsToUpdate.length; i++) {\n            var dataSet = action.dataSetsToUpdate[i];\n            // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters\n            //  or none if unplaced\n            var id = $ax.getElementIdsFromPath(dataSet.path, eventInfo)[0];\n            if(!id || _ignoreAction(id)) continue;\n\n            $ax.repeater.updateEditItems(id, dataSet.props, eventInfo, dataSet.type, dataSet.rule);\n            _addRefresh(id);\n        }\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 291,
+      "endLine": 299,
+      "purpose": "event-item-snapshot",
+      "text": "            eventInfo.window = $ax.getWindowInfo();\n\n            eventInfo.thiswidget = _getWidgetInfo(eventInfo.srcElement);\n            eventInfo.item = _getItemInfo(eventInfo.srcElement);\n            eventInfo.dragInfo = $ax.drag.GetWidgetDragInfo();\n\n            return eventInfo;\n        };\n        $ax.getEventInfoFromEvent = _getEventInfoFromEvent;"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 328,
+      "endLine": 347,
+      "purpose": "item-metadata",
+      "text": "        var _getItemInfo = function(elementId) {\n            if(!elementId) return { valid: false };\n\n            elementId = _getParentElement(elementId);\n\n            var index = $ax.repeater.getItemIdFromElementId(elementId);\n            if(!index) return { valid: false };\n\n            var item = { valid: true };\n\n            var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n            var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);\n            item.repeater = repeaterInfoCache[repeaterId] ? repeaterInfoCache[repeaterId] : _getWidgetInfo(repeaterId);\n            $ax.repeater.setDisplayProps(item, repeaterId, index);\n            item.ismarked = $ax.repeater.isEditItem(repeaterId, index);\n            item.isvisible = Boolean($jobj(elementId).length);\n\n            return item;\n        };\n        $ax.getItemInfo = _getItemInfo;"
+    },
+    {
+      "file": "variables.js",
+      "startLine": 33,
+      "endLine": 65,
+      "purpose": "item-targetitem-provider",
+      "text": "    var getVariableValue = function(variable, eventInfo, ignoreDefaultsForLinkUrl) {\n        variable = variable.toLowerCase();\n        if(_globalVariableValues[variable] !== undefined) {\n            //If this is for the GetLinkUrl function and \n            //the current value of the global variable is the same as the default defined in the document, don't return it\n            if(ignoreDefaultsForLinkUrl == true && $ax.document.globalVariables[variable] == _globalVariableValues[variable]) {\n                return null;\n            }\n\n            return _globalVariableValues[variable];\n        }\n        if($ax.document.globalVariables[variable] !== undefined) return ignoreDefaultsForLinkUrl == true ? null : $ax.document.globalVariables[variable];\n        switch(variable) {\n            case \"pagename\": return $ax.pageData.page.name;\n\n            case \"now\": return eventInfo.now;\n            case \"gendate\": return $ax.pageData.generationDate;\n\n            case \"dragx\": return $ax.drag.GetDragX();\n            case \"dragy\": return $ax.drag.GetDragY();\n            case \"totaldragx\": return $ax.drag.GetTotalDragX();\n            case \"totaldragy\": return $ax.drag.GetTotalDragY();\n            case \"dragtime\": return $ax.drag.GetDragTime();\n\n            case \"math\": return Math;\n            case \"date\": return Date;\n\n            case \"window\": return eventInfo && eventInfo.window;\n            case \"this\": return eventInfo && eventInfo.thiswidget && $ax.getWidgetInfo(eventInfo.thiswidget.elementId);\n            case \"item\": return (eventInfo && eventInfo.item && eventInfo.item.valid && eventInfo.item) || getVariableValue('targetitem', eventInfo, ignoreDefaultsForLinkUrl);\n            case \"targetitem\": return eventInfo && eventInfo.targetElement && $ax.getItemInfo(eventInfo.targetElement);\n            case \"repeater\": return eventInfo && eventInfo.repeater;\n            case \"target\": return eventInfo && eventInfo.targetElement && $ax.getWidgetInfo(eventInfo.targetElement);"
+    },
+    {
+      "file": "sto.js",
+      "startLine": 97,
+      "endLine": 125,
+      "purpose": "variable-versus-column",
+      "text": "    _stoHandlers['var'] = function(sto, scope, eventInfo) {\n        // Can't us 'A || B' here, because the first value can be false, true, or empty string and still be valid.\n        var retVal = scope.hasOwnProperty(sto.name) ? scope[sto.name]  : $ax.globalVariableProvider.getVariableValue(sto.name, eventInfo);\n        // Handle desired type here?\n        \n        if(retVal && retVal.exprType) {\n            retVal = $ax.expr.evaluateExpr(retVal, eventInfo);\n        }\n        \n        if((sto.desiredType == 'int' || sto.desiredType == 'float')) {\n            var num = new Number(retVal);\n            retVal = isNaN(num.valueOf()) ? retVal : num;\n        }\n\n\n        return retVal;\n    };\n\n    //TODO: Perhaps repeaterId can be detirmined at generation, and stored in the sto info.\n    _stoHandlers.item = function(sto, scope, eventInfo, prop) {\n        prop = prop || (eventInfo.data ? 'data' : eventInfo.link ? 'url' : eventInfo.image ? 'img' : 'text');\n        var id = sto.isTarget || !$ax.repeater.hasData(eventInfo.srcElement, sto.name) ? eventInfo.targetElement : eventInfo.srcElement;\n        return getData(eventInfo, id, sto.name, prop);\n    };\n\n    var getData = function(eventInfo, id, name, prop) {\n        var repeaterId = $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(id));\n        var itemId = $ax.repeater.getItemIdFromElementId(id);\n        return $ax.repeater.getData(eventInfo, repeaterId, itemId, name, prop);"
+    },
+    {
+      "file": "sto.js",
+      "startLine": 145,
+      "endLine": 161,
+      "purpose": "metadata-property-read",
+      "text": "    _stoHandlers.propCall = function(sto, scope, eventInfo) {\n        //TODO: [mas] handle required type\n        if((sto.prop == 'url' || sto.prop == 'img') && sto.thisSTO.sto == 'item') return _stoHandlers.item(sto.thisSTO, scope, eventInfo, sto.prop);\n        var thisObj = _evaluateSTO(sto.thisSTO, scope, eventInfo);\n\n        // calculate cursor offset for elements that are located relative to their parents\n        if (sto.thisSTO.name == 'cursor') {\n            var cursorOffset = $ax.public.fn.getCursorOffset(eventInfo.targetElement);\n            thisObj = {\n                x: thisObj.x - cursorOffset.x,\n                y: thisObj.y - cursorOffset.y,\n            };\n        }\n\n        var prop = thisObj[sto.prop] instanceof Function ? thisObj[sto.prop]() : thisObj[sto.prop];\n        return prop;\n    };"
+    }
+  ],
+  "probe": {
+    "count": 9,
+    "results": [
+      {
+        "name": "All scans the entire dataset and duplicate marks remain unique",
+        "pass": true,
+        "actual": {
+          "marks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "refresh": 0
+        }
+      },
+      {
+        "name": "Unmark This uses the source row and source repeater",
+        "pass": true,
+        "actual": {
+          "r": [
+            1,
+            3,
+            4
+          ],
+          "other": []
+        }
+      },
+      {
+        "name": "Rule targets every row, retains source Item, restores target, and mutates after selection",
+        "pass": true,
+        "actual": {
+          "marks": [
+            2,
+            4
+          ],
+          "target": "original",
+          "seen": [
+            {
+              "target": "r-1",
+              "item": false,
+              "marks": 0
+            },
+            {
+              "target": "r-2",
+              "item": false,
+              "marks": 0
+            },
+            {
+              "target": "r-3",
+              "item": false,
+              "marks": 0
+            },
+            {
+              "target": "r-4",
+              "item": false,
+              "marks": 0
+            }
+          ]
+        }
+      },
+      {
+        "name": "Item marked metadata is event snapshot; TargetItem is a live membership read",
+        "pass": true,
+        "actual": {
+          "item": false,
+          "target": true,
+          "newEvent": true
+        }
+      },
+      {
+        "name": "Item outside a row falls back to TargetItem",
+        "pass": true,
+        "actual": true
+      },
+      {
+        "name": "Marked is not a dedicated Mark/Unmark target branch",
+        "pass": true,
+        "actual": {
+          "evaluations": 4,
+          "marks": [
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "name": "Update Marked touches all marked source rows and preserves marks",
+        "pass": true,
+        "actual": {
+          "values": [
+            "A",
+            {
+              "type": "text",
+              "text": "r-2"
+            },
+            "C",
+            {
+              "type": "text",
+              "text": "r-4"
+            }
+          ],
+          "marks": [
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "name": "Deleting an unmarked predecessor preserves the remaining marked row identities",
+        "pass": true,
+        "actual": {
+          "values": [
+            {
+              "type": "text",
+              "text": "r-2"
+            },
+            "C",
+            {
+              "type": "text",
+              "text": "r-4"
+            }
+          ],
+          "marks": [
+            1,
+            3
+          ]
+        }
+      },
+      {
+        "name": "Delete Marked copies the target set, deletes descending, and removes deleted marks",
+        "pass": true,
+        "actual": {
+          "values": [
+            "C"
+          ],
+          "marks": []
+        }
+      }
+    ],
+    "limitations": [
+      "DOM, renderer, generated action JSON, and full event scheduler are mocked or absent.",
+      "Does not prove original-browser UI behavior, generator spelling normalization, or same-event deletion-map edge cases."
+    ]
+  }
+}

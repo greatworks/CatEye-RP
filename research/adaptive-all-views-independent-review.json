@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T12:58:34.326Z",
+  "kind": "independent-read-only-code-review",
+  "execution": "Exact current App.patchSelected slice after TypeScript erasure plus current model modules; not original Axure or GUI execution.",
+  "stubs": [
+    "No table/menu/tree selection; no React/render/undo host.",
+    "filterLineStylePatch is an identity sink for unrelated line-style capabilities; only padding/font/ordinary geometry commands run.",
+    "changeWidgets captures the ordinary widget array, then directly calls real applyAdaptiveWidgetEdits with the same view/All Views selection options."
+  ],
+  "sources": [
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "2cd738e8db66e70d534c76df7ee7b8889b2ed4747bbf1f8a6fa916ff82cbdbb7"
+    },
+    {
+      "path": "src/model/types.ts",
+      "sha256": "89f3bf1faa5732523915fbced601f620eb6bd4560496d81baa8fade397663512"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "0cf7ff741e2e188d4d093dd8073968a1e89035186a3187496ca5bcfd2dee9d84"
+    },
+    {
+      "path": "src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "95dc9856f96c9acf9820ab00748a7e4d7acf40ca18dbd0bf629abe30c1310636"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "0c61ec33304adf181149893c4b242cc4bd8139124f61c245b855cfc2d8c8e87f"
+    },
+    {
+      "path": "src/model/rich-text.ts",
+      "sha256": "01fa723e9e158cb16125753c5993fd2e86a370133b0a246cccced8d578d6863f"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "81819cfde4480f5bb895492aaac8d6ee3d515d889463b43a5fe83bd829844294"
+    },
+    {
+      "path": "tests/adaptive-all-views-authoring.test.ts",
+      "sha256": "3501389a9b4076ac108c98607e29229b2652ed423b7d2044bf9f99bc76afd8cd"
+    },
+    {
+      "path": "tests/adaptive-all-views-padding.test.ts",
+      "sha256": "5e8224cefe76d4445895c9d10f62ae00f8b972260df76ff698c089f933d1d1a3"
+    },
+    {
+      "path": "tests/runtime-adaptive-padding.test.ts",
+      "sha256": "c1bb602806371a908030433cdb68d18db2a4e31e5932f58a287aaad657d43a66"
+    },
+    {
+      "path": "tests/e2e/adaptive-all-views-authoring.spec.ts",
+      "sha256": "06dbc928520c9a52ea16f101af2a6e3ebe79b3de40480df710181e82b415a375"
+    },
+    {
+      "path": "scripts/adaptive-all-views-scenario.mjs",
+      "sha256": "6820526e0ffcfa1a87a463adb2f9008324cc561aad626684942c1d0ef5a6a08b"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/adaptive-all-views-authoring-evidence.md",
+      "sha256": "e282a2f6787705b85a86dd9442e65c86f1f372bde6632ed7564e12ecef3d6fdb"
+    },
+    {
+      "path": "research/adaptive-all-views-authoring-evidence.json",
+      "sha256": "4d446341488259f55c1ff3bccf70da4c966b2030901b6b28787917a5d3e532d7"
+    },
+    {
+      "path": "research/adaptive-all-views-effects-evidence.md",
+      "sha256": "33999e6abf11be6b9a6074f89d03ba036b5b82f98569cb5beea3c9ccef3c2ff5"
+    },
+    {
+      "path": "research/adaptive-all-views-effects-evidence.json",
+      "sha256": "1cb735a1eb521a55a4aa63fd7d2ca31f03501e59c4f3601719b0d868d408c3b2"
+    },
+    {
+      "path": "research/adaptive-all-views-static-probe.json",
+      "sha256": "58e6de1dc73577e1571635fac13509a16a54b353361e898588f648e9f693f785"
+    },
+    {
+      "path": "research/adaptive-all-views-effects-replay.json",
+      "sha256": "a33ea84f5b6d1f952eff3a3f26288aab935afc2767975b727fd34eb3c696e8cb"
+    },
+    {
+      "path": "research/adaptive-all-views-effects-first-state-replay.json",
+      "sha256": "7c91668610af84261af4c2d888835d2b51aa72e27cd39731bf68d804bef2cfd8"
+    }
+  ],
+  "slice": {
+    "path": "src/App.tsx",
+    "startLine": 306,
+    "endLine": 340,
+    "sha256": "060084419ef77c0bc17aea59f3137abc2ad49802c16214271e4ea2ab53584d64"
+  },
+  "results": [
+    {
+      "name": "mixed-selection-right-padding-preserves-other-three-sides",
+      "pass": false,
+      "observed": {
+        "base": [
+          11,
+          40,
+          13,
+          14
+        ],
+        "child": {
+          "x": 51,
+          "y": 61,
+          "width": 201,
+          "height": 91,
+          "style": {
+            "fontSize": 30
+          }
+        },
+        "inactive": {
+          "x": 71,
+          "y": 81,
+          "width": 221,
+          "height": 111,
+          "style": {
+            "fontSize": 40
+          }
+        }
+      },
+      "expected": {
+        "base": [
+          51,
+          40,
+          53,
+          54
+        ],
+        "child": {
+          "x": 51,
+          "y": 61,
+          "width": 201,
+          "height": 91,
+          "style": {
+            "fontSize": 30
+          },
+          "textPaddingSides": {
+            "top": 61,
+            "bottom": 63,
+            "left": 64
+          }
+        },
+        "inactive": {
+          "x": 71,
+          "y": 81,
+          "width": 221,
+          "height": 111,
+          "style": {
+            "fontSize": 40
+          },
+          "textPaddingSides": {
+            "top": 71,
+            "bottom": 73,
+            "left": 74
+          }
+        }
+      }
+    },
+    {
+      "name": "mixed-selection-x-keeps-each-target-effective-y-in-atomic-point",
+      "pass": true,
+      "observed": [
+        {
+          "x": 99,
+          "y": 21
+        },
+        {
+          "x": 99,
+          "y": 61
+        }
+      ],
+      "expected": [
+        {
+          "x": 99,
+          "y": 21
+        },
+        {
+          "x": 99,
+          "y": 61
+        }
+      ]
+    },
+    {
+      "name": "mixed-selection-width-keeps-each-target-effective-height-in-atomic-size",
+      "pass": true,
+      "observed": [
+        {
+          "width": 120,
+          "height": 81
+        },
+        {
+          "width": 120,
+          "height": 91
+        }
+      ],
+      "expected": [
+        {
+          "width": 120,
+          "height": 81
+        },
+        {
+          "width": 120,
+          "height": 91
+        }
+      ]
+    },
+    {
+      "name": "mixed-selection-font-compares-per-owner-without-copying-other-style",
+      "pass": true,
+      "observed": {
+        "firstBaseFont": 14,
+        "firstLocal": 20,
+        "secondBaseFont": 20,
+        "secondLocal": null,
+        "secondPadding": [
+          51,
+          52,
+          53,
+          54
+        ]
+      },
+      "expected": {
+        "firstBaseFont": 14,
+        "firstLocal": 20,
+        "secondBaseFont": 20,
+        "secondLocal": null,
+        "secondPadding": [
+          51,
+          52,
+          53,
+          54
+        ]
+      }
+    }
+  ],
+  "finding": {
+    "id": "AAV-REVIEW-01",
+    "priority": "P1",
+    "status": "confirmed-before-fix",
+    "title": "Single-edge padding edit copies the current widget tuple into every selected widget",
+    "locations": [
+      {
+        "path": "src/components/Inspector.tsx",
+        "line": 578
+      },
+      {
+        "path": "src/App.tsx",
+        "line": 319
+      },
+      {
+        "path": "src/App.tsx",
+        "line": 339
+      }
+    ],
+    "consequence": "Untouched padding sides are overwritten in other selected widgets and their active/inactive adaptive declarations are cleared.",
+    "recommendation": "Preserve side intent, apply only that edge to each target effective tuple, then retain current per-edge model diff."
+  },
+  "boundaries": [
+    "Native evidence is retained decoded-CIL replay with sinks; no authenticated native GUI result.",
+    "cornerRadii/borderWidths reset pairs remain product extensions, distinct from native uniform radius/width and independent visibility masks.",
+    "Whole-widget rich reset commands are product policy; all native character-selection toolbar paths and contained owner commands are not proved.",
+    "No production browser, build, package or full test suite executed for this review."
+  ]
+}

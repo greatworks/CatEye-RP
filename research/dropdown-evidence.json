@@ -1,0 +1,1587 @@
+{
+  "timestamp": "2026-10-13T15:57:50.227Z",
+  "target": "Axure RP 11.0.0.4150",
+  "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "distributionSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "browser": "155.0.4283.45",
+  "files": [
+    {
+      "file": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "file": "events.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "file": "sto.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\sto.js",
+      "sha256": "c1ff17b0ed8a2e3a34cba550c7f4e9447827d131e38542d397e686c0e0b6b9b6"
+    },
+    {
+      "file": "repeater.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b"
+    },
+    {
+      "file": "../jquery-3.7.1.min.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85"
+    }
+  ],
+  "sourceSlices": [
+    {
+      "file": "sto.js",
+      "first": 210,
+      "last": 214,
+      "mode": "executed",
+      "source": "    var _getBool = function(val) {\n        var lowerVal = val.toLowerCase ? val.toLowerCase() : val;\n        return lowerVal == \"false\" ? false : lowerVal == \"true\" ? true : val;\n    };\n    $ax.getBool = _getBool;"
+    },
+    {
+      "file": "expr.js",
+      "first": 15,
+      "last": 59,
+      "mode": "executed",
+      "source": "    var checkOps = function(left, right) {\n        return left == undefined || right == undefined;\n    };\n\n    var isEqual = function (left, right, isFunction) {\n        if (isFunction) {\n            //if left and right is function, then get the value\n            //otherwise left and right should be already the value we want\n            left = left();\n            right = right();\n        }\n\n        if(checkOps(left, right)) return false;\n\n        if(left instanceof Date && right instanceof Date) {\n            if(left.getMilliseconds() != right.getMilliseconds()) return false;\n            if(left.getSeconds() != right.getSeconds()) return false;\n            if(left.getMinutes() != right.getMinutes()) return false;\n            if(left.getHours() != right.getHours()) return false;\n            if(left.getDate() != right.getDate()) return false;\n            if(left.getMonth() != right.getMonth()) return false;\n            if(left.getYear() != right.getYear()) return false;\n            return true;\n        }\n\n        if(left instanceof Object && right instanceof Object) {\n            var prop;\n            // Go through all of lefts properties and compare them to rights.\n            for(prop in left) {\n                if(!left.hasOwnProperty(prop)) continue;\n                // If left has a property that the right doesn't they are not equal.\n                if(!right.hasOwnProperty(prop)) return false;\n                // If any of their properties are not equal, they are not equal.\n                if(!isEqual(left[prop], right[prop], false)) return false;\n            }\n\n            for(prop in right) {\n                // final check to make sure right doesn't have some extra properties that make them not equal.\n                if(left.hasOwnProperty(prop) != right.hasOwnProperty(prop)) return false;\n            }\n\n            return true;\n        }\n        return $ax.getBool(left) == $ax.getBool(right);\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 127,
+      "last": 180,
+      "mode": "executed",
+      "source": "    _exprHandlers.fcall = function(expr, eventInfo) {\n        var oldTarget = eventInfo.targetElement;\n        var targets = [];\n        var fcallArgs = [];\n        var exprArgs = expr.arguments;\n        for(var i = 0; i < expr.arguments.length; i++) {\n            var exprArg = exprArgs[i];\n            var fcallArg = '';\n            if(targets.length) {\n                for(var j = 0; j < targets.length; j++) {\n                    if(exprArg == null) {\n                        fcallArgs[j][i] = null;\n                        continue;\n                    }\n                    eventInfo.targetElement = targets[j];\n                    fcallArg = _evaluateExpr(exprArg, eventInfo);\n                    if(typeof (fcallArg) == 'undefined') return '';\n                    fcallArgs[j][i] = fcallArg;\n                }\n            } else {\n                if(exprArg == null) {\n                    fcallArgs[i] = null;\n                    continue;\n                }\n                fcallArg = _evaluateExpr(exprArg, eventInfo);\n                if(typeof (fcallArg) == 'undefined') return '';\n                fcallArgs[i] = fcallArg;\n            }\n\n            // We do support null exprArgs...\n            // TODO: This makes 2 assumptions that may change in the future. 1. The pathLiteral is the always the first arg. 2. there is always only 1 pathLiteral\n            if(exprArg && exprArg.exprType == 'pathLiteral') {\n                targets = fcallArg;\n\n                // fcallArgs is now an array of an array of args\n                for(j = 0; j < targets.length; j++) fcallArgs[j] = [[fcallArg[j]]];\n            }\n        }\n\n        // we want to preserve the target element from outside this function.\n        eventInfo.targetElement = oldTarget;\n\n        var retval = '';\n        if(targets.length) {\n            // Go backwards so retval is the first item.\n            for(i = targets.length - 1; i >= 0; i--) {\n                var args = fcallArgs[i];\n                // Add event info to the end\n                args[args.length] = eventInfo;\n                retval = _exprFunctions[expr.functionName].apply(this, args);\n            }\n        } else fcallArgs[fcallArgs.length] = eventInfo;\n        return targets.length ? retval : _exprFunctions[expr.functionName].apply(this, fcallArgs);\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 204,
+      "last": 233,
+      "mode": "executed",
+      "source": "    var _substituteSTOs = function(expr, eventInfo) {\n        //first evaluate the local variables\n        var scope = {};\n        for(var varName in expr.localVariables) {\n            scope[varName] = $ax.expr.evaluateExpr(expr.localVariables[varName], eventInfo);\n        }\n\n        // TODO: [ben] Date and data object (obj with info for url or image) both need to return non-strings.\n        var i = 0;\n        var retval;\n        var retvalString = expr.value.replace(/\\[\\[(?!\\[)(.*?)\\]\\](?=\\]*)/g, function(match) {\n            var sto = expr.stos[i++];\n            if(sto.sto == 'error') return match;\n            try {\n                var result = $ax.evaluateSTO(sto, scope, eventInfo);\n            } catch(e) {\n                return match;\n            }\n\n            if((result instanceof Object) && i == 1 && expr.value.substring(0, 2) == '[[' &&\n                expr.value.substring(expr.value.length - 2) == ']]') {\n                // If the result was an object, this was the first result, and the whole thing was this expresion.\n                retval = result;\n            }\n            return ((result instanceof Object) && (result.label || result.text)) || result;\n        });\n        // If more than one group returned, the object is not valid\n        if(i != 1) retval = false;\n        return retval || retvalString;\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 242,
+      "last": 244,
+      "mode": "executed",
+      "source": "    _exprHandlers.stringLiteral = function(expr, eventInfo) {\n        return _substituteSTOs(expr, eventInfo);\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 273,
+      "last": 283,
+      "mode": "executed",
+      "source": "    _exprFunctions.SetSelectedOption = function(elementIds, value) {\n        for(var i = 0; i < elementIds.length; i++) {\n            var elementId = elementIds[i];\n            var obj = $jobj($ax.INPUT(elementId));\n\n            if(obj.val() == value) return;\n            obj.val(value);\n\n            if($ax.event.HasSelectionChanged($ax.getObjectFromElementId(elementId))) $ax.event.raiseSyntheticEvent(elementId, 'onSelectionChange');\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 562,
+      "last": 565,
+      "mode": "executed",
+      "source": "    _exprFunctions.GetSelectedOption = function (ids) {\n        var inputs = $jobj($ax.INPUT(ids[0]));\n        return inputs.length ? inputs[0].value : '';\n    };"
+    },
+    {
+      "file": "expr.js",
+      "first": 586,
+      "last": 590,
+      "mode": "executed",
+      "source": "    _exprFunctions.GetWidgetText = function(ids) {\n        if($ax.placeholderManager.isActive(ids[0])) return '';\n        var input = $ax.INPUT(ids[0]);\n        return $ax('#' + ($jobj(input).length ? input : ids[0])).text();\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 840,
+      "last": 881,
+      "mode": "executed",
+      "source": "    $ax.public.fn.text = function() {\n        if(arguments[0] == undefined) {\n            var firstId = this.getElementIds()[0];\n\n            if(!firstId) { return undefined; }\n\n            return getWidgetText(firstId);\n        } else {\n            var elementIds = this.getElementIds();\n\n            for(var index = 0; index < elementIds.length; index++) {\n                var currentItem = elementIds[index];\n\n                var widgetType = $ax.getTypeFromElementId(currentItem);\n\n                if($ax.public.fn.IsTextBox(widgetType) || $ax.public.fn.IsTextArea(widgetType)) { //For non rtf\n                    SetWidgetFormText(currentItem, arguments[0]);\n                } else {\n                    var idRtf = '#' + currentItem;\n                    if($(idRtf).length == 0) idRtf = '#u' + (Number(currentItem.substring(1)) + 1);\n\n                    if($(idRtf).length != 0) {\n                        //If the richtext div already has some text in it,\n                        //preserve only the first style and get rid of the rest\n                        //If no pre-existing p-span tags, don't do anything\n                        if($(idRtf).find('p').find('span').length > 0) {\n                            $(idRtf).find('p:not(:first)').remove();\n                            $(idRtf).find('p').find('span:not(:first)').remove();\n\n                            //Replace new-lines with NEWLINE token, then html encode the string,\n                            //finally replace NEWLINE token with linebreak\n                            var textWithLineBreaks = arguments[0].replace(/\\n/g, '--NEWLINE--');\n                            var textHtml = $('<div/>').text(textWithLineBreaks).html();\n                            $(idRtf).find('span').html(textHtml.replace(/--NEWLINE--/g, '<br>'));\n                        }\n                    }\n                }\n            }\n\n            return this;\n        }\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 883,
+      "last": 916,
+      "mode": "executed",
+      "source": "    var getWidgetText = function(id) {\n        var idQuery = $jobj(id);\n        var inputQuery = $jobj($ax.INPUT(id));\n        if(inputQuery.length) idQuery = inputQuery;\n\n        if (idQuery.is('input') && ($ax.public.fn.IsCheckBox(idQuery.attr('type')) || idQuery.attr('type') == 'radio')) {\n            idQuery = idQuery.parent().find('label').find('div');\n        }\n\n        if(idQuery.is('div')) {\n            var $rtfObj = idQuery.hasClass('text') ? idQuery : idQuery.find('.text');\n            if($rtfObj.length == 0) return '';\n\n            var textOut = '';\n            $rtfObj.children('p,ul,ol').each(function(index) {\n                if(index != 0) textOut += '\\n';\n\n                //var htmlContent = $(this).html();\n                //if(isSoloBr(htmlContent)) return; // It has a solo br, then it was just put in for a newline, and paragraph already added the new line.\n                if (isSoloBr($(this).children())) return;\n\n                var htmlContent = $(this).html();            \n                //Replace line breaks (set in SetWidgetRichText) with newlines and nbsp's with regular spaces.\n                htmlContent = htmlContent.replace(/<br[^>]*>/ig, '\\n').replace(/&nbsp;/ig, ' ');\n                textOut += $(htmlContent).text();\n                //textOut += htmlContent.replace(/<[^>]*>/g, '');\n            });\n\n            return textOut;\n        } else {\n            var val = idQuery.val();\n            return val == undefined ? '' : val;\n        }\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 951,
+      "last": 991,
+      "mode": "executed",
+      "source": "    $ax.public.fn.value = function() {\n        if(arguments[0] == undefined) {\n            var firstId = this.getElementIds()[0];\n\n            if(!firstId) {\n                return undefined;\n            }\n\n            var widgetType = $ax.getTypeFromElementId(firstId);\n\n            if ($ax.public.fn.IsComboBox(widgetType) || $ax.public.fn.IsListBox(widgetType)) { //for select lists and drop lists\n                return $('#' + firstId + ' :selected').text();\n            } else if ($ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)) { //for radio/checkboxes\n                return $('#' + firstId + '_input').is(':selected');\n            } else if ($ax.public.fn.IsTextBox(widgetType)) { //for text box\n                return $('#' + firstId + '_input').val();\n            } else { //for text based form elements\n                return this.jQuery().first().val();\n            }\n        } else {\n            var elementIds = this.getElementIds();\n\n            for(var index = 0; index < elementIds.length; index++) {\n                var widgetType = $ax.getTypeFromElementId(elementIds[index]);\n\n                var elementIdQuery = $('#' + elementIds[index]);\n\n                if ($ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)) { //for radio/checkboxes\n                    if(arguments[0] == true) {\n                        elementIdQuery.prop('selected', true);\n                    } else if(arguments[0] == false) {\n                        elementIdQuery.prop('selected', false);\n                    }\n                } else { //For select lists, drop lists, text based form elements\n                    elementIdQuery.val(arguments[0]);\n                }\n            }\n\n            return this;\n        }\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 1257,
+      "last": 1266,
+      "mode": "executed",
+      "source": "    $ax.public.fn.focus = function() {\n        var firstId = this.getElementIds()[0];\n        var focusableId = $ax.event.getFocusableWidgetOrChildId(firstId);\n        // This will scroll but not focus\n        $('#' + focusableId).triggerHandler(\"focus\");\n        // This will focus but does not call our custom scroll so will not animate scroll\n        $('#' + focusableId).focus();\n\n        return this;\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 693,
+      "last": 710,
+      "mode": "executed",
+      "source": "    $ax.event.getFocusableWidgetOrChildId = function (elementId) {\n        var mappedId = _layerRdoToFocusableWidget[elementId];\n        if (mappedId) elementId = mappedId;\n\n        var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');\n        var inputQuery = $jobj(inputId);\n        if(inputQuery.length > 0) return inputId;\n\n        var imgId = $ax.repeater.applySuffixToElementId(elementId, '_img');\n        var imgQuery = $jobj(imgId);\n        if (imgQuery.length > 0) return imgId;\n\n        var divId = $ax.repeater.applySuffixToElementId(elementId, '_div');\n        var divQuery = $jobj(divId);\n        if (divQuery.length > 0) return divId;\n\n        return elementId;\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 217,
+      "last": 226,
+      "mode": "executed",
+      "source": "    var _notAllowedInvisible = function (id) {\n        var type = $ax.getTypeFromElementId(id);\n        if ($ax.public.fn.IsReferenceDiagramObject(type) || $ax.public.fn.IsLayer(type)) return false;\n        return !($ax.public.fn.IsVector(type) && _hasCompoundImage(id)); \n    }\n\n    var _hasCompoundImage = function (id) {\n        var query = $jobj(id);\n        return $ax.public.fn.isCompoundVectorHtml(query[0]);\n    }"
+    },
+    {
+      "file": "events.js",
+      "first": 281,
+      "last": 415,
+      "mode": "executed",
+      "source": "    var _handleEvent = $ax.event.handleEvent = function (elementId, eventInfo, axEventObject, skipShowDescriptions, synthetic) {\n        var eventType = axEventObject.eventType;\n        if(_enteredWidgets[elementId] && eventType == 'OnMouseEnter') return; // Suppress entering a widget when already in widget (ie only)\n        if(_isSuppressedEvent(elementId, eventType)) {\n            _removeSuppressedEvent(elementId, eventType);\n            return;\n        }\n\n        if(axEventObject.proxy) {\n            var firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                var firingObj = $obj(firingId);\n                var nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                eventInfo = $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), false, firingId);\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n//        var x = JSON.stringify(eventInfo);\n//        var y = JSON.stringify(axEventObject);\n\n        var fireTime = new Date().getTime();\n\n        if(fireTime - eventNestingTime > 100) {\n            eventNestingTime = fireTime;\n            eventNesting = 0;\n        }\n\n        if(eventNesting === 0) {\n            $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, fireTime);\n        }\n\n        eventNesting += 1;\n\n        if (!synthetic && !_getCanClick() && (eventType == 'OnClick' || eventType == 'OnPageClick')) return;\n        // If you are supposed to suppress, do that right away.\n        if(suppressedEventStatus[eventType]) {\n            return;\n        }\n\n        var currentEvent = $ax.getjBrowserEvent();\n        if(!synthetic && currentEvent && currentEvent.originalEvent && currentEvent.originalEvent.handled && !eventInfo.isMasterEvent) return;\n        if(!synthetic && elementId && !$ax.style.getObjVisible(elementId) && _notAllowedInvisible(elementId)) return;\n\n        //if debug\n        var axObj = $obj(elementId);\n        var axObjLabel = axObj ? axObj.label : eventInfo.label;\n        var axObjType = axObj ? axObj.friendlyType : eventInfo.friendlyType;\n        if (!skipShowDescriptions || eventType == 'OnPageLoad') postMessage('axEvent', { 'label': axObjLabel, 'type': axObjType, 'event': axEventObject, 'elementId': $ax.repeater.getScriptIdFromElementId(elementId) });\n\n        var bubble = true;\n        var showCaseDescriptions = !skipShowDescriptions && _shouldShowCaseDescriptions(axEventObject);\n        if(!showCaseDescriptions) {\n            //handle case descriptions\n            var caseGroups = [];\n            var currentCaseGroup = [];\n            caseGroups[0] = currentCaseGroup;\n\n            // Those refreshes not after a wait\n            var guaranteedRefreshes = {};\n\n            var caseGroupIndex = 0;\n            for(var i = 0; i < axEventObject.cases.length; i++) {\n                var currentCase = axEventObject.cases[i];\n                if(currentCase.isNewIfGroup && i != 0) {\n                    caseGroupIndex++;\n                    currentCaseGroup = [];\n                    caseGroups[caseGroups.length] = currentCaseGroup;\n                    // Joon: Isn't caseGroups.length always equal to caseGroupIndex?\n                }\n                currentCaseGroup[currentCaseGroup.length] = currentCase;\n\n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    var action = currentCase.actions[j];\n                    if(action.action == 'wait') break;\n                    if(action.action != 'refreshRepeater') continue;\n                    for(var k = 0; k < action.repeatersToRefresh.length; k++) {\n                        var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[k], eventInfo)[0];\n                        if(id) guaranteedRefreshes[id] = caseGroupIndex;\n                    }\n                }\n            }\n\n            for(var i = 0; i < caseGroups.length; i++) {\n                var groupRefreshes = [];\n                for(var key in guaranteedRefreshes) {\n                    if(guaranteedRefreshes[key] == i) groupRefreshes[groupRefreshes.length] = key;\n                }\n                bubble = _handleCaseGroup(eventInfo, caseGroups[i], groupRefreshes) && bubble;\n            }\n        } else {\n            _showCaseDescriptions(elementId, eventInfo, axEventObject, synthetic);\n            bubble = false;\n        }\n\n        // If not handled, synthetically bubble if you can\n        if(bubble && _widgetToFocusParent[elementId]) {\n            firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                firingObj = $obj(firingId);\n                nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n\n        // Only trigger a supression if it handled this event\n        if(!bubble && suppressingEvents[eventType]) {\n            suppressedEventStatus[suppressingEvents[eventType]] = true;\n        }\n\n        $ax.action.flushAllResizeMoveActions(eventInfo);\n\n        // This should not be needed anymore. All refreshes should be inserted, or handled earlier.\n        var repeaters = $ax.deepCopy($ax.action.repeatersToRefresh);\n        while($ax.action.repeatersToRefresh.length) $ax.action.repeatersToRefresh.pop();\n        for(i = 0; i < repeaters.length; i++) $ax.repeater.refreshRepeater(repeaters[i], eventInfo);\n\n        if(currentEvent && currentEvent.originalEvent) {\n            currentEvent.originalEvent.handled = !synthetic && !bubble && allowBubble.indexOf(eventType) == -1;\n            //currentEvent.originalEvent.donotdrag = currentEvent.donotdrag || (!bubble && eventDescription == 'OnMouseDown');\n\n            // Prevent default if necessary\n            if (currentEvent.originalEvent.handled && preventDefaultEvents.indexOf(eventType) != -1) {\n                currentEvent.preventDefault();\n            }\n        }\n\n        eventNesting -= 1;\n\n        if(!showCaseDescriptions) postMessage('axEventComplete');\n\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 605,
+      "last": 618,
+      "mode": "executed",
+      "source": "    var _attachDefaultObjectEvent = function(elementIdQuery, elementId, eventName, fn) {\n        var func = function (e) {\n            var inputIndex = elementId.indexOf('_input');\n            if (inputIndex == -1) {\n                if ($ax.style.IsWidgetDisabled(elementId) || _shouldIgnoreLabelClickFromCheckboxOrRadioButton(e)) return true;\n            } else {\n                if ($ax.style.IsWidgetDisabled(elementId.substring(0, inputIndex)) || _shouldIgnoreLabelClickFromCheckboxOrRadioButton(e)) return false;\n            }\n            return fn.apply(this, arguments);\n        };\n        var bind = !elementIdQuery[eventName];\n        if(bind) elementIdQuery.bind(eventName, func);\n        else elementIdQuery[eventName](func);\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 1701,
+      "last": 1717,
+      "mode": "executed",
+      "source": "    var _raiseSyntheticEvent = function (elementId, eventName, skipShowDescription, eventInfo, nonSynthetic) {\n        if ($ax.style.IsWidgetDisabled(elementId) && _shouldStopOnDisabledWidget(eventName)) return;\n        // Empty string used when this is an event directly on the page.\n        var dObj = elementId === '' ? $ax.pageData.page : $ax.getObjectFromElementId(elementId);\n        var axEventObject = dObj && dObj.interactionMap && dObj.interactionMap[eventName];\n        if (!axEventObject) return;\n        \n        eventInfo = eventInfo || $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), skipShowDescription, elementId);\n        //        $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, new Date().getTime());\n        _handleEvent(elementId, eventInfo, axEventObject, false, !nonSynthetic);\n    };\n    $ax.event.raiseSyntheticEvent = _raiseSyntheticEvent;\n\n    var _shouldStopOnDisabledWidget = function (eventName) {\n        var blackList = [\"onLongClick\"];\n        return blackList.some(x => x === eventName);\n    }"
+    },
+    {
+      "file": "events.js",
+      "first": 1810,
+      "last": 1814,
+      "mode": "executed",
+      "source": "    $ax.event.HasSelectionChanged = function(diagramObject) {\n        if (!$ax.public.fn.IsListBox(diagramObject.type) && !$ax.public.fn.IsComboBox(diagramObject.type)) return false;\n        var map = diagramObject.interactionMap;\n        return map && map.onSelectionChange;\n    };"
+    },
+    {
+      "file": "events.js",
+      "first": 1184,
+      "last": 1190,
+      "mode": "executed",
+      "source": "            // Attach synthetic onSelectionChange event to droplist and listbox elements\n            if ($ax.event.HasSelectionChanged(dObj)) {\n                $element.bind('change', function(e) {\n                    $ax.setjBrowserEvent(e);\n                    _raiseSyntheticEvent(elementId, 'onSelectionChange');\n                });\n            };"
+    },
+    {
+      "file": "events.js",
+      "first": 935,
+      "last": 959,
+      "mode": "executed",
+      "source": "            // Initialize assigned submit buttons\n            if(dObj.submitButton) {\n                $element.keyup(function(e) {\n                    if(e.keyCode == '13') {\n                        var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n                        var path = $ax.deepCopy(dObj.submitButton.path);\n                        path[path.length] = dObj.submitButton.id;\n                        var itemNum = $ax.repeater.getItemIdFromElementId(elementId);\n                        var submitId = $ax.getScriptIdFromPath(path, scriptId);\n\n                        if(itemNum && $ax.getParentRepeaterFromScriptId(submitId) == $ax.getParentRepeaterFromScriptId(scriptId)) {\n                            submitId = $ax.repeater.createElementId(submitId, itemNum);\n                        }\n                        var inputId = $ax.INPUT(submitId);\n                        if($jobj(inputId).length) submitId = inputId;\n\n                        $ax.setjBrowserEvent(e);\n                        $ax.event.fireClick(submitId);\n                    }\n                }).keydown(function(e) {\n                    if(e.keyCode == '13') {\n                        e.preventDefault();\n                    }\n                });\n            }"
+    },
+    {
+      "file": "axQuery.std.js",
+      "first": 87,
+      "last": 104,
+      "mode": "static-only",
+      "source": "    $ax.public.fn.SupportsErrorStyle = function(widgetType) {\n        return $ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType)\n            || $ax.public.fn.IsDynamicPanel(widgetType) || $ax.public.fn.IsLayerOrRdo(widgetType)\n            || $ax.public.fn.IsTextArea(widgetType) || $ax.public.fn.IsTextBox(widgetType)\n            || $ax.public.fn.IsListBox(widgetType) || $ax.public.fn.IsComboBox(widgetType)\n            || $ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)\n    }\n\n    $ax.public.fn.SupportsRichText = function() {\n        var obj = $obj(this.getElementIds()[0]);\n        // Catch root tree nodes as they are not supported.\n        if(obj.type == $ax.constants.TREE_NODE_OBJECT_TYPE) return obj.friendlyType == 'Tree Node';\n        // Do the same for tree node icons maybe?\n\n        return $.inArray(obj.type, SUPPORTS_RICH_TEXT_TYPES) != -1;\n    }\n    var SUPPORTS_RICH_TEXT_TYPES = [$ax.constants.CHECK_BOX_TYPE, $ax.constants.RADIO_BUTTON_TYPE,\n        $ax.constants.IMAGE_BOX_TYPE, $ax.constants.VECTOR_SHAPE_TYPE, $ax.constants.TABLE_CELL_TYPE, $ax.constants.CONNECTOR_TYPE];"
+    },
+    {
+      "file": "events.js",
+      "first": 772,
+      "last": 790,
+      "mode": "static-only",
+      "source": "            // Focus has to be done before on focus fires\n            // Set up focus\n            if ($ax.public.fn.IsTextArea(dObj.type) || $ax.public.fn.IsTextBox(dObj.type) || $ax.public.fn.IsCheckBox(dObj.type) || $ax.public.fn.IsRadioButton(dObj.type) ||\n                $ax.public.fn.IsListBox(dObj.type) || $ax.public.fn.IsComboBox(dObj.type) || $ax.public.fn.IsButton(dObj.type) ||\n                (dObj.tabbable && ($ax.public.fn.IsImageBox(dObj.type) || $ax.public.fn.IsVector(dObj.type) || $ax.IsTreeNodeObject(dObj.type) || $ax.public.fn.IsTableCell(dObj.type)))) {\n                var focusObj = $jobj($ax.event.getFocusableWidgetOrChildId(elementId));\n                focusObj.focus(function() {\n                    window.lastFocusedControl = elementId;\n                    $ax.style.SetWidgetFocused(elementId, true);\n                });\n                focusObj.blur(function() {\n                    $ax.style.SetWidgetFocused(elementId, false);\n                });\n            }\n            // [MAS: Supressing events were here]\n            _createProxies(dObj, elementId);\n            var isDynamicPanel = $ax.public.fn.IsDynamicPanel(dObj.type);\n            if(dObj.interactionMap) {\n                _attachEvents(dObj, elementId, isDynamicPanel);"
+    },
+    {
+      "file": "events.js",
+      "first": 805,
+      "last": 838,
+      "mode": "static-only",
+      "source": "            var $axElement = $ax('#' + elementId);\n            // Base case is set up selected disabled error based on the default in the axobj, for non, repeaters and resetting repeaters\n            var itemReset = refreshType == $ax.repeater.refreshType.reset;\n            if(!itemId || itemReset) {\n                //initialize selected and error before disabled or else style state dictionaries will be incorrect\n                if($ax.public.fn.IsVector(dObj.type) || $ax.public.fn.IsImageBox(dObj.type) || isDynamicPanel || $ax.public.fn.IsLayerOrRdo(dObj.type)\n                    || $ax.public.fn.IsTextBox(dObj.type) || $ax.public.fn.IsTextArea(dObj.type) || $ax.public.fn.IsComboBox(dObj.type) || $ax.public.fn.IsListBox(dObj.type)\n                    || $ax.public.fn.IsCheckBox(dObj.type) || $ax.public.fn.IsRadioButton(dObj.type)) {\n\n                    // Initialize selected elements\n                    // only set one member of selection group selected since subsequent calls\n                    // will unselect the previous one anyway\n                    if(dObj.error) $axElement.error(true);\n\n                    if(dObj.selected && !skipSelectedIds.has(elementId)) {\n                        var group = $('#' + elementId).attr('selectiongroup');\n                        if(group) for(var item of $(\"[selectiongroup='\" + group + \"']\")) skipSelectedIds.add(item.id);\n                        $axElement.selected(true);\n                    }\n\n                    if (dObj.disabled) $axElement.enabled(false);\n                }\n            } else if(refreshType == $ax.repeater.refreshType.preEval) {\n                // Otherwise everything should be set up correctly by pre-eval, want to set up selected/disabled/error dictionaries (and disabled status)\n                const isSelected = $element.hasClass('selected');\n                const isError = $element.hasClass('error');\n                const isDisabled = $element.hasClass('disabled');\n                if(isSelected) $axElement.selected(true);\n                if(isError) $axElement.error(true);\n                if(isDisabled) $axElement.enabled(false);\n            } else {\n                // Persist means we want to leave it as is, but we want to make sure we use selected based off of the backing data, and not some class that exists because of the reset\n                $element.removeClass('selected');\n            }"
+    },
+    {
+      "file": "repeater.js",
+      "first": 205,
+      "last": 280,
+      "mode": "static-only",
+      "source": "                $ax.visibility.setResizedSize(itemElementId, $ax.getNumFromPx(jobj.css('width')), $ax.getNumFromPx(jobj.css('height')));\n                $ax.visibility.setMovedLocation(itemElementId, $ax.getNumFromPx(jobj.css('left')), $ax.getNumFromPx(jobj.css('top')));\n            }\n        } else {\n            var html = $('#' + repeaterId + '_script').html();\n\n            var div = $('<div></div>');\n            div.html(html);\n            div.find('.' + $ax.visibility.HIDDEN_CLASS).removeClass($ax.visibility.HIDDEN_CLASS);\n            div.find('.' + $ax.visibility.UNPLACED_CLASS).removeClass($ax.visibility.UNPLACED_CLASS);\n            div.css({\n                width: offset.width,\n                height: offset.height\n            });\n\n            _applyColorCss(background, div);\n            var altDiv = div;\n            if(hasAltColor) altDiv = _applyColorCss(altColor, div.clone());\n\n            // Hide repeater, if shown, while updating.\n            var shown = $ax.visibility.IsIdVisible(repeaterId);\n            if(shown) document.getElementById(repeaterId).style.visibility = 'hidden';\n\n            //clean up old items as late as possible\n            removeItems(repeaterId);\n            resetItemSizes(repeaterId, offset, bounds, orderedIds, vertical, wrap);\n\n            var i = 0;\n            var startTop = paddingTop;\n            var startLeft = paddingLeft;\n            if(repeaterObj.css('box-sizing') == 'border-box') {\n                startTop -= $ax.getNumFromPx(repeaterObj.css('border-top-width')) || 0;\n                startLeft -= $ax.getNumFromPx(repeaterObj.css('border-left-width')) || 0;\n            }\n            var top = startTop;\n            var left = startLeft;\n            for(pos = start; pos < end; pos++) {\n                itemId = orderedIds[pos];\n\n                var itemElementId = _createElementId(repeaterId, itemId);\n                $ax.addItemIdToRepeater(itemId, repeaterId);\n\n                ids.push(itemElementId);\n                var processId = function(full, prop, id) {\n                    var elementId = _createElementId('u' + id, itemId);\n                    //If there is a suffix (ex. _img), then don't push the id.\n                    if (id.indexOf('_') <= 0 && id.indexOf('p') == -1) ids.push(elementId);\n                    return prop + '=\"' + elementId + '\"';\n                };\n                var processSvgUrlId = function (full, prop, id) {\n                    var elementId = _createElementId('u' + id, itemId);\n                    return `${prop}=\"url(#${elementId})\"`;\n                };\n\n                var copy = (useAlt ? altDiv : div).clone();\n                useAlt = !useAlt;\n                copy.attr('id', itemElementId);\n                var rep = div.html().replace(/(id|for)=\"?u([0-9]+(p([0-9]){3})?(_[_a-z0-9]*)?)\"?/g, processId);\n                rep = rep.replace(/(fill|stroke|mask) ?= ?\"url\\(\\#u([0-9]+(p([0-9]){3})?(_[_a-z0-9]*)?)\\)\"/g, processSvgUrlId);\n                copy.html(rep);\n                if(obj.repeaterPropMap.isolateRadio) {\n                    var radioButtons = copy.find(':radio');\n                    for(var radioIndex = 0; radioIndex < radioButtons.length; radioIndex++) {\n                        var radio = $(radioButtons[radioIndex]);\n                        var oldName = radio.attr('name') || '';\n                        // Can't use create element id because there could be an underscore in name\n                        if(oldName) radio.attr('name', oldName + '-' + itemId);\n                    }\n                }\n                \n\n                copy.css({\n                    'position': 'absolute',\n                    'top': top + 'px',\n                    'left': left + 'px',\n                    'width': obj.width + 'px',"
+    }
+  ],
+  "cases": [
+    {
+      "name": "single default first",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": "A",
+        "selected": [
+          0
+        ],
+        "texts": [
+          "A"
+        ],
+        "read": "A",
+        "text": "A",
+        "queryValue": "A",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "empty droplist has no synthetic placeholder",
+      "result": {
+        "value": "",
+        "index": -1,
+        "jq": null,
+        "selected": [],
+        "texts": [],
+        "read": "",
+        "text": "",
+        "queryValue": "",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "selected none is preserved by DOM selectedIndex -1",
+      "result": {
+        "value": "",
+        "index": -1,
+        "jq": null,
+        "selected": [],
+        "texts": [],
+        "read": "",
+        "text": "",
+        "queryValue": "",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "program changed value emits synchronous selection case after assignment",
+      "result": {
+        "value": "B",
+        "index": 1,
+        "jq": "B",
+        "selected": [
+          1
+        ],
+        "texts": [
+          "B"
+        ],
+        "read": "B",
+        "text": "B",
+        "queryValue": "B",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "B",
+            "index": 1
+          },
+          {
+            "kind": "after"
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "same string value emits nothing",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": "A",
+        "selected": [
+          0
+        ],
+        "texts": [
+          "A"
+        ],
+        "read": "A",
+        "text": "A",
+        "queryValue": "A",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "single GetWidgetText returns selected value string",
+      "result": {
+        "value": "B",
+        "index": 1,
+        "jq": "B",
+        "selected": [
+          1
+        ],
+        "texts": [
+          "B"
+        ],
+        "read": "B",
+        "text": "B",
+        "queryValue": "B",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "public query text setter does not select option or rewrite select options",
+      "result": {
+        "state": {
+          "value": "A",
+          "index": 0,
+          "jq": "A",
+          "selected": [
+            0
+          ],
+          "texts": [
+            "A"
+          ],
+          "read": "A",
+          "text": "A",
+          "queryValue": "A",
+          "trace": [],
+          "active": ""
+        },
+        "options": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "matching old value returns from whole multi-target loop",
+      "result": {
+        "a": {
+          "value": "A",
+          "index": 0,
+          "jq": "A",
+          "selected": [
+            0
+          ],
+          "texts": [
+            "A"
+          ],
+          "read": "A",
+          "text": "A",
+          "queryValue": "A",
+          "trace": [],
+          "active": ""
+        },
+        "b": {
+          "value": "B",
+          "index": 1,
+          "jq": "B",
+          "selected": [
+            1
+          ],
+          "texts": [
+            "B"
+          ],
+          "read": "B",
+          "text": "B",
+          "queryValue": "B",
+          "trace": [],
+          "active": ""
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "later matching target skips all still later targets",
+      "result": {
+        "a": {
+          "value": "A",
+          "index": 0,
+          "jq": "A",
+          "selected": [
+            0
+          ],
+          "texts": [
+            "A"
+          ],
+          "read": "A",
+          "text": "A",
+          "queryValue": "A",
+          "trace": [
+            {
+              "kind": "case",
+              "id": "a",
+              "event": "onSelectionChange",
+              "value": "A",
+              "index": 0
+            }
+          ],
+          "active": ""
+        },
+        "c": {
+          "value": "C",
+          "index": 2,
+          "jq": "C",
+          "selected": [
+            2
+          ],
+          "texts": [
+            "C"
+          ],
+          "read": "C",
+          "text": "C",
+          "queryValue": "C",
+          "trace": [
+            {
+              "kind": "case",
+              "id": "a",
+              "event": "onSelectionChange",
+              "value": "A",
+              "index": 0
+            }
+          ],
+          "active": ""
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "actual fcall path fanout isolates matching targets and calls setters in reverse order",
+      "result": {
+        "a": {
+          "value": "A",
+          "index": 0,
+          "jq": "A",
+          "selected": [
+            0
+          ],
+          "texts": [
+            "A"
+          ],
+          "read": "A",
+          "text": "A",
+          "queryValue": "A",
+          "trace": [
+            {
+              "kind": "case",
+              "id": "c",
+              "event": "onSelectionChange",
+              "value": "A",
+              "index": 0
+            },
+            {
+              "kind": "case",
+              "id": "b",
+              "event": "onSelectionChange",
+              "value": "A",
+              "index": 0
+            }
+          ],
+          "active": ""
+        },
+        "b": {
+          "value": "A",
+          "index": 0,
+          "jq": "A",
+          "selected": [
+            0
+          ],
+          "texts": [
+            "A"
+          ],
+          "read": "A",
+          "text": "A",
+          "queryValue": "A",
+          "trace": [
+            {
+              "kind": "case",
+              "id": "c",
+              "event": "onSelectionChange",
+              "value": "A",
+              "index": 0
+            },
+            {
+              "kind": "case",
+              "id": "b",
+              "event": "onSelectionChange",
+              "value": "A",
+              "index": 0
+            }
+          ],
+          "active": ""
+        },
+        "c": {
+          "value": "A",
+          "index": 0,
+          "jq": "A",
+          "selected": [
+            0
+          ],
+          "texts": [
+            "A"
+          ],
+          "read": "A",
+          "text": "A",
+          "queryValue": "A",
+          "trace": [
+            {
+              "kind": "case",
+              "id": "c",
+              "event": "onSelectionChange",
+              "value": "A",
+              "index": 0
+            },
+            {
+              "kind": "case",
+              "id": "b",
+              "event": "onSelectionChange",
+              "value": "A",
+              "index": 0
+            }
+          ],
+          "active": ""
+        },
+        "info": {
+          "srcElement": "source",
+          "targetElement": "original"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "fcall evaluates every target argument before reverse mutations",
+      "result": {
+        "value": "B",
+        "index": 1,
+        "jq": "B",
+        "selected": [
+          1
+        ],
+        "texts": [
+          "B"
+        ],
+        "read": "B",
+        "text": "B",
+        "queryValue": "B",
+        "trace": [
+          {
+            "kind": "evaluate",
+            "target": "a"
+          },
+          {
+            "kind": "evaluate",
+            "target": "b"
+          },
+          {
+            "kind": "case",
+            "id": "b",
+            "event": "onSelectionChange",
+            "value": "B",
+            "index": 1
+          },
+          {
+            "kind": "case",
+            "id": "a",
+            "event": "onSelectionChange",
+            "value": "B",
+            "index": 1
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "duplicate value assignment from different value chooses first matching option",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": "A",
+        "selected": [
+          0
+        ],
+        "texts": [
+          "A"
+        ],
+        "read": "A",
+        "text": "A",
+        "queryValue": "A",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "A",
+            "index": 0
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "same duplicate value preserves second selected index",
+      "result": {
+        "value": "A",
+        "index": 1,
+        "jq": "A",
+        "selected": [
+          1
+        ],
+        "texts": [
+          "A"
+        ],
+        "read": "A",
+        "text": "A",
+        "queryValue": "A",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "unmatched value clears selection and emits on every unmatched request",
+      "result": {
+        "value": "",
+        "index": -1,
+        "jq": null,
+        "selected": [],
+        "texts": [],
+        "read": "",
+        "text": "",
+        "queryValue": "",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "",
+            "index": -1
+          },
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "",
+            "index": -1
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "empty request without empty option remains none but emits each time",
+      "result": {
+        "value": "",
+        "index": -1,
+        "jq": null,
+        "selected": [],
+        "texts": [],
+        "read": "",
+        "text": "",
+        "queryValue": "",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "",
+            "index": -1
+          },
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "",
+            "index": -1
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "explicit empty value option can be selected",
+      "result": {
+        "value": "",
+        "index": 1,
+        "jq": "",
+        "selected": [
+          1
+        ],
+        "texts": [
+          ""
+        ],
+        "read": "",
+        "text": "",
+        "queryValue": "",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "",
+            "index": 1
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "explicit whitespace option value retains literal while implicit value collapses",
+      "result": {
+        "a": {
+          "value": "  A \n B  ",
+          "index": 0,
+          "jq": "  A \n B  ",
+          "selected": [
+            0
+          ],
+          "texts": [
+            "  A \n B  "
+          ],
+          "read": "  A \n B  ",
+          "text": "  A \n B  ",
+          "queryValue": "  A \n B  ",
+          "trace": [],
+          "active": ""
+        },
+        "b": {
+          "value": "A B",
+          "index": 0,
+          "jq": "A B",
+          "selected": [
+            0
+          ],
+          "texts": [
+            "  A \n B  "
+          ],
+          "read": "A B",
+          "text": "A B",
+          "queryValue": "  A \n B  ",
+          "trace": [],
+          "active": ""
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "selected option getter reads value, query value reads display text",
+      "result": {
+        "value": "Stored",
+        "index": 0,
+        "jq": "Stored",
+        "selected": [
+          0
+        ],
+        "texts": [
+          "Shown"
+        ],
+        "read": "Stored",
+        "text": "Stored",
+        "queryValue": "Shown",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "number request uses loose equality and therefore no change for string zero",
+      "result": {
+        "value": "0",
+        "index": 0,
+        "jq": "0",
+        "selected": [
+          0
+        ],
+        "texts": [
+          "0"
+        ],
+        "read": "0",
+        "text": "0",
+        "queryValue": "0",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "boolean false request loosely equals current empty string",
+      "result": {
+        "value": "",
+        "index": 0,
+        "jq": "",
+        "selected": [
+          0
+        ],
+        "texts": [
+          ""
+        ],
+        "read": "",
+        "text": "",
+        "queryValue": "",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "program selection of disabled widget changes value and runs synthetic case",
+      "result": {
+        "value": "B",
+        "index": 1,
+        "jq": "B",
+        "selected": [
+          1
+        ],
+        "texts": [
+          "B"
+        ],
+        "read": "B",
+        "text": "B",
+        "queryValue": "B",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "B",
+            "index": 1
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "program selection of hidden widget runs synthetic case",
+      "result": {
+        "value": "B",
+        "index": 1,
+        "jq": "B",
+        "selected": [
+          1
+        ],
+        "texts": [
+          "B"
+        ],
+        "read": "B",
+        "text": "B",
+        "queryValue": "B",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "B",
+            "index": 1
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "missing event map changes selection without dispatch",
+      "result": {
+        "value": "B",
+        "index": 1,
+        "jq": "B",
+        "selected": [
+          1
+        ],
+        "texts": [
+          "B"
+        ],
+        "read": "B",
+        "text": "B",
+        "queryValue": "B",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "reentrant selection completes nested case before outer continuation",
+      "result": {
+        "value": "C",
+        "index": 2,
+        "jq": "C",
+        "selected": [
+          2
+        ],
+        "texts": [
+          "C"
+        ],
+        "read": "C",
+        "text": "C",
+        "queryValue": "C",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "B",
+            "index": 1
+          },
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "C",
+            "index": 2
+          },
+          {
+            "kind": "after"
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "listbox DOM size>1 default none",
+      "result": {
+        "value": "",
+        "index": -1,
+        "jq": null,
+        "selected": [],
+        "texts": [],
+        "read": "",
+        "text": "",
+        "queryValue": "",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "multiple DOM default none",
+      "result": {
+        "value": "",
+        "index": -1,
+        "jq": [],
+        "selected": [],
+        "texts": [],
+        "read": "",
+        "text": [],
+        "queryValue": "",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "multiple getter reads topmost selected; text getter retains array; query value concatenates",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": [
+          "A",
+          "C"
+        ],
+        "selected": [
+          0,
+          2
+        ],
+        "texts": [
+          "A",
+          "C"
+        ],
+        "read": "A",
+        "text": [
+          "A",
+          "C"
+        ],
+        "queryValue": "AC",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "multiple one selected array loosely equals request and preserves it",
+      "result": {
+        "value": "B",
+        "index": 1,
+        "jq": [
+          "B"
+        ],
+        "selected": [
+          1
+        ],
+        "texts": [
+          "B"
+        ],
+        "read": "B",
+        "text": [
+          "B"
+        ],
+        "queryValue": "B",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "multiple scalar assignment replaces existing selections",
+      "result": {
+        "value": "B",
+        "index": 1,
+        "jq": [
+          "B"
+        ],
+        "selected": [
+          1
+        ],
+        "texts": [
+          "B"
+        ],
+        "read": "B",
+        "text": [
+          "B"
+        ],
+        "queryValue": "B",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "B",
+            "index": 1
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "single array assignment selects first matching DOM option rather than array order",
+      "result": {
+        "value": "B",
+        "index": 1,
+        "jq": "B",
+        "selected": [
+          1
+        ],
+        "texts": [
+          "B"
+        ],
+        "read": "B",
+        "text": "B",
+        "queryValue": "B",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "B",
+            "index": 1
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "multiple array assignment can select distinct options at low-level API",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": [
+          "A",
+          "C"
+        ],
+        "selected": [
+          0,
+          2
+        ],
+        "texts": [
+          "A",
+          "C"
+        ],
+        "read": "A",
+        "text": [
+          "A",
+          "C"
+        ],
+        "queryValue": "AC",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "A",
+            "index": 0
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "equal-content array assignment still raises event because arrays differ by identity",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": [
+          "A"
+        ],
+        "selected": [
+          0
+        ],
+        "texts": [
+          "A"
+        ],
+        "read": "A",
+        "text": [
+          "A"
+        ],
+        "queryValue": "A",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "A",
+            "index": 0
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "single-placeholder native stringLiteral preserves an array result without string coercion",
+      "result": {
+        "value": [
+          "A",
+          "C"
+        ],
+        "state": {
+          "value": "A",
+          "index": 0,
+          "jq": [
+            "A",
+            "C"
+          ],
+          "selected": [
+            0,
+            2
+          ],
+          "texts": [
+            "A",
+            "C"
+          ],
+          "read": "A",
+          "text": [
+            "A",
+            "C"
+          ],
+          "queryValue": "AC",
+          "trace": [
+            {
+              "kind": "case",
+              "id": "w",
+              "event": "onSelectionChange",
+              "value": "A",
+              "index": 0
+            }
+          ],
+          "active": ""
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "surrounding text forces array result into comma string",
+      "result": {
+        "value": "before A,C after"
+      },
+      "passed": true
+    },
+    {
+      "name": "native equality accepts multi text array vs comma string and empty array vs empty or false",
+      "result": {
+        "array": [
+          "A",
+          "C"
+        ],
+        "comma": true,
+        "bool": false,
+        "emptyString": true,
+        "emptyFalse": true
+      },
+      "passed": true
+    },
+    {
+      "name": "native getBool arrays avoid lowercase and preserve case-sensitive singleton quirks",
+      "result": [
+        {
+          "text": "false",
+          "array": [
+            "false"
+          ],
+          "falseEqual": true,
+          "trueEqual": false,
+          "selectedFalse": true
+        },
+        {
+          "text": "FALSE",
+          "array": [
+            "FALSE"
+          ],
+          "falseEqual": false,
+          "trueEqual": false,
+          "selectedFalse": true
+        },
+        {
+          "text": "true",
+          "array": [
+            "true"
+          ],
+          "falseEqual": false,
+          "trueEqual": true,
+          "selectedFalse": false
+        },
+        {
+          "text": "TRUE",
+          "array": [
+            "TRUE"
+          ],
+          "falseEqual": false,
+          "trueEqual": false,
+          "selectedFalse": false
+        },
+        {
+          "text": "0",
+          "array": [
+            "0"
+          ],
+          "falseEqual": true,
+          "trueEqual": false,
+          "selectedFalse": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "two native array expressions compare enumerable elements recursively",
+      "result": {
+        "same": true,
+        "different": false
+      },
+      "passed": true
+    },
+    {
+      "name": "multiple duplicate values selects every matching option",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": [
+          "A",
+          "A"
+        ],
+        "selected": [
+          0,
+          1
+        ],
+        "texts": [
+          "A",
+          "A"
+        ],
+        "read": "A",
+        "text": [
+          "A",
+          "A"
+        ],
+        "queryValue": "AA",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "A",
+            "index": 0
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "multiple duplicates repeated scalar request still emits",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": [
+          "A",
+          "A"
+        ],
+        "selected": [
+          0,
+          1
+        ],
+        "texts": [
+          "A",
+          "A"
+        ],
+        "read": "A",
+        "text": [
+          "A",
+          "A"
+        ],
+        "queryValue": "AA",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "A",
+            "index": 0
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "multiple array joined comma can suppress a distinct scalar option",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": [
+          "A",
+          "B"
+        ],
+        "selected": [
+          0,
+          1
+        ],
+        "texts": [
+          "A",
+          "B"
+        ],
+        "read": "A",
+        "text": [
+          "A",
+          "B"
+        ],
+        "queryValue": "AB",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "multiple no selection array loosely equals empty request and does not select empty option",
+      "result": {
+        "value": "",
+        "index": -1,
+        "jq": [],
+        "selected": [],
+        "texts": [],
+        "read": "",
+        "text": [],
+        "queryValue": "",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "multiple unmatched clears selected and repeated invalid requests emit",
+      "result": {
+        "value": "",
+        "index": -1,
+        "jq": [],
+        "selected": [],
+        "texts": [],
+        "read": "",
+        "text": [],
+        "queryValue": "",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "",
+            "index": -1
+          },
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "",
+            "index": -1
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "program setting disabled option is reflected by DOM getter but filtered from jQuery val",
+      "result": {
+        "value": "B",
+        "index": 1,
+        "jq": null,
+        "selected": [
+          1
+        ],
+        "texts": [
+          "B"
+        ],
+        "read": "B",
+        "text": "",
+        "queryValue": "B",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "B",
+            "index": 1
+          }
+        ],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "focus query dispatches twice on select as on other native controls",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": "A",
+        "selected": [
+          0
+        ],
+        "texts": [
+          "A"
+        ],
+        "read": "A",
+        "text": "A",
+        "queryValue": "A",
+        "trace": [
+          {
+            "kind": "focus",
+            "id": "w",
+            "event": "focus",
+            "active": ""
+          },
+          {
+            "kind": "focus",
+            "id": "w",
+            "event": "focus",
+            "active": "w_input"
+          }
+        ],
+        "active": "w_input"
+      },
+      "passed": true
+    },
+    {
+      "name": "disabled select rejects actual focus and guarded user Focus callbacks",
+      "result": {
+        "value": "A",
+        "index": 0,
+        "jq": "A",
+        "selected": [
+          0
+        ],
+        "texts": [
+          "A"
+        ],
+        "read": "A",
+        "text": "A",
+        "queryValue": "A",
+        "trace": [],
+        "active": ""
+      },
+      "passed": true
+    },
+    {
+      "name": "select Submit Enter prevents default and clicks assigned target on keyup",
+      "result": {
+        "prevented": true,
+        "before": [],
+        "trace": [
+          {
+            "kind": "submit",
+            "id": "button"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "actual keyboard selection of duplicate text changes index and emits change",
+      "result": {
+        "value": "A",
+        "index": 1,
+        "jq": "A",
+        "selected": [
+          1
+        ],
+        "texts": [
+          "A"
+        ],
+        "read": "A",
+        "text": "A",
+        "queryValue": "A",
+        "trace": [
+          {
+            "kind": "case",
+            "id": "w",
+            "event": "onSelectionChange",
+            "value": "A",
+            "index": 1
+          }
+        ],
+        "active": "w_input"
+      },
+      "passed": true
+    },
+    {
+      "name": "actual ArrowDown at final option does not emit change",
+      "result": {
+        "value": "C",
+        "index": 2,
+        "jq": "C",
+        "selected": [
+          2
+        ],
+        "texts": [
+          "C"
+        ],
+        "read": "C",
+        "text": "C",
+        "queryValue": "C",
+        "trace": [],
+        "active": "w_input"
+      },
+      "passed": true
+    }
+  ],
+  "networkRequests": [],
+  "pageErrors": [],
+  "limits": [
+    "Harness markup, options and object metadata supplied; generated HTML/canvas GUI not executed",
+    "Exact original getter/setter/synthetic event dispatcher; case-group action endpoint instrumented",
+    "fcall argument evaluator and STO provider instrumented; supplied array result is not proof of an ordinary editor compiler output",
+    "Visibility/disabled style getters are explicit fixtures, not full style paint",
+    "Focus original query plus disabled event wrapper; native style visuals not reproduced",
+    "Submit uses original binding but fireClick endpoint trace; target click/default behavior researched separately",
+    "Value/display differences with explicit or implicit option values are host observations pending generator evidence",
+    "Disabled options are a browser boundary; audited native option records have no disabled field",
+    "Programmatic select value assignment is distinct from SetText and generic selected/checked state",
+    "No original app, target DLL execution, product changes, or vendor implementation copied into product"
+  ]
+}

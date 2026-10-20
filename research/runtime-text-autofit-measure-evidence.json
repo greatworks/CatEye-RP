@@ -1,0 +1,1576 @@
+{
+  "schema": "runtime-text-autofit-measure-evidence-v1",
+  "createdAt": "2026-10-14T00:58:40.186Z",
+  "scope": "Read-only retained-function measurement evidence; no product code or existing test/evidence modifications",
+  "kind": "Exact retained JavaScript slices and retained jQuery executed in real isolated headless Edge DOM; injected object/style/query/resize/move/cache sinks. Not a full generated page or native GUI pixel comparison.",
+  "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "distributionSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "environment": {
+    "browserVersion": "155.0.4283.45",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "devicePixelRatio": 1,
+    "bodyFont": "13px Arial, sans-serif",
+    "jquerySupport": {
+      "boxSizingReliable": true,
+      "scrollboxSize": true,
+      "reliableTrDimensions": false,
+      "pixelBoxStyles": true
+    },
+    "jquery": "3.7.1"
+  },
+  "sources": [
+    {
+      "name": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6",
+      "verifiedCurrentSha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6",
+      "unchanged": true
+    },
+    {
+      "name": "visibility.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53",
+      "verifiedCurrentSha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53",
+      "unchanged": true
+    },
+    {
+      "name": "jquery",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85",
+      "verifiedCurrentSha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85",
+      "unchanged": true
+    },
+    {
+      "name": "page.css",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\css\\axure_rp_page.css",
+      "sha256": "595bfcd275dc80732aeecbb8365067ccecc4f0277df316ea47656816939ece4a",
+      "verifiedCurrentSha256": "595bfcd275dc80732aeecbb8365067ccecc4f0277df316ea47656816939ece4a",
+      "unchanged": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/runtime-text-autofit-measure-evidence.md",
+      "sha256": "e5497da202311bb8e0d7e03c893bdd8f89fc1b877f55126b96933ef493790d24"
+    },
+    {
+      "path": "research/runtime-text-autofit-measure-probe.json",
+      "sha256": "75e8cc08444c9a20170f57b79fdb232becbf3d379a5eceaa4407c23bc2498d9b"
+    },
+    {
+      "path": "research/runtime-text-autofit-plan.md",
+      "sha256": "2ac5a57eaa54bec880bb8771e0bd4a3b84fe3a2edc31652c5b937ba92aaac819"
+    },
+    {
+      "path": "research/runtime-text-autofit-bridge-evidence.md",
+      "sha256": "8e3d7470fdde13c30f4e2fbef9b28fd34e54259ca586ef97c1dd634ac4af44da"
+    }
+  ],
+  "implementation": [],
+  "tests": [
+    {
+      "path": "research/runtime-text-autofit-measure-probe.mjs",
+      "sha256": "4dac27e1b0ecfeb63820720c7ca3dd9da0f5296d35cf8f475c42632aa333c0eb"
+    }
+  ],
+  "screenshots": [],
+  "result": {
+    "cases": 64,
+    "assertions": 21,
+    "passed": true,
+    "pageErrors": [],
+    "blockedRequests": []
+  },
+  "checks": [
+    {
+      "name": "inline spans use integer offset fallback",
+      "passed": true
+    },
+    {
+      "name": "inline-block content dimensions retain fractions",
+      "passed": true
+    },
+    {
+      "name": "inline-block border-box subtracts padding and borders",
+      "passed": true
+    },
+    {
+      "name": "text content-box height then effective padding",
+      "passed": true
+    },
+    {
+      "name": "text border-box excludes border and padding before adding effective padding",
+      "passed": true
+    },
+    {
+      "name": "nested link spans are excluded unless inside direct span",
+      "passed": true
+    },
+    {
+      "name": "rotation does not change CSS measurements",
+      "passed": true
+    },
+    {
+      "name": "hidden owner clones are removed",
+      "passed": true
+    },
+    {
+      "name": "ancestor-only font inheritance is lost by owner-only clone",
+      "passed": true
+    },
+    {
+      "name": "neither flag does not measure or register",
+      "passed": true
+    },
+    {
+      "name": "no-op still registers",
+      "passed": true
+    },
+    {
+      "name": "plain setter sole linked span retains anchor but measures zero width",
+      "passed": true
+    },
+    {
+      "name": "plain multiline setter creates one p and direct outer span",
+      "passed": true
+    },
+    {
+      "name": "plain CRLF and LF split; bare CR remains in text",
+      "passed": true
+    },
+    {
+      "name": "plain separator characters are retained without BR rewriting",
+      "passed": true
+    },
+    {
+      "name": "ordinary spaces are not rewritten to NBSP",
+      "passed": true
+    },
+    {
+      "name": "trailing BR has no extra terminal strut",
+      "passed": true
+    },
+    {
+      "name": "first paragraph and first span style/id survive replacement",
+      "passed": true
+    },
+    {
+      "name": "plain setter treats HTML-like input as text",
+      "passed": true
+    },
+    {
+      "name": "empty hidden text retains effective padding only",
+      "passed": true
+    },
+    {
+      "name": "height measured before width",
+      "passed": true
+    }
+  ],
+  "slices": [
+    {
+      "file": "expr.js",
+      "startLine": 316,
+      "endLine": 385,
+      "purpose": "SetWidgetRichText exact body",
+      "sha256": "5c3b45e2d6cdddf85741f552a266a286e486ca485f9a26b6f949e2e4602bb85b"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 387,
+      "endLine": 443,
+      "purpose": "registry and owner-only hidden clone",
+      "sha256": "3c374b7e31e91364b6573edc8043da6a6e52ba99db106ac7c741b459cf00f016"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 469,
+      "endLine": 552,
+      "purpose": "autofitWidget exact body",
+      "sha256": "7f0a69da84847907080f082227ed48ba944e48eef72232f257e1587d8a958584"
+    },
+    {
+      "file": "visibility.js",
+      "startLine": 40,
+      "endLine": 53,
+      "purpose": "SetVisible exact body",
+      "sha256": "dbf56451742e56733e5048738887ff3c5cfa5d8c38442ac7acb789d7d2388427"
+    }
+  ],
+  "jqueryStaticAnchors": [
+    {
+      "function": "it",
+      "characterOffset": 52066,
+      "purpose": "box adjustment"
+    },
+    {
+      "function": "ot",
+      "characterOffset": 52560,
+      "purpose": "dimension reader"
+    }
+  ],
+  "values": [
+    {
+      "name": "inline-normal-fractional-font",
+      "result": {
+        "width": 52,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 52,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "inline-border-padding",
+      "result": {
+        "width": 49.5,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 49.5,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "inline-explicit-width",
+      "result": {
+        "width": 123.375,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 123.375,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "two-inline-spans",
+      "result": {
+        "width": 115,
+        "height": 25
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 25,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 27,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 88,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "inline-block-fractional-contentbox",
+      "result": {
+        "width": 48.5,
+        "height": 19.125
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 19.125,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 31.375,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 17.125,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "inline-block-fractional-borderbox",
+      "result": {
+        "width": 21.875,
+        "height": 20.625
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 20.625,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 21.875,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "text-content-box-fixed",
+      "result": {
+        "width": 57.5,
+        "height": 25.875
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 21.375,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 50,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "text-border-box-fixed",
+      "result": {
+        "width": 57.5,
+        "height": 48.5
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 44,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 50,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "text-auto-height-padding-border",
+      "result": {
+        "width": 57.5,
+        "height": 19.5
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 50,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "three-paragraphs-normal",
+      "result": {
+        "width": 81,
+        "height": 58
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 58,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 25,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 81,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 30,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "paragraph-fractional-lineheight",
+      "result": {
+        "width": 44,
+        "height": 51.5
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 51.5,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 25,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 44,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "br-outer-span",
+      "result": {
+        "width": 49,
+        "height": 30
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 30,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 49,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "three-br-in-one-outer-span",
+      "result": {
+        "width": 21,
+        "height": 45
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 45,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 21,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "soft-lf-nowrap",
+      "result": {
+        "width": 45,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 45,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "two-paragraph-same-lines",
+      "result": {
+        "width": 49,
+        "height": 30
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 30,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 49,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 29,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "br-two-direct-spans",
+      "result": {
+        "width": 74,
+        "height": 30
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 30,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 49,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 25,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "empty-text-layer",
+      "result": {
+        "width": 0,
+        "height": 0
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 0,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "empty-p-span",
+      "result": {
+        "width": 0,
+        "height": 0
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 0,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 0,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "single-br",
+      "result": {
+        "width": 0,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 0,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "nbsp-span",
+      "result": {
+        "width": 4,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 4,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "p-text-without-span",
+      "result": {
+        "width": 0,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "no-paragraph-span",
+      "result": {
+        "width": 0,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "link-only-anchor-wrapper",
+      "result": {
+        "width": 0,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "link-nested-in-direct-span",
+      "result": {
+        "width": 84,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 84,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "mixed-anchor-and-direct-span",
+      "result": {
+        "width": 71,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 37,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 34,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "hidden-owner-inline-display",
+      "result": {
+        "width": 76,
+        "height": 23
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 23,
+          "cloned": true
+        },
+        {
+          "axis": "width",
+          "value": 76,
+          "cloned": true
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "hidden-parent-inherited-font",
+      "result": {
+        "width": 50,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": true
+        },
+        {
+          "axis": "width",
+          "value": 50,
+          "cloned": true
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "visible-parent-inherited-font",
+      "result": {
+        "width": 116,
+        "height": 35
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 35,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 116,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "hidden-parent-explicit-owner-font",
+      "result": {
+        "width": 116,
+        "height": 35
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 35,
+          "cloned": true
+        },
+        {
+          "axis": "width",
+          "value": 116,
+          "cloned": true
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "hidden-parent-dependent-selector",
+      "result": {
+        "width": 50,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": true
+        },
+        {
+          "axis": "width",
+          "value": 50,
+          "cloned": true
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "hidden-parent-class-only",
+      "result": {
+        "width": 0,
+        "height": 0
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 0,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 0,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "visibility-hidden-owner",
+      "result": {
+        "width": 50,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 50,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "owner-rotation",
+      "result": {
+        "width": 50,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 50,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "span-rotation",
+      "result": {
+        "width": 31.375,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 31.375,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "width-only",
+      "result": {
+        "width": 50,
+        "height": 80.5
+      },
+      "reads": [
+        {
+          "axis": "width",
+          "value": 50,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "height-only",
+      "result": {
+        "width": 160.25,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "neither-axis",
+      "reads": [],
+      "resizeRequests": 0,
+      "moveRequests": 0
+    },
+    {
+      "name": "padding-only-no-span",
+      "result": {
+        "width": 9,
+        "height": 18.75
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-br",
+      "setText": "long first\nshort",
+      "result": {
+        "width": 49,
+        "height": 30
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 30,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 49,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-leading-trailing-br",
+      "setText": "\nlong first\n\nshort\n",
+      "result": {
+        "width": 49,
+        "height": 60
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 60,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 49,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-empty",
+      "setText": "",
+      "result": {
+        "width": 0,
+        "height": 0
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 0,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 0,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-empty-padding",
+      "setText": "",
+      "result": {
+        "width": 7.5,
+        "height": 4.5
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 0,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 0,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-tail-lf",
+      "setText": "A\n",
+      "result": {
+        "width": 9,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 9,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-two-tail-lfs",
+      "setText": "A\n\n",
+      "result": {
+        "width": 9,
+        "height": 30
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 30,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 9,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-only-lf",
+      "setText": "\n",
+      "result": {
+        "width": 0,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 0,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-only-crlf",
+      "setText": "\r\n",
+      "result": {
+        "width": 0,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 0,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-crlf",
+      "setText": "A\r\nB",
+      "result": {
+        "width": 9,
+        "height": 30
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 30,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 9,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-bare-cr",
+      "setText": "A\rB",
+      "result": {
+        "width": 20,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 20,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-only-cr",
+      "setText": "\r",
+      "result": {
+        "width": 0,
+        "height": 0
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 0,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 0,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-line-separator",
+      "setText": "A B",
+      "result": {
+        "width": 20,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 20,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-paragraph-separator",
+      "setText": "A B",
+      "result": {
+        "width": 20,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 20,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-leading-double-spaces",
+      "setText": "  A  B  ",
+      "result": {
+        "width": 20,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 20,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-single-space-control",
+      "setText": "A B",
+      "result": {
+        "width": 20,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 20,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-nbsp-control",
+      "setText": "  A  B  ",
+      "result": {
+        "width": 38,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 38,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-html-literal",
+      "setText": "<b>&</b>\n<em>",
+      "result": {
+        "width": 57,
+        "height": 30
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 30,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 57,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-first-paragraph-style",
+      "setText": "A\nB",
+      "result": {
+        "width": 11,
+        "height": 44
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 44,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 11,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-sole-link-span",
+      "setText": "Replacement",
+      "result": {
+        "width": 0,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-plain-multiple-link-spans",
+      "setText": "Replacement",
+      "result": {
+        "width": 77,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 77,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "setter-rich-paragraphs",
+      "setText": "<p><span>long first</span></p><p><span>short</span></p>",
+      "result": {
+        "width": 49,
+        "height": 30
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 30,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 49,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 29,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "fixed-old-width-wrapping-both",
+      "result": {
+        "width": 51,
+        "height": 45
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 45,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 51,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "text-contentbox-scrollbars",
+      "result": {
+        "width": 211.5,
+        "height": 34.625
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 30.125,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 204,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "text-borderbox-scrollbars",
+      "result": {
+        "width": 211.5,
+        "height": 28.125
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 23.625,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 204,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "inline-explicit-zero-width",
+      "result": {
+        "width": 50,
+        "height": 15
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 15,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 50,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 1,
+      "moveRequests": 0
+    },
+    {
+      "name": "exact-zero-delta-registration",
+      "result": {
+        "width": 48.5,
+        "height": 20.375
+      },
+      "reads": [
+        {
+          "axis": "height",
+          "value": 20.375,
+          "cloned": false
+        },
+        {
+          "axis": "width",
+          "value": 48.5,
+          "cloned": false
+        }
+      ],
+      "resizeRequests": 0,
+      "moveRequests": 0
+    }
+  ],
+  "limitations": [
+    "Independent fixture CSS, not a complete generated page or original GUI comparison",
+    "Original resize, move, query size/cache, full style provider and text-style wrapping replaced by named sinks/providers",
+    "Only real Edge 155 at DPR 1; no classic scrollbar, older engine, table-row or non-pixel dimension equivalence claim",
+    "Hidden clone reproduces owner-only clone and inline-display detection quirks",
+    "No initial-owner-resize claim from flags"
+  ]
+}

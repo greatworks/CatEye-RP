@@ -1,0 +1,759 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "135e6c65-d58e-4a2e-955c-42615b2e8541",
+  "name": "Repeater layout and Item Resized",
+  "pages": [
+    {
+      "id": "f06d24c1-a00e-4299-974a-642302a5f3a2",
+      "name": "Page 1",
+      "width": 1120,
+      "height": 830,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "c6e657df-db87-42c8-87ee-161aa2026037",
+          "type": "text",
+          "name": "Heading",
+          "text": "Repeater items have their own size",
+          "notes": "",
+          "x": 40,
+          "y": 28,
+          "rotation": 0,
+          "width": 1000,
+          "height": 48,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 28,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "88d21c1c-2ce7-4e3a-8246-3114ddc9a86c",
+          "type": "text",
+          "name": "Instructions",
+          "text": "Grow a row to move the items after it. Repeat the same size: no new resize event.",
+          "notes": "",
+          "x": 40,
+          "y": 90,
+          "rotation": 0,
+          "width": 980,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "2ae5d2c9-b24e-4479-bd19-7cdad1084794",
+          "type": "text",
+          "name": "Vertical title",
+          "text": "Vertical · 2 items per column",
+          "notes": "",
+          "x": 40,
+          "y": 130,
+          "rotation": 0,
+          "width": 520,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "16611462-3aa2-4497-8e76-6449d4c04376",
+          "type": "repeater",
+          "name": "Wrapped records",
+          "text": "",
+          "notes": "",
+          "x": 40,
+          "y": 170,
+          "rotation": 0,
+          "width": 504,
+          "height": 116,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#f1f5ff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "2f0a9d3d-1905-4da9-bf77-a697554746e3",
+              "event": "itemResize",
+              "name": "itemResize",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "c7f323a2-acc2-4189-9f4d-f80a6828ad71",
+                  "type": "setVariable",
+                  "targetId": "ResizeTrace",
+                  "value": "[[ResizeTrace]][[Item.index]]:[[Item.Name]]|"
+                },
+                {
+                  "id": "27546c6b-4ec5-4709-bf5e-b5483dc5e6a4",
+                  "type": "setText",
+                  "targetId": "f25e92fb-b5c8-4472-895e-dc3515f6ca9e",
+                  "value": "Item Resized: [[ResizeTrace]]"
+                }
+              ]
+            }
+          ],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              },
+              {
+                "Name": "B"
+              },
+              {
+                "Name": "C"
+              },
+              {
+                "Name": "D"
+              },
+              {
+                "Name": "E"
+              }
+            ],
+            "template": [
+              {
+                "id": "9b5d3100-1f70-4d08-b6d0-097bb75c22e3",
+                "type": "button",
+                "name": "Grow row",
+                "text": "Grow [[Item.Name]]",
+                "notes": "",
+                "x": 7,
+                "y": 8,
+                "rotation": 0,
+                "width": 90,
+                "height": 38,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#5b5ce2",
+                  "stroke": "#5b5ce2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#ffffff",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "6663acb9-a49d-4119-87d0-f9c8702c8109",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "0b0689c4-683e-42fd-9746-14d2dab8597d",
+                        "type": "resizeItem",
+                        "targetId": "16611462-3aa2-4497-8e76-6449d4c04376",
+                        "x": 210,
+                        "y": 84
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "3456f8e3-cec8-4d9b-a170-4ac89a30c87e",
+                "type": "button",
+                "name": "Shrink row",
+                "text": "Reset",
+                "notes": "",
+                "x": 103,
+                "y": 8,
+                "rotation": 0,
+                "width": 50,
+                "height": 38,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#5b5ce2",
+                  "stroke": "#5b5ce2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "color": "#ffffff",
+                  "fontSize": 11,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "9900186f-f9d7-494b-942c-8c9d56eb1798",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "e9d24d26-0881-49cf-913f-f2af1457ba8f",
+                        "type": "resizeItem",
+                        "targetId": "16611462-3aa2-4497-8e76-6449d4c04376",
+                        "x": 160,
+                        "y": 54
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "itemHeight": 54,
+            "gap": 0,
+            "itemWidth": 160,
+            "horizontalGap": 12,
+            "verticalGap": 8,
+            "layout": "vertical",
+            "wrap": 2
+          }
+        },
+        {
+          "id": "b3873a86-f0d6-4c54-bb60-38bb83255d77",
+          "type": "text",
+          "name": "Fit title",
+          "text": "Fit to content · child resize",
+          "notes": "",
+          "x": 650,
+          "y": 130,
+          "rotation": 0,
+          "width": 390,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "7d6fb0a2-47ad-4309-a413-7e167696fff0",
+          "type": "repeater",
+          "name": "Fitted records",
+          "text": "",
+          "notes": "",
+          "x": 650,
+          "y": 170,
+          "rotation": 0,
+          "width": 504,
+          "height": 116,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#f1f5ff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "d93530ba-76d1-4419-b5b1-ef85c912363f",
+              "event": "itemResize",
+              "name": "itemResize",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "3d20a4e3-0f1c-47d7-88e5-b5d127cf7ab9",
+                  "type": "setVariable",
+                  "targetId": "FitTrace",
+                  "value": "[[FitTrace]][[Item.index]]:[[Item.Name]]|"
+                },
+                {
+                  "id": "ce357ba6-feb0-4591-b601-58f7bc5bfe80",
+                  "type": "setText",
+                  "targetId": "9fc0aead-e0b8-4e3e-8585-1a3e32452ace",
+                  "value": "Content fit: [[FitTrace]]"
+                }
+              ]
+            }
+          ],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              },
+              {
+                "Name": "B"
+              }
+            ],
+            "template": [
+              {
+                "id": "bde92da7-de80-4ccc-85b0-cb64a65d5f2b",
+                "type": "button",
+                "name": "Expand content",
+                "text": "Expand content [[Item.Name]]",
+                "notes": "",
+                "x": 10,
+                "y": 10,
+                "rotation": 0,
+                "width": 300,
+                "height": 50,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#5b5ce2",
+                  "stroke": "#5b5ce2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#ffffff",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "6b3a1655-db75-4bb4-a4b8-5e75d58e8538",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "a5cc99d3-00dc-44b4-b5cf-d3f49b08827d",
+                        "type": "resize",
+                        "targetId": "bde92da7-de80-4ccc-85b0-cb64a65d5f2b",
+                        "x": 300,
+                        "y": 110
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "itemHeight": 70,
+            "gap": 0,
+            "itemWidth": 330,
+            "horizontalGap": 12,
+            "verticalGap": 10,
+            "layout": "vertical",
+            "fitToContent": true
+          }
+        },
+        {
+          "id": "7efd96c3-5b38-42c1-b52e-d0de0dc64297",
+          "type": "button",
+          "name": "Sort and reset rows",
+          "text": "Sort descending + reset item sizes",
+          "notes": "",
+          "x": 40,
+          "y": 365,
+          "rotation": 0,
+          "width": 360,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "998791bc-72fc-41c1-ac1e-ccacd96b0d9c",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "6bccb701-423a-4373-9193-d942dacc08e8",
+                  "type": "sortRows",
+                  "targetId": "16611462-3aa2-4497-8e76-6449d4c04376",
+                  "value": "Name:desc"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "8465691b-3116-45a2-a9aa-e9681bf0e46e",
+          "type": "button",
+          "name": "Reset fitted content",
+          "text": "Refresh + reset content",
+          "notes": "",
+          "x": 650,
+          "y": 410,
+          "rotation": 0,
+          "width": 330,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "9cfc47eb-e9ef-436d-bc0d-2349bf5b0c68",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "1f540709-c38e-4b4f-aa15-1898d0d33aac",
+                  "type": "removeFilter",
+                  "targetId": "7d6fb0a2-47ad-4309-a413-7e167696fff0",
+                  "value": "{\"all\":true}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0da74551-1589-4792-a12c-b81c3637d6e1",
+          "type": "text",
+          "name": "Horizontal title",
+          "text": "Horizontal · 3 items per row",
+          "notes": "",
+          "x": 40,
+          "y": 445,
+          "rotation": 0,
+          "width": 520,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "f4a1397c-aca5-4e9f-b83b-9fc088ebe863",
+          "type": "repeater",
+          "name": "Horizontal records",
+          "text": "",
+          "notes": "",
+          "x": 40,
+          "y": 485,
+          "rotation": 0,
+          "width": 504,
+          "height": 116,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#f1f5ff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              },
+              {
+                "Name": "B"
+              },
+              {
+                "Name": "C"
+              },
+              {
+                "Name": "D"
+              },
+              {
+                "Name": "E"
+              }
+            ],
+            "template": [
+              {
+                "id": "bd6297ea-aa33-4840-9608-00d0aaad3cfe",
+                "type": "button",
+                "name": "Grow horizontal row",
+                "text": "Grow [[Item.Name]]",
+                "notes": "",
+                "x": 7,
+                "y": 8,
+                "rotation": 0,
+                "width": 146,
+                "height": 38,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#5b5ce2",
+                  "stroke": "#5b5ce2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#ffffff",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "49b841a3-d5c7-4a67-b61e-9eb568716c95",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "d0d68a0b-8a09-471b-bd21-92ecd344289c",
+                        "type": "resizeItem",
+                        "targetId": "f4a1397c-aca5-4e9f-b83b-9fc088ebe863",
+                        "x": 210,
+                        "y": 84
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "itemHeight": 54,
+            "gap": 0,
+            "itemWidth": 160,
+            "horizontalGap": 12,
+            "verticalGap": 8,
+            "layout": "horizontal",
+            "wrap": 3
+          }
+        },
+        {
+          "id": "f25e92fb-b5c8-4472-895e-dc3515f6ca9e",
+          "type": "text",
+          "name": "Resize log",
+          "text": "Item Resized: ",
+          "notes": "",
+          "x": 40,
+          "y": 700,
+          "rotation": 0,
+          "width": 980,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "9fc0aead-e0b8-4e3e-8585-1a3e32452ace",
+          "type": "text",
+          "name": "Fit log",
+          "text": "Content fit: ",
+          "notes": "",
+          "x": 40,
+          "y": 750,
+          "rotation": 0,
+          "width": 980,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {
+    "ResizeTrace": "",
+    "FitTrace": ""
+  },
+  "styles": []
+}

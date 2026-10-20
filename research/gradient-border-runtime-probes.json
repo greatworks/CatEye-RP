@@ -1,0 +1,454 @@
+{
+  "timestamp": "2026-10-13T21:58:01.013Z",
+  "kind": "Exact retained function slices in Node VM; mocked DOM/CSS sinks, not original GUI or browser pixel measurement",
+  "extractionEvidence": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "sources": [
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "file": "math.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\math.js",
+      "sha256": "f56ab4a6c3f6e91aaba9bebf2e81485965fc82bca63af0c606593d580c1de883"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "style.js",
+      "start": 349,
+      "end": 592,
+      "sha256": "1a53fd9ccecce185f790a7aa7b7affb0cb09af28668cd46706a6505fc0fa7e49"
+    },
+    {
+      "file": "style.js",
+      "start": 810,
+      "end": 812,
+      "sha256": "3e1b6421a0368c247f06faf08491f10acaf8953765819b05ff59f0942ba50adb"
+    },
+    {
+      "file": "style.js",
+      "start": 1157,
+      "end": 1388,
+      "sha256": "4fd39fc991dc4f712ccd7307d585d7e05c32b4267e5a0f13245368def526d78b"
+    },
+    {
+      "file": "style.js",
+      "start": 1499,
+      "end": 1628,
+      "sha256": "bd574cf0c6b52b216996d43f7e190893c2f18f4c44b8e17993b387846224ac1f"
+    },
+    {
+      "file": "style.js",
+      "start": 1763,
+      "end": 1915,
+      "sha256": "dc01c29c7c9dfef5e81290a3282d9e9e97d278580d8a3adac0a9467ebcb1dfc0"
+    },
+    {
+      "file": "style.js",
+      "start": 2503,
+      "end": 2532,
+      "sha256": "f292f9ad8903e3de371a13bf65eaa9e8dc5eea9ebaa656d59dd58f4fa08a1a7c"
+    },
+    {
+      "file": "math.js",
+      "start": 30,
+      "end": 44,
+      "sha256": "897b83e95df89d3825f300c29f1b900bdac254efee85ccb04a2876264df16d13"
+    },
+    {
+      "file": "style.js",
+      "start": 753,
+      "end": 768,
+      "sha256": "cd8241f9576963c523ccfc45f33d1d528601e4cd12fb0c9801c0499f49e3bb7e"
+    }
+  ],
+  "results": [
+    {
+      "name": "linear stroke emits independent stroke and arrowhead paint",
+      "observed": {
+        "css": "#svg .stroke { stroke: url(#id8c844748a83ee); transition: all 0ms; } #svg .arrowhead { stroke: url(#id8c844748a83ee); fill: url(#id8c844748a83ee); transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "id8c844748a83ee",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "radial stroke uses identical physical axis matrix as fill",
+      "observed": {
+        "css": "#svg .stroke { stroke: url(#id8c8156f930d4a); transition: all 0ms; } #svg .arrowhead { stroke: url(#id8c8156f930d4a); fill: url(#id8c8156f930d4a); transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "radialGradient",
+            "attrs": {
+              "id": "id8c8156f930d4a",
+              "cx": "100",
+              "cy": "50",
+              "r": "100",
+              "gradientTransform": "matrix(1 0 0 0.5 0 25)",
+              "gradientUnits": "userSpaceOnUse"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "solid border atomically replaces gradient and uses alpha",
+      "observed": {
+        "css": "#svg .stroke { stroke:rgba(18, 52, 86, 0.3); transition: all 0ms; } #svg .arrowhead { stroke:rgba(18, 52, 86, 0.3); fill:rgba(18, 52, 86, 0.3); transition: all 0ms; } ",
+        "nodes": []
+      },
+      "pass": true
+    },
+    {
+      "name": "default stroke preserves original offsets while replacing colors",
+      "observed": {
+        "css": "#base stop:nth-of-type(1) { stop-color:rgba(255, 0, 0, 1); stop-opacity:1; } #base stop:nth-of-type(2) { stop-color:rgba(0, 0, 255, 0.5019607843137255); stop-opacity:1; } #base stop { transition: all 0ms; } #svg .stroke {  } #svg .arrowhead {  } ",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "base",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "temporary stroke updates offsets rather than retaining previous temporary offsets",
+      "observed": {
+        "css": "#svg .stroke { stroke: url(#id089e61691d87e8); transition: all 0ms; } #svg .arrowhead { stroke: url(#id089e61691d87e8); fill: url(#id089e61691d87e8); transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "id089e61691d87e8",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0.3",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "fill and stroke temporary definitions both survive their independent paints",
+      "observed": {
+        "css": "#svg .stroke { stroke: url(#id154ba05a88eea8); transition: all 0ms; } #svg .arrowhead { stroke: url(#id154ba05a88eea8); fill: url(#id154ba05a88eea8); transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "base"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1"
+            }
+          },
+          {
+            "tag": "radialGradient",
+            "attrs": {
+              "id": "id154ba05a88eea8",
+              "cx": "100",
+              "cy": "50",
+              "r": "100",
+              "gradientTransform": "matrix(1 0 0 0.5 0 25)",
+              "gradientUnits": "userSpaceOnUse"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "default stroke reuse assigns arrowhead fill and stroke from current stroke",
+      "observed": {
+        "fill": "url(\"#base\")",
+        "stroke": "url(\"#base\")"
+      },
+      "pass": true
+    },
+    {
+      "name": "line pattern none suppresses stroke even when gradient exists",
+      "observed": {
+        "css": "#svg .stroke { stroke: url(#id08cfca7dc89288); stroke-width: 0; stroke-dasharray: 0; transition: all 0ms; } #svg .arrowhead { fill: nonetransition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "id08cfca7dc89288",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "ordinary open path receives exact border width, line style scales dash units",
+      "observed": {
+        "css": "#svg .stroke { stroke-width:5; stroke-dasharray:10,15; transition: all 0ms; } #svg .arrowhead { stroke-width: 4; transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 100 0",
+              "stroke-width": "5"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "closed and masked native path doubles width for clipped inside border",
+      "observed": {
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 100 0 Z",
+              "mask": "url(#m)",
+              "stroke-width": "10"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "line SVG allows visible overflow",
+      "observed": {
+        "css": "#svg .stroke {  } #svg .arrowhead {  } #svg { overflow:visible; } ",
+        "nodes": []
+      },
+      "pass": true
+    },
+    {
+      "name": "checkbox check stroke width is independent of gradient border width",
+      "observed": {
+        "css": "#svg .stroke { stroke: url(#idb99295247ae5e); transition: all 0ms; } #svg .arrowhead { stroke: url(#idb99295247ae5e); fill: url(#idb99295247ae5e); transition: all 0ms; } #svg .stroke.btn_check { stroke-width: 6; } ",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "idb99295247ae5e",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "radio gradient does not assign check fill while solid does",
+      "observed": [
+        "#svg .stroke { stroke: url(#idfe02189ebe3e88); transition: all 0ms; } #svg .arrowhead { stroke: url(#idfe02189ebe3e88); fill: url(#idfe02189ebe3e88); transition: all 0ms; } ",
+        "#svg .stroke { stroke:rgba(0, 0, 255, 1); transition: all 0ms; } #svg .arrowhead { stroke:rgba(0, 0, 255, 1); fill:rgba(0, 0, 255, 1); transition: all 0ms; } #svg .stroke.btn_check { fill: rgba(0, 0, 255, 1); } "
+      ],
+      "pass": true
+    },
+    {
+      "name": "selected border replaces hover border as one object",
+      "observed": {
+        "fillType": "radialGradient"
+      },
+      "pass": true
+    },
+    {
+      "name": "adaptive border retains absent state and is replaced by solid state",
+      "observed": [
+        "radialGradient",
+        "solid"
+      ],
+      "pass": true
+    },
+    {
+      "name": "image linear uses first color with native ARGB alpha, ignoring fill opacity",
+      "observed": {
+        "border-color": "rgba(18,52,86,0.5019607843137255)"
+      },
+      "pass": true
+    },
+    {
+      "name": "image radial is transparent black, not opaque black",
+      "observed": {
+        "border-color": "rgba(0,0,0,0)"
+      },
+      "pass": true
+    },
+    {
+      "name": "image empty linear colors throws instead of supplying fallback color",
+      "observed": "TypeError",
+      "pass": true
+    },
+    {
+      "name": "image zero-width gate does not evaluate empty colors",
+      "observed": {},
+      "pass": true
+    }
+  ]
+}

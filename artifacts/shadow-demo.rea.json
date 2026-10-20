@@ -1,0 +1,964 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "de330092-ab02-4447-9ac7-eae30dbb3ef6",
+  "name": "Shadows — shape, surface and text",
+  "pages": [
+    {
+      "id": "shadow-page",
+      "name": "Shadow studio",
+      "width": 1100,
+      "height": 850,
+      "background": "#f5f7fc",
+      "widgets": [
+        {
+          "id": "shadow-heading",
+          "type": "text",
+          "name": "Three independent kinds of shadow",
+          "text": "Three independent kinds of shadow",
+          "notes": "",
+          "x": 40,
+          "y": 25,
+          "rotation": 0,
+          "width": 950,
+          "height": 52,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "color": "#172744",
+            "fontSize": 28,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "shadow-subtitle",
+          "type": "text",
+          "name": "Change the light without changing the layout. Hover the card; switch all shadows off and back on.",
+          "text": "Change the light without changing the layout. Hover the card; switch all shadows off and back on.",
+          "notes": "",
+          "x": 40,
+          "y": 80,
+          "rotation": 0,
+          "width": 960,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#536785",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "shadow-card",
+          "type": "box",
+          "name": "Surface shadow",
+          "text": "Surface shadow",
+          "notes": "",
+          "x": 45,
+          "y": 145,
+          "rotation": 0,
+          "width": 250,
+          "height": 115,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b9c8e3",
+            "strokeWidth": 1,
+            "radius": 14,
+            "color": "#263348",
+            "fontSize": 21,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1,
+            "outerShadow": {
+              "on": true,
+              "offsetX": 8,
+              "offsetY": 9,
+              "blurRadius": 6,
+              "color": "rgba(36,60,120,0.4)"
+            }
+          },
+          "interactions": [],
+          "mouseOverStyle": {
+            "outerShadow": {
+              "on": true,
+              "offsetX": -8,
+              "offsetY": 12,
+              "blurRadius": 14,
+              "color": "rgba(36,60,120,0.4)"
+            }
+          }
+        },
+        {
+          "id": "shadow-inset",
+          "type": "box",
+          "name": "Inset surface",
+          "text": "Inset surface",
+          "notes": "",
+          "x": 350,
+          "y": 145,
+          "rotation": 0,
+          "width": 250,
+          "height": 115,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#eee7ff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 18,
+            "color": "#263348",
+            "fontSize": 21,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "innerShadow": {
+              "on": true,
+              "offsetX": 5,
+              "offsetY": 4,
+              "blurRadius": 7,
+              "color": "rgba(80,37,153,0.65)",
+              "spread": 3
+            }
+          },
+          "interactions": []
+        },
+        {
+          "id": "shadow-lettering",
+          "type": "text",
+          "name": "Text stays text",
+          "text": "Text stays text",
+          "notes": "",
+          "x": 655,
+          "y": 150,
+          "rotation": 0,
+          "width": 350,
+          "height": 100,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "verticalAlign": "middle",
+            "color": "#283d72",
+            "fontSize": 34,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1,
+            "textShadow": {
+              "on": true,
+              "offsetX": 2,
+              "offsetY": 3,
+              "blurRadius": 1,
+              "color": "rgba(78,70,184,0.55)"
+            }
+          },
+          "interactions": []
+        },
+        {
+          "id": "shadow-vector",
+          "type": "path",
+          "name": "Path shadow",
+          "text": "Path shadow",
+          "notes": "",
+          "x": 75,
+          "y": 315,
+          "rotation": 0,
+          "width": 200,
+          "height": 135,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#79d6be",
+            "stroke": "#197d65",
+            "strokeWidth": 2,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1,
+            "outerShadow": {
+              "on": true,
+              "offsetX": -7,
+              "offsetY": 9,
+              "blurRadius": 6,
+              "color": "rgba(36,60,120,0.4)"
+            },
+            "innerShadow": {
+              "on": true,
+              "offsetX": 5,
+              "offsetY": 4,
+              "blurRadius": 7,
+              "color": "rgba(0,80,60,0.6)",
+              "spread": 1
+            }
+          },
+          "interactions": [],
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0.5,
+                "y": 0
+              },
+              {
+                "op": "L",
+                "x": 1,
+                "y": 1
+              },
+              {
+                "op": "L",
+                "x": 0,
+                "y": 1
+              },
+              {
+                "op": "Z"
+              }
+            ]
+          }
+        },
+        {
+          "id": "shadow-input",
+          "type": "input",
+          "name": "Editable text",
+          "text": "Editable text",
+          "notes": "",
+          "x": 350,
+          "y": 320,
+          "rotation": 0,
+          "width": 250,
+          "height": 56,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "color": "#263348",
+            "fontSize": 19,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "outerShadow": {
+              "on": true,
+              "offsetX": 8,
+              "offsetY": 5,
+              "blurRadius": 6,
+              "color": "rgba(36,60,120,0.4)"
+            },
+            "textShadow": {
+              "on": true,
+              "offsetX": 2,
+              "offsetY": 3,
+              "blurRadius": 1,
+              "color": "rgba(78,70,184,0.55)"
+            }
+          },
+          "interactions": [],
+          "focusedStyle": {
+            "outerShadow": {
+              "on": true,
+              "offsetX": 8,
+              "offsetY": 9,
+              "blurRadius": 6,
+              "color": "#7955dd80"
+            },
+            "textShadow": {
+              "on": false,
+              "offsetX": 2,
+              "offsetY": 3,
+              "blurRadius": 1,
+              "color": "rgba(78,70,184,0.55)"
+            }
+          }
+        },
+        {
+          "id": "shadow-parent",
+          "type": "panel",
+          "name": "Shadowed container",
+          "text": "Shadowed container",
+          "notes": "",
+          "x": 655,
+          "y": 310,
+          "rotation": 0,
+          "width": 350,
+          "height": 150,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 8,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "outerShadow": {
+              "on": true,
+              "offsetX": 8,
+              "offsetY": 9,
+              "blurRadius": 6,
+              "color": "rgba(36,60,120,0.4)"
+            },
+            "textShadow": {
+              "on": true,
+              "offsetX": 2,
+              "offsetY": 3,
+              "blurRadius": 1,
+              "color": "rgba(78,70,184,0.55)"
+            }
+          },
+          "interactions": [],
+          "activeStateId": "ac78f15c-4fa2-4137-b1a1-514c5c121d7c",
+          "states": [
+            {
+              "id": "ac78f15c-4fa2-4137-b1a1-514c5c121d7c",
+              "name": "State 1",
+              "widgets": [
+                {
+                  "id": "shadow-child",
+                  "type": "text",
+                  "name": "Independent child — no text shadow",
+                  "text": "Independent child — no text shadow",
+                  "notes": "",
+                  "x": 12,
+                  "y": 20,
+                  "rotation": 0,
+                  "width": 326,
+                  "height": 45,
+                  "hidden": false,
+                  "locked": false,
+                  "disabled": false,
+                  "style": {
+                    "fill": "transparent",
+                    "stroke": "#b8bdc7",
+                    "strokeWidth": 0,
+                    "radius": 0,
+                    "color": "#263348",
+                    "fontSize": 17,
+                    "fontFamily": "Arial",
+                    "fontWeight": 400,
+                    "textAlign": "left",
+                    "opacity": 1
+                  },
+                  "interactions": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shadow-repeater",
+          "type": "repeater",
+          "name": "Independent rows",
+          "text": "Independent rows",
+          "notes": "",
+          "x": 45,
+          "y": 520,
+          "rotation": 0,
+          "width": 300,
+          "height": 140,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              },
+              {
+                "Name": "B"
+              }
+            ],
+            "template": [
+              {
+                "id": "shadow-row",
+                "type": "box",
+                "name": "Row [[Item.Name]]",
+                "text": "Row [[Item.Name]]",
+                "notes": "",
+                "x": 10,
+                "y": 10,
+                "rotation": 0,
+                "width": 270,
+                "height": 42,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#e4edff",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1,
+                  "outerShadow": {
+                    "on": true,
+                    "offsetX": 3,
+                    "offsetY": 3,
+                    "blurRadius": 3,
+                    "color": "rgba(36,60,120,0.4)"
+                  },
+                  "textShadow": {
+                    "on": true,
+                    "offsetX": 2,
+                    "offsetY": 3,
+                    "blurRadius": 0,
+                    "color": "rgba(78,70,184,0.55)"
+                  }
+                },
+                "interactions": []
+              }
+            ],
+            "itemHeight": 62,
+            "gap": 4,
+            "itemWidth": 290,
+            "layout": "vertical",
+            "fitToContent": false
+          }
+        },
+        {
+          "id": "shadow-off",
+          "type": "button",
+          "name": "Switch shadows off",
+          "text": "Switch shadows off",
+          "notes": "",
+          "x": 390,
+          "y": 525,
+          "rotation": 0,
+          "width": 200,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "0903193c-841f-4c7f-b3eb-3b2b4e20a961",
+              "event": "click",
+              "name": "Switch shadows off",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "014eb9d9-aa2d-40e5-a085-1d59e44b5937",
+                  "type": "setStyle",
+                  "targetId": "shadow-card",
+                  "style": {
+                    "outerShadow": {
+                      "on": false,
+                      "offsetX": 8,
+                      "offsetY": 9,
+                      "blurRadius": 6,
+                      "color": "rgba(36,60,120,0.4)"
+                    }
+                  }
+                },
+                {
+                  "id": "2fd9c960-497f-4215-8134-87eda0b5f4a1",
+                  "type": "setStyle",
+                  "targetId": "shadow-inset",
+                  "style": {
+                    "innerShadow": {
+                      "on": false,
+                      "offsetX": 5,
+                      "offsetY": 4,
+                      "blurRadius": 7,
+                      "color": "rgba(80,37,153,0.65)",
+                      "spread": 3
+                    }
+                  }
+                },
+                {
+                  "id": "59bf01e9-75e6-4c76-8ede-d14324ee7541",
+                  "type": "setStyle",
+                  "targetId": "shadow-lettering",
+                  "style": {
+                    "textShadow": {
+                      "on": false,
+                      "offsetX": 2,
+                      "offsetY": 3,
+                      "blurRadius": 1,
+                      "color": "rgba(78,70,184,0.55)"
+                    }
+                  }
+                },
+                {
+                  "id": "bc084cc2-1a35-4b87-b9bc-cb2fdfd5c8d7",
+                  "type": "setStyle",
+                  "targetId": "shadow-vector",
+                  "style": {
+                    "outerShadow": {
+                      "on": false,
+                      "offsetX": -7,
+                      "offsetY": 9,
+                      "blurRadius": 6,
+                      "color": "rgba(36,60,120,0.4)"
+                    }
+                  }
+                },
+                {
+                  "id": "ec709728-2f69-4ee3-b855-caa7a2887211",
+                  "type": "setStyle",
+                  "targetId": "shadow-vector",
+                  "style": {
+                    "innerShadow": {
+                      "on": false,
+                      "offsetX": 5,
+                      "offsetY": 4,
+                      "blurRadius": 7,
+                      "color": "rgba(0,80,60,0.6)",
+                      "spread": 1
+                    }
+                  }
+                },
+                {
+                  "id": "52c26bc7-9764-4c31-9843-21038de1170d",
+                  "type": "setStyle",
+                  "targetId": "shadow-input",
+                  "style": {
+                    "outerShadow": {
+                      "on": false,
+                      "offsetX": 8,
+                      "offsetY": 5,
+                      "blurRadius": 6,
+                      "color": "rgba(36,60,120,0.4)"
+                    }
+                  }
+                },
+                {
+                  "id": "b443715e-2078-480f-a2cc-b9a818f714cf",
+                  "type": "setStyle",
+                  "targetId": "shadow-input",
+                  "style": {
+                    "textShadow": {
+                      "on": false,
+                      "offsetX": 2,
+                      "offsetY": 3,
+                      "blurRadius": 1,
+                      "color": "rgba(78,70,184,0.55)"
+                    }
+                  }
+                },
+                {
+                  "id": "80c0986a-a19d-4655-96f6-4ba4c08d54c6",
+                  "type": "setStyle",
+                  "targetId": "shadow-parent",
+                  "style": {
+                    "outerShadow": {
+                      "on": false,
+                      "offsetX": 8,
+                      "offsetY": 9,
+                      "blurRadius": 6,
+                      "color": "rgba(36,60,120,0.4)"
+                    }
+                  }
+                },
+                {
+                  "id": "2dae7a33-2c77-4248-9382-776e7dc1884b",
+                  "type": "setStyle",
+                  "targetId": "shadow-parent",
+                  "style": {
+                    "textShadow": {
+                      "on": false,
+                      "offsetX": 2,
+                      "offsetY": 3,
+                      "blurRadius": 1,
+                      "color": "rgba(78,70,184,0.55)"
+                    }
+                  }
+                },
+                {
+                  "id": "b350aa41-71c3-4c38-9c36-0184cbaf7d9f",
+                  "type": "setStyle",
+                  "targetId": "shadow-row",
+                  "style": {
+                    "outerShadow": {
+                      "on": false,
+                      "offsetX": 3,
+                      "offsetY": 3,
+                      "blurRadius": 3,
+                      "color": "rgba(36,60,120,0.4)"
+                    }
+                  }
+                },
+                {
+                  "id": "725ec41b-a1f4-4f22-bfc6-cbc75e71346f",
+                  "type": "setStyle",
+                  "targetId": "shadow-row",
+                  "style": {
+                    "textShadow": {
+                      "on": false,
+                      "offsetX": 2,
+                      "offsetY": 3,
+                      "blurRadius": 0,
+                      "color": "rgba(78,70,184,0.55)"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shadow-on",
+          "type": "button",
+          "name": "Restore shadows",
+          "text": "Restore shadows",
+          "notes": "",
+          "x": 640,
+          "y": 525,
+          "rotation": 0,
+          "width": 200,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "b29d7ba1-1091-4020-8632-17c694d01dbb",
+              "event": "click",
+              "name": "Restore shadows",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "34c51f0a-5455-4f05-bbcb-62ee7c278fa6",
+                  "type": "setStyle",
+                  "targetId": "shadow-card",
+                  "style": {
+                    "outerShadow": {
+                      "on": true,
+                      "offsetX": 8,
+                      "offsetY": 9,
+                      "blurRadius": 6,
+                      "color": "rgba(36,60,120,0.4)"
+                    }
+                  }
+                },
+                {
+                  "id": "ab4e2639-8ecc-4e66-b48a-e3b16ffe41e6",
+                  "type": "setStyle",
+                  "targetId": "shadow-inset",
+                  "style": {
+                    "innerShadow": {
+                      "on": true,
+                      "offsetX": 5,
+                      "offsetY": 4,
+                      "blurRadius": 7,
+                      "color": "rgba(80,37,153,0.65)",
+                      "spread": 3
+                    }
+                  }
+                },
+                {
+                  "id": "13c39fdb-c94d-41ef-866a-97a79b21d51c",
+                  "type": "setStyle",
+                  "targetId": "shadow-lettering",
+                  "style": {
+                    "textShadow": {
+                      "on": true,
+                      "offsetX": 2,
+                      "offsetY": 3,
+                      "blurRadius": 1,
+                      "color": "rgba(78,70,184,0.55)"
+                    }
+                  }
+                },
+                {
+                  "id": "ae2ec6f4-0f0e-4a38-bb7e-d562d6c959f5",
+                  "type": "setStyle",
+                  "targetId": "shadow-vector",
+                  "style": {
+                    "outerShadow": {
+                      "on": true,
+                      "offsetX": -7,
+                      "offsetY": 9,
+                      "blurRadius": 6,
+                      "color": "rgba(36,60,120,0.4)"
+                    }
+                  }
+                },
+                {
+                  "id": "4809fef1-0eae-4e87-ae4f-ef6f7c855b20",
+                  "type": "setStyle",
+                  "targetId": "shadow-vector",
+                  "style": {
+                    "innerShadow": {
+                      "on": true,
+                      "offsetX": 5,
+                      "offsetY": 4,
+                      "blurRadius": 7,
+                      "color": "rgba(0,80,60,0.6)",
+                      "spread": 1
+                    }
+                  }
+                },
+                {
+                  "id": "2b71d581-b78f-419c-bd22-b6b8838c0c7b",
+                  "type": "setStyle",
+                  "targetId": "shadow-input",
+                  "style": {
+                    "outerShadow": {
+                      "on": true,
+                      "offsetX": 8,
+                      "offsetY": 5,
+                      "blurRadius": 6,
+                      "color": "rgba(36,60,120,0.4)"
+                    }
+                  }
+                },
+                {
+                  "id": "b92fed75-b2cc-4a54-8e1b-4b2c6ae4068f",
+                  "type": "setStyle",
+                  "targetId": "shadow-input",
+                  "style": {
+                    "textShadow": {
+                      "on": true,
+                      "offsetX": 2,
+                      "offsetY": 3,
+                      "blurRadius": 1,
+                      "color": "rgba(78,70,184,0.55)"
+                    }
+                  }
+                },
+                {
+                  "id": "d6729c26-50b1-4574-bd4a-45f2b18494e4",
+                  "type": "setStyle",
+                  "targetId": "shadow-parent",
+                  "style": {
+                    "outerShadow": {
+                      "on": true,
+                      "offsetX": 8,
+                      "offsetY": 9,
+                      "blurRadius": 6,
+                      "color": "rgba(36,60,120,0.4)"
+                    }
+                  }
+                },
+                {
+                  "id": "ec57bf2c-b759-4d1d-94ee-a11d9e4176c4",
+                  "type": "setStyle",
+                  "targetId": "shadow-parent",
+                  "style": {
+                    "textShadow": {
+                      "on": true,
+                      "offsetX": 2,
+                      "offsetY": 3,
+                      "blurRadius": 1,
+                      "color": "rgba(78,70,184,0.55)"
+                    }
+                  }
+                },
+                {
+                  "id": "589787e1-d32b-4acd-b4e3-caab84cf143f",
+                  "type": "setStyle",
+                  "targetId": "shadow-row",
+                  "style": {
+                    "outerShadow": {
+                      "on": true,
+                      "offsetX": 3,
+                      "offsetY": 3,
+                      "blurRadius": 3,
+                      "color": "rgba(36,60,120,0.4)"
+                    }
+                  }
+                },
+                {
+                  "id": "08209950-0e07-4134-b90a-32553ed53656",
+                  "type": "setStyle",
+                  "targetId": "shadow-row",
+                  "style": {
+                    "textShadow": {
+                      "on": true,
+                      "offsetX": 2,
+                      "offsetY": 3,
+                      "blurRadius": 0,
+                      "color": "rgba(78,70,184,0.55)"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shadow-note",
+          "type": "text",
+          "name": "Outer shadows follow the surface. Inner shadows stay inside. Text shadows are local to each widget.",
+          "text": "Outer shadows follow the surface. Inner shadows stay inside. Text shadows are local to each widget.",
+          "notes": "",
+          "x": 385,
+          "y": 615,
+          "rotation": 0,
+          "width": 580,
+          "height": 70,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#536785",
+            "fontSize": 18,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    },
+    {
+      "id": "shadow-frame-page",
+      "name": "Embedded comparison",
+      "width": 1180,
+      "height": 910,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "shadow-frame",
+          "type": "inlineFrame",
+          "name": "Shadow frame",
+          "text": "",
+          "notes": "",
+          "inlineFrame": {
+            "hideBorders": false,
+            "scrolling": "auto",
+            "preview": {
+              "kind": "none"
+            },
+            "target": {
+              "kind": "page",
+              "pageId": "shadow-page"
+            }
+          },
+          "x": 15,
+          "y": 15,
+          "rotation": 0,
+          "width": 1140,
+          "height": 870,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

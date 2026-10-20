@@ -1,0 +1,166 @@
+{
+  "schema": 1,
+  "stage": "adaptive-placement-authoring",
+  "createdAt": "2026-10-15T11:51:30.594Z",
+  "status": "frozen-focused-verified",
+  "sourceFiles": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "1e21c4739c77102ba8ab3dbb2018b73405908642f142d53bca0bb33e9620cd79"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "16243b8b2eb75b15e1ce432b338e1d7f3c476fd217bc3a6f01202c1eb160fb06"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "1e734b69b8f2eecbfba83d895bbeab1426182cd1c39de78159c20450c0060630"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c7b3e4fd6b4ecac1af6ae0bc0d2956347c3974fc2605b41a9241ddf798faf502"
+    },
+    {
+      "path": "src/components/WidgetView.tsx",
+      "sha256": "04951a60437549f3b9613039cd7eae154271023ccdedc90d05645491e9a7daee"
+    },
+    {
+      "path": "src/style.css",
+      "sha256": "d07c6ff1b3f3370fcffbc6dcc2b45e6a3182355f5c2379feb98a72a0b9d1b7c2"
+    },
+    {
+      "path": "tests/adaptive-placement-authoring.test.ts",
+      "sha256": "e39659394f95d48f69ab2e84739a1d5be1c86ef28a925e824e571167c057aab9"
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": ".build/adaptive-placement-authoring-red.json",
+      "sha256": "8dcb66ffd1bf27492366e2ae72ac212fb043598ed274c6267447f0a8148b678d"
+    },
+    {
+      "path": ".build/adaptive-placement-authoring-focused-final.json",
+      "sha256": "475090811d21fcd074a64d3cb14f8a73525f33d0375f1ad5e304cd952702dba7"
+    },
+    {
+      "path": ".build/adaptive-placement-authoring-typecheck.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217"
+    },
+    {
+      "path": "research/adaptive-placement-authoring-evidence.json",
+      "sha256": "3d9844a29a6967caad9b1b0b658f1d6bbe480135c9e460a8ebd8455a4a3668f0"
+    },
+    {
+      "path": "research/adaptive-placement-authoring-evidence.md",
+      "sha256": "58496de976bde59a9a6b32d6c2c02e381990c40ec17d6669e25ee13368759648"
+    },
+    {
+      "path": ".build/adaptive-placement-focused-e2e.json",
+      "sha256": "0c158850cc27dcbd9823dda3119cc55670b179acae134202a782101778154fec"
+    }
+  ],
+  "verification": {
+    "before": {
+      "passed": 1,
+      "failed": 9,
+      "total": 10,
+      "report": ".build/adaptive-placement-authoring-red.json"
+    },
+    "after": {
+      "passed": 135,
+      "failed": 0,
+      "total": 135,
+      "report": ".build/adaptive-placement-authoring-focused-final.json",
+      "suites": [
+        {
+          "path": "tests/adaptive-component-sync.test.ts",
+          "tests": 1,
+          "status": "passed"
+        },
+        {
+          "path": "tests/adaptive-hierarchy.test.ts",
+          "tests": 35,
+          "status": "passed"
+        },
+        {
+          "path": "tests/adaptive-placement-authoring.test.ts",
+          "tests": 13,
+          "status": "passed"
+        },
+        {
+          "path": "tests/adaptive-state-styles.test.ts",
+          "tests": 28,
+          "status": "passed"
+        },
+        {
+          "path": "tests/adaptive-view-sets.test.ts",
+          "tests": 33,
+          "status": "passed"
+        },
+        {
+          "path": "tests/adaptive.test.ts",
+          "tests": 12,
+          "status": "passed"
+        },
+        {
+          "path": "tests/components.test.ts",
+          "tests": 13,
+          "status": "passed"
+        }
+      ]
+    },
+    "typecheck": {
+      "exitCode": 0,
+      "log": ".build/adaptive-placement-authoring-typecheck.log"
+    },
+    "browser": {
+      "owner": "parent",
+      "report": ".build/adaptive-placement-focused-e2e.json",
+      "sha256": "0c158850cc27dcbd9823dda3119cc55670b179acae134202a782101778154fec",
+      "stats": {
+        "startTime": "2026-10-15T11:50:42.276Z",
+        "duration": 33668.568,
+        "expected": 14,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "scope": "Parent production-focused 14 cases including 3 authoring cases. Report read independently; no browser launched by this agent."
+    },
+    "nativeGui": false
+  },
+  "contract": {
+    "placement": "Optional boolean; absent true; independent of hidden; explicit view booleans retained",
+    "insertion": "App explicitly passes placementAllViews. Child additions set only newly inserted subtree roots Base false/current true. Low-level calls without insertion policy retain previous shared insertion behavior.",
+    "allViews": "Writes Base placement, removes only placed from every active/inactive view map; preserves remaining declarations including empty state barriers.",
+    "deletion": "Child Delete unplaces; Base or explicit global Delete removes subtree and prunes all declarations. Existing dangling action-target contract retained.",
+    "canvas": "Full author graph kept separately; canvas rendering, marquee, Ctrl+A, drag, arrow movement, alignment and selection overlay exclude unplaced. Outline retains restoration/property access and placement filters.",
+    "composites": "Table/menu/tree roots support placement; shared descendants retain existing adaptive restrictions. Ordinary panel/repeater children remain independently placeable."
+  },
+  "labels": {
+    "scope": "Placement and insertion: all views",
+    "filter": "Outline placement filter",
+    "filterOptions": [
+      "All widgets",
+      "Placed",
+      "Unplaced"
+    ],
+    "outline": [
+      "Place in view",
+      "Unplace from view"
+    ],
+    "commands": [
+      "Place in View",
+      "Unplace from View",
+      "Place in All Views",
+      "Unplace from All Views",
+      "Delete from All Views"
+    ]
+  },
+  "limits": [
+    "No general Affect All Views style editing added.",
+    "No original GUI capture or interactive undo parity claim.",
+    "Native Layer-specific restoration and master/component special paths remain unverified; product component identity behavior is covered independently.",
+    "Runtime, native parsing, whole release and browser validation are owned by parent/other agents."
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "assemblySHA256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+  "scope": "Static text-only CIL/literal investigation; no original assembly/application execution or browser. No corpus rescan; product unchanged.",
+  "facts": {
+    "ordinaryChain": "fNPD(arg4=false) -> ONiF -> KNiN -> nNiB -> zNiG -> PbDL, then rNiV",
+    "normalizeCR": "Regex \\r\\n? to LF",
+    "htmlBreaks": [
+      "LF",
+      "U+2028"
+    ],
+    "htmlReplacement": "<br>",
+    "paragraphCleanup": "ONiF clone then Reverse(paragraphs).Skip(1), normalize and TrimEnd(LF) on each last recursive inline; statically inspected, not replayed as full ONiF",
+    "notReplacedByTextChain": [
+      "U+2029"
+    ]
+  },
+  "replay": {
+    "passed": 24,
+    "total": 24
+  },
+  "unknown": [
+    "native editor keyboard encoding",
+    "alternate zNir caller mode",
+    "complete original browser cascade and ink",
+    "all empty/list paragraph cases",
+    "unobserved native run layouts"
+  ],
+  "sources": [
+    {
+      "file": "research/text-autofit-breaks-edge-metadata.json",
+      "sha256": "94e5954753cbb5450d9490da29759e6d9b540a95bb0f80d4dcd51435bce4cb3b"
+    },
+    {
+      "file": "research/text-autofit-breaks-enumeration-cil.json",
+      "sha256": "5107ec7a8a703172c89efff85c0858561ef329e114e8c8a4b149f42f7d360bd2"
+    },
+    {
+      "file": "research/text-autofit-breaks-evidence.md",
+      "sha256": "103d51b580007cde56a23f59f712894483d68e0450394b06cfec1ff7ccd1199f"
+    },
+    {
+      "file": "research/text-autofit-breaks-inline-container-cil.json",
+      "sha256": "918c02dd5279aa216f07902829ee9813d312b272e004e52b847475b9ff929c62"
+    },
+    {
+      "file": "research/text-autofit-breaks-inline-edge-cil.json",
+      "sha256": "351dc3dc25c90252d17027a9f148444110b03783179cd537df958dce7c06bbfb"
+    },
+    {
+      "file": "research/text-autofit-breaks-literals.json",
+      "sha256": "a52600653c09721b277f6c3980ab7969c44eed5fcbba7021c2054e99e3581f80"
+    },
+    {
+      "file": "research/text-autofit-breaks-literals.mjs",
+      "sha256": "a6248f44fa033b42990e811cc1fef991d7c24e3e6160f923ee7610535b633461"
+    },
+    {
+      "file": "research/text-autofit-breaks-normalize-cil.json",
+      "sha256": "1999af8df59a5d47835c5796635648ef8dbf180e77398ab1805970e88a644dba"
+    },
+    {
+      "file": "research/text-autofit-breaks-normalize-init-cil.json",
+      "sha256": "0616ecd7e5347f43a004ff42f76eda27594144fd4904b8e10192ba24178d3041"
+    },
+    {
+      "file": "research/text-autofit-breaks-paragraph-trim-cil.json",
+      "sha256": "9470f15dcbfc05f0eda90e15d7d8f35adad655a8c5014acfea815257c35bb98b"
+    },
+    {
+      "file": "research/text-autofit-breaks-prepare-cil.json",
+      "sha256": "2e8cc0052ba01928353a111d87791058c48822583ab3edb915f49808d7b5854b"
+    },
+    {
+      "file": "research/text-autofit-breaks-replay.json",
+      "sha256": "6ab1f8a6afdfcac72c77e1603d7c4aa1573c35ff55461b37b47605544fca409c"
+    },
+    {
+      "file": "research/text-autofit-breaks-replay.mjs",
+      "sha256": "4700ecc991c2a333e20f778f3f16fae551367817dbae8caddda5b775b6878cff"
+    },
+    {
+      "file": "research/text-autofit-breaks-report.mjs",
+      "sha256": "55564ac3b120f41f9881e7e5b5e6cd3a018100d5ce0c9ce4f11f2db93842828f"
+    },
+    {
+      "file": "research/text-autofit-breaks-reverse-cil.json",
+      "sha256": "9a3c8ac4a2cb4db0ad4c8b5504834fc9ae7d09ef2d788e8f9be5d0eaa46b447a"
+    },
+    {
+      "file": "research/text-autofit-breaks-skip-cil.json",
+      "sha256": "2f1a36dd9da3ff63cefe5a8978d10245670c37d81d49d52378f7616a2f9914d6"
+    },
+    {
+      "file": "research/text-autofit-native-text-callers-cil.json",
+      "sha256": "f83d4bf2230a0db5423fe30e0a08a0d78562394fcd8d0498a29c21c4bf338ce1"
+    },
+    {
+      "file": "research/rich-text-format-paragraph-cil.json",
+      "sha256": "3eb9615ae85d8ad8e3566a13b0d6aa389b126928da9dc4a49ca919374cd54e9e"
+    },
+    {
+      "file": "research/rich-text-format-evidence.md",
+      "sha256": "97ccdcf12ebe6c040b179d204cc968ff2c03dc022766a3a13838d2fe6ff72b9a"
+    },
+    {
+      "file": "research/inline-text-native-evidence.md",
+      "sha256": "a449a6f4b44d67d75b3e2af15248cbc54944707f239e9597e1e12e42622ecb1f"
+    },
+    {
+      "file": "src/components/RichTextContent.tsx",
+      "sha256": "6c3eba3f059a0d4f5f34cf91c9ca4becef81c3ebe40ad79eafb312c863dd002b"
+    },
+    {
+      "file": "src/components/rich-text-dom.ts",
+      "sha256": "16b9e29d354f75de75127b56642fb5339f3727df07f9fb0d1fa3204bf18d25ef"
+    },
+    {
+      "file": "src/components/RichTextEditor.tsx",
+      "sha256": "8f3cf9ed9f90067edd412c84d5f69b7339ceba56259ecf1e3214a0c95daecdef"
+    },
+    {
+      "file": "src/runtime/export-runtime.ts",
+      "sha256": "ec7493630031f8aba45e1282ffe104f8b51a901e6eec00b9c49205b0e3f48746"
+    },
+    {
+      "file": "research/rich-text-format-html-cil.json",
+      "sha256": "76545e84fa788801c14161fe475fc8ff5a5fabbdec7a03f7727001adb999b348"
+    },
+    {
+      "file": "research/rich-text-format-html-text-cil.json",
+      "sha256": "0109a2ad263a8f935f09e8bc7f6aaabbdc78d5e03915775157665a279f478729"
+    },
+    {
+      "file": "research/rich-text-format-html-linebreak-cil.json",
+      "sha256": "1be8a45b036650317418e372dd2c2e976e295cbd5278ae3abce07afc6a540d7a"
+    },
+    {
+      "file": "research/rich-text-format-html-inline-cil.json",
+      "sha256": "a829f478cf33583a37763940b70153faa6134dddd8e87ef830066fb7051e6799"
+    },
+    {
+      "file": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128"
+    },
+    {
+      "file": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    },
+    {
+      "file": "research/text-autofit-native-literals.mjs",
+      "sha256": "2b8f2adee7d6e1ac5ac4e0188edf616057d1e129071b9818eb4900dfbf9e3091"
+    },
+    {
+      "file": "research/text-autofit-native-literals.bin",
+      "sha256": "9f43dae4b33ade6e7f48d90bbe882de7ab529db13782d1df2184fa122b61b542"
+    }
+  ]
+}

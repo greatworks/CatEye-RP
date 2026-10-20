@@ -1,0 +1,901 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "form-properties-document",
+  "name": "Form properties and focus",
+  "caseSelection": "never",
+  "pages": [
+    {
+      "id": "form-properties-page",
+      "name": "Forms",
+      "width": 990,
+      "height": 780,
+      "background": "#f7f9fc",
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": [],
+      "widgets": [
+        {
+          "id": "Heading",
+          "type": "text",
+          "name": "Heading",
+          "text": "Forms, focus and submission",
+          "x": 40,
+          "y": 28,
+          "width": 900,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 30,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Property caption",
+          "type": "text",
+          "name": "Property caption",
+          "text": "Read only · five-character limit · zero-character limit",
+          "x": 40,
+          "y": 85,
+          "width": 900,
+          "height": 38,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#68758a",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Read only value",
+          "type": "input",
+          "name": "Read only value",
+          "text": "Keep this text",
+          "x": 40,
+          "y": 134,
+          "width": 280,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "readOnly": true
+        },
+        {
+          "id": "Five characters",
+          "type": "input",
+          "name": "Five characters",
+          "text": "",
+          "x": 350,
+          "y": 134,
+          "width": 280,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "maxLength": 5
+        },
+        {
+          "id": "Zero characters",
+          "type": "input",
+          "name": "Zero characters",
+          "text": "",
+          "x": 660,
+          "y": 134,
+          "width": 280,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "maxLength": 0
+        },
+        {
+          "id": "Focus caption",
+          "type": "text",
+          "name": "Focus caption",
+          "text": "Enter moves focus and selects text. Focus/Blur actions run before the following action.",
+          "x": 40,
+          "y": 198,
+          "width": 900,
+          "height": 38,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#68758a",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Submit source",
+          "type": "input",
+          "name": "Submit source",
+          "text": "Press Enter",
+          "x": 40,
+          "y": 246,
+          "width": 280,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "source-blur-event",
+              "event": "blur",
+              "name": "source-blur",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "source-blur-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[Trace]]B"
+                }
+              ]
+            }
+          ],
+          "submitButtonId": "Focus target"
+        },
+        {
+          "id": "Selected target",
+          "type": "input",
+          "name": "Selected target",
+          "text": "Select me",
+          "x": 350,
+          "y": 246,
+          "width": 280,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "target-focus-event",
+              "event": "focus",
+              "name": "target-focus",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "target-focus-0",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[Trace]]F"
+                }
+              ]
+            }
+          ],
+          "submitButtonId": "Focus target",
+          "focusedStyle": {
+            "stroke": "#3e64bf"
+          }
+        },
+        {
+          "id": "Focus target",
+          "type": "button",
+          "name": "Focus target",
+          "text": "Focus target",
+          "x": 660,
+          "y": 246,
+          "width": 280,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#e8eef9",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "Focus target-event",
+              "event": "click",
+              "name": "Focus target",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "Focus target-0",
+                  "type": "setFocus",
+                  "targetId": "Selected target",
+                  "selectText": true
+                },
+                {
+                  "id": "Focus target-1",
+                  "type": "setVariable",
+                  "targetId": "Trace",
+                  "value": "[[Trace]]D"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Focus trace",
+          "type": "text",
+          "name": "Focus trace",
+          "text": "[[Trace]]",
+          "x": 40,
+          "y": 303,
+          "width": 590,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#eef3fa",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Write long values",
+          "type": "button",
+          "name": "Write long values",
+          "text": "Write long values",
+          "x": 660,
+          "y": 310,
+          "width": 280,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#e8eef9",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "Write long values-event",
+              "event": "click",
+              "name": "Write long values",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "Write long values-0",
+                  "type": "setText",
+                  "targetId": "Five characters",
+                  "value": "Longer than five"
+                },
+                {
+                  "id": "Write long values-1",
+                  "type": "setText",
+                  "targetId": "Read only value",
+                  "value": "Written by action"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Submit message",
+          "type": "textarea",
+          "name": "Submit message",
+          "text": "Message",
+          "x": 40,
+          "y": 392,
+          "width": 280,
+          "height": 88,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "submitButtonId": "Submit count"
+        },
+        {
+          "id": "Read only message",
+          "type": "textarea",
+          "name": "Read only message",
+          "text": "View and select\n第二行",
+          "x": 350,
+          "y": 392,
+          "width": 280,
+          "height": 88,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "readOnly": true,
+          "submitButtonId": "Submit count"
+        },
+        {
+          "id": "Submit count",
+          "type": "button",
+          "name": "Submit count",
+          "text": "Submit count",
+          "x": 660,
+          "y": 392,
+          "width": 280,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#e8eef9",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "Submit count-event",
+              "event": "click",
+              "name": "Submit count",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "Submit count-0",
+                  "type": "setVariable",
+                  "targetId": "Submissions",
+                  "value": "[[number(Submissions)+1]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Submission result",
+          "type": "text",
+          "name": "Submission result",
+          "text": "Submitted [[Submissions]]",
+          "x": 660,
+          "y": 450,
+          "width": 280,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#eef3fa",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Rows caption",
+          "type": "text",
+          "name": "Rows caption",
+          "text": "Enter in the second row focuses that row only.",
+          "x": 40,
+          "y": 526,
+          "width": 900,
+          "height": 38,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#68758a",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "Form rows",
+          "type": "repeater",
+          "name": "Form rows",
+          "text": "",
+          "x": 40,
+          "y": 576,
+          "width": 550,
+          "height": 140,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "Alpha"
+              },
+              {
+                "Name": "Beta"
+              }
+            ],
+            "template": [
+              {
+                "id": "Row source",
+                "type": "input",
+                "name": "Row source",
+                "text": "[[Item.Name]]",
+                "x": 8,
+                "y": 8,
+                "width": 150,
+                "height": 46,
+                "rotation": 0,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#a6b0c2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#203048",
+                  "fontSize": 16,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1,
+                  "textPadding": [
+                    8,
+                    12,
+                    8,
+                    12
+                  ]
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": [],
+                "submitButtonId": "Row submit"
+              },
+              {
+                "id": "Row target",
+                "type": "input",
+                "name": "Row target",
+                "text": "[[Item.Name]] target",
+                "x": 174,
+                "y": 8,
+                "width": 190,
+                "height": 46,
+                "rotation": 0,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#a6b0c2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#203048",
+                  "fontSize": 16,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1,
+                  "textPadding": [
+                    8,
+                    12,
+                    8,
+                    12
+                  ]
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": []
+              },
+              {
+                "id": "Row submit",
+                "type": "button",
+                "name": "Row submit",
+                "text": "Row submit",
+                "x": 380,
+                "y": 8,
+                "width": 150,
+                "height": 46,
+                "rotation": 0,
+                "style": {
+                  "fill": "#e8eef9",
+                  "stroke": "#a6b0c2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#203048",
+                  "fontSize": 16,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1,
+                  "textPadding": [
+                    8,
+                    12,
+                    8,
+                    12
+                  ]
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": [
+                  {
+                    "id": "Row submit-event",
+                    "event": "click",
+                    "name": "Row submit",
+                    "enabled": true,
+                    "conditionMode": "all",
+                    "conditions": [],
+                    "actions": [
+                      {
+                        "id": "Row submit-0",
+                        "type": "setFocus",
+                        "targetId": "Row target",
+                        "selectText": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "itemHeight": 64,
+            "gap": 6
+          }
+        },
+        {
+          "id": "Focus first row",
+          "type": "button",
+          "name": "Focus first row",
+          "text": "Focus first row",
+          "x": 660,
+          "y": 576,
+          "width": 280,
+          "height": 46,
+          "rotation": 0,
+          "style": {
+            "fill": "#e8eef9",
+            "stroke": "#a6b0c2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#203048",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1,
+            "textPadding": [
+              8,
+              12,
+              8,
+              12
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "Focus first row-event",
+              "event": "click",
+              "name": "Focus first row",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "Focus first row-0",
+                  "type": "setFocus",
+                  "targetId": "Row target",
+                  "selectText": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [],
+  "styles": [],
+  "variables": {
+    "Trace": "",
+    "Submissions": "0"
+  }
+}

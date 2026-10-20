@@ -1,0 +1,2929 @@
+{
+  "capturedAt": "2026-10-20T05:09:10.835Z",
+  "target": "Axure RP 11.0.0.4150",
+  "kind": "exact retained JavaScript with declared event and geometry facades",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\drag.js",
+      "sha256": "88028d6cdb364fe85bbf0c2c9bb697bc699a05800390640126633097d4c628c8",
+      "bytes": 12257
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1",
+      "bytes": 41976
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3",
+      "bytes": 101724
+    }
+  ],
+  "ranges": [
+    {
+      "file": "action.js",
+      "from": 866,
+      "through": 1042,
+      "sha256": "17364f4a2012d6cccfca215123ac6261296c11fe26c9a8fc6003e5b707565941"
+    },
+    {
+      "file": "action.js",
+      "from": 1045,
+      "through": 1059,
+      "sha256": "a485ce82267f291b7bfa6b04c666ce43132ba446e5877332723c6bb96f2ac099"
+    },
+    {
+      "file": "action.js",
+      "from": 701,
+      "through": 741,
+      "sha256": "6173dafe6bfb79ec87895c24405c1afdf39daf419b7ebe3b832b49b236e48406"
+    }
+  ],
+  "script": {
+    "path": "research/runtime-transform-drag-probe.mjs",
+    "sha256": "f7b0ed5df960aabdf66fc83bdc6ed133b470e38c6b753979b6c621792760814c"
+  },
+  "summary": {
+    "total": 50,
+    "passed": 49,
+    "failed": 1
+  },
+  "results": [
+    {
+      "name": "first zero-distance move raises start before drag",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "listen",
+          "name": "mousemove",
+          "capture": true
+        },
+        {
+          "kind": "listen",
+          "name": "mouseup",
+          "capture": true
+        },
+        {
+          "kind": "event",
+          "id": "source",
+          "name": "onDragStart",
+          "state": {
+            "started": true,
+            "hasDragged": true,
+            "widgetId": "source",
+            "cursorStartX": 10,
+            "cursorStartY": 20,
+            "lastX": 10,
+            "lastY": 20,
+            "currentX": 10,
+            "currentY": 20,
+            "movedWidgets": {},
+            "startTime": 1000,
+            "targetWidget": {
+              "id": "source",
+              "style": {
+                "cursor": "crosshair"
+              }
+            },
+            "xDelta": 0,
+            "yDelta": 0,
+            "currentTime": 1000
+          },
+          "values": {
+            "x": 0,
+            "y": 0,
+            "totalX": 0,
+            "totalY": 0,
+            "time": 0
+          }
+        },
+        {
+          "kind": "event",
+          "id": "source",
+          "name": "onDrag",
+          "state": {
+            "started": true,
+            "hasDragged": true,
+            "widgetId": "source",
+            "cursorStartX": 10,
+            "cursorStartY": 20,
+            "lastX": 10,
+            "lastY": 20,
+            "currentX": 10,
+            "currentY": 20,
+            "movedWidgets": {},
+            "startTime": 1000,
+            "targetWidget": {
+              "id": "source",
+              "style": {
+                "cursor": "move"
+              }
+            },
+            "xDelta": 0,
+            "yDelta": 0,
+            "currentTime": 1000,
+            "cursorChanged": true,
+            "oldBodyCursor": "auto",
+            "oldCursor": "crosshair",
+            "oldNiceScrollContainerCursor": "text"
+          },
+          "values": {
+            "x": 0,
+            "y": 0,
+            "totalX": 0,
+            "totalY": 0,
+            "time": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "step deltas and drop use last move rather than up coordinates",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "events": [
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 18,
+              "currentY": 17,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": 8,
+              "yDelta": -3,
+              "currentTime": 1010
+            },
+            "values": {
+              "x": 8,
+              "y": -3,
+              "totalX": 8,
+              "totalY": -3,
+              "time": 10
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 18,
+              "currentY": 17,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 8,
+              "yDelta": -3,
+              "currentTime": 1010,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 8,
+              "y": -3,
+              "totalX": 8,
+              "totalY": -3,
+              "time": 10
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 18,
+              "lastY": 17,
+              "currentX": 22,
+              "currentY": 30,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 4,
+              "yDelta": 13,
+              "currentTime": 1030,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 4,
+              "y": 13,
+              "totalX": 12,
+              "totalY": 10,
+              "time": 30
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 18,
+              "lastY": 17,
+              "currentX": 22,
+              "currentY": 30,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 4,
+              "yDelta": 13,
+              "currentTime": 1050,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 4,
+              "y": 13,
+              "totalX": 12,
+              "totalY": 10,
+              "time": 50
+            }
+          }
+        ],
+        "after": {
+          "started": false,
+          "hasDragged": false,
+          "widgetId": "source",
+          "cursorStartX": 10,
+          "cursorStartY": 20,
+          "lastX": 18,
+          "lastY": 17,
+          "currentX": 22,
+          "currentY": 30,
+          "movedWidgets": {},
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "crosshair"
+            }
+          },
+          "xDelta": 4,
+          "yDelta": 13,
+          "currentTime": 1050,
+          "oldBodyCursor": "auto",
+          "oldCursor": "crosshair",
+          "oldNiceScrollContainerCursor": "text"
+        }
+      }
+    },
+    {
+      "name": "no move produces no drag events or click suppression",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "listen",
+          "name": "mousemove",
+          "capture": true
+        },
+        {
+          "kind": "listen",
+          "name": "mouseup",
+          "capture": true
+        },
+        {
+          "kind": "unlisten",
+          "name": "mousemove"
+        },
+        {
+          "kind": "unlisten",
+          "name": "mouseup"
+        }
+      ]
+    },
+    {
+      "name": "donotdrag and second target cannot start a second session",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "started": true,
+        "hasDragged": false,
+        "widgetId": "source",
+        "cursorStartX": 10,
+        "cursorStartY": 20,
+        "lastX": 10,
+        "lastY": 20,
+        "currentX": 10,
+        "currentY": 20,
+        "movedWidgets": {},
+        "startTime": 1000,
+        "targetWidget": {
+          "id": "source",
+          "style": {
+            "cursor": "crosshair"
+          }
+        }
+      }
+    },
+    {
+      "name": "drag info shallow snapshot keeps first viewport location and survives drop",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "first": {
+          "started": true,
+          "hasDragged": true,
+          "widgetId": "source",
+          "cursorStartX": 10,
+          "cursorStartY": 20,
+          "lastX": 10,
+          "lastY": 20,
+          "currentX": 20,
+          "currentY": 30,
+          "movedWidgets": {
+            "target": {
+              "x": 200,
+              "y": 80
+            }
+          },
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "crosshair"
+            }
+          },
+          "xDelta": 10,
+          "yDelta": 10,
+          "currentTime": 1000,
+          "cursorChanged": true,
+          "oldBodyCursor": "auto",
+          "oldCursor": "crosshair",
+          "oldNiceScrollContainerCursor": "text"
+        },
+        "after": {
+          "started": false,
+          "hasDragged": false,
+          "widgetId": "source",
+          "cursorStartX": 10,
+          "cursorStartY": 20,
+          "lastX": 20,
+          "lastY": 30,
+          "currentX": 25,
+          "currentY": 40,
+          "movedWidgets": {},
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "crosshair"
+            }
+          },
+          "xDelta": 5,
+          "yDelta": 10,
+          "currentTime": 1000,
+          "oldBodyCursor": "auto",
+          "oldCursor": "crosshair",
+          "oldNiceScrollContainerCursor": "text"
+        }
+      }
+    },
+    {
+      "name": "missing widget drag log is ignored",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "started": true,
+        "hasDragged": true,
+        "widgetId": "source",
+        "cursorStartX": 10,
+        "cursorStartY": 20,
+        "lastX": 10,
+        "lastY": 20,
+        "currentX": 11,
+        "currentY": 22,
+        "movedWidgets": {},
+        "startTime": 1000,
+        "targetWidget": {
+          "id": "source",
+          "style": {
+            "cursor": "move"
+          }
+        },
+        "xDelta": 1,
+        "yDelta": 2,
+        "currentTime": 1000,
+        "cursorChanged": true,
+        "oldBodyCursor": "auto",
+        "oldCursor": "crosshair",
+        "oldNiceScrollContainerCursor": "text"
+      }
+    },
+    {
+      "name": "cursor restores body and widget but leaves nice scroll cursor",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "body": {
+          "style": {
+            "cursor": "auto"
+          }
+        },
+        "widget": {
+          "id": "source",
+          "style": {
+            "cursor": "crosshair"
+          }
+        },
+        "nice": {
+          "style": {
+            "cursor": "move"
+          }
+        }
+      }
+    },
+    {
+      "name": "drop can remove dragged widget before cursor restoration",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "started": false,
+        "hasDragged": false,
+        "widgetId": "source",
+        "cursorStartX": 10,
+        "cursorStartY": 20,
+        "lastX": 10,
+        "lastY": 20,
+        "currentX": 14,
+        "currentY": 25,
+        "movedWidgets": {},
+        "startTime": 1000,
+        "targetWidget": {
+          "id": "source",
+          "style": {
+            "cursor": "move"
+          }
+        },
+        "xDelta": 4,
+        "yDelta": 5,
+        "currentTime": 1000,
+        "oldBodyCursor": "auto",
+        "oldCursor": "crosshair",
+        "oldNiceScrollContainerCursor": "text"
+      }
+    },
+    {
+      "name": "post-drag click suppression: same mouse",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "events": [
+          {
+            "kind": "listen",
+            "name": "mousemove",
+            "capture": true
+          },
+          {
+            "kind": "listen",
+            "name": "mouseup",
+            "capture": true
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 11,
+              "currentY": 21,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": 1,
+              "yDelta": 1,
+              "currentTime": 1000
+            },
+            "values": {
+              "x": 1,
+              "y": 1,
+              "totalX": 1,
+              "totalY": 1,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 11,
+              "currentY": 21,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 1,
+              "yDelta": 1,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 1,
+              "y": 1,
+              "totalX": 1,
+              "totalY": 1,
+              "time": 0
+            }
+          },
+          {
+            "kind": "unlisten",
+            "name": "mousemove"
+          },
+          {
+            "kind": "unlisten",
+            "name": "mouseup"
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 11,
+              "currentY": 21,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 1,
+              "yDelta": 1,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 1,
+              "y": 1,
+              "totalX": 1,
+              "totalY": 1,
+              "time": 0
+            }
+          },
+          {
+            "kind": "listen",
+            "name": "click",
+            "capture": true
+          },
+          {
+            "kind": "listen",
+            "name": "mousemove",
+            "capture": true
+          },
+          {
+            "kind": "unlisten",
+            "name": "click"
+          },
+          {
+            "kind": "unlisten",
+            "name": "mousemove"
+          }
+        ],
+        "outcomes": [
+          "suppressed"
+        ]
+      }
+    },
+    {
+      "name": "post-drag click suppression: different mouse",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "events": [
+          {
+            "kind": "listen",
+            "name": "mousemove",
+            "capture": true
+          },
+          {
+            "kind": "listen",
+            "name": "mouseup",
+            "capture": true
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 11,
+              "currentY": 21,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": 1,
+              "yDelta": 1,
+              "currentTime": 1000
+            },
+            "values": {
+              "x": 1,
+              "y": 1,
+              "totalX": 1,
+              "totalY": 1,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 11,
+              "currentY": 21,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 1,
+              "yDelta": 1,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 1,
+              "y": 1,
+              "totalX": 1,
+              "totalY": 1,
+              "time": 0
+            }
+          },
+          {
+            "kind": "unlisten",
+            "name": "mousemove"
+          },
+          {
+            "kind": "unlisten",
+            "name": "mouseup"
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 11,
+              "currentY": 21,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 1,
+              "yDelta": 1,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 1,
+              "y": 1,
+              "totalX": 1,
+              "totalY": 1,
+              "time": 0
+            }
+          }
+        ],
+        "outcomes": []
+      }
+    },
+    {
+      "name": "post-drag click suppression: touch",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "events": [
+          {
+            "kind": "listen",
+            "name": "mousemove",
+            "capture": true
+          },
+          {
+            "kind": "listen",
+            "name": "mouseup",
+            "capture": true
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 11,
+              "currentY": 21,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": 1,
+              "yDelta": 1,
+              "currentTime": 1000
+            },
+            "values": {
+              "x": 1,
+              "y": 1,
+              "totalX": 1,
+              "totalY": 1,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 11,
+              "currentY": 21,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 1,
+              "yDelta": 1,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 1,
+              "y": 1,
+              "totalX": 1,
+              "totalY": 1,
+              "time": 0
+            }
+          },
+          {
+            "kind": "unlisten",
+            "name": "mousemove"
+          },
+          {
+            "kind": "unlisten",
+            "name": "mouseup"
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 10,
+              "cursorStartY": 20,
+              "lastX": 10,
+              "lastY": 20,
+              "currentX": 11,
+              "currentY": 21,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 1,
+              "yDelta": 1,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 1,
+              "y": 1,
+              "totalX": 1,
+              "totalY": 1,
+              "time": 0
+            }
+          }
+        ],
+        "outcomes": []
+      }
+    },
+    {
+      "name": "swipe 30/0 at 999ms",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "actual": [],
+        "events": [
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 30,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": 30,
+              "yDelta": 0,
+              "currentTime": 1000
+            },
+            "values": {
+              "x": 30,
+              "y": 0,
+              "totalX": 30,
+              "totalY": 0,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 30,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 30,
+              "yDelta": 0,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 30,
+              "y": 0,
+              "totalX": 30,
+              "totalY": 0,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 30,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 30,
+              "yDelta": 0,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 30,
+              "y": 0,
+              "totalX": 30,
+              "totalY": 0,
+              "time": 999
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "swipe 31/0 at 999ms",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "actual": [
+          "onSwipeRight"
+        ],
+        "events": [
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": 0,
+              "currentTime": 1000
+            },
+            "values": {
+              "x": 31,
+              "y": 0,
+              "totalX": 31,
+              "totalY": 0,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": 0,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 31,
+              "y": 0,
+              "totalX": 31,
+              "totalY": 0,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": 0,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 31,
+              "y": 0,
+              "totalX": 31,
+              "totalY": 0,
+              "time": 999
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onSwipeRight",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": 0,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 31,
+              "y": 0,
+              "totalX": 31,
+              "totalY": 0,
+              "time": 999
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "swipe -31/0 at 999ms",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "actual": [
+          "onSwipeLeft"
+        ],
+        "events": [
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": -31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": -31,
+              "yDelta": 0,
+              "currentTime": 1000
+            },
+            "values": {
+              "x": -31,
+              "y": 0,
+              "totalX": -31,
+              "totalY": 0,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": -31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": -31,
+              "yDelta": 0,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": -31,
+              "y": 0,
+              "totalX": -31,
+              "totalY": 0,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": -31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": -31,
+              "yDelta": 0,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": -31,
+              "y": 0,
+              "totalX": -31,
+              "totalY": 0,
+              "time": 999
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onSwipeLeft",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": -31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": -31,
+              "yDelta": 0,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": -31,
+              "y": 0,
+              "totalX": -31,
+              "totalY": 0,
+              "time": 999
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "swipe 0/31 at 999ms",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "actual": [
+          "onSwipeDown"
+        ],
+        "events": [
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 0,
+              "currentY": 31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": 0,
+              "yDelta": 31,
+              "currentTime": 1000
+            },
+            "values": {
+              "x": 0,
+              "y": 31,
+              "totalX": 0,
+              "totalY": 31,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 0,
+              "currentY": 31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 0,
+              "yDelta": 31,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 0,
+              "y": 31,
+              "totalX": 0,
+              "totalY": 31,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 0,
+              "currentY": 31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 0,
+              "yDelta": 31,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 0,
+              "y": 31,
+              "totalX": 0,
+              "totalY": 31,
+              "time": 999
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onSwipeDown",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 0,
+              "currentY": 31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 0,
+              "yDelta": 31,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 0,
+              "y": 31,
+              "totalX": 0,
+              "totalY": 31,
+              "time": 999
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "swipe 0/-31 at 999ms",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "actual": [
+          "onSwipeUp"
+        ],
+        "events": [
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 0,
+              "currentY": -31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": 0,
+              "yDelta": -31,
+              "currentTime": 1000
+            },
+            "values": {
+              "x": 0,
+              "y": -31,
+              "totalX": 0,
+              "totalY": -31,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 0,
+              "currentY": -31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 0,
+              "yDelta": -31,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 0,
+              "y": -31,
+              "totalX": 0,
+              "totalY": -31,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 0,
+              "currentY": -31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 0,
+              "yDelta": -31,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 0,
+              "y": -31,
+              "totalX": 0,
+              "totalY": -31,
+              "time": 999
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onSwipeUp",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 0,
+              "currentY": -31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 0,
+              "yDelta": -31,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 0,
+              "y": -31,
+              "totalX": 0,
+              "totalY": -31,
+              "time": 999
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "swipe 31/-31 at 999ms",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "actual": [
+          "onSwipeRight",
+          "onSwipeUp"
+        ],
+        "events": [
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": -31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": -31,
+              "currentTime": 1000
+            },
+            "values": {
+              "x": 31,
+              "y": -31,
+              "totalX": 31,
+              "totalY": -31,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": -31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": -31,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 31,
+              "y": -31,
+              "totalX": 31,
+              "totalY": -31,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": -31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": -31,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 31,
+              "y": -31,
+              "totalX": 31,
+              "totalY": -31,
+              "time": 999
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onSwipeRight",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": -31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": -31,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 31,
+              "y": -31,
+              "totalX": 31,
+              "totalY": -31,
+              "time": 999
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onSwipeUp",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": -31,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": -31,
+              "currentTime": 1999,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 31,
+              "y": -31,
+              "totalX": 31,
+              "totalY": -31,
+              "time": 999
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "swipe 31/0 at 1000ms",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "actual": [],
+        "events": [
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragStart",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "crosshair"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": 0,
+              "currentTime": 1000
+            },
+            "values": {
+              "x": 31,
+              "y": 0,
+              "totalX": 31,
+              "totalY": 0,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDrag",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": 0,
+              "currentTime": 1000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 31,
+              "y": 0,
+              "totalX": 31,
+              "totalY": 0,
+              "time": 0
+            }
+          },
+          {
+            "kind": "event",
+            "id": "source",
+            "name": "onDragDrop",
+            "state": {
+              "started": true,
+              "hasDragged": true,
+              "widgetId": "source",
+              "cursorStartX": 0,
+              "cursorStartY": 0,
+              "lastX": 0,
+              "lastY": 0,
+              "currentX": 31,
+              "currentY": 0,
+              "movedWidgets": {},
+              "startTime": 1000,
+              "targetWidget": {
+                "id": "source",
+                "style": {
+                  "cursor": "move"
+                }
+              },
+              "xDelta": 31,
+              "yDelta": 0,
+              "currentTime": 2000,
+              "cursorChanged": true,
+              "oldBodyCursor": "auto",
+              "oldCursor": "crosshair",
+              "oldNiceScrollContainerCursor": "text"
+            },
+            "values": {
+              "x": 31,
+              "y": 0,
+              "totalX": 31,
+              "totalY": 0,
+              "time": 1000
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "touch defaults /5/false/true",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "prevented": 0,
+        "state": {
+          "started": true,
+          "hasDragged": true,
+          "widgetId": "source",
+          "cursorStartX": 0,
+          "cursorStartY": 0,
+          "lastX": 0,
+          "lastY": 0,
+          "currentX": 5,
+          "currentY": 0,
+          "movedWidgets": {},
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "crosshair"
+            }
+          },
+          "xDelta": 5,
+          "yDelta": 0,
+          "currentTime": 1000
+        }
+      }
+    },
+    {
+      "name": "touch defaults /6/false/true",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "prevented": 1,
+        "state": {
+          "started": true,
+          "hasDragged": true,
+          "widgetId": "source",
+          "cursorStartX": 0,
+          "cursorStartY": 0,
+          "lastX": 0,
+          "lastY": 0,
+          "currentX": 6,
+          "currentY": 0,
+          "movedWidgets": {},
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "crosshair"
+            }
+          },
+          "xDelta": 6,
+          "yDelta": 0,
+          "currentTime": 1000
+        }
+      }
+    },
+    {
+      "name": "touch defaults onDrag/0/false/true",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "prevented": 1,
+        "state": {
+          "started": true,
+          "hasDragged": true,
+          "widgetId": "source",
+          "cursorStartX": 0,
+          "cursorStartY": 0,
+          "lastX": 0,
+          "lastY": 0,
+          "currentX": 0,
+          "currentY": 0,
+          "movedWidgets": {},
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "move"
+            }
+          },
+          "xDelta": 0,
+          "yDelta": 0,
+          "currentTime": 1000,
+          "cursorChanged": true,
+          "oldBodyCursor": "auto",
+          "oldCursor": "crosshair",
+          "oldNiceScrollContainerCursor": "text"
+        }
+      }
+    },
+    {
+      "name": "touch defaults onSwipeUp/0/false/true",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "prevented": 1,
+        "state": {
+          "started": true,
+          "hasDragged": true,
+          "widgetId": "source",
+          "cursorStartX": 0,
+          "cursorStartY": 0,
+          "lastX": 0,
+          "lastY": 0,
+          "currentX": 0,
+          "currentY": 0,
+          "movedWidgets": {},
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "crosshair"
+            }
+          },
+          "xDelta": 0,
+          "yDelta": 0,
+          "currentTime": 1000
+        }
+      }
+    },
+    {
+      "name": "touch defaults onSwipeDown/0/false/true",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "prevented": 1,
+        "state": {
+          "started": true,
+          "hasDragged": true,
+          "widgetId": "source",
+          "cursorStartX": 0,
+          "cursorStartY": 0,
+          "lastX": 0,
+          "lastY": 0,
+          "currentX": 0,
+          "currentY": 0,
+          "movedWidgets": {},
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "crosshair"
+            }
+          },
+          "xDelta": 0,
+          "yDelta": 0,
+          "currentTime": 1000
+        }
+      }
+    },
+    {
+      "name": "touch defaults onSwipeLeft/0/false/true",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "prevented": 0,
+        "state": {
+          "started": true,
+          "hasDragged": true,
+          "widgetId": "source",
+          "cursorStartX": 0,
+          "cursorStartY": 0,
+          "lastX": 0,
+          "lastY": 0,
+          "currentX": 0,
+          "currentY": 0,
+          "movedWidgets": {},
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "crosshair"
+            }
+          },
+          "xDelta": 0,
+          "yDelta": 0,
+          "currentTime": 1000
+        }
+      }
+    },
+    {
+      "name": "touch defaults /0/true/true",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "prevented": 1,
+        "state": {
+          "started": true,
+          "hasDragged": true,
+          "widgetId": "source",
+          "cursorStartX": 0,
+          "cursorStartY": 0,
+          "lastX": 0,
+          "lastY": 0,
+          "currentX": 0,
+          "currentY": 0,
+          "movedWidgets": {},
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "crosshair"
+            }
+          },
+          "xDelta": 0,
+          "yDelta": 0,
+          "currentTime": 1000
+        }
+      }
+    },
+    {
+      "name": "touch defaults /0/true/false",
+      "family": "original complete drag module",
+      "passed": true,
+      "observed": {
+        "prevented": 0,
+        "state": {
+          "started": true,
+          "hasDragged": true,
+          "widgetId": "source",
+          "cursorStartX": 0,
+          "cursorStartY": 0,
+          "lastX": 0,
+          "lastY": 0,
+          "currentX": 0,
+          "currentY": 0,
+          "movedWidgets": {},
+          "startTime": 1000,
+          "targetWidget": {
+            "id": "source",
+            "style": {
+              "cursor": "crosshair"
+            }
+          },
+          "xDelta": 0,
+          "yDelta": 0,
+          "currentTime": 1000
+        }
+      }
+    },
+    {
+      "name": "Move drag consumes incremental drag data without evaluating x/y",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "x": 7,
+        "y": -4,
+        "moveTo": false
+      }
+    },
+    {
+      "name": "Move dragX consumes incremental drag data without evaluating x/y",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "x": 7,
+        "y": 0,
+        "moveTo": false
+      }
+    },
+    {
+      "name": "Move dragY consumes incremental drag data without evaluating x/y",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "x": 0,
+        "y": -4,
+        "moveTo": false
+      }
+    },
+    {
+      "name": "locationBeforeDrag uses recorded viewport location",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "value": {
+          "x": -80,
+          "y": -160,
+          "moveTo": false
+        },
+        "calls": []
+      }
+    },
+    {
+      "name": "missing locationBeforeDrag releases source Move channel",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "value": {
+          "x": 0,
+          "y": 0
+        },
+        "calls": [
+          {
+            "kind": "release",
+            "id": "source",
+            "type": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "withThis inherits source physical delta duration and easing",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "value": {
+          "x": 8,
+          "y": -3,
+          "moveTo": false
+        },
+        "options": {
+          "easing": "swing",
+          "duration": 250
+        }
+      }
+    },
+    {
+      "name": "withThis without source movement does not manufacture zero motion",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "observed": "TypeError reading options on missing source movement"
+      }
+    },
+    {
+      "name": "fixed Move To subtracts window scroll before destination delta",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "x": 115,
+        "y": 130,
+        "moveTo": false
+      }
+    },
+    {
+      "name": "Move To empty axis and numeric zero have the source loose-equality behavior",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "x": 0,
+        "y": 0,
+        "moveTo": false
+      }
+    },
+    {
+      "name": "Move To string zero moves to zero while numeric zero is an unchanged axis",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "x": -100,
+        "y": -200,
+        "moveTo": false
+      }
+    },
+    {
+      "name": "withThis boundary true updates expression variables and conditionally replaces axes",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "value": {
+          "x": 8,
+          "y": -3,
+          "moveTo": false
+        },
+        "expression": {
+          "leftExpr": {
+            "localVariables": {
+              "withx": {
+                "value": "8"
+              },
+              "withy": {
+                "value": "-3"
+              }
+            }
+          }
+        },
+        "stos": {
+          "boundaryScope": {
+            "a": {
+              "localVariables": {
+                "withx": {
+                  "value": "old"
+                },
+                "withy": {
+                  "value": "old"
+                }
+              }
+            }
+          },
+          "xSto": 105,
+          "ySto": 190
+        },
+        "calls": [
+          {
+            "kind": "evaluate",
+            "value": {
+              "leftExpr": {
+                "localVariables": {
+                  "withx": {
+                    "value": "8"
+                  },
+                  "withy": {
+                    "value": "-3"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "withThis boundary false updates expression variables and conditionally replaces axes",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "value": {
+          "x": 5,
+          "y": -10,
+          "moveTo": false
+        },
+        "expression": {
+          "leftExpr": {
+            "localVariables": {
+              "withx": {
+                "value": "8"
+              },
+              "withy": {
+                "value": "-3"
+              }
+            }
+          }
+        },
+        "stos": {
+          "boundaryScope": {
+            "a": {
+              "localVariables": {
+                "withx": {
+                  "value": "8"
+                },
+                "withy": {
+                  "value": "-3"
+                }
+              }
+            }
+          },
+          "xSto": 105,
+          "ySto": 190
+        },
+        "calls": [
+          {
+            "kind": "evaluate",
+            "value": {
+              "leftExpr": {
+                "localVariables": {
+                  "withx": {
+                    "value": "8"
+                  },
+                  "withy": {
+                    "value": "-3"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "kind": "sto",
+            "sto": 190
+          },
+          {
+            "kind": "sto",
+            "sto": 105
+          }
+        ]
+      }
+    },
+    {
+      "name": "false boundary without STO replacement leaves the requested delta",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "value": {
+          "x": 40,
+          "y": 50,
+          "moveTo": false
+        },
+        "calls": [
+          {
+            "kind": "evaluate",
+            "value": 40
+          },
+          {
+            "kind": "evaluate",
+            "value": 50
+          },
+          {
+            "kind": "evaluate",
+            "value": {
+              "op": "syntheticCondition"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "withThis updates nested boundary leaves before evaluation",
+      "family": "exact Move helper",
+      "passed": true,
+      "observed": {
+        "op": "and",
+        "leftExpr": {
+          "leftExpr": {
+            "localVariables": {
+              "withx": {
+                "value": "8"
+              }
+            }
+          }
+        },
+        "rightExpr": {
+          "leftExpr": {
+            "localVariables": {
+              "withy": {
+                "value": "-3"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "special widgetsBelow/onClick uses clamp source and dimension order",
+      "family": "exact Move action handler",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "bounds",
+          "ignoreRotation": true
+        },
+        {
+          "kind": "compress",
+          "args": [
+            "source",
+            true,
+            false,
+            {
+              "left": 10,
+              "top": 20,
+              "width": 120,
+              "height": 60
+            },
+            "swing",
+            200,
+            9,
+            7
+          ]
+        },
+        {
+          "kind": "next",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "name": "special widgetsBelow/onResize uses clamp source and dimension order",
+      "family": "exact Move action handler",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "bounds",
+          "ignoreRotation": true
+        },
+        {
+          "kind": "oldRect",
+          "id": "source"
+        },
+        {
+          "kind": "compress",
+          "args": [
+            "source",
+            true,
+            true,
+            {
+              "left": 10,
+              "top": 20,
+              "width": 90,
+              "height": 40
+            },
+            "swing",
+            200,
+            9,
+            7
+          ]
+        },
+        {
+          "kind": "next",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "name": "special widgetsBelow/onPanelStateChange uses clamp source and dimension order",
+      "family": "exact Move action handler",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "bounds",
+          "ignoreRotation": true
+        },
+        {
+          "kind": "oldRect",
+          "id": "source"
+        },
+        {
+          "kind": "compress",
+          "args": [
+            "source",
+            true,
+            true,
+            {
+              "left": 10,
+              "top": 20,
+              "width": 90,
+              "height": 40
+            },
+            "swing",
+            200,
+            9,
+            7
+          ]
+        },
+        {
+          "kind": "next",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "name": "special widgetsRight/onClick uses clamp source and dimension order",
+      "family": "exact Move action handler",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "bounds",
+          "ignoreRotation": true
+        },
+        {
+          "kind": "compress",
+          "args": [
+            "source",
+            false,
+            false,
+            {
+              "left": 10,
+              "top": 20,
+              "width": 120,
+              "height": 60
+            },
+            "swing",
+            200,
+            7,
+            9
+          ]
+        },
+        {
+          "kind": "next",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "name": "special widgetsRight/onResize uses clamp source and dimension order",
+      "family": "exact Move action handler",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "bounds",
+          "ignoreRotation": true
+        },
+        {
+          "kind": "oldRect",
+          "id": "source"
+        },
+        {
+          "kind": "compress",
+          "args": [
+            "source",
+            false,
+            true,
+            {
+              "left": 10,
+              "top": 20,
+              "width": 90,
+              "height": 40
+            },
+            "swing",
+            200,
+            7,
+            9
+          ]
+        },
+        {
+          "kind": "next",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "name": "special widgetsRight/onPanelStateChange uses clamp source and dimension order",
+      "family": "exact Move action handler",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "bounds",
+          "ignoreRotation": true
+        },
+        {
+          "kind": "oldRect",
+          "id": "source"
+        },
+        {
+          "kind": "compress",
+          "args": [
+            "source",
+            false,
+            true,
+            {
+              "left": 10,
+              "top": 20,
+              "width": 90,
+              "height": 40
+            },
+            "swing",
+            200,
+            7,
+            9
+          ]
+        },
+        {
+          "kind": "next",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "name": "special sizeDeltaX uses compressMove inference with NaN displacements",
+      "family": "exact Move action handler",
+      "passed": true,
+      "observed": {
+        "calls": [
+          {
+            "kind": "bounds",
+            "ignoreRotation": true
+          },
+          {
+            "kind": "oldRect",
+            "id": "source"
+          },
+          {
+            "kind": "compress",
+            "args": [
+              "source",
+              false,
+              true,
+              {
+                "left": 10,
+                "top": 20,
+                "width": 90,
+                "height": 40
+              },
+              "swing",
+              200,
+              null,
+              null
+            ]
+          },
+          {
+            "kind": "next",
+            "index": 1
+          }
+        ],
+        "nonfiniteArguments": [
+          6,
+          7
+        ],
+        "meaning": "NaN deliberately delegates source size delta to compressMove; JSON null is not a native null input"
+      }
+    },
+    {
+      "name": "special sizeDeltaY uses compressMove inference with NaN displacements",
+      "family": "exact Move action handler",
+      "passed": true,
+      "observed": {
+        "calls": [
+          {
+            "kind": "bounds",
+            "ignoreRotation": true
+          },
+          {
+            "kind": "oldRect",
+            "id": "source"
+          },
+          {
+            "kind": "compress",
+            "args": [
+              "source",
+              true,
+              true,
+              {
+                "left": 10,
+                "top": 20,
+                "width": 90,
+                "height": 40
+              },
+              "swing",
+              200,
+              null,
+              null
+            ]
+          },
+          {
+            "kind": "next",
+            "index": 1
+          }
+        ],
+        "nonfiniteArguments": [
+          6,
+          7
+        ],
+        "meaning": "NaN deliberately delegates source size delta to compressMove; JSON null is not a native null input"
+      }
+    },
+    {
+      "name": "special resize event falls back to current bounds when no old rectangle exists",
+      "family": "exact Move action handler",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   height: 40,\n-   height: 60,\n    left: 10,\n    top: 20,\n+   width: 90\n-   width: 120\n  }\n\n    at file:///D:/WSCodex/REA/research/runtime-transform-drag-probe.mjs:83:218\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-drag-probe.mjs:19:82)\n    at file:///D:/WSCodex/REA/research/runtime-transform-drag-probe.mjs:83:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "ordinary multi-target action preserves entry order in the same event",
+      "family": "exact Move action handler",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "queue",
+          "id": "second",
+          "type": 1,
+          "info": {
+            "moveType": "delta",
+            "xValue": 7,
+            "yValue": 9,
+            "options": {
+              "easing": "swing",
+              "duration": 200
+            }
+          }
+        },
+        {
+          "kind": "queue",
+          "id": "first",
+          "type": 1,
+          "info": {
+            "moveType": "delta",
+            "xValue": 7,
+            "yValue": 9,
+            "options": {
+              "easing": "swing",
+              "duration": 200
+            }
+          }
+        },
+        {
+          "kind": "next",
+          "index": 1
+        }
+      ]
+    }
+  ],
+  "substitutions": [
+    "NodeVM, no real pointer or browser DOM.",
+    "Desktop modern path IE_10_AND_BELOW=false; no Windows Mobile branch.",
+    "Event listener registry invokes the original drag handler with declared numeric events.",
+    "Clock, widget/viewport coordinates, synthetic-event sink, jQuery extend/Event and scrolling facades are explicit.",
+    "Move expression and STO evaluators are recording/value facades; full native expression semantics are outside these cases."
+  ],
+  "originalAxureGuiCompared": false,
+  "originalDllExecuted": false
+}

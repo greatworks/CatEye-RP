@@ -1,0 +1,128 @@
+{
+  "capturedAt": "2026-10-20T05:54:59.701Z",
+  "scope": "Independent drag-input + Preview/offline mount hook review only",
+  "summary": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0
+  },
+  "conclusion": "No remaining blocking defect confirmed in the scoped current host paths after the parent click-suppression fix.",
+  "sources": [
+    {
+      "path": "src/runtime/drag-input.ts",
+      "sha256": "41f8088036694bc99a2f4b0b27a078e63cf90af576341025ec09b4fe09e64767"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "86772c6fae80365c7178141ccdd0e990176ab9843b63ffd1a43c73eeed8ce4c5"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "8d8f318ebab90d39c67428037879516362e45072e2b33fd5e4c138f7c3d348ca"
+    }
+  ],
+  "hooks": [
+    {
+      "path": "src/components/Preview.tsx",
+      "text": "    session.subscribe(()=>{if(drag.hasActiveDrag()&&!session.state().motionState?.drag?.started)drag.cancel();setRuntime(structuredClone(session.state()))});",
+      "sha256": "f68740de27d670cbf256ed773fedf1fb93971ea105e8f2fe8c2f0292ce66f40d"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "text": "  const schedule = () => { if (drag?.hasActiveDrag() && !runtime.state().motionState?.drag?.started) drag.cancel(); if (!renderPending) { renderPending = true; queueMicrotask(safeRender); } };",
+      "sha256": "5edf40a42e62dee36d41e23d9af31f07d289e63a6119b2efddddb521ac7190db"
+    }
+  ],
+  "originalEvidence": [
+    {
+      "path": "research/runtime-transform-drag-evidence.md",
+      "sha256": "d8e954826809a1e73fb194f528b28e7df6b58a36a425fe98872e64ff2208bac6"
+    },
+    {
+      "path": "research/runtime-transform-drag-final-probes.json",
+      "sha256": "2e6a72d2b256d1d8bc8f7cc366c45d8d93bc71d25df4f2b17a2834a1461fa46a"
+    }
+  ],
+  "originalSources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\drag.js",
+      "sha256": "88028d6cdb364fe85bbf0c2c9bb697bc699a05800390640126633097d4c628c8",
+      "bytes": 12257
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1",
+      "bytes": 41976
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3",
+      "bytes": 101724
+    }
+  ],
+  "findings": [
+    {
+      "id": "DRAG-HOST-01",
+      "status": "parent-fixed-and-independently-verified",
+      "location": "src/runtime/drag-input.ts hasActiveDrag; Preview subscribe; mountOfflinePrototype schedule",
+      "detail": "The controller ends its active session before arming same-target mouse click suppression. A blanket idle cancel clears that pending suppression. The current hosts cancel only an active bridge when core drag is no longer started. Four module/serialized+host cases verify a later idle notification/releasePointerStyles does not erase suppression; next click is prevented and unregisters the listener."
+    },
+    {
+      "id": "DRAG-HOST-02",
+      "status": "verified",
+      "location": "Preview subscribe / mountOfflinePrototype schedule",
+      "detail": "Actual core page navigation and deletion of an already rendered row stop the active bridge, remove movement/up listeners, restore the body cursor and allow the next page source to begin. Touch cancellation similarly clears touch listeners without invoking Drop; removal during Drop does not leave body cursor stuck."
+    },
+    {
+      "id": "DRAG-HOST-LIMIT-01",
+      "status": "conditional-lifecycle-gap-not-browser-reproduced",
+      "location": "Preview useEffect; mountOfflinePrototype pagehide hook",
+      "detail": "Controlled pagehide({persisted:true}) leaves Preview active if neither blur nor unmount occurs. Offline pagehide permanently disposes its controller and has no pageshow rebind, so a persisted document cannot start a new drag after pageshow. BFCache eligibility for these Electron/file/embedded hosts was not established. If persisted restoration is a supported surface, cancel on persisted pagehide or explicitly recreate on pageshow; validate in a real eligible browser history traversal before claiming fixed."
+    }
+  ],
+  "failureHistory": [
+    {
+      "artifact": {
+        "path": "research/runtime-transform-drag-host-review-probes.json",
+        "sha256": "cc85928d46f704dbcf41af20144e4ddb817568796fca68e7fad7ba34ecb42eb1"
+      },
+      "script": {
+        "path": "research/runtime-transform-drag-host-review-first-probe.mjs",
+        "sha256": "32492a72fb46ba057cf3da0c649445e301faaa02ed62e198f4c33da3af30b8f1"
+      },
+      "total": 20,
+      "passed": 16,
+      "failed": 4,
+      "cause": "Row fixtures had not called runtime.widget before drag, unlike both real hosts; missing renderedContexts prevented the simulated deleted-row cleanup. Core whole-file hash changed while this initial run was active."
+    },
+    {
+      "artifact": {
+        "path": "research/runtime-transform-drag-host-review-corrected-probes.json",
+        "sha256": "7951ecc2b32bf8cdbce13359d269823ff67bcc7eba2eb16504832df375936f6f"
+      },
+      "script": {
+        "path": "research/runtime-transform-drag-host-review-probe.mjs",
+        "sha256": "3196f038055859dd5ed9d868b663ce7251df75185712a53dc289f0bc5b797f39"
+      },
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "correction": "Added actual host render precondition runtime.widget(box,context); switched from Vite SSR fixture constructors to minimal independent records and direct TS module imports; no dev server needed. No product edits."
+    }
+  ],
+  "limitations": [
+    "No browser was opened or real pointer/touch/BFCache transition performed. The current product bridge and exact current host subscription expressions executed with a controlled document/event surface and the actual core runtime.",
+    "Portable coverage serializes bindRuntimeDrag only. Whole offline HTML/frame bootstrap serialization is outside this narrow review; parent browser/export regression owns that coverage.",
+    "The core export-runtime.ts was changing during initial review. Initial and corrected before/after hashes are retained; corrected20-case execution had no source drift. This is not a fresh review of the entire motion planner.",
+    "Original drag.js corroboration is the frozen52-case retained-source report; it proves modern non-IE target equality and next-click suppression, but not pagehide/BFCache lifecycle.",
+    "Multi-touch identity follows changedTouches[0] as the retained source does. No claim of robust multi-pointer ownership or real touch-device scrolling is made.",
+    "Row-removal cleanup requires the actual host precondition of rendering/registering the row instance. The first harness omitted runtime.widget and observed four failures; this is preserved as a harness-scope error, not a user-visible product defect."
+  ],
+  "productModified": false,
+  "browserRun": false
+}

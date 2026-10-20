@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "stage": "adaptive-all-views",
+  "scope": "model-and-authoring",
+  "status": "source-and-focused-tests-frozen",
+  "createdAt": "2026-10-15T12:50:51.0796798Z",
+  "report": {
+    "path": "research/adaptive-all-views-authoring-implementation.md",
+    "sha256": "fef0a778d7235b0210a131e9377fb3db9849564dfe9ce9e0f58af0fa330afa17"
+  },
+  "sources": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "89f3bf1faa5732523915fbced601f620eb6bd4560496d81baa8fade397663512"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "0cf7ff741e2e188d4d093dd8073968a1e89035186a3187496ca5bcfd2dee9d84"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "2cd738e8db66e70d534c76df7ee7b8889b2ed4747bbf1f8a6fa916ff82cbdbb7"
+    },
+    {
+      "path": "src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "95dc9856f96c9acf9820ab00748a7e4d7acf40ca18dbd0bf629abe30c1310636"
+    },
+    {
+      "path": "tests/adaptive-all-views-authoring.test.ts",
+      "sha256": "3501389a9b4076ac108c98607e29229b2652ed423b7d2044bf9f99bc76afd8cd"
+    },
+    {
+      "path": "tests/adaptive-all-views-padding.test.ts",
+      "sha256": "5e8224cefe76d4445895c9d10f62ae00f8b972260df76ff698c089f933d1d1a3"
+    }
+  ],
+  "evidence": [
+    {
+      "path": ".build/adaptive-all-views-authoring-unit-red.json",
+      "sha256": "1a7e8f737a95a35457f2dcd7e1b64d398febfa6e5c93e22e9237728d1e83b47c"
+    },
+    {
+      "path": ".build/adaptive-all-views-authoring-unit-geometry-red.json",
+      "sha256": "3ad80075773e203b84724cb47b8adc656dff492612f66eafe22d13e54be28ef3"
+    },
+    {
+      "path": ".build/adaptive-all-views-authoring-unit-effects-red.json",
+      "sha256": "3a6b3a83a2b02d1fa6ce161c0bfe6316819410ed120eb783c1ab21ee526e274e"
+    },
+    {
+      "path": ".build/adaptive-all-views-padding-unit-red.json",
+      "sha256": "13a9741c277eb4a895769f8c7aa6b6020199b617120a618df80a63af214fe0cf"
+    },
+    {
+      "path": ".build/adaptive-all-views-first-effect-reset-red.json",
+      "sha256": "516430cfe3d045ca78e277ef436476656b6548ef73b2c2c4ed95048a96fd985b"
+    },
+    {
+      "path": ".build/adaptive-all-views-rich-noop-red.json",
+      "sha256": "93d8cdcecbae38d49439b8cad68ae6ad3f02bfce467ac6f34e3cdc9030d24906"
+    },
+    {
+      "path": ".build/adaptive-all-views-authoring-focused-final.json",
+      "sha256": "1bedd8f6377d9e11db625b43bca99f3c8228547f0f0dbe2e397f95711838d07c"
+    },
+    {
+      "path": ".build/adaptive-all-views-authoring-typecheck-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "tests": {
+    "newAuthoring": 34,
+    "newPadding": 15,
+    "focusedTotal": 171,
+    "passed": 171,
+    "failed": 0,
+    "typecheckExitCode": 0,
+    "browserRunByThisSubtask": false,
+    "fullSuiteRunByThisSubtask": false
+  },
+  "limits": [
+    "No original GUI observations or target application execution",
+    "Whole tuple cornerRadii/borderWidths reset remains an existing product extension, not native visibility-mask parity",
+    "Native master/Layer/temporary contained-provider semantics not expanded",
+    "Final full-suite and release acceptance belongs to parent task"
+  ]
+}

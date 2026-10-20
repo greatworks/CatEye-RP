@@ -1,0 +1,1046 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "table-document",
+  "name": "Table cells · independent interactions",
+  "pages": [
+    {
+      "id": "table-page",
+      "name": "Tables",
+      "width": 1100,
+      "height": 940,
+      "background": "#f7f8fc",
+      "widgets": [
+        {
+          "id": "table-heading",
+          "type": "text",
+          "name": "table-heading",
+          "text": "Independent cells. One structured grid.",
+          "notes": "",
+          "x": 44,
+          "y": 28,
+          "rotation": 0,
+          "width": 1000,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 28,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "table-caption",
+          "type": "text",
+          "name": "table-caption",
+          "text": "Edit rows and columns, name individual cells, and attach cell-specific interactions.",
+          "notes": "",
+          "x": 44,
+          "y": 83,
+          "rotation": 0,
+          "width": 1000,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "table-main",
+          "type": "table",
+          "name": "Interaction grid",
+          "text": "",
+          "notes": "",
+          "x": 44,
+          "y": 158,
+          "rotation": 0,
+          "width": 560,
+          "height": 165,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "table-case-14",
+              "event": "click",
+              "name": "Cell action",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "table-action-15",
+                  "type": "setText",
+                  "targetId": "table-status",
+                  "value": "Table fallback handled"
+                }
+              ]
+            },
+            {
+              "id": "table-case-16",
+              "event": "doubleClick",
+              "name": "Cell action",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "table-action-17",
+                  "type": "setText",
+                  "targetId": "table-status",
+                  "value": "Table double-click fallback"
+                }
+              ]
+            }
+          ],
+          "table": {
+            "columnWidths": [
+              180,
+              180,
+              200
+            ],
+            "rowHeights": [
+              55,
+              55,
+              55
+            ],
+            "cells": [
+              {
+                "id": "table-cell-0",
+                "type": "tableCell",
+                "name": "Update neighbor",
+                "text": "Update neighbor",
+                "notes": "",
+                "x": 0,
+                "y": 0,
+                "rotation": 0,
+                "width": 180,
+                "height": 55,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#eeedff",
+                  "stroke": "#b9bfd1",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#333333",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "table-case-1",
+                    "event": "click",
+                    "name": "Cell action",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "table-action-2",
+                        "type": "setText",
+                        "targetId": "table-cell-6",
+                        "value": "Updated independently"
+                      },
+                      {
+                        "id": "table-action-3",
+                        "type": "setSelected",
+                        "targetId": "table-cell-0",
+                        "value": "true"
+                      },
+                      {
+                        "id": "table-action-4",
+                        "type": "setText",
+                        "targetId": "table-status",
+                        "value": "Only this cell handled the click"
+                      }
+                    ]
+                  }
+                ],
+                "selectedStyle": {
+                  "fill": "#d1fae5",
+                  "color": "#047857"
+                }
+              },
+              {
+                "id": "table-cell-1",
+                "type": "tableCell",
+                "name": "Parent fallback",
+                "text": "Parent fallback",
+                "notes": "",
+                "x": 180,
+                "y": 0,
+                "rotation": 0,
+                "width": 180,
+                "height": 55,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#eeedff",
+                  "stroke": "#b9bfd1",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#333333",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": []
+              },
+              {
+                "id": "table-cell-2",
+                "type": "tableCell",
+                "name": "Consume click",
+                "text": "Consume click",
+                "notes": "",
+                "x": 360,
+                "y": 0,
+                "rotation": 0,
+                "width": 200,
+                "height": 55,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#eeedff",
+                  "stroke": "#b9bfd1",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#333333",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "table-case-5",
+                    "event": "click",
+                    "name": "An empty case still consumes the click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": []
+                  }
+                ]
+              },
+              {
+                "id": "table-cell-3",
+                "type": "tableCell",
+                "name": "Condition false",
+                "text": "Condition false",
+                "notes": "",
+                "x": 0,
+                "y": 55,
+                "rotation": 0,
+                "width": 180,
+                "height": 55,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#b9bfd1",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#333333",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "table-case-6",
+                    "event": "click",
+                    "name": "Cell action",
+                    "enabled": true,
+                    "conditions": [
+                      {
+                        "source": "widgetText",
+                        "key": "table-cell-0",
+                        "operator": "equals",
+                        "value": "Never matches"
+                      }
+                    ],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "table-action-7",
+                        "type": "setText",
+                        "targetId": "table-status",
+                        "value": "Must never run"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "table-cell-4",
+                "type": "tableCell",
+                "name": "Choose a case",
+                "text": "Choose a case",
+                "notes": "",
+                "x": 180,
+                "y": 55,
+                "rotation": 0,
+                "width": 180,
+                "height": 55,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#b9bfd1",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#333333",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "table-case-8",
+                    "event": "click",
+                    "name": "First cell choice",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "table-action-9",
+                        "type": "setText",
+                        "targetId": "table-status",
+                        "value": "First cell choice"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "table-case-10",
+                    "event": "click",
+                    "name": "Second cell choice",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "table-action-11",
+                        "type": "setText",
+                        "targetId": "table-status",
+                        "value": "Second cell choice"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "table-cell-5",
+                "type": "tableCell",
+                "name": "Read details",
+                "text": "Read details",
+                "notes": "",
+                "richText": {
+                  "paragraphs": [
+                    {
+                      "runs": [
+                        {
+                          "text": "Read ",
+                          "style": {
+                            "fontWeight": 400
+                          }
+                        },
+                        {
+                          "text": "details",
+                          "style": {
+                            "color": "#4f46e5",
+                            "fontWeight": 700,
+                            "underline": true
+                          },
+                          "linkId": "table-link"
+                        }
+                      ]
+                    }
+                  ],
+                  "links": [
+                    {
+                      "id": "table-link",
+                      "name": "Table cell details",
+                      "interactions": [
+                        {
+                          "id": "table-case-12",
+                          "event": "click",
+                          "name": "Cell action",
+                          "enabled": true,
+                          "conditions": [],
+                          "conditionMode": "all",
+                          "actions": [
+                            {
+                              "id": "table-action-13",
+                              "type": "setText",
+                              "targetId": "table-status",
+                              "value": "Cell hyperlink handled"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "x": 360,
+                "y": 55,
+                "rotation": 0,
+                "width": 200,
+                "height": 55,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#b9bfd1",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#333333",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": []
+              },
+              {
+                "id": "table-cell-6",
+                "type": "tableCell",
+                "name": "Rich formatting",
+                "text": "Rich formatting",
+                "notes": "",
+                "richText": {
+                  "paragraphs": [
+                    {
+                      "runs": [
+                        {
+                          "text": "Rich ",
+                          "style": {
+                            "fontWeight": 700
+                          }
+                        },
+                        {
+                          "text": "formatting",
+                          "style": {
+                            "color": "#7c3aed",
+                            "fontStyle": "italic"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "x": 0,
+                "y": 110,
+                "rotation": 0,
+                "width": 180,
+                "height": 55,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#f2f5fc",
+                  "stroke": "#b9bfd1",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#333333",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": []
+              },
+              {
+                "id": "table-cell-7",
+                "type": "tableCell",
+                "name": "Hide / restore",
+                "text": "Hide / restore",
+                "notes": "",
+                "x": 180,
+                "y": 110,
+                "rotation": 0,
+                "width": 180,
+                "height": 55,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#f2f5fc",
+                  "stroke": "#b9bfd1",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#333333",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": []
+              },
+              {
+                "id": "table-cell-8",
+                "type": "tableCell",
+                "name": "Move this cell",
+                "text": "Move this cell",
+                "notes": "",
+                "x": 360,
+                "y": 110,
+                "rotation": 0,
+                "width": 200,
+                "height": 55,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#f2f5fc",
+                  "stroke": "#b9bfd1",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#333333",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "table-status",
+          "type": "text",
+          "name": "table-status",
+          "text": "Ready — choose a cell above.",
+          "notes": "",
+          "x": 44,
+          "y": 350,
+          "rotation": 0,
+          "width": 1000,
+          "height": 52,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#eeedff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              12,
+              14,
+              12,
+              14
+            ],
+            "color": "#263348",
+            "fontSize": 18,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "table-noops",
+          "type": "button",
+          "name": "Runtime resize / disable / error",
+          "text": "Runtime resize / disable / error",
+          "notes": "",
+          "x": 44,
+          "y": 432,
+          "rotation": 0,
+          "width": 260,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "table-case-18",
+              "event": "click",
+              "name": "Cell action",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "table-action-19",
+                  "type": "resize",
+                  "targetId": "table-main",
+                  "x": 900,
+                  "y": 600
+                },
+                {
+                  "id": "table-action-20",
+                  "type": "disable",
+                  "targetId": "table-main"
+                },
+                {
+                  "id": "table-action-21",
+                  "type": "setError",
+                  "targetId": "table-main",
+                  "value": "true"
+                },
+                {
+                  "id": "table-action-22",
+                  "type": "resize",
+                  "targetId": "table-cell-0",
+                  "x": 900,
+                  "y": 600
+                },
+                {
+                  "id": "table-action-23",
+                  "type": "disable",
+                  "targetId": "table-cell-0"
+                },
+                {
+                  "id": "table-action-24",
+                  "type": "setError",
+                  "targetId": "table-cell-0",
+                  "value": "true"
+                },
+                {
+                  "id": "table-action-25",
+                  "type": "setText",
+                  "targetId": "table-status",
+                  "value": "Unsupported setters left the grid unchanged"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "table-move",
+          "type": "button",
+          "name": "Move one cell",
+          "text": "Move one cell",
+          "notes": "",
+          "x": 324,
+          "y": 432,
+          "rotation": 0,
+          "width": 260,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "table-case-26",
+              "event": "click",
+              "name": "Cell action",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "table-action-27",
+                  "type": "move",
+                  "targetId": "table-cell-8",
+                  "x": 350,
+                  "y": 98
+                },
+                {
+                  "id": "table-action-28",
+                  "type": "setText",
+                  "targetId": "table-status",
+                  "value": "One cell moved; track geometry retained"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "table-hide-cell",
+          "type": "button",
+          "name": "Toggle one cell",
+          "text": "Toggle one cell",
+          "notes": "",
+          "x": 604,
+          "y": 432,
+          "rotation": 0,
+          "width": 260,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "table-case-29",
+              "event": "click",
+              "name": "Cell action",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "table-action-30",
+                  "type": "toggle",
+                  "targetId": "table-cell-7"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "table-hide",
+          "type": "button",
+          "name": "Toggle whole table",
+          "text": "Toggle whole table",
+          "notes": "",
+          "x": 44,
+          "y": 490,
+          "rotation": 0,
+          "width": 260,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "table-case-31",
+              "event": "click",
+              "name": "Cell action",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "table-action-32",
+                  "type": "toggle",
+                  "targetId": "table-main"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "table-repeat-heading",
+          "type": "text",
+          "name": "table-repeat-heading",
+          "text": "The same grid in two independent repeater rows",
+          "notes": "",
+          "x": 44,
+          "y": 557,
+          "rotation": 0,
+          "width": 1000,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "table-repeater",
+          "type": "repeater",
+          "name": "Independent table instances",
+          "text": "",
+          "notes": "",
+          "x": 44,
+          "y": 614,
+          "rotation": 0,
+          "width": 560,
+          "height": 116,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "Alpha"
+              },
+              {
+                "Name": "Beta"
+              }
+            ],
+            "template": [
+              {
+                "id": "table-row",
+                "type": "table",
+                "name": "Repeated table",
+                "text": "",
+                "notes": "",
+                "x": 0,
+                "y": 0,
+                "rotation": 0,
+                "width": 560,
+                "height": 50,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [],
+                "table": {
+                  "columnWidths": [
+                    260,
+                    300
+                  ],
+                  "rowHeights": [
+                    50
+                  ],
+                  "cells": [
+                    {
+                      "id": "table-row-cell-0",
+                      "type": "tableCell",
+                      "name": "Row action",
+                      "text": "[[Item.Name]]",
+                      "notes": "",
+                      "x": 0,
+                      "y": 0,
+                      "rotation": 0,
+                      "width": 260,
+                      "height": 50,
+                      "hidden": false,
+                      "locked": false,
+                      "disabled": false,
+                      "style": {
+                        "fill": "#eeedff",
+                        "stroke": "#797979",
+                        "strokeWidth": 1,
+                        "radius": 0,
+                        "color": "#333333",
+                        "fontSize": 13,
+                        "fontFamily": "Arial",
+                        "fontWeight": 400,
+                        "textAlign": "center",
+                        "opacity": 1
+                      },
+                      "interactions": [
+                        {
+                          "id": "table-case-33",
+                          "event": "click",
+                          "name": "Cell action",
+                          "enabled": true,
+                          "conditions": [],
+                          "conditionMode": "all",
+                          "actions": [
+                            {
+                              "id": "table-action-34",
+                              "type": "setText",
+                              "targetId": "table-row-cell-1",
+                              "value": "Clicked [[Item.Name]]"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "table-row-cell-1",
+                      "type": "tableCell",
+                      "name": "Row output",
+                      "text": "Awaiting row action",
+                      "notes": "",
+                      "x": 260,
+                      "y": 0,
+                      "rotation": 0,
+                      "width": 300,
+                      "height": 50,
+                      "hidden": false,
+                      "locked": false,
+                      "disabled": false,
+                      "style": {
+                        "fill": "#ffffff",
+                        "stroke": "#797979",
+                        "strokeWidth": 1,
+                        "radius": 0,
+                        "color": "#333333",
+                        "fontSize": 13,
+                        "fontFamily": "Arial",
+                        "fontWeight": 400,
+                        "textAlign": "center",
+                        "opacity": 1
+                      },
+                      "interactions": []
+                    }
+                  ]
+                }
+              }
+            ],
+            "itemHeight": 50,
+            "gap": 16,
+            "itemWidth": 560,
+            "layout": "vertical",
+            "fitToContent": false
+          }
+        },
+        {
+          "id": "table-note",
+          "type": "text",
+          "name": "table-note",
+          "text": "Static table structure: runtime row insertion, merged cells and images inside cells are not supported.",
+          "notes": "",
+          "x": 44,
+          "y": 768,
+          "rotation": 0,
+          "width": 1000,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#6b7280",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "auto",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

@@ -1,0 +1,434 @@
+{
+  "capturedAt": "2026-10-15T14:32:20.747Z",
+  "kind": "Independent current product module/serialized-helper execution; not original Axure observation or browser UI verification.",
+  "sourceHashes": [
+    {
+      "path": "src/model/line-style.ts",
+      "sha256": "3915cc61def68759309f58d7c586ccfc15f800eeb3ed813545578794cc3f36d9"
+    },
+    {
+      "path": "src/model/gradient.ts",
+      "sha256": "3dfe9f36ac2f6a567d961fc428b63d80bf1566dc553099858b09e210d0f87c12"
+    },
+    {
+      "path": "src/components/WidgetView.tsx",
+      "sha256": "1d20650b830c03fb9dc0dda93553ef9054ee05fa94306030a1e181a269b52544"
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "b0631b578a95479d97d56f0095df5f6b0bfe54e559a56ef4b97f129f2dff5b71"
+    },
+    {
+      "path": "tests/native-corners-renderer.test.ts",
+      "sha256": "b57de0b6f5d49c4daa8a3e3c02b5e12b2478b074a17c4e312dd9cf635b441576"
+    }
+  ],
+  "probe": {
+    "path": "research/native-corners-render-review-probe.mjs",
+    "sha256": "a2cb2b550449f8ee62d4a694437d8b9ddc54b2429c86fccab0dbe7c2a50e2bc4"
+  },
+  "evidence": [
+    {
+      "path": "research/native-corners-runtime-probes.json",
+      "sha256": "2dd9ea0044231c4e931166011681f09bf60f1cee99625b63cc86f5dac2cae2f6"
+    },
+    {
+      "path": "research/native-corners-static-probes.json",
+      "sha256": "d9313c6424607dd93bb9b896b9878e5546ec9b590229c17c06ffef07ea089dc0"
+    }
+  ],
+  "results": [
+    {
+      "id": "NC-REVIEW-01",
+      "portable": false,
+      "input": {
+        "type": "box",
+        "width": 200,
+        "height": 100,
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": 0,
+              "y": 0.9
+            },
+            {
+              "op": "C",
+              "x1": 0,
+              "y1": 0.396,
+              "x2": 0.198,
+              "y2": 0,
+              "x": 0.45,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "op": "L",
+              "x": 0,
+              "y": 1
+            },
+            {
+              "op": "L",
+              "x": 0,
+              "y": 0.9
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        },
+        "style": {
+          "fill": "#ffffff",
+          "stroke": "#000000",
+          "color": "#000000",
+          "radius": 90,
+          "strokeWidth": 10,
+          "cornerVisibility": [
+            true,
+            false,
+            false,
+            false
+          ]
+        }
+      },
+      "expected": {
+        "supports": true,
+        "radii": [
+          90,
+          0,
+          0,
+          0
+        ]
+      },
+      "actual": {
+        "supports": true,
+        "geometry": {
+          "strokeD": "M 90 5 L 195 5 L 195 95 L 5 95 L 5 90 C 5 42.4 42.4 5 90 5 Z",
+          "fillD": "M 0 90 C 0 39.6 39.6 0 90 0 L 200 0 L 200 100 L 0 100 L 0 90 Z",
+          "radii": [
+            90,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "NC-REVIEW-01",
+      "portable": false,
+      "input": {
+        "type": "box",
+        "width": 200,
+        "height": 100,
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": 0,
+              "y": 0.9
+            },
+            {
+              "op": "C",
+              "x1": 0,
+              "y1": 0.396,
+              "x2": 0.198,
+              "y2": 0,
+              "x": 0.45,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "op": "L",
+              "x": 0,
+              "y": 1
+            },
+            {
+              "op": "L",
+              "x": 0,
+              "y": 0.9
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        },
+        "style": {
+          "fill": "#ffffff",
+          "stroke": "#000000",
+          "color": "#000000",
+          "radius": 20,
+          "strokeWidth": 10,
+          "cornerVisibility": [
+            true,
+            false,
+            false,
+            false
+          ]
+        }
+      },
+      "expected": {
+        "supports": true,
+        "radii": [
+          20,
+          0,
+          0,
+          0
+        ]
+      },
+      "actual": {
+        "supports": true,
+        "geometry": {
+          "strokeD": "M 20 5 L 195 5 L 195 95 L 5 95 L 5 20 C 5 11.6 11.6 5 20 5 Z",
+          "fillD": "M 0 20 C 0 8.8 8.8 0 20 0 L 200 0 L 200 100 L 0 100 L 0 20 Z",
+          "radii": [
+            20,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "CSS-corner-mask-equality-matrix",
+      "portable": false,
+      "cases": 256,
+      "mismatches": 0,
+      "pass": true
+    },
+    {
+      "id": "all-false-mask-retains-gradient-square-border",
+      "portable": false,
+      "actual": "url(\"data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"200\" height=\"100\" viewBox=\"0 0 200 100\"><defs><linearGradient id=\"s\" gradientUnits=\"userSpaceOnUse\" x1=\"0\" y1=\"0\" x2=\"200\" y2=\"0\"><stop offset=\"0\" stop-color=\"#0000ff\"/><stop offset=\"1\" stop-color=\"#ff0000\"/></linearGradient><clipPath id=\"i\"><rect x=\"10\" y=\"10\" width=\"180\" height=\"80\"/></clipPath><mask id=\"m\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"200\" height=\"100\"><rect width=\"100%\" height=\"100%\" fill=\"white\"/><path d=\"M 10 10 L 190 10 L 190 10 L 190 90 L 190 90 L 10 90 L 10 90 L 10 10 L 10 10 Z\" fill=\"black\" fill-rule=\"evenodd\" clip-path=\"url(#i)\"/></mask></defs><path d=\"M 0 0 L 200 0 L 200 0 L 200 100 L 200 100 L 0 100 L 0 100 L 0 0 L 0 0 Z\" fill=\"url(#s)\" mask=\"url(#m)\"/></svg>\")",
+      "pass": true
+    },
+    {
+      "id": "NC-REVIEW-01",
+      "portable": true,
+      "input": {
+        "type": "box",
+        "width": 200,
+        "height": 100,
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": 0,
+              "y": 0.9
+            },
+            {
+              "op": "C",
+              "x1": 0,
+              "y1": 0.396,
+              "x2": 0.198,
+              "y2": 0,
+              "x": 0.45,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "op": "L",
+              "x": 0,
+              "y": 1
+            },
+            {
+              "op": "L",
+              "x": 0,
+              "y": 0.9
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        },
+        "style": {
+          "fill": "#ffffff",
+          "stroke": "#000000",
+          "color": "#000000",
+          "radius": 90,
+          "strokeWidth": 10,
+          "cornerVisibility": [
+            true,
+            false,
+            false,
+            false
+          ]
+        }
+      },
+      "expected": {
+        "supports": true,
+        "radii": [
+          90,
+          0,
+          0,
+          0
+        ]
+      },
+      "actual": {
+        "supports": true,
+        "geometry": {
+          "strokeD": "M 90 5 L 195 5 L 195 95 L 5 95 L 5 90 C 5 42.4 42.4 5 90 5 Z",
+          "fillD": "M 0 90 C 0 39.6 39.6 0 90 0 L 200 0 L 200 100 L 0 100 L 0 90 Z",
+          "radii": [
+            90,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "NC-REVIEW-01",
+      "portable": true,
+      "input": {
+        "type": "box",
+        "width": 200,
+        "height": 100,
+        "vectorPath": {
+          "fillRule": "nonzero",
+          "commands": [
+            {
+              "op": "M",
+              "x": 0,
+              "y": 0.9
+            },
+            {
+              "op": "C",
+              "x1": 0,
+              "y1": 0.396,
+              "x2": 0.198,
+              "y2": 0,
+              "x": 0.45,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 0
+            },
+            {
+              "op": "L",
+              "x": 1,
+              "y": 1
+            },
+            {
+              "op": "L",
+              "x": 0,
+              "y": 1
+            },
+            {
+              "op": "L",
+              "x": 0,
+              "y": 0.9
+            },
+            {
+              "op": "Z"
+            }
+          ]
+        },
+        "style": {
+          "fill": "#ffffff",
+          "stroke": "#000000",
+          "color": "#000000",
+          "radius": 20,
+          "strokeWidth": 10,
+          "cornerVisibility": [
+            true,
+            false,
+            false,
+            false
+          ]
+        }
+      },
+      "expected": {
+        "supports": true,
+        "radii": [
+          20,
+          0,
+          0,
+          0
+        ]
+      },
+      "actual": {
+        "supports": true,
+        "geometry": {
+          "strokeD": "M 20 5 L 195 5 L 195 95 L 5 95 L 5 20 C 5 11.6 11.6 5 20 5 Z",
+          "fillD": "M 0 20 C 0 8.8 8.8 0 20 0 L 200 0 L 200 100 L 0 100 L 0 20 Z",
+          "radii": [
+            20,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "CSS-corner-mask-equality-matrix",
+      "portable": true,
+      "cases": 256,
+      "mismatches": 0,
+      "pass": true
+    },
+    {
+      "id": "all-false-mask-retains-gradient-square-border",
+      "portable": true,
+      "actual": "url(\"data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"200\" height=\"100\" viewBox=\"0 0 200 100\"><defs><linearGradient id=\"s\" gradientUnits=\"userSpaceOnUse\" x1=\"0\" y1=\"0\" x2=\"200\" y2=\"0\"><stop offset=\"0\" stop-color=\"#0000ff\"/><stop offset=\"1\" stop-color=\"#ff0000\"/></linearGradient><clipPath id=\"i\"><rect x=\"10\" y=\"10\" width=\"180\" height=\"80\"/></clipPath><mask id=\"m\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"200\" height=\"100\"><rect width=\"100%\" height=\"100%\" fill=\"white\"/><path d=\"M 10 10 L 190 10 L 190 10 L 190 90 L 190 90 L 10 90 L 10 90 L 10 10 L 10 10 Z\" fill=\"black\" fill-rule=\"evenodd\" clip-path=\"url(#i)\"/></mask></defs><path d=\"M 0 0 L 200 0 L 200 0 L 200 100 L 200 100 L 0 100 L 0 100 L 0 0 L 0 0 Z\" fill=\"url(#s)\" mask=\"url(#m)\"/></svg>\")",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 0
+  },
+  "boundaries": [
+    "The native width0 and linePattern:none dynamic SVG gates skip reconstruction; current product projects newly authored geometry on every render.",
+    "No browser, package or original GUI was run in this review.",
+    "Initial managed fill clamp and later JavaScript fill clamp can differ for oversized masks, as separately recorded."
+  ],
+  "priorFailure": {
+    "path": "research/native-corners-render-review-observed-failure.json",
+    "sha256": "fa6565d493389ce75354d97ea1a983e3b10224009b96f6d659292b081d54d147",
+    "sourceHashCaptured": false
+  },
+  "review": {
+    "path": "research/native-corners-render-review.md",
+    "sha256": "8af535e743bf32532ab7245166f18250c4972431c137b6fa6511783f2015ae7a"
+  }
+}

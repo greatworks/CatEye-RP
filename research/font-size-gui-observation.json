@@ -1,0 +1,33 @@
+{
+  "observedOn": "2026-10-14",
+  "timezone": "Asia/Shanghai",
+  "method": "Windows Computer Use skill, sky APIs from node_repl only. Accessibility text and verified menu/dialog transitions; no usable screenshot.",
+  "target": "Retained Axure RP 11.0.0.4150, AxureRP11.exe, Untitled window",
+  "userReported": "The account window was cleared and a blank editor was open.",
+  "observations": [
+    "The current Axure window was returned by list_windows with title Untitled. Its accessibility tree contained the editor menu bar and no account dialog.",
+    "get_window_state with screenshot returned FrameArrived timed out: timed out waiting on channel.",
+    "A refreshed accessibility-only state returned File, Edit, View, Project, Arrange, Publish, Team, Account and Help menus.",
+    "Element click on File failed with coordinate input geometry is unavailable.",
+    "A fresh observation followed by Alt+F successfully exposed the File menu including Open, Save As, image export and other entries.",
+    "Ctrl+O opened a Save confirmation asking whether to save the current document. No document was discarded.",
+    "Alt+Y opened Save As. File name, save type and Save button were readable, but reported focus remained on the search box.",
+    "set_value on the observed File name field returned element 153 is not available in cached app state for AxureRP11.exe.",
+    "Fresh window selection and keyboard focus attempts did not yield verified File name focus. No file path was typed into an unverified field.",
+    "Escape dismissed the unsubmitted Save As dialog. Accessibility returned to the Untitled editor with no dialog. The current document remains open."
+  ],
+  "sampleCopy": {
+    "path": "research/native-font-gui/UX Prototyping font probe.rp",
+    "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72",
+    "createdBy": "Filesystem copy of the retained official sample into a dedicated investigation directory.",
+    "openedInAxure": false,
+    "modified": false
+  },
+  "originalSampleOpened": false,
+  "originalHtmlGenerated": false,
+  "originalScreenshotCompared": false,
+  "blankProjectSaved": false,
+  "unsavedProjectDiscarded": false,
+  "productChanged": false,
+  "limitation": "Keyboard navigation can expose some menu/dialog states. Screenshot capture, element geometry and file-dialog focus remain insufficient for reliable sample editing or original generated-output comparison. Do not generalize this to complete native UI unavailability or completed GUI parity."
+}

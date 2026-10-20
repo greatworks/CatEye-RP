@@ -1,0 +1,762 @@
+{
+  "verifiedAt": "2026-10-13T12:17:05.730Z",
+  "sourceFiles": {
+    "src/model/types.ts": "67598b96f0fc86d64f00bf9768c3a588e111d622904757ec75a59608677970f5",
+    "src/model/document.ts": "d2f1b8bb3b9821e803c7a3ac1551080fc5601b106352d7eb5fbdd6071733d3ca",
+    "src/model/vector.ts": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147",
+    "src/model/import-rp.ts": "31645a5a60ad7e6af729f75db5d09293e9f5baeca92b211f07be478e4e8a1614",
+    "src/components/WidgetView.tsx": "19c12177194579d27180da30f585c7d122f65e9d2be47984e62d1e884a525a17",
+    "src/components/Preview.tsx": "2dbf3f6a40fb0609205db0df4c7ad3009d7849a4c2610d021e7bf3fd0643332a",
+    "src/components/Inspector.tsx": "567b86eeaa0a52d4209c5d4beb92ebadd6e27ff8e740390be2542a9a90101739",
+    "src/App.tsx": "286959b3ac690758e4c22025c91c634d4967849eac320f09958b30309345b728",
+    "src/style.css": "d8a46ee03ad46241dd985ced0119e4ddc772431e41c2b57b8703f059dabd5994",
+    "src/runtime/export-runtime.ts": "3597d85eb750fbeda4d25176df2a9ac8c9a63137c2e2eb3b40901f61cc487d7a",
+    "src/runtime/export.ts": "9e251ceeeb485f14299f66cfd6bc9855af2cbab0713eeb7f14c40df90f4a47c8",
+    "research/scripts/read-rp-semantics.mjs": "ad954201389ec9f1cf92549d9846e984980f056610661475bf1fa5f14fdb8b7f",
+    "tests/vector.test.ts": "00f8939ab1e1908f8a77a1eba07d887b99a725ae942ea95bf9ea03938faa849b",
+    "tests/import-rp-vectors.test.ts": "f05d79cd93dcf46e1c33f9c57155770deb32c8a6cb4a58c1fb95474057f85ef3",
+    "tests/import-rp-shapes-forms.test.ts": "8bac25b2b21d3b33be3ba26cd282ecb6700ecb485a0c3514801ab191a65f9c17",
+    "research/scripts/read-rp-vectors.test.mjs": "43cb6d2b551bc1744bdccb1c2c8fdc7e478e6cec97501a7b920abeda4e084af7",
+    "research/scripts/read-rp-shapes-forms.test.mjs": "41b2321ea2c42c642309bfc9ec083575a5fc1bd109e72226fbe5371e2aae09ea",
+    "tests/e2e/vector.spec.ts": "59006e6e5109cd1c249d791196cf3ec7375ca1ea9a0cd4d7bf4701f08311ac0f",
+    "tests/e2e/rp-interactions.spec.ts": "b4ba8b29e23fabb21bf0e3499f6e29aeadb5a801e4fa1e51f535ac0e9736f753"
+  },
+  "sampleAuditSha256": "7fd64cc4afac3d0d9644290bb179236463fff39daee88d524c1fb988c89caad5",
+  "sampleCoverage": [
+    {
+      "file": "DefaultSettings/Libraries/Default.rplib",
+      "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50",
+      "diagrams": 41,
+      "typeCandidates": 28,
+      "uniqueCacheChains": 0,
+      "roundedRectangles": 2,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "converted-and-model-validated",
+        "pages": 40,
+        "widgets": 26,
+        "skipped": 14,
+        "panelStates": 1,
+        "nestedWidgets": 0,
+        "nestedSkipped": 0,
+        "frozenAutoFit": 6,
+        "events": 0,
+        "skippedEvents": 2,
+        "skippedInteractionTrees": 0,
+        "cases": 0,
+        "actions": 0,
+        "variables": 1,
+        "caseSelection": "auto"
+      }
+    },
+    {
+      "file": "DefaultSettings/Libraries/Flow.rplib",
+      "sha256": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451",
+      "diagrams": 37,
+      "typeCandidates": 31,
+      "uniqueCacheChains": 0,
+      "roundedRectangles": 1,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "converted-and-model-validated",
+        "pages": 37,
+        "widgets": 21,
+        "skipped": 16,
+        "panelStates": 0,
+        "nestedWidgets": 0,
+        "nestedSkipped": 0,
+        "frozenAutoFit": 0,
+        "events": 0,
+        "skippedEvents": 0,
+        "skippedInteractionTrees": 0,
+        "cases": 0,
+        "actions": 0,
+        "variables": 1,
+        "caseSelection": "auto"
+      }
+    },
+    {
+      "file": "DefaultSettings/Libraries/Icons.rplib",
+      "sha256": "83f450088f81f6047dfb196919fff3a4aae2f3adb56668da4d4c8cfd3b813bda",
+      "diagrams": 920,
+      "typeCandidates": 920,
+      "uniqueCacheChains": 0,
+      "roundedRectangles": 0,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "rejected",
+        "reason": "RP 页面数量超过导入上限。"
+      }
+    },
+    {
+      "file": "DefaultSettings/Libraries/Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "diagrams": 106,
+      "typeCandidates": 1125,
+      "uniqueCacheChains": 0,
+      "roundedRectangles": 274,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "converted-and-model-validated",
+        "pages": 48,
+        "widgets": 525,
+        "skipped": 206,
+        "panelStates": 28,
+        "nestedWidgets": 406,
+        "nestedSkipped": 64,
+        "frozenAutoFit": 311,
+        "events": 0,
+        "skippedEvents": 518,
+        "skippedInteractionTrees": 0,
+        "cases": 0,
+        "actions": 0,
+        "variables": 1,
+        "caseSelection": "auto"
+      }
+    },
+    {
+      "file": "DefaultSettings/Libraries/Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b",
+      "diagrams": 43,
+      "typeCandidates": 327,
+      "uniqueCacheChains": 0,
+      "roundedRectangles": 56,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "converted-and-model-validated",
+        "pages": 15,
+        "widgets": 171,
+        "skipped": 88,
+        "panelStates": 2,
+        "nestedWidgets": 10,
+        "nestedSkipped": 0,
+        "frozenAutoFit": 82,
+        "events": 0,
+        "skippedEvents": 104,
+        "skippedInteractionTrees": 0,
+        "cases": 0,
+        "actions": 0,
+        "variables": 2,
+        "caseSelection": "auto"
+      }
+    },
+    {
+      "file": "DefaultSettings/Training/Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714",
+      "diagrams": 31,
+      "typeCandidates": 124,
+      "uniqueCacheChains": 108,
+      "roundedRectangles": 20,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "converted-and-model-validated",
+        "pages": 8,
+        "widgets": 57,
+        "skipped": 31,
+        "panelStates": 11,
+        "nestedWidgets": 28,
+        "nestedSkipped": 0,
+        "frozenAutoFit": 34,
+        "events": 7,
+        "skippedEvents": 21,
+        "skippedInteractionTrees": 0,
+        "cases": 7,
+        "actions": 7,
+        "variables": 2,
+        "caseSelection": "auto"
+      }
+    },
+    {
+      "file": "DefaultSettings/Training/Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7",
+      "diagrams": 6,
+      "typeCandidates": 246,
+      "uniqueCacheChains": 246,
+      "roundedRectangles": 24,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "converted-and-model-validated",
+        "pages": 1,
+        "widgets": 172,
+        "skipped": 27,
+        "panelStates": 5,
+        "nestedWidgets": 52,
+        "nestedSkipped": 0,
+        "frozenAutoFit": 102,
+        "events": 1,
+        "skippedEvents": 5,
+        "skippedInteractionTrees": 0,
+        "cases": 1,
+        "actions": 1,
+        "variables": 1,
+        "caseSelection": "auto"
+      }
+    },
+    {
+      "file": "DefaultSettings/Training/Quick Win.rp",
+      "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051",
+      "diagrams": 5,
+      "typeCandidates": 48,
+      "uniqueCacheChains": 46,
+      "roundedRectangles": 0,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "converted-and-model-validated",
+        "pages": 2,
+        "widgets": 33,
+        "skipped": 9,
+        "panelStates": 1,
+        "nestedWidgets": 2,
+        "nestedSkipped": 0,
+        "frozenAutoFit": 23,
+        "events": 0,
+        "skippedEvents": 4,
+        "skippedInteractionTrees": 0,
+        "cases": 0,
+        "actions": 0,
+        "variables": 1,
+        "caseSelection": "auto"
+      }
+    },
+    {
+      "file": "DefaultSettings/Training/UX Prototyping.rp",
+      "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72",
+      "diagrams": 19,
+      "typeCandidates": 199,
+      "uniqueCacheChains": 193,
+      "roundedRectangles": 10,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "converted-and-model-validated",
+        "pages": 10,
+        "widgets": 126,
+        "skipped": 27,
+        "panelStates": 0,
+        "nestedWidgets": 0,
+        "nestedSkipped": 0,
+        "frozenAutoFit": 83,
+        "events": 6,
+        "skippedEvents": 9,
+        "skippedInteractionTrees": 0,
+        "cases": 6,
+        "actions": 6,
+        "variables": 1,
+        "caseSelection": "auto"
+      }
+    },
+    {
+      "file": "the-basics-tab-menu.rp",
+      "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4",
+      "diagrams": 3,
+      "typeCandidates": 5,
+      "uniqueCacheChains": 4,
+      "roundedRectangles": 2,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "converted-and-model-validated",
+        "pages": 1,
+        "widgets": 3,
+        "skipped": 0,
+        "panelStates": 2,
+        "nestedWidgets": 2,
+        "nestedSkipped": 0,
+        "frozenAutoFit": 0,
+        "events": 2,
+        "skippedEvents": 0,
+        "skippedInteractionTrees": 0,
+        "cases": 2,
+        "actions": 4,
+        "variables": 1,
+        "caseSelection": "auto"
+      }
+    },
+    {
+      "file": "complex-interactions-required-fields.rp",
+      "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c",
+      "diagrams": 2,
+      "typeCandidates": 7,
+      "uniqueCacheChains": 7,
+      "roundedRectangles": 1,
+      "semanticFailures": [],
+      "unsupportedFields": 0,
+      "import": {
+        "status": "converted-and-model-validated",
+        "pages": 2,
+        "widgets": 7,
+        "skipped": 0,
+        "panelStates": 0,
+        "nestedWidgets": 0,
+        "nestedSkipped": 0,
+        "frozenAutoFit": 4,
+        "events": 3,
+        "skippedEvents": 0,
+        "skippedInteractionTrees": 0,
+        "cases": 4,
+        "actions": 4,
+        "variables": 1,
+        "caseSelection": "auto"
+      }
+    }
+  ],
+  "rpTotals": {
+    "samples": 6,
+    "before": 432,
+    "after": 482,
+    "added": 50,
+    "skipped": 94
+  },
+  "preservation": {
+    "ok": true,
+    "widgetsChecked": 1360,
+    "result": [
+      {
+        "file": "DefaultSettings/Libraries/Default.rplib",
+        "before": 20,
+        "after": 26
+      },
+      {
+        "file": "DefaultSettings/Libraries/Flow.rplib",
+        "before": 3,
+        "after": 21
+      },
+      {
+        "file": "DefaultSettings/Libraries/Icons.rplib",
+        "rejected": "RP 页面数量超过导入上限。"
+      },
+      {
+        "file": "DefaultSettings/Libraries/Sample form patterns.rplib",
+        "before": 779,
+        "after": 931
+      },
+      {
+        "file": "DefaultSettings/Libraries/Sample UI patterns.rplib",
+        "before": 126,
+        "after": 181
+      },
+      {
+        "file": "DefaultSettings/Training/Prototype Starter.rp",
+        "before": 66,
+        "after": 85
+      },
+      {
+        "file": "DefaultSettings/Training/Prototyping Basics.rp",
+        "before": 204,
+        "after": 224
+      },
+      {
+        "file": "DefaultSettings/Training/Quick Win.rp",
+        "before": 35,
+        "after": 35
+      },
+      {
+        "file": "DefaultSettings/Training/UX Prototyping.rp",
+        "before": 115,
+        "after": 126
+      },
+      {
+        "file": "the-basics-tab-menu.rp",
+        "before": 5,
+        "after": 5
+      },
+      {
+        "file": "complex-interactions-required-fields.rp",
+        "before": 7,
+        "after": 7
+      }
+    ]
+  },
+  "tests": {
+    "unit": 727,
+    "unitFiles": 34,
+    "parser": 100,
+    "developmentVector": 3,
+    "productionFull": 88,
+    "packagedSmokeScripts": 4,
+    "mixedSelectionBeforeFixFailed": true,
+    "mixedSelectionAfterFixPassed": true
+  },
+  "logs": [
+    ".build/vector-unit-tests-final.log",
+    ".build/vector-parser-tests.log",
+    ".build/vector-e2e-production-final.log",
+    ".build/vector-before-fix.log"
+  ],
+  "packagedAppAsarSha256": "51dc183bb4b19c8f4ca95874312db4df51826eed219956e4bb922879eb5f306f",
+  "packagedFileHashes": {
+    "dist/assets/index-DGBOLmXC.js": "26056dd6e3e7262a98d9744db6bb53e6faa7e8998591622637089cc633bb6128",
+    "dist/assets/index-DRh8LpoH.css": "289138eee0c80c1dbfcffdc3af676843a2bba79012966e18e74e14fefa2ecc79",
+    "dist/index.html": "ece761763962c2bebe503ac2c73cac7f5000e303938155020e5cb817b4e67a20",
+    "desktop/import-rp-worker.cjs": "1127acbe1e641daf9950f7c8c2a9183e1e850be855c8f5a1e3f7023892007526",
+    "desktop/main.cjs": "4abe362bbf2a7973ca8caf1a42037860b2cdf1d6440b0c15618196174156b331",
+    "desktop/preload.cjs": "56eddf19cf0304f0e530360ff7d8edc2798100c9004fedfa23dc91ab1ec5801b",
+    "research/scripts/read-rp-container.mjs": "e9ec939defe3e926740096fa294510f27e026748e9e3effdfa8a2e27cdc461cc",
+    "research/scripts/read-rp-objects.mjs": "6e94582d21efacec6e75cfcf41953cc02913fa68031056637387df34f6cb59b9",
+    "research/scripts/read-rp-interactions.mjs": "5bd4e98e6504722610b25744463adda7c5969cb2661cecd60e18b7e7724c12cc",
+    "research/scripts/read-rp-semantics.mjs": "ad954201389ec9f1cf92549d9846e984980f056610661475bf1fa5f14fdb8b7f",
+    "package.json": "290821da9e4b2c9a3d3b3103c5d7469552457611b8d8edd92a3f2190041f30f9"
+  },
+  "archive": {
+    "verifiedAt": "2026-10-13T20:15:40.0285976+08:00",
+    "archive": "D:\\WSCodex\\REA\\release\\REA-Prototype-Studio-0.1.0-win64.zip",
+    "bytes": 163032123,
+    "sha256": "8fec953136c3a50afbe6480a565f6fb3046d899e8d9225999eebd15211e22fdb",
+    "archiveEntries": 74,
+    "appAsarSha256": "51dc183bb4b19c8f4ca95874312db4df51826eed219956e4bb922879eb5f306f",
+    "executableSha256": "c31989040472160cf83e91255beceba9fdfcc9d074c7b05145c6dbb428e3f943",
+    "archivedAsarMatchesTestedBundle": true,
+    "archivedExecutableMatchesTestedBundle": true
+  },
+  "desktop": {
+    "basic": {
+      "ok": true,
+      "title": "REA Prototype Studio",
+      "widgets": 1,
+      "desktopApi": "function",
+      "nodeExposed": false,
+      "nativeRename": true,
+      "nativeSaveOpen": true,
+      "nativeExport": true,
+      "conditionalCasePersistenceAndPreview": true,
+      "caseMenuPersistenceAndSelection": true
+    },
+    "rp": {
+      "ok": true,
+      "sourceUnchanged": true,
+      "requiredFields": {
+        "pages": 2,
+        "widgets": 7,
+        "skipped": 0,
+        "events": 3,
+        "cases": 4,
+        "actions": 4,
+        "variables": 1,
+        "nativeSaveReopen": true,
+        "previewAndOfflineBehaviorVerified": true,
+        "nativeComparisonBoundaryVerified": true,
+        "importedTextClippingChecked": true
+      },
+      "tabMenu": {
+        "pages": 1,
+        "widgets": 3,
+        "skipped": 0,
+        "stylesVerified": true,
+        "events": 2,
+        "eventsSkipped": 0,
+        "panelStates": 2,
+        "nestedWidgets": 2,
+        "nativeSaveReopen": true,
+        "previewAndOfflineBehaviorVerified": true
+      },
+      "unexpectedNetworkRequests": 0,
+      "originalAxureVisualComparison": false,
+      "emptyRecoveryFixture": "independently encoded SYNTHETIC-empty-page.rp",
+      "emptyRecoveryPreservesCurrentDocument": true
+    },
+    "images": {
+      "ok": true,
+      "results": [
+        {
+          "file": "Quick Win.rp",
+          "widgets": 33,
+          "skipped": 9,
+          "images": 2,
+          "originalBytesPreserved": true,
+          "nativeSaveOpen": true,
+          "editorPreviewAndOfflineDecoded": true
+        },
+        {
+          "file": "UX Prototyping.rp",
+          "widgets": 126,
+          "skipped": 27,
+          "images": 2,
+          "originalBytesPreserved": true,
+          "nativeSaveOpen": true,
+          "editorPreviewAndOfflineDecoded": true
+        }
+      ],
+      "unexpectedNetworkRequests": 0,
+      "originalAxureVisualComparison": false
+    },
+    "shapes": {
+      "ok": true,
+      "timestamp": "2026-10-13T12:13:45.599Z",
+      "executablePath": "D:\\WSCodex\\REA\\release\\REA Prototype Studio-win32-x64\\REA Prototype Studio.exe",
+      "userData": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-wQovY3",
+      "bundleHash": "51dc183bb4b19c8f4ca95874312db4df51826eed219956e4bb922879eb5f306f",
+      "bundleHashKind": "resources/app.asar SHA-256",
+      "sourceHashes": {
+        "Default.rplib": {
+          "before": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50",
+          "after": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+        },
+        "Flow.rplib": {
+          "before": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451",
+          "after": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+        },
+        "Prototyping Basics.rp": {
+          "before": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7",
+          "after": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+        }
+      },
+      "results": [
+        {
+          "file": "Default.rplib",
+          "reportCounts": {
+            "pages": 40,
+            "top": 26,
+            "skipped": 14,
+            "nested": 0
+          },
+          "savedFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-wQovY3\\Default.rplib.rea.json",
+          "savedSha256": "5822f9b068aa08e8f5957f825472955b8e8c7dc89bc09ab3f1e7ddbbe2bce68f",
+          "htmlFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-wQovY3\\Default.rplib.html",
+          "htmlSha256": "759d551925c3ea3af026d563c5008374084277bb846d8aaed0e32e8ae1ec6df6",
+          "nativeSaveReopen": true,
+          "designUnchangedAfterPreviewAndExport": true,
+          "preview": {
+            "checkedEllipses": [
+              {
+                "name": "Circle marker",
+                "width": 30,
+                "height": 30,
+                "left": "100px",
+                "top": "100px"
+              },
+              {
+                "name": "Ellipse",
+                "width": 170,
+                "height": 170,
+                "left": "100px",
+                "top": "100px"
+              }
+            ],
+            "checkedNativePaths": [
+              {
+                "name": "Drop marker",
+                "storedCommands": 6,
+                "subpaths": 1,
+                "closed": 1
+              },
+              {
+                "name": "Placeholder",
+                "storedCommands": 10,
+                "subpaths": 3,
+                "closed": 1
+              },
+              {
+                "name": "Horizontal line",
+                "storedCommands": 2,
+                "subpaths": 1,
+                "closed": 0
+              }
+            ],
+            "textareaUnicodeNewlineAndLiteralPreserved": true
+          },
+          "offline": {
+            "checkedEllipses": [
+              {
+                "name": "Circle marker",
+                "width": 30,
+                "height": 30,
+                "left": "100px",
+                "top": "100px"
+              },
+              {
+                "name": "Ellipse",
+                "width": 170,
+                "height": 170,
+                "left": "100px",
+                "top": "100px"
+              }
+            ],
+            "checkedNativePaths": [
+              {
+                "name": "Drop marker",
+                "storedCommands": 6,
+                "subpaths": 1,
+                "closed": 1
+              },
+              {
+                "name": "Placeholder",
+                "storedCommands": 10,
+                "subpaths": 3,
+                "closed": 1
+              },
+              {
+                "name": "Horizontal line",
+                "storedCommands": 2,
+                "subpaths": 1,
+                "closed": 0
+              }
+            ],
+            "textareaUnicodeNewlineAndLiteralPreserved": true
+          }
+        },
+        {
+          "file": "Flow.rplib",
+          "reportCounts": {
+            "pages": 37,
+            "top": 21,
+            "skipped": 16,
+            "nested": 0
+          },
+          "savedFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-wQovY3\\Flow.rplib.rea.json",
+          "savedSha256": "aed153f299a81569ada971ece9dd49a2289abaac0a7559d8e0b107b2566d549d",
+          "htmlFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-wQovY3\\Flow.rplib.html",
+          "htmlSha256": "3ad70524aa8b5075d9c02376fc8db339ce43d5891cf09dc593f241ac1ba2ecdd",
+          "nativeSaveReopen": true,
+          "designUnchangedAfterPreviewAndExport": true,
+          "preview": {
+            "checkedNativePaths": [
+              {
+                "name": "Database",
+                "storedCommands": 11,
+                "subpaths": 2,
+                "closed": 1
+              },
+              {
+                "name": "Actor",
+                "storedCommands": 14,
+                "subpaths": 5,
+                "closed": 1
+              },
+              {
+                "name": "Stacked file",
+                "storedCommands": 22,
+                "subpaths": 4,
+                "closed": 1
+              }
+            ]
+          },
+          "offline": {
+            "checkedNativePaths": [
+              {
+                "name": "Database",
+                "storedCommands": 11,
+                "subpaths": 2,
+                "closed": 1
+              },
+              {
+                "name": "Actor",
+                "storedCommands": 14,
+                "subpaths": 5,
+                "closed": 1
+              },
+              {
+                "name": "Stacked file",
+                "storedCommands": 22,
+                "subpaths": 4,
+                "closed": 1
+              }
+            ]
+          }
+        },
+        {
+          "file": "Prototyping Basics.rp",
+          "reportCounts": {
+            "pages": 1,
+            "top": 172,
+            "skipped": 27,
+            "nested": 52
+          },
+          "savedFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-wQovY3\\Prototyping Basics.rp.rea.json",
+          "savedSha256": "5557e967632e5371834e3f6fab9f3885786ee4c186cc386d8a0f4cab74a78ed5",
+          "htmlFile": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rea-rp-shapes-forms-wQovY3\\Prototyping Basics.rp.html",
+          "htmlSha256": "dfeed80b6a57436121c7754fa7a5a52b460d64829f8690d440bf3adbb10b8511",
+          "nativeSaveReopen": true,
+          "designUnchangedAfterPreviewAndExport": true,
+          "preview": {
+            "activeEllipseDomCount": 46,
+            "activeNestedEllipseDomCount": 3,
+            "totalSavedEllipseCount": 52,
+            "nestedSavedEllipseCount": 9,
+            "highYGeometryVisibilityNotClaimed": true
+          },
+          "offline": {
+            "activeEllipseDomCount": 46,
+            "activeNestedEllipseDomCount": 3,
+            "totalSavedEllipseCount": 52,
+            "nestedSavedEllipseCount": 9,
+            "highYGeometryVisibilityNotClaimed": true
+          }
+        }
+      ],
+      "screenshots": [
+        {
+          "file": "D:\\WSCodex\\REA\\artifacts\\rp-ellipse-preview.png",
+          "sha256": "64b85c2fbaaae90a24d054e7568c36f30e21077b2fc2a915225d1ebce95bbef7"
+        },
+        {
+          "file": "D:\\WSCodex\\REA\\artifacts\\rp-textarea-preview.png",
+          "sha256": "133a5c3cd9211b9fcf7472ab0d4a51015a918c719f88a90616b0025280feecd7"
+        },
+        {
+          "file": "D:\\WSCodex\\REA\\artifacts\\rp-compound-path-preview.png",
+          "sha256": "7e3100fe96d23fe127b18b08066e28b81de26a5e1d46f6357795d5ec95597367"
+        }
+      ],
+      "network": [],
+      "errors": [],
+      "pickerSelectionMocked": true,
+      "originalAxureGuiComparison": false,
+      "limitations": [
+        "Only OS picker responses are mocked; file bytes, Worker, parser, IPC, model conversion and export are real.",
+        "Native picker currently filters .rp; this test supplies Default.rplib directly and does not assert chooser extension availability.",
+        "Stored normalized vector geometry is rendered as SVG. Native stroke displacement, caps, arrowheads, join choices and pixel snapping are not reproduced.",
+        "Prototyping Basics includes high Y coordinates beyond the recovered default page size; DOM presence is checked without claiming all objects are visible at once."
+      ],
+      "finishedAt": "2026-10-13T12:15:10.643Z"
+    }
+  },
+  "originalGuiCompared": false,
+  "screenshots": [
+    {
+      "file": "artifacts/rp-required-interaction-preview.png",
+      "sha256": "fd06d6ea61a1bac528ece183a21e0058a5e3c698579ddbacd87895c2bb4c6506"
+    },
+    {
+      "file": "artifacts/rp-tab-menu-preview.png",
+      "sha256": "5a2431ef48e03bfb1f9243ed99e676f70569fd7b63f0f5f7bd688afd045bc63d"
+    },
+    {
+      "file": "artifacts/rp-image-preview.png",
+      "sha256": "58012d5ba5452e6e3384b1dda967a6574a470cf0c3aaced2d3cd6d8af44f82cd"
+    },
+    {
+      "file": "artifacts/rp-ellipse-preview.png",
+      "sha256": "64b85c2fbaaae90a24d054e7568c36f30e21077b2fc2a915225d1ebce95bbef7"
+    },
+    {
+      "file": "artifacts/rp-textarea-preview.png",
+      "sha256": "133a5c3cd9211b9fcf7472ab0d4a51015a918c719f88a90616b0025280feecd7"
+    },
+    {
+      "file": "artifacts/rp-compound-path-preview.png",
+      "sha256": "7e3100fe96d23fe127b18b08066e28b81de26a5e1d46f6357795d5ec95597367"
+    },
+    {
+      "file": "artifacts/vector-preview.png",
+      "sha256": "1c9389a80e6df30e86f878d385b71d113b19d4bd475159883400e7f6686c5605"
+    }
+  ],
+  "demoFiles": [
+    {
+      "file": "artifacts/vector-demo.rea.json",
+      "sha256": "321e894e1beb20ef60c00f378b5f279d5739248b845065f7e59c64f53fa4af1f"
+    },
+    {
+      "file": "artifacts/vector-demo.html",
+      "sha256": "ac2d1915b30fcd666655e936db66cbea3363365603d747e71d8d9aac96d85b68"
+    }
+  ]
+}

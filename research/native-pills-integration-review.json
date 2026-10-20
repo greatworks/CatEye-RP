@@ -1,0 +1,115 @@
+{
+  "reviewedAt": "2026-10-15T15:59:57.859Z",
+  "scope": "Two production changes plus format, renderer and user-workflow verification",
+  "blockingFindings": [],
+  "productionChanges": [
+    {
+      "file": "research/scripts/read-rp-semantics.mjs",
+      "sha256": "6d75f5fb0b7813ab074b0e10245042dac2c85cfdcd275a4d6cf1b634aab08d49"
+    },
+    {
+      "file": "src/model/line-style.ts",
+      "sha256": "87ae321c7ad2ae5125ca3ce3fd9f7c721e81e8a61aea93221f9e930f8d74e93b"
+    }
+  ],
+  "tests": {
+    "unit": 3511,
+    "parser": 698,
+    "browser": 275,
+    "focused": 27,
+    "exactPackageScripts": 5,
+    "desktopSaves": 8
+  },
+  "evidence": [
+    {
+      "file": "research/native-pills-evidence.json",
+      "sha256": "0019d064c60439c259fe08bbae9684416649bd9c68ff6ec58d34969e7c46368e"
+    },
+    {
+      "file": "research/native-pills-format-manifest.json",
+      "sha256": "832a7fecddb84fa94d142b9fb9f762bdea3ee9a6541d22945c38ca9d2feec2e3"
+    },
+    {
+      "file": "research/native-pills-render-analysis.json",
+      "sha256": "a44effff8c97fa4fb90eec339154636d4e3d431c9167fd2ee9aed083ea144929"
+    },
+    {
+      "file": "research/native-pills-final-review.json",
+      "sha256": "eb0907ae6d39b262eae0ff1a333bea8fefad9e6d4480f2f8f9c57a7f9879ed0d"
+    },
+    {
+      "file": "research/native-pills-workflow-review.json",
+      "sha256": "a5f9be2f5beb3ee015a7b4d18b7c0a65b6197434b2cecb2f00fd67b4123cefec"
+    },
+    {
+      "file": ".build/native-pills-reference-audit.json",
+      "sha256": "64b627af61d99c86797ab7a904992d026156cbf6928e48f9ef387bd8923fb285"
+    },
+    {
+      "file": ".build/native-pills-visual-review.json",
+      "sha256": "e77721ba78ab82a390b67495659120430781d2f96f99ddaf9930a0b90f4d44d6"
+    },
+    {
+      "file": ".build/native-pills-typecheck.json",
+      "sha256": "0c4fefc9af52831df72f0babc8c0d52bbe03ac64d5845067bbbf389f191fd9ee"
+    },
+    {
+      "file": ".build/native-pills-build-inputs.json",
+      "sha256": "7eacbc9b509a49543245edc71549d6a49e0672ed04a58db6388e8ee912e52736"
+    },
+    {
+      "file": ".build/native-pills-bundle-audit.json",
+      "sha256": "1bcd482981e1ca443df83a5cda9b33da4015781fbf3e8775bb4cf443c03e5f02"
+    },
+    {
+      "file": ".build/native-pills-unit-final.json",
+      "sha256": "61b531abdd368ca09baaedc27832f8eebfae80ffb80fdb0de1cd66ad7e958cd0"
+    },
+    {
+      "file": ".build/native-pills-parser-final.tap",
+      "sha256": "f94f7e7302fee1c7ef7074df3a1cefb6f500c2a9287acc20985dff6e0f505ccb"
+    },
+    {
+      "file": ".build/native-pills-release-e2e.json",
+      "sha256": "3f76838b64aee4c4882bdf0347efa24ef2dc597d74f1b6186c0112e41fe6be7d"
+    },
+    {
+      "file": ".build/native-pills-validated-e2e.json",
+      "sha256": "6e34a40648f307251e7190cb8df94b6c018194b07c8ddb7eae26607d51cc5478"
+    },
+    {
+      "file": ".build/native-pills-desktop-audit.json",
+      "sha256": "2d43cc879447c8fb18b32385e7ade8cc5ffe3ac98ed948c13f2aef4384207d50"
+    },
+    {
+      "file": ".build/native-pills-smoke-runs.json",
+      "sha256": "17dc6981a891e3defada129dcf7ccc8934b38cf306dc7effa79d0d964318c330"
+    }
+  ],
+  "conclusions": {
+    "rawCapsules": 28,
+    "semanticOwners": 26,
+    "completeImport": 18,
+    "unsupportedFitChildren": 8,
+    "unsupportedRepeaterOwners": 2,
+    "allOtherDocumentChangesExplained": true,
+    "originalSampleBytesUnchanged": true
+  },
+  "workflowReviewFollowup": "The frozen workflow review covered earlier acceptance-tooling bytes. The parent subsequently wired the final verifier to the passing validated run and restored all preexisting artifacts during full regression, including the already-tested native-pills desktop fixture. No product or scenario behavior changed after that review.",
+  "resolvedValidationFailures": [
+    "JSON import attributes and tuple typing in the fixture",
+    "Plain/rich text consistency and removal of stale gallery action targets",
+    "Correct rich-text helper module import",
+    "Pixel sample moved away from the stroke antialiasing edge",
+    "Reselect after Undo clears the selection"
+  ],
+  "remainingFindings": [
+    "Original initial managed vs dynamic SVG lifecycle differs, including zero-width and none-pattern stale-path gates.",
+    "Parameterized drawing does not synchronize the saved node editor anchors.",
+    "Nine size/path-mismatched snapshots and four special Tree labels retain prior native recovery boundaries.",
+    "Original GUI/pixel parity, full RP writeback and collaboration remain incomplete."
+  ],
+  "originalAxureGuiCompared": false,
+  "originalDllExecuted": false,
+  "fullGoalComplete": false
+}

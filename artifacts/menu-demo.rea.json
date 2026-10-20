@@ -1,0 +1,2421 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "menu-document",
+  "name": "Classic menus · nested navigation",
+  "pages": [
+    {
+      "id": "menu-page",
+      "name": "Menus",
+      "width": 1120,
+      "height": 1140,
+      "background": "#f7f8fc",
+      "widgets": [
+        {
+          "id": "menu-heading",
+          "type": "text",
+          "name": "menu-heading",
+          "text": "Nested menus. Independent menu items.",
+          "notes": "",
+          "x": 44,
+          "y": 28,
+          "rotation": 0,
+          "width": 1000,
+          "height": 46,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 28,
+            "fontFamily": "Arial",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "menu-caption",
+          "type": "text",
+          "name": "menu-caption",
+          "text": "Horizontal and vertical menus open on hover; item actions stay separate from menu containers.",
+          "notes": "",
+          "x": 44,
+          "y": 85,
+          "rotation": 0,
+          "width": 1000,
+          "height": 36,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "menu-main",
+          "type": "menu",
+          "name": "File / Edit / View",
+          "text": "",
+          "notes": "",
+          "x": 44,
+          "y": 154,
+          "rotation": 0,
+          "width": 472,
+          "height": 54,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e2e5ee",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "menu-case-18",
+              "event": "click",
+              "name": "Menu action",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "menu-action-19",
+                  "type": "setText",
+                  "targetId": "menu-status",
+                  "value": "Root menu handled this click"
+                }
+              ]
+            }
+          ],
+          "menu": {
+            "orientation": "horizontal",
+            "table": {
+              "id": "menu-main-table",
+              "type": "table",
+              "name": "Menu table",
+              "text": "",
+              "notes": "",
+              "x": 8,
+              "y": 8,
+              "rotation": 0,
+              "width": 456,
+              "height": 38,
+              "hidden": false,
+              "locked": false,
+              "disabled": false,
+              "style": {
+                "fill": "transparent",
+                "stroke": "#b8bdc7",
+                "strokeWidth": 0,
+                "radius": 0,
+                "color": "#263348",
+                "fontSize": 14,
+                "fontFamily": "Arial",
+                "fontWeight": 400,
+                "textAlign": "center",
+                "opacity": 1
+              },
+              "interactions": [],
+              "table": {
+                "columnWidths": [
+                  152,
+                  152,
+                  152
+                ],
+                "rowHeights": [
+                  38
+                ],
+                "cells": [
+                  {
+                    "id": "menu-main-item-0",
+                    "type": "tableCell",
+                    "name": "Menu item 1",
+                    "text": "File",
+                    "notes": "",
+                    "x": 0,
+                    "y": 0,
+                    "rotation": 0,
+                    "width": 152,
+                    "height": 38,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "#ffffff",
+                      "stroke": "#c7ccda",
+                      "strokeWidth": 1,
+                      "borderWidths": [
+                        1,
+                        1,
+                        1,
+                        1
+                      ],
+                      "radius": 0,
+                      "textPadding": [
+                        6,
+                        12,
+                        6,
+                        12
+                      ],
+                      "verticalAlign": "middle",
+                      "lineHeight": "normal",
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "fontStyle": "normal",
+                      "underline": false,
+                      "strikethrough": false,
+                      "textAlign": "left",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "mouseOverStyle": {
+                      "fill": "#eeedff",
+                      "color": "#4f46e5"
+                    }
+                  },
+                  {
+                    "id": "menu-main-item-1",
+                    "type": "tableCell",
+                    "name": "Menu item 2",
+                    "text": "Edit",
+                    "notes": "",
+                    "x": 152,
+                    "y": 0,
+                    "rotation": 0,
+                    "width": 152,
+                    "height": 38,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "#ffffff",
+                      "stroke": "#c7ccda",
+                      "strokeWidth": 1,
+                      "borderWidths": [
+                        1,
+                        1,
+                        1,
+                        1
+                      ],
+                      "radius": 0,
+                      "textPadding": [
+                        6,
+                        12,
+                        6,
+                        12
+                      ],
+                      "verticalAlign": "middle",
+                      "lineHeight": "normal",
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "fontStyle": "normal",
+                      "underline": false,
+                      "strikethrough": false,
+                      "textAlign": "left",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "mouseOverStyle": {
+                      "fill": "#eeedff",
+                      "color": "#4f46e5"
+                    }
+                  },
+                  {
+                    "id": "menu-main-item-2",
+                    "type": "tableCell",
+                    "name": "Menu item 3",
+                    "text": "View",
+                    "notes": "",
+                    "x": 304,
+                    "y": 0,
+                    "rotation": 0,
+                    "width": 152,
+                    "height": 38,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "#ffffff",
+                      "stroke": "#c7ccda",
+                      "strokeWidth": 1,
+                      "borderWidths": [
+                        1,
+                        1,
+                        1,
+                        1
+                      ],
+                      "radius": 0,
+                      "textPadding": [
+                        6,
+                        12,
+                        6,
+                        12
+                      ],
+                      "verticalAlign": "middle",
+                      "lineHeight": "normal",
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "fontStyle": "normal",
+                      "underline": false,
+                      "strikethrough": false,
+                      "textAlign": "left",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "mouseOverStyle": {
+                      "fill": "#eeedff",
+                      "color": "#4f46e5"
+                    }
+                  }
+                ]
+              }
+            },
+            "submenus": [
+              {
+                "id": "menu-file",
+                "type": "menu",
+                "name": "New project / Open project / Recent projects",
+                "text": "",
+                "notes": "",
+                "x": 8,
+                "y": 46,
+                "rotation": 0,
+                "width": 152,
+                "height": 114,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff00",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "menu-case-12",
+                    "event": "show",
+                    "name": "Menu action",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "menu-action-13",
+                        "type": "setVariable",
+                        "targetId": "Shown",
+                        "value": "[[Shown + 1]]"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "menu-case-14",
+                    "event": "hide",
+                    "name": "Menu action",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "menu-action-15",
+                        "type": "setVariable",
+                        "targetId": "Hidden",
+                        "value": "[[Hidden + 1]]"
+                      }
+                    ]
+                  }
+                ],
+                "menu": {
+                  "orientation": "vertical",
+                  "table": {
+                    "id": "menu-file-table",
+                    "type": "table",
+                    "name": "Menu table",
+                    "text": "",
+                    "notes": "",
+                    "x": 0,
+                    "y": 0,
+                    "rotation": 0,
+                    "width": 152,
+                    "height": 114,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "transparent",
+                      "stroke": "#b8bdc7",
+                      "strokeWidth": 0,
+                      "radius": 0,
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "textAlign": "center",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "table": {
+                      "columnWidths": [
+                        152
+                      ],
+                      "rowHeights": [
+                        38,
+                        38,
+                        38
+                      ],
+                      "cells": [
+                        {
+                          "id": "menu-file-item-0",
+                          "type": "tableCell",
+                          "name": "Menu item 1",
+                          "text": "New project",
+                          "notes": "",
+                          "x": 0,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [
+                            {
+                              "id": "menu-case-10",
+                              "event": "click",
+                              "name": "Menu action",
+                              "enabled": true,
+                              "conditions": [],
+                              "conditionMode": "all",
+                              "actions": [
+                                {
+                                  "id": "menu-action-11",
+                                  "type": "setText",
+                                  "targetId": "menu-status",
+                                  "value": "Created a new project"
+                                }
+                              ]
+                            }
+                          ],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        },
+                        {
+                          "id": "menu-file-item-1",
+                          "type": "tableCell",
+                          "name": "Menu item 2",
+                          "text": "Open project",
+                          "notes": "",
+                          "x": 0,
+                          "y": 38,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        },
+                        {
+                          "id": "menu-file-item-2",
+                          "type": "tableCell",
+                          "name": "Menu item 3",
+                          "text": "Recent projects",
+                          "notes": "",
+                          "x": 0,
+                          "y": 76,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "submenus": [
+                    {
+                      "id": "menu-recent",
+                      "type": "menu",
+                      "name": "Alpha project / Beta project / Gamma project",
+                      "text": "",
+                      "notes": "",
+                      "x": 152,
+                      "y": 76,
+                      "rotation": 0,
+                      "width": 152,
+                      "height": 114,
+                      "hidden": false,
+                      "locked": false,
+                      "disabled": false,
+                      "style": {
+                        "fill": "#ffffff00",
+                        "stroke": "#b8bdc7",
+                        "strokeWidth": 0,
+                        "radius": 0,
+                        "color": "#263348",
+                        "fontSize": 14,
+                        "fontFamily": "Arial",
+                        "fontWeight": 400,
+                        "textAlign": "center",
+                        "opacity": 1
+                      },
+                      "interactions": [],
+                      "menu": {
+                        "orientation": "vertical",
+                        "table": {
+                          "id": "menu-recent-table",
+                          "type": "table",
+                          "name": "Menu table",
+                          "text": "",
+                          "notes": "",
+                          "x": 0,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 114,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "transparent",
+                            "stroke": "#b8bdc7",
+                            "strokeWidth": 0,
+                            "radius": 0,
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "textAlign": "center",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "table": {
+                            "columnWidths": [
+                              152
+                            ],
+                            "rowHeights": [
+                              38,
+                              38,
+                              38
+                            ],
+                            "cells": [
+                              {
+                                "id": "menu-recent-item-0",
+                                "type": "tableCell",
+                                "name": "Menu item 1",
+                                "text": "Alpha project",
+                                "notes": "",
+                                "x": 0,
+                                "y": 0,
+                                "rotation": 0,
+                                "width": 152,
+                                "height": 38,
+                                "hidden": false,
+                                "locked": false,
+                                "disabled": false,
+                                "style": {
+                                  "fill": "#ffffff",
+                                  "stroke": "#c7ccda",
+                                  "strokeWidth": 1,
+                                  "borderWidths": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ],
+                                  "radius": 0,
+                                  "textPadding": [
+                                    6,
+                                    12,
+                                    6,
+                                    12
+                                  ],
+                                  "verticalAlign": "middle",
+                                  "lineHeight": "normal",
+                                  "color": "#263348",
+                                  "fontSize": 14,
+                                  "fontFamily": "Arial",
+                                  "fontWeight": 400,
+                                  "fontStyle": "normal",
+                                  "underline": false,
+                                  "strikethrough": false,
+                                  "textAlign": "left",
+                                  "opacity": 1
+                                },
+                                "interactions": [
+                                  {
+                                    "id": "menu-case-1",
+                                    "event": "click",
+                                    "name": "Menu action",
+                                    "enabled": true,
+                                    "conditions": [],
+                                    "conditionMode": "all",
+                                    "actions": [
+                                      {
+                                        "id": "menu-action-2",
+                                        "type": "setText",
+                                        "targetId": "menu-status",
+                                        "value": "Opened Alpha project"
+                                      },
+                                      {
+                                        "id": "menu-action-3",
+                                        "type": "setSelected",
+                                        "targetId": "menu-recent-item-0",
+                                        "value": "true"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "selectedStyle": {
+                                  "fill": "#d1fae5",
+                                  "color": "#047857"
+                                },
+                                "mouseOverStyle": {
+                                  "fill": "#eeedff",
+                                  "color": "#4f46e5"
+                                }
+                              },
+                              {
+                                "id": "menu-recent-item-1",
+                                "type": "tableCell",
+                                "name": "Menu item 2",
+                                "text": "Beta project",
+                                "notes": "",
+                                "x": 0,
+                                "y": 38,
+                                "rotation": 0,
+                                "width": 152,
+                                "height": 38,
+                                "hidden": false,
+                                "locked": false,
+                                "disabled": false,
+                                "style": {
+                                  "fill": "#ffffff",
+                                  "stroke": "#c7ccda",
+                                  "strokeWidth": 1,
+                                  "borderWidths": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ],
+                                  "radius": 0,
+                                  "textPadding": [
+                                    6,
+                                    12,
+                                    6,
+                                    12
+                                  ],
+                                  "verticalAlign": "middle",
+                                  "lineHeight": "normal",
+                                  "color": "#263348",
+                                  "fontSize": 14,
+                                  "fontFamily": "Arial",
+                                  "fontWeight": 400,
+                                  "fontStyle": "normal",
+                                  "underline": false,
+                                  "strikethrough": false,
+                                  "textAlign": "left",
+                                  "opacity": 1
+                                },
+                                "interactions": [
+                                  {
+                                    "id": "menu-case-4",
+                                    "event": "click",
+                                    "name": "Menu action",
+                                    "enabled": true,
+                                    "conditions": [],
+                                    "conditionMode": "all",
+                                    "actions": [
+                                      {
+                                        "id": "menu-action-5",
+                                        "type": "setText",
+                                        "targetId": "menu-status",
+                                        "value": "Opened Beta project"
+                                      },
+                                      {
+                                        "id": "menu-action-6",
+                                        "type": "setSelected",
+                                        "targetId": "menu-recent-item-1",
+                                        "value": "true"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "selectedStyle": {
+                                  "fill": "#d1fae5",
+                                  "color": "#047857"
+                                },
+                                "mouseOverStyle": {
+                                  "fill": "#eeedff",
+                                  "color": "#4f46e5"
+                                }
+                              },
+                              {
+                                "id": "menu-recent-item-2",
+                                "type": "tableCell",
+                                "name": "Menu item 3",
+                                "text": "Gamma project",
+                                "notes": "",
+                                "x": 0,
+                                "y": 76,
+                                "rotation": 0,
+                                "width": 152,
+                                "height": 38,
+                                "hidden": false,
+                                "locked": false,
+                                "disabled": false,
+                                "style": {
+                                  "fill": "#ffffff",
+                                  "stroke": "#c7ccda",
+                                  "strokeWidth": 1,
+                                  "borderWidths": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ],
+                                  "radius": 0,
+                                  "textPadding": [
+                                    6,
+                                    12,
+                                    6,
+                                    12
+                                  ],
+                                  "verticalAlign": "middle",
+                                  "lineHeight": "normal",
+                                  "color": "#263348",
+                                  "fontSize": 14,
+                                  "fontFamily": "Arial",
+                                  "fontWeight": 400,
+                                  "fontStyle": "normal",
+                                  "underline": false,
+                                  "strikethrough": false,
+                                  "textAlign": "left",
+                                  "opacity": 1
+                                },
+                                "interactions": [
+                                  {
+                                    "id": "menu-case-7",
+                                    "event": "click",
+                                    "name": "Menu action",
+                                    "enabled": true,
+                                    "conditions": [],
+                                    "conditionMode": "all",
+                                    "actions": [
+                                      {
+                                        "id": "menu-action-8",
+                                        "type": "setText",
+                                        "targetId": "menu-status",
+                                        "value": "Opened Gamma project"
+                                      },
+                                      {
+                                        "id": "menu-action-9",
+                                        "type": "setSelected",
+                                        "targetId": "menu-recent-item-2",
+                                        "value": "true"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "selectedStyle": {
+                                  "fill": "#d1fae5",
+                                  "color": "#047857"
+                                },
+                                "mouseOverStyle": {
+                                  "fill": "#eeedff",
+                                  "color": "#4f46e5"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "submenus": [],
+                        "padding": [
+                          0,
+                          0,
+                          0,
+                          0
+                        ],
+                        "parentCellId": "menu-file-item-2"
+                      }
+                    }
+                  ],
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "parentCellId": "menu-main-item-0"
+                }
+              },
+              {
+                "id": "menu-edit",
+                "type": "menu",
+                "name": "Undo / Redo / Delete",
+                "text": "",
+                "notes": "",
+                "x": 160,
+                "y": 46,
+                "rotation": 0,
+                "width": 152,
+                "height": 114,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff00",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [],
+                "menu": {
+                  "orientation": "vertical",
+                  "table": {
+                    "id": "menu-edit-table",
+                    "type": "table",
+                    "name": "Menu table",
+                    "text": "",
+                    "notes": "",
+                    "x": 0,
+                    "y": 0,
+                    "rotation": 0,
+                    "width": 152,
+                    "height": 114,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "transparent",
+                      "stroke": "#b8bdc7",
+                      "strokeWidth": 0,
+                      "radius": 0,
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "textAlign": "center",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "table": {
+                      "columnWidths": [
+                        152
+                      ],
+                      "rowHeights": [
+                        38,
+                        38,
+                        38
+                      ],
+                      "cells": [
+                        {
+                          "id": "menu-edit-item-0",
+                          "type": "tableCell",
+                          "name": "Menu item 1",
+                          "text": "Undo",
+                          "notes": "",
+                          "x": 0,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [
+                            {
+                              "id": "menu-case-16",
+                              "event": "click",
+                              "name": "Menu action",
+                              "enabled": true,
+                              "conditions": [],
+                              "conditionMode": "all",
+                              "actions": [
+                                {
+                                  "id": "menu-action-17",
+                                  "type": "setText",
+                                  "targetId": "menu-status",
+                                  "value": "Undo chosen"
+                                }
+                              ]
+                            }
+                          ],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        },
+                        {
+                          "id": "menu-edit-item-1",
+                          "type": "tableCell",
+                          "name": "Menu item 2",
+                          "text": "Redo",
+                          "notes": "",
+                          "x": 0,
+                          "y": 38,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        },
+                        {
+                          "id": "menu-edit-item-2",
+                          "type": "tableCell",
+                          "name": "Menu item 3",
+                          "text": "Delete",
+                          "notes": "",
+                          "x": 0,
+                          "y": 76,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "submenus": [],
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "parentCellId": "menu-main-item-1"
+                }
+              }
+            ],
+            "padding": [
+              8,
+              8,
+              8,
+              8
+            ]
+          }
+        },
+        {
+          "id": "menu-side",
+          "type": "menu",
+          "name": "Home / Reports / Settings",
+          "text": "",
+          "notes": "",
+          "x": 704,
+          "y": 154,
+          "rotation": 0,
+          "width": 152,
+          "height": 114,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff00",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "menu": {
+            "orientation": "vertical",
+            "table": {
+              "id": "menu-side-table",
+              "type": "table",
+              "name": "Menu table",
+              "text": "",
+              "notes": "",
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "width": 152,
+              "height": 114,
+              "hidden": false,
+              "locked": false,
+              "disabled": false,
+              "style": {
+                "fill": "transparent",
+                "stroke": "#b8bdc7",
+                "strokeWidth": 0,
+                "radius": 0,
+                "color": "#263348",
+                "fontSize": 14,
+                "fontFamily": "Arial",
+                "fontWeight": 400,
+                "textAlign": "center",
+                "opacity": 1
+              },
+              "interactions": [],
+              "table": {
+                "columnWidths": [
+                  152
+                ],
+                "rowHeights": [
+                  38,
+                  38,
+                  38
+                ],
+                "cells": [
+                  {
+                    "id": "menu-side-item-0",
+                    "type": "tableCell",
+                    "name": "Menu item 1",
+                    "text": "Home",
+                    "notes": "",
+                    "x": 0,
+                    "y": 0,
+                    "rotation": 0,
+                    "width": 152,
+                    "height": 38,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "#ffffff",
+                      "stroke": "#c7ccda",
+                      "strokeWidth": 1,
+                      "borderWidths": [
+                        1,
+                        1,
+                        1,
+                        1
+                      ],
+                      "radius": 0,
+                      "textPadding": [
+                        6,
+                        12,
+                        6,
+                        12
+                      ],
+                      "verticalAlign": "middle",
+                      "lineHeight": "normal",
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "fontStyle": "normal",
+                      "underline": false,
+                      "strikethrough": false,
+                      "textAlign": "left",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "mouseOverStyle": {
+                      "fill": "#eeedff",
+                      "color": "#4f46e5"
+                    }
+                  },
+                  {
+                    "id": "menu-side-item-1",
+                    "type": "tableCell",
+                    "name": "Menu item 2",
+                    "text": "Reports",
+                    "notes": "",
+                    "x": 0,
+                    "y": 38,
+                    "rotation": 0,
+                    "width": 152,
+                    "height": 38,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "#ffffff",
+                      "stroke": "#c7ccda",
+                      "strokeWidth": 1,
+                      "borderWidths": [
+                        1,
+                        1,
+                        1,
+                        1
+                      ],
+                      "radius": 0,
+                      "textPadding": [
+                        6,
+                        12,
+                        6,
+                        12
+                      ],
+                      "verticalAlign": "middle",
+                      "lineHeight": "normal",
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "fontStyle": "normal",
+                      "underline": false,
+                      "strikethrough": false,
+                      "textAlign": "left",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "mouseOverStyle": {
+                      "fill": "#eeedff",
+                      "color": "#4f46e5"
+                    }
+                  },
+                  {
+                    "id": "menu-side-item-2",
+                    "type": "tableCell",
+                    "name": "Menu item 3",
+                    "text": "Settings",
+                    "notes": "",
+                    "x": 0,
+                    "y": 76,
+                    "rotation": 0,
+                    "width": 152,
+                    "height": 38,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "#ffffff",
+                      "stroke": "#c7ccda",
+                      "strokeWidth": 1,
+                      "borderWidths": [
+                        1,
+                        1,
+                        1,
+                        1
+                      ],
+                      "radius": 0,
+                      "textPadding": [
+                        6,
+                        12,
+                        6,
+                        12
+                      ],
+                      "verticalAlign": "middle",
+                      "lineHeight": "normal",
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "fontStyle": "normal",
+                      "underline": false,
+                      "strikethrough": false,
+                      "textAlign": "left",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "mouseOverStyle": {
+                      "fill": "#eeedff",
+                      "color": "#4f46e5"
+                    }
+                  }
+                ]
+              }
+            },
+            "submenus": [
+              {
+                "id": "menu-reports",
+                "type": "menu",
+                "name": "Daily / Weekly / Monthly",
+                "text": "",
+                "notes": "",
+                "x": 152,
+                "y": 38,
+                "rotation": 0,
+                "width": 152,
+                "height": 114,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff00",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [],
+                "menu": {
+                  "orientation": "vertical",
+                  "table": {
+                    "id": "menu-reports-table",
+                    "type": "table",
+                    "name": "Menu table",
+                    "text": "",
+                    "notes": "",
+                    "x": 0,
+                    "y": 0,
+                    "rotation": 0,
+                    "width": 152,
+                    "height": 114,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "transparent",
+                      "stroke": "#b8bdc7",
+                      "strokeWidth": 0,
+                      "radius": 0,
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "textAlign": "center",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "table": {
+                      "columnWidths": [
+                        152
+                      ],
+                      "rowHeights": [
+                        38,
+                        38,
+                        38
+                      ],
+                      "cells": [
+                        {
+                          "id": "menu-reports-item-0",
+                          "type": "tableCell",
+                          "name": "Menu item 1",
+                          "text": "Daily",
+                          "notes": "",
+                          "x": 0,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [
+                            {
+                              "id": "menu-case-20",
+                              "event": "click",
+                              "name": "Menu action",
+                              "enabled": true,
+                              "conditions": [],
+                              "conditionMode": "all",
+                              "actions": [
+                                {
+                                  "id": "menu-action-21",
+                                  "type": "setText",
+                                  "targetId": "menu-status",
+                                  "value": "Daily report chosen"
+                                }
+                              ]
+                            }
+                          ],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        },
+                        {
+                          "id": "menu-reports-item-1",
+                          "type": "tableCell",
+                          "name": "Menu item 2",
+                          "text": "Weekly",
+                          "notes": "",
+                          "x": 0,
+                          "y": 38,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [
+                            {
+                              "id": "menu-case-22",
+                              "event": "click",
+                              "name": "Menu action",
+                              "enabled": true,
+                              "conditions": [],
+                              "conditionMode": "all",
+                              "actions": [
+                                {
+                                  "id": "menu-action-23",
+                                  "type": "setText",
+                                  "targetId": "menu-status",
+                                  "value": "Weekly report chosen"
+                                }
+                              ]
+                            }
+                          ],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        },
+                        {
+                          "id": "menu-reports-item-2",
+                          "type": "tableCell",
+                          "name": "Menu item 3",
+                          "text": "Monthly",
+                          "notes": "",
+                          "x": 0,
+                          "y": 76,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [
+                            {
+                              "id": "menu-case-24",
+                              "event": "click",
+                              "name": "Menu action",
+                              "enabled": true,
+                              "conditions": [],
+                              "conditionMode": "all",
+                              "actions": [
+                                {
+                                  "id": "menu-action-25",
+                                  "type": "setText",
+                                  "targetId": "menu-status",
+                                  "value": "Monthly report chosen"
+                                }
+                              ]
+                            }
+                          ],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "submenus": [],
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "parentCellId": "menu-side-item-1"
+                }
+              }
+            ],
+            "padding": [
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "id": "menu-status",
+          "type": "text",
+          "name": "menu-status",
+          "text": "Ready — hover a menu item to open its submenu.",
+          "notes": "",
+          "x": 44,
+          "y": 390,
+          "rotation": 0,
+          "width": 1032,
+          "height": 54,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#eeedff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              14,
+              14,
+              14,
+              14
+            ],
+            "color": "#263348",
+            "fontSize": 16,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "menu-toggle",
+          "type": "button",
+          "name": "Toggle horizontal menu",
+          "text": "Toggle horizontal menu",
+          "notes": "",
+          "x": 44,
+          "y": 464,
+          "rotation": 0,
+          "width": 240,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "menu-case-26",
+              "event": "click",
+              "name": "Menu action",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "menu-action-27",
+                  "type": "toggle",
+                  "targetId": "menu-main"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "menu-read",
+          "type": "button",
+          "name": "Read all menu text",
+          "text": "Read all menu text",
+          "notes": "",
+          "x": 304,
+          "y": 464,
+          "rotation": 0,
+          "width": 240,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "menu-case-28",
+              "event": "click",
+              "name": "Menu action",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "menu-action-29",
+                  "type": "setText",
+                  "targetId": "menu-status",
+                  "value": "[[Widget.menu-main.text]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "menu-noops",
+          "type": "button",
+          "name": "Menu action boundaries",
+          "text": "Menu action boundaries",
+          "notes": "",
+          "x": 564,
+          "y": 464,
+          "rotation": 0,
+          "width": 240,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "menu-case-30",
+              "event": "click",
+              "name": "Menu action",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "menu-action-31",
+                  "type": "resize",
+                  "targetId": "menu-main",
+                  "x": 800,
+                  "y": 400
+                },
+                {
+                  "id": "menu-action-32",
+                  "type": "disable",
+                  "targetId": "menu-main"
+                },
+                {
+                  "id": "menu-action-33",
+                  "type": "setSelected",
+                  "targetId": "menu-main",
+                  "value": "true"
+                },
+                {
+                  "id": "menu-action-34",
+                  "type": "setError",
+                  "targetId": "menu-main",
+                  "value": "true"
+                },
+                {
+                  "id": "menu-action-35",
+                  "type": "setText",
+                  "targetId": "menu-status",
+                  "value": "Menu bounds and state unchanged"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "menu-row-heading",
+          "type": "text",
+          "name": "menu-row-heading",
+          "text": "The same menu template in two independent data rows",
+          "notes": "",
+          "x": 44,
+          "y": 562,
+          "rotation": 0,
+          "width": 1000,
+          "height": 36,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "menu-repeater",
+          "type": "repeater",
+          "name": "Independent repeated menus",
+          "text": "",
+          "notes": "",
+          "x": 44,
+          "y": 624,
+          "rotation": 0,
+          "width": 940,
+          "height": 346,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "Alpha"
+              },
+              {
+                "Name": "Beta"
+              }
+            ],
+            "template": [
+              {
+                "id": "menu-row",
+                "type": "menu",
+                "name": "[[Item.Name]] / Details / Help",
+                "text": "",
+                "notes": "",
+                "x": 0,
+                "y": 0,
+                "rotation": 0,
+                "width": 456,
+                "height": 38,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff00",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [],
+                "menu": {
+                  "orientation": "horizontal",
+                  "table": {
+                    "id": "menu-row-table",
+                    "type": "table",
+                    "name": "Menu table",
+                    "text": "",
+                    "notes": "",
+                    "x": 0,
+                    "y": 0,
+                    "rotation": 0,
+                    "width": 456,
+                    "height": 38,
+                    "hidden": false,
+                    "locked": false,
+                    "disabled": false,
+                    "style": {
+                      "fill": "transparent",
+                      "stroke": "#b8bdc7",
+                      "strokeWidth": 0,
+                      "radius": 0,
+                      "color": "#263348",
+                      "fontSize": 14,
+                      "fontFamily": "Arial",
+                      "fontWeight": 400,
+                      "textAlign": "center",
+                      "opacity": 1
+                    },
+                    "interactions": [],
+                    "table": {
+                      "columnWidths": [
+                        152,
+                        152,
+                        152
+                      ],
+                      "rowHeights": [
+                        38
+                      ],
+                      "cells": [
+                        {
+                          "id": "menu-row-item-0",
+                          "type": "tableCell",
+                          "name": "Menu item 1",
+                          "text": "[[Item.Name]]",
+                          "notes": "",
+                          "x": 0,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        },
+                        {
+                          "id": "menu-row-item-1",
+                          "type": "tableCell",
+                          "name": "Menu item 2",
+                          "text": "Details",
+                          "notes": "",
+                          "x": 152,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        },
+                        {
+                          "id": "menu-row-item-2",
+                          "type": "tableCell",
+                          "name": "Menu item 3",
+                          "text": "Help",
+                          "notes": "",
+                          "x": 304,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 38,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "#ffffff",
+                            "stroke": "#c7ccda",
+                            "strokeWidth": 1,
+                            "borderWidths": [
+                              1,
+                              1,
+                              1,
+                              1
+                            ],
+                            "radius": 0,
+                            "textPadding": [
+                              6,
+                              12,
+                              6,
+                              12
+                            ],
+                            "verticalAlign": "middle",
+                            "lineHeight": "normal",
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "fontStyle": "normal",
+                            "underline": false,
+                            "strikethrough": false,
+                            "textAlign": "left",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "mouseOverStyle": {
+                            "fill": "#eeedff",
+                            "color": "#4f46e5"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "submenus": [
+                    {
+                      "id": "menu-row-sub",
+                      "type": "menu",
+                      "name": "Open [[Item.Name]] / Save [[Item.Name]] / Close [[Item.Name]]",
+                      "text": "",
+                      "notes": "",
+                      "x": 0,
+                      "y": 38,
+                      "rotation": 0,
+                      "width": 152,
+                      "height": 114,
+                      "hidden": false,
+                      "locked": false,
+                      "disabled": false,
+                      "style": {
+                        "fill": "#ffffff00",
+                        "stroke": "#b8bdc7",
+                        "strokeWidth": 0,
+                        "radius": 0,
+                        "color": "#263348",
+                        "fontSize": 14,
+                        "fontFamily": "Arial",
+                        "fontWeight": 400,
+                        "textAlign": "center",
+                        "opacity": 1
+                      },
+                      "interactions": [],
+                      "menu": {
+                        "orientation": "vertical",
+                        "table": {
+                          "id": "menu-row-sub-table",
+                          "type": "table",
+                          "name": "Menu table",
+                          "text": "",
+                          "notes": "",
+                          "x": 0,
+                          "y": 0,
+                          "rotation": 0,
+                          "width": 152,
+                          "height": 114,
+                          "hidden": false,
+                          "locked": false,
+                          "disabled": false,
+                          "style": {
+                            "fill": "transparent",
+                            "stroke": "#b8bdc7",
+                            "strokeWidth": 0,
+                            "radius": 0,
+                            "color": "#263348",
+                            "fontSize": 14,
+                            "fontFamily": "Arial",
+                            "fontWeight": 400,
+                            "textAlign": "center",
+                            "opacity": 1
+                          },
+                          "interactions": [],
+                          "table": {
+                            "columnWidths": [
+                              152
+                            ],
+                            "rowHeights": [
+                              38,
+                              38,
+                              38
+                            ],
+                            "cells": [
+                              {
+                                "id": "menu-row-sub-item-0",
+                                "type": "tableCell",
+                                "name": "Menu item 1",
+                                "text": "Open [[Item.Name]]",
+                                "notes": "",
+                                "x": 0,
+                                "y": 0,
+                                "rotation": 0,
+                                "width": 152,
+                                "height": 38,
+                                "hidden": false,
+                                "locked": false,
+                                "disabled": false,
+                                "style": {
+                                  "fill": "#ffffff",
+                                  "stroke": "#c7ccda",
+                                  "strokeWidth": 1,
+                                  "borderWidths": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ],
+                                  "radius": 0,
+                                  "textPadding": [
+                                    6,
+                                    12,
+                                    6,
+                                    12
+                                  ],
+                                  "verticalAlign": "middle",
+                                  "lineHeight": "normal",
+                                  "color": "#263348",
+                                  "fontSize": 14,
+                                  "fontFamily": "Arial",
+                                  "fontWeight": 400,
+                                  "fontStyle": "normal",
+                                  "underline": false,
+                                  "strikethrough": false,
+                                  "textAlign": "left",
+                                  "opacity": 1
+                                },
+                                "interactions": [
+                                  {
+                                    "id": "menu-case-36",
+                                    "event": "click",
+                                    "name": "Menu action",
+                                    "enabled": true,
+                                    "conditions": [],
+                                    "conditionMode": "all",
+                                    "actions": [
+                                      {
+                                        "id": "menu-action-37",
+                                        "type": "setText",
+                                        "targetId": "menu-row-result",
+                                        "value": "Opened [[Item.Name]]"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "mouseOverStyle": {
+                                  "fill": "#eeedff",
+                                  "color": "#4f46e5"
+                                }
+                              },
+                              {
+                                "id": "menu-row-sub-item-1",
+                                "type": "tableCell",
+                                "name": "Menu item 2",
+                                "text": "Save [[Item.Name]]",
+                                "notes": "",
+                                "x": 0,
+                                "y": 38,
+                                "rotation": 0,
+                                "width": 152,
+                                "height": 38,
+                                "hidden": false,
+                                "locked": false,
+                                "disabled": false,
+                                "style": {
+                                  "fill": "#ffffff",
+                                  "stroke": "#c7ccda",
+                                  "strokeWidth": 1,
+                                  "borderWidths": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ],
+                                  "radius": 0,
+                                  "textPadding": [
+                                    6,
+                                    12,
+                                    6,
+                                    12
+                                  ],
+                                  "verticalAlign": "middle",
+                                  "lineHeight": "normal",
+                                  "color": "#263348",
+                                  "fontSize": 14,
+                                  "fontFamily": "Arial",
+                                  "fontWeight": 400,
+                                  "fontStyle": "normal",
+                                  "underline": false,
+                                  "strikethrough": false,
+                                  "textAlign": "left",
+                                  "opacity": 1
+                                },
+                                "interactions": [],
+                                "mouseOverStyle": {
+                                  "fill": "#eeedff",
+                                  "color": "#4f46e5"
+                                }
+                              },
+                              {
+                                "id": "menu-row-sub-item-2",
+                                "type": "tableCell",
+                                "name": "Menu item 3",
+                                "text": "Close [[Item.Name]]",
+                                "notes": "",
+                                "x": 0,
+                                "y": 76,
+                                "rotation": 0,
+                                "width": 152,
+                                "height": 38,
+                                "hidden": false,
+                                "locked": false,
+                                "disabled": false,
+                                "style": {
+                                  "fill": "#ffffff",
+                                  "stroke": "#c7ccda",
+                                  "strokeWidth": 1,
+                                  "borderWidths": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ],
+                                  "radius": 0,
+                                  "textPadding": [
+                                    6,
+                                    12,
+                                    6,
+                                    12
+                                  ],
+                                  "verticalAlign": "middle",
+                                  "lineHeight": "normal",
+                                  "color": "#263348",
+                                  "fontSize": 14,
+                                  "fontFamily": "Arial",
+                                  "fontWeight": 400,
+                                  "fontStyle": "normal",
+                                  "underline": false,
+                                  "strikethrough": false,
+                                  "textAlign": "left",
+                                  "opacity": 1
+                                },
+                                "interactions": [],
+                                "mouseOverStyle": {
+                                  "fill": "#eeedff",
+                                  "color": "#4f46e5"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        "submenus": [],
+                        "padding": [
+                          0,
+                          0,
+                          0,
+                          0
+                        ],
+                        "parentCellId": "menu-row-item-0"
+                      }
+                    }
+                  ],
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              },
+              {
+                "id": "menu-row-result",
+                "type": "text",
+                "name": "menu-row-result",
+                "text": "No row action yet",
+                "notes": "",
+                "x": 490,
+                "y": 0,
+                "rotation": 0,
+                "width": 400,
+                "height": 36,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": []
+              }
+            ],
+            "itemHeight": 164,
+            "gap": 18,
+            "itemWidth": 940,
+            "layout": "vertical",
+            "fitToContent": false
+          }
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {
+    "Shown": "0",
+    "Hidden": "0"
+  },
+  "styles": []
+}

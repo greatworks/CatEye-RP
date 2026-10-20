@@ -1,0 +1,629 @@
+{
+  "schema": 1,
+  "stage": "runtime-rotate",
+  "kind": "read-only-code-audit-and-plan",
+  "generatedAt": "2026-10-17T11:58:29.206Z",
+  "workspace": "D:/WSCodex/REA",
+  "scope": {
+    "productEdits": false,
+    "testEdits": false,
+    "testExecution": false,
+    "browserExecution": false,
+    "nativeExecution": false,
+    "buildOrPackage": false,
+    "newFiles": [
+      "research/runtime-rotate-authoring-analysis.md",
+      "research/runtime-rotate-authoring-analysis.json"
+    ]
+  },
+  "sources": [
+    {
+      "path": "src/runtime/engine.ts",
+      "sha256": "e2716342eabbf1c8be4d117eb16635eee05a1f09e7d5a2d5db9cb65f87a2f369",
+      "bytes": 5736,
+      "baselinePath": ".build/before-runtime-rotate/src/runtime/engine.ts",
+      "baselineSha256": "e2716342eabbf1c8be4d117eb16635eee05a1f09e7d5a2d5db9cb65f87a2f369",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          10,
+          18
+        ],
+        [
+          79,
+          110
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Snapshot helpers delegate to the portable action core."
+    },
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "b0631b578a95479d97d56f0095df5f6b0bfe54e559a56ef4b97f129f2dff5b71",
+      "bytes": 229789,
+      "baselinePath": ".build/before-runtime-rotate/src/runtime/export-runtime.ts",
+      "baselineSha256": "b0631b578a95479d97d56f0095df5f6b0bfe54e559a56ef4b97f129f2dff5b71",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          23,
+          30
+        ],
+        [
+          280,
+          320
+        ],
+        [
+          328,
+          335
+        ],
+        [
+          441,
+          461
+        ],
+        [
+          780,
+          812
+        ],
+        [
+          860,
+          881
+        ],
+        [
+          1023,
+          1111
+        ],
+        [
+          1276,
+          1386
+        ],
+        [
+          1517,
+          1628
+        ],
+        [
+          1694,
+          1728
+        ],
+        [
+          2056,
+          2061
+        ],
+        [
+          2127,
+          2169
+        ],
+        [
+          2368,
+          2373
+        ],
+        [
+          2553,
+          2553
+        ],
+        [
+          2868,
+          2872
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Action, expression, instance identity, queue, transaction, fit, lifecycle and offline DOM integration."
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "fae8ec1d9394028f3ed62b23a2144d3c301fd101c53e65b7f1c8119653df2ebd",
+      "bytes": 15863,
+      "baselinePath": ".build/before-runtime-rotate/src/runtime/expressions.ts",
+      "baselineSha256": "fae8ec1d9394028f3ed62b23a2144d3c301fd101c53e65b7f1c8119653df2ebd",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          21,
+          26
+        ],
+        [
+          43,
+          47
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Existing property allowlist has no rotation."
+    },
+    {
+      "path": "src/runtime/export.ts",
+      "sha256": "0bd8d5478c88f31bcdbd43af59253cb161aac4e2366146903d5148517949d1c0",
+      "bytes": 7947,
+      "baselinePath": ".build/before-runtime-rotate/src/runtime/export.ts",
+      "baselineSha256": "0bd8d5478c88f31bcdbd43af59253cb161aac4e2366146903d5148517949d1c0",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          40,
+          43
+        ],
+        [
+          56,
+          60
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Bare factory serialization for top-level and nested players."
+    },
+    {
+      "path": "src/runtime/frame-player.ts",
+      "sha256": "e7a874fd9310a6ab33af5ed87a9782fcba71d6114bf193183880ec6236cb2900",
+      "bytes": 2586,
+      "baselinePath": ".build/before-runtime-rotate/src/runtime/frame-player.ts",
+      "baselineSha256": "e7a874fd9310a6ab33af5ed87a9782fcba71d6114bf193183880ec6236cb2900",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          22,
+          33
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Fixed CSP child frame creates the same runtime and renderer."
+    },
+    {
+      "path": "src/runtime/inline-frame-runtime.ts",
+      "sha256": "8eb9867e54705d0000ec5b6a61394816e1ec52b035ef24a029036253b7970d1b",
+      "bytes": 11033,
+      "baselinePath": ".build/before-runtime-rotate/src/runtime/inline-frame-runtime.ts",
+      "baselineSha256": "8eb9867e54705d0000ec5b6a61394816e1ec52b035ef24a029036253b7970d1b",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          1,
+          38
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Frame ownership and lifecycle API."
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "sha256": "666650a482b5e33f05661341148740bb55f5b45c36d1772f82fe5dbba383cfe6",
+      "bytes": 24021,
+      "baselinePath": ".build/before-runtime-rotate/src/components/Preview.tsx",
+      "baselineSha256": "666650a482b5e33f05661341148740bb55f5b45c36d1772f82fe5dbba383cfe6",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          38,
+          90
+        ],
+        [
+          123,
+          174
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Runtime subscription, control host, frame host and effective widget rendering."
+    },
+    {
+      "path": "src/components/WidgetView.tsx",
+      "sha256": "1d20650b830c03fb9dc0dda93553ef9054ee05fa94306030a1e181a269b52544",
+      "bytes": 31112,
+      "baselinePath": ".build/before-runtime-rotate/src/components/WidgetView.tsx",
+      "baselineSha256": "1d20650b830c03fb9dc0dda93553ef9054ee05fa94306030a1e181a269b52544",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          70,
+          80
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "CSS owner transform."
+    },
+    {
+      "path": "src/model/types.ts",
+      "sha256": "afddf5431411a40c25cf314c0b46022fee5957a1150cbf8b17e992a484b64f30",
+      "bytes": 18376,
+      "baselinePath": ".build/before-runtime-rotate/src/model/types.ts",
+      "baselineSha256": "0c8669d7778a150b2036b4b30125c85ac71d32836de5d240029d027e536a201e",
+      "unchangedFromBaseline": false,
+      "lines": [
+        [
+          8,
+          9
+        ],
+        [
+          88,
+          99
+        ],
+        [
+          154,
+          170
+        ],
+        [
+          208,
+          210
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Initial snapshot lacks rotate; parent added schema while audit was being written."
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "65f40a66daecbeb36c537b1dd7e9c6b0426566b2b2be9e36d121329d83f4851b",
+      "bytes": 97695,
+      "baselinePath": ".build/before-runtime-rotate/src/model/document.ts",
+      "baselineSha256": "b2bd73800782f5252c1042e94aba39dff48b8e39553b927cefd69a55b4a899fb",
+      "unchangedFromBaseline": false,
+      "lines": [
+        [
+          269,
+          379
+        ],
+        [
+          383,
+          391
+        ],
+        [
+          692,
+          738
+        ],
+        [
+          783,
+          790
+        ],
+        [
+          1092,
+          1138
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Initial action validation, copy/remap, flat groups and target restrictions."
+    },
+    {
+      "path": "src/model/components.ts",
+      "sha256": "b3f1119dbd80d735eac9c4ca4648fd035753895855458141878ac5287035101e",
+      "bytes": 9673,
+      "baselinePath": ".build/before-runtime-rotate/src/model/components.ts",
+      "baselineSha256": "b3f1119dbd80d735eac9c4ca4648fd035753895855458141878ac5287035101e",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          31,
+          31
+        ],
+        [
+          90,
+          107
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Component clone/remap and instance geometry preservation."
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "b6ad359478286e201469fcf26cc698076f0ecd08bf4dc386ca57b6ba96611da0",
+      "bytes": 40119,
+      "baselinePath": ".build/before-runtime-rotate/src/model/adaptive.ts",
+      "baselineSha256": "b6ad359478286e201469fcf26cc698076f0ecd08bf4dc386ca57b6ba96611da0",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          1,
+          18
+        ],
+        [
+          413,
+          430
+        ],
+        [
+          540,
+          558
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Rotation participates in adaptive geometry."
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "db3644475fae9005fa2052946dccebbb26711cadd3e7fc9386e50ea87d05792a",
+      "bytes": 106637,
+      "baselinePath": ".build/before-runtime-rotate/src/components/Inspector.tsx",
+      "baselineSha256": "c55baefbda6d61e6a6b880f5e306ed83298fccf1dfb5ecd43ea182340fe504d6",
+      "unchangedFromBaseline": false,
+      "lines": [
+        [
+          50,
+          85
+        ],
+        [
+          333,
+          380
+        ],
+        [
+          414,
+          418
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Initial action defaults, widget-only targets and event picker."
+    },
+    {
+      "path": "tests/wait-scheduling.test.ts",
+      "sha256": "5fb853426d896e45c8a39d9ea53471c81de9822f715f6e575db942637fc295ed",
+      "bytes": 11096,
+      "baselinePath": ".build/before-runtime-rotate/tests/wait-scheduling.test.ts",
+      "baselineSha256": "5fb853426d896e45c8a39d9ea53471c81de9822f715f6e575db942637fc295ed",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          1,
+          135
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Module/serialized fake clock patterns; not executed this stage."
+    },
+    {
+      "path": "tests/runtime-adaptive-transition.test.ts",
+      "sha256": "7876d9cc2d926aecbb7f5aff38bd5890d5afc1796b3e2254ae2b574c69aae246",
+      "bytes": 32789,
+      "baselinePath": ".build/before-runtime-rotate/tests/runtime-adaptive-transition.test.ts",
+      "baselineSha256": "7876d9cc2d926aecbb7f5aff38bd5890d5afc1796b3e2254ae2b574c69aae246",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          1,
+          70
+        ],
+        [
+          289,
+          350
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Viewport/navigation atomic rollback patterns; not executed."
+    },
+    {
+      "path": "tests/widget-geometry.test.ts",
+      "sha256": "dd39ae6a25223e0665eca663b6a105deb6ab4849c4003ced6f9ceff119970da7",
+      "bytes": 12996,
+      "baselinePath": ".build/before-runtime-rotate/tests/widget-geometry.test.ts",
+      "baselineSha256": "dd39ae6a25223e0665eca663b6a105deb6ab4849c4003ced6f9ceff119970da7",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          1,
+          170
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "This/Target logical geometry and row contexts; not executed."
+    },
+    {
+      "path": "tests/widget-geometry-events.test.ts",
+      "sha256": "0cbf7782efdc840c109371969b5d9d51ea6f19155d8de41f30cd26c0e1788eb0",
+      "bytes": 3991,
+      "baselinePath": ".build/before-runtime-rotate/tests/widget-geometry-events.test.ts",
+      "baselineSha256": "0cbf7782efdc840c109371969b5d9d51ea6f19155d8de41f30cd26c0e1788eb0",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          1,
+          57
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Carrier restrictions and event authoring patterns; not executed."
+    },
+    {
+      "path": "tests/repeater-row-geometry.test.ts",
+      "sha256": "76283e4d2725fbfca0307f636f4e7e31a110499923b357c318d86a7ce9dcf066",
+      "bytes": 11731,
+      "baselinePath": ".build/before-runtime-rotate/tests/repeater-row-geometry.test.ts",
+      "baselineSha256": "76283e4d2725fbfca0307f636f4e7e31a110499923b357c318d86a7ce9dcf066",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          51,
+          158
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Logical/CSS/readback distinction and rollback; not executed."
+    },
+    {
+      "path": "tests/runtime-render-base-lifecycle.test.ts",
+      "sha256": "de1863d06d1a366b078d25624ea011ee61d232c1e17a17a32d4465b58e369037",
+      "bytes": 1818,
+      "baselinePath": ".build/before-runtime-rotate/tests/runtime-render-base-lifecycle.test.ts",
+      "baselineSha256": "de1863d06d1a366b078d25624ea011ee61d232c1e17a17a32d4465b58e369037",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          1,
+          45
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Display-only row cleanup; not executed."
+    },
+    {
+      "path": "tests/inline-frame-player-build.test.ts",
+      "sha256": "86305cd95671f5318cb8aa7ec30382bc06958d6160bbce081adf47f83ce014db",
+      "bytes": 2859,
+      "baselinePath": ".build/before-runtime-rotate/tests/inline-frame-player-build.test.ts",
+      "baselineSha256": "86305cd95671f5318cb8aa7ec30382bc06958d6160bbce081adf47f83ce014db",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          1,
+          45
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Portable child/CSP boundary; not executed."
+    },
+    {
+      "path": "tests/rotation-authoring.test.ts",
+      "sha256": "3370232ad6b438c6138d0cb3adc18a2eb98bef2277eb06a8a37b31bdfbb562d8",
+      "bytes": 4892,
+      "baselinePath": ".build/before-runtime-rotate/tests/rotation-authoring.test.ts",
+      "baselineSha256": "3370232ad6b438c6138d0cb3adc18a2eb98bef2277eb06a8a37b31bdfbb562d8",
+      "unchangedFromBaseline": true,
+      "lines": [
+        [
+          1,
+          40
+        ]
+      ],
+      "lineReference": "initial audited source / baseline; parent model files may have shifted",
+      "purpose": "Existing authoring rotation tests are not runtime Rotate evidence; not executed."
+    }
+  ],
+  "report": {
+    "path": "research/runtime-rotate-authoring-analysis.md",
+    "sha256": "7b71df039211f78af1b49b017030c1413dbf63f2300f1976455d5e9aa7edffec"
+  },
+  "findings": [
+    {
+      "id": "single-core",
+      "status": "confirmed-code",
+      "locations": [
+        "src/runtime/engine.ts:13",
+        "src/runtime/export-runtime.ts:1276"
+      ],
+      "summary": "All action execution should live in createOfflineRuntime; ordinary engine delegates."
+    },
+    {
+      "id": "motion-missing",
+      "status": "confirmed-initial-code",
+      "locations": [
+        "src/runtime/export-runtime.ts:1374",
+        "src/runtime/export-runtime.ts:1620"
+      ],
+      "summary": "Only immediate Move/Resize plus Wait timers existed; no runtime motion queue."
+    },
+    {
+      "id": "group-noop",
+      "status": "confirmed-code",
+      "locations": [
+        "src/model/document.ts:269",
+        "src/model/document.ts:383",
+        "src/runtime/export-runtime.ts:1277",
+        "src/runtime/export-runtime.ts:1300"
+      ],
+      "summary": "Group IDs are copy-remapped but not runtime widgets/targets; current model is flat membership only."
+    },
+    {
+      "id": "rotation-expression-gap",
+      "status": "confirmed-code",
+      "locations": [
+        "src/runtime/expressions.ts:24",
+        "src/runtime/export-runtime.ts:780"
+      ],
+      "summary": "This/Target.rotation absent from expression allowlist and geometry reader; add only after source contract."
+    },
+    {
+      "id": "serialization",
+      "status": "confirmed-code",
+      "locations": [
+        "src/runtime/export.ts:40",
+        "src/runtime/export.ts:57",
+        "src/runtime/frame-player.ts:29"
+      ],
+      "summary": "Standalone factory must not gain unbound module dependencies."
+    },
+    {
+      "id": "async-rollback",
+      "status": "integration-risk-not-existing-rotate-bug",
+      "locations": [
+        "src/runtime/export-runtime.ts:1543",
+        "src/runtime/export-runtime.ts:1069",
+        "src/runtime/export-runtime.ts:2151"
+      ],
+      "summary": "New motion side effects require atomic rollback and explicit row/view/page/dispose lifecycle."
+    }
+  ],
+  "ownershipProposal": {
+    "parent": [
+      "src/model/types.ts",
+      "src/model/document.ts",
+      "src/components/Inspector.tsx",
+      "authoring helper as needed",
+      "copy/remap model",
+      "browser and desktop tests",
+      "release integration"
+    ],
+    "editorCore": [
+      "src/runtime/export-runtime.ts",
+      "new runtime helper only if portable dependencies stay explicit",
+      "src/runtime/engine.ts only if needed",
+      "src/runtime/expressions.ts if original getter proof supports it",
+      "new runtime module/serialized tests"
+    ],
+    "hostChanges": "Request narrow ownership before changing Preview/export/frame-player if a clock or host API is required."
+  },
+  "schemaHandoff": {
+    "status": "parent-landed-during-audit",
+    "action": "rotate",
+    "event": "rotate",
+    "payload": {
+      "mode": [
+        "by",
+        "to"
+      ],
+      "degrees": "string expression",
+      "clockwise": "boolean",
+      "anchor": [
+        "top left",
+        "top",
+        "top right",
+        "left",
+        "center",
+        "right",
+        "bottom left",
+        "bottom",
+        "bottom right"
+      ],
+      "offsetX": "string expression",
+      "offsetY": "string expression",
+      "easingCurrentlyVerified": [
+        "none",
+        "swing",
+        "linear"
+      ],
+      "duration": "number milliseconds"
+    },
+    "tests": "Parent reported 28 model green after 3 red; not independently run by this audit."
+  },
+  "nativeContractHandoff": {
+    "status": "peer-message-not-independent-execution; awaiting frozen probe report",
+    "sender": "/root/axure_feature_evidence",
+    "source": "action.js:1066-1255",
+    "reported": [
+      "degree parseFloat and offsets Number evaluated when queued animation starts",
+      "To is desired-current; By is delta; no shortest arc",
+      "onRotate precedes geometry even for zero delta",
+      "completion fireRotateQueue then fitParentCallback then annotation",
+      "center branch no type gate; offset self-rotation gated to image/hotspot/panel/vector/line, other widgets orbit only",
+      "event tail batches Move/Resize/Rotate; action chain does not await animation",
+      "plain-object jQuery animation is not tied to DOM animation cancellation"
+    ]
+  },
+  "plannedTests": [
+    "native geometry/pivot/direction oracle matrix",
+    "module plus bare serialized factory with fake clock and intermediate frames",
+    "onRotate ordering/reentry/cycle and subsequent action semantics",
+    "same-target Rotate/Move/Resize queue coalescing and independent targets",
+    "old/new async task rollback across failed navigation",
+    "same-view versus changed-view and failed adaptive refresh",
+    "full nested RowContext isolation, deletion and template refresh",
+    "flat-group bounds/angle/member composition and scope identity",
+    "preview/offline/nested iframe actual animation and source document unchanged"
+  ],
+  "limitations": [
+    "No original GUI observation or native code execution by this audit.",
+    "No runtime Rotate implementation yet.",
+    "Original Layer identity/nesting/events not expressible by flat groupId alone.",
+    "Motion cancellation, complete easing, geometry/property getter and group eligibility remain pending exact source evidence.",
+    "Snapshot source hashes are not final build or release hashes."
+  ]
+}

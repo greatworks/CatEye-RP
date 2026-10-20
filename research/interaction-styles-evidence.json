@@ -1,0 +1,1122 @@
+{
+  "date": "2026-10-13",
+  "evidenceType": "isolated-original-function-probes",
+  "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "nativeVersion": "11.0.0.4150",
+  "installerSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "nativeDllSha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+  "officialSources": [
+    "https://docs.axure.com/axure-rp/reference/style-effects/",
+    "https://docs.axure.com/axure-rp/reference/styling-widgets/",
+    "https://docs.axure.com/axure-rp/reference/checkboxes/"
+  ],
+  "files": [
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "file": "events.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "file": "../../css/axure_rp_page.css",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\css\\axure_rp_page.css",
+      "sha256": "595bfcd275dc80732aeecbb8365067ccecc4f0277df316ea47656816939ece4a"
+    },
+    {
+      "file": "../../css/default.css",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\css\\default.css",
+      "sha256": "c386bd6c672653bd7dc596ef3f0349d272b8451e47c5a5cd295f60e3d31677de"
+    },
+    {
+      "file": "../../css/jquery-ui-themes.css",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\css\\jquery-ui-themes.css",
+      "sha256": "03dbf997552f2d834c25e06b4f835d49fb5d9c902ae0a6246082c525c13f521a"
+    }
+  ],
+  "scope": "Original style state setters, combiners, per-property merge, class updater and ordinary pointer handler functions. Synthetic widget data and a minimal jQuery/DOM event adapter; paint endpoints record style arguments. No generated stylesheet, browser paint, original compiler, GUI, touch or container propagation parity claim.",
+  "excerpts": [
+    {
+      "file": "style.js",
+      "startLine": 74,
+      "endLine": 166,
+      "text": "\n    var _widgetHasState = function(id, state) {\n        if($ax.style.getElementImageOverride(id, state)) return true;\n        var diagramObject = $ax.getObjectFromElementId(id);\n\n        //var adaptiveIdChain = $ax.adaptive.getAdaptiveIdChain($ax.adaptive.currentViewId);\n        var adaptiveIdChain = $ax.style.getViewIdChain($ax.adaptive.currentViewId, id, diagramObject);\n\n        for(var i = 0; i < adaptiveIdChain.length; i++) {\n            var viewId = adaptiveIdChain[i];\n            var adaptiveStyle = diagramObject.adaptiveStyles[viewId];\n            if(adaptiveStyle && adaptiveStyle.stateStyles && adaptiveStyle.stateStyles[state]) return true;\n        }\n\n        if(diagramObject.style.stateStyles) {\n            var stateStyle = diagramObject.style.stateStyles[state];\n            if(!stateStyle) return false;\n            return !$.isEmptyObject(stateStyle);\n        }\n\n        return false;\n    };\n\n    $ax.style.SetWidgetHover = function(id, value) {\n        if(!_widgetHasState(id, MOUSE_OVER)) return;\n\n        var valToSet = value || _isRolloverOverride(id);\n        const state = _generateFullState(id, undefined, undefined, undefined, undefined, valToSet);\n        _applyImageAndTextJson(id, state);\n        _updateElementIdImageStyle(id, state);\n    };\n\n    var _rolloverOverrides = [];\n    var _isRolloverOverride = function(id) {\n        return _rolloverOverrides.indexOf(id) != -1;\n    };\n\n    $ax.style.AddRolloverOverride = function(id) {\n        if(_isRolloverOverride(id)) return;\n        _rolloverOverrides[_rolloverOverrides.length] = id;\n        if($ax.event.mouseOverIds.indexOf(id) == -1) $ax.style.SetWidgetHover(id, true);\n    };\n\n    $ax.style.RemoveRolloverOverride = function(id) {\n        var index = _rolloverOverrides.indexOf(id);\n        if(index == -1) return;\n        $ax.splice(_rolloverOverrides, index, 1);\n        if($ax.event.mouseOverIds.indexOf(id) == -1) $ax.style.SetWidgetHover(id, false);\n    };\n\n    $ax.style.ObjHasMouseDown = function (id) {\n        return _widgetHasState(id, MOUSE_DOWN);\n    };\n\n    // checkMouseOver is used for applying style effects to everything in a group\n    $ax.style.SetWidgetMouseDown = function(id, value, checkMouseOver) {\n        if($ax.style.IsWidgetDisabled(id)) return;\n        if(!_widgetHasState(id, MOUSE_DOWN)) return;\n        const state = _generateFullState(id, undefined, undefined, undefined, undefined, !checkMouseOver ? true : undefined, value);\n        _applyImageAndTextJson(id, state);\n        _updateElementIdImageStyle(id, state);\n    };\n\n    var _generateFullState = function (id, forceFocused, forceSelected, forceDisabled, forceError, forceMouseOver, forceMouseDown) {\n        let state = $ax.style.ShowingHint(id) ? HINT : '';\n        if (forceError === true || forceError !== false && _style.IsWidgetError(id)) {\n            state = _compoundStates(state, ERROR);\n        }\n        if (forceSelected === true || forceSelected !== false && _style.IsWidgetSelected(id)) {\n            state = _compoundStates(state, SELECTED);\n        }\n        if (forceDisabled === true || forceDisabled !== false && _isWidgetDisabled(id)) {\n            return _compoundStates(DISABLED, state);\n        }\n        if (forceFocused === true || forceFocused !== false && _hasAnyFocusedClass(id)) {\n            return _compoundStates(state, FOCUSED);\n        }\n        if (forceMouseDown === true || forceMouseDown !== false && $ax.event.mouseDownObjectId == id) {\n            state = _compoundStates(state, MOUSE_DOWN);\n        }\n        if (forceMouseOver === true || forceMouseOver !== false &&\n            ($ax.event.mouseOverIds.indexOf(id) !== -1 && _widgetHasState(id, MOUSE_OVER) || _isRolloverOverride(id))) {\n            return _compoundStates(state, MOUSE_OVER);\n        }\n        return state.length > 0 ? state : NORMAL;\n    };\n\n    var _compoundStates = function (current, baseState) {\n        if (current.length < 1) return baseState;\n        if (baseState.length < 1) return current;\n        const capital = current.charAt(0).toUpperCase() + current.slice(1);\n        return baseState + capital;\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 176,
+      "endLine": 269,
+      "text": "    $ax.style.SetWidgetFocused = function (id, value) {\n        if (_isWidgetDisabled(id)) return;\n        if (!_widgetHasState(id, FOCUSED)) return;\n\n        const state = _generateFullState(id, value);\n\n        _applyImageAndTextJson(id, state);\n        _updateElementIdImageStyle(id, state);\n    }\n\n    $ax.style.SetWidgetSelected = function(id, value, alwaysApply) {\n        if(_isWidgetDisabled(id)) return;\n        //NOTE: not firing select events if state didn't change\n        const raiseSelectedEvents = $ax.style.IsWidgetSelected(id) != value;\n\n        if(value) {\n            var group = $('#' + id).attr('selectiongroup');\n            if(group) {\n                $(\"[selectiongroup='\" + group + \"']\").each(function() {\n                    var otherId = this.id;\n                    if(otherId == id) return;\n                    if ($ax.visibility.isScriptIdLimbo($ax.repeater.getScriptIdFromElementId(otherId))) return;\n                    $ax.style.SetWidgetSelected(otherId, false, alwaysApply);\n                });\n            }\n        }\n        var obj = $obj(id);\n        if(obj) {\n            // Lets remove 'selected' css class independently of object type (dynamic panel, layer or simple rectangle). See RP-1559\n            if (!value) $jobj(id).removeClass(SELECTED);\n\n            var actionId = id;\n            if ($ax.public.fn.IsDynamicPanel(obj.type) || $ax.public.fn.IsLayerOrRdo(obj.type)) {\n                var children = $axure('#' + id).getChildren()[0].children;\n                var skipIds = new Set();\n                for(var i = 0; i < children.length; i++) {\n                    var childId = children[i];\n                    // only set one member of selection group in children selected since subsequent calls\n                    // will unselect the previous one anyway\n                    if(value) {\n                        if(skipIds.has(childId)) continue;\n                        var group = $('#' + childId).attr('selectiongroup');\n                        if(group) for (var item of $(\"[selectiongroup='\" + group + \"']\")) skipIds.add(item.id);\n                    }\n                    // Special case for trees\n                    var childObj = $jobj(childId);\n                    if(childObj.hasClass('treeroot')) {\n                        var treenodes = childObj.find('.treenode');\n                        for(var j = 0; j < treenodes.length; j++) {\n                            $axure('#' + treenodes[j].id).selected(value);\n                        }\n                    } else $axure('#' + childId).selected(value);\n                }\n            } else {\n                const widgetHasSelectedState = _widgetHasState(id, SELECTED);\n                while(obj.isContained && !widgetHasSelectedState) obj = obj.parent;\n                var itemId = $ax.repeater.getItemIdFromElementId(id);\n                var path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(id));\n                path[path.length - 1] = obj.id;\n                actionId = $ax.getElementIdFromPath(path, { itemNum: itemId });\n                if(alwaysApply || widgetHasSelectedState) {\n                    const state = _generateFullState(actionId, undefined, value);\n                    _applyImageAndTextJson(actionId, state);\n                    _updateElementIdImageStyle(actionId, state);\n                }\n                //added actionId and this hacky logic because we set style state on child, but interaction on parent\n                //then the id saved in _selectedWidgets would be depended on widgetHasSelectedState... more see case 1818143\n                while(obj.isContained && !$ax.getObjectFromElementId(id).interactionMap) obj = obj.parent;\n                path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(id));\n                path[path.length - 1] = obj.id;\n                actionId = $ax.getElementIdFromPath(path, { itemNum: itemId });\n            }\n        }\n\n        //    ApplyImageAndTextJson(id, value ? 'selected' : 'normal');\n        _selectedWidgets[id] = value;\n        if(raiseSelectedEvents) $ax.event.raiseSelectedEvents(actionId, value);\n    };\n\n    $ax.style.IsWidgetSelected = function(id) {\n        return Boolean(_selectedWidgets[id] || _hasAnySelectedClass(id));\n    };\n\n    $ax.style.SetWidgetEnabled = function(id, value) {\n        _disabledWidgets[id] = !value;\n        $('#' + id).find('a').css('cursor', value ? 'pointer' : 'default');\n\n        if(!_widgetHasState(id, DISABLED)) return;\n        if(!value) {\n            const state = _generateFullState(id, undefined, undefined, true);\n            _applyImageAndTextJson(id, state);\n            _updateElementIdImageStyle(id, state);\n        } else $ax.style.SetWidgetSelected(id, $ax.style.IsWidgetSelected(id), true);\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 322,
+      "endLine": 343,
+      "text": "    var _isWidgetDisabled = $ax.style.IsWidgetDisabled = function(id) {\n        return Boolean(_disabledWidgets[id]);\n    };\n\n    var _elementIdsToImageOverrides = {};\n    $ax.style.mapElementIdToImageOverrides = function (elementId, override) {\n        for(var key in override) _addImageOverride(elementId, key, override[key]);\n    };\n\n    var _addImageOverride = function (elementId, state, val) {\n        if (!_elementIdsToImageOverrides[elementId]) _elementIdsToImageOverrides[elementId] = {};\n        _elementIdsToImageOverrides[elementId][state] = val;\n    }\n\n    $ax.style.deleteElementIdToImageOverride = function(elementId) {\n        delete _elementIdsToImageOverrides[elementId];\n    };\n\n    $ax.style.getElementImageOverride = function(elementId, state) {\n        var url = _elementIdsToImageOverrides[elementId] && _elementIdsToImageOverrides[elementId][state];\n        return url;\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 349,
+      "endLine": 592,
+      "text": "    // these camel case state names match up to generated\n    // javascript properties such as keys for compound state images\n\n    var NORMAL = 'normal';\n    var MOUSE_OVER = 'mouseOver';\n    var MOUSE_DOWN = 'mouseDown';\n    var SELECTED = 'selected';\n    var DISABLED = 'disabled';\n    var ERROR = 'error';\n    var HINT = 'hint';\n    var FOCUSED = 'focused';\n\n    var SELECTED_ERROR = 'selectedError';\n    var SELECTED_HINT = 'selectedHint';\n    var SELECTED_ERROR_HINT = 'selectedErrorHint';\n    var ERROR_HINT = 'errorHint';\n\n    var MOUSE_OVER_MOUSE_DOWN = 'mouseOverMouseDown';\n    var MOUSE_OVER_SELECTED = 'mouseOverSelected';\n    var MOUSE_OVER_ERROR = 'mouseOverError';\n    var MOUSE_OVER_HINT = 'mouseOverHint';\n\n    var MOUSE_OVER_SELECTED_ERROR = 'mouseOverSelectedError';\n    var MOUSE_OVER_SELECTED_HINT = 'mouseOverSelectedHint';\n    var MOUSE_OVER_SELECTED_ERROR_HINT = 'mouseOverSelectedErrorHint';\n    var MOUSE_OVER_ERROR_HINT = 'mouseOverErrorHint';\n\n    var MOUSE_DOWN_SELECTED = 'mouseDownSelected';\n    var MOUSE_DOWN_ERROR = 'mouseDownError';\n    var MOUSE_DOWN_HINT = 'mouseDownHint';\n\n    var MOUSE_DOWN_SELECTED_ERROR = 'mouseDownSelectedError';\n    var MOUSE_DOWN_SELECTED_HINT = 'mouseDownSelectedHint';\n    var MOUSE_DOWN_SELECTED_ERROR_HINT = 'mouseDownSelectedErrorHint';\n    var MOUSE_DOWN_ERROR_HINT = 'mouseDownErrorHint';\n\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED = 'mouseOverMouseDownSelected';\n    var MOUSE_OVER_MOUSE_DOWN_ERROR = 'mouseOverMouseDownError';\n    var MOUSE_OVER_MOUSE_DOWN_HINT = 'MouseOverMouseDownHint';\n\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR = 'mouseOverMouseDownSelectedError';\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT = 'mouseOverMouseDownSelectedHint';\n    var MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT = 'mouseOverMouseDownSelectedErrorHint';\n    var MOUSE_OVER_MOUSE_DOWN_ERROR_HINT = 'mouseOverMouseDownErrorHint';\n\n    var FOCUSED_SELECTED = 'focusedSelected';\n    var FOCUSED_ERROR = 'focusedError';\n    var FOCUSED_HINT = 'focusedHint';\n\n    var FOCUSED_SELECTED_ERROR = 'focusedSelectedError';\n    var FOCUSED_SELECTED_HINT = 'focusedSelectedHint';\n    var FOCUSED_SELECTED_ERROR_HINT = 'focusedSelectedErrorHint';\n    var FOCUSED_ERROR_HINT = 'focusedErrorHint';\n\n    var HINT_DISABLED = 'hintDisabled';\n    var SELECTED_DISABLED = 'selectedDisabled';\n    var ERROR_DISABLED = 'errorDisabled';\n    var SELECTED_HINT_DISABLED = 'selectedHintDisabled';\n    var ERROR_HINT_DISABLED = 'errorHintDisabled';\n    var SELECTED_ERROR_DISABLED = 'selectedErrorDisabled';\n    var SELECTED_ERROR_HINT_DISABLED = 'selectedErrorHintDisabled';\n\n    // Compound states are applied with multiple classes\n    // #u0.mouseOver.mouseDown.Selected.Error in .css\n    // class=\"mouseOver mouseDown selected error\" in .html\n    var ALL_STATES_WITH_CSS_CLASS = [\n        MOUSE_OVER,\n        MOUSE_DOWN,\n        SELECTED,\n        DISABLED,\n        ERROR,\n        HINT,\n        FOCUSED\n    ];\n\n    var _stateHasFocused = function (state) {\n        return state == FOCUSED\n            || state == FOCUSED_SELECTED\n            || state == FOCUSED_ERROR\n            || state == FOCUSED_HINT\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT;\n    };\n\n    var _hasAnyFocusedClass = _style.HasAnyFocusedClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(FOCUSED);\n    };\n\n    var _stateHasHint = function (state) {\n        return state == HINT\n            || state == SELECTED_HINT\n            || state == SELECTED_ERROR_HINT\n            || state == ERROR_HINT\n            || state == MOUSE_OVER_HINT\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_DOWN_HINT\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT\n            || state == FOCUSED_HINT\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT\n            || state == HINT_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _stateHasError = function (state) {\n        return state == ERROR\n            || state == SELECTED_ERROR\n            || state == SELECTED_ERROR_HINT\n            || state == ERROR_HINT\n            || state == MOUSE_OVER_ERROR\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT\n            || state == FOCUSED_ERROR\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == FOCUSED_ERROR_HINT\n            || state == ERROR_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnyErrorClass = _style.HasAnyErrorClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(ERROR);\n    };\n\n    var _stateHasDisabled = _style.StateHasDisabled = function (state) {\n        return state == DISABLED\n            || state == HINT_DISABLED\n            || state == SELECTED_DISABLED\n            || state == ERROR_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == ERROR_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnyDisabledClass = _style.HasAnyDisabledClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(DISABLED);\n    };\n\n    var _stateHasSelected = _style.StateHasSelected = function (state) {\n        return state == SELECTED\n            || state == SELECTED_ERROR\n            || state == SELECTED_HINT\n            || state == SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_SELECTED\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_SELECTED\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == FOCUSED_SELECTED\n            || state == FOCUSED_SELECTED_ERROR\n            || state == FOCUSED_SELECTED_HINT\n            || state == FOCUSED_SELECTED_ERROR_HINT\n            || state == SELECTED_DISABLED\n            || state == SELECTED_HINT_DISABLED\n            || state == SELECTED_ERROR_DISABLED\n            || state == SELECTED_ERROR_HINT_DISABLED;\n    };\n\n    var _hasAnySelectedClass = _style.HasAnySelectedClass = function (id) {\n        const jobj = $('#' + id);\n        return jobj.hasClass(SELECTED);\n    };\n\n    var _removeAnySelectedClass = _style.RemoveAnySelectedClass = function (id) {\n        const jobj = $('#' + id);\n        jobj.removeClass(SELECTED);\n    };\n\n    var _stateHasMouseOver = function (state) {\n        return state == MOUSE_OVER\n            || state == MOUSE_OVER_MOUSE_DOWN\n            || state == MOUSE_OVER_SELECTED\n            || state == MOUSE_OVER_ERROR\n            || state == MOUSE_OVER_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR\n            || state == MOUSE_OVER_SELECTED_HINT\n            || state == MOUSE_OVER_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT;\n    };\n\n    var _stateHasMouseDown = function (state) {\n        return state == MOUSE_DOWN\n            || state == MOUSE_OVER_MOUSE_DOWN\n            || state == MOUSE_DOWN_SELECTED\n            || state == MOUSE_DOWN_ERROR\n            || state == MOUSE_DOWN_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_DOWN_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_SELECTED_ERROR_HINT\n            || state == MOUSE_OVER_MOUSE_DOWN_ERROR_HINT;\n    };\n\n    var _generateState = _style.generateState = function (id) {\n        return _generateFullState(id);\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 1647,
+      "endLine": 1714,
+      "text": "    var _applyImageAndTextJson = function (id, event, blockTransition) {\n        var hasNotrs;\n        if(!blockTransition) hasNotrs = _enableStateTransitions(id);\n\n        const textId = $ax.GetTextPanelId(id);\n        if(textId) _resetTextJson(id, textId);\n\n        var fullStyle = _computeFullStyle(id, event, $ax.adaptive.currentViewId);\n        if (_idToAppliedStyles[id] && _idToAppliedStyles[id].style) {\n            $.extend(fullStyle, _idToAppliedStyles[id].style);\n        }\n\n        if($ax.public.fn.IsImageBox($obj(id).type)) {\n            const imageUrl = $ax.adaptive.getImageForStateAndView(id, event);\n            if(imageUrl) {\n                _applyImage(id, imageUrl, event);\n            }\n        } else _applySvg(id, event, fullStyle);\n\n        if (textId) {\n            const overridedStyle = _computeAllOverrides(id, undefined, event, $ax.adaptive.currentViewId);\n            var borderElement = document.getElementById(id + '_div');\n            if($(borderElement).hasClass(\"bgImg\")) borderElement = undefined;\n            var textElement = document.getElementById(textId);\n            if (!$.isEmptyObject(overridedStyle)) {\n                var diagramObject = $ax.getObjectFromElementId(id);\n                //var fullStyle = _computeFullStyle(id, event, $ax.adaptive.currentViewId, overridedStyle);\n                var padding = { top: 0, right: 0, bottom: 0, left: 0 };\n                if (fullStyle.paddingTop) padding.top = +fullStyle.paddingTop;\n                if (fullStyle.paddingBottom) padding.bottom = +fullStyle.paddingBottom;\n                if (fullStyle.paddingLeft) padding.left = +fullStyle.paddingLeft;\n                if (fullStyle.paddingRight) padding.right = +fullStyle.paddingRight;\n                var newSize = _applyTextStyle(textId, overridedStyle, padding);\n                if (borderElement && textElement && (diagramObject.autoFitHeight || diagramObject.autoFitWidth)) {\n                    if (diagramObject.autoFitHeight) {\n                        var height = newSize.height;\n                        borderElement.style.height = height + 'px';\n                        textElement.style.top = 0;\n                    }\n                    if (diagramObject.autoFitWidth) {\n                        var width = newSize.width;\n                        borderElement.style.width = width + 'px';\n                        textElement.style.left = 0;\n                    }\n                }\n            } else if (borderElement && textElement) {\n                var parentElement = document.getElementById(id);\n                if (parentElement) {\n                    borderElement.style.height = parentElement.style.height;\n                    borderElement.style.width = parentElement.style.width;\n                }\n                textElement.style.top = '';\n                textElement.style.left = '';\n            }\n        }\n\n        _updateStateClasses(\n            [\n                id,\n                $ax.repeater.applySuffixToElementId(id, '_div'),\n                $ax.repeater.applySuffixToElementId(id, '_input')\n            ], event, false\n        );\n\n        _updateCornersForBorders(id, fullStyle);\n\n        if(!blockTransition && hasNotrs) disableStateTransitionsOnEnd(id, fullStyle.transition);\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 1716,
+      "endLine": 1736,
+      "text": "    let _updateStateClasses = function(ids, event, addMouseOverOnMouseDown) {\n        for(let i = 0; i < ids.length; i++) {\n            _updateStateClassesHelper(ids[i], event, addMouseOverOnMouseDown);\n        }\n    };\n\n    let _updateStateClassesHelper = function(id, event, addMouseOverOnMouseDown) {\n        const jobj = $jobj(id);\n\n        const isMouseDownEvent = _stateHasMouseDown(event);\n\n        for (let i = 0; i < ALL_STATES_WITH_CSS_CLASS.length; i++) jobj.removeClass(ALL_STATES_WITH_CSS_CLASS[i]);\n\n        if (addMouseOverOnMouseDown && isMouseDownEvent || _stateHasMouseOver(event)) jobj.addClass(MOUSE_OVER);\n        if (isMouseDownEvent) jobj.addClass(MOUSE_DOWN);\n        if (_stateHasFocused(event)) jobj.addClass(FOCUSED);\n        if (_stateHasSelected(event)) jobj.addClass(SELECTED);\n        if (_stateHasError(event)) jobj.addClass(ERROR);\n        if (_stateHasDisabled(event)) jobj.addClass(DISABLED);\n        if (_stateHasHint(event)) jobj.addClass(HINT);\n    };"
+    },
+    {
+      "file": "style.js",
+      "startLine": 1763,
+      "endLine": 1915,
+      "text": "    var FONT_PROPS = {\n        'typeface': true,\n        'fontName': true,\n        'fontWeight': true,\n        'fontStyle': true,\n        'fontStretch': true,\n        'fontSize': true,\n        'underline': true,\n        'foreGroundFill': true,\n        'horizontalAlignment': true,\n        'letterCase': true,\n        'strikethrough': true\n    };\n\n    var _getViewIdChain = $ax.style.getViewIdChain = function(currentViewId, id, diagramObject) {\n        var viewIdChain;\n        if (diagramObject.owner.type == 'Axure:Master' || diagramObject.owner.type == 'referenceDiagramObject') {\n            //set viewIdChain to the chain from the parent RDO\n            var parentRdoId;\n            if (diagramObject.owner.type == 'referenceDiagramObject') parentRdoId = diagramObject.owner.scriptIds[0];\n            if (!parentRdoId) parentRdoId = $ax('#' + id).getParents(true, ['rdo'])[0][0];\n            var rdoState = $ax.style.generateState(parentRdoId);\n            var rdoStyle = $ax.style.computeFullStyle(parentRdoId, rdoState, currentViewId);\n            var viewOverride = rdoStyle.viewOverride;\n            viewIdChain = $ax.adaptive.getMasterAdaptiveIdChain(diagramObject.owner.type == 'referenceDiagramObject' ? diagramObject.owner.masterId : diagramObject.owner.packageId, viewOverride);\n        } else {\n            viewIdChain = $ax.adaptive.getAdaptiveIdChain(currentViewId);\n        }\n        return viewIdChain;\n    }\n\n    var _computeAllOverrides = $ax.style.computeAllOverrides = function(id, parentId, state, currentViewId) {\n        var computedStyle = {};\n        if(parentId) computedStyle = _computeAllOverrides(parentId, null, state, currentViewId);\n\n        var diagramObject = $ax.getObjectFromElementId(id);\n\n        var viewIdChain = _getViewIdChain(currentViewId, id, diagramObject);\n        var excludeFont = _shapesWithSetRichText[id];\n        for(var i = 0; i < viewIdChain.length; i++) {\n            var viewId = viewIdChain[i];\n            var style = diagramObject.adaptiveStyles[viewId];\n            if(style) {\n                // we want to exclude the normal font style for shapes where the rich text has been set with an interaction\n                // so we copy the style so we don't modify the original, then delete all the font props.\n                if(excludeFont) {\n                    style = $ax.deepCopy(style);\n                    for(var prop in FONT_PROPS) delete style[prop];\n                }\n\n                if(style) {\n                    var customStyle = style.baseStyle && $ax.document.stylesheet.stylesById[style.baseStyle];\n                    //make sure not to extend the customStyle this can mutate it for future use\n                    $.extend(computedStyle, customStyle);\n                }\n                $.extend(computedStyle, style);\n            }\n        }\n\n        // order matters so higher priority styles override lower priority\n        $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, NORMAL, viewIdChain, true));\n        if (_stateHasMouseOver(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_OVER, viewIdChain, true));\n        }\n        if (_stateHasMouseDown(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_DOWN, viewIdChain, true));\n        }\n        if (_stateHasFocused(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, FOCUSED, viewIdChain, true));\n        }\n        if (_stateHasSelected(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, SELECTED, viewIdChain, true));\n        }\n        if (_stateHasError(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, ERROR, viewIdChain, true));\n        }\n        if (_stateHasHint(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, HINT, viewIdChain, true));\n        }\n        if (_stateHasDisabled(state)) {\n            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, DISABLED, viewIdChain, true));\n        }\n\n        return _removeUnsupportedProperties(computedStyle, diagramObject);\n    };\n\n    var _computeStateStyleForViewChain = function(diagramObject, state, viewIdChain, excludeNormal) {\n        var styleObject = diagramObject;\n        while(styleObject.isContained) styleObject = styleObject.parent;\n\n        var adaptiveStyles = styleObject.adaptiveStyles;\n\n        for(var i = viewIdChain.length - 1; i >= 0; i--) {\n            var viewId = viewIdChain[i];\n            var viewStyle = adaptiveStyles[viewId];\n            var stateStyle = viewStyle && _getFullStateStyle(viewStyle, state, excludeNormal);\n            if (stateStyle) return $.extend({}, stateStyle);\n            else if (viewStyle && viewStyle.stateStyles) return {}; //stateStyles are overriden but states could be null\n        }\n\n        // we dont want to actually include the object style because those are not overrides, hence the true for \"excludeNormal\" and not passing the val through\n        var stateStyleFromDefault = _getFullStateStyle(styleObject.style, state, true);\n        return $.extend({}, stateStyleFromDefault);\n    };\n\n    // returns the full effective style for an object in a state state and view\n    var _computeFullStyle = $ax.style.computeFullStyle = function(id, state, currentViewId, overrides) {\n        var obj = $obj(id);\n        if (!overrides) overrides = _computeAllOverrides(id, undefined, state, currentViewId);\n        // get style for current state\n        var dynamicPanelStyle = _getCurrentPanelDiagramStyle(id);\n\n        // todo: account for image box\n        var objStyle = obj.style;\n        var customStyle = objStyle.baseStyle && $ax.document.stylesheet.stylesById[objStyle.baseStyle];\n        var returnVal = $.extend({}, $ax.document.stylesheet.defaultStyle, customStyle, objStyle, dynamicPanelStyle, overrides);\n        return _removeUnsupportedProperties(returnVal, obj);\n    };\n\n    var _getCurrentPanelDiagramStyle = function (id) {\n        var diagramObj = $ax.visibility.GetCurrentPanelDiagram(id);\n        if (diagramObj) {\n            return diagramObj.style;\n        }\n        return {};\n    };\n\n    var _removeUnsupportedProperties = function(style, object) {\n        // for now all we need to do is remove padding from checkboxes and radio buttons\n        //if ($ax.public.fn.IsRadioButton(object.type) || $ax.public.fn.IsCheckBox(object.type)) {\n        //    style.paddingTop = 0;\n        //    style.paddingLeft = 0;\n        //    style.paddingRight = 0;\n        //    style.paddingBottom = 0;\n        //}\n        //if ($ax.public.fn.IsTextBox(object.type) || $ax.public.fn.IsTextArea(object.type) || $ax.public.fn.IsButton(object.type)\n        //    || $ax.public.fn.IsListBox(object.type) || $ax.public.fn.IsComboBox(object.type)) {\n        //    if (object.images && style.fill) delete style['fill'];\n        //}\n\n        return style;\n    };\n\n    var _getFullStateStyle = function(style, state, excludeNormal) {\n        //'normal' is needed because now DiagramObjects get their image from the Style and unapplying a rollover needs the image\n        var stateStyle = state == NORMAL && !excludeNormal ? style : style && style.stateStyles && style.stateStyles[state];\n        if(stateStyle) {\n            var customStyle = stateStyle.baseStyle && $ax.document.stylesheet.stylesById[stateStyle.baseStyle];\n            //make sure not to extend the customStyle this can mutate it for future use\n            return $.extend({}, customStyle, stateStyle);\n        }\n        return undefined;\n    };"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1343,
+      "endLine": 1351,
+      "text": "    function clearMouseDownIxStyle(e) {\n        if(_event.mouseDownObjectId) {\n            $('#' + _event.mouseDownObjectId).trigger(\n                { type: \"mouseup\",\n                  checkMouseOver: e.data && e.data.checkMouseOver\n                }\n            );\n        }\n    }"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1361,
+      "endLine": 1436,
+      "text": "    var _attachIxStyleEvents = function(dObj, elementId, $element, ignoreHasIxStyles) {\n        //attach button shape alternate styles\n        var isDynamicPanel = $ax.public.fn.IsDynamicPanel(dObj.type);\n        var needsMouseFilter = (ignoreHasIxStyles || $ax.event.HasIxStyles(dObj))\n            && dObj.type != 'hyperlink' && !$ax.public.fn.IsLayerOrRdo(dObj.type) && !isDynamicPanel && dObj.type != $ax.constants.TEXT_TYPE &&\n            !$ax.public.fn.IsRepeater(dObj.type) //&& !$ax.public.fn.IsCheckBox(dObj.type) && !$ax.public.fn.IsRadioButton(dObj.type)\n            && !$ax.public.fn.IsTreeNodeObject(dObj.type);\n        if(needsMouseFilter) {\n            //$element.mouseenter(function () {\n            $element.on('mouseenter.ixStyle', function () {\n                var elementId = this.id;\n                var parent = $ax.dynamicPanelManager.parentHandlesStyles(elementId);\n                if(parent && parent.direct) return;\n                if($.inArray(elementId, _event.mouseOverIds) != -1) return;\n                _event.mouseOverIds[_event.mouseOverIds.length] = elementId;\n\n                if(elementId == _event.mouseOverObjectId) return;\n                _event.mouseOverObjectId = elementId;\n                $ax.style.SetWidgetHover(elementId, true);\n                $ax.annotation.updateLinkLocations(elementId);\n            //}).mouseleave(function () {\n            }).on('mouseleave.ixStyle', function () {\n                var elementId = this.id;\n                var parent = $ax.dynamicPanelManager.parentHandlesStyles(elementId);\n                if(parent && parent.direct) return;\n                $ax.splice(_event.mouseOverIds, $.inArray(elementId, _event.mouseOverIds), 1);\n\n                if(elementId == _event.mouseOverObjectId) {\n                    _event.mouseOverObjectId = '';\n                }\n                $ax.style.SetWidgetHover(elementId, false);\n                $ax.annotation.updateLinkLocations(elementId);\n            });\n\n            //$element.bind($ax.features.eventNames.mouseDownName, function () {\n            $element.on($ax.features.eventNames.mouseDownName + '.ixStyle', function () {\n                var elementId = this.id;\n                var parent = $ax.dynamicPanelManager.parentHandlesStyles(elementId);\n                if(parent) {\n                    dynamicPanelMouseDown(parent.id);\n                    if(parent.direct) return;\n                }\n                _event.mouseDownObjectId = elementId;\n                //since we don't do mouse capture, it's possible that the mouseup not get triggered later\n                //in that case, detect the mouseup on document and dragend\n                $(document).one(\"mouseup\", {checkMouseOver: true}, clearMouseDownIxStyle);\n                $(\"#\" + elementId).one(\"dragend\", clearMouseDownIxStyle);\n\n                $ax.style.SetWidgetMouseDown(this.id, true);\n                $ax.annotation.updateLinkLocations(elementId);\n            //}).bind($ax.features.eventNames.mouseUpName, function () {\n            }).on($ax.features.eventNames.mouseUpName + '.ixStyle', function (e) {\n                var elementId = this.id;\n                var parent = $ax.dynamicPanelManager.parentHandlesStyles(elementId);\n                if(parent) {\n                    dynamicPanelMouseUp(parent.id);\n                    if(parent.direct) return;\n                }\n\n                $(document).off(\"mouseup\", clearMouseDownIxStyle);\n\n                if(_event.mouseDownObjectId) {\n                    $(\"#\" + _event.mouseDownObjectId).off(\"dragend\", clearMouseDownIxStyle);\n                    _event.mouseDownObjectId = '';\n                }\n                if(!$ax.style.ObjHasMouseDown(elementId)) return;\n\n                $ax.style.SetWidgetMouseDown(elementId, false, e.checkMouseOver);\n                $ax.annotation.updateLinkLocations(elementId);\n\n                //there used to be something we needed to make images click, because swapping out the images prevents the click\n                // this is a note that we can eventually delete.\n            });\n\n        }\n    };"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1786,
+      "endLine": 1794,
+      "text": "    $ax.event.HasIxStyles = function(diagramObject) {\n        if(diagramObject.style.stateStyles) return true;\n        if(diagramObject.adaptiveStyles) {\n            for(var viewId in diagramObject.adaptiveStyles) {\n                if(diagramObject.adaptiveStyles[viewId].stateStyles) return true;\n            }\n        }\n        return false;\n    };"
+    },
+    {
+      "file": "events.js",
+      "startLine": 735,
+      "endLine": 747,
+      "text": "    var _attachFocusAndBlur = function($query) {\n        $query.focus(function () {\n            if(window.shouldOutline) {\n                $(this).css('outline', '');\n            } else {\n                $(this).css('outline', 'none');\n            }\n            window.lastFocusedClickable = this;\n        }).blur(function () {\n            if(window.lastFocusedClickable == this) window.lastFocusedClickable = null;\n        });\n    }\n    _event.attachFocusAndBlur = _attachFocusAndBlur;"
+    },
+    {
+      "file": "axQuery.std.js",
+      "startLine": 1087,
+      "endLine": 1137,
+      "text": "    $ax.public.fn.enabled = function() {\n        if(arguments[0] == undefined) {\n            var firstId = this.getElementIds()[0];\n            if(!firstId) return undefined;\n\n            var widgetType = $ax.getTypeFromElementId(firstId);\n            if($ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType)\n                || $ax.public.fn.IsLayerOrRdo(widgetType)) return !$ax.style.IsWidgetDisabled(firstId);\n            else return this.jQuery().children(':disabled').length <= 0 && this.jQuery().children('.disabled').length <= 0;\n        } else {\n            var elementIds = this.getElementIds();\n\n            for(var index = 0; index < elementIds.length; index++) {\n                var elementId = elementIds[index];\n                var widgetType = $ax.getTypeFromElementId(elementId);\n\n                var enabled = arguments[0];\n                if ($ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType)\n                    || $ax.public.fn.IsTextBox(widgetType) || $ax.public.fn.IsTextArea(widgetType)\n                    || $ax.public.fn.IsComboBox(widgetType) || $ax.public.fn.IsListBox(widgetType)\n                    || $ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)\n                ) $ax.style.SetWidgetEnabled(elementId, enabled);\n\n                if($ax.public.fn.IsDynamicPanel(widgetType) || $ax.public.fn.IsLayerOrRdo(widgetType)) {\n                    $ax.style.SetWidgetEnabled(elementId, enabled);\n                    var children = this.getChildren(false, true)[index].children;\n                    for(var i = 0; i < children.length; i++) {\n                        $axure('#' + children[i]).enabled(enabled);\n                    }\n                }\n                var obj = $obj(elementId);\n                var images = obj.images;\n                if(PLAIN_TEXT_TYPES.indexOf(widgetType) != -1 && images) {\n                    var img = $jobj($ax.repeater.applySuffixToElementId(elementId, '_image_sketch'));\n                    var key = (enabled ? 'normal~' : 'disabled~') + ($ax.adaptive.currentViewId || '');\n                    img.attr('src', images[key]);\n\n                }\n                var jobj = $jobj(elementId);\n                var input = $jobj($ax.INPUT(elementId));\n                if(input.length) jobj = input;\n\n                //if (OS_MAC && WEBKIT && $ax.public.fn.IsComboBox(widgetType)) jobj.css('color', enabled ? '' : 'grayText');\n                if($ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)) return this;\n                if(enabled) jobj.prop('disabled', false);\n                else jobj.prop('disabled', true);\n            }\n\n            return this;\n        }\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "startLine": 1181,
+      "endLine": 1255,
+      "text": "    $ax.public.fn.selected = function() {\n        if(arguments[0] == undefined) {\n            var firstId = this.getElementIds()[0];\n            if(!firstId) return undefined;\n\n            var widgetType = $ax.getTypeFromElementId(firstId);\n            if ($ax.public.fn.IsTreeNodeObject(widgetType)) {\n                var treeNodeButtonShapeId = '';\n                var allElementIds = $ax.getAllElementIds();\n                for(var i = 0; i < allElementIds.length; i++) {\n                    var elementId = allElementIds[i];\n                    var currObj = $ax.getObjectFromElementId(elementId);\n\n                    if ($ax.public.fn.IsVector(currObj.type) && currObj.parent && currObj.parent.scriptIds && currObj.parent.scriptIds[0] == firstId) {\n                        treeNodeButtonShapeId = elementId;\n                        break;\n                    }\n                }\n\n                if(treeNodeButtonShapeId == '') return undefined;\n                return $ax.style.IsWidgetSelected(treeNodeButtonShapeId);\n            } else if($ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType) || $ax.public.fn.IsTableCell(widgetType) || $ax.public.fn.IsDynamicPanel(widgetType) || $ax.public.fn.IsLayerOrRdo(widgetType)\n                || $ax.public.fn.IsTextArea(widgetType) || $ax.public.fn.IsTextBox(widgetType) || $ax.public.fn.IsListBox(widgetType) || $ax.public.fn.IsComboBox(widgetType)) {\n                return $ax.style.IsWidgetSelected(firstId);\n            } else if ($ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)) {\n                return $jobj($ax.INPUT(firstId)).prop('checked');\n            }\n            return this;\n        }\n        var elementIds = this.getElementIds();\n        var func = typeof (arguments[0]) === 'function' ? arguments[0] : null;\n        var enabled = arguments[0]; // If this is a function it will be overridden with the return value;\n\n        for(var index = 0; index < elementIds.length; index++) {\n            var elementId = elementIds[index];\n            if(func) {\n                enabled = func($axure('#' + elementId));\n            }\n\n            var widgetType = $ax.getTypeFromElementId(elementId);\n\n            if ($ax.public.fn.IsTreeNodeObject(widgetType)) { //for tree node\n                var treeRootId = $('#' + elementIds[index]).parents('.treeroot').attr('id');\n\n                var treeNodeButtonShapeId = '';\n                var childElementIds = $jobj(elementId).children();\n                for(var i = 0; i < childElementIds.length; i++) {\n                    var elementId = childElementIds[i].id;\n                    var currObj = $ax.getObjectFromElementId(elementId);\n\n                    if (currObj && currObj.type == $ax.constants.VECTOR_SHAPE_TYPE && currObj.parent &&\n                        currObj.parent.scriptIds && currObj.parent.scriptIds[0] == elementIds[index]) {\n                        treeNodeButtonShapeId = elementId;\n                        break;\n                    }\n                }\n\n                if(treeNodeButtonShapeId == '') continue;\n\n                $ax.tree.SelectTreeNode(elementId, enabled);\n            } else if($ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType) || $ax.public.fn.IsTableCell(widgetType) || $ax.public.fn.IsDynamicPanel(widgetType) || $ax.public.fn.IsLayerOrRdo(widgetType)\n                || $ax.public.fn.IsTextArea(widgetType) || $ax.public.fn.IsTextBox(widgetType) || $ax.public.fn.IsListBox(widgetType) || $ax.public.fn.IsComboBox(widgetType)) {\n                $ax.style.SetWidgetSelected(elementIds[index], enabled);\n            } else if ($ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)) {\n                var query = $jobj($ax.INPUT(elementId));\n                var curr = query.prop('checked');\n                //NOTE: won't fire onselect nore onunselect event if states didn't changes\n                if(curr != enabled) {\n                    query.prop('checked', enabled);\n                    $ax.style.SetWidgetSelected(elementIds[index], enabled, true);\n                }\n            }\n        }\n        return this;\n    };"
+    },
+    {
+      "file": "events.js",
+      "startLine": 759,
+      "endLine": 785,
+      "text": "            if(dObj.tabbable) {\n                if($ax.public.fn.IsLayerOrRdo(dObj.type)) _event.layerRdoMapFocus(dObj, elementId);\n                var focusableId = _event.getFocusableWidgetOrChildId(elementId);\n                var $focusable = $('#' + focusableId);\n                $focusable.attr(\"tabIndex\", 0);\n                if($focusable.is('div') || $focusable.is('img')) {\n                    $focusable.bind($ax.features.eventNames.mouseDownName, function () {\n                        window.shouldOutline = false;\n                    });\n                    _attachFocusAndBlur($focusable);\n                }\n            }\n\n            // Focus has to be done before on focus fires\n            // Set up focus\n            if ($ax.public.fn.IsTextArea(dObj.type) || $ax.public.fn.IsTextBox(dObj.type) || $ax.public.fn.IsCheckBox(dObj.type) || $ax.public.fn.IsRadioButton(dObj.type) ||\n                $ax.public.fn.IsListBox(dObj.type) || $ax.public.fn.IsComboBox(dObj.type) || $ax.public.fn.IsButton(dObj.type) ||\n                (dObj.tabbable && ($ax.public.fn.IsImageBox(dObj.type) || $ax.public.fn.IsVector(dObj.type) || $ax.IsTreeNodeObject(dObj.type) || $ax.public.fn.IsTableCell(dObj.type)))) {\n                var focusObj = $jobj($ax.event.getFocusableWidgetOrChildId(elementId));\n                focusObj.focus(function() {\n                    window.lastFocusedControl = elementId;\n                    $ax.style.SetWidgetFocused(elementId, true);\n                });\n                focusObj.blur(function() {\n                    $ax.style.SetWidgetFocused(elementId, false);\n                });\n            }"
+    },
+    {
+      "file": "events.js",
+      "startLine": 803,
+      "endLine": 835,
+      "text": "            _attachIxStyleEvents(dObj, elementId, $element);\n\n            var $axElement = $ax('#' + elementId);\n            // Base case is set up selected disabled error based on the default in the axobj, for non, repeaters and resetting repeaters\n            var itemReset = refreshType == $ax.repeater.refreshType.reset;\n            if(!itemId || itemReset) {\n                //initialize selected and error before disabled or else style state dictionaries will be incorrect\n                if($ax.public.fn.IsVector(dObj.type) || $ax.public.fn.IsImageBox(dObj.type) || isDynamicPanel || $ax.public.fn.IsLayerOrRdo(dObj.type)\n                    || $ax.public.fn.IsTextBox(dObj.type) || $ax.public.fn.IsTextArea(dObj.type) || $ax.public.fn.IsComboBox(dObj.type) || $ax.public.fn.IsListBox(dObj.type)\n                    || $ax.public.fn.IsCheckBox(dObj.type) || $ax.public.fn.IsRadioButton(dObj.type)) {\n\n                    // Initialize selected elements\n                    // only set one member of selection group selected since subsequent calls\n                    // will unselect the previous one anyway\n                    if(dObj.error) $axElement.error(true);\n\n                    if(dObj.selected && !skipSelectedIds.has(elementId)) {\n                        var group = $('#' + elementId).attr('selectiongroup');\n                        if(group) for(var item of $(\"[selectiongroup='\" + group + \"']\")) skipSelectedIds.add(item.id);\n                        $axElement.selected(true);\n                    }\n\n                    if (dObj.disabled) $axElement.enabled(false);\n                }\n            } else if(refreshType == $ax.repeater.refreshType.preEval) {\n                // Otherwise everything should be set up correctly by pre-eval, want to set up selected/disabled/error dictionaries (and disabled status)\n                const isSelected = $element.hasClass('selected');\n                const isError = $element.hasClass('error');\n                const isDisabled = $element.hasClass('disabled');\n                if(isSelected) $axElement.selected(true);\n                if(isError) $axElement.error(true);\n                if(isDisabled) $axElement.enabled(false);\n            } else {"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1220,
+      "endLine": 1236,
+      "text": "                    }\n                    var selected = $ax.style.IsWidgetSelected(elementId);\n                    if (selected) $ax.style.SetWidgetSelected(elementId, selected, true);\n\n                    var onClick = function(e) {\n                        if ($ax.style.IsWidgetDisabled(elementId)) return;\n                        if(radioGroupName !== elementId) {\n                            var radioGroup = $(\"input[name='\" + radioGroupName + \"']\").parent();\n                            for(var i = 0; i < radioGroup.length; i++) {\n                                $ax.style.SetWidgetSelected(radioGroup[i].id, false, true);\n                            }\n                        }\n                        $ax.style.SetWidgetSelected(elementId, true, true);\n                        e.originalEvent.handled = true;\n                    };\n                } else {\n                    var selected = $ax.style.IsWidgetSelected(elementId);"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1668,
+      "endLine": 1686,
+      "text": "    };\n    _event.updateMouseLocation = _updateMouseLocation;\n\n    var _leavingState = function(stateId) {\n        var mouseOverIds = _event.mouseOverIds;\n        if(mouseOverIds.length == 0) return;\n\n        var stateQuery = $jobj(stateId);\n        for(var i = mouseOverIds.length - 1; i >= 0; i--) {\n            var id = mouseOverIds[i];\n            if(stateQuery.find('#' + id).length) {\n                $ax.splice(mouseOverIds, $.inArray(id, mouseOverIds), 1);\n                $ax.style.SetWidgetMouseDown(id, false);\n                $ax.style.SetWidgetHover(id, false);\n            }\n        }\n\n    };\n    _event.leavingState = _leavingState;"
+    },
+    {
+      "file": "axQuery.std.js",
+      "startLine": 1085,
+      "endLine": 1137,
+      "text": "    };\n\n    $ax.public.fn.enabled = function() {\n        if(arguments[0] == undefined) {\n            var firstId = this.getElementIds()[0];\n            if(!firstId) return undefined;\n\n            var widgetType = $ax.getTypeFromElementId(firstId);\n            if($ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType)\n                || $ax.public.fn.IsLayerOrRdo(widgetType)) return !$ax.style.IsWidgetDisabled(firstId);\n            else return this.jQuery().children(':disabled').length <= 0 && this.jQuery().children('.disabled').length <= 0;\n        } else {\n            var elementIds = this.getElementIds();\n\n            for(var index = 0; index < elementIds.length; index++) {\n                var elementId = elementIds[index];\n                var widgetType = $ax.getTypeFromElementId(elementId);\n\n                var enabled = arguments[0];\n                if ($ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType)\n                    || $ax.public.fn.IsTextBox(widgetType) || $ax.public.fn.IsTextArea(widgetType)\n                    || $ax.public.fn.IsComboBox(widgetType) || $ax.public.fn.IsListBox(widgetType)\n                    || $ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)\n                ) $ax.style.SetWidgetEnabled(elementId, enabled);\n\n                if($ax.public.fn.IsDynamicPanel(widgetType) || $ax.public.fn.IsLayerOrRdo(widgetType)) {\n                    $ax.style.SetWidgetEnabled(elementId, enabled);\n                    var children = this.getChildren(false, true)[index].children;\n                    for(var i = 0; i < children.length; i++) {\n                        $axure('#' + children[i]).enabled(enabled);\n                    }\n                }\n                var obj = $obj(elementId);\n                var images = obj.images;\n                if(PLAIN_TEXT_TYPES.indexOf(widgetType) != -1 && images) {\n                    var img = $jobj($ax.repeater.applySuffixToElementId(elementId, '_image_sketch'));\n                    var key = (enabled ? 'normal~' : 'disabled~') + ($ax.adaptive.currentViewId || '');\n                    img.attr('src', images[key]);\n\n                }\n                var jobj = $jobj(elementId);\n                var input = $jobj($ax.INPUT(elementId));\n                if(input.length) jobj = input;\n\n                //if (OS_MAC && WEBKIT && $ax.public.fn.IsComboBox(widgetType)) jobj.css('color', enabled ? '' : 'grayText');\n                if($ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)) return this;\n                if(enabled) jobj.prop('disabled', false);\n                else jobj.prop('disabled', true);\n            }\n\n            return this;\n        }\n    };"
+    },
+    {
+      "file": "axQuery.std.js",
+      "startLine": 1187,
+      "endLine": 1251,
+      "text": "            if ($ax.public.fn.IsTreeNodeObject(widgetType)) {\n                var treeNodeButtonShapeId = '';\n                var allElementIds = $ax.getAllElementIds();\n                for(var i = 0; i < allElementIds.length; i++) {\n                    var elementId = allElementIds[i];\n                    var currObj = $ax.getObjectFromElementId(elementId);\n\n                    if ($ax.public.fn.IsVector(currObj.type) && currObj.parent && currObj.parent.scriptIds && currObj.parent.scriptIds[0] == firstId) {\n                        treeNodeButtonShapeId = elementId;\n                        break;\n                    }\n                }\n\n                if(treeNodeButtonShapeId == '') return undefined;\n                return $ax.style.IsWidgetSelected(treeNodeButtonShapeId);\n            } else if($ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType) || $ax.public.fn.IsTableCell(widgetType) || $ax.public.fn.IsDynamicPanel(widgetType) || $ax.public.fn.IsLayerOrRdo(widgetType)\n                || $ax.public.fn.IsTextArea(widgetType) || $ax.public.fn.IsTextBox(widgetType) || $ax.public.fn.IsListBox(widgetType) || $ax.public.fn.IsComboBox(widgetType)) {\n                return $ax.style.IsWidgetSelected(firstId);\n            } else if ($ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)) {\n                return $jobj($ax.INPUT(firstId)).prop('checked');\n            }\n            return this;\n        }\n        var elementIds = this.getElementIds();\n        var func = typeof (arguments[0]) === 'function' ? arguments[0] : null;\n        var enabled = arguments[0]; // If this is a function it will be overridden with the return value;\n\n        for(var index = 0; index < elementIds.length; index++) {\n            var elementId = elementIds[index];\n            if(func) {\n                enabled = func($axure('#' + elementId));\n            }\n\n            var widgetType = $ax.getTypeFromElementId(elementId);\n\n            if ($ax.public.fn.IsTreeNodeObject(widgetType)) { //for tree node\n                var treeRootId = $('#' + elementIds[index]).parents('.treeroot').attr('id');\n\n                var treeNodeButtonShapeId = '';\n                var childElementIds = $jobj(elementId).children();\n                for(var i = 0; i < childElementIds.length; i++) {\n                    var elementId = childElementIds[i].id;\n                    var currObj = $ax.getObjectFromElementId(elementId);\n\n                    if (currObj && currObj.type == $ax.constants.VECTOR_SHAPE_TYPE && currObj.parent &&\n                        currObj.parent.scriptIds && currObj.parent.scriptIds[0] == elementIds[index]) {\n                        treeNodeButtonShapeId = elementId;\n                        break;\n                    }\n                }\n\n                if(treeNodeButtonShapeId == '') continue;\n\n                $ax.tree.SelectTreeNode(elementId, enabled);\n            } else if($ax.public.fn.IsImageBox(widgetType) || $ax.public.fn.IsVector(widgetType) || $ax.public.fn.IsTableCell(widgetType) || $ax.public.fn.IsDynamicPanel(widgetType) || $ax.public.fn.IsLayerOrRdo(widgetType)\n                || $ax.public.fn.IsTextArea(widgetType) || $ax.public.fn.IsTextBox(widgetType) || $ax.public.fn.IsListBox(widgetType) || $ax.public.fn.IsComboBox(widgetType)) {\n                $ax.style.SetWidgetSelected(elementIds[index], enabled);\n            } else if ($ax.public.fn.IsCheckBox(widgetType) || $ax.public.fn.IsRadioButton(widgetType)) {\n                var query = $jobj($ax.INPUT(elementId));\n                var curr = query.prop('checked');\n                //NOTE: won't fire onselect nore onunselect event if states didn't changes\n                if(curr != enabled) {\n                    query.prop('checked', enabled);\n                    $ax.style.SetWidgetSelected(elementIds[index], enabled, true);\n                }"
+    },
+    {
+      "file": "events.js",
+      "startLine": 759,
+      "endLine": 785,
+      "text": "            if(dObj.tabbable) {\n                if($ax.public.fn.IsLayerOrRdo(dObj.type)) _event.layerRdoMapFocus(dObj, elementId);\n                var focusableId = _event.getFocusableWidgetOrChildId(elementId);\n                var $focusable = $('#' + focusableId);\n                $focusable.attr(\"tabIndex\", 0);\n                if($focusable.is('div') || $focusable.is('img')) {\n                    $focusable.bind($ax.features.eventNames.mouseDownName, function () {\n                        window.shouldOutline = false;\n                    });\n                    _attachFocusAndBlur($focusable);\n                }\n            }\n\n            // Focus has to be done before on focus fires\n            // Set up focus\n            if ($ax.public.fn.IsTextArea(dObj.type) || $ax.public.fn.IsTextBox(dObj.type) || $ax.public.fn.IsCheckBox(dObj.type) || $ax.public.fn.IsRadioButton(dObj.type) ||\n                $ax.public.fn.IsListBox(dObj.type) || $ax.public.fn.IsComboBox(dObj.type) || $ax.public.fn.IsButton(dObj.type) ||\n                (dObj.tabbable && ($ax.public.fn.IsImageBox(dObj.type) || $ax.public.fn.IsVector(dObj.type) || $ax.IsTreeNodeObject(dObj.type) || $ax.public.fn.IsTableCell(dObj.type)))) {\n                var focusObj = $jobj($ax.event.getFocusableWidgetOrChildId(elementId));\n                focusObj.focus(function() {\n                    window.lastFocusedControl = elementId;\n                    $ax.style.SetWidgetFocused(elementId, true);\n                });\n                focusObj.blur(function() {\n                    $ax.style.SetWidgetFocused(elementId, false);\n                });\n            }"
+    }
+  ],
+  "cssSearch": [
+    {
+      "file": "../../css/axure_rp_page.css",
+      "pattern": "disabled|opacity",
+      "matches": []
+    },
+    {
+      "file": "../../css/default.css",
+      "pattern": "disabled|opacity",
+      "matches": [
+        {
+          "line": 75,
+          "text": "    opacity: 0; "
+        },
+        {
+          "line": 247,
+          "text": "    opacity: 0;"
+        },
+        {
+          "line": 586,
+          "text": "    opacity: 0;"
+        },
+        {
+          "line": 598,
+          "text": "    opacity: 0;"
+        },
+        {
+          "line": 604,
+          "text": "    opacity: 1;"
+        },
+        {
+          "line": 614,
+          "text": "    opacity: 0;"
+        },
+        {
+          "line": 618,
+          "text": "    opacity: 1;"
+        },
+        {
+          "line": 849,
+          "text": "    /*opacity: .5;*/"
+        }
+      ]
+    },
+    {
+      "file": "../../css/jquery-ui-themes.css",
+      "pattern": "disabled|opacity",
+      "matches": [
+        {
+          "line": 18,
+          "text": ".ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }"
+        },
+        {
+          "line": 23,
+          "text": ".ui-state-disabled { cursor: default !important; }"
+        },
+        {
+          "line": 135,
+          "text": ".ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }"
+        },
+        {
+          "line": 166,
+          "text": ".ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }"
+        },
+        {
+          "line": 203,
+          "text": ".ui-state-disabled, .ui-widget-content .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }"
+        },
+        {
+          "line": 205,
+          "text": ".ui-priority-secondary, .ui-widget-content .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }"
+        },
+        {
+          "line": 411,
+          "text": ".ui-widget-overlay { background: #aaaaaa/*{bgColorOverlay}*/ none/*{bgImgUrlOverlay}*/ 0/*{bgOverlayXPos}*/ 0/*{bgOverlayYPos}*/ repeat-x/*{bgOverlayRepeat}*/; opacity: .3;filter:Alpha(Opacity=30)/*{opacityOverlay}*/; }"
+        },
+        {
+          "line": 412,
+          "text": ".ui-widget-shadow { margin: -4px/*{offsetTopShadow}*/ 0 0 -4px/*{offsetLeftShadow}*/; padding: 4px/*{thicknessShadow}*/; background: #aaaaaa/*{bgColorShadow}*/ none/*{bgImgUrlShadow}*/ 0/*{bgShadowXPos}*/ 0/*{bgShadowYPos}*/ repeat-x/*{bgShadowRepeat}*/; opacity: .35;filter:Alpha(Opacity=35)/*{opacityShadow}*/; -moz-border-radius: 4px/*{cornerRadiusShadow}*/; -webkit-border-radius: 4px/*{cornerRadiusShadow}*/; }"
+        }
+      ]
+    }
+  ],
+  "experiments": [
+    {
+      "name": "hover overlays only its properties and leave restores normal",
+      "actual": [
+        {
+          "state": "mouseOver",
+          "classes": [
+            "mouseOver"
+          ],
+          "paintCount": 1,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 2
+            },
+            "borderWidth": 4,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 2
+          }
+        },
+        {
+          "state": "normal",
+          "classes": [],
+          "paintCount": 2,
+          "mouseOver": [],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 1
+            },
+            "borderWidth": 1,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 2
+          }
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "down over hover then release on target restores hover",
+      "actual": [
+        {
+          "state": "mouseOverMouseDown",
+          "classes": [
+            "mouseDown",
+            "mouseOver"
+          ],
+          "paintCount": 2,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "w",
+          "style": {
+            "fill": {
+              "color": 3
+            },
+            "borderWidth": 4,
+            "fontSize": 20,
+            "opacity": 0.8,
+            "paddingLeft": 2
+          }
+        },
+        {
+          "state": "mouseOver",
+          "classes": [
+            "mouseOver"
+          ],
+          "paintCount": 3,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 2
+            },
+            "borderWidth": 4,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 2
+          }
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "leave while held preserves mouseDown and removes hover-only properties",
+      "actual": {
+        "state": "mouseDown",
+        "classes": [
+          "mouseDown"
+        ],
+        "paintCount": 3,
+        "mouseOver": [],
+        "mouseDown": "w",
+        "style": {
+          "fill": {
+            "color": 3
+          },
+          "borderWidth": 1,
+          "fontSize": 20,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "reenter while held restores hover plus mouseDown",
+      "actual": {
+        "state": "mouseOverMouseDown",
+        "classes": [
+          "mouseDown",
+          "mouseOver"
+        ],
+        "paintCount": 4,
+        "mouseOver": [
+          "w"
+        ],
+        "mouseDown": "w",
+        "style": {
+          "fill": {
+            "color": 3
+          },
+          "borderWidth": 4,
+          "fontSize": 20,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "document release outside clears down without creating hover",
+      "actual": {
+        "state": "normal",
+        "classes": [],
+        "paintCount": 4,
+        "mouseOver": [],
+        "mouseDown": "",
+        "style": {
+          "fill": {
+            "color": 1
+          },
+          "borderWidth": 1,
+          "fontSize": 12,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "dragend original cleanup forces mouseOver when checkMouseOver is absent",
+      "actual": {
+        "state": "mouseOver",
+        "classes": [
+          "mouseOver"
+        ],
+        "paintCount": 4,
+        "mouseOver": [],
+        "mouseDown": "",
+        "style": {
+          "fill": {
+            "color": 2
+          },
+          "borderWidth": 4,
+          "fontSize": 12,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "focus suppresses both hover and down, blur recomputes live pointer state",
+      "actual": [
+        {
+          "state": "focused",
+          "classes": [
+            "focused"
+          ],
+          "paintCount": 3,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "w",
+          "style": {
+            "fill": {
+              "color": 4
+            },
+            "borderWidth": 1,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 8
+          }
+        },
+        {
+          "state": "mouseOverMouseDown",
+          "classes": [
+            "mouseDown",
+            "mouseOver"
+          ],
+          "paintCount": 4,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "w",
+          "style": {
+            "fill": {
+              "color": 3
+            },
+            "borderWidth": 4,
+            "fontSize": 20,
+            "opacity": 0.8,
+            "paddingLeft": 2
+          }
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "DOM focus without effective missing focused effect leaves pointer style active",
+      "actual": {
+        "n": 1,
+        "snap": {
+          "state": "mouseOver",
+          "classes": [
+            "mouseOver"
+          ],
+          "paintCount": 1,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 2
+            },
+            "borderWidth": 4,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 2
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "DOM focus without effective empty focused effect leaves pointer style active",
+      "actual": {
+        "n": 1,
+        "snap": {
+          "state": "mouseOver",
+          "classes": [
+            "mouseOver"
+          ],
+          "paintCount": 1,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 2
+            },
+            "borderWidth": 4,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 2
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "selected overlays focused per-property, unselect restores focus",
+      "actual": [
+        {
+          "state": "focusedSelected",
+          "classes": [
+            "focused",
+            "selected"
+          ],
+          "paintCount": 3,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 5
+            },
+            "borderWidth": 1,
+            "fontSize": 21,
+            "opacity": 0.8,
+            "paddingLeft": 8
+          }
+        },
+        {
+          "state": "focused",
+          "classes": [
+            "focused"
+          ],
+          "paintCount": 4,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 4
+            },
+            "borderWidth": 1,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 8
+          }
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "selected overlays hover/down but their unconflicted properties survive",
+      "actual": {
+        "state": "mouseOverMouseDownSelected",
+        "classes": [
+          "mouseDown",
+          "mouseOver",
+          "selected"
+        ],
+        "paintCount": 3,
+        "mouseOver": [
+          "w"
+        ],
+        "mouseDown": "w",
+        "style": {
+          "fill": {
+            "color": 5
+          },
+          "borderWidth": 4,
+          "fontSize": 21,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "disabled excludes pointer and focus while retaining selected then disabled precedence",
+      "actual": {
+        "state": "selectedDisabled",
+        "classes": [
+          "disabled",
+          "selected"
+        ],
+        "paintCount": 5,
+        "mouseOver": [
+          "w"
+        ],
+        "mouseDown": "w",
+        "style": {
+          "fill": {
+            "color": 6
+          },
+          "borderWidth": 1,
+          "fontSize": 21,
+          "opacity": 0.25,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "disabled without opacity keeps base opacity, no blanket multiplier",
+      "actual": {
+        "state": "disabled",
+        "classes": [
+          "disabled"
+        ],
+        "paintCount": 1,
+        "mouseOver": [],
+        "mouseDown": "",
+        "style": {
+          "fill": {
+            "color": 6
+          },
+          "borderWidth": 1,
+          "fontSize": 12,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "disable with no disabled style stores flag but does not repaint immediately",
+      "actual": {
+        "before": 1,
+        "disabled": true,
+        "generated": "disabled",
+        "snap": {
+          "state": "mouseOver",
+          "classes": [
+            "mouseOver"
+          ],
+          "paintCount": 1,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 2
+            },
+            "borderWidth": 4,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 2
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "disabled mouseDown focused selected setters are ignored",
+      "actual": {
+        "n": 1,
+        "snap": {
+          "state": "disabled",
+          "classes": [
+            "disabled"
+          ],
+          "paintCount": 1,
+          "mouseOver": [],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 6
+            },
+            "borderWidth": 1,
+            "fontSize": 12,
+            "opacity": 0.25,
+            "paddingLeft": 2
+          }
+        },
+        "selected": false,
+        "events": []
+      },
+      "pass": true
+    },
+    {
+      "name": "hover setter can repaint disabled, but generates disabled state",
+      "actual": {
+        "n": 1,
+        "snap": {
+          "state": "disabled",
+          "classes": [
+            "disabled"
+          ],
+          "paintCount": 2,
+          "mouseOver": [
+            "w"
+          ],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 6
+            },
+            "borderWidth": 1,
+            "fontSize": 12,
+            "opacity": 0.25,
+            "paddingLeft": 2
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "enable recomputes pointer selected states but lost focused class does not restore itself",
+      "actual": {
+        "state": "mouseOverSelected",
+        "classes": [
+          "mouseOver",
+          "selected"
+        ],
+        "paintCount": 5,
+        "mouseOver": [
+          "w"
+        ],
+        "mouseDown": "",
+        "style": {
+          "fill": {
+            "color": 5
+          },
+          "borderWidth": 4,
+          "fontSize": 21,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "adaptive explicit stateStyles map suppresses default missing state fallback",
+      "actual": {
+        "state": "mouseOver",
+        "classes": [
+          "mouseOver"
+        ],
+        "paintCount": 1,
+        "mouseOver": [
+          "w"
+        ],
+        "mouseDown": "",
+        "style": {
+          "fill": {
+            "color": 1
+          },
+          "borderWidth": 1,
+          "fontSize": 12,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "adaptive state override uses closest map without filling from lower maps",
+      "actual": {
+        "state": "mouseOver",
+        "classes": [
+          "mouseOver"
+        ],
+        "paintCount": 1,
+        "mouseOver": [
+          "w"
+        ],
+        "mouseDown": "",
+        "style": {
+          "fill": {
+            "color": 1
+          },
+          "borderWidth": 9,
+          "fontSize": 12,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "adaptive empty focused object counts as existing unlike empty default focused object",
+      "actual": {
+        "state": "focused",
+        "classes": [
+          "focused"
+        ],
+        "paintCount": 2,
+        "mouseOver": [
+          "w"
+        ],
+        "mouseDown": "",
+        "style": {
+          "fill": {
+            "color": 1
+          },
+          "borderWidth": 1,
+          "fontSize": 12,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "state custom style is merged before explicit state properties",
+      "actual": {
+        "state": "mouseOver",
+        "classes": [
+          "mouseOver"
+        ],
+        "paintCount": 1,
+        "mouseOver": [
+          "w"
+        ],
+        "mouseDown": "",
+        "style": {
+          "fill": {
+            "color": 9
+          },
+          "borderWidth": 4,
+          "fontSize": 30,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "structured style properties are replaced shallowly, not deep merged",
+      "actual": {
+        "color": 2
+      },
+      "pass": true
+    },
+    {
+      "name": "explicit zero/false/empty scalar property values survive merging",
+      "actual": {
+        "style": {
+          "fill": {
+            "color": 1
+          },
+          "borderWidth": 0,
+          "fontSize": 0,
+          "opacity": 0,
+          "paddingLeft": 0
+        },
+        "flag": false,
+        "label": ""
+      },
+      "pass": true
+    },
+    {
+      "name": "mouseUp handler without real hover forces hover but does not change hover list",
+      "actual": {
+        "state": "mouseOver",
+        "classes": [
+          "mouseOver"
+        ],
+        "paintCount": 2,
+        "mouseOver": [],
+        "mouseDown": "",
+        "style": {
+          "fill": {
+            "color": 2
+          },
+          "borderWidth": 4,
+          "fontSize": 12,
+          "opacity": 0.8,
+          "paddingLeft": 2
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "checkbox checked setter while disabled changes checked but not selected style/events",
+      "actual": {
+        "checked": true,
+        "selected": false,
+        "n": 1,
+        "snap": {
+          "state": "disabled",
+          "classes": [
+            "disabled"
+          ],
+          "paintCount": 1,
+          "mouseOver": [],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 6
+            },
+            "borderWidth": 1,
+            "fontSize": 12,
+            "opacity": 0.25,
+            "paddingLeft": 2
+          }
+        },
+        "events": []
+      },
+      "pass": true
+    },
+    {
+      "name": "checkbox initial selected before disabled retains both style states",
+      "actual": {
+        "checked": true,
+        "selected": true,
+        "snap": {
+          "state": "selectedDisabled",
+          "classes": [
+            "disabled",
+            "selected"
+          ],
+          "paintCount": 2,
+          "mouseOver": [],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 6
+            },
+            "borderWidth": 1,
+            "fontSize": 21,
+            "opacity": 0.25,
+            "paddingLeft": 2
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "radio checked setter while disabled changes checked but not selected style/events",
+      "actual": {
+        "checked": true,
+        "selected": false,
+        "n": 1,
+        "snap": {
+          "state": "disabled",
+          "classes": [
+            "disabled"
+          ],
+          "paintCount": 1,
+          "mouseOver": [],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 6
+            },
+            "borderWidth": 1,
+            "fontSize": 12,
+            "opacity": 0.25,
+            "paddingLeft": 2
+          }
+        },
+        "events": []
+      },
+      "pass": true
+    },
+    {
+      "name": "radio initial selected before disabled retains both style states",
+      "actual": {
+        "checked": true,
+        "selected": true,
+        "snap": {
+          "state": "selectedDisabled",
+          "classes": [
+            "disabled",
+            "selected"
+          ],
+          "paintCount": 2,
+          "mouseOver": [],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 6
+            },
+            "borderWidth": 1,
+            "fontSize": 21,
+            "opacity": 0.25,
+            "paddingLeft": 2
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "query enabled on checkbox exits before changing native input.disabled",
+      "actual": {
+        "nativeDisabled": null,
+        "styleDisabled": true
+      },
+      "pass": true
+    },
+    {
+      "name": "query enabled on text input changes native input.disabled too",
+      "actual": {
+        "nativeDisabled": true,
+        "styleDisabled": true
+      },
+      "pass": true
+    },
+    {
+      "name": "generic shape focus style is wired only when source tabbable is true",
+      "actual": {
+        "without": {
+          "state": null,
+          "classes": [],
+          "paintCount": 0,
+          "mouseOver": [],
+          "mouseDown": "",
+          "style": null
+        },
+        "with": {
+          "state": "focused",
+          "classes": [
+            "focused"
+          ],
+          "paintCount": 1,
+          "mouseOver": [],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 4
+            },
+            "borderWidth": 1,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 8
+          }
+        },
+        "tabIndex": 0
+      },
+      "pass": true
+    },
+    {
+      "name": "text input focus/blur style is wired without explicit tabbable",
+      "actual": [
+        {
+          "state": "focused",
+          "classes": [
+            "focused"
+          ],
+          "paintCount": 1,
+          "mouseOver": [],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 4
+            },
+            "borderWidth": 1,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 8
+          }
+        },
+        {
+          "state": "normal",
+          "classes": [],
+          "paintCount": 2,
+          "mouseOver": [],
+          "mouseDown": "",
+          "style": {
+            "fill": {
+              "color": 1
+            },
+            "borderWidth": 1,
+            "fontSize": 12,
+            "opacity": 0.8,
+            "paddingLeft": 2
+          }
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "ordinary mousedown style handler has no mouse-button filter",
+      "actual": [
+        {
+          "button": 0,
+          "down": "mouseOverMouseDown",
+          "released": "mouseOver"
+        },
+        {
+          "button": 1,
+          "down": "mouseOverMouseDown",
+          "released": "mouseOver"
+        },
+        {
+          "button": 2,
+          "down": "mouseOverMouseDown",
+          "released": "mouseOver"
+        }
+      ],
+      "pass": true
+    }
+  ]
+}

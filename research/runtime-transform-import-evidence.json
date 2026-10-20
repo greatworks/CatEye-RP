@@ -1,0 +1,411 @@
+{
+  "stage": "runtime-transform native interaction reader",
+  "status": "frozen-reader-scope",
+  "originalDllExecuted": false,
+  "originalAxureGuiCompared": false,
+  "fullAxureParity": false,
+  "method": "Exact stored carrier validation plus bounded syntax validation, source corpus comparison, and explicitly synthetic case isolation; no expression or target execution.",
+  "sources": [
+    {
+      "file": "research/scripts/read-rp-interactions.mjs",
+      "sha256": "9cad13789fe618def273457f1f61584489ef2d0818224cdd0bd1f3cd7285290b"
+    },
+    {
+      "file": "research/scripts/read-rp-transform.test.mjs",
+      "sha256": "91c4304d8e26d01c84208609bf0c5c0ebe154fd6355716fa7a55f0d4a5e902c0"
+    },
+    {
+      "file": "research/scripts/read-rp-objects.mjs",
+      "sha256": "6e94582d21efacec6e75cfcf41953cc02913fa68031056637387df34f6cb59b9"
+    },
+    {
+      "file": ".build/before-runtime-transform/research/scripts/read-rp-interactions.mjs",
+      "sha256": "aee2b93c204f54b08b1f774d6f6b4f588c562dd40898ada39909e7035eaeb26e"
+    },
+    {
+      "file": "research/runtime-transform-bindings-evidence.json",
+      "sha256": "f7ecf150e9f0f2c81ed41392cfaf1666f31471660c231c73251b3b3cb105cc92"
+    },
+    {
+      "file": "research/runtime-transform-bindings-case-census.json",
+      "sha256": "a207988c445aa4be1f16494de6a23289dc220a8f2dee6ebee2579c7fb75aeb22"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+      "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50",
+      "owners": 43,
+      "supportedBefore": 0,
+      "supportedAfter": 0
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Flow.rplib",
+      "sha256": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451",
+      "owners": 37,
+      "supportedBefore": 0,
+      "supportedAfter": 0
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Icons.rplib",
+      "sha256": "83f450088f81f6047dfb196919fff3a4aae2f3adb56668da4d4c8cfd3b813bda",
+      "owners": 920,
+      "supportedBefore": 0,
+      "supportedAfter": 0
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "owners": 582,
+      "supportedBefore": 96,
+      "supportedAfter": 106
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b",
+      "owners": 136,
+      "supportedBefore": 9,
+      "supportedAfter": 9
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714",
+      "owners": 58,
+      "supportedBefore": 14,
+      "supportedAfter": 14
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7",
+      "owners": 13,
+      "supportedBefore": 3,
+      "supportedAfter": 3
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Quick Win.rp",
+      "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051",
+      "owners": 9,
+      "supportedBefore": 2,
+      "supportedAfter": 2
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+      "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72",
+      "owners": 33,
+      "supportedBefore": 8,
+      "supportedAfter": 8
+    },
+    {
+      "file": "research/samples/the-basics-tab-menu.rp",
+      "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4",
+      "owners": 5,
+      "supportedBefore": 2,
+      "supportedAfter": 2
+    },
+    {
+      "file": "research/samples/complex-interactions-required-fields.rp",
+      "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c",
+      "owners": 5,
+      "supportedBefore": 3,
+      "supportedAfter": 3
+    }
+  ],
+  "priorEvidence": [
+    {
+      "file": "research/runtime-transform-format-evidence.json",
+      "sha256": "fd0a161c83e7a3a63b3fd0a2b96397f955c372e56911001b962dfc36dbfc61a9"
+    },
+    {
+      "file": "research/runtime-transform-format-manifest.json",
+      "sha256": "67b50080e482ab770b289b97896e645dfe6aeb8cdb2a6361fcac8872beb80490"
+    },
+    {
+      "file": "research/runtime-transform-bindings-evidence.json",
+      "sha256": "f7ecf150e9f0f2c81ed41392cfaf1666f31471660c231c73251b3b3cb105cc92"
+    },
+    {
+      "file": "research/runtime-transform-bindings-manifest.json",
+      "sha256": "2c7c54842e300bd8612965058540dcb33ada5b4def339157ed823053251e1f85"
+    }
+  ],
+  "tests": {
+    "red": {
+      "total": 44,
+      "passed": 36,
+      "failed": 8,
+      "file": "research/runtime-transform-import-reader-red.tap"
+    },
+    "newFocused": 51,
+    "relatedFocused": 53,
+    "green": {
+      "total": 104,
+      "passed": 104,
+      "failed": 0,
+      "file": "research/runtime-transform-import-reader-green.tap"
+    },
+    "oldTestsChanged": false
+  },
+  "corpus": {
+    "samples": 11,
+    "owners": 1841,
+    "previouslySupported": 137,
+    "preservedSupported": 137,
+    "addedEvents": 10,
+    "addedTransformActions": 22,
+    "changedDiagnostics": 4,
+    "sourceTransformActions": 55,
+    "sourceTransformTargetRecords": 63,
+    "sourceBoundaries": 12,
+    "mixedMoveSizeCases": 6,
+    "recoveredMixedMoveSizeCases": 0,
+    "syntheticIsolatedCarriers": 55
+  },
+  "checks": {
+    "total": 4,
+    "passed": 4,
+    "results": [
+      {
+        "name": "All11 original source hashes unchanged",
+        "passed": true
+      },
+      {
+        "name": "All previously supported events byte-equivalent in JSON projection",
+        "passed": true
+      },
+      {
+        "name": "Exactly10 complete source Click events newly decoded; no event gate broadened",
+        "passed": true
+      },
+      {
+        "name": "All6 mixed Move/Size cases still reject their unsupported native event",
+        "passed": true
+      }
+    ]
+  },
+  "protocol": {
+    "identity": "Native sourceId/targetSourceId GUIDs, scoped by enclosing native package. No product ID conversion.",
+    "action": "One action -> ordered targets array, repeats retained.",
+    "expression": "Exact text + lowercase local widget bindings. Primitive StringLiteral output is text.",
+    "boundary": "Complete recursive and/or/compare with expression operands and direction; not an unconditional clamp.",
+    "scope": "All previously unsupported events, siblings, owner/target paths remain rejected atomically."
+  },
+  "examples": {
+    "actualMove": {
+      "sourceId": "f3bc0222aa704119b504ab696a39e0ac",
+      "type": "move",
+      "move": {
+        "targets": [
+          {
+            "target": {
+              "kind": "widget",
+              "sourceId": "d3944486d37d4fd691df13a2f2efc6fb"
+            },
+            "mode": "location",
+            "x": {
+              "text": "[[track.left]]",
+              "bindings": {
+                "track": {
+                  "kind": "widget",
+                  "targetSourceId": "d515a37dfd114af6877e6c6d4d244032"
+                }
+              }
+            },
+            "y": {
+              "text": "[[Target.y]]"
+            },
+            "trajectory": "straight",
+            "easing": "none",
+            "duration": 500
+          }
+        ]
+      }
+    },
+    "actualThisMove": {
+      "sourceId": "553322bffa92455b86592f0ee47603af",
+      "type": "move",
+      "move": {
+        "targets": [
+          {
+            "target": {
+              "kind": "this"
+            },
+            "mode": "location",
+            "x": {
+              "text": "[[header1.left]]",
+              "bindings": {
+                "header1": {
+                  "kind": "widget",
+                  "targetSourceId": "1f7611f6ff8045baaa8ac9c815d49397"
+                }
+              }
+            },
+            "y": {
+              "text": "[[header1.bottom - 1]]",
+              "bindings": {
+                "header1": {
+                  "kind": "widget",
+                  "targetSourceId": "1f7611f6ff8045baaa8ac9c815d49397"
+                }
+              }
+            },
+            "trajectory": "straight",
+            "easing": "none",
+            "duration": 200
+          }
+        ]
+      }
+    },
+    "syntheticIsolatedRealSize": {
+      "method": "SYNTHETIC Click/case isolation of an unchanged real action carrier; not source-event recovery",
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "packageId": "e60b879dcd664f83b848b6f88263b0a3",
+      "sourcePartSha256": "444bf07b8639063c3c273cc9c46806ea687b7d8adaca1c6cbab62856f7307bc8",
+      "ownerId": "d3944486d37d4fd691df13a2f2efc6fb",
+      "originalEventId": "a9430393c178491da282686301390e99",
+      "originalNativeEventType": 275,
+      "action": {
+        "sourceId": "5bb6eee435cf45d38e5048b215680302",
+        "type": "resize",
+        "resize": {
+          "targets": [
+            {
+              "target": {
+                "kind": "widget",
+                "sourceId": "5daa721c93574f1d839b01bb4b55a1ee"
+              },
+              "width": {
+                "text": "[[(this.x - track.x)+2]]",
+                "bindings": {
+                  "track": {
+                    "kind": "widget",
+                    "targetSourceId": "d515a37dfd114af6877e6c6d4d244032"
+                  }
+                }
+              },
+              "height": {
+                "text": "[[Target.height]]"
+              },
+              "anchor": "top left",
+              "easing": "none",
+              "duration": 500
+            }
+          ]
+        }
+      }
+    },
+    "syntheticIsolatedRealBoundary": {
+      "method": "SYNTHETIC Click/case isolation of an unchanged real action carrier; not source-event recovery",
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "packageId": "e60b879dcd664f83b848b6f88263b0a3",
+      "sourcePartSha256": "444bf07b8639063c3c273cc9c46806ea687b7d8adaca1c6cbab62856f7307bc8",
+      "ownerId": "d3944486d37d4fd691df13a2f2efc6fb",
+      "originalEventId": "70aad68c8bd0410a9722847db3074d85",
+      "originalNativeEventType": 273,
+      "action": {
+        "sourceId": "11d6f5026e0f42a0ae792349648002c3",
+        "type": "move",
+        "move": {
+          "targets": [
+            {
+              "target": {
+                "kind": "this"
+              },
+              "mode": "dragX",
+              "x": {
+                "text": "0"
+              },
+              "y": {
+                "text": "0"
+              },
+              "trajectory": "straight",
+              "easing": "none",
+              "duration": 500,
+              "boundary": {
+                "kind": "and",
+                "left": {
+                  "kind": "compare",
+                  "operator": ">=",
+                  "direction": "left",
+                  "left": {
+                    "text": "[[Target.left + DragX]]"
+                  },
+                  "right": {
+                    "text": "[[Track.left]]",
+                    "bindings": {
+                      "track": {
+                        "kind": "widget",
+                        "targetSourceId": "d515a37dfd114af6877e6c6d4d244032"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "kind": "compare",
+                  "operator": "<=",
+                  "direction": "right",
+                  "left": {
+                    "text": "[[Target.right + DragX]]"
+                  },
+                  "right": {
+                    "text": "[[Track.right]]",
+                    "bindings": {
+                      "track": {
+                        "kind": "widget",
+                        "targetSourceId": "d515a37dfd114af6877e6c6d4d244032"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "unresolved": [
+    "Product mapper must resolve every motion target and local binding against complete admitted owner graphs, preserve project-global-variable lookup precedence, and reject missing dependencies.",
+    "OnDrag273, OnMove275, PageOnResize321 event mapping is unchanged; all6 source mixed cases still reject.",
+    "Native special targets and nonlocal RDO/repeater paths are not guessed.",
+    "None-easing Move keeps stored declaration but native emitted runtime options omit trajectory/duration.",
+    "Full native expression grammar and native GUI parity are not established."
+  ],
+  "files": [
+    {
+      "file": "research/runtime-transform-import-evidence.md",
+      "sha256": "ae933a8bd6346b61e9916d20227242d420c6e362daf37836a864decf70bf2ee3"
+    },
+    {
+      "file": "research/runtime-transform-import-audit.mjs",
+      "sha256": "47025dd57dd0fee634893ba9e5a01dfe41fe37b8532b3a7c4188d0797393358c"
+    },
+    {
+      "file": "research/runtime-transform-import-reader-audit.json",
+      "sha256": "c89b8a67761cdbbdb3f7049bf7893e5a1bc47113844bdce9f2a7dd4b9244ca30"
+    },
+    {
+      "file": "research/runtime-transform-import-report.mjs",
+      "sha256": "64ba3443887e212b74a74b03d941caf25df1032400c1241c29190e71a95af800"
+    },
+    {
+      "file": "research/runtime-transform-import-reader-red.tap",
+      "sha256": "b611598a3f90e686d639852785568ee791628c09a74047571863bcc90bc831fb"
+    },
+    {
+      "file": "research/runtime-transform-import-reader-first.tap",
+      "sha256": "aae6fd8fc07aee0a5b2fb77ff9fe22977721fbeebadc84a6d60591d16c604fb3"
+    },
+    {
+      "file": "research/runtime-transform-import-reader-focused.tap",
+      "sha256": "4647936d06ecab430d41fab196fe2fb9cecfcf9ef055ffbe12df451aa5f33769"
+    },
+    {
+      "file": "research/runtime-transform-import-reader-green.tap",
+      "sha256": "20e3ee6c12ca56fcf054033dc0843763ea6da9cb0eb24c9443cd1a780c7962cd"
+    },
+    {
+      "file": "research/runtime-transform-import-audit.log",
+      "sha256": "37903c3055150379878d19d2f99ede6cfdd2d8c987c6f2325a9b5eb2a9aa9e41"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "generatedAt": "2026-10-20T05:57:47.681Z",
+  "scope": "Independent read-only model/clone/expression-alias/ordered-target/legacy-conversion review. Parent performed production fixes.",
+  "method": [
+    "Current model modules after TypeScript stripping; exact default/rename function slices from current component.",
+    "Hidden Edge mounts actual MotionActionEditor and Inspector through isolated Vite server/cache. Synthetic documents; no original DLL/GUI execution."
+  ],
+  "blockingFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "R1",
+      "priority": "P2",
+      "file": "src/components/MotionActionEditor.tsx",
+      "originalLine": 20,
+      "title": "Alias rename corrupts numeric exponent tokens",
+      "reproduction": "Rename e3 to rail in [[1e3 + e3.x]], or e to rail in [[1e-3 + e.x]].",
+      "before": [
+        "[[1rail + rail.x]]",
+        "[[1rail-3 + rail.x]]"
+      ],
+      "after": [
+        "[[1e3 + rail.x]]",
+        "[[1e-3 + rail.x]]"
+      ],
+      "fix": "Complete numeric tokens are preserved before identifiers.",
+      "verification": "Both original function-slice cases pass; strings/plain text and immutable binding inputs remain covered."
+    },
+    {
+      "id": "R2",
+      "priority": "P2",
+      "file": "src/components/MotionActionEditor.tsx",
+      "originalLine": 105,
+      "title": "Invalid local alias draft transfers to another reordered target",
+      "reproduction": "Two Move targets A/B each have local1. Enter bad name on A; move A down. The invalid draft remains at row 1 and its correction renames B.",
+      "before": {
+        "targets": [
+          "b",
+          "a"
+        ],
+        "drafts": [
+          "bad name",
+          "local1"
+        ]
+      },
+      "after": {
+        "targets": [
+          "b",
+          "a"
+        ],
+        "drafts": [
+          "local1",
+          "local1"
+        ]
+      },
+      "fix": "BindingName resets draft/error when its name or expression scope changes.",
+      "verification": "Actual React component in hidden Edge, original reorder steps, no page errors."
+    },
+    {
+      "id": "R3",
+      "priority": "P2",
+      "file": "src/components/Inspector.tsx",
+      "originalLine": 384,
+      "title": "Legacy conversion changes inert or unsupported-target behavior",
+      "reproduction": "Convert a legacy Move with no target, or a legacy Resize targeting a line.",
+      "before": [
+        "Missing-target Move changes from no-op to moving its event owner.",
+        "Legacy line Resize changes dimensions; structured Resize is a no-op for line."
+      ],
+      "after": [
+        "Missing-target conversion disabled with choose-target explanation.",
+        "Line Size conversion disabled with unavailable-type explanation."
+      ],
+      "fix": "Conversion requires an existing target and an eligible Size type; the runtime native type gate remains unchanged.",
+      "verification": "Actual Inspector verifies disabled controls/explanations and exact unchanged documents. Ordinary box conversion preserves target/numbers and strict save/open."
+    }
+  ],
+  "checks": {
+    "total": 33,
+    "passed": 33,
+    "failed": 0
+  },
+  "redChecks": {
+    "total": 23,
+    "passed": 20,
+    "failed": 3
+  },
+  "legacyRed": {
+    "cases": 3,
+    "equivalent": 1,
+    "nonEquivalent": 2
+  },
+  "sourceStableDuringProbe": true,
+  "sourceHashes": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "0a243b7003db3325d55833046f34dbad6943a2d67f7b636af032d9e6634937ed"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "c81b8bc09fc5dc6eae6a42da14b3934b71f5fa431c0a497ccf90fa198ca56f9f"
+    },
+    {
+      "path": "src/components/MotionActionEditor.tsx",
+      "sha256": "21252ea362ba8a619dccbdd3588c891c08ebecfb2e3424f89260fd34ea1b64b8"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "7bc0130fd6f9a3f23ff4b00efd7f813baac86dd784f844c091e79560c6470eae"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "d6c76c2ab5ad69595ef55f947143e47afbbbee0415845843efac009b5ae9f0b1"
+    },
+    {
+      "path": "tests/runtime-transform-model.test.ts",
+      "sha256": "5c0657f6823882253ca9ad481e53a78fc2ac04bb0034e4ea2e802308b3fcd089"
+    },
+    {
+      "path": "tests/runtime-transform-authoring.test.ts",
+      "sha256": "05f212b8887ec0c4e12cc02e988579e89d1f58f267c97732c9100610ad3494dc"
+    },
+    {
+      "path": "tests/e2e/runtime-transform-authoring.spec.ts",
+      "sha256": "60ef9ed0ec88afe05530c772393647bbfb508443c68980c0f275505376b4447c"
+    }
+  ],
+  "currentSourceHashes": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "0a243b7003db3325d55833046f34dbad6943a2d67f7b636af032d9e6634937ed"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "c81b8bc09fc5dc6eae6a42da14b3934b71f5fa431c0a497ccf90fa198ca56f9f"
+    },
+    {
+      "path": "src/components/MotionActionEditor.tsx",
+      "sha256": "21252ea362ba8a619dccbdd3588c891c08ebecfb2e3424f89260fd34ea1b64b8"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "7bc0130fd6f9a3f23ff4b00efd7f813baac86dd784f844c091e79560c6470eae"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "d6c76c2ab5ad69595ef55f947143e47afbbbee0415845843efac009b5ae9f0b1"
+    },
+    {
+      "path": "tests/runtime-transform-model.test.ts",
+      "sha256": "5c0657f6823882253ca9ad481e53a78fc2ac04bb0034e4ea2e802308b3fcd089"
+    },
+    {
+      "path": "tests/runtime-transform-authoring.test.ts",
+      "sha256": "05f212b8887ec0c4e12cc02e988579e89d1f58f267c97732c9100610ad3494dc"
+    },
+    {
+      "path": "tests/e2e/runtime-transform-authoring.spec.ts",
+      "sha256": "f14f4e89c6c007d8c153476b89172530462c84e3afd03f27e7c2e303aed6a2d4"
+    }
+  ],
+  "postProbeHashChanges": [
+    {
+      "path": "tests/e2e/runtime-transform-authoring.spec.ts",
+      "probeSha256": "60ef9ed0ec88afe05530c772393647bbfb508443c68980c0f275505376b4447c",
+      "currentSha256": "f14f4e89c6c007d8c153476b89172530462c84e3afd03f27e7c2e303aed6a2d4"
+    }
+  ],
+  "untouchedReaderImporter": [
+    {
+      "path": "src/model/import-rp.ts",
+      "sha256": "2180439727ee53c122eba51c0bccc443f2496890dbacde69bc8a286cae860a39"
+    },
+    {
+      "path": "research/scripts/read-rp-interactions.mjs",
+      "sha256": "9cad13789fe618def273457f1f61584489ef2d0818224cdd0bd1f3cd7285290b"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/runtime-transform-authoring-review.md",
+      "sha256": "729c3687ccbd620db757f498dac8f4fa115fddfe5c37e7ecfebae1e26d976f48"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-report.mjs",
+      "sha256": "15d5155bfee71e9824b168b1a083ec4a6d40511c89a9804b21e1ba510992f019"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-red-probe.mjs",
+      "sha256": "e8eab0832679375aa21176f75c856f5fc2bb38034e7c486491c63a4bf6f328fd"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-red-probe.json",
+      "sha256": "f2b2a7a0d5b64d13591ecff6037466d843d4470b176eb299679d394644214411"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-red-reorder.png",
+      "sha256": "1428cc2840f8c20438668229c1d0497d57b1e9434033ec4ba6ccf2638b0c78dd"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-red-legacy.mjs",
+      "sha256": "52eb9afc0e35ef3c7eb2d895e1733ceeb35a977d4918fe1d41dc4bb1fe52a382"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-red-legacy.json",
+      "sha256": "356ec21062b3e106f986f843ad4387c3869e60bddcb6f935b1ecd9ee2d281bf1"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-probe.mjs",
+      "sha256": "1684615352b9dd77a1db48da466fcd74585e292d0936aae0cb1aa935435e7764"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-green-probe.json",
+      "sha256": "20ed231718782dbb192e51de128ad8c357782a85734566d815746cd7719f7639"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-harness.html",
+      "sha256": "83e3c3c3d3e7e58f2cf4231d0281de3588550b1e15adf5f3e220b3661062b489"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-reorder.png",
+      "sha256": "81548648d7e50566dacfb33eab1b158e6176b348222ec596ccbe2976baf723e8"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-conversion.png",
+      "sha256": "e7411ca3f3d7238e3bb365ab56a99463ed56ec8c6da35f9bcfc741d352ff21ea"
+    },
+    {
+      "path": "research/runtime-transform-authoring-review-green-navigation-timeout.json",
+      "sha256": "ceab50ffd739aca05b42a20a0c92c720299c60ade09de0deae301eaed672669b"
+    }
+  ],
+  "originalDllExecuted": false,
+  "originalAxureGuiCompared": false,
+  "limits": [
+    "Full application undo/history and exact package validation belong to parent checks. Parent updated its E2E test after the independent probe; both hashes are recorded, with no production source drift.",
+    "The first green Inspector harness attempt exceeded its cold navigation wait before UI assertions; the partial 20/20 model result is preserved and is not successful browser verification. Final complete run is 33/33.",
+    "No additional strict-validation or clone-ID issue found within exercised duplicate targets, scoped bindings, boolean boundaries, external references and literal strings. This is not proof of arbitrary-expression/native-compiler parity."
+  ]
+}

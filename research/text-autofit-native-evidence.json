@@ -1,0 +1,240 @@
+{
+  "scope": "Read-only static owner/text AutoFit CSS follow-up for pinned RP11.0.0.4150; no production or historical report edits.",
+  "assembly": {
+    "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\AxureRP11.dll",
+    "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+    "bytes": 16314368
+  },
+  "sample": {
+    "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+    "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72",
+    "bytes": 1428652
+  },
+  "owners": [
+    {
+      "packageId": "52bb046bb95c4e789c35be661e8286b8",
+      "sourceId": "e92911c9f26c49e897acf49340a5690e",
+      "text": "Problems",
+      "savedWidth": 95,
+      "savedHeight": 27,
+      "autoFitWidth": true,
+      "autoFitHeight": true
+    },
+    {
+      "packageId": "52bb046bb95c4e789c35be661e8286b8",
+      "sourceId": "4d1d194cc1c04131b76a3f6697700dd9",
+      "text": "Ideas",
+      "savedWidth": 54,
+      "savedHeight": 27,
+      "autoFitWidth": true,
+      "autoFitHeight": true
+    },
+    {
+      "packageId": "cb6927343c814c6d95ba86343baca891",
+      "sourceId": "e92911c9f26c49e897acf49340a5690e",
+      "text": "Problems",
+      "savedWidth": 95,
+      "savedHeight": 27,
+      "autoFitWidth": true,
+      "autoFitHeight": true
+    },
+    {
+      "packageId": "cb6927343c814c6d95ba86343baca891",
+      "sourceId": "4d1d194cc1c04131b76a3f6697700dd9",
+      "text": "Ideas",
+      "savedWidth": 54,
+      "savedHeight": 27,
+      "autoFitWidth": true,
+      "autoFitHeight": true
+    }
+  ],
+  "conclusions": [
+    {
+      "status": "static-and-controlled-replay",
+      "claim": "rNPL AutoFitWidth true emits white-space:nowrap; false emits word-wrap:break-word.",
+      "token": 100699663,
+      "il": [
+        929,
+        1287,
+        1320,
+        1435,
+        1462
+      ]
+    },
+    {
+      "status": "static-and-controlled-replay",
+      "claim": "TextPanel measurement precedes setting emitted text rectangle height=-1; hNKx omits height for that sentinel.",
+      "tokens": [
+        100699663,
+        100722054,
+        100722053,
+        100699265
+      ],
+      "il": [
+        1787,
+        1357,
+        44,
+        335,
+        340,
+        349
+      ]
+    },
+    {
+      "status": "static",
+      "claim": "Ordinary shape owner writers pass their supplied rectangle to SNLp with displayFlex true, independently of measured TextPanel geometry.",
+      "tokens": [
+        100699654,
+        100699656,
+        100699217
+      ],
+      "il": [
+        304,
+        237
+      ]
+    },
+    {
+      "status": "static-and-controlled-replay",
+      "claim": "Owner child rule #owner .text emits position:absolute, align-self, box-sizing:border-box, padding, width:100%, with no height/overflow key in that rule.",
+      "tokens": [
+        100699219,
+        100699214,
+        100699272
+      ]
+    },
+    {
+      "status": "static",
+      "claim": "Specific SNLp overflow assignment is skipped when argument9 scrollbars is zero, as in these owner/text calls. This is not an explicit overflow:visible declaration.",
+      "token": 100699217,
+      "il": [
+        452,
+        454,
+        488,
+        510
+      ]
+    },
+    {
+      "status": "inference",
+      "claim": "If the emitted owner-descendant selector and text-ID selector match the same element with ordinary author cascade, #owner .text specificity can replace measured width with100%; complete generated DOM/CSS has not been obtained."
+    }
+  ],
+  "boundedReplays": [
+    {
+      "file": "research/text-autofit-native-replay.json",
+      "cases": 4,
+      "sha256": "7a6ac4dec3f3270a0a5b39a103cf9dd723c5534d3b3d8a4e9573e654e4dce6dd"
+    },
+    {
+      "file": "research/text-autofit-native-child-replay.json",
+      "cases": 10,
+      "sha256": "4b3c1b4594d791c959799ab914d122de804fe12a28e6507fdd90789102bb83fd"
+    }
+  ],
+  "totalReplayCases": 14,
+  "focusedStaticChecks": 7,
+  "unknowns": [
+    "Original generated HTML and full base/style cascade, including effective owner/text overflow and clipping.",
+    "Actual native graphics/font measurement; injected132x39/95x39 in replay is synthetic.",
+    "Whole-document loading or another global synchronization path that could change explicit run21 to base15.",
+    "Final original rendered pixels and whether another upstream layout hook changes owner bounds."
+  ],
+  "nextNarrowHook": {
+    "type": "BNCJ",
+    "method": "DNCg",
+    "token": 100699506,
+    "callers": [
+      {
+        "method": "nNPR",
+        "il": [
+          395,
+          988
+        ]
+      },
+      {
+        "method": "sNP3",
+        "il": [
+          2538,
+          3639
+        ]
+      }
+    ],
+    "purpose": "Confirm emitted owner/text DOM attachment and inspect base stylesheet attachment/clipping declarations."
+  },
+  "implementationDecision": "No font divisor change, base-font substitution, owner resize, parser or renderer edit in this task. Separate text layer nowrap/auto-height direction is supported; final clipping is not yet proved.",
+  "sources": [
+    {
+      "file": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128",
+      "bytes": 2734
+    },
+    {
+      "file": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f",
+      "bytes": 266142
+    },
+    {
+      "file": "research/scripts/inspect-rp-serialization.ps1",
+      "sha256": "2c3cebbef109bb692562cbf80d6b60f36449275a21d19060fa10089ab27389b5",
+      "bytes": 6543
+    },
+    {
+      "file": "research/font-size-format-evidence.md",
+      "sha256": "cc5b762b4783eed495d0736a0175ad08e67e9b1879ce18066f908cea30545c95",
+      "bytes": 10728
+    },
+    {
+      "file": "research/font-size-format-evidence.json",
+      "sha256": "c4e27dfc38034d93092d834f46dbbb9dbee0b63f78e43538f4b0b341d5c1db18",
+      "bytes": 51626
+    },
+    {
+      "file": "research/font-size-format-owners.json",
+      "sha256": "b7943d712e4be2f5ff01f8407368ca8ab1f253f9f75d6d11273952c885b1aac4",
+      "bytes": 221676
+    },
+    {
+      "file": "research/font-size-runtime-evidence.md",
+      "sha256": "0006e4364205f39c18c3d5a6810b61b0f993d8f9b81fee321331fb87094c244a",
+      "bytes": 10724
+    },
+    {
+      "file": "research/font-size-runtime-evidence.json",
+      "sha256": "ee2fa3bb9cadb9db67de26b05ef84c3d6eb77dbd8ba0c2c0e12b819dd4fe1d0c",
+      "bytes": 8532
+    },
+    {
+      "file": "research/font-size-runtime-layout-writer-cil.json",
+      "sha256": "4f611d9a51d4efa3ecce7919ebe15d3d20050ff15ac6f82440521da060909939",
+      "bytes": 39688
+    },
+    {
+      "file": "research/font-size-runtime-rect-css-cil.json",
+      "sha256": "6b5d42089521373c2cce4f7455cfec7ac4b02e386044f32e1092596edadd3216",
+      "bytes": 13208
+    },
+    {
+      "file": "research/font-size-runtime-rect-values-cil.json",
+      "sha256": "ec23e2a0776ef6b543ee0841d1333ca3468c9b5e5e4a0ae1003e4336c8f8b40e",
+      "bytes": 22701
+    },
+    {
+      "file": "research/font-size-runtime-autofit-replay.json",
+      "sha256": "52f0980c549aeffba61137dd350d73191ac18e299297d04e67081217dfb3ae84",
+      "bytes": 13500
+    },
+    {
+      "file": "research/rotation-runtime-shape-writer-cil.json",
+      "sha256": "80a30009543337571c7148105135d306d2f6e701472e5db699e5f5c1aa39e0ea",
+      "bytes": 246552
+    },
+    {
+      "file": "research/shadow-format-form-cil.json",
+      "sha256": "7abf6a35a882b911e8dde4203ee8b2c6210fbe2c9a57e37ed5ec002532a34b36",
+      "bytes": 114070
+    },
+    {
+      "file": "research/font-size-browser-probe.json",
+      "sha256": "fa2abc5e5ca88e64bac7faf7038a6976a89602a4e9398fc7ea5e699c1d98911c",
+      "bytes": 152657
+    }
+  ]
+}

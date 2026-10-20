@@ -1,0 +1,12 @@
+<!doctype html><html><head><title>Independent motion authoring review</title></head><body><div id="root"></div><script type="module">
+      import React,{useState} from 'react';
+      import {createRoot} from 'react-dom/client';
+      import {MotionActionEditor,defaultMoveTarget} from '/src/components/MotionActionEditor.tsx';
+      import {Inspector} from '/src/components/Inspector.tsx';
+      import {createDocument,createWidget} from '/src/model/document.ts';
+      function App(){ const [value,setValue]=useState({targets:['a','b'].map(id=>({...defaultMoveTarget(),target:{kind:'widget',id},x:{text:'[[local1.x]]',bindings:{local1:{kind:'widget',targetId:id}}}}))}),[doc,setDoc]=useState();window.reviewValue=value;
+       window.reviewLegacyVariant=(variant)=>{const d=createDocument(),owner=createWidget('button'),target=createWidget(variant==='line'?'line':'box');owner.id='legacy-owner';target.id='legacy-target';d.pages[0].widgets=[owner,target];owner.interactions=[{id:'legacy-event',name:'Legacy',event:'click',enabled:true,conditions:[],conditionMode:'all',actions:[{id:'legacy-action',type:variant==='line'?'resize':'move',...(variant==='missing'?{}:{targetId:target.id}),x:123,y:234,duration:500}]}];setDoc(d);return d;};
+       window.reviewDoc=doc;
+       return doc?React.createElement(Inspector,{document:doc,page:doc.pages[0],widget:doc.pages[0].widgets[0],onWidgetChange:patch=>setDoc(d=>({...d,pages:d.pages.map((p,i)=>i?p:{...p,widgets:p.widgets.map((w,j)=>j?w:{...w,...patch})})})),onPageChange:()=>{}}):React.createElement(MotionActionEditor,{kind:'move',value,choices:['a','b'].map(id=>({widget:{id,type:'box'},label:id})),onChange:setValue}); }
+      createRoot(document.getElementById('root')).render(React.createElement(App));
+    </script></body></html>

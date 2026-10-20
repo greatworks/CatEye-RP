@@ -1,0 +1,617 @@
+{
+  "schemaVersion": 1,
+  "kind": "Source-bound CIL oracle results compared to independently evaluated captured product single-leaf arithmetic",
+  "sourceSnapshot": {
+    "originalPath": "src/model/layer-geometry.ts",
+    "retainedPath": "research/layer-resize-numeric-layer-bounds-before.ts.txt",
+    "sha256": "97298a9f5dd5fabb21ca94f3140cb3360ca66fde57e52c96bd7bb1e509479959"
+  },
+  "sources": [
+    {
+      "path": "research/layer-resize-numeric-probes.json",
+      "sha256": "2feaf309b110e52162d88233f12064e9dc3e2b35c5526a5df7ac47cfd819b03e"
+    },
+    {
+      "path": "research/layer-resize-numeric-primitives-cil.json",
+      "sha256": "828fc56c9b472a1b9a99f456d26f9a6301065d2c4353b27e632c42a2031d62a3"
+    },
+    {
+      "path": "research/layer-resize-numeric-dependencies-cil.json",
+      "sha256": "7470eb8abe73c17826f77b3c64c22aeddfae2e459a0e6aa2cf5e51ca3c3f1df9"
+    },
+    {
+      "path": "research/layer-resize-numeric-sizing-cil.json",
+      "sha256": "328df0201c00a38a2d95763316198830a2d4504067eddcd1be54398c8c2beb63"
+    }
+  ],
+  "shortcut": {
+    "caller": {
+      "token": 100722239,
+      "name": "g5s7.get_BoundingRect",
+      "offsets": [
+        116,
+        117,
+        122,
+        131,
+        136,
+        297,
+        298,
+        303
+      ]
+    },
+    "comparison": {
+      "token": 100688814,
+      "name": "rbx2.pbxZ",
+      "signature": "0002020D0D",
+      "decodedSignature": "static bool(double value, double epsilon)",
+      "offsets": [
+        7,
+        8,
+        17,
+        18,
+        23,
+        24,
+        26
+      ],
+      "constantAt8": {
+        "opcode": "ldc.r8",
+        "type": "System.Double",
+        "value": 1
+      }
+    },
+    "epsilon": {
+      "callerOffset": 122,
+      "opcode": "ldc.r8",
+      "type": "System.Double",
+      "value": 0.00001
+    },
+    "predicate": "abs(rotation - 1) < 0.00001",
+    "angleGetter": {
+      "token": 100722214,
+      "signature": "20000D",
+      "field": 67134764
+    },
+    "degreeConversion": {
+      "caller": 100722216,
+      "callOffset": 449,
+      "callee": 100688805,
+      "name": "rbx2.jbxa"
+    }
+  },
+  "recommendation": "Use one source-bound author sizing-bounds function for both displayed Layer frames and resize snapshots while preserving nested-Layer flattening. No layer-geometry product changes are made by this report.",
+  "limits": [
+    "Existing original CIL results are reused; no new original DLL or GUI execution.",
+    "Only the old ordinary single-leaf rectangle expression is compared, not the complete Layer collector.",
+    "Controller, provider and final CSS rendering have independent contracts."
+  ],
+  "results": [
+    {
+      "angle": -360,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "oldProduct": {
+        "x": 19.999999999999996,
+        "y": 9.999999999999995,
+        "width": 50.00000000000001,
+        "height": 30.00000000000001
+      },
+      "maxAbsoluteDifference": 1.0658141036401503e-14
+    },
+    {
+      "angle": -270,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 29.999999999999993,
+        "y": -2.7554552980815444e-15,
+        "width": 30.000000000000014,
+        "height": 50
+      },
+      "oldProduct": {
+        "x": 29.999999999999993,
+        "y": -3.552713678800501e-15,
+        "width": 30.00000000000001,
+        "height": 50.00000000000001
+      },
+      "maxAbsoluteDifference": 7.105427357601002e-15
+    },
+    {
+      "angle": -180,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 19.999999999999996,
+        "y": 9.999999999999996,
+        "width": 50,
+        "height": 30.000000000000004
+      },
+      "oldProduct": {
+        "x": 19.999999999999996,
+        "y": 9.999999999999996,
+        "width": 50.00000000000001,
+        "height": 30.000000000000007
+      },
+      "maxAbsoluteDifference": 7.105427357601002e-15
+    },
+    {
+      "angle": -90,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 30,
+        "y": -9.18485099360515e-16,
+        "width": 30,
+        "height": 50
+      },
+      "oldProduct": {
+        "x": 30,
+        "y": 0,
+        "width": 30.000000000000004,
+        "height": 50
+      },
+      "maxAbsoluteDifference": 3.552713678800501e-15
+    },
+    {
+      "angle": -0.00001,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 19.9999973820065,
+        "y": 9.999995636677099,
+        "width": 50.00000523598699,
+        "height": 30.000008726645802
+      },
+      "oldProduct": {
+        "x": 19.9999973820065,
+        "y": 9.999995636677097,
+        "width": 50.000005235987,
+        "height": 30.000008726645806
+      },
+      "maxAbsoluteDifference": 7.105427357601002e-15
+    },
+    {
+      "angle": -0.000001,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "oldProduct": {
+        "x": 19.999999738200614,
+        "y": 9.99999956366769,
+        "width": 50.00000052359877,
+        "height": 30.00000087266462
+      },
+      "maxAbsoluteDifference": 8.726646214540779e-7
+    },
+    {
+      "angle": 0,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "oldProduct": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "maxAbsoluteDifference": 0
+    },
+    {
+      "angle": 0.000001,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "oldProduct": {
+        "x": 19.999999738200614,
+        "y": 9.99999956366769,
+        "width": 50.00000052359877,
+        "height": 30.00000087266462
+      },
+      "maxAbsoluteDifference": 8.726646214540779e-7
+    },
+    {
+      "angle": 0.00001,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 19.9999973820065,
+        "y": 9.999995636677099,
+        "width": 50.00000523598699,
+        "height": 30.000008726645802
+      },
+      "oldProduct": {
+        "x": 19.9999973820065,
+        "y": 9.999995636677097,
+        "width": 50.000005235987,
+        "height": 30.000008726645806
+      },
+      "maxAbsoluteDifference": 7.105427357601002e-15
+    },
+    {
+      "angle": 0.99999,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "oldProduct": {
+        "x": 19.742024065976004,
+        "y": 9.56597872869056,
+        "width": 50.51595186804799,
+        "height": 30.86804254261888
+      },
+      "maxAbsoluteDifference": 0.8680425426188805
+    },
+    {
+      "angle": 0.999999,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "oldProduct": {
+        "x": 19.742021778675436,
+        "y": 9.565974843418873,
+        "width": 50.51595644264913,
+        "height": 30.868050313162254
+      },
+      "maxAbsoluteDifference": 0.8680503131622537
+    },
+    {
+      "angle": 1,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "oldProduct": {
+        "x": 19.742021524530966,
+        "y": 9.565974411722044,
+        "width": 50.51595695093807,
+        "height": 30.868051176555912
+      },
+      "maxAbsoluteDifference": 0.8680511765559125
+    },
+    {
+      "angle": 1.000001,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "oldProduct": {
+        "x": 19.742021270386505,
+        "y": 9.565973980025218,
+        "width": 50.51595745922699,
+        "height": 30.868052039949564
+      },
+      "maxAbsoluteDifference": 0.8680520399495641
+    },
+    {
+      "angle": 1.00001,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 19.742018983086695,
+        "y": 9.565970094753997,
+        "width": 50.51596203382661,
+        "height": 30.86805981049201
+      },
+      "oldProduct": {
+        "x": 19.742018983086695,
+        "y": 9.565970094753997,
+        "width": 50.51596203382661,
+        "height": 30.868059810492007
+      },
+      "maxAbsoluteDifference": 3.552713678800501e-15
+    },
+    {
+      "angle": 30,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 15.84936490538903,
+        "y": -0.4903810567665783,
+        "width": 58.301270189221945,
+        "height": 50.98076211353316
+      },
+      "oldProduct": {
+        "x": 15.84936490538903,
+        "y": -0.49038105676658006,
+        "width": 58.30127018922194,
+        "height": 50.98076211353316
+      },
+      "maxAbsoluteDifference": 7.105427357601002e-15
+    },
+    {
+      "angle": 45,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 16.715728752538098,
+        "y": -3.2842712474618985,
+        "width": 56.568542494923804,
+        "height": 56.568542494923804
+      },
+      "oldProduct": {
+        "x": 16.715728752538098,
+        "y": -3.2842712474618985,
+        "width": 56.568542494923804,
+        "height": 56.5685424949238
+      },
+      "maxAbsoluteDifference": 7.105427357601002e-15
+    },
+    {
+      "angle": 89.13596303062127,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 29.624712621268237,
+        "y": -0.22335314055148253,
+        "width": 30.750574757463525,
+        "height": 50.44670628110296
+      },
+      "oldProduct": {
+        "x": 29.624712621268237,
+        "y": -0.22335314055148103,
+        "width": 30.750574757463525,
+        "height": 50.44670628110296
+      },
+      "maxAbsoluteDifference": 1.4988010832439613e-15
+    },
+    {
+      "angle": 89.999999,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 30,
+        "y": 0,
+        "width": 30,
+        "height": 50
+      },
+      "oldProduct": {
+        "x": 29.999999563667693,
+        "y": -2.6179938217296694e-7,
+        "width": 30.000000872664618,
+        "height": 50.000000523598764
+      },
+      "maxAbsoluteDifference": 8.726646179013642e-7
+    },
+    {
+      "angle": 90,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 30,
+        "y": 0,
+        "width": 30,
+        "height": 50
+      },
+      "oldProduct": {
+        "x": 30,
+        "y": 0,
+        "width": 30.000000000000004,
+        "height": 50
+      },
+      "maxAbsoluteDifference": 3.552713678800501e-15
+    },
+    {
+      "angle": 90.000001,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 30,
+        "y": 0,
+        "width": 30,
+        "height": 50
+      },
+      "oldProduct": {
+        "x": 29.999999563667693,
+        "y": -2.6179938217296694e-7,
+        "width": 30.00000087266461,
+        "height": 50.000000523598764
+      },
+      "maxAbsoluteDifference": 8.726646107959368e-7
+    },
+    {
+      "angle": 180,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "oldProduct": {
+        "x": 19.999999999999996,
+        "y": 9.999999999999996,
+        "width": 50.00000000000001,
+        "height": 30.000000000000007
+      },
+      "maxAbsoluteDifference": 7.105427357601002e-15
+    },
+    {
+      "angle": 270,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 30,
+        "y": 0,
+        "width": 30,
+        "height": 50
+      },
+      "oldProduct": {
+        "x": 29.999999999999993,
+        "y": -3.552713678800501e-15,
+        "width": 30.00000000000001,
+        "height": 50.00000000000001
+      },
+      "maxAbsoluteDifference": 1.0658141036401503e-14
+    },
+    {
+      "angle": 360,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "oldProduct": {
+        "x": 19.999999999999996,
+        "y": 9.999999999999995,
+        "width": 50.00000000000001,
+        "height": 30.00000000000001
+      },
+      "maxAbsoluteDifference": 1.0658141036401503e-14
+    },
+    {
+      "angle": 450,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 50,
+        "height": 30
+      },
+      "retainedCilResult": {
+        "x": 30,
+        "y": 0,
+        "width": 30,
+        "height": 50
+      },
+      "oldProduct": {
+        "x": 29.999999999999993,
+        "y": -3.552713678800501e-15,
+        "width": 30.000000000000014,
+        "height": 50.00000000000001
+      },
+      "maxAbsoluteDifference": 1.4210854715202004e-14
+    }
+  ]
+}

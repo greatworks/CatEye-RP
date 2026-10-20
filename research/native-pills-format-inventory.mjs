@@ -1,0 +1,29 @@
+// Read-only follow-up on exactly the 41 excluded Shape0 records. No target code
+// executes, and no source artifact or production reader is changed.
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import{createHash}from'node:crypto';import{stripTypeScriptTypes}from'node:module';
+import{inspectRpObjects}from'./scripts/read-rp-objects.mjs';
+import{inspectRpSemantics,property as p,recoverVectorPath,recoverRectanglePath}from'./scripts/read-rp-semantics.mjs';
+const read=f=>JSON.parse(fs.readFileSync(f,'utf8').replace(/^\uFEFF/,'')),sha=f=>createHash('sha256').update(fs.readFileSync(f)).digest('hex'),pin=file=>({file,sha256:sha(file)});
+const censusFile='research/native-corners-format-census.json',census=read(censusFile),scope=census.widgets.filter(w=>w.shape===0&&!w.pathDerivedCornerRadii);
+assert.equal(scope.length,41);
+const modelFile='src/model/line-style.ts',source=stripTypeScriptTypes(fs.readFileSync(modelFile,'utf8'));
+const {createLineStyleRenderer}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64')),renderer=createLineStyleRenderer();
+const plain=v=>Array.isArray(v?.$map)?Object.fromEntries(v.$map.map(([k,c])=>[k,plain(c)])):Array.isArray(v)?v.map(plain):v;
+const find=(v,id)=>{if(!v||typeof v!=='object')return;if(v.id===id&&v.status==='stored-fields-recovered')return v;for(const c of Object.values(v)){const r=Array.isArray(c)?c.map(x=>find(x,id)).find(Boolean):find(c,id);if(r)return r;}};
+const incoming=(objects,id)=>{const result=[];for(const o of objects){const walk=(v,at)=>{if(!v||typeof v!=='object')return;if(v.$reference===id)result.push({sourceId:o.id,type:o.type,path:at,referenceTag:v.referenceTag});if(Array.isArray(v.$map))for(const[k,c]of v.$map)walk(c,at+'.'+k);else if(Array.isArray(v))v.forEach((c,i)=>walk(c,at+'['+i+']'));};walk(o.properties,'properties');}return result;};
+const output={capturedAt:new Date().toISOString(),method:'Read exact original records for previous strict-domain exclusions; current parser and renderer are independent observations, not an expanded implementation.',owners:[],samples:[],totals:{}};
+for(const sample of census.samples){const wanted=scope.filter(w=>w.sourceSha256===sample.sha256);if(!wanted.length)continue;assert.equal(sha(sample.file),sample.sha256);
+ const decoded=inspectRpObjects(sample.file),sem=inspectRpSemantics(sample.file);output.samples.push({file:sample.file,sha256:sample.sha256});
+ for(const previous of wanted){const pack=decoded.packages.find(x=>x.packageId===previous.packageId),objects=new Map(pack.objects.map(o=>[o.id,o])),o=objects.get(previous.id),style=objects.get(p(o.properties,'MyStyle')?.$reference),controls=p(o.properties,'ControlPoints'),vectorPath=recoverVectorPath(controls),w=previous.size?.Width,h=previous.size?.Height;
+  assert.equal(p(o.properties,'Shape'),0);assert.equal(pack.sha256,previous.sourcePartSha256);
+  const semantic=find(sem.diagrams.find(d=>d.packageId===pack.packageId),o.id),input={type:'box',vectorPath,width:w??1,height:h??1,style:{radius:previous.effective[71]?.value??0,cornerVisibility:[true,true,true,true]}};
+  const points=controls?.[0]?.map(v=>plain(p(v,'Path'))),extrema=points&&[points.filter(v=>v.Y===0).map(v=>v.X),points.filter(v=>v.X===1).map(v=>v.Y),points.filter(v=>v.Y===1).map(v=>v.X),points.filter(v=>v.X===0).map(v=>v.Y)];
+  const offsets=extrema?.every(a=>a.length)?{x:[Math.min(...extrema[0]),1-Math.max(...extrema[0]),1-Math.max(...extrema[2]),Math.min(...extrema[2])],y:[Math.min(...extrema[3]),Math.min(...extrema[1]),1-Math.max(...extrema[1]),1-Math.max(...extrema[3])]}:undefined;
+  output.owners.push({sample:path.basename(sample.file),sha256:sample.sha256,packageId:pack.packageId,packagePath:pack.path,sourcePartSha256:pack.sha256,version:pack.version,rootId:pack.rootId,sourceId:o.id,nativeType:o.type,name:p(p(o.properties,'name-block'),'text'),shape:0,styleId:style?.id,styleProperties:plain(style?.properties),incoming:incoming(pack.objects,o.id),size:previous.size,location:previous.location,cacheChainComplete:previous.cacheChainComplete,effective:previous.effective,rawControlPoints:controls,normalizedControlPoints:plain(controls),vectorPath,normalizedCornerOffsets:offsets,currentPhysicalCornerOffsets:offsets&&w&&h?{x:offsets.x.map(r=>r*w),y:offsets.y.map(r=>r*h)}:undefined,observed:{vertexCounts:controls?.map(c=>c.length),strictReader:recoverRectanglePath(controls,w,h),segmentValidator:vectorPath&&w&&h?renderer.rectangleRadii(vectorPath,w,h):null,normalizedFamily:vectorPath?renderer.supportsCorners(input):false,currentCandidate:semantic?.typeCandidate,currentStatus:semantic?.status,currentText:semantic?.text?.text,currentFlags:semantic?.storedFlags},semanticAvailable:Boolean(semantic)});
+ }
+ assert.equal(sha(sample.file),sample.sha256);
+}
+output.totals={owners:output.owners.length,sixVertex:output.owners.filter(w=>w.observed.vertexCounts?.[0]===6).length,segmentValidatorMatches:output.owners.filter(w=>w.observed.segmentValidator).length,normalizedFamilyMatches:output.owners.filter(w=>w.observed.normalizedFamily).length,missingSize:output.owners.filter(w=>!w.size).length};
+output.sources=[censusFile,'research/native-pills-format-inventory.mjs',modelFile,'research/scripts/read-rp-container.mjs','research/scripts/read-rp-objects.mjs','research/scripts/read-rp-semantics.mjs'].map(pin);
+fs.writeFileSync('research/native-pills-format-inventory.json',JSON.stringify(output,null,2)+'\n');
+console.log(JSON.stringify({totals:output.totals,samples:output.samples,owners:output.owners.map(w=>({sample:w.sample,id:w.sourceId,vertices:w.observed.vertexCounts,size:w.size,offsets:w.normalizedCornerOffsets,physical:w.currentPhysicalCornerOffsets,segment:w.observed.segmentValidator,normalized:w.observed.normalizedFamily,semantic:w.semanticAvailable,candidate:w.observed.currentCandidate?.type}))},null,2));

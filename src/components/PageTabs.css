@@ -1,0 +1,9 @@
+.page-tabs-container{display:flex;align-items:stretch;min-width:0;position:relative;max-width:70%;height:100%}
+.open-page-tabs{display:flex;align-items:stretch;min-width:0;overflow-x:auto;scrollbar-width:thin;gap:2px}
+.open-page-tab{display:flex;align-items:center;max-width:200px;flex-shrink:0}
+.open-page-tab.selected{background:#fff;color:#4776ed;border-radius:4px 4px 0 0}
+.open-page-tab>[role=tab]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block;text-align:left;max-width:165px;height:27px;padding:5px 7px;font-size:11px}
+.open-page-tab .close-page-tab{width:22px;height:24px;margin-right:2px;padding:3px;opacity:.5;flex-shrink:0}
+.open-page-tab:hover .close-page-tab,.open-page-tab.selected .close-page-tab{opacity:1}
+.open-pages-list-button{width:24px;flex-shrink:0}
+.page-context-menu.open-pages-list{position:absolute;top:32px;right:0;max-height:360px;overflow:auto}

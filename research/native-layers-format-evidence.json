@@ -1,0 +1,697 @@
+{
+  "stage": "native-layers-format",
+  "originalAssemblyExecuted": false,
+  "originalAxureGuiCompared": false,
+  "sourceVersion": "11.0.0.4150",
+  "sources": [
+    {
+      "file": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/AxureRP11.dll",
+      "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+    },
+    {
+      "file": "research/native-layers-format-import-audit.mjs",
+      "sha256": "3db0c9364cb0a08ba2d12ce181e12daa15e03c8e938e75c6967d986329632717"
+    },
+    {
+      "file": "research/native-layers-format-census.json",
+      "sha256": "44c19c3c0c3a2a1362ecb82211aa893b82acd03d2721bd9bfdf13206c18946d4"
+    },
+    {
+      "file": "research/scripts/read-rp-semantics.mjs",
+      "sha256": "318fdd8114562844c8c2e99925dd2047e3f73df9cc5d0a4d2a4ef18f0ab02852"
+    },
+    {
+      "file": "research/scripts/read-rp-interactions.mjs",
+      "sha256": "9cad13789fe618def273457f1f61584489ef2d0818224cdd0bd1f3cd7285290b"
+    },
+    {
+      "file": "src/model/types.ts",
+      "sha256": "0515ee7828fe633c896b6c8503367a18f8a30ccb4b14ee9d5c37487ee6ffed36"
+    },
+    {
+      "file": "src/model/shadow-color.ts",
+      "sha256": "5125d7eeaeddb613f2d4ec6d97bd8965a7848436a45f1a6c65f4b7c35b43f093"
+    },
+    {
+      "file": "src/model/vector.ts",
+      "sha256": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147"
+    },
+    {
+      "file": "src/model/page-tree-core.ts",
+      "sha256": "29997e6044176b33a42cb011a1fb382da5025c110655513a821b7553f7c32792"
+    },
+    {
+      "file": "src/model/rich-text.ts",
+      "sha256": "01fa723e9e158cb16125753c5993fd2e86a370133b0a246cccced8d578d6863f"
+    },
+    {
+      "file": "src/model/table.ts",
+      "sha256": "3c28bb0868dc5ebdc55558bd3fe89f1921e0a8f7c90165fd089e658b0e0354f3"
+    },
+    {
+      "file": "src/model/menu.ts",
+      "sha256": "536f29ca2c82d999b14edb0debeec703e403c32c535d7f32789f04b2ca3cd0ae"
+    },
+    {
+      "file": "src/model/tree-widget.ts",
+      "sha256": "165d8ca98cfb41d80af907b274a36a54328905d851d5df579bb5c50ad6e1dd02"
+    },
+    {
+      "file": "src/model/inline-frame.ts",
+      "sha256": "6354cafc01f1719fd5783f7c5ab00ea24598d0b34c59c83ba0fb09372bbe4760"
+    },
+    {
+      "file": "src/model/widget-structure.ts",
+      "sha256": "5e53d1b2dd26c3b4ae559a981c969aa6c9482d7ff46383eb9e202c813b731aae"
+    },
+    {
+      "file": "src/model/layer-geometry.ts",
+      "sha256": "97298a9f5dd5fabb21ca94f3140cb3360ca66fde57e52c96bd7bb1e509479959"
+    },
+    {
+      "file": "src/model/document.ts",
+      "sha256": "c6d40e9cf5f0db6550be870242fcf87bd374e7b88c38bb6b9cd97f2bc519dd39"
+    },
+    {
+      "file": "src/model/line-style.ts",
+      "sha256": "87ae321c7ad2ae5125ca3ce3fd9f7c721e81e8a61aea93221f9e930f8d74e93b"
+    },
+    {
+      "file": "src/model/import-rp-adaptive.ts",
+      "sha256": "f9ae36e93f0cee480a03ecfe647d27199076dbb39b3f6812b58c771e6b14ff97"
+    },
+    {
+      "file": "src/model/import-rp.ts",
+      "sha256": "6e869c4512fc375ef3bb36354f5bad2c24a963fd21fda40a10a95e979e3b3186"
+    },
+    {
+      "file": "research/scripts/read-rp-layer.test.mjs",
+      "sha256": "f471f211aa48990d99c2ae2967aab0a959eea026a5378fadc245b7ada9d6ad3b"
+    },
+    {
+      "file": "tests/import-rp-layer.test.ts",
+      "sha256": "1d25e461ffc09b9546f6e890c409d6461f6e33d46fcea335a28158f8b2783414"
+    },
+    {
+      "file": "tests/import-rp-dropdown.test.ts",
+      "sha256": "55827a00b5c0d29cf16b3cf94f036c54a8823d2bffa6b359e5614a4c3a62c34f"
+    },
+    {
+      "file": "tests/import-rp-input-types.test.ts",
+      "sha256": "98d90a0d8b8a09ec554aee46c2375b35b5be6ef0c7cb5092b7f31e891394a1d6"
+    },
+    {
+      "file": "tests/import-rp-error-hint.test.ts",
+      "sha256": "e4932d79faf15229cc7f2f2903e73ca161f9f27ab4289e5ad98f21cd43529761"
+    },
+    {
+      "file": "tests/import-rp-interaction-styles.test.ts",
+      "sha256": "fb2b50234850148d6d2316a88ea63690b02ad84cb8dabb726b898e167d456df9"
+    },
+    {
+      "file": "tests/import-rp-native-caption.test.ts",
+      "sha256": "af736f4f040d104ec1d7fcf39012a0820f6f6ea2aa4b8f1393f816b6f539843b"
+    },
+    {
+      "file": "tests/import-rp-native-pills.test.ts",
+      "sha256": "f7ab5e5a8c59f8ce244204ed1081f7357a4ca8c711c12b3e852a57fd3a46e220"
+    },
+    {
+      "file": "tests/import-rp-rotation.test.ts",
+      "sha256": "7d3692bcd4920cab8aa6b67b89a6dea5543e3df9bb7ae933d83250ba42e86b01"
+    },
+    {
+      "file": "tests/import-rp-vectors.test.ts",
+      "sha256": "5383008a3a0cd757e6358b71f96c7e4e18a1b1393c212466da2532f1bb952449"
+    },
+    {
+      "file": "research/native-layers-runtime-evidence.md",
+      "sha256": "6c0315526111512cdcb8e98bbcf6f4197d9f869b5d3f01bebb70f0c86b4722f2"
+    },
+    {
+      "file": "research/native-layers-runtime-evidence.json",
+      "sha256": "d89900b9c13f9198d351fb969258f3dfb65e8e1ae1b0206eaa27954dce80aaf3"
+    },
+    {
+      "file": "research/native-layers-runtime-import-events-review.json",
+      "sha256": "b5bf5029dbf4dd18b19a376d1095667091248881336ee7379b724013dad8371d"
+    }
+  ],
+  "samples": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+      "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Flow.rplib",
+      "sha256": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Icons.rplib",
+      "sha256": "83f450088f81f6047dfb196919fff3a4aae2f3adb56668da4d4c8cfd3b813bda"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Quick Win.rp",
+      "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+      "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72"
+    },
+    {
+      "file": "research/samples/the-basics-tab-menu.rp",
+      "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4"
+    },
+    {
+      "file": "research/samples/complex-interactions-required-fields.rp",
+      "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c"
+    }
+  ],
+  "contract": {
+    "nativeType": "Axure:DiagramObject:Layer",
+    "memberField": "DiagramObjects",
+    "runtimeMemberField": "objs",
+    "propagateField": "Propagate",
+    "coordinateSpace": "nearest diagram (Page/PanelState/repeater), no Layer rebasing",
+    "model": "Widget type='layer', layer:{widgets,propagate}",
+    "atomicAdmission": "all direct members; rejected wrapper retains previously admitted members",
+    "partialParentProof": "membershipReferences, not wrapper admission",
+    "version": [
+      11,
+      0,
+      0,
+      0
+    ]
+  },
+  "anchors": [
+    {
+      "file": "research/native-layers-format-object-cil.json",
+      "tokens": [
+        100701072,
+        100701073,
+        100701040,
+        100701037,
+        100701017,
+        100701018,
+        100701035
+      ]
+    },
+    {
+      "file": "research/native-layers-format-generator-cil.json",
+      "tokens": [
+        100694305,
+        100694310
+      ]
+    },
+    {
+      "file": "research/native-layers-format-base-cil.json",
+      "tokens": [
+        100695457
+      ]
+    },
+    {
+      "file": "research/native-layers-format-bounds-dispatch-cil.json",
+      "tokens": [
+        100695406,
+        100695407,
+        100695413
+      ]
+    },
+    {
+      "file": "research/native-layers-format-rect-union-cil.json",
+      "tokens": [
+        100720525
+      ]
+    },
+    {
+      "file": "research/native-layers-format-leaf-iterator-cil.json",
+      "tokens": [
+        100695807
+      ]
+    }
+  ],
+  "census": {
+    "layers": 276,
+    "members": 1048,
+    "layerKeys": {
+      "[\"AdaptiveStyles\",\"DiagramObjects\",\"Disabled\",\"Error\",\"ExpandedOnOutlineTreeView\",\"IsContained\",\"IsLocked\",\"MyStyle\",\"Propagate\",\"Selected\",\"SelectedStyleGroup\",\"SubmitButton\",\"VisibleFromSettings\",\"name-block\",\"tooltip\"]": 204,
+      "[\"AdaptiveStyles\",\"DiagramObjects\",\"Disabled\",\"Error\",\"ExpandedOnOutlineTreeView\",\"InteractionMap\",\"IsContained\",\"IsLocked\",\"MyStyle\",\"Propagate\",\"Selected\",\"SelectedStyleGroup\",\"SubmitButton\",\"VisibleFromSettings\",\"name-block\",\"tooltip\"]": 72
+    },
+    "memberTypes": {
+      "Axure:DiagramObject:VectorShape": 722,
+      "Axure:DiagramObject:ImageBox": 27,
+      "Axure:DiagramObject:DynamicPanel": 36,
+      "Axure:DiagramObject:Layer": 125,
+      "Axure:DiagramObject:TextBox": 86,
+      "Axure:DiagramObject:TextArea": 4,
+      "Axure:DiagramObject:Repeater": 10,
+      "Axure:DiagramObject:Checkbox": 10,
+      "Axure:DiagramObject:RadioButton": 6,
+      "Axure:DiagramObject:ComboBox": 22
+    },
+    "layerParents": {
+      "Axure:RepeatableDiagram": 4,
+      "Axure:Diagram": 212,
+      "Axure:DiagramObject:Layer": 125,
+      "Axure:PanelDiagram": 60
+    },
+    "layerContained": {
+      "false": 276
+    },
+    "memberContained": {
+      "false": 1048
+    },
+    "adaptiveLayers": 0,
+    "otherLayerTypes": {},
+    "maxNestedLayerDepth": 2,
+    "propagate": {
+      "false": 215,
+      "true": 61
+    },
+    "selected": {
+      "false": 274,
+      "true": 2
+    },
+    "disabled": {
+      "false": 274,
+      "true": 2
+    },
+    "localProperties": {
+      "101": 216,
+      "106": 63,
+      "107": 51,
+      "108": 53,
+      "109": 38,
+      "110": 8
+    },
+    "flatScopeMembershipAll": true,
+    "directOrderMatchesFlatAll": true,
+    "layerBeforeMembersAll": true
+  },
+  "admission": {
+    "samples": 11,
+    "admitted": 10,
+    "layers": 182,
+    "lost": 0,
+    "unexpectedAdded": 0,
+    "changed": 0,
+    "addedEvents": 13,
+    "maxCompactBytes": 28926107
+  },
+  "priorDocumentExact": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+      "value": true
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Flow.rplib",
+      "value": true
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Icons.rplib",
+      "value": true
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "value": true
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "value": true
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "value": true
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "value": true
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Quick Win.rp",
+      "value": true
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+      "value": true
+    },
+    {
+      "file": "research/samples/the-basics-tab-menu.rp",
+      "value": true
+    },
+    {
+      "file": "research/samples/complex-interactions-required-fields.rp",
+      "value": true
+    }
+  ],
+  "newCases": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "id": "rp-w-c598ff6cf4ba459cbef032f0cd4048f7-152dbd93a5ed4601819561473a8065c5",
+      "sourceId": "152dbd93a5ed4601819561473a8065c5",
+      "packageId": "c598ff6cf4ba459cbef032f0cd4048f7",
+      "event": {
+        "id": "rp-i-c598ff6cf4ba459cbef032f0cd4048f7-152dbd93a5ed4601819561473a8065c5-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-c598ff6cf4ba459cbef032f0cd4048f7-152dbd93a5ed4601819561473a8065c5-0-0-0",
+            "type": "setSelected",
+            "targetId": "rp-w-c598ff6cf4ba459cbef032f0cd4048f7-b354fa313e634f51a0690f239e61a6e0",
+            "value": "toggle"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "id": "rp-w-c598ff6cf4ba459cbef032f0cd4048f7-95a8187f6eab48d48a5fa923d7c722ef",
+      "sourceId": "95a8187f6eab48d48a5fa923d7c722ef",
+      "packageId": "c598ff6cf4ba459cbef032f0cd4048f7",
+      "event": {
+        "id": "rp-i-c598ff6cf4ba459cbef032f0cd4048f7-95a8187f6eab48d48a5fa923d7c722ef-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-c598ff6cf4ba459cbef032f0cd4048f7-95a8187f6eab48d48a5fa923d7c722ef-0-0-0",
+            "type": "setSelected",
+            "targetId": "rp-w-c598ff6cf4ba459cbef032f0cd4048f7-259ef161fe2441f09b9655aca94aead4",
+            "value": "toggle"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "id": "rp-w-2bbaf8b2b54f452e910481de097f7502-b500da75614f495e8e7d3f71bb6b366a",
+      "sourceId": "b500da75614f495e8e7d3f71bb6b366a",
+      "packageId": "2bbaf8b2b54f452e910481de097f7502",
+      "event": {
+        "id": "rp-i-2bbaf8b2b54f452e910481de097f7502-b500da75614f495e8e7d3f71bb6b366a-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-2bbaf8b2b54f452e910481de097f7502-b500da75614f495e8e7d3f71bb6b366a-0-0-0",
+            "type": "setSelected",
+            "targetId": "rp-w-2bbaf8b2b54f452e910481de097f7502-b2fec9c907c747a1be07306362ca44c9",
+            "value": "toggle"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "id": "rp-w-1d715ddb96944665808076dd28491d7d-486c36dd38c64c59acbcf52b38152408",
+      "sourceId": "486c36dd38c64c59acbcf52b38152408",
+      "packageId": "1d715ddb96944665808076dd28491d7d",
+      "event": {
+        "id": "rp-i-1d715ddb96944665808076dd28491d7d-486c36dd38c64c59acbcf52b38152408-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-1d715ddb96944665808076dd28491d7d-486c36dd38c64c59acbcf52b38152408-0-0-0",
+            "type": "setSelected",
+            "targetId": "rp-w-1d715ddb96944665808076dd28491d7d-a9f823dc784f4b84826e51ce461c3d5f",
+            "value": "toggle"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "id": "rp-w-b3e7e9d52abc4ff08e65a0f16e143f53-e2b79c9ef8844c37af5f467f229b40e6",
+      "sourceId": "e2b79c9ef8844c37af5f467f229b40e6",
+      "packageId": "b3e7e9d52abc4ff08e65a0f16e143f53",
+      "event": {
+        "id": "rp-i-b3e7e9d52abc4ff08e65a0f16e143f53-e2b79c9ef8844c37af5f467f229b40e6-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-b3e7e9d52abc4ff08e65a0f16e143f53-e2b79c9ef8844c37af5f467f229b40e6-0-0-0",
+            "type": "setSelected",
+            "targetId": "rp-w-b3e7e9d52abc4ff08e65a0f16e143f53-b4625dbf230a4188b9930aa10d63ac1e",
+            "value": "toggle"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "id": "rp-w-b3e7e9d52abc4ff08e65a0f16e143f53-cc20a8b46a524eafb2e005b4c9654448",
+      "sourceId": "cc20a8b46a524eafb2e005b4c9654448",
+      "packageId": "b3e7e9d52abc4ff08e65a0f16e143f53",
+      "event": {
+        "id": "rp-i-b3e7e9d52abc4ff08e65a0f16e143f53-cc20a8b46a524eafb2e005b4c9654448-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-b3e7e9d52abc4ff08e65a0f16e143f53-cc20a8b46a524eafb2e005b4c9654448-0-0-0",
+            "type": "setSelected",
+            "targetId": "rp-w-b3e7e9d52abc4ff08e65a0f16e143f53-6003e31fdcf84c61badd25e8738490f4",
+            "value": "toggle"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "id": "rp-w-b3e7e9d52abc4ff08e65a0f16e143f53-256115a680fe48d6a208b6503c1fca6a",
+      "sourceId": "256115a680fe48d6a208b6503c1fca6a",
+      "packageId": "b3e7e9d52abc4ff08e65a0f16e143f53",
+      "event": {
+        "id": "rp-i-b3e7e9d52abc4ff08e65a0f16e143f53-256115a680fe48d6a208b6503c1fca6a-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-b3e7e9d52abc4ff08e65a0f16e143f53-256115a680fe48d6a208b6503c1fca6a-0-0-0",
+            "type": "setSelected",
+            "targetId": "rp-w-b3e7e9d52abc4ff08e65a0f16e143f53-29c51c31dab6419aa2fd4411fdd07fc1",
+            "value": "toggle"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "id": "rp-w-2489016f8aaa4629be08e839e24f65df-ab612ac5d2c342efbbf3c79a77bf030c",
+      "sourceId": "ab612ac5d2c342efbbf3c79a77bf030c",
+      "packageId": "2489016f8aaa4629be08e839e24f65df",
+      "event": {
+        "id": "rp-i-2489016f8aaa4629be08e839e24f65df-ab612ac5d2c342efbbf3c79a77bf030c-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-2489016f8aaa4629be08e839e24f65df-ab612ac5d2c342efbbf3c79a77bf030c-0-0-0",
+            "type": "setSelected",
+            "targetId": "rp-w-2489016f8aaa4629be08e839e24f65df-c79f3cfc5e6445198fa4583641b5f994",
+            "value": "toggle"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "id": "rp-w-2489016f8aaa4629be08e839e24f65df-980b09585a7944849b865097c3d680e9",
+      "sourceId": "980b09585a7944849b865097c3d680e9",
+      "packageId": "2489016f8aaa4629be08e839e24f65df",
+      "event": {
+        "id": "rp-i-2489016f8aaa4629be08e839e24f65df-980b09585a7944849b865097c3d680e9-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-2489016f8aaa4629be08e839e24f65df-980b09585a7944849b865097c3d680e9-0-0-0",
+            "type": "setSelected",
+            "targetId": "rp-w-2489016f8aaa4629be08e839e24f65df-e768533dd9db4befbae34754bf596c48",
+            "value": "toggle"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "id": "rp-w-2489016f8aaa4629be08e839e24f65df-b1a7d1c9b8e641ddaecb6a201b50193b",
+      "sourceId": "b1a7d1c9b8e641ddaecb6a201b50193b",
+      "packageId": "2489016f8aaa4629be08e839e24f65df",
+      "event": {
+        "id": "rp-i-2489016f8aaa4629be08e839e24f65df-b1a7d1c9b8e641ddaecb6a201b50193b-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-2489016f8aaa4629be08e839e24f65df-b1a7d1c9b8e641ddaecb6a201b50193b-0-0-0",
+            "type": "setSelected",
+            "targetId": "rp-w-2489016f8aaa4629be08e839e24f65df-6f1bcb8e05cb457d823b1d50dc2f48d3",
+            "value": "toggle"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714",
+      "id": "rp-w-dbf50f111c33407cab8d0fdc6bcae297-32c384ef255e4f3c84c563b46aed9187",
+      "sourceId": "32c384ef255e4f3c84c563b46aed9187",
+      "packageId": "dbf50f111c33407cab8d0fdc6bcae297",
+      "event": {
+        "id": "rp-i-dbf50f111c33407cab8d0fdc6bcae297-32c384ef255e4f3c84c563b46aed9187-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-dbf50f111c33407cab8d0fdc6bcae297-32c384ef255e4f3c84c563b46aed9187-0-0-0",
+            "type": "setState",
+            "targetId": "rp-w-dbf50f111c33407cab8d0fdc6bcae297-67d13c4c7ba842aeaddba83b6a89d644",
+            "value": "rp-s-f4cf5ae43ac24b22b74036ce317ab148"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714",
+      "id": "rp-w-dbf50f111c33407cab8d0fdc6bcae297-9b7ae0514d634a0b936d1ca91c16555e",
+      "sourceId": "9b7ae0514d634a0b936d1ca91c16555e",
+      "packageId": "dbf50f111c33407cab8d0fdc6bcae297",
+      "event": {
+        "id": "rp-i-dbf50f111c33407cab8d0fdc6bcae297-9b7ae0514d634a0b936d1ca91c16555e-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-dbf50f111c33407cab8d0fdc6bcae297-9b7ae0514d634a0b936d1ca91c16555e-0-0-0",
+            "type": "setState",
+            "targetId": "rp-w-dbf50f111c33407cab8d0fdc6bcae297-67d13c4c7ba842aeaddba83b6a89d644",
+            "value": "rp-s-20634c53b759494fb07dbb142a1f1065"
+          }
+        ]
+      }
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714",
+      "id": "rp-w-dbf50f111c33407cab8d0fdc6bcae297-47e162ef3d0a46c1ac1528a2abef978b",
+      "sourceId": "47e162ef3d0a46c1ac1528a2abef978b",
+      "packageId": "dbf50f111c33407cab8d0fdc6bcae297",
+      "event": {
+        "id": "rp-i-dbf50f111c33407cab8d0fdc6bcae297-47e162ef3d0a46c1ac1528a2abef978b-0-0",
+        "name": "",
+        "event": "click",
+        "enabled": true,
+        "isNewIfGroup": false,
+        "conditionMode": "all",
+        "conditions": [],
+        "actions": [
+          {
+            "id": "rp-a-dbf50f111c33407cab8d0fdc6bcae297-47e162ef3d0a46c1ac1528a2abef978b-0-0-0",
+            "type": "setState",
+            "targetId": "rp-w-dbf50f111c33407cab8d0fdc6bcae297-67d13c4c7ba842aeaddba83b6a89d644",
+            "value": "rp-s-90fd4ed4c9744465add63a878e1da5f1"
+          }
+        ]
+      }
+    }
+  ],
+  "checks": {
+    "reader": 23,
+    "newMapper": 26,
+    "relatedMapper": 83,
+    "legacyMapper": 153,
+    "typecheck": 0
+  },
+  "limitations": [
+    "No original DLL execution or GUI parity comparison.",
+    "Pins/fixed-size source values retained in diagnostic, author constraint behavior unimplemented.",
+    "No Layer-local nonempty adaptive witness; unsupported rather than inferred.",
+    "Six named selection-group Layer wrappers unsupported.",
+    "Four repeatable-diagram Layers and incomplete parent/member graphs remain outside admission.",
+    "Layer rotation/general transform storage not admitted; source corpus has none."
+  ],
+  "historicalBaseline": {
+    "file": "research/native-layers-format-baseline.json",
+    "sha256": "6c3d57be6751f463b0c96ba975f304ac4f4630b4c0a10d1510dc492d9ead88d2",
+    "note": "Immutable preimplementation docs/reports and historical source hashes; current source refs above are separate."
+  }
+}

@@ -1,0 +1,2295 @@
+{
+  "originalDllExecuted": false,
+  "originalGuiExecuted": false,
+  "method": 100717642,
+  "description": "Bounded HtoV instruction interpretation. Enumerators, effective provider order, linked styles, property flags and capability predicates are explicit plain-data sinks; no cache serialization mapping is assumed.",
+  "limits": [
+    "Provider order construction and cached style identity resolution are not replayed here.",
+    "Capability predicate is supplied, not inferred by widget kind.",
+    "An indeterminate property is retained as such; a value must not be invented by import.",
+    "Exception/finally disposal has no state mutation in the plain iterator sinks."
+  ],
+  "defaultEntries": [
+    {
+      "key": 106,
+      "value": 0,
+      "offsets": [
+        107,
+        109,
+        110,
+        115
+      ],
+      "boxedType": "Axure.Platform.Position"
+    },
+    {
+      "key": 107,
+      "value": 0,
+      "offsets": [
+        121,
+        123,
+        124,
+        129
+      ],
+      "boxedType": "Axure.Platform.Position"
+    },
+    {
+      "key": 108,
+      "value": false,
+      "offsets": [
+        135,
+        137,
+        138,
+        143
+      ],
+      "boxedType": "System.Boolean"
+    },
+    {
+      "key": 109,
+      "value": false,
+      "offsets": [
+        149,
+        151,
+        152,
+        157
+      ],
+      "boxedType": "System.Boolean"
+    }
+  ],
+  "total": 16,
+  "failed": 0,
+  "results": [
+    {
+      "name": "first local overridden wins",
+      "inputs": {
+        "styles": [
+          {
+            "props": {
+              "106": {
+                "tag": "local",
+                "value": 4,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          },
+          {
+            "props": {
+              "106": {
+                "tag": "ancestor",
+                "value": 1,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          }
+        ],
+        "capability": true,
+        "nullable": false,
+        "skipIndeterminate": false
+      },
+      "expected": "local",
+      "actual": {
+        "tag": "local",
+        "value": 4,
+        "overridden": true,
+        "indeterminate": false,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        129,
+        134,
+        139,
+        671,
+        1688,
+        1689,
+        1694,
+        1696,
+        1701,
+        1706,
+        785,
+        786,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        895,
+        900,
+        905,
+        1255,
+        1257,
+        1262,
+        1267,
+        1272,
+        1277,
+        1278,
+        1283,
+        1045,
+        1046,
+        1454,
+        1456,
+        1457,
+        1462,
+        1467,
+        1472,
+        1477,
+        1482,
+        1231,
+        1233,
+        1235,
+        1240,
+        1245,
+        1176,
+        1597,
+        1599
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 1689,
+          "token": 167786364
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1257,
+          "token": 100717984
+        },
+        {
+          "il": 1457,
+          "token": 167795078
+        },
+        {
+          "il": 1462,
+          "token": 100718004
+        }
+      ]
+    },
+    {
+      "name": "inactive local does not mask ancestor",
+      "inputs": {
+        "styles": [
+          {
+            "props": {
+              "106": {
+                "tag": "local",
+                "value": 4,
+                "overridden": false,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          },
+          {
+            "props": {
+              "106": {
+                "tag": "ancestor",
+                "value": 1,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          }
+        ],
+        "capability": true,
+        "nullable": false,
+        "skipIndeterminate": false
+      },
+      "expected": "ancestor",
+      "actual": {
+        "tag": "ancestor",
+        "value": 1,
+        "overridden": true,
+        "indeterminate": false,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        129,
+        134,
+        139,
+        671,
+        1688,
+        1689,
+        1694,
+        1696,
+        1701,
+        1706,
+        785,
+        786,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        895,
+        900,
+        905,
+        1255,
+        1257,
+        1262,
+        1005,
+        1007,
+        1012,
+        1017,
+        1019,
+        1024,
+        1029,
+        1030,
+        1035,
+        1040,
+        947,
+        949,
+        950,
+        955,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        895,
+        900,
+        905,
+        1255,
+        1257,
+        1262,
+        1267,
+        1272,
+        1277,
+        1278,
+        1283,
+        1045,
+        1046,
+        1454,
+        1456,
+        1457,
+        1462,
+        1467,
+        1472,
+        1477,
+        1482,
+        1231,
+        1233,
+        1235,
+        1240,
+        1245,
+        1176,
+        1597,
+        1599
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 1689,
+          "token": 167786364
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1257,
+          "token": 100717984
+        },
+        {
+          "il": 1012,
+          "token": 100717183
+        },
+        {
+          "il": 950,
+          "token": 100716800
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1257,
+          "token": 100717984
+        },
+        {
+          "il": 1457,
+          "token": 167795078
+        },
+        {
+          "il": 1462,
+          "token": 100718004
+        }
+      ]
+    },
+    {
+      "name": "linked base is read before next ancestor",
+      "inputs": {
+        "styles": [
+          {
+            "props": {},
+            "base": {
+              "props": {
+                "106": {
+                  "tag": "linked",
+                  "value": 256,
+                  "overridden": true,
+                  "indeterminate": false,
+                  "supported": true
+                }
+              },
+              "base": null
+            }
+          },
+          {
+            "props": {
+              "106": {
+                "tag": "ancestor",
+                "value": 1,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          }
+        ],
+        "capability": true,
+        "nullable": false,
+        "skipIndeterminate": false
+      },
+      "expected": "linked",
+      "actual": {
+        "tag": "linked",
+        "value": 256,
+        "overridden": true,
+        "indeterminate": false,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        129,
+        134,
+        139,
+        671,
+        1688,
+        1689,
+        1694,
+        1696,
+        1701,
+        1706,
+        785,
+        786,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        1005,
+        1007,
+        1012,
+        1017,
+        1019,
+        1024,
+        1029,
+        1030,
+        1035,
+        1040,
+        947,
+        949,
+        950,
+        955,
+        960,
+        965,
+        970,
+        975,
+        1201,
+        1203,
+        1204,
+        1209,
+        1211,
+        1216,
+        1221,
+        1226,
+        849,
+        851,
+        852,
+        857,
+        862,
+        867,
+        872,
+        915,
+        917,
+        922,
+        1378,
+        1379,
+        1106,
+        1108,
+        1109,
+        1114,
+        1119,
+        1325,
+        1327,
+        1329,
+        1334,
+        1339,
+        1344,
+        1429,
+        1597,
+        1599
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 1689,
+          "token": 167786364
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1012,
+          "token": 100717183
+        },
+        {
+          "il": 950,
+          "token": 100716800
+        },
+        {
+          "il": 1204,
+          "token": 100717163
+        },
+        {
+          "il": 852,
+          "token": 100717988
+        },
+        {
+          "il": 917,
+          "token": 100717984
+        },
+        {
+          "il": 1109,
+          "token": 167795078
+        },
+        {
+          "il": 1114,
+          "token": 100718004
+        }
+      ]
+    },
+    {
+      "name": "inactive linked base is skipped",
+      "inputs": {
+        "styles": [
+          {
+            "props": {},
+            "base": {
+              "props": {
+                "106": {
+                  "tag": "linked",
+                  "value": 256,
+                  "overridden": false,
+                  "indeterminate": false,
+                  "supported": true
+                }
+              },
+              "base": null
+            }
+          },
+          {
+            "props": {
+              "106": {
+                "tag": "ancestor",
+                "value": 1,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          }
+        ],
+        "capability": true,
+        "nullable": false,
+        "skipIndeterminate": false
+      },
+      "expected": "ancestor",
+      "actual": {
+        "tag": "ancestor",
+        "value": 1,
+        "overridden": true,
+        "indeterminate": false,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        129,
+        134,
+        139,
+        671,
+        1688,
+        1689,
+        1694,
+        1696,
+        1701,
+        1706,
+        785,
+        786,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        1005,
+        1007,
+        1012,
+        1017,
+        1019,
+        1024,
+        1029,
+        1030,
+        1035,
+        1040,
+        947,
+        949,
+        950,
+        955,
+        960,
+        965,
+        970,
+        975,
+        1201,
+        1203,
+        1204,
+        1209,
+        1211,
+        1216,
+        1221,
+        1226,
+        849,
+        851,
+        852,
+        857,
+        862,
+        867,
+        872,
+        915,
+        917,
+        922,
+        927,
+        932,
+        937,
+        942,
+        1404,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        895,
+        900,
+        905,
+        1255,
+        1257,
+        1262,
+        1267,
+        1272,
+        1277,
+        1278,
+        1283,
+        1045,
+        1046,
+        1454,
+        1456,
+        1457,
+        1462,
+        1467,
+        1472,
+        1477,
+        1482,
+        1231,
+        1233,
+        1235,
+        1240,
+        1245,
+        1176,
+        1597,
+        1599
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 1689,
+          "token": 167786364
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1012,
+          "token": 100717183
+        },
+        {
+          "il": 950,
+          "token": 100716800
+        },
+        {
+          "il": 1204,
+          "token": 100717163
+        },
+        {
+          "il": 852,
+          "token": 100717988
+        },
+        {
+          "il": 917,
+          "token": 100717984
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1257,
+          "token": 100717984
+        },
+        {
+          "il": 1457,
+          "token": 167795078
+        },
+        {
+          "il": 1462,
+          "token": 100718004
+        }
+      ]
+    },
+    {
+      "name": "unsupported local is skipped",
+      "inputs": {
+        "styles": [
+          {
+            "props": {
+              "106": {
+                "tag": "local",
+                "value": 4,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": false
+              }
+            },
+            "base": null
+          },
+          {
+            "props": {
+              "106": {
+                "tag": "ancestor",
+                "value": 1,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          }
+        ],
+        "capability": true,
+        "nullable": false,
+        "skipIndeterminate": false
+      },
+      "expected": "ancestor",
+      "actual": {
+        "tag": "ancestor",
+        "value": 1,
+        "overridden": true,
+        "indeterminate": false,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        129,
+        134,
+        139,
+        671,
+        1688,
+        1689,
+        1694,
+        1696,
+        1701,
+        1706,
+        785,
+        786,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        895,
+        900,
+        905,
+        1255,
+        1257,
+        1262,
+        1267,
+        1272,
+        1277,
+        1278,
+        1283,
+        1045,
+        1046,
+        1454,
+        1456,
+        1457,
+        1462,
+        1467,
+        1005,
+        1007,
+        1012,
+        1017,
+        1019,
+        1024,
+        1029,
+        1030,
+        1035,
+        1040,
+        947,
+        949,
+        950,
+        955,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        895,
+        900,
+        905,
+        1255,
+        1257,
+        1262,
+        1267,
+        1272,
+        1277,
+        1278,
+        1283,
+        1045,
+        1046,
+        1454,
+        1456,
+        1457,
+        1462,
+        1467,
+        1472,
+        1477,
+        1482,
+        1231,
+        1233,
+        1235,
+        1240,
+        1245,
+        1176,
+        1597,
+        1599
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 1689,
+          "token": 167786364
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1257,
+          "token": 100717984
+        },
+        {
+          "il": 1457,
+          "token": 167795078
+        },
+        {
+          "il": 1462,
+          "token": 100718004
+        },
+        {
+          "il": 1012,
+          "token": 100717183
+        },
+        {
+          "il": 950,
+          "token": 100716800
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1257,
+          "token": 100717984
+        },
+        {
+          "il": 1457,
+          "token": 167795078
+        },
+        {
+          "il": 1462,
+          "token": 100718004
+        }
+      ]
+    },
+    {
+      "name": "no local or linked override uses default",
+      "inputs": {
+        "styles": [
+          {
+            "props": {},
+            "base": null
+          }
+        ],
+        "capability": true,
+        "nullable": false,
+        "skipIndeterminate": false
+      },
+      "expected": "native-default",
+      "actual": {
+        "tag": "native-default",
+        "value": 0,
+        "overridden": true,
+        "indeterminate": false,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        129,
+        134,
+        139,
+        671,
+        1688,
+        1689,
+        1694,
+        1696,
+        1701,
+        1706,
+        785,
+        786,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        1005,
+        1007,
+        1012,
+        1017,
+        1019,
+        1024,
+        1029,
+        1030,
+        1035,
+        1040,
+        947,
+        949,
+        950,
+        955,
+        817,
+        819,
+        824,
+        829,
+        834,
+        839,
+        844,
+        1492,
+        696,
+        697,
+        702,
+        151,
+        152,
+        157,
+        162,
+        163,
+        168,
+        170,
+        175,
+        180,
+        727,
+        729,
+        730,
+        735,
+        1600,
+        1602
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 1689,
+          "token": 167786364
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1012,
+          "token": 100717183
+        },
+        {
+          "il": 950,
+          "token": 100716800
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 697,
+          "token": 167795080
+        },
+        {
+          "il": 152,
+          "token": 167795079
+        },
+        {
+          "il": 163,
+          "token": 100717163
+        },
+        {
+          "il": 730,
+          "token": 100717988
+        }
+      ]
+    },
+    {
+      "name": "nullable no result returns null",
+      "inputs": {
+        "styles": [
+          {
+            "props": {},
+            "base": null
+          }
+        ],
+        "capability": true,
+        "nullable": true,
+        "skipIndeterminate": false
+      },
+      "expected": null,
+      "actual": null,
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        129,
+        134,
+        139,
+        671,
+        1688,
+        1689,
+        1694,
+        1696,
+        1701,
+        1706,
+        785,
+        786,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        1005,
+        1007,
+        1012,
+        1017,
+        1019,
+        1024,
+        1029,
+        1030,
+        1035,
+        1040,
+        947,
+        949,
+        950,
+        955,
+        817,
+        819,
+        824,
+        829,
+        834,
+        839,
+        844,
+        1492,
+        696,
+        697,
+        702,
+        707,
+        712,
+        717,
+        149,
+        150
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 1689,
+          "token": 167786364
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1012,
+          "token": 100717183
+        },
+        {
+          "il": 950,
+          "token": 100716800
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 697,
+          "token": 167795080
+        }
+      ]
+    },
+    {
+      "name": "no capability returns last provider slot",
+      "inputs": {
+        "styles": [
+          {
+            "props": {
+              "106": {
+                "tag": "local",
+                "value": 4,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          },
+          {
+            "props": {
+              "106": {
+                "tag": "last",
+                "value": 1,
+                "overridden": false,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          }
+        ],
+        "capability": false,
+        "nullable": false,
+        "skipIndeterminate": false
+      },
+      "expected": "last",
+      "actual": {
+        "tag": "last",
+        "value": 1,
+        "overridden": false,
+        "indeterminate": false,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        67,
+        68,
+        73,
+        78,
+        79,
+        84,
+        85,
+        1687
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 68,
+          "token": 721424171
+        },
+        {
+          "il": 79,
+          "token": 100717163
+        }
+      ]
+    },
+    {
+      "name": "no capability and absent last uses default",
+      "inputs": {
+        "styles": [
+          {
+            "props": {
+              "106": {
+                "tag": "local",
+                "value": 4,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          },
+          {
+            "props": {},
+            "base": null
+          }
+        ],
+        "capability": false,
+        "nullable": false,
+        "skipIndeterminate": false
+      },
+      "expected": "native-default",
+      "actual": {
+        "tag": "native-default",
+        "value": 0,
+        "overridden": true,
+        "indeterminate": false,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        67,
+        68,
+        73,
+        78,
+        79,
+        84,
+        85,
+        90,
+        91,
+        96,
+        101,
+        106,
+        1670,
+        1671,
+        1676,
+        1681,
+        1682,
+        1687
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 68,
+          "token": 721424171
+        },
+        {
+          "il": 79,
+          "token": 100717163
+        },
+        {
+          "il": 1671,
+          "token": 167795079
+        },
+        {
+          "il": 1682,
+          "token": 100717163
+        }
+      ]
+    },
+    {
+      "name": "normal get_Item does not skip an indeterminate property",
+      "inputs": {
+        "styles": [
+          {
+            "props": {
+              "106": {
+                "tag": "indeterminate",
+                "value": 4,
+                "overridden": true,
+                "indeterminate": true,
+                "supported": true
+              }
+            },
+            "base": null
+          },
+          {
+            "props": {
+              "106": {
+                "tag": "ancestor",
+                "value": 1,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          }
+        ],
+        "capability": true,
+        "nullable": false,
+        "skipIndeterminate": false
+      },
+      "expected": "indeterminate",
+      "actual": {
+        "tag": "indeterminate",
+        "value": 4,
+        "overridden": true,
+        "indeterminate": true,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        129,
+        134,
+        139,
+        671,
+        1688,
+        1689,
+        1694,
+        1696,
+        1701,
+        1706,
+        785,
+        786,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        895,
+        900,
+        905,
+        1255,
+        1257,
+        1262,
+        1267,
+        1272,
+        1277,
+        1278,
+        1283,
+        1045,
+        1046,
+        1454,
+        1456,
+        1457,
+        1462,
+        1467,
+        1472,
+        1477,
+        1482,
+        1231,
+        1233,
+        1235,
+        1240,
+        1245,
+        1176,
+        1597,
+        1599
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 1689,
+          "token": 167786364
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1257,
+          "token": 100717984
+        },
+        {
+          "il": 1457,
+          "token": 167795078
+        },
+        {
+          "il": 1462,
+          "token": 100718004
+        }
+      ]
+    },
+    {
+      "name": "explicit skip-indeterminate read reaches ancestor",
+      "inputs": {
+        "styles": [
+          {
+            "props": {
+              "106": {
+                "tag": "indeterminate",
+                "value": 4,
+                "overridden": true,
+                "indeterminate": true,
+                "supported": true
+              }
+            },
+            "base": null
+          },
+          {
+            "props": {
+              "106": {
+                "tag": "ancestor",
+                "value": 1,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          }
+        ],
+        "capability": true,
+        "nullable": false,
+        "skipIndeterminate": true
+      },
+      "expected": "ancestor",
+      "actual": {
+        "tag": "ancestor",
+        "value": 1,
+        "overridden": true,
+        "indeterminate": false,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        129,
+        134,
+        139,
+        671,
+        1688,
+        1689,
+        1694,
+        1696,
+        1701,
+        1706,
+        785,
+        786,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        895,
+        900,
+        905,
+        1255,
+        1257,
+        1262,
+        1267,
+        1272,
+        1277,
+        1278,
+        1283,
+        1045,
+        1046,
+        1051,
+        1056,
+        1061,
+        1066,
+        1144,
+        1146,
+        1151,
+        1005,
+        1007,
+        1012,
+        1017,
+        1019,
+        1024,
+        1029,
+        1030,
+        1035,
+        1040,
+        947,
+        949,
+        950,
+        955,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        895,
+        900,
+        905,
+        1255,
+        1257,
+        1262,
+        1267,
+        1272,
+        1277,
+        1278,
+        1283,
+        1045,
+        1046,
+        1051,
+        1056,
+        1061,
+        1066,
+        1144,
+        1146,
+        1151,
+        1156,
+        1161,
+        1166,
+        1171,
+        1454,
+        1456,
+        1457,
+        1462,
+        1467,
+        1472,
+        1477,
+        1482,
+        1231,
+        1233,
+        1235,
+        1240,
+        1245,
+        1176,
+        1597,
+        1599
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 1689,
+          "token": 167786364
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1257,
+          "token": 100717984
+        },
+        {
+          "il": 1146,
+          "token": 100717982
+        },
+        {
+          "il": 1012,
+          "token": 100717183
+        },
+        {
+          "il": 950,
+          "token": 100716800
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1257,
+          "token": 100717984
+        },
+        {
+          "il": 1146,
+          "token": 100717982
+        },
+        {
+          "il": 1457,
+          "token": 167795078
+        },
+        {
+          "il": 1462,
+          "token": 100718004
+        }
+      ]
+    },
+    {
+      "name": "explicit zero overrides inherited nonzero",
+      "inputs": {
+        "styles": [
+          {
+            "props": {
+              "106": {
+                "tag": "zero",
+                "value": 0,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          },
+          {
+            "props": {
+              "106": {
+                "tag": "ancestor",
+                "value": 256,
+                "overridden": true,
+                "indeterminate": false,
+                "supported": true
+              }
+            },
+            "base": null
+          }
+        ],
+        "capability": true,
+        "nullable": false,
+        "skipIndeterminate": false
+      },
+      "expected": "zero",
+      "actual": {
+        "tag": "zero",
+        "value": 0,
+        "overridden": true,
+        "indeterminate": false,
+        "supported": true
+      },
+      "trace": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        23,
+        28,
+        111,
+        112,
+        117,
+        118,
+        119,
+        124,
+        129,
+        134,
+        139,
+        671,
+        1688,
+        1689,
+        1694,
+        1696,
+        1701,
+        1706,
+        785,
+        786,
+        817,
+        819,
+        824,
+        1349,
+        1351,
+        1356,
+        1358,
+        1363,
+        1368,
+        1373,
+        1071,
+        1073,
+        1078,
+        1079,
+        1084,
+        1086,
+        1091,
+        1096,
+        1101,
+        882,
+        884,
+        885,
+        890,
+        895,
+        900,
+        905,
+        1255,
+        1257,
+        1262,
+        1267,
+        1272,
+        1277,
+        1278,
+        1283,
+        1045,
+        1046,
+        1454,
+        1456,
+        1457,
+        1462,
+        1467,
+        1472,
+        1477,
+        1482,
+        1231,
+        1233,
+        1235,
+        1240,
+        1245,
+        1176,
+        1597,
+        1599
+      ],
+      "calls": [
+        {
+          "il": 112,
+          "token": 167795078
+        },
+        {
+          "il": 119,
+          "token": 100724969
+        },
+        {
+          "il": 1689,
+          "token": 167786364
+        },
+        {
+          "il": 819,
+          "token": 167786365
+        },
+        {
+          "il": 1351,
+          "token": 167786367
+        },
+        {
+          "il": 1079,
+          "token": 100717163
+        },
+        {
+          "il": 885,
+          "token": 100717988
+        },
+        {
+          "il": 1257,
+          "token": 100717984
+        },
+        {
+          "il": 1457,
+          "token": 167795078
+        },
+        {
+          "il": 1462,
+          "token": 100718004
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "research/layer-resize-pins-resolution-cil.json",
+      "sha256": "e8b692b8b9aecdf4e2031a1a3665ee01cd105a70dbafc2af0544e4683a4bf0a6"
+    },
+    {
+      "file": "research/layer-resize-pins-style-default-cil.json",
+      "sha256": "1eaf484b70c66cc0fa26773b9048a5b2ccbc54a62147ffd9686fd0a2844764a7"
+    },
+    {
+      "file": "research/layer-resize-pins-concrete-build-cil.json",
+      "sha256": "824f856e5f700b6fff90c11d0b1f9971e90f1a23f6fd5829b77b99b7227d4372"
+    },
+    {
+      "file": "research/layer-resize-pins-chain-helpers-cil.json",
+      "sha256": "85e672137fc526127408d39fa82f4b6839d3af2dd52cdd2e06d82f9cf76f5935"
+    },
+    {
+      "file": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128"
+    },
+    {
+      "file": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    },
+    {
+      "file": "research/layer-resize-pins-chain-replay.mjs",
+      "sha256": "bd434bdebf64237c2bdade1ba9657e11d6bf774c71f207d8061c41b4867e3221"
+    }
+  ]
+}

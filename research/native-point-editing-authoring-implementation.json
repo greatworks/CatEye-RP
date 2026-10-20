@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-15T16:28:53.869Z",
+  "status": "authoring-source-frozen",
+  "sources": [
+    {
+      "file": "src/App.tsx",
+      "sha256": "8bd415064cfbe7a237473e0e8eb3e83cfc5a0eb3573a0939a0d2654b0a9fc092",
+      "beforeFile": ".build/before-native-point-editing/src/App.tsx",
+      "beforeSha256": "0c403f7febd14ce1cffd89a295c6e4ab4afa9e433711e98d1f251b3c0b42f34a"
+    },
+    {
+      "file": "src/components/Inspector.tsx",
+      "sha256": "0a96d36e485ca5e3a47b09326c68f9e4709f7e8ecf1400178588fe90ba0b4d88",
+      "beforeFile": ".build/before-native-point-editing/src/components/Inspector.tsx",
+      "beforeSha256": "2ab40ccd6d9be601e516cb4633e171a84318e29c28d1016aab11366f3defbf58"
+    },
+    {
+      "file": "src/components/CanvasVectorTools.tsx",
+      "sha256": "1236da274e59e765ff247cdb0e5a3131f3eeb78c9c34ac55dbe1c2ed7d547225",
+      "beforeFile": ".build/before-native-point-editing/src/components/CanvasVectorTools.tsx",
+      "beforeSha256": "22bce24a12fd63cea6edead6dc1f87cce3fa0c33106b003034defe0bcf8a6734"
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "0581444169bd91244d6ab56dd2ad2850675fc54734f4b4b33ffbe8de8ec16a82",
+      "beforeFile": ".build/before-native-point-editing/src/model/adaptive.ts",
+      "beforeSha256": "4be2be441f5c48e5753a16bda4c8d0a92f8030a0ab9b3a911b9885148238a2a6"
+    },
+    {
+      "file": "tests/native-point-editing-authoring.test.ts",
+      "sha256": "37948585d90e6e6d6136f6edca8306d8a43e41c0033838af50d22388356bfb3d",
+      "newFile": true
+    }
+  ],
+  "dependencies": [
+    {
+      "file": "src/model/vector-authoring.ts",
+      "sha256": "3a11a65829362183b40407adb5543dbc38dcf9560709578ee5d3f8dc19af697c",
+      "owner": "axure_feature_evidence"
+    }
+  ],
+  "report": {
+    "file": "research/native-point-editing-authoring-implementation.md",
+    "sha256": "12bf64a26b8540ed5a9a985981d9627ffee407c8b6bbbdeebbc660ea02cd33e5"
+  },
+  "evidence": [
+    {
+      "file": ".build/native-point-editing-authoring-red.json",
+      "sha256": "7626ea82383d770d3ee2d8ef189e7eb7e69470dbe67fe9223af39138a97603d3"
+    },
+    {
+      "file": ".build/native-point-editing-authoring-red.log",
+      "sha256": "933bddb1f5128799a7af5f8551b887647743d29c1e98498ad3b833f4e6e33405"
+    },
+    {
+      "file": ".build/native-point-editing-authoring-green-first.json",
+      "sha256": "694f8db4e662409427a59cf8bd8343337e9cd558260a29012daa3eed27d20525"
+    },
+    {
+      "file": ".build/native-point-editing-authoring-green-first.log",
+      "sha256": "6b9f1351c54b187a13e6b9b2709b9977293df4bbfe50003f7a5f42403cbd5831"
+    },
+    {
+      "file": ".build/native-point-editing-authoring-focused.json",
+      "sha256": "cbcdbc0632c670f2f6c2cc35a8d32b9b11801a6e37e9ec70f68ea2d0e90fde0a"
+    },
+    {
+      "file": ".build/native-point-editing-authoring-focused.log",
+      "sha256": "aec70a9999d1e04fe9d62306fa68f04f6ccffec005dbba6aff4e080957076683"
+    },
+    {
+      "file": ".build/native-point-editing-authoring-typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "validation": {
+    "initialOldPipeline": {
+      "total": 10,
+      "passed": 3,
+      "failed": 7,
+      "adapter": "applyAdaptiveWidgetEdits(page, viewId, updateWidgetTree(resolveAdaptiveWidgets(page, viewId), id, {vectorPath: path}))"
+    },
+    "intermediate": {
+      "total": 10,
+      "passed": 9,
+      "failed": 1,
+      "reason": "Approved contract changed partial-border fallback from conversion to refusal; obsolete expectation retained in intermediate record."
+    },
+    "finalFocused": {
+      "total": 124,
+      "passed": 124,
+      "failed": 0,
+      "newTests": 16
+    },
+    "typecheck": {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "exitCode": 0
+    },
+    "browser": "Owned by parent; not run by this authoring task.",
+    "fullSuiteOrPackage": "Not run by this authoring task."
+  },
+  "limits": [
+    "Prepared geometry uses effective adaptive normal style; selected/error/disabled and effect preview are suspended visually only during point mode.",
+    "Partial-border and independent-corner configurations rejected only when the parameterized renderer regenerates them.",
+    "Normalized coordinates, bounds and shapeText flags retained; no native out-of-bounds rebound equivalence claim.",
+    "No original GUI observation or native DLL execution."
+  ],
+  "blockingFindings": []
+}

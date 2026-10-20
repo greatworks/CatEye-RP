@@ -1,0 +1,30 @@
+import { createDocument, createWidget } from '../../src/model/document';
+import { layoutTable } from '../../src/model/table';
+import type { Action, Interaction, Widget } from '../../src/model/types';
+let sequence=0;
+const branch=(actions:Omit<Action,'id'>[],patch:Partial<Interaction>={}):Interaction=>({id:`table-case-${++sequence}`,name:'Cell action',event:'click',enabled:true,conditionMode:'all',conditions:[],actions:actions.map(a=>({...a,id:`table-action-${++sequence}`})),...patch});
+const status=(value:string):Omit<Action,'id'>=>({type:'setText',targetId:'table-status',value});
+export function tableFixture(){
+  sequence=0;const doc=createDocument();doc.id='table-document';doc.name='Table cells · independent interactions';doc.caseSelection='auto';const page=doc.pages[0];page.id='table-page';page.name='Tables';page.width=1100;page.height=940;page.background='#f7f8fc';
+  const text=(id:string,value:string,x:number,y:number,width:number,size=14)=>{const w=createWidget('text',x,y);Object.assign(w,{id,name:id,text:value,width,height:size>20?46:40});Object.assign(w.style,{fontSize:size,color:'#263348',fontWeight:size>20?700:400});return w;};
+  const heading=text('table-heading','Independent cells. One structured grid.',44,28,1000,28),caption=text('table-caption','Edit rows and columns, name individual cells, and attach cell-specific interactions.',44,83,1000);
+  let table=createWidget('table',44,158);table.id='table-main';table.name='Interaction grid';table.table!.columnWidths=[180,180,200];table.table!.rowHeights=[55,55,55];
+  const labels=['Update neighbor','Parent fallback','Consume click','Condition false','Choose a case','Read details','Rich formatting','Hide / restore','Move this cell'];
+  table.table!.cells.forEach((cell,i)=>{cell.id=`table-cell-${i}`;cell.name=labels[i];cell.text=labels[i];Object.assign(cell.style,{fill:i<3?'#eeedff':i<6?'#ffffff':'#f2f5fc',stroke:'#b9bfd1',textAlign:'center',fontSize:14});});
+  const cells=table.table!.cells;
+  cells[0].selectedStyle={fill:'#d1fae5',color:'#047857'};cells[0].interactions=[branch([{type:'setText',targetId:cells[6].id,value:'Updated independently'},{type:'setSelected',targetId:cells[0].id,value:'true'},status('Only this cell handled the click')])];
+  cells[2].interactions=[branch([],{name:'An empty case still consumes the click'})];cells[3].interactions=[branch([status('Must never run')],{conditions:[{source:'widgetText',key:cells[0].id,operator:'equals',value:'Never matches'}]})];
+  cells[4].interactions=[branch([status('First cell choice')],{name:'First cell choice'}),branch([status('Second cell choice')],{name:'Second cell choice'})];
+  cells[5].richText={paragraphs:[{runs:[{text:'Read ',style:{fontWeight:400}},{text:'details',linkId:'table-link',style:{fontWeight:700,color:'#4f46e5',underline:true}}]}],links:[{id:'table-link',name:'Table cell details',interactions:[branch([status('Cell hyperlink handled')])]}]};
+  cells[6].richText={paragraphs:[{runs:[{text:'Rich ',style:{fontWeight:700}},{text:'formatting',style:{fontStyle:'italic',color:'#7c3aed'}}]}]};
+  table.interactions=[branch([status('Table fallback handled')]),branch([status('Table double-click fallback')],{event:'doubleClick'})];table=layoutTable(table);
+  const feedback=text('table-status','Ready — choose a cell above.',44,350,1000,18);feedback.style.fill='#eeedff';feedback.height=52;feedback.style.textPadding=[12,14,12,14];
+  const button=(id:string,label:string,x:number,y:number,actions:Omit<Action,'id'>[]):Widget=>{const w=createWidget('button',x,y);Object.assign(w,{id,name:label,text:label,width:260,height:40,interactions:[branch(actions)]});return w;};
+  const noops=button('table-noops','Runtime resize / disable / error',44,432,[...(['table-main','table-cell-0'] as const).flatMap(targetId=>([{type:'resize',targetId,x:900,y:600},{type:'disable',targetId},{type:'setError',targetId,value:'true'}] as Omit<Action,'id'>[])),status('Unsupported setters left the grid unchanged')]);
+  const move=button('table-move','Move one cell',324,432,[{type:'move',targetId:'table-cell-8',x:350,y:98},status('One cell moved; track geometry retained')]);
+  const hide=button('table-hide-cell','Toggle one cell',604,432,[{type:'toggle',targetId:'table-cell-7'}]),toggle=button('table-hide','Toggle whole table',44,490,[{type:'toggle',targetId:table.id}]);
+  const repeatHeading=text('table-repeat-heading','The same grid in two independent repeater rows',44,557,1000,20);
+  const repeater=createWidget('repeater',44,614);repeater.id='table-repeater';repeater.name='Independent table instances';let item=createWidget('table',0,0);item.id='table-row';item.name='Repeated table';item.table={columnWidths:[260,300],rowHeights:[50],cells:item.table!.cells.slice(0,2)};item.table.cells.forEach((cell,i)=>{cell.id=`table-row-cell-${i}`;cell.name=i?'Row output':'Row action';cell.text=i?'Awaiting row action':'[[Item.Name]]';cell.style.fill=i?'#ffffff':'#eeedff';});item.table.cells[0].interactions=[branch([{type:'setText',targetId:'table-row-cell-1',value:'Clicked [[Item.Name]]'}])];item=layoutTable(item);repeater.width=560;repeater.height=116;repeater.repeater={columns:['Name'],rows:[{Name:'Alpha'},{Name:'Beta'}],template:[item],itemWidth:560,itemHeight:50,gap:16,fitToContent:false,layout:'vertical'};
+  const note=text('table-note','Static table structure: runtime row insertion, merged cells and images inside cells are not supported.',44,768,1000,12);note.style.color='#6b7280';
+  page.widgets=[heading,caption,table,feedback,noops,move,hide,toggle,repeatHeading,repeater,note];return doc;
+}

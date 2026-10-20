@@ -1,0 +1,694 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "7d23b88b-01a6-4389-b295-89c7c839f900",
+  "name": "Mixed rich text",
+  "pages": [
+    {
+      "id": "d1a961ca-b4ce-4240-bebe-16498a0d7294",
+      "name": "Page 1",
+      "width": 1060,
+      "height": 900,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "rich-heading",
+          "type": "text",
+          "name": "Rich heading",
+          "text": "Mixed typography, preserved",
+          "notes": "",
+          "x": 30,
+          "y": 20,
+          "rotation": 0,
+          "width": 940,
+          "height": 50,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 30,
+            "fontFamily": "Roboto",
+            "fontWeight": 700,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rich-target",
+          "type": "box",
+          "name": "Rich target",
+          "text": "Normal italic bold\n\nRight aligned, fixed 28px line spacing\nLiteral: [[...]] and <b>text</b>",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "Normal ",
+                    "style": {
+                      "fontSize": 26,
+                      "fontFamily": "Roboto",
+                      "fontStyle": "normal"
+                    }
+                  },
+                  {
+                    "text": "italic ",
+                    "style": {
+                      "color": "#6d28d9",
+                      "fontSize": 26,
+                      "fontFamily": "Roboto",
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "text": "bold",
+                    "style": {
+                      "fontSize": 26,
+                      "fontFamily": "Roboto",
+                      "fontWeight": 700
+                    }
+                  }
+                ],
+                "textAlign": "left",
+                "lineHeightPx": 36
+              },
+              {
+                "runs": [
+                  {
+                    "text": "",
+                    "style": {
+                      "fontSize": 14
+                    }
+                  }
+                ],
+                "textAlign": "left",
+                "lineHeightPx": 28
+              },
+              {
+                "runs": [
+                  {
+                    "text": "Right aligned, fixed 28px line spacing",
+                    "style": {
+                      "fontSize": 18,
+                      "fontFamily": "Roboto"
+                    }
+                  }
+                ],
+                "textAlign": "right",
+                "lineHeightPx": 28
+              },
+              {
+                "runs": [
+                  {
+                    "text": "Literal: [[...]] and <b>text</b>",
+                    "style": {
+                      "color": "#475569",
+                      "fontSize": 16,
+                      "fontFamily": "Roboto"
+                    }
+                  }
+                ],
+                "textAlign": "left",
+                "lineHeightPx": 28
+              }
+            ],
+            "expressionMode": "literal"
+          },
+          "x": 30,
+          "y": 100,
+          "rotation": 0,
+          "width": 570,
+          "height": 245,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#f3f6fc",
+            "stroke": "#d5deed",
+            "strokeWidth": 1,
+            "radius": 0,
+            "textPadding": [
+              15,
+              18,
+              15,
+              18
+            ],
+            "verticalAlign": "top",
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "fontStyle": "normal",
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [],
+          "selectedStyle": {
+            "color": "#1e98d7"
+          },
+          "mouseOverStyle": {
+            "fontStyle": "normal"
+          },
+          "disabledStyle": {
+            "fontStyle": "normal"
+          },
+          "errorStyle": {
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "id": "rich-caption",
+          "type": "text",
+          "name": "Rich caption",
+          "text": "Hover resets italic temporarily; leaving restores each run.",
+          "notes": "",
+          "x": 30,
+          "y": 365,
+          "rotation": 0,
+          "width": 650,
+          "height": 50,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 17,
+            "fontFamily": "Roboto",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "rich-repeater",
+          "type": "repeater",
+          "name": "Rich repeater",
+          "text": "",
+          "notes": "",
+          "x": 30,
+          "y": 440,
+          "rotation": 0,
+          "width": 570,
+          "height": 130,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "Alpha"
+              },
+              {
+                "Name": "Beta"
+              }
+            ],
+            "template": [
+              {
+                "id": "rich-row",
+                "type": "text",
+                "name": "Rich row",
+                "text": "Item [[Item.Name]]",
+                "notes": "",
+                "richText": {
+                  "paragraphs": [
+                    {
+                      "runs": [
+                        {
+                          "text": "Item [[It",
+                          "style": {
+                            "fontSize": 21,
+                            "fontFamily": "Roboto",
+                            "fontStyle": "italic"
+                          }
+                        },
+                        {
+                          "text": "em.Name]]",
+                          "style": {
+                            "fontFamily": "Roboto",
+                            "fontWeight": 700
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "x": 10,
+                "y": 10,
+                "rotation": 0,
+                "width": 500,
+                "height": 35,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": []
+              }
+            ],
+            "itemHeight": 50,
+            "gap": 10
+          }
+        },
+        {
+          "id": "rich-field",
+          "type": "input",
+          "name": "Text before rich click",
+          "text": "",
+          "notes": "",
+          "x": 30,
+          "y": 605,
+          "rotation": 0,
+          "width": 350,
+          "height": 35,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rich-field-blur",
+              "event": "blur",
+              "name": "Clear error on blur",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rich-blur-action",
+                  "type": "setError",
+                  "targetId": "rich-target",
+                  "value": "false"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rich-button-0",
+          "type": "button",
+          "name": "Select text",
+          "text": "Select text",
+          "notes": "",
+          "x": 675,
+          "y": 100,
+          "rotation": 0,
+          "width": 245,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rich-event-0",
+              "event": "click",
+              "name": "Select text",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rich-action-0",
+                  "type": "setSelected",
+                  "targetId": "rich-target",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rich-button-1",
+          "type": "button",
+          "name": "Clear selection",
+          "text": "Clear selection",
+          "notes": "",
+          "x": 675,
+          "y": 161,
+          "rotation": 0,
+          "width": 245,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rich-event-1",
+              "event": "click",
+              "name": "Clear selection",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rich-action-1",
+                  "type": "setSelected",
+                  "targetId": "rich-target",
+                  "value": "false"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rich-button-2",
+          "type": "button",
+          "name": "Set error",
+          "text": "Set error",
+          "notes": "",
+          "richText": {
+            "paragraphs": [
+              {
+                "runs": [
+                  {
+                    "text": "Set ",
+                    "style": {
+                      "fontStyle": "italic"
+                    }
+                  },
+                  {
+                    "text": "error"
+                  }
+                ]
+              }
+            ],
+            "expressionMode": "literal"
+          },
+          "x": 675,
+          "y": 222,
+          "rotation": 0,
+          "width": 245,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rich-event-2",
+              "event": "click",
+              "name": "Set error",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rich-action-2",
+                  "type": "setError",
+                  "targetId": "rich-target",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rich-button-3",
+          "type": "button",
+          "name": "Clear error",
+          "text": "Clear error",
+          "notes": "",
+          "x": 675,
+          "y": 283,
+          "rotation": 0,
+          "width": 245,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rich-event-3",
+              "event": "click",
+              "name": "Clear error",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rich-action-3",
+                  "type": "setError",
+                  "targetId": "rich-target",
+                  "value": "false"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rich-button-4",
+          "type": "button",
+          "name": "Use plain text",
+          "text": "Use plain text",
+          "notes": "",
+          "x": 675,
+          "y": 344,
+          "rotation": 0,
+          "width": 245,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rich-event-4",
+              "event": "click",
+              "name": "Use plain text",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rich-action-4",
+                  "type": "setText",
+                  "targetId": "rich-target",
+                  "value": "Replacement\n\nkeeps first-run formatting"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rich-button-5",
+          "type": "button",
+          "name": "Set all italic",
+          "text": "Set all italic",
+          "notes": "",
+          "x": 675,
+          "y": 405,
+          "rotation": 0,
+          "width": 245,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rich-event-5",
+              "event": "click",
+              "name": "Set all italic",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rich-action-5",
+                  "type": "setStyle",
+                  "targetId": "rich-target",
+                  "style": {
+                    "fontStyle": "italic"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rich-button-6",
+          "type": "button",
+          "name": "Set all normal",
+          "text": "Set all normal",
+          "notes": "",
+          "x": 675,
+          "y": 466,
+          "rotation": 0,
+          "width": 245,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "rich-event-6",
+              "event": "click",
+              "name": "Set all normal",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "rich-action-6",
+                  "type": "setStyle",
+                  "targetId": "rich-target",
+                  "style": {
+                    "fontStyle": "normal"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": [
+        {
+          "id": "rich-phone",
+          "name": "Phone",
+          "width": 768,
+          "overrides": {
+            "rich-target": {
+              "style": {
+                "fontStyle": "normal"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

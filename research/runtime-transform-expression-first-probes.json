@@ -1,0 +1,346 @@
+{
+  "capturedAt": "2026-10-20T05:16:00.174Z",
+  "target": "Axure RP 11.0.0.4150",
+  "execution": "Complete retained expr.js, sto.js, variables.js and exact Move helper in one VM realm",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6",
+      "bytes": 29187
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\sto.js",
+      "sha256": "c1ff17b0ed8a2e3a34cba550c7f4e9447827d131e38542d397e686c0e0b6b9b6",
+      "bytes": 9159
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\variables.js",
+      "sha256": "91c71787560b88e597b6baf934bd68075597901afccf4787b6aa9d8c43453188",
+      "bytes": 6971
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    }
+  ],
+  "ranges": [
+    {
+      "file": "action.js",
+      "from": 866,
+      "through": 1042,
+      "sha256": "17364f4a2012d6cccfca215123ac6261296c11fe26c9a8fc6003e5b707565941"
+    },
+    {
+      "file": "action.js",
+      "from": 1045,
+      "through": 1059,
+      "sha256": "a485ce82267f291b7bfa6b04c666ce43132ba446e5877332723c6bb96f2ac099"
+    }
+  ],
+  "script": {
+    "path": "research/runtime-transform-expression-probe.mjs",
+    "sha256": "0d21fd7bc63bf694af9aca93af6bbcabe45d59863734099e0fc2e0c64450157c"
+  },
+  "summary": {
+    "total": 35,
+    "passed": 33,
+    "failed": 2
+  },
+  "results": [
+    {
+      "name": "StringLiteral literal zero",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "0"
+      }
+    },
+    {
+      "name": "StringLiteral numeric expression zero",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "0"
+      }
+    },
+    {
+      "name": "StringLiteral string expression zero",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "0"
+      }
+    },
+    {
+      "name": "StringLiteral numeric false",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "false"
+      }
+    },
+    {
+      "name": "StringLiteral empty literal",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": ""
+      }
+    },
+    {
+      "name": "StringLiteral empty expression",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": ""
+      }
+    },
+    {
+      "name": "StringLiteral undefined expression",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "undefined"
+      }
+    },
+    {
+      "name": "StringLiteral mixed number",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "A0B"
+      }
+    },
+    {
+      "name": "StringLiteral NaN expression",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "NaN"
+      }
+    },
+    {
+      "name": "StringLiteral computed numeric cast",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "0"
+      }
+    },
+    {
+      "name": "STO raw numeric literal",
+      "passed": true,
+      "actual": {
+        "type": "number",
+        "tag": "[object Number]",
+        "value": 0
+      }
+    },
+    {
+      "name": "STO raw boolean literal",
+      "passed": true,
+      "actual": {
+        "type": "boolean",
+        "tag": "[object Boolean]",
+        "value": false
+      }
+    },
+    {
+      "name": "STO raw global string",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "3"
+      }
+    },
+    {
+      "name": "STO global desired float",
+      "passed": true,
+      "actual": {
+        "type": "number",
+        "tag": "[object Number]",
+        "value": 3
+      }
+    },
+    {
+      "name": "STO plus numeric strings",
+      "passed": true,
+      "actual": {
+        "type": "number",
+        "tag": "[object Number]",
+        "value": 3
+      }
+    },
+    {
+      "name": "STO plus empty and number",
+      "passed": true,
+      "actual": {
+        "type": "number",
+        "tag": "[object Number]",
+        "value": 2
+      }
+    },
+    {
+      "name": "STO plus mixed text",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "x2"
+      }
+    },
+    {
+      "name": "STO plus numeric result cast string",
+      "passed": true,
+      "actual": {
+        "type": "string",
+        "tag": "[object String]",
+        "value": "3"
+      }
+    },
+    {
+      "name": "STO comparison converts both numeric strings",
+      "passed": true,
+      "actual": {
+        "type": "boolean",
+        "tag": "[object Boolean]",
+        "value": false
+      }
+    },
+    {
+      "name": "STO logical false string normalization",
+      "passed": true,
+      "actual": {
+        "type": "boolean",
+        "tag": "[object Boolean]",
+        "value": false
+      }
+    },
+    {
+      "name": "STO Window width is numeric",
+      "passed": true,
+      "actual": {
+        "type": "number",
+        "tag": "[object Number]",
+        "value": 1280
+      }
+    },
+    {
+      "name": "STO This geometry is numeric",
+      "passed": true,
+      "actual": {
+        "type": "number",
+        "tag": "[object Number]",
+        "value": 200
+      }
+    },
+    {
+      "name": "STO logical branches are eagerly evaluated",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 'no error'\n- 'TypeError'\n\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-expression-probe.mjs:60:48)\n    at file:///D:/WSCodex/REA/research/runtime-transform-expression-probe.mjs:84:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "StringLiteral catches an STO error and retains the original marker",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ 'undefined'\n- '[[Missing.width]]'\n\n    at test (file:///D:/WSCodex/REA/research/runtime-transform-expression-probe.mjs:60:48)\n    at file:///D:/WSCodex/REA/research/runtime-transform-expression-probe.mjs:85:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "name": "one complete object expression returns the same-realm object",
+      "passed": true,
+      "actual": {
+        "type": "object",
+        "tag": "[object Object]",
+        "value": {
+          "x": 10,
+          "width": 200,
+          "text": "Track"
+        }
+      }
+    },
+    {
+      "name": "mixed object expression substitutes its text",
+      "passed": true,
+      "actual": "XTrackY"
+    },
+    {
+      "name": "two complete object expressions substitute their texts",
+      "passed": true,
+      "actual": "TrackTrack"
+    },
+    {
+      "name": "StringLiteral creates fresh binding snapshots per evaluation",
+      "passed": true,
+      "actual": {
+        "a": "200",
+        "b": "333",
+        "calls": [
+          "track",
+          "track"
+        ]
+      }
+    },
+    {
+      "name": "all local bindings rebuild even when text has no markers",
+      "passed": true,
+      "actual": {
+        "value": "plain",
+        "calls": [
+          "track",
+          "other"
+        ]
+      }
+    },
+    {
+      "name": "bindings do not leak to the next StringLiteral",
+      "passed": true,
+      "actual": {
+        "a": "200",
+        "b": "undefined"
+      }
+    },
+    {
+      "name": "Complete expression to Move literal zero",
+      "passed": true,
+      "actual": -100
+    },
+    {
+      "name": "Complete expression to Move whole numeric zero",
+      "passed": true,
+      "actual": -100
+    },
+    {
+      "name": "Complete expression to Move whole string zero",
+      "passed": true,
+      "actual": -100
+    },
+    {
+      "name": "Complete expression to Move empty string",
+      "passed": true,
+      "actual": 0
+    },
+    {
+      "name": "Complete expression to Move numeric option carrier",
+      "passed": true,
+      "actual": 0
+    }
+  ],
+  "substitutions": [
+    "STO objects and StringLiteral carriers are explicit controlled inputs, not compiled by the native DLL.",
+    "GetWidget geometry/text snapshots, element path resolution, window and offsets use declared facades.",
+    "No browser pointer or original editor GUI; no native DLL methods executed."
+  ],
+  "originalAxureGuiCompared": false,
+  "originalDllExecuted": false
+}

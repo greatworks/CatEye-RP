@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {runInNewContext} from 'node:vm';
+import {harness} from './runtime-transform-special-probe.mjs';
+import {createOfflineRuntime} from '../src/runtime/export-runtime.ts';
+const hash=v=>createHash('sha256').update(v).digest('hex'),bound=path=>({path,sha256:hash(fs.readFileSync(path))});
+const native=harness()(`_actionHandlers.setWidgetSize({srcElement:'page'},[{objectsToResize:[{objectPath:'thisItem',sizeInfo:{width:{value:'120'},height:{value:'35'}}}]}],0);return result();`);
+const doc={format:'rea-prototype',version:1,id:'doc',name:'This Item outside item',caseSelection:'never',pages:[{id:'page',name:'Page',width:1200,height:900,background:'#fff',widgets:[],notes:'',adaptiveViews:[],interactions:[{id:'load',name:'load',event:'load',enabled:true,conditions:[],conditionMode:'all',actions:[{id:'size',type:'resize',resize:{targets:[{target:{kind:'thisItem'},width:{text:'120'},height:{text:'35'},anchor:'center',easing:'none',duration:0}]}},{id:'after',type:'setVariable',targetId:'Log',value:'continued'}]}]}],components:[],variables:{Log:''},styles:[]};
+const cases=[];for(const portable of [false,true]){const factory=portable?runInNewContext('('+createOfflineRuntime.toString()+')',{structuredClone,Date,setTimeout,clearTimeout}):createOfflineRuntime;const r=factory(structuredClone(doc));try{await r.start();cases.push({portable,ok:true,log:r.state().variables.Log})}catch(e){cases.push({portable,ok:false,error:String(e),log:r.state().variables.Log})}finally{r.dispose()}}
+const report={capturedAt:new Date().toISOString(),kind:'Exact native action+size+repeater consumers with the declared special harness versus current core Page Loaded, not GUI',native,cases,expected:'Outside any repeater, evaluate dimensions and no-op, then dispatch continuation; no widget is needed for constant dimensions.',sources:[bound('src/runtime/export-runtime.ts'),bound('research/runtime-transform-special-probe.mjs')],script:bound('research/runtime-transform-special-integration-review-page-scope-probe.mjs'),defect:cases.some(c=>!c.ok||c.log!=='continued')};
+const p=process.argv[2]||'research/runtime-transform-special-integration-review-page-scope.json';if(fs.existsSync(p))throw Error('Preserve '+p);fs.writeFileSync(p,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));

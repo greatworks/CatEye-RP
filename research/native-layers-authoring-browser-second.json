@@ -1,0 +1,271 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\WSCodex\\REA\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      ".build/native-layers-authoring.config.ts"
+    ],
+    "configFile": "D:\\WSCodex\\REA\\.build\\native-layers-authoring.config.ts",
+    "rootDir": "D:/WSCodex/REA/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/WSCodex/REA/test-results/native-layers-authoring-second",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/WSCodex/REA/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "native-layers-authoring.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\WSCodex\\REA\\test-results\\native-layers-authoring-second",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\WSCodex\\REA\\tests\\e2e",
+        "snapshotDir": "D:\\WSCodex\\REA\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "native-layers-authoring.spec.ts",
+        "timeout": 45000,
+        "use": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36 Edg/156.0.8078.4",
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "channel": "msedge",
+          "headless": true,
+          "baseURL": "http://127.0.0.1:5417",
+          "acceptDownloads": true,
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "research/native-layers-authoring-browser-second.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npx vite --config .build/native-layers.vite.config.ts --host 127.0.0.1 --port 5417 --strictPort",
+      "cwd": "D:/WSCodex/REA",
+      "url": "http://127.0.0.1:5417",
+      "reuseExistingServer": false,
+      "timeout": 60000
+    }
+  },
+  "suites": [
+    {
+      "title": "native-layers-authoring.spec.ts",
+      "file": "native-layers-authoring.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "groups, moves, edits, ungroups and undoes with one real identity and stable page coordinates",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 42937,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T06:56:51.358Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "84c94347bc66ac4ece47-d7a769eaf6e9600b76b4",
+          "file": "native-layers-authoring.spec.ts",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "nested group scopes share the enclosing panel canvas and exit to the actual owner",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2049,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T06:57:34.631Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "84c94347bc66ac4ece47-dbbfb19d28fa3c41fe74",
+          "file": "native-layers-authoring.spec.ts",
+          "line": 71,
+          "column": 1
+        },
+        {
+          "title": "outline reveals group members and the group itself is an independent action target",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3123,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T06:57:36.689Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "84c94347bc66ac4ece47-1d975fff9e968e0996cd",
+          "file": "native-layers-authoring.spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "authoring repeater rows resolve nested group text exactly once and template editing retains expressions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1769,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T06:57:39.820Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "84c94347bc66ac4ece47-fa1b6727f3c7849362d7",
+          "file": "native-layers-authoring.spec.ts",
+          "line": 114,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-20T06:56:46.138Z",
+    "duration": 56300.331000000006,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

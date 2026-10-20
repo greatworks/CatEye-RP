@@ -1,0 +1,144 @@
+{
+  "schema": "rea-rp-comparison-evidence-v1",
+  "date": "2026-10-13",
+  "mode": "static-source-inspection; truth table is an independent JavaScript derivation, not native GUI execution",
+  "source": [
+    {
+      "file": "expr.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6",
+      "excerpts": [
+        {
+          "from": 4,
+          "to": 12,
+          "lines": [
+            "    var _binOpHandlers = {",
+            "        '&&': function(left, right) { return _binOpOverride(left, right, function(left) { return $ax.getBool(left) && $ax.getBool(right()); }); },",
+            "        '||': function(left, right) { return _binOpOverride(left, right, function(left) { return $ax.getBool(left) || $ax.getBool(right()); }); },",
+            "        '==': function(left, right) { return isEqual(left, right, true); },",
+            "        '!=': function(left, right) { return !isEqual(left, right, true); },",
+            "        '>': function(left, right) { return _binOpNum(left, right, function(left, right) { return left > right; }); },",
+            "        '<': function(left, right) { return _binOpNum(left, right, function(left, right) { return left < right; }); },",
+            "        '>=': function(left, right) { return _binOpNum(left, right, function(left, right) { return left >= right; }); },",
+            "        '<=': function(left, right) { return _binOpNum(left, right, function(left, right) { return left <= right; }); }"
+          ]
+        },
+        {
+          "from": 15,
+          "to": 28,
+          "lines": [
+            "    var checkOps = function(left, right) {",
+            "        return left == undefined || right == undefined;",
+            "    };",
+            "",
+            "    var isEqual = function (left, right, isFunction) {",
+            "        if (isFunction) {",
+            "            //if left and right is function, then get the value",
+            "            //otherwise left and right should be already the value we want",
+            "            left = left();",
+            "            right = right();",
+            "        }",
+            "",
+            "        if(checkOps(left, right)) return false;",
+            ""
+          ]
+        },
+        {
+          "from": 59,
+          "to": 59,
+          "lines": [
+            "    };"
+          ]
+        },
+        {
+          "from": 68,
+          "to": 74,
+          "lines": [
+            "    var _binOpNum = function(left, right, func) {",
+            "        var left = left();",
+            "        var right = right();",
+            "        if(checkOps(left, right)) return false;",
+            "",
+            "        return func(left, Number(right));",
+            "    };"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sto.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/sto.js",
+      "sha256": "c1ff17b0ed8a2e3a34cba550c7f4e9447827d131e38542d397e686c0e0b6b9b6",
+      "excerpts": [
+        {
+          "from": 210,
+          "to": 214,
+          "lines": [
+            "    var _getBool = function(val) {",
+            "        var lowerVal = val.toLowerCase ? val.toLowerCase() : val;",
+            "        return lowerVal == \"false\" ? false : lowerVal == \"true\" ? true : val;",
+            "    };",
+            "    $ax.getBool = _getBool;"
+          ]
+        }
+      ]
+    }
+  ],
+  "stringOperandTruthTable": [
+    {
+      "left": "FALSE",
+      "right": "",
+      "equals": true,
+      "notEquals": false
+    },
+    {
+      "left": "false",
+      "right": "0",
+      "equals": true,
+      "notEquals": false
+    },
+    {
+      "left": "TRUE",
+      "right": "1",
+      "equals": true,
+      "notEquals": false
+    },
+    {
+      "left": "0",
+      "right": "",
+      "equals": false,
+      "notEquals": true
+    },
+    {
+      "left": "00",
+      "right": "0",
+      "equals": false,
+      "notEquals": true
+    },
+    {
+      "left": " true ",
+      "right": "true",
+      "equals": false,
+      "notEquals": true
+    },
+    {
+      "left": "TRUE",
+      "right": "true",
+      "equals": true,
+      "notEquals": false
+    },
+    {
+      "left": "False",
+      "right": "false",
+      "equals": true,
+      "notEquals": false
+    },
+    {
+      "left": "A",
+      "right": "a",
+      "equals": false,
+      "notEquals": true
+    }
+  ],
+  "scope": "Only resolved GetWidgetText and unbound StringLiteral string operands. Native dates, objects, undefined and numeric comparison recovery are not implemented by this decoder."
+}

@@ -1,0 +1,613 @@
+{
+  "timestamp": "2026-10-13T23:40:42.556Z",
+  "method": "Bounded static CIL control-flow replay with mocked graphics/struct sinks; no DLL execution or original pixel measurement",
+  "sources": [
+    {
+      "path": "research/font-size-runtime-richpanel-layout-cil.json",
+      "sha256": "a39cf0170e37c888d0507bdde381c88763afceb7cf909d97ac785347f73aba32"
+    },
+    {
+      "path": "research/font-size-runtime-graphics-layout-cil.json",
+      "sha256": "9d154b683a80785b1cd15d5b7439406a66209a40e31e2edf50db19a532da6fdf"
+    },
+    {
+      "path": "research/font-size-runtime-size-normalization-cil.json",
+      "sha256": "88303b4911a919b86847385f1bcd3da99c4ac1b89b03f57a8bfb000704950f64"
+    },
+    {
+      "path": "research/font-size-runtime-round-cil.json",
+      "sha256": "e237d4566483d6c29125685feb4bafd7e307a4a51bd0e1a772596b7276589008"
+    }
+  ],
+  "boundaries": [
+    "Returned graphics size132.25x38.75 is injected only to exercise control flow; not a measured Axure value",
+    "Math.Round sink independently models tested AwayFromZero non-midpoints; not exhaustive binary tie parity",
+    "Only nonempty, non-editing text-panel branches covered"
+  ],
+  "results": [
+    {
+      "name": "Initial text-panel layout chooses measuring width and rounds measured size",
+      "autoFitWidth": true,
+      "measureWidth": 10000,
+      "rectWritten": true,
+      "injectedGraphicsResult": {
+        "w": 132.25,
+        "h": 38.75
+      },
+      "observedRect": {
+        "size": {
+          "w": 132,
+          "h": 39
+        }
+      },
+      "calls": [
+        {
+          "method": 100701896,
+          "il": 476,
+          "callee": 100702287,
+          "name": "Axure.DocumentModel.Objects.TextPanel::get_RichTextParent"
+        },
+        {
+          "method": 100701896,
+          "il": 481,
+          "callee": 100702342,
+          "name": "Axure.DocumentModel.Objects.RichTextObject::get_AutoFitWidth"
+        },
+        {
+          "method": 100701896,
+          "il": 384,
+          "callee": 100701875,
+          "name": "Axure.DocumentModel.Objects.RichTextPanel::get_CachedGraphics"
+        },
+        {
+          "method": 100701896,
+          "il": 390,
+          "callee": 100702315,
+          "name": "Axure.DocumentModel.Objects.TextPanel::get_IsBeingEdited"
+        },
+        {
+          "method": 100701896,
+          "il": 398,
+          "callee": 100715355,
+          "name": "ftC2.mtC7::GtCX"
+        },
+        {
+          "method": 100715355,
+          "il": 18,
+          "callee": 100715354,
+          "name": "ftC2.mtC7::KIf5",
+          "width": 10000,
+          "flag": false
+        },
+        {
+          "method": 100715355,
+          "il": 23,
+          "callee": 100715399,
+          "name": ".bHzv::zHzo"
+        },
+        {
+          "method": 100715355,
+          "trace": [
+            0,
+            7,
+            8,
+            17,
+            18,
+            23,
+            28
+          ]
+        },
+        {
+          "method": 100701896,
+          "il": 75,
+          "callee": 100722983,
+          "name": "hHBO.fHBd::RHBf"
+        },
+        {
+          "method": 100722983,
+          "il": 8,
+          "callee": 100722956,
+          "name": "hHBO.fHBd::IHVr"
+        },
+        {
+          "method": 100722983,
+          "il": 15,
+          "callee": 100688822,
+          "name": "Ebxh.rbx2::ybxu"
+        },
+        {
+          "method": 100688822,
+          "il": 10,
+          "callee": 167786521,
+          "name": "System.Math::Round"
+        },
+        {
+          "method": 100688822,
+          "trace": [
+            0,
+            7,
+            8,
+            9,
+            10,
+            15
+          ]
+        },
+        {
+          "method": 100722983,
+          "il": 21,
+          "callee": 100722954,
+          "name": "hHBO.fHBd::zHVB"
+        },
+        {
+          "method": 100722983,
+          "il": 28,
+          "callee": 100688822,
+          "name": "Ebxh.rbx2::ybxu"
+        },
+        {
+          "method": 100688822,
+          "il": 10,
+          "callee": 167786521,
+          "name": "System.Math::Round"
+        },
+        {
+          "method": 100688822,
+          "trace": [
+            0,
+            7,
+            8,
+            9,
+            10,
+            15
+          ]
+        },
+        {
+          "method": 100722983,
+          "trace": [
+            0,
+            7,
+            8,
+            13,
+            14,
+            15,
+            20,
+            21,
+            26,
+            27,
+            28,
+            33,
+            38
+          ]
+        },
+        {
+          "method": 100701896,
+          "il": 192,
+          "callee": 100702294,
+          "name": "Axure.DocumentModel.Objects.TextPanel::get_Rect"
+        },
+        {
+          "method": 100701896,
+          "il": 35,
+          "callee": 100722078,
+          "name": "h5uH.j5u5::get_Size"
+        },
+        {
+          "method": 100701896,
+          "il": 41,
+          "callee": 100722992,
+          "name": "hHBO.fHBd::op_Inequality"
+        },
+        {
+          "method": 100701896,
+          "il": 563,
+          "callee": 100702294,
+          "name": "Axure.DocumentModel.Objects.TextPanel::get_Rect"
+        },
+        {
+          "method": 100701896,
+          "il": 573,
+          "callee": 100722084,
+          "name": "h5uH.j5u5::k5uI"
+        },
+        {
+          "method": 100701896,
+          "il": 578,
+          "callee": 100702293,
+          "name": "Axure.DocumentModel.Objects.TextPanel::iNZP"
+        },
+        {
+          "method": 100701896,
+          "il": 135,
+          "callee": 100701900,
+          "name": "Axure.DocumentModel.Objects.RichTextPanel::INOc"
+        },
+        {
+          "method": 100701896,
+          "trace": [
+            0,
+            7,
+            12,
+            17,
+            18,
+            23,
+            28,
+            475,
+            476,
+            481,
+            486,
+            383,
+            384,
+            389,
+            390,
+            395,
+            396,
+            398,
+            403,
+            405,
+            410,
+            415,
+            420,
+            425,
+            71,
+            73,
+            74,
+            75,
+            80,
+            82,
+            87,
+            92,
+            97,
+            191,
+            192,
+            197,
+            199,
+            204,
+            209,
+            210,
+            215,
+            33,
+            35,
+            40,
+            41,
+            46,
+            51,
+            56,
+            61,
+            66,
+            561,
+            562,
+            563,
+            568,
+            570,
+            572,
+            573,
+            578,
+            583,
+            588,
+            593,
+            594,
+            599,
+            133,
+            134,
+            135,
+            140,
+            145,
+            150,
+            155,
+            273
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Initial text-panel layout chooses measuring width and rounds measured size",
+      "autoFitWidth": false,
+      "measureWidth": 95,
+      "rectWritten": true,
+      "injectedGraphicsResult": {
+        "w": 132.25,
+        "h": 38.75
+      },
+      "observedRect": {
+        "size": {
+          "w": 95,
+          "h": 39
+        }
+      },
+      "calls": [
+        {
+          "method": 100701896,
+          "il": 476,
+          "callee": 100702287,
+          "name": "Axure.DocumentModel.Objects.TextPanel::get_RichTextParent"
+        },
+        {
+          "method": 100701896,
+          "il": 481,
+          "callee": 100702342,
+          "name": "Axure.DocumentModel.Objects.RichTextObject::get_AutoFitWidth"
+        },
+        {
+          "method": 100701896,
+          "il": 275,
+          "callee": 100702315,
+          "name": "Axure.DocumentModel.Objects.TextPanel::get_IsBeingEdited"
+        },
+        {
+          "method": 100701896,
+          "il": 306,
+          "callee": 100701885,
+          "name": "Axure.DocumentModel.Objects.RichTextPanel::get_IsEmpty"
+        },
+        {
+          "method": 100701896,
+          "il": 343,
+          "callee": 100701875,
+          "name": "Axure.DocumentModel.Objects.RichTextPanel::get_CachedGraphics"
+        },
+        {
+          "method": 100701896,
+          "il": 350,
+          "callee": 100722956,
+          "name": "hHBO.fHBd::IHVr"
+        },
+        {
+          "method": 100701896,
+          "il": 356,
+          "callee": 100715353,
+          "name": "ftC2.mtC7::dtCa"
+        },
+        {
+          "method": 100715353,
+          "il": 11,
+          "callee": 100715354,
+          "name": "ftC2.mtC7::KIf5",
+          "width": 95,
+          "flag": 1
+        },
+        {
+          "method": 100715353,
+          "il": 16,
+          "callee": 100715399,
+          "name": ".bHzv::zHzo"
+        },
+        {
+          "method": 100715353,
+          "il": 25,
+          "callee": 100722954,
+          "name": "hHBO.fHBd::zHVB"
+        },
+        {
+          "method": 100715353,
+          "trace": [
+            0,
+            7,
+            8,
+            9,
+            10,
+            11,
+            16,
+            21,
+            23,
+            25,
+            30,
+            35
+          ]
+        },
+        {
+          "method": 100701896,
+          "il": 75,
+          "callee": 100722983,
+          "name": "hHBO.fHBd::RHBf"
+        },
+        {
+          "method": 100722983,
+          "il": 8,
+          "callee": 100722956,
+          "name": "hHBO.fHBd::IHVr"
+        },
+        {
+          "method": 100722983,
+          "il": 15,
+          "callee": 100688822,
+          "name": "Ebxh.rbx2::ybxu"
+        },
+        {
+          "method": 100688822,
+          "il": 10,
+          "callee": 167786521,
+          "name": "System.Math::Round"
+        },
+        {
+          "method": 100688822,
+          "trace": [
+            0,
+            7,
+            8,
+            9,
+            10,
+            15
+          ]
+        },
+        {
+          "method": 100722983,
+          "il": 21,
+          "callee": 100722954,
+          "name": "hHBO.fHBd::zHVB"
+        },
+        {
+          "method": 100722983,
+          "il": 28,
+          "callee": 100688822,
+          "name": "Ebxh.rbx2::ybxu"
+        },
+        {
+          "method": 100688822,
+          "il": 10,
+          "callee": 167786521,
+          "name": "System.Math::Round"
+        },
+        {
+          "method": 100688822,
+          "trace": [
+            0,
+            7,
+            8,
+            9,
+            10,
+            15
+          ]
+        },
+        {
+          "method": 100722983,
+          "trace": [
+            0,
+            7,
+            8,
+            13,
+            14,
+            15,
+            20,
+            21,
+            26,
+            27,
+            28,
+            33,
+            38
+          ]
+        },
+        {
+          "method": 100701896,
+          "il": 192,
+          "callee": 100702294,
+          "name": "Axure.DocumentModel.Objects.TextPanel::get_Rect"
+        },
+        {
+          "method": 100701896,
+          "il": 35,
+          "callee": 100722078,
+          "name": "h5uH.j5u5::get_Size"
+        },
+        {
+          "method": 100701896,
+          "il": 41,
+          "callee": 100722992,
+          "name": "hHBO.fHBd::op_Inequality"
+        },
+        {
+          "method": 100701896,
+          "il": 563,
+          "callee": 100702294,
+          "name": "Axure.DocumentModel.Objects.TextPanel::get_Rect"
+        },
+        {
+          "method": 100701896,
+          "il": 573,
+          "callee": 100722084,
+          "name": "h5uH.j5u5::k5uI"
+        },
+        {
+          "method": 100701896,
+          "il": 578,
+          "callee": 100702293,
+          "name": "Axure.DocumentModel.Objects.TextPanel::iNZP"
+        },
+        {
+          "method": 100701896,
+          "il": 135,
+          "callee": 100701900,
+          "name": "Axure.DocumentModel.Objects.RichTextPanel::INOc"
+        },
+        {
+          "method": 100701896,
+          "trace": [
+            0,
+            7,
+            12,
+            17,
+            18,
+            23,
+            28,
+            475,
+            476,
+            481,
+            486,
+            491,
+            496,
+            501,
+            506,
+            160,
+            274,
+            275,
+            280,
+            285,
+            290,
+            295,
+            300,
+            450,
+            305,
+            306,
+            311,
+            342,
+            343,
+            348,
+            350,
+            355,
+            356,
+            361,
+            363,
+            368,
+            373,
+            71,
+            73,
+            74,
+            75,
+            80,
+            82,
+            87,
+            92,
+            97,
+            191,
+            192,
+            197,
+            199,
+            204,
+            209,
+            210,
+            215,
+            33,
+            35,
+            40,
+            41,
+            46,
+            51,
+            56,
+            61,
+            66,
+            561,
+            562,
+            563,
+            568,
+            570,
+            572,
+            573,
+            578,
+            583,
+            588,
+            593,
+            594,
+            599,
+            133,
+            134,
+            135,
+            140,
+            145,
+            150,
+            155,
+            273
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,753 @@
+{
+  "method": "Static ECMA335 metadata/CIL, pinned literal-resource arithmetic replay, real object graph census, and independent own-parser/import differential. No original assembly methods or GUI executed.",
+  "originalAxureGuiCompared": false,
+  "assembly": {
+    "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\AxureRP11.dll",
+    "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+    "version": "11.0.0.4150"
+  },
+  "contract": {
+    "nativeAction": "Axure:InteractionRotateWidgetAction",
+    "nativeInfo": "Axure:RotateWidgetInfo",
+    "actionFields": [
+      "Disabled",
+      "panelobjectpaths",
+      "Paths",
+      "Infos"
+    ],
+    "infoFields": {
+      "Clockwise": "Boolean",
+      "Duration": "Double milliseconds",
+      "Degree": "local reference StringLiteral",
+      "RotateType": "MoveBehavior enum Location0 / Delta1",
+      "Easing": "AnimationEasing enum0..32",
+      "OffsetX": "local reference StringLiteral",
+      "OffsetY": "local reference StringLiteral",
+      "Anchor": "string"
+    },
+    "defaults": {
+      "mode": "by",
+      "degrees": "0",
+      "clockwise": true,
+      "anchor": "center",
+      "offsetX": "0",
+      "offsetY": "0",
+      "easing": "none",
+      "durationFallback": 500,
+      "durationOverride": "IxAction.Durations[typeName] wins when present"
+    },
+    "generator": {
+      "rotateType": "FJMQ(first-lowercase enum name): location/delta",
+      "degree": "independent BJC9 StringLiteral compiler call",
+      "offsetX": "independent BJC9 StringLiteral compiler call",
+      "offsetY": "independent BJC9 StringLiteral compiler call",
+      "anchor": "stored string passed verbatim",
+      "options": "clockwise always; easing/duration emitted only when Easing!=None0"
+    },
+    "nativeWidgetFilter": [
+      "VectorShape",
+      "ImageBox",
+      "ImageMapRegion",
+      "DynamicPanel",
+      "Layer"
+    ],
+    "nativeEvent": {
+      "OnRotate": 279,
+      "pageSupported": false
+    },
+    "easings": [
+      {
+        "nativeValue": 0,
+        "enumName": "None",
+        "generated": "none"
+      },
+      {
+        "nativeValue": 1,
+        "enumName": "Swing",
+        "generated": "swing"
+      },
+      {
+        "nativeValue": 2,
+        "enumName": "Linear",
+        "generated": "linear"
+      },
+      {
+        "nativeValue": 3,
+        "enumName": "EaseInCubic",
+        "generated": "easeInCubic"
+      },
+      {
+        "nativeValue": 4,
+        "enumName": "EaseOutCubic",
+        "generated": "easeOutCubic"
+      },
+      {
+        "nativeValue": 5,
+        "enumName": "EaseInOutCubic",
+        "generated": "easeInOutCubic"
+      },
+      {
+        "nativeValue": 6,
+        "enumName": "EaseOutBounce",
+        "generated": "easeOutBounce"
+      },
+      {
+        "nativeValue": 7,
+        "enumName": "EaseOutElastic",
+        "generated": "easeOutElastic"
+      },
+      {
+        "nativeValue": 8,
+        "enumName": "EaseInSine",
+        "generated": "easeInSine"
+      },
+      {
+        "nativeValue": 9,
+        "enumName": "EaseInQuad",
+        "generated": "easeInQuad"
+      },
+      {
+        "nativeValue": 10,
+        "enumName": "EaseInQuart",
+        "generated": "easeInQuart"
+      },
+      {
+        "nativeValue": 11,
+        "enumName": "EaseInQuint",
+        "generated": "easeInQuint"
+      },
+      {
+        "nativeValue": 12,
+        "enumName": "EaseInExpo",
+        "generated": "easeInExpo"
+      },
+      {
+        "nativeValue": 13,
+        "enumName": "EaseInCirc",
+        "generated": "easeInCirc"
+      },
+      {
+        "nativeValue": 14,
+        "enumName": "EaseInBack",
+        "generated": "easeInBack"
+      },
+      {
+        "nativeValue": 15,
+        "enumName": "EaseInElastic",
+        "generated": "easeInElastic"
+      },
+      {
+        "nativeValue": 16,
+        "enumName": "EaseInBounce",
+        "generated": "easeInBounce"
+      },
+      {
+        "nativeValue": 17,
+        "enumName": "EaseOutSine",
+        "generated": "easeOutSine"
+      },
+      {
+        "nativeValue": 18,
+        "enumName": "EaseOutQuad",
+        "generated": "easeOutQuad"
+      },
+      {
+        "nativeValue": 19,
+        "enumName": "EaseOutQuart",
+        "generated": "easeOutQuart"
+      },
+      {
+        "nativeValue": 20,
+        "enumName": "EaseOutQuint",
+        "generated": "easeOutQuint"
+      },
+      {
+        "nativeValue": 21,
+        "enumName": "EaseOutExpo",
+        "generated": "easeOutExpo"
+      },
+      {
+        "nativeValue": 22,
+        "enumName": "EaseOutCirc",
+        "generated": "easeOutCirc"
+      },
+      {
+        "nativeValue": 23,
+        "enumName": "EaseOutBack",
+        "generated": "easeOutBack"
+      },
+      {
+        "nativeValue": 24,
+        "enumName": "EaseInOutSine",
+        "generated": "easeInOutSine"
+      },
+      {
+        "nativeValue": 25,
+        "enumName": "EaseInOutQuad",
+        "generated": "easeInOutQuad"
+      },
+      {
+        "nativeValue": 26,
+        "enumName": "EaseInOutQuart",
+        "generated": "easeInOutQuart"
+      },
+      {
+        "nativeValue": 27,
+        "enumName": "EaseInOutQuint",
+        "generated": "easeInOutQuint"
+      },
+      {
+        "nativeValue": 28,
+        "enumName": "EaseInOutExpo",
+        "generated": "easeInOutExpo"
+      },
+      {
+        "nativeValue": 29,
+        "enumName": "EaseInOutCirc",
+        "generated": "easeInOutCirc"
+      },
+      {
+        "nativeValue": 30,
+        "enumName": "EaseInOutBack",
+        "generated": "easeInOutBack"
+      },
+      {
+        "nativeValue": 31,
+        "enumName": "EaseInOutElastic",
+        "generated": "easeInOutElastic"
+      },
+      {
+        "nativeValue": 32,
+        "enumName": "EaseInOutBounce",
+        "generated": "easeInOutBounce"
+      }
+    ],
+    "anchors": {
+      "default": "center",
+      "realWitnesses": [
+        "center",
+        "top right"
+      ],
+      "decodedLiteralPool": [
+        "top left",
+        "top right",
+        "bottom left",
+        "bottom right",
+        "center"
+      ],
+      "productCanonical": [
+        "top left",
+        "top",
+        "top right",
+        "left",
+        "center",
+        "right",
+        "bottom left",
+        "bottom",
+        "bottom right"
+      ],
+      "originalUiListProven": false
+    }
+  },
+  "tokens": {
+    "actionType": 33557823,
+    "infoType": 33557825,
+    "infoConstructor": 100704990,
+    "authorDefaultFactory": 100704959,
+    "durationFallback": 100704744,
+    "infoWriter": 100705013,
+    "infoReader": 100705014,
+    "generator": 100694363,
+    "generatorFields": 100694557,
+    "generatorOptions": 100694558,
+    "enumFormatter": 100694397,
+    "enumFirstLowercase": 100694419,
+    "easingChoicesIterator": 100706189,
+    "actionTargetFilter": 100704954,
+    "eventEnumField": 67121735
+  },
+  "census": {
+    "samples": 11,
+    "objects": 41662,
+    "rotateObjects": 14
+  },
+  "candidates": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "packagePath": "adf7057ad83e4804a84ba2b5ad3ce251/package",
+      "sourcePartSha256": "a2474f74199f12781d21388b2d5e6ac99712ea118991ddf3cdbc151643b633f2",
+      "actionId": "0fa12e4fbfb54ba882a9a4ac973a3cef",
+      "infoId": "e16d054b37df4812a8d5078c11d816c6",
+      "ownerId": "3699e98e52e841939609a306519af382",
+      "degree": "720",
+      "duration": 2000,
+      "anchor": "top right",
+      "targetPath": {
+        "id": "ddc3d5af91d24b1b924ee185c7ab3e85",
+        "type": "Axure:DiagramObjectPath",
+        "offset": 13086,
+        "properties": {
+          "$map": [
+            [
+              "rdo-path",
+              []
+            ],
+            [
+              "repeater-path",
+              []
+            ],
+            [
+              "object-id",
+              {
+                "$reference": "5749f09ca8d949359203508182652aee",
+                "referenceTag": 22
+              }
+            ],
+            [
+              "is-dummy",
+              false
+            ]
+          ]
+        }
+      },
+      "fullEventAdmitted": false,
+      "remainingBoundary": "Whole event contains unsupported Wait and/or EnableDisable and further original siblings"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "packagePath": "b4986ab91ed94619b744e641a1cfb0a2/package",
+      "sourcePartSha256": "52f743e4e9258c480ffe80921629b73fb48da2f3964e2059d5168fc667f80b4f",
+      "actionId": "0e72e7cb1b2d4af6bc4650c67eaecf7d",
+      "infoId": "222341b060f444759f988033886b3b69",
+      "ownerId": "bc751a4afcb44121ae2a175e2e1977cb",
+      "degree": "720",
+      "duration": 2000,
+      "anchor": "center",
+      "targetPath": {
+        "id": "98d49674fe0d42959f21539ac9a1d5ac",
+        "type": "Axure:DiagramObjectPath",
+        "offset": 19967,
+        "properties": {
+          "$map": [
+            [
+              "rdo-path",
+              []
+            ],
+            [
+              "repeater-path",
+              []
+            ],
+            [
+              "object-id",
+              {
+                "$reference": "26430db892264b1b94b4ffda5c43911c",
+                "referenceTag": 22
+              }
+            ],
+            [
+              "is-dummy",
+              false
+            ]
+          ]
+        }
+      },
+      "fullEventAdmitted": false,
+      "remainingBoundary": "Whole event contains unsupported Wait and/or EnableDisable and further original siblings"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "packagePath": "c598ff6cf4ba459cbef032f0cd4048f7/package",
+      "sourcePartSha256": "57f4da13399221b678c1e2c741b1f8b219372e457c72d04ddc531528dc5286d1",
+      "actionId": "0ec25068deae43a788a6de01a6c2b1e6",
+      "infoId": "0ee7cf531ad147fcbdad3d206262094e",
+      "ownerId": "fcc6a2635a7c4e10a994f1e65493390c",
+      "degree": "720",
+      "duration": 2000,
+      "anchor": "top right",
+      "targetPath": {
+        "id": "3210009a5f59425a9d1036a010872da0",
+        "type": "Axure:DiagramObjectPath",
+        "offset": 220266,
+        "properties": {
+          "$map": [
+            [
+              "rdo-path",
+              []
+            ],
+            [
+              "repeater-path",
+              []
+            ],
+            [
+              "object-id",
+              {
+                "$reference": "cb2ba41288ae4839a4e47f95444af6bb",
+                "referenceTag": 22
+              }
+            ],
+            [
+              "is-dummy",
+              false
+            ]
+          ]
+        }
+      },
+      "fullEventAdmitted": false,
+      "remainingBoundary": "Whole event contains unsupported Wait and/or EnableDisable and further original siblings"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179",
+      "packagePath": "c598ff6cf4ba459cbef032f0cd4048f7/package",
+      "sourcePartSha256": "57f4da13399221b678c1e2c741b1f8b219372e457c72d04ddc531528dc5286d1",
+      "actionId": "390075981f1244948a2bc797befc9f24",
+      "infoId": "56d163c75d3f4f599504b35efe2084ae",
+      "ownerId": "920ba4c5ffaa457cb52dadce17d52871",
+      "degree": "720",
+      "duration": 2000,
+      "anchor": "center",
+      "targetPath": {
+        "id": "c046a4f24f1445bead711fa4aebf0eeb",
+        "type": "Axure:DiagramObjectPath",
+        "offset": 237077,
+        "properties": {
+          "$map": [
+            [
+              "rdo-path",
+              []
+            ],
+            [
+              "repeater-path",
+              []
+            ],
+            [
+              "object-id",
+              {
+                "$reference": "65988eb36d5e4daf9faa54196e239028",
+                "referenceTag": 22
+              }
+            ],
+            [
+              "is-dummy",
+              false
+            ]
+          ]
+        }
+      },
+      "fullEventAdmitted": false,
+      "remainingBoundary": "Whole event contains unsupported Wait and/or EnableDisable and further original siblings"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b",
+      "packagePath": "4d4b15a019754649b2e63d5d7577f323/package",
+      "sourcePartSha256": "8871ab056abe09fba3b44010b15e8395cc51ca82fb356c5cdb34d59379905b96",
+      "actionId": "7789357941924483aae07cfdbfe65b61",
+      "infoId": "ee95423538e44a91a22b0f4e9d737449",
+      "ownerId": "b5179b0a92bd40daafc6d834cb9e62ae",
+      "degree": "360",
+      "duration": 1500,
+      "anchor": "center",
+      "targetPath": {
+        "id": "d35251cda6fb4c9485e0f31b6aa6f135",
+        "type": "Axure:DiagramObjectPath",
+        "offset": 14139,
+        "properties": {
+          "$map": [
+            [
+              "rdo-path",
+              []
+            ],
+            [
+              "repeater-path",
+              []
+            ],
+            [
+              "object-id",
+              {
+                "$reference": "00000000000000000000000000000000",
+                "referenceTag": 22
+              }
+            ],
+            [
+              "is-dummy",
+              false
+            ]
+          ]
+        }
+      },
+      "fullEventAdmitted": true,
+      "remainingBoundary": "Load admitted; independent OnRotate279 remains unsupported because its RaiseEvent action is not mapped"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b",
+      "packagePath": "27f59a68aaf249d298b4edbb44f8e2ae/package",
+      "sourcePartSha256": "cc2b3da179954b69e2823a357d04fae6e4b57f9d3d4a7742aa24e9f91e6999b3",
+      "actionId": "473f1084c369453e8a83107fd73db444",
+      "infoId": "e54c652777bb4b4794df874d83c0be8b",
+      "ownerId": "9b72d47e5d95453aa10143545881679d",
+      "degree": "360",
+      "duration": 1500,
+      "anchor": "center",
+      "targetPath": {
+        "id": "6f86f64117bb4a1a9737a4c8be7dd548",
+        "type": "Axure:DiagramObjectPath",
+        "offset": 124103,
+        "properties": {
+          "$map": [
+            [
+              "rdo-path",
+              []
+            ],
+            [
+              "repeater-path",
+              []
+            ],
+            [
+              "object-id",
+              {
+                "$reference": "00000000000000000000000000000000",
+                "referenceTag": 22
+              }
+            ],
+            [
+              "is-dummy",
+              false
+            ]
+          ]
+        }
+      },
+      "fullEventAdmitted": true,
+      "remainingBoundary": "Load admitted; independent OnRotate279 remains unsupported because its RaiseEvent action is not mapped"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7",
+      "packagePath": "8165e87159f34c58a974459d9e910e34/package",
+      "sourcePartSha256": "59276e6a79af545e322ff655c4bfbaf60ddfd5cb6de0cd68fcf5b78357dd8459",
+      "actionId": "b40049049eda48309a6a4019295114b4",
+      "infoId": "db7e76582843462e8da894227a77ebe8",
+      "ownerId": "5c18ef71a1e44eb7ada22074090a3376",
+      "degree": "360",
+      "duration": 2000,
+      "anchor": "center",
+      "targetPath": {
+        "id": "2017977b582c421d9f596153ee43db70",
+        "type": "Axure:DiagramObjectPath",
+        "offset": 384243,
+        "properties": {
+          "$map": [
+            [
+              "rdo-path",
+              []
+            ],
+            [
+              "repeater-path",
+              []
+            ],
+            [
+              "object-id",
+              {
+                "$reference": "c1cbc6b0f52c4a14b43558fa1e406afb",
+                "referenceTag": 22
+              }
+            ],
+            [
+              "is-dummy",
+              false
+            ]
+          ]
+        }
+      },
+      "fullEventAdmitted": true,
+      "remainingBoundary": null
+    }
+  ],
+  "implementation": {
+    "reader": "research/scripts/read-rp-interactions.mjs",
+    "importer": "src/model/import-rp.ts",
+    "protocol": "{sourceId,type:rotate,targetSourceId,rotate:{mode,degrees,clockwise,anchor,offsetX,offsetY,easing,duration}}",
+    "literalBoundary": "Only finite decimal/exponent numeric StringLiteral text, no variable identifiers, no nonzero repeater scopes; original exact text retained. No complex expression importer is claimed.",
+    "targetBoundary": "Strict same-package full path; no rdo/repeater paths/dummy; zero This only ordinary native owner. Parallel target/info/legacy arrays must agree and targets be unique. No target grouping inferred.",
+    "durationBound": "0..60000 is the existing independent product bound, not a recovered native UI upper limit.",
+    "atomicity": "Each event commits only if all cases, conditions, sibling actions and target dependencies succeed.",
+    "totals": {
+      "samples": 11,
+      "admitted": 10,
+      "rejectedUnchanged": 1,
+      "addedWidgets": 0,
+      "removedWidgets": 0,
+      "addedEvents": 3,
+      "addedCases": 3,
+      "addedActions": 3
+    },
+    "maximumCompactBytes": 28782455,
+    "unexplainedDocumentChanges": []
+  },
+  "verification": {
+    "staticCil": {
+      "total": 34,
+      "passed": 34
+    },
+    "newReader": {
+      "red": {
+        "passed": 24,
+        "failed": 5
+      },
+      "green": {
+        "passed": 29,
+        "failed": 0
+      }
+    },
+    "newImporter": {
+      "red": {
+        "passed": 13,
+        "failed": 3
+      },
+      "green": {
+        "passed": 16,
+        "failed": 0
+      }
+    },
+    "relatedReader": {
+      "passed": 53,
+      "failed": 0
+    },
+    "relatedImporter": {
+      "passed": 44,
+      "failed": 0
+    },
+    "typecheck": "npm run typecheck exit0",
+    "firstHarnessFailure": "URL.pathname kept %20 in Windows file path. Preserved runtime-rotate-format-reader-harness-first.tap; corrected with fileURLToPath and reran old frozen reader for genuine red29 matrix.",
+    "staticReplayBoundary": "DkYN initializer, base ActionInfo construction, StringLiteral construction, BJC9 expression compilation and JSON writing use named controlled sinks. Not target execution or complete generated-page validation."
+  },
+  "unknowns": [
+    "Exact nine-position author UI binding labels beyond center and witnessed top right; canonical product nine strings follow the separately established runtime substring contract.",
+    "Full complex native StringLiteral binding/repeater expression export and execution, including target evaluation order, are not imported.",
+    "Other MoveBehavior enum members exist but are not accepted as Rotate modes; no speculative mapping.",
+    "Original editor duration control limits and user preference persistence beyond get_Durations fallback lookup.",
+    "Original GUI, generated full-page runtime parity and grouped-target animation timing require the separate runtime/host stage."
+  ],
+  "sources": [
+    {
+      "file": "research/runtime-rotate-format-action-cil.json",
+      "sha256": "e757bdd239831903f9e38ffdb8febc2568ff9dc6559f9a4fdd9ec4125adfc02a"
+    },
+    {
+      "file": "research/runtime-rotate-format-action-graphs.json",
+      "sha256": "550cea756dde3cadc7ac4584c4b7aa8103daaa92a0e2f7a070967da098d72f55"
+    },
+    {
+      "file": "research/runtime-rotate-format-base-metadata.json",
+      "sha256": "30f530cf780ba542d2bcfdb9f4232ec1bb907782b5858192ed0401f7f841cd97"
+    },
+    {
+      "file": "research/runtime-rotate-format-census.json",
+      "sha256": "e7770395f6c41f86eb6f4568ea5091b2bac5d0fb52d9d029dcacba16eede9b1c"
+    },
+    {
+      "file": "research/runtime-rotate-format-constants-cil.json",
+      "sha256": "92d457ddd46b62e7867f4dff94a2d9447d7757699e71d5c2530d92dbb5bb40c6"
+    },
+    {
+      "file": "research/runtime-rotate-format-easing-items-cil.json",
+      "sha256": "37d7ac844aaaefc9b1319660626082c451a4ce70d03ea45246c07fa81f6d9d67"
+    },
+    {
+      "file": "research/runtime-rotate-format-enum-case-cil.json",
+      "sha256": "3ace2029b2f9e9f5aa89ce065e70b5cf55652774163518036536bd79e40b4f24"
+    },
+    {
+      "file": "research/runtime-rotate-format-enum-writer-cil.json",
+      "sha256": "619ebfab6a79192d81de86d3f6c905c79fbea2fdc8c0d92e8c9a16f78f970e77"
+    },
+    {
+      "file": "research/runtime-rotate-format-events-cil.json",
+      "sha256": "26b091879d051addd034e58d7c9f40cda11dc8f3306be7eca37fe8730c38374b"
+    },
+    {
+      "file": "research/runtime-rotate-format-generator-cil.json",
+      "sha256": "b72c8459ba9d6a1e115f3346d665f637a132967f451ebf8665ae22f22e199623"
+    },
+    {
+      "file": "research/runtime-rotate-format-generator-root-cil.json",
+      "sha256": "4817af3d783fbef3b2b5873fbaf9e8e595b5509071e6e592236c7714a3e64891"
+    },
+    {
+      "file": "research/runtime-rotate-format-import-audit.json",
+      "sha256": "f290630bea46a048fa300a3892100a05c27d69e9b0c7afbaba0831ed82b35c26"
+    },
+    {
+      "file": "research/runtime-rotate-format-info-cil.json",
+      "sha256": "07db7a67b710bad29919d815e2e6ad3fff64962191518b195c56571a5645de03"
+    },
+    {
+      "file": "research/runtime-rotate-format-literals.json",
+      "sha256": "e58199a26064a0af48b7cc456547ad43921a51da23f1ab2d3f698a9f810df22e"
+    },
+    {
+      "file": "research/runtime-rotate-format-map-cil.json",
+      "sha256": "b657e441086bdc856b851a3823afbad3812449c28883393755fe74b7815e0614"
+    },
+    {
+      "file": "research/runtime-rotate-format-metadata.json",
+      "sha256": "699244c616243d1dad71c4e9a9258d199dce9644cac8c06e7f575cfc582897a7"
+    },
+    {
+      "file": "research/runtime-rotate-format-mode-cil.json",
+      "sha256": "1cff7ff53d6918b42d4133b87cb0c1baff8174ee562f8e7f586e3b119f48101e"
+    },
+    {
+      "file": "research/runtime-rotate-format-static-probes.json",
+      "sha256": "c1b26dfd0f6635b6753be7d0cef864603d87c1d577cf471b04cd8c73f8108cde"
+    },
+    {
+      "file": "research/runtime-rotate-format-ui-cil.json",
+      "sha256": "e38411f00d66e1b4b31d913e9fe1b62fe4b8793ed1cea86b026d834a4e7f8c4f"
+    },
+    {
+      "file": "research/scripts/read-rp-interactions.mjs",
+      "sha256": "aee2b93c204f54b08b1f774d6f6b4f588c562dd40898ada39909e7035eaeb26e"
+    },
+    {
+      "file": "src/model/import-rp.ts",
+      "sha256": "9e4eeafe26ff842cdf0eed0fc40503fe8ec3fb548b5bda2f110dce37bb4b7ef6"
+    },
+    {
+      "file": "research/scripts/read-rp-rotate.test.mjs",
+      "sha256": "98b6d362737de507a4e15b8470b72cae476875b6e5504c331ccf30291d8ca300"
+    },
+    {
+      "file": "tests/import-rp-rotate.test.ts",
+      "sha256": "5514cbe85aadf0b6381a833b1bfc987de56e9de562aec432041a427001bc3909"
+    },
+    {
+      "file": "research/runtime-rotate-format-reader-red.tap",
+      "sha256": "bdc0942411e4583d782b12d738589a03f6a7e4eb17b7f22d27d467ca84b053ee"
+    },
+    {
+      "file": "research/runtime-rotate-format-reader-green.tap",
+      "sha256": "f16785a14ff17ad78892867e6bee5b549a2ac05105e0b4f5dd9b20be3e92e8ad"
+    },
+    {
+      "file": "research/runtime-rotate-format-import-red.json",
+      "sha256": "8dbb52711d88b1efcfeb2c54c17bc0b7b42b0adc2f7f3dd474c97bfa2b2e0970"
+    },
+    {
+      "file": "research/runtime-rotate-format-import-green.json",
+      "sha256": "9429d3af313ff01ae4f864ec3b921e62bbffadaa897ecfe9d44b71a52b8038de"
+    },
+    {
+      "file": "research/runtime-rotate-format-reader-related.tap",
+      "sha256": "1338d79a2938e7845ff0af1da078a787b671c17d1ee22981f4a089fa2385c2d1"
+    },
+    {
+      "file": "research/runtime-rotate-format-import-related.json",
+      "sha256": "c5e698dff422a5d02101f946a1b76b7f4c228a00b38d7247b3a5f99c0668cb7f"
+    }
+  ]
+}

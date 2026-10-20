@@ -1,0 +1,73 @@
+{
+  "capturedAt": "2026-10-20T06:04:30.984Z",
+  "kind": "Exact native action+size+repeater consumers + original doc parent-map lookup with empty controlled table, versus current core Page Loaded, not original generated Page Loaded/GUI",
+  "native": {
+    "nodes": {
+      "base": {
+        "left": 0,
+        "top": 0,
+        "width": 0,
+        "height": 0,
+        "display": "block"
+      }
+    },
+    "calls": [
+      {
+        "kind": "evaluate",
+        "value": "120",
+        "source": "page"
+      },
+      {
+        "kind": "evaluate",
+        "value": "35",
+        "source": "page"
+      },
+      {
+        "kind": "dispatch",
+        "index": 1
+      }
+    ],
+    "moved": {},
+    "resized": {},
+    "sizes": {},
+    "pending": 0
+  },
+  "cases": [
+    {
+      "portable": false,
+      "ok": true,
+      "log": "continued"
+    },
+    {
+      "portable": true,
+      "ok": true,
+      "log": "continued"
+    }
+  ],
+  "expected": "Outside any repeater, evaluate dimensions and no-op, then dispatch continuation; no widget is needed for constant dimensions.",
+  "sources": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "db4ff9b6e2784405b29f3000fdfc1037151d33b1e3dd2db0623899fcc57f4fed"
+    },
+    {
+      "path": "research/runtime-transform-special-probe.mjs",
+      "sha256": "11870fe01e55a5b0ef4e47b883705c88130b84ed5f9b22c7dbfcc1c593e086e8"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1"
+    }
+  ],
+  "sourceSlice": {
+    "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/doc.js",
+    "from": 660,
+    "through": 672,
+    "sha256": "59196a5675bff3d3967b4af082833d848469c11b8afd723bfb1852ee9b77d3fe"
+  },
+  "script": {
+    "path": "research/runtime-transform-special-integration-review-page-scope-probe.mjs",
+    "sha256": "100c026a73164f29e4ce3ee9bbf1664f8f5d1a3e5c2512363f80c4d492d99b75"
+  },
+  "defect": false
+}

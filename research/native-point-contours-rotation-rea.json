@@ -1,0 +1,124 @@
+{
+  "evidence_id": "ev_beda7498066e5bf120bfe2599bee8727bd3b5870d3fab57b58b55b5b929f4db4",
+  "subject": {
+    "name": "AxureRP11.dll",
+    "digest": {
+      "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+    },
+    "local_path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\AxureRP11.dll",
+    "format": "pe",
+    "architecture": "x86_64"
+  },
+  "provider": {
+    "id": "rea-analysis-view",
+    "name": "REA analysis view projection",
+    "version": "1"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.analysis-view",
+  "operation": "inspect_analysis_view",
+  "parameters": {
+    "parent_evidence_id": "ev_0c05896344e3cf3137bd18fe27879c1df9e0420ed8b03548a9f1e3f2cfa37981",
+    "view": {
+      "kind": "summary"
+    }
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "kind": "summary",
+    "view": {
+      "kind": "summary"
+    },
+    "parent_evidence_id": "ev_0c05896344e3cf3137bd18fe27879c1df9e0420ed8b03548a9f1e3f2cfa37981",
+    "parent_operation": "inspect_managed_members",
+    "parent_digest": "0c05896344e3cf3137bd18fe27879c1df9e0420ed8b03548a9f1e3f2cfa37981",
+    "view_digest": "68fca62f39f0f6025daedf43b6d29642da4b876acf46a84b7c8aa7a45272826f",
+    "artifact": {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\AxureRP11.dll",
+      "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+    },
+    "coverage": {
+      "status": "complete-within-view",
+      "examined": 0,
+      "total": 0,
+      "next_offset": null,
+      "exhausted": true
+    },
+    "limitations": [
+      "The CLI metadata could not be admitted; managed member inspection is unavailable."
+    ],
+    "unknowns": [
+      "Collection counts and pages cover producer-returned rows; member completeness remains the original coverage, not an absence claim about unreturned rows.",
+      "Exported types and member references cover the whole assembly; the other collections cover only the selected declaring types.",
+      "Metadata tokens are build-local coordinates bound to the recorded artifact SHA-256 and module MVID; this view does not load or execute the assembly.",
+      "The module MVID is unknown; tokens cannot establish a cross-observation module match."
+    ],
+    "summary": {
+      "artifact": {
+        "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\AxureRP11.dll",
+        "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+        "byte_length": 16314368,
+        "format": "pe"
+      },
+      "module": null,
+      "metadata": {
+        "status": "partial",
+        "version": null,
+        "table_row_counts": {}
+      },
+      "identity_scope": {
+        "token_identity": "build-local",
+        "requires_artifact_sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+        "requires_mvid": null
+      },
+      "selection": {
+        "type_names": [
+          "O5ut.K5u9",
+          "w5s2.g5s7"
+        ],
+        "unmatched_type_names": []
+      },
+      "coverage": {
+        "state": "unavailable",
+        "issues": [
+          {
+            "code": "resource-limit",
+            "scope": "metadata.representation",
+            "offset": 13231202,
+            "detail": "Managed metadata exceeds the 67108864 byte representation budget"
+          }
+        ]
+      },
+      "user_strings": null,
+      "limitations": [
+        "The CLI metadata could not be admitted; managed member inspection is unavailable."
+      ],
+      "reported_counts": {
+        "types": 0,
+        "exported_types": null,
+        "fields": 0,
+        "methods": 0,
+        "member_refs": 0,
+        "call_edges": 0,
+        "field_accesses": 0,
+        "user_strings": null
+      }
+    }
+  },
+  "confidence": "derived",
+  "authority": "shipped-artifact",
+  "environment": null,
+  "limitations": [
+    "The CLI metadata could not be admitted; managed member inspection is unavailable."
+  ],
+  "relationship_coverage": null,
+  "locations": [
+    {
+      "kind": "artifact-path",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\AxureRP11.dll"
+    }
+  ],
+  "evidence_links": [
+    "ev_0c05896344e3cf3137bd18fe27879c1df9e0420ed8b03548a9f1e3f2cfa37981"
+  ]
+}

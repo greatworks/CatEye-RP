@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-20T04:28:40.327Z",
+  "kind": "independent current product factory in NodeVM with deterministic timer; no vendor code, GUI, browser, or build executed",
+  "sources": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "ab3a963fd308acdffd8438b5ce90a7c25b2e608b0c3e8b46b2902b64fdb1403e"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "976ecdd306aedb50e29dde60dc274d84e75433cd7379ffd7a8f55b0d0edf10cc"
+    },
+    {
+      "path": "tests/runtime-rotate.test.ts",
+      "sha256": "fa99af53292f3a2c57ecb36d02434e002a69d96de3669b6336ad73bf9457eed6"
+    }
+  ],
+  "sourceStableDuringRun": true,
+  "probe": {
+    "path": "D:\\WSCodex\\REA\\research\\runtime-rotate-motion-integration-review-probe.mjs",
+    "sha256": "2cb775d36921ee8b1c4ddf06dab473e71017d9b2f2a838760fd21d821fae913b"
+  },
+  "evidence": [
+    {
+      "path": "research/runtime-rotate-motion-evidence.json",
+      "sha256": "17d148d2efab657b6e1d9366645dfafe0a036fe39aa66509042081115ecfd63e"
+    },
+    {
+      "path": "research/runtime-rotate-motion-probes.json",
+      "sha256": "4175a7ba6360103caaba3dd4083b90cee8f1f2aa0b47ba344417038fdce2fa37"
+    }
+  ],
+  "checks": {
+    "total": 3,
+    "passed": 2,
+    "failed": 1
+  },
+  "results": [
+    {
+      "name": "independent queued-start failure rejects its owner, not prior completed motion",
+      "passed": false,
+      "observed": {
+        "first": {
+          "status": "rejected",
+          "message": "Expression error: division by zero"
+        },
+        "second": {
+          "status": "pending"
+        },
+        "angle": 67.5,
+        "pendingTimers": 0,
+        "passed": false
+      }
+    },
+    {
+      "name": "group logical angle is rolled back with a failed transaction",
+      "passed": true,
+      "observed": {
+        "failed": {
+          "status": "rejected",
+          "message": "Expression error: division by zero"
+        },
+        "retry": {
+          "status": "fulfilled"
+        },
+        "afterFailure": {
+          "x": 100,
+          "y": 100,
+          "rotation": 0
+        },
+        "afterRetry": {
+          "x": 200,
+          "y": 0,
+          "rotation": 90
+        },
+        "passed": true
+      }
+    },
+    {
+      "name": "selected shadow is used for initial orbit geometry",
+      "passed": true,
+      "observed": {
+        "status": {
+          "status": "fulfilled"
+        },
+        "position": {
+          "x": 120,
+          "y": 60,
+          "rotation": 90
+        },
+        "passed": true
+      }
+    }
+  ],
+  "limits": [
+    "Failure rollback is product policy, not an observed vendor transaction contract.",
+    "Flat sibling group support is an independent compatibility mapping.",
+    "Selected-shadow case only checks one instantaneous step; multi-step cache topology needs separate exact-source composition."
+  ]
+}

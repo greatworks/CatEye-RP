@@ -1,0 +1,471 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-20T05:10:57.172Z",
+  "classification": "pre-implementation capability red evidence, not a released-contract regression suite",
+  "execution": "NodeVM; TypeScript stripped without semantic rewrite; deterministic clock; no browser, original JavaScript, build or test suite",
+  "payloadStatus": "proposed Move/Resize payload bypasses current document parser; schema acceptance is not claimed",
+  "sources": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "da2d65503bc3a44d22e2a4379b1de7a026d1e2259cddc9857554641e64dfe173"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "976ecdd306aedb50e29dde60dc274d84e75433cd7379ffd7a8f55b0d0edf10cc"
+    },
+    {
+      "path": "src/runtime/engine.ts",
+      "sha256": "62460dc920affad6b70e9f531a4164aea95aeeb77850319e17d9455d081dc529"
+    },
+    {
+      "path": "src/model/types.ts",
+      "sha256": "7b25f9c68ae6fe3c3f8383eff1970b9317d15168a9def1a4fc0e3b67234a5bc9"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "65f40a66daecbeb36c537b1dd7e9c6b0426566b2b2be9e36d121329d83f4851b"
+    }
+  ],
+  "sourceStable": true,
+  "baseline": {
+    "path": "artifacts/runtime-rotate-source.rea.json",
+    "sha256": "cdce8a80566fca344b19e6e5bf2387286e4bd7f7334a669cab469e188226bf8a"
+  },
+  "evidence": [
+    {
+      "path": "research/runtime-transform-motion-evidence.md",
+      "sha256": "627974789b105c1d39e0fda8f69ad2c76bb83c44342f967d6db2189e9a6a119b"
+    },
+    {
+      "path": "research/runtime-transform-motion-evidence.json",
+      "sha256": "dca7a6e57da97c0e4021fa6df8311258ef788ddb85803cbcd6127fadaa6c0151"
+    },
+    {
+      "path": "research/runtime-transform-format-evidence.md",
+      "sha256": "850c1c71d789f6a749915921af899d13d9eb888d67f69b352d8f42bc18c34ea6"
+    }
+  ],
+  "probe": {
+    "path": "research/runtime-transform-core-probe.mjs",
+    "sha256": "4f4f885d8ac237e9fee9178cfe91b78185323857fa3b92b38f5b55c38eb1f6d2"
+  },
+  "summary": {
+    "compatibilityControls": 8,
+    "compatibilityPassed": 8,
+    "capabilityChecks": 10,
+    "confirmedGaps": 10,
+    "harnessErrors": 0
+  },
+  "results": [
+    {
+      "mode": "source-module-function",
+      "name": "legacy numeric Move keeps duration inert and settles immediately",
+      "kind": "compatibility-control",
+      "passed": true,
+      "task": {
+        "status": "fulfilled"
+      },
+      "actual": {
+        "x": 180,
+        "y": 140,
+        "width": 200,
+        "height": 100,
+        "rotation": 0
+      },
+      "timers": 0
+    },
+    {
+      "mode": "source-module-function",
+      "name": "legacy numeric Resize keeps duration inert and settles immediately",
+      "kind": "compatibility-control",
+      "passed": true,
+      "task": {
+        "status": "fulfilled"
+      },
+      "actual": {
+        "x": 100,
+        "y": 100,
+        "width": 300,
+        "height": 160,
+        "rotation": 0
+      },
+      "timers": 0
+    },
+    {
+      "mode": "source-module-function",
+      "name": "released Rotate interpolates while unrelated input proceeds",
+      "kind": "compatibility-control",
+      "passed": true,
+      "midpoint": 45,
+      "final": {
+        "x": 100,
+        "y": 100,
+        "width": 200,
+        "height": 100,
+        "rotation": 90
+      },
+      "variable": "7",
+      "input": {
+        "status": "fulfilled"
+      },
+      "task": {
+        "status": "fulfilled"
+      }
+    },
+    {
+      "mode": "source-module-function",
+      "name": "Wait continuation keeps its completion without blocking a current Rotate",
+      "kind": "compatibility-control",
+      "passed": true,
+      "early": 22.5,
+      "final": {
+        "x": 100,
+        "y": 100,
+        "width": 200,
+        "height": 100,
+        "rotation": 120
+      },
+      "task": {
+        "status": "fulfilled"
+      },
+      "timers": 0
+    },
+    {
+      "mode": "source-module-function",
+      "name": "proposed structured delta Move needs a real midpoint and final frame",
+      "kind": "proposed-contract-gap",
+      "contractSatisfied": false,
+      "midpoint": {
+        "x": 100,
+        "y": 100,
+        "width": 200,
+        "height": 100,
+        "rotation": 0
+      },
+      "final": {
+        "x": 100,
+        "y": 100,
+        "width": 200,
+        "height": 100,
+        "rotation": 0
+      },
+      "expected": {
+        "midpoint": {
+          "x": 140,
+          "y": 120
+        },
+        "final": {
+          "x": 180,
+          "y": 140
+        }
+      },
+      "task": {
+        "status": "fulfilled"
+      },
+      "basis": "RTM-03 standalone delta; new payload intentionally not accepted by released schema"
+    },
+    {
+      "mode": "source-module-function",
+      "name": "proposed structured Resize needs its independent bottom-right anchor",
+      "kind": "proposed-contract-gap",
+      "contractSatisfied": false,
+      "actual": {
+        "x": 100,
+        "y": 100,
+        "width": 200,
+        "height": 100,
+        "rotation": 0
+      },
+      "expected": {
+        "x": 0,
+        "y": 40,
+        "width": 300,
+        "height": 160
+      },
+      "task": {
+        "status": "fulfilled"
+      },
+      "basis": "RTM-05 full-duration ordinary Resize endpoint; does not assert unknown mixed DOM interpolation"
+    },
+    {
+      "mode": "source-module-function",
+      "name": "proposed ordered paired targets remain a single action carrier",
+      "kind": "proposed-contract-gap",
+      "contractSatisfied": false,
+      "actual": [
+        {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100,
+          "rotation": 0
+        },
+        {
+          "x": 300,
+          "y": 100,
+          "width": 200,
+          "height": 100,
+          "rotation": 0
+        }
+      ],
+      "expected": [
+        {
+          "x": 180,
+          "y": 140
+        },
+        {
+          "x": 280,
+          "y": 100
+        }
+      ],
+      "task": {
+        "status": "fulfilled"
+      },
+      "basis": "format census: 8 real two-target Move actions; proposed schema, not native import admission"
+    },
+    {
+      "mode": "source-module-function",
+      "name": "third timed channel must emit before a later variable action",
+      "kind": "proposed-contract-gap",
+      "contractSatisfied": false,
+      "actual": "9",
+      "expected": "0",
+      "task": {
+        "status": "fulfilled"
+      },
+      "basis": "RTM-01 exact original third-channel eager emission; current Rotate-only flush sees later N=9"
+    },
+    {
+      "mode": "source-module-function",
+      "name": "motion expression API must preserve numeric zero versus string zero",
+      "kind": "existing-api-gap",
+      "contractSatisfied": false,
+      "actual": [
+        {
+          "value": "0",
+          "type": "string"
+        },
+        {
+          "value": "0",
+          "type": "string"
+        }
+      ],
+      "expected": [
+        {
+          "value": 0,
+          "type": "number"
+        },
+        {
+          "value": "0",
+          "type": "string"
+        }
+      ],
+      "basis": "original action.js location uses loose xValue == empty-string; current public text evaluator intentionally formats both to text"
+    },
+    {
+      "mode": "bare-factory-toString",
+      "name": "legacy numeric Move keeps duration inert and settles immediately",
+      "kind": "compatibility-control",
+      "passed": true,
+      "task": {
+        "status": "fulfilled"
+      },
+      "actual": {
+        "x": 180,
+        "y": 140,
+        "width": 200,
+        "height": 100,
+        "rotation": 0
+      },
+      "timers": 0
+    },
+    {
+      "mode": "bare-factory-toString",
+      "name": "legacy numeric Resize keeps duration inert and settles immediately",
+      "kind": "compatibility-control",
+      "passed": true,
+      "task": {
+        "status": "fulfilled"
+      },
+      "actual": {
+        "x": 100,
+        "y": 100,
+        "width": 300,
+        "height": 160,
+        "rotation": 0
+      },
+      "timers": 0
+    },
+    {
+      "mode": "bare-factory-toString",
+      "name": "released Rotate interpolates while unrelated input proceeds",
+      "kind": "compatibility-control",
+      "passed": true,
+      "midpoint": 45,
+      "final": {
+        "x": 100,
+        "y": 100,
+        "width": 200,
+        "height": 100,
+        "rotation": 90
+      },
+      "variable": "7",
+      "input": {
+        "status": "fulfilled"
+      },
+      "task": {
+        "status": "fulfilled"
+      }
+    },
+    {
+      "mode": "bare-factory-toString",
+      "name": "Wait continuation keeps its completion without blocking a current Rotate",
+      "kind": "compatibility-control",
+      "passed": true,
+      "early": 22.5,
+      "final": {
+        "x": 100,
+        "y": 100,
+        "width": 200,
+        "height": 100,
+        "rotation": 120
+      },
+      "task": {
+        "status": "fulfilled"
+      },
+      "timers": 0
+    },
+    {
+      "mode": "bare-factory-toString",
+      "name": "proposed structured delta Move needs a real midpoint and final frame",
+      "kind": "proposed-contract-gap",
+      "contractSatisfied": false,
+      "midpoint": {
+        "x": 100,
+        "y": 100,
+        "width": 200,
+        "height": 100,
+        "rotation": 0
+      },
+      "final": {
+        "x": 100,
+        "y": 100,
+        "width": 200,
+        "height": 100,
+        "rotation": 0
+      },
+      "expected": {
+        "midpoint": {
+          "x": 140,
+          "y": 120
+        },
+        "final": {
+          "x": 180,
+          "y": 140
+        }
+      },
+      "task": {
+        "status": "fulfilled"
+      },
+      "basis": "RTM-03 standalone delta; new payload intentionally not accepted by released schema"
+    },
+    {
+      "mode": "bare-factory-toString",
+      "name": "proposed structured Resize needs its independent bottom-right anchor",
+      "kind": "proposed-contract-gap",
+      "contractSatisfied": false,
+      "actual": {
+        "x": 100,
+        "y": 100,
+        "width": 200,
+        "height": 100,
+        "rotation": 0
+      },
+      "expected": {
+        "x": 0,
+        "y": 40,
+        "width": 300,
+        "height": 160
+      },
+      "task": {
+        "status": "fulfilled"
+      },
+      "basis": "RTM-05 full-duration ordinary Resize endpoint; does not assert unknown mixed DOM interpolation"
+    },
+    {
+      "mode": "bare-factory-toString",
+      "name": "proposed ordered paired targets remain a single action carrier",
+      "kind": "proposed-contract-gap",
+      "contractSatisfied": false,
+      "actual": [
+        {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100,
+          "rotation": 0
+        },
+        {
+          "x": 300,
+          "y": 100,
+          "width": 200,
+          "height": 100,
+          "rotation": 0
+        }
+      ],
+      "expected": [
+        {
+          "x": 180,
+          "y": 140
+        },
+        {
+          "x": 280,
+          "y": 100
+        }
+      ],
+      "task": {
+        "status": "fulfilled"
+      },
+      "basis": "format census: 8 real two-target Move actions; proposed schema, not native import admission"
+    },
+    {
+      "mode": "bare-factory-toString",
+      "name": "third timed channel must emit before a later variable action",
+      "kind": "proposed-contract-gap",
+      "contractSatisfied": false,
+      "actual": "9",
+      "expected": "0",
+      "task": {
+        "status": "fulfilled"
+      },
+      "basis": "RTM-01 exact original third-channel eager emission; current Rotate-only flush sees later N=9"
+    },
+    {
+      "mode": "bare-factory-toString",
+      "name": "motion expression API must preserve numeric zero versus string zero",
+      "kind": "existing-api-gap",
+      "contractSatisfied": false,
+      "actual": [
+        {
+          "value": "0",
+          "type": "string"
+        },
+        {
+          "value": "0",
+          "type": "string"
+        }
+      ],
+      "expected": [
+        {
+          "value": 0,
+          "type": "number"
+        },
+        {
+          "value": "0",
+          "type": "string"
+        }
+      ],
+      "basis": "original action.js location uses loose xValue == empty-string; current public text evaluator intentionally formats both to text"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+.adaptive-controls{display:flex;align-items:center;gap:7px;min-height:34px;padding:4px 12px;border-bottom:1px solid #dce0e8;background:#f7f8fb;font-size:11px;color:#687187;flex-wrap:wrap}
+.adaptive-controls label{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.adaptive-controls select{min-width:160px;max-width:230px;height:25px;border:1px solid #d3d8e2;border-radius:3px;background:#fff;color:#34405a;padding:2px 5px;font:inherit}
+.adaptive-controls button{display:inline-flex;align-items:center;justify-content:center;width:26px;height:25px;padding:0;border:1px solid transparent;border-radius:3px;color:#707a90;background:transparent;cursor:pointer}
+.adaptive-controls button:hover:not(:disabled){border-color:#d4d8e4;background:#fff;color:#5055ca}
+.adaptive-controls button:disabled{opacity:.4;cursor:default}
+.adaptive-controls .adaptive-width{padding-left:7px;border-left:1px solid #dce0e8}
+.adaptive-controls .adaptive-parent select{min-width:85px;max-width:160px}
+.adaptive-controls .adaptive-convert{width:auto;padding:0 6px;border-color:#d3d8e2;white-space:nowrap}
+.adaptive-controls input{width:68px;height:25px;padding:2px 5px;border:1px solid #d3d8e2;border-radius:3px;background:#fff;color:#34405a;font:inherit}
+.adaptive-count{min-width:66px;color:#737b94}
+.adaptive-help{color:#939aad;font-size:10px;margin-left:auto}
+.adaptive-error{width:100%;color:#bc3c4b;padding:3px 0}
+@media(max-width:1100px){.adaptive-help{display:none}}
+.adaptive-set-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:4px 12px;border-bottom:1px solid #dce0e8;background:#f7f8fb;color:#687187;font-size:11px;min-height:30px}
+.adaptive-set-controls label{display:flex;align-items:center;gap:6px}
+.adaptive-set-controls select,.adaptive-set-controls button{font:inherit;color:#34405a;background:white;border:1px solid #d3d8e2;border-radius:3px;min-height:24px;padding:2px 6px}
+.adaptive-set-controls select{width:180px}.adaptive-set-controls button{cursor:pointer}.adaptive-set-controls button:disabled{opacity:.45;cursor:default}
+.adaptive-set-manager{position:relative;margin-left:auto}.adaptive-set-manager summary{cursor:pointer}.adaptive-set-manager>div{position:absolute;right:0;top:24px;z-index:20;min-width:330px;max-height:280px;overflow:auto;padding:8px;background:white;border:1px solid #d3d8e2;box-shadow:0 5px 15px #0002}.adaptive-set-manager>div>div{display:flex;align-items:center;gap:6px;padding:5px 0}.adaptive-set-manager strong{flex:1;overflow-wrap:anywhere}

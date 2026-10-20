@@ -1,0 +1,828 @@
+{
+  "stage": "runtime-transform-format",
+  "date": "2026-10-20",
+  "scope": "Read-only next-stage Move/Set Size storage, generator, defaults and corpus. No new recovery implementation.",
+  "originalAxureGuiCompared": false,
+  "originalDllExecuted": false,
+  "fullAxureParity": false,
+  "assembly": {
+    "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\AxureRP11.dll",
+    "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+    "version": "11.0.0.4150"
+  },
+  "sources": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\AxureRP11.dll",
+      "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+    },
+    {
+      "file": "research/scripts/inspect-rp-serialization.ps1",
+      "sha256": "2c3cebbef109bb692562cbf80d6b60f36449275a21d19060fa10089ab27389b5"
+    },
+    {
+      "file": "research/scripts/read-rp-objects.mjs",
+      "sha256": "6e94582d21efacec6e75cfcf41953cc02913fa68031056637387df34f6cb59b9"
+    },
+    {
+      "file": "research/scripts/read-rp-interactions.mjs",
+      "sha256": "aee2b93c204f54b08b1f774d6f6b4f588c562dd40898ada39909e7035eaeb26e"
+    },
+    {
+      "file": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128"
+    },
+    {
+      "file": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    },
+    {
+      "file": "research/text-autofit-native-literals.mjs",
+      "sha256": "2b8f2adee7d6e1ac5ac4e0188edf616057d1e129071b9818eb4900dfbf9e3091"
+    },
+    {
+      "file": "research/text-autofit-native-literals.bin",
+      "sha256": "9f43dae4b33ade6e7f48d90bbe882de7ab529db13782d1df2184fa122b61b542"
+    },
+    {
+      "file": "research/text-autofit-native-manifest.json",
+      "sha256": "c97d652ee729a322348acaa7983f3b8999c05c096d110bbda6e63780ef88a150"
+    },
+    {
+      "file": "research/rp-interaction-IxPathInfoMapActionGeneric-cil.json",
+      "sha256": "d3c7b6b3cb19f76ee9fa665b219774a033d0ad9ee79cfbb48beabae24033b1d2"
+    },
+    {
+      "file": "research/rp-interaction-IxAction-cil.json",
+      "sha256": "8a2a171589e4db2517a33dd2f07a7c64d963723db94c7c49572c5130f3b74e47"
+    },
+    {
+      "file": "research/runtime-rotate-format-evidence.json",
+      "sha256": "db9fe15315ad2a48aa1d1bd84ec2a03a3f9f5c89c4d4236161fe3bdab1109c11"
+    },
+    {
+      "file": "research/runtime-rotate-format-static-probe.mjs",
+      "sha256": "435dc74323d7a2edb39d869f00aeebd107262876c0818869961e95b2f633e4cf"
+    },
+    {
+      "file": "research/runtime-rotate-format-static-probes.json",
+      "sha256": "c1b26dfd0f6635b6753be7d0cef864603d87c1d577cf471b04cd8c73f8108cde"
+    },
+    {
+      "file": "research/runtime-rotate-format-census.json",
+      "sha256": "e7770395f6c41f86eb6f4568ea5091b2bac5d0fb52d9d029dcacba16eede9b1c"
+    }
+  ],
+  "summary": {
+    "samples": 11,
+    "objects": 41662,
+    "moveActions": 46,
+    "moveInfos": 54,
+    "sizeActions": 9,
+    "sizeInfos": 9,
+    "boundaryInfos": 12,
+    "moveWithBothNumericInputs": 30,
+    "sizeWithBothNumericInputs": 0,
+    "moveInfoScopeNonempty": 0,
+    "expressionScopeNonempty": 36,
+    "moveModes": {
+      "0": 26,
+      "1": 18,
+      "3": 10
+    },
+    "thisTargets": {
+      "move": 14
+    },
+    "mixedMoveSizeCases": 6,
+    "mixedRotateCases": 0
+  },
+  "census": {
+    "file": "research/runtime-transform-format-census.json",
+    "sha256": "ef05f2a06fe9c89228c7e01bed3d51450617872b46e0200fb3e5e06074454cab"
+  },
+  "summaryArtifact": {
+    "file": "research/runtime-transform-format-summary.json",
+    "sha256": "82405045909ab487e8ed58216cc2414d48442551d16da5a74e1974ee80f0a60f"
+  },
+  "claims": [
+    {
+      "id": "move-carrier",
+      "status": "proven-current-storage",
+      "files": [
+        {
+          "file": "research/runtime-transform-format-move-action-cil.json",
+          "sha256": "f4d7d1093802a122da2a928a991716046a54114dd16791bfaf2b926bc99bb5b5"
+        },
+        {
+          "file": "research/runtime-transform-format-move-info-cil.json",
+          "sha256": "5cd2185893a93f3fdb0b8a508f12533b9744df7403aa1fbf5cac9e095c3c9bcd"
+        },
+        {
+          "file": "research/runtime-transform-format-census.json",
+          "sha256": "ef05f2a06fe9c89228c7e01bed3d51450617872b46e0200fb3e5e06074454cab"
+        }
+      ],
+      "tokens": [
+        100704614,
+        100704615,
+        100704662,
+        100704663
+      ],
+      "contract": {
+        "type": "Axure:InteractionMoveWidgetAction",
+        "actionKeys": [
+          "Disabled",
+          "panelobjectpaths",
+          "WidgetPaths",
+          "MoveInfos"
+        ],
+        "infoType": "Axure:MoveWidgetInfo",
+        "infoKeys": [
+          "Duration",
+          "Easing",
+          "XValue",
+          "YValue",
+          "MoveType",
+          "MoveTrajectory",
+          "BoundaryCondition",
+          "scope"
+        ]
+      }
+    },
+    {
+      "id": "size-carrier",
+      "status": "proven-current-storage",
+      "files": [
+        {
+          "file": "research/runtime-transform-format-size-action-cil.json",
+          "sha256": "e9d6e60a2d1ab9e81e17320da9cb709cd9474796e42f0da48ed44ee4052988bb"
+        },
+        {
+          "file": "research/runtime-transform-format-size-info-cil.json",
+          "sha256": "c2cd6c87fb97d532fc00fa255980cea80098b533f779d2ab033d3e4f2b7da79c"
+        },
+        {
+          "file": "research/runtime-transform-format-census.json",
+          "sha256": "ef05f2a06fe9c89228c7e01bed3d51450617872b46e0200fb3e5e06074454cab"
+        }
+      ],
+      "tokens": [
+        100705563,
+        100705564,
+        100705598,
+        100705599
+      ],
+      "contract": {
+        "type": "Axure:InteractionSetWidgetSizeAction",
+        "actionKeys": [
+          "Disabled",
+          "panelobjectpaths",
+          "WidgetPaths",
+          "SetSizeInfos"
+        ],
+        "infoType": "Axure:SetWidgetSizeInfo",
+        "infoKeys": [
+          "width",
+          "height",
+          "anchor",
+          "easing",
+          "duration"
+        ],
+        "independentNativeToByEnum": false
+      }
+    },
+    {
+      "id": "author-defaults",
+      "status": "proven-constructors-and-factory-branches-not-entire-ui",
+      "files": [
+        {
+          "file": "research/runtime-transform-format-move-info-cil.json",
+          "sha256": "5cd2185893a93f3fdb0b8a508f12533b9744df7403aa1fbf5cac9e095c3c9bcd"
+        },
+        {
+          "file": "research/runtime-transform-format-size-info-cil.json",
+          "sha256": "c2cd6c87fb97d532fc00fa255980cea80098b533f779d2ab033d3e4f2b7da79c"
+        },
+        {
+          "file": "research/runtime-transform-format-move-action-cil.json",
+          "sha256": "f4d7d1093802a122da2a928a991716046a54114dd16791bfaf2b926bc99bb5b5"
+        },
+        {
+          "file": "research/runtime-transform-format-size-action-cil.json",
+          "sha256": "e9d6e60a2d1ab9e81e17320da9cb709cd9474796e42f0da48ed44ee4052988bb"
+        }
+      ],
+      "tokens": [
+        100704634,
+        100704595,
+        100705580,
+        100705548
+      ],
+      "move": {
+        "x": "0",
+        "y": "0",
+        "modeNormal": 1,
+        "easing": 0,
+        "trajectoryCLRDefault": 0,
+        "boundaryCLRDefault": null,
+        "durationPreferenceFallback": 500,
+        "parentResizeSpecialModes": [
+          7,
+          8
+        ]
+      },
+      "size": {
+        "dimensions": "current target Size / repeater item dimensions; special oJfb branch is 0/0/0",
+        "anchor": "top left",
+        "easing": 0,
+        "durationPreferenceFallback": 500
+      }
+    },
+    {
+      "id": "generated-actions",
+      "status": "proven-writer-fields",
+      "files": [
+        {
+          "file": "research/runtime-transform-format-action-dispatch-cil.json",
+          "sha256": "336cfbdb62b858c5e6b1edb8f9aec684e176e39240133520f8f51a814127ace8"
+        },
+        {
+          "file": "research/runtime-transform-format-action-opcode-cil.json",
+          "sha256": "1506352ea37fc285820517a0f9ff6540587623bf5d7735513ca37faa1c545175"
+        },
+        {
+          "file": "research/runtime-transform-format-actions-generator-cil.json",
+          "sha256": "c31a2aea9879ab5723c0a678a4a519bfcdc7ba5b57d190716f52f339e19694ea"
+        },
+        {
+          "file": "research/runtime-transform-format-target-array-cil.json",
+          "sha256": "7e1cb14d92544482c811aa6a341f5ea383ac3925ceb99132bc6e5ddf19e42427"
+        }
+      ],
+      "tokens": [
+        100694344,
+        100694345,
+        100694346,
+        100694360,
+        100694362,
+        100694366
+      ],
+      "move": {
+        "action": "moveWidget",
+        "array": "objectsToMoves",
+        "info": "moveInfo",
+        "parentEventType": true
+      },
+      "size": {
+        "action": "setWidgetSize",
+        "array": "objectsToResize",
+        "info": "sizeInfo"
+      },
+      "rotate": {
+        "action": "rotateWidget",
+        "array": "objectsToRotate",
+        "info": "rotateInfo"
+      },
+      "specialPaths": [
+        "thisItem",
+        "widgetsBelow",
+        "widgetsRight"
+      ]
+    },
+    {
+      "id": "generated-info-and-omission",
+      "status": "bounded-cil-replay-with-declared-sinks",
+      "files": [
+        {
+          "file": "research/runtime-transform-format-move-generator-cil.json",
+          "sha256": "16853cc15ab73025097f504ac88babe375e877d6db5d6406a979bb9e7ac67af9"
+        },
+        {
+          "file": "research/runtime-transform-format-size-generator-cil.json",
+          "sha256": "3fd439577c67019b2dd7bf5377ce3266248baa0f67aefc7fa3c618dbbcfb9055"
+        },
+        {
+          "file": "research/runtime-transform-format-static-probes.json",
+          "sha256": "c99d8b51b5916f9ade911d1813ce5a6fa6b66c8dac22d3c0780ffe27f2ef5dc6"
+        }
+      ],
+      "tokens": [
+        100694547,
+        100694548,
+        100694549,
+        100694570
+      ],
+      "move": {
+        "fields": [
+          "moveType",
+          "xValue",
+          "yValue",
+          "options"
+        ],
+        "optionsBeforeEasingGate": [
+          "boundaryExpr",
+          "boundaryStos"
+        ],
+        "nonzeroEasingOnly": [
+          "easing",
+          "duration",
+          "trajectory"
+        ]
+      },
+      "size": {
+        "always": [
+          "width",
+          "height",
+          "anchor",
+          "easing",
+          "duration"
+        ]
+      }
+    },
+    {
+      "id": "storage-compatibility-trajectory",
+      "status": "proven-local-branch-not-general-old-format-support",
+      "files": [
+        {
+          "file": "research/runtime-transform-format-writer-mode-cil.json",
+          "sha256": "f7d763a1a64cf41238088e17a77b884aec7ac8f3ef1fda456d2c3fca18076dee"
+        },
+        {
+          "file": "research/runtime-transform-format-writer-version-cil.json",
+          "sha256": "dea99bc29014489e75e4ae2365b6f85fb48f03b3bc2de87c1e1fdfdb5ebba612"
+        },
+        {
+          "file": "research/runtime-transform-format-compat-version-cil.json",
+          "sha256": "cdc6be3892ce157c49d36fb3d2e7a3e7310692c462322623a198d266b3ad2d34"
+        },
+        {
+          "file": "research/runtime-transform-format-version-constants-cil.json",
+          "sha256": "65bc01cdc943ed55e6464d5108a52df2d14b05c1169e88c43a7e2568238989da"
+        }
+      ],
+      "tokens": [
+        100716130,
+        100716135,
+        100691301,
+        100691304
+      ],
+      "condition": "writer version exactly 8.0.5.0 skips MoveTrajectory; observed RP11 writes it"
+    },
+    {
+      "id": "actual-map-this-substitution",
+      "status": "proven-local-accessor-not-group-expansion",
+      "files": [
+        {
+          "file": "research/rp-interaction-IxPathInfoMapActionGeneric-cil.json",
+          "sha256": "d3c7b6b3cb19f76ee9fa665b219774a033d0ad9ee79cfbb48beabae24033b1d2"
+        },
+        {
+          "file": "research/runtime-transform-format-resolved-target-cil.json",
+          "sha256": "be2641f8b52756af72731594eb2d78c25d5f758624b9be7c491e8268412e8b73"
+        }
+      ],
+      "tokens": [
+        100704726,
+        100704767,
+        100703076
+      ],
+      "contract": "Select retains info value, QN8Q substitutes action path for This predicate; hJMj emits each eligible pair as an object"
+    },
+    {
+      "id": "boundary-and-scopes",
+      "status": "partial",
+      "files": [
+        {
+          "file": "research/runtime-transform-format-move-info-cil.json",
+          "sha256": "5cd2185893a93f3fdb0b8a508f12533b9744df7403aa1fbf5cac9e095c3c9bcd"
+        },
+        {
+          "file": "research/runtime-transform-format-generator-root-cil.json",
+          "sha256": "0f646e21a8cb69a73fd0b233d3e8bdd292b5ebd0dde0211dd7437b8564ff6ec7"
+        },
+        {
+          "file": "research/runtime-transform-format-census.json",
+          "sha256": "ef05f2a06fe9c89228c7e01bed3d51450617872b46e0200fb3e5e06074454cab"
+        }
+      ],
+      "tokens": [
+        100704659,
+        100704660,
+        100694399
+      ],
+      "known": [
+        "raw BoundaryCondition AST",
+        "separate MoveInfo scope",
+        "StringLiteral scope and variable identifiers",
+        "direction-based STO builder",
+        "12 real non-null boundaries"
+      ],
+      "unresolved": [
+        "complete boundary AST to STO compilation",
+        "evaluation/coercion and runtime timing",
+        "arbitrary nested/repeater scope resolution"
+      ]
+    }
+  ],
+  "enums": {
+    "moveBehavior": [
+      {
+        "value": 0,
+        "name": "Location",
+        "generated": "location",
+        "fieldToken": 67128389
+      },
+      {
+        "value": 1,
+        "name": "Delta",
+        "generated": "delta",
+        "fieldToken": 67128390
+      },
+      {
+        "value": 2,
+        "name": "Drag",
+        "generated": "drag",
+        "fieldToken": 67128391
+      },
+      {
+        "value": 3,
+        "name": "DragX",
+        "generated": "dragX",
+        "fieldToken": 67128392
+      },
+      {
+        "value": 4,
+        "name": "DragY",
+        "generated": "dragY",
+        "fieldToken": 67128393
+      },
+      {
+        "value": 5,
+        "name": "LocationBeforeDrag",
+        "generated": "locationBeforeDrag",
+        "fieldToken": 67128394
+      },
+      {
+        "value": 6,
+        "name": "WithThis",
+        "generated": "withThis",
+        "fieldToken": 67128395
+      },
+      {
+        "value": 7,
+        "name": "SizeDeltaX",
+        "generated": "sizeDeltaX",
+        "fieldToken": 67128396
+      },
+      {
+        "value": 8,
+        "name": "SizeDeltaY",
+        "generated": "sizeDeltaY",
+        "fieldToken": 67128397
+      }
+    ],
+    "moveTrajectory": [
+      {
+        "value": 0,
+        "name": "Straight",
+        "generated": "straight",
+        "fieldToken": 67128399
+      },
+      {
+        "value": 1,
+        "name": "ArcClockwise",
+        "generated": "arcClockwise",
+        "fieldToken": 67128400
+      },
+      {
+        "value": 2,
+        "name": "ArcAntiClockwise",
+        "generated": "arcAntiClockwise",
+        "fieldToken": 67128401
+      }
+    ],
+    "animationEasing": [
+      {
+        "value": 0,
+        "name": "None",
+        "generated": "none",
+        "fieldToken": 67128341
+      },
+      {
+        "value": 1,
+        "name": "Swing",
+        "generated": "swing",
+        "fieldToken": 67128342
+      },
+      {
+        "value": 2,
+        "name": "Linear",
+        "generated": "linear",
+        "fieldToken": 67128343
+      },
+      {
+        "value": 3,
+        "name": "EaseInCubic",
+        "generated": "easeInCubic",
+        "fieldToken": 67128346
+      },
+      {
+        "value": 4,
+        "name": "EaseOutCubic",
+        "generated": "easeOutCubic",
+        "fieldToken": 67128356
+      },
+      {
+        "value": 5,
+        "name": "EaseInOutCubic",
+        "generated": "easeInOutCubic",
+        "fieldToken": 67128366
+      },
+      {
+        "value": 6,
+        "name": "EaseOutBounce",
+        "generated": "easeOutBounce",
+        "fieldToken": 67128363
+      },
+      {
+        "value": 7,
+        "name": "EaseOutElastic",
+        "generated": "easeOutElastic",
+        "fieldToken": 67128362
+      },
+      {
+        "value": 8,
+        "name": "EaseInSine",
+        "generated": "easeInSine",
+        "fieldToken": 67128344
+      },
+      {
+        "value": 9,
+        "name": "EaseInQuad",
+        "generated": "easeInQuad",
+        "fieldToken": 67128345
+      },
+      {
+        "value": 10,
+        "name": "EaseInQuart",
+        "generated": "easeInQuart",
+        "fieldToken": 67128347
+      },
+      {
+        "value": 11,
+        "name": "EaseInQuint",
+        "generated": "easeInQuint",
+        "fieldToken": 67128348
+      },
+      {
+        "value": 12,
+        "name": "EaseInExpo",
+        "generated": "easeInExpo",
+        "fieldToken": 67128349
+      },
+      {
+        "value": 13,
+        "name": "EaseInCirc",
+        "generated": "easeInCirc",
+        "fieldToken": 67128350
+      },
+      {
+        "value": 14,
+        "name": "EaseInBack",
+        "generated": "easeInBack",
+        "fieldToken": 67128351
+      },
+      {
+        "value": 15,
+        "name": "EaseInElastic",
+        "generated": "easeInElastic",
+        "fieldToken": 67128352
+      },
+      {
+        "value": 16,
+        "name": "EaseInBounce",
+        "generated": "easeInBounce",
+        "fieldToken": 67128353
+      },
+      {
+        "value": 17,
+        "name": "EaseOutSine",
+        "generated": "easeOutSine",
+        "fieldToken": 67128354
+      },
+      {
+        "value": 18,
+        "name": "EaseOutQuad",
+        "generated": "easeOutQuad",
+        "fieldToken": 67128355
+      },
+      {
+        "value": 19,
+        "name": "EaseOutQuart",
+        "generated": "easeOutQuart",
+        "fieldToken": 67128357
+      },
+      {
+        "value": 20,
+        "name": "EaseOutQuint",
+        "generated": "easeOutQuint",
+        "fieldToken": 67128358
+      },
+      {
+        "value": 21,
+        "name": "EaseOutExpo",
+        "generated": "easeOutExpo",
+        "fieldToken": 67128359
+      },
+      {
+        "value": 22,
+        "name": "EaseOutCirc",
+        "generated": "easeOutCirc",
+        "fieldToken": 67128360
+      },
+      {
+        "value": 23,
+        "name": "EaseOutBack",
+        "generated": "easeOutBack",
+        "fieldToken": 67128361
+      },
+      {
+        "value": 24,
+        "name": "EaseInOutSine",
+        "generated": "easeInOutSine",
+        "fieldToken": 67128364
+      },
+      {
+        "value": 25,
+        "name": "EaseInOutQuad",
+        "generated": "easeInOutQuad",
+        "fieldToken": 67128365
+      },
+      {
+        "value": 26,
+        "name": "EaseInOutQuart",
+        "generated": "easeInOutQuart",
+        "fieldToken": 67128367
+      },
+      {
+        "value": 27,
+        "name": "EaseInOutQuint",
+        "generated": "easeInOutQuint",
+        "fieldToken": 67128368
+      },
+      {
+        "value": 28,
+        "name": "EaseInOutExpo",
+        "generated": "easeInOutExpo",
+        "fieldToken": 67128369
+      },
+      {
+        "value": 29,
+        "name": "EaseInOutCirc",
+        "generated": "easeInOutCirc",
+        "fieldToken": 67128370
+      },
+      {
+        "value": 30,
+        "name": "EaseInOutBack",
+        "generated": "easeInOutBack",
+        "fieldToken": 67128371
+      },
+      {
+        "value": 31,
+        "name": "EaseInOutElastic",
+        "generated": "easeInOutElastic",
+        "fieldToken": 67128372
+      },
+      {
+        "value": 32,
+        "name": "EaseInOutBounce",
+        "generated": "easeInOutBounce",
+        "fieldToken": 67128373
+      }
+    ]
+  },
+  "proposedRecoveryProtocol": {
+    "actionBatch": "ordered per-target records, retain native action identity and enclosing event type",
+    "move": [
+      "complete target path",
+      "MoveBehavior 0..8",
+      "XValue/YValue expression carrier and local/repeater bindings",
+      "MoveTrajectory 0..2",
+      "BoundaryCondition AST and scope",
+      "Easing 0..32",
+      "finite Duration"
+    ],
+    "size": [
+      "complete target path",
+      "width/height expression carrier and bindings",
+      "anchor string",
+      "Easing 0..32",
+      "finite duration"
+    ],
+    "noNativeSizeToByEnum": true,
+    "atomicEventRecovery": true,
+    "unknownSiblingOrBindingRejectsWholeEvent": true,
+    "productRangeLimitsNotNativeLimits": true
+  },
+  "safeRecoveryBoundary": {
+    "currentProductionChanged": false,
+    "newlyImportedEvents": 0,
+    "realCountsAreCandidates": true,
+    "safeAfterRuntimeIntegration": "Known complete ordinary/This target batches with complete supported expressions, event and sibling actions; preserve stored inactive fields in source metadata.",
+    "requiredForFullRealCorpus": [
+      "24 Move expression infos",
+      "9 expression Size infos",
+      "12 boundary infos",
+      "36 nonempty input scopes",
+      "drag events and mixed action cases",
+      "target admission and whole-event dependency checks"
+    ],
+    "notAuthorized": [
+      "drop boundary expressions",
+      "drop local scope",
+      "coerce all Move modes to To/By",
+      "numeric-only Size claimed as real coverage",
+      "invent Size mode or Move anchor",
+      "flatten grouped action timing",
+      "claim historical aliases supported without version proof"
+    ]
+  },
+  "syntheticCombination": {
+    "file": "research/runtime-transform-format-synthetic-case.json",
+    "sha256": "cf95c4cc4e0a4955c61de0df919373c3370a6af1a1e6011d7f7d41ba4971438c"
+  },
+  "verification": {
+    "staticReplay": {
+      "file": "research/runtime-transform-format-static-probes.json",
+      "sha256": "c99d8b51b5916f9ade911d1813ce5a6fa6b66c8dac22d3c0780ffe27f2ef5dc6"
+    },
+    "staticPassed": 64,
+    "staticTotal": 64,
+    "realCorpusAssertionsPassed": 8,
+    "realCorpusAssertionsTotal": 8,
+    "firstProbe": {
+      "file": "research/runtime-transform-format-static-first-probes.json",
+      "sha256": "795558e2c82a3e6bd5a18166f89a3a2f9b0de4648313e9bacb49c0a0bf3e4a93"
+    },
+    "firstResult": {
+      "passed": 31,
+      "total": 60,
+      "explanation": "27 incorrect None trajectory expectations, wrong controlled writer-version branch, unimplemented identity numeric sink; harness corrections only"
+    },
+    "noFullTestBuildPackageRun": true
+  },
+  "unresolved": [
+    "Complete native UI anchor binding list",
+    "Arbitrary boundary AST to STO compilation and runtime evaluation",
+    "Preference persistence and native range validation",
+    "Compound target resolver and grouped scheduling",
+    "Move/Resize rendered geometry/timing/events and nested/hidden/fit behavior",
+    "Historical carrier migration policy"
+  ],
+  "samples": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+      "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Flow.rplib",
+      "sha256": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Icons.rplib",
+      "sha256": "83f450088f81f6047dfb196919fff3a4aae2f3adb56668da4d4c8cfd3b813bda"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Quick Win.rp",
+      "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+      "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72"
+    },
+    {
+      "file": "research/samples/the-basics-tab-menu.rp",
+      "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4"
+    },
+    {
+      "file": "research/samples/complex-interactions-required-fields.rp",
+      "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c"
+    }
+  ]
+}

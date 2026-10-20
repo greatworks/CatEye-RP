@@ -1,0 +1,555 @@
+{
+  "schema": "adaptive-behavior-original-control-v1",
+  "capturedAt": "2026-10-15T09:33:49.822Z",
+  "artifact": {
+    "version": "11.0.0.4150",
+    "distributionSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+    "extractionEvidenceId": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7"
+  },
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\adaptive.js",
+      "sha256": "e141ea07bb973b6007f2ad7d7205516a041a801ec97e410467352c27af3b2928"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "adaptive.js",
+      "first": 6,
+      "last": 42,
+      "label": "automatic mode and loadFinished",
+      "sha256": "e8759b10b6857453140ef185aa660a59fbc240d8b76844e7229ea4b90a969363"
+    },
+    {
+      "file": "adaptive.js",
+      "first": 48,
+      "last": 159,
+      "label": "actual switch control; DOM/style operations are sinks",
+      "sha256": "95efcdb46e07996d53293f092214a07df6a3fc54ded37634543715b811e54315"
+    },
+    {
+      "file": "adaptive.js",
+      "first": 376,
+      "last": 426,
+      "label": "actual size selection",
+      "sha256": "6ea025bae2df31a2296d86ed0135d6bd74ef4140ea645a6cd164fcf6489a27e4"
+    },
+    {
+      "file": "adaptive.js",
+      "first": 707,
+      "last": 752,
+      "label": "public selection and initialization",
+      "sha256": "ff4db35ef4e60ba5dfb0cd9c55ba8f212206ff1a7611cc64a567b483b1b03c54"
+    },
+    {
+      "file": "action.js",
+      "first": 351,
+      "last": 377,
+      "label": "actual recursive dispatcher, Wait and expression continuation",
+      "sha256": "3e37121894915eff7c1345cece99390b29ac9942a21aabcadd6f3c59a0a205b9"
+    },
+    {
+      "file": "action.js",
+      "first": 393,
+      "last": 398,
+      "label": "actual Set Adaptive View handler",
+      "sha256": "ef60b62666a9b4ed277b59086fc2653030d489cef69e911b6331d90c0ae6bad3"
+    },
+    {
+      "file": "events.js",
+      "first": 544,
+      "last": 595,
+      "label": "actual one-case-group condition and action dispatch",
+      "sha256": "8e635246f9fcf99d3e89e78bd564fdac557a410211cdad22b3866fc2d22b77c8"
+    },
+    {
+      "file": "events.js",
+      "first": 1840,
+      "last": 1861,
+      "label": "actual adaptive page/master event and player post",
+      "sha256": "dd04b43dc46f7cba35c9a7dec38e05b009c9b23df4f2292c422615ac05ec1c11"
+    },
+    {
+      "file": "events.js",
+      "first": 1901,
+      "last": 2018,
+      "label": "actual page/master/container event traversal",
+      "sha256": "55a519389e4718198dadc22935503f8254a35b64c9f79666f192585cfb944347"
+    }
+  ],
+  "passed": 16,
+  "results": [
+    {
+      "name": "control expression actions dispatch their successor",
+      "status": "pass",
+      "observed": [
+        [
+          "expression",
+          "before"
+        ],
+        [
+          "expression",
+          "after"
+        ]
+      ]
+    },
+    {
+      "name": "Set Adaptive View different does not dispatch its successor",
+      "status": "pass",
+      "observed": {
+        "trace": [
+          [
+            "expression",
+            "before"
+          ],
+          [
+            "apply",
+            "phone"
+          ],
+          [
+            "refresh"
+          ],
+          [
+            "autofit"
+          ],
+          [
+            "bindable",
+            "viewChanged",
+            {}
+          ],
+          [
+            "player",
+            "adaptiveViewChange",
+            {
+              "viewId": "phone"
+            }
+          ]
+        ],
+        "current": "phone",
+        "auto": false,
+        "timers": 0
+      }
+    },
+    {
+      "name": "Set Adaptive View same does not dispatch its successor",
+      "status": "pass",
+      "observed": {
+        "trace": [
+          [
+            "expression",
+            "before"
+          ]
+        ],
+        "current": "tablet",
+        "auto": false,
+        "timers": 0
+      }
+    },
+    {
+      "name": "Set Adaptive View Base does not dispatch its successor",
+      "status": "pass",
+      "observed": {
+        "trace": [
+          [
+            "expression",
+            "before"
+          ],
+          [
+            "refresh"
+          ],
+          [
+            "autofit"
+          ],
+          [
+            "bindable",
+            "viewChanged",
+            {}
+          ],
+          [
+            "player",
+            "adaptiveViewChange",
+            {
+              "viewId": ""
+            }
+          ]
+        ],
+        "current": "",
+        "auto": false,
+        "timers": 0
+      }
+    },
+    {
+      "name": "Set Adaptive View Auto does not dispatch its successor",
+      "status": "pass",
+      "observed": {
+        "trace": [
+          [
+            "expression",
+            "before"
+          ]
+        ],
+        "current": "tablet",
+        "auto": true,
+        "timers": 0
+      }
+    },
+    {
+      "name": "Set Adaptive View unknown does not dispatch its successor",
+      "status": "pass",
+      "observed": {
+        "trace": [
+          [
+            "expression",
+            "before"
+          ],
+          [
+            "apply",
+            "missing"
+          ],
+          [
+            "refresh"
+          ],
+          [
+            "autofit"
+          ],
+          [
+            "bindable",
+            "viewChanged",
+            {}
+          ],
+          [
+            "player",
+            "adaptiveViewChange",
+            {
+              "viewId": "missing"
+            }
+          ]
+        ],
+        "current": "missing",
+        "auto": false,
+        "timers": 0
+      }
+    },
+    {
+      "name": "Set Adaptive View empty does not dispatch its successor",
+      "status": "pass",
+      "observed": {
+        "trace": [
+          [
+            "expression",
+            "before"
+          ]
+        ],
+        "current": "tablet",
+        "auto": true,
+        "timers": 0
+      }
+    },
+    {
+      "name": "Set Adaptive View missing does not dispatch its successor",
+      "status": "pass",
+      "observed": {
+        "trace": [
+          [
+            "expression",
+            "before"
+          ]
+        ],
+        "current": "tablet",
+        "auto": true,
+        "timers": 0
+      }
+    },
+    {
+      "name": "direct public API returns to its caller; terminal action behavior belongs to its handler",
+      "status": "pass",
+      "observed": [
+        [
+          "apply",
+          "phone"
+        ],
+        [
+          "refresh"
+        ],
+        [
+          "autofit"
+        ],
+        [
+          "bindable",
+          "viewChanged",
+          {}
+        ],
+        [
+          "player",
+          "adaptiveViewChange",
+          {
+            "viewId": "phone"
+          }
+        ],
+        [
+          "expression",
+          "caller continues"
+        ]
+      ]
+    },
+    {
+      "name": "queued preinitialize selection does not later resume the old action list",
+      "status": "pass",
+      "observed": [
+        [
+          "apply",
+          "phone"
+        ],
+        [
+          "refresh"
+        ],
+        [
+          "autofit"
+        ],
+        [
+          "bindable",
+          "viewChanged",
+          {}
+        ],
+        [
+          "player",
+          "adaptiveViewChange",
+          {
+            "viewId": "phone"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "actual page event traversal runs its own actions but never the suspended outer successor",
+      "status": "pass",
+      "observed": [
+        [
+          "expression",
+          "outer before"
+        ],
+        [
+          "apply",
+          "phone"
+        ],
+        [
+          "refresh"
+        ],
+        [
+          "autofit"
+        ],
+        [
+          "bindable",
+          "viewChanged",
+          {}
+        ],
+        [
+          "expression",
+          "page event first"
+        ],
+        [
+          "expression",
+          "page event second"
+        ],
+        [
+          "player",
+          "adaptiveViewChange",
+          {
+            "viewId": "phone"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "page event Wait resumes only the page event action array",
+      "status": "pass",
+      "observed": [
+        [
+          "apply",
+          "phone"
+        ],
+        [
+          "refresh"
+        ],
+        [
+          "autofit"
+        ],
+        [
+          "bindable",
+          "viewChanged",
+          {}
+        ],
+        [
+          "expression",
+          "event prefix"
+        ],
+        [
+          "player",
+          "adaptiveViewChange",
+          {
+            "viewId": "phone"
+          }
+        ],
+        [
+          "expression",
+          "event continuation"
+        ],
+        [
+          "flush",
+          {
+            "label": "Probe",
+            "friendlyType": "Page",
+            "now": "2026-10-15T09:33:49.819Z"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Wait before a switch resumes to the switch then stops",
+      "status": "pass",
+      "observed": [
+        [
+          "apply",
+          "phone"
+        ],
+        [
+          "refresh"
+        ],
+        [
+          "autofit"
+        ],
+        [
+          "bindable",
+          "viewChanged",
+          {}
+        ],
+        [
+          "player",
+          "adaptiveViewChange",
+          {
+            "viewId": "phone"
+          }
+        ],
+        [
+          "flush",
+          {
+            "now": "2026-10-15T09:33:49.820Z"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Wait after a switch is not scheduled",
+      "status": "pass",
+      "observed": [
+        [
+          "apply",
+          "phone"
+        ],
+        [
+          "refresh"
+        ],
+        [
+          "autofit"
+        ],
+        [
+          "bindable",
+          "viewChanged",
+          {}
+        ],
+        [
+          "player",
+          "adaptiveViewChange",
+          {
+            "viewId": "phone"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Loaded switch defers the page adaptive event to one-shot loadFinished",
+      "status": "pass",
+      "observed": [
+        [
+          "expression",
+          "load prefix"
+        ],
+        [
+          "apply",
+          "phone"
+        ],
+        [
+          "refresh"
+        ],
+        [
+          "autofit"
+        ],
+        [
+          "bindable",
+          "viewChanged",
+          {}
+        ],
+        [
+          "expression",
+          "adaptive event"
+        ],
+        [
+          "player",
+          "adaptiveViewChange",
+          {
+            "viewId": "phone"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Loaded switch back to Base suppresses initial adaptive interaction event",
+      "status": "pass",
+      "observed": [
+        [
+          "refresh"
+        ],
+        [
+          "autofit"
+        ],
+        [
+          "bindable",
+          "viewChanged",
+          {}
+        ],
+        [
+          "player",
+          "adaptiveViewChange",
+          {
+            "viewId": ""
+          }
+        ]
+      ]
+    }
+  ],
+  "boundaries": {
+    "executed": "Exact retained action dispatcher, SetAdaptiveView/Wait/expr handlers, adaptive control/switch, page event traversal and case-group dispatch in Node VM.",
+    "sinks": [
+      "DOM/style/repeater refresh and AutoFit are traced terminal sinks",
+      "expression evaluator records fixture markers",
+      "event policy/menus replaced by a one-case-group adapter",
+      "timers are queued and explicitly drained; no wall-clock ordering claim"
+    ],
+    "notExecuted": [
+      "native DLL or GUI",
+      "complete generated page",
+      "full _handleEvent case menus and bubbling",
+      "player navigation or URL persistence"
+    ],
+    "productChanged": false,
+    "network": false
+  }
+}

@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { readJson, sha256 } from './gradient-angle-static-flow.mjs';
+const replay=readJson('research/text-autofit-breaks-replay.json'),literals=readJson('research/text-autofit-breaks-literals.json');
+for(const item of [...replay.sources,...literals.sources])assert.equal(sha256(item.file),item.sha256,item.file);
+assert.equal(replay.cases.length,24);for(const c of replay.cases)assert.equal(c.actual,c.expected);
+const newFiles=fs.readdirSync('research').filter(f=>f.startsWith('text-autofit-breaks-')&&f!=='text-autofit-breaks-evidence.json').map(f=>'research/'+f);
+const context=['research/text-autofit-native-text-callers-cil.json','research/rich-text-format-paragraph-cil.json','research/rich-text-format-evidence.md','research/inline-text-native-evidence.md','src/components/RichTextContent.tsx','src/components/rich-text-dom.ts','src/components/RichTextEditor.tsx','src/runtime/export-runtime.ts'];
+const sources=[...new Set([...newFiles,...context,...literals.sources.map(s=>s.file)])].map(file=>({file,sha256:sha256(file)}));
+const report={assemblySHA256:'dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7',scope:'Static text-only CIL/literal investigation; no original assembly/application execution or browser. No corpus rescan; product unchanged.',facts:{ordinaryChain:'fNPD(arg4=false) -> ONiF -> KNiN -> nNiB -> zNiG -> PbDL, then rNiV',normalizeCR:'Regex \\r\\n? to LF',htmlBreaks:['LF','U+2028'],htmlReplacement:'<br>',paragraphCleanup:'ONiF clone then Reverse(paragraphs).Skip(1), normalize and TrimEnd(LF) on each last recursive inline; statically inspected, not replayed as full ONiF',notReplacedByTextChain:['U+2029']},replay:{passed:replay.cases.length,total:replay.cases.length},unknown:['native editor keyboard encoding','alternate zNir caller mode','complete original browser cascade and ink','all empty/list paragraph cases','unobserved native run layouts'],sources};
+fs.writeFileSync('research/text-autofit-breaks-evidence.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({sources:sources.length,serializerCases:replay.cases.length,sha256:sha256('research/text-autofit-breaks-evidence.json')}));

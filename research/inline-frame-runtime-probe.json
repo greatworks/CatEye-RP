@@ -1,0 +1,177 @@
+{
+  "createdAt": "2026-10-13T20:04:04.495Z",
+  "version": "11.0.0.4150",
+  "extractionEvidence": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "distributionSha256": "f9f374412306629dadb78cbd5db643353df83fb7c2d7a7e987687865b876dfe0",
+  "sources": {
+    "doc.js": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1",
+    "action.js": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+    "axQuery.std.js": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+    "variables.js": "91c71787560b88e597b6baf934bd68075597901afccf4787b6aa9d8c43453188"
+  },
+  "ranges": {
+    "navigate": [
+      "doc.js",
+      768,
+      822
+    ],
+    "queryOpenLink": [
+      "axQuery.std.js",
+      151,
+      168
+    ],
+    "actionFrame": [
+      "action.js",
+      483,
+      497
+    ],
+    "variables": [
+      "variables.js",
+      1,
+      153
+    ]
+  },
+  "method": "Exact source slices in isolated VM; mocked navigation sinks. No target URL visited; no original GUI/app run by this stage.",
+  "results": [
+    {
+      "name": "frame targets write src directly and do not navigate the enclosing page",
+      "observed": [
+        {
+          "frame": "f",
+          "name": "src",
+          "value": "child.html"
+        }
+      ]
+    },
+    {
+      "name": "same frame target is written repeatedly without needsReload rewrite",
+      "observed": [
+        {
+          "frame": "f",
+          "name": "src",
+          "value": "child.html"
+        },
+        {
+          "frame": "f",
+          "name": "src",
+          "value": "child.html"
+        }
+      ]
+    },
+    {
+      "name": "empty target  becomes about:blank",
+      "observed": {
+        "frame": "f",
+        "name": "src",
+        "value": "about:blank"
+      }
+    },
+    {
+      "name": "empty target null becomes about:blank",
+      "observed": {
+        "frame": "f",
+        "name": "src",
+        "value": "about:blank"
+      }
+    },
+    {
+      "name": "empty target undefined becomes about:blank",
+      "observed": {
+        "frame": "f",
+        "name": "src",
+        "value": "about:blank"
+      }
+    },
+    {
+      "name": "frame includeVariables invokes URL snapshot builder",
+      "observed": {
+        "frame": "f",
+        "name": "src",
+        "value": "child.html?snapshot=1"
+      }
+    },
+    {
+      "name": "parentFrame is immediate enclosing context, not opener or own page",
+      "observed": {
+        "self": {
+          "href": "file:///prototype/parent.html"
+        },
+        "parent": {
+          "href": "destination.html"
+        },
+        "opener": {
+          "href": "file:///prototype/opener.html"
+        }
+      }
+    },
+    {
+      "name": "same parent basename takes reload trampoline",
+      "observed": {
+        "href": "/reload.html?container.html"
+      }
+    },
+    {
+      "name": "current navigation stays in current frame",
+      "observed": {
+        "self": {
+          "href": "destination.html"
+        },
+        "parent": {
+          "href": "file:///prototype/container.html"
+        }
+      }
+    },
+    {
+      "name": "new window is separate from parentFrame navigation",
+      "observed": [
+        [
+          "https://example.invalid/never-opened",
+          ""
+        ]
+      ]
+    },
+    {
+      "name": "query.openLink filters actual iframe tags and preserves order",
+      "observed": [
+        {
+          "id": "a",
+          "url": "child.html"
+        },
+        {
+          "id": "c",
+          "url": "child.html"
+        }
+      ]
+    },
+    {
+      "name": "action frame paths use first resolved row only and continue entries in order",
+      "observed": [
+        {
+          "id": "#f-row1_input",
+          "url": "one",
+          "include": true
+        },
+        {
+          "id": "#g-row1_input",
+          "url": "evaluated:two",
+          "include": false
+        }
+      ]
+    },
+    {
+      "name": "distinct provider instances do not share mutable global values",
+      "observed": {
+        "a": "2",
+        "b": "0"
+      }
+    },
+    {
+      "name": "setGlobalVar broadcasts do not assign received values in another provider",
+      "observed": "0"
+    },
+    {
+      "name": "navigation URL transmits only nondefault snapshot values",
+      "observed": "child.html?counter=2%20%26%203&CSUM=1"
+    }
+  ]
+}

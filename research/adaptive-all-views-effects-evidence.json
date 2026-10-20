@@ -1,0 +1,315 @@
+{
+  "title": "Affect All Views state-map granularity and shared-content boundaries",
+  "target": {
+    "file": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/AxureRP11.dll",
+    "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+    "version": "11.0.0.4150"
+  },
+  "method": "Static ECMA-335 CIL plus 17 bounded stored-instruction cases. Original DLL, application and GUI were not executed.",
+  "productChanges": false,
+  "conclusions": {
+    "genericAllViews": "Actual overridden key21 in sJp1 removes whole local P21 across adaptive styles before writing Base; not a per-state/per-field clear.",
+    "existingMap": "YrgK uses a requested FtXa map plus Htfh sentinel for unchanged states. P21 GetEdit retains other current states and replaces the target state as a whole.",
+    "firstEffect": "If every effective state is null, YrgK directly writes a one-state P21 through ordinary current provider, even with EditAllAdaptive true. No generic sibling-view clear occurs in this inspected branch.",
+    "missingLocalStyle": "AdaptiveStyle(Guid) creates the current view Style if absent; first-add does not select an ancestor merely because the leaf had no local record.",
+    "emptyState": "An entry with an empty Style is non-null, so is not first-effect; empty FtXa with no states is all-null by enumerable All.",
+    "fit": "Stored AutoFitWidth/Height are shared object fields; effective getters can still depend on adaptive transforms.",
+    "shape": "Shape kind is a shared object field with type/default/geometry side effects; not a local visual PName.",
+    "rich": "Raw attributed content is shared; displayed/synchronized rich formatting also passes through current style providers. Not all rich format operations are proven generic style edits."
+  },
+  "anchors": [
+    {
+      "token": 100677647,
+      "type": "xrgg",
+      "method": "YrgK",
+      "firstAddIL": [
+        128,
+        139,
+        33,
+        46
+      ],
+      "existingMapIL": [
+        224,
+        293,
+        164,
+        168
+      ]
+    },
+    {
+      "token": 100718048,
+      "type": "c5b1",
+      "method": "GetEdit",
+      "states": [
+        1,
+        2,
+        8,
+        64,
+        32,
+        4,
+        16
+      ],
+      "il": [
+        133,
+        225
+      ]
+    },
+    {
+      "token": 100718050,
+      "type": "c5b1",
+      "method": "M5bg",
+      "capabilityIL": [
+        530,
+        538
+      ],
+      "retainSentinelIL": [
+        675,
+        682,
+        392,
+        401
+      ],
+      "replaceIL": [
+        426,
+        435
+      ]
+    },
+    {
+      "token": 100695567,
+      "type": "KJm7",
+      "method": "sJp1"
+    },
+    {
+      "token": 100695539,
+      "type": "KJm7",
+      "method": "WJpV"
+    },
+    {
+      "token": 100717821,
+      "type": "jtoq",
+      "method": "N5VF",
+      "key": 21,
+      "il": [
+        33,
+        37
+      ]
+    },
+    {
+      "token": 100717638,
+      "type": "QtAY<T>",
+      "method": "ltAo",
+      "writeIL": 132,
+      "notifyIL": 63
+    },
+    {
+      "token": 100695533,
+      "type": "KJm7",
+      "method": "AdaptiveStyle(Guid)",
+      "createCurrentIL": [
+        46,
+        104
+      ]
+    },
+    {
+      "token": 100695797,
+      "type": "AxStyles iterator",
+      "method": "MoveNext"
+    },
+    {
+      "token": 100716683,
+      "type": "dtZ8",
+      "method": "etYY",
+      "flagWriteIL": 66
+    },
+    {
+      "token": 100702790,
+      "type": "VectorShape",
+      "method": "set_Shape",
+      "fieldWriteIL": 388
+    },
+    {
+      "token": 100702343,
+      "type": "RichTextObject",
+      "method": "set_AutoFitWidth",
+      "fieldWriteIL": 95
+    },
+    {
+      "token": 100702367,
+      "type": "TextRectObject",
+      "method": "set_AutoFitHeight",
+      "fieldWriteIL": 101
+    },
+    {
+      "token": 100701879,
+      "type": "RichTextPanel",
+      "method": "set_AttrString",
+      "fieldWriteIL": 36
+    },
+    {
+      "token": 100701886,
+      "type": "RichTextPanel",
+      "method": "LNOI",
+      "styleProjectionIL": [
+        35,
+        40
+      ]
+    },
+    {
+      "token": 100701892,
+      "type": "RichTextPanel",
+      "method": "SyncStyleToAttrString",
+      "providerWriteIL": 210
+    }
+  ],
+  "corpus": {
+    "source": {
+      "file": "research/adaptive-behavior-format-census.json",
+      "sha256": "34606a80fb56dd68eb2b877547122b452215a8b024aefb25979ecfc5b2e670a2",
+      "bytes": 4064978
+    },
+    "samples": 11,
+    "nonemptyAdaptiveStyleOwnerMaps": 25,
+    "referencedAdaptiveStyles": 75,
+    "emptyPropList": 75,
+    "adaptiveP21": 0,
+    "otherRawP21Records": 1223,
+    "realAdaptiveEffectEditWitnesses": 0
+  },
+  "verification": {
+    "stateEditCases": 15,
+    "firstEffectCases": 2,
+    "total": 17,
+    "notOriginalGui": true,
+    "files": [
+      {
+        "file": "research/adaptive-all-views-effects-replay.json",
+        "sha256": "a33ea84f5b6d1f952eff3a3f26288aab935afc2767975b727fd34eb3c696e8cb",
+        "bytes": 29062
+      },
+      {
+        "file": "research/adaptive-all-views-effects-first-state-replay.json",
+        "sha256": "7c91668610af84261af4c2d888835d2b51aa72e27cd39731bf68d804bef2cfd8",
+        "bytes": 15538
+      }
+    ]
+  },
+  "limitations": [
+    "The first-add replay supplies an ordinary current provider, with property/cache/notification dependency stubs; not original GUI execution.",
+    "Arbitrary native property equality is not simulated: only simple exact equal/unequal property lists are tested.",
+    "Individual effect-color/font editor construction of the requested target-state property list has not been comprehensively traced.",
+    "Contained owners, temporary effect-preview chains, and other specialized author entry points are not generalized.",
+    "Global event-subscriber search is limited to direct static calls in the pinned assembly; no claim about reflection/extensions.",
+    "No font measurement, pixels, UI undo history, or native writeback validation."
+  ],
+  "retainedSources": [
+    {
+      "file": "research/scripts/inspect-rp-serialization.ps1",
+      "sha256": "2c3cebbef109bb692562cbf80d6b60f36449275a21d19060fa10089ab27389b5",
+      "bytes": 6543
+    },
+    {
+      "file": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128",
+      "bytes": 2734
+    },
+    {
+      "file": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f",
+      "bytes": 266142
+    },
+    {
+      "file": "research/adaptive-behavior-format-state-author-cil.json",
+      "sha256": "94242c9eb438444b3ada2d692db7a791ce7e7be4dfa81b273163bcd5b9da8aac",
+      "bytes": 87538
+    },
+    {
+      "file": "research/adaptive-behavior-format-state-map-cil.json",
+      "sha256": "eff9e3bc1daeeda14d31dc92a1d4ddea4bc5e7f67ba141ba075bdee785fd22c9",
+      "bytes": 25360
+    },
+    {
+      "file": "research/adaptive-behavior-format-metadata.json",
+      "sha256": "e1cd4684ebf6fc15c4de76cc3ed3561ac2d21f9c4ead53d25c4c3ff7b121f337",
+      "bytes": 151466
+    },
+    {
+      "file": "research/adaptive-behavior-format-census.json",
+      "sha256": "34606a80fb56dd68eb2b877547122b452215a8b024aefb25979ecfc5b2e670a2",
+      "bytes": 4064978
+    },
+    {
+      "file": "research/adaptive-behavior-format-evidence.md",
+      "sha256": "2037960c4a17236a7e391f36dd016833eb263216bad429b30a8fe75a8b679487",
+      "bytes": 12895
+    },
+    {
+      "file": "research/adaptive-placement-authoring-owner-cil.json",
+      "sha256": "ec1f255e8b29456e7ba9d762fe606f1570e64f44d62f1743e287fbb1b8c216a0",
+      "bytes": 3553230
+    },
+    {
+      "file": "research/adaptive-placement-authoring-evidence.md",
+      "sha256": "58496de976bde59a9a6b32d6c2c02e381990c40ec17d6669e25ee13368759648",
+      "bytes": 11068
+    },
+    {
+      "file": "research/runtime-text-autofit-bridge-evidence.md",
+      "sha256": "8e3d7470fdde13c30f4e2fbef9b28fd34e54259ca586ef97c1dd634ac4af44da",
+      "bytes": 8195
+    },
+    {
+      "file": "research/rp-vector-path-evidence.md",
+      "sha256": "2a1c90bc3485a45c152c0faed020faec5b129c0d7420df7984e1d62547b461fa",
+      "bytes": 16050
+    },
+    {
+      "file": "research/rp-vector-census.md",
+      "sha256": "9f759ef33b43d5653b9ffe8d7f4b398a02eaf4c789293435d57bff29ae44fe05",
+      "bytes": 13364
+    }
+  ],
+  "samples": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+      "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Flow.rplib",
+      "sha256": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Icons.rplib",
+      "sha256": "83f450088f81f6047dfb196919fff3a4aae2f3adb56668da4d4c8cfd3b813bda"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Quick Win.rp",
+      "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+      "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72"
+    },
+    {
+      "file": "research/samples/the-basics-tab-menu.rp",
+      "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4"
+    },
+    {
+      "file": "research/samples/complex-interactions-required-fields.rp",
+      "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c"
+    }
+  ]
+}

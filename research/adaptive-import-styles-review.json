@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "scope": "Independent read-only review of recoverLocalAdaptiveStyles and Page adaptive diagnostic. Importer integration is reviewed separately after its owner finishes.",
+  "source": {
+    "path": "research/scripts/read-rp-semantics.mjs",
+    "sha256": "d246e353bf36015213fb27ac468a279764d2d9fdb60e18f49066ca9e178580ec"
+  },
+  "reviewed": [
+    "Explicit pair/reference validation and local package resolver contract",
+    "Full local structural validation before Overridden/Determined eligibility",
+    "Empty ordinary map versus P21 barrier and empty per-state target",
+    "Canonical mouseOver/mouseDown state names after reported correction",
+    "Complete 101/105 geometry and explicit 110 visibility",
+    "Local-provenance gate before copying complete-style converter outputs",
+    "Partial padding, unknown eligible fields, local corner/rotation/limbo rejection",
+    "Distinct Page AdaptiveStyles diagnostic"
+  ],
+  "finding": {
+    "status": "confirmed correction present; no additional definite behavior bug found in this bounded function review",
+    "corrected": "MouseOver/MouseDown initially emitted lowercase names incompatible with AdaptiveStateKey; the reviewed source emits mouseOver/mouseDown."
+  },
+  "validation": {
+    "reviewerOriginalFunctionProbeCases": 58,
+    "reviewerOriginalFunctionProbePassed": 58,
+    "parentReportedFocusedCases": 72,
+    "parentReportedFocusedBreakdown": {"localAdaptive": 31, "richLinks": 41},
+    "parentReportedFocusedStatus": "passed",
+    "parentReportedTestsRerunByReviewer": false
+  },
+  "limits": [
+    "The 72 focused results were reported by the parent and are not presented as a second independent test execution.",
+    "The review does not certify general named-style/provider synthesis or currently rejected native property conversions.",
+    "Package-local reference resolution is a caller invariant; the helper does not itself own the package index."
+  ]
+}

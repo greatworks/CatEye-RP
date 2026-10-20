@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "target": "Axure RP 11.0.0.4150",
+  "method": "Read-only static source review; no original JS/DLL/app execution, no new decompilation, no product/test changes",
+  "sources": [
+    {
+      "file": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6",
+      "excerpts": [
+        {
+          "start": 127,
+          "end": 179,
+          "text": "    _exprHandlers.fcall = function(expr, eventInfo) {\n        var oldTarget = eventInfo.targetElement;\n        var targets = [];\n        var fcallArgs = [];\n        var exprArgs = expr.arguments;\n        for(var i = 0; i < expr.arguments.length; i++) {\n            var exprArg = exprArgs[i];\n            var fcallArg = '';\n            if(targets.length) {\n                for(var j = 0; j < targets.length; j++) {\n                    if(exprArg == null) {\n                        fcallArgs[j][i] = null;\n                        continue;\n                    }\n                    eventInfo.targetElement = targets[j];\n                    fcallArg = _evaluateExpr(exprArg, eventInfo);\n                    if(typeof (fcallArg) == 'undefined') return '';\n                    fcallArgs[j][i] = fcallArg;\n                }\n            } else {\n                if(exprArg == null) {\n                    fcallArgs[i] = null;\n                    continue;\n                }\n                fcallArg = _evaluateExpr(exprArg, eventInfo);\n                if(typeof (fcallArg) == 'undefined') return '';\n                fcallArgs[i] = fcallArg;\n            }\n\n            // We do support null exprArgs...\n            // TODO: This makes 2 assumptions that may change in the future. 1. The pathLiteral is the always the first arg. 2. there is always only 1 pathLiteral\n            if(exprArg && exprArg.exprType == 'pathLiteral') {\n                targets = fcallArg;\n\n                // fcallArgs is now an array of an array of args\n                for(j = 0; j < targets.length; j++) fcallArgs[j] = [[fcallArg[j]]];\n            }\n        }\n\n        // we want to preserve the target element from outside this function.\n        eventInfo.targetElement = oldTarget;\n\n        var retval = '';\n        if(targets.length) {\n            // Go backwards so retval is the first item.\n            for(i = targets.length - 1; i >= 0; i--) {\n                var args = fcallArgs[i];\n                // Add event info to the end\n                args[args.length] = eventInfo;\n                retval = _exprFunctions[expr.functionName].apply(this, args);\n            }\n        } else fcallArgs[fcallArgs.length] = eventInfo;\n        return targets.length ? retval : _exprFunctions[expr.functionName].apply(this, fcallArgs);"
+        },
+        {
+          "start": 289,
+          "end": 307,
+          "text": "    _exprFunctions.SetWidgetFormText = function(elementIds, value) {\n        for(var i = 0; i < elementIds.length; i++) {\n            var elementId = elementIds[i];\n            var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');\n\n            var obj = $jobj(inputId);\n            if(obj.val() == value || (value == '' && $ax.placeholderManager.isActive(elementId))) return;\n            obj.val(value);\n            $ax.placeholderManager.updatePlaceholder(elementId, !value);\n            if($ax.event.HasTextChanged($ax.getObjectFromElementId(elementId))) $ax.event.TryFireTextChanged(elementId);\n        }\n    };\n\n    _exprFunctions.SetFocusedWidgetText = function(elementId, value) {\n        if(window.lastFocusedControl) {\n            var elementId = window.lastFocusedControl;\n            var type = $obj(elementId).type;\n            if ($ax.public.fn.IsTextBox(type) || $ax.public.fn.IsTextArea(type)) _exprFunctions.SetWidgetFormText([elementId], value);\n            else _exprFunctions.SetWidgetRichText([elementId], value, true);"
+        },
+        {
+          "start": 316,
+          "end": 404,
+          "text": "    _exprFunctions.SetWidgetRichText = function(ids, value, plain) {\n        // Converts dates, widgetinfo, and the like to strings.\n        value = _exprFunctions.ToString(value);\n\n        //Replace any newlines with line breaks\n        var finalValue = value.replace(/\\r\\n/g, '<br>').replace(/\\n/g, '<br>');\n\n        for(var i = 0; i < ids.length; i++) {\n            var id = ids[i];\n\n            // If calling this on button shape, get the id of the rich text panel inside instead\n            if($obj(id).type !== $ax.constants.LINK_TYPE) id = $ax.GetTextPanelId(id, true);\n\n            var element = window.document.getElementById(id);\n            $ax.visibility.SetVisible(element, value != '');\n\n            $ax.style.transformTextWithVerticalAlignment(id, function() {\n                var spans = $jobj(id).find('span');\n                if(plain) {\n                    // Can't set value as text because '<br/>' doesn't actually do a line break\n                    // Can't set vaule as html because it doesn't like '<' and ignores all after it\n                    // Create tags yourself\n                    var lines = value.split(/\\r\\n|\\n/);\n                    //if we are dealing with only one line, just reuse the old one\n                    if(spans.length === 1 && lines.length === 1) {\n                        $(spans[0]).text(value);\n                        return;\n                    }\n\n                    // Wrap in span and p, style them accordingly.\n                    var span = $('<span></span>');\n                    if(spans.length > 0) {\n                        span.attr('style', $(spans[0]).attr('style'));\n                        span.attr('id', $(spans[0]).attr('id'));\n                    }\n\n                    if(lines.length == 1) span.text(value);\n                    else {\n                        for(var i = 0; i < lines.length; i++) {\n                            if(i != 0) span.append($('<br />'));\n                            var line = lines[i];\n                            if(line.length == 0) continue;\n\n                            var subSpan = $('<span />');\n                            subSpan.text(line);\n                            span.append(subSpan);\n                        }\n                    }\n\n                    var ps = $jobj(id).find('p');\n                    if(ps && ps.length) {\n                        ps[0].innerHTML = $('<div></div>').append(span).html();;\n                        if(ps.length > 1) {\n                            for(var i = 1; i < ps.length; i++) {\n                                $(ps[i]).remove();\n                            }\n                        }\n                    } else {\n                        var p = $('<p></p>');\n                        p.append(span);\n                        element.innerHTML = $('<div></div>').append(p).html();\n                    }\n                } else element.innerHTML = finalValue;\n            });\n\n            if(!plain) $ax.style.CacheOriginalText(id, true);\n\n            autofitWidget(ids[i]);\n        }\n    };\n\n    var _autoFitIds = $ax.expr.autoFitIds = {};\n\n    _setAutoFitId = $ax.expr.setAutoFitId = function (scriptId, css) {\n        _autoFitIds[scriptId] = css;\n    };\n\n    $ax.expr.clearAutoFittedIds = function (elementIds) {\n        for (var i = 0; i < elementIds.length; i++) {\n            var id = elementIds[i];\n            delete _autoFitIds[id];\n        }\n    };\n\n    $ax.expr.updateAutoFitted = function () {\n        for (var id  in _autoFitIds) {\n            autofitWidget(id);\n        }\n    }"
+        },
+        {
+          "start": 406,
+          "end": 443,
+          "text": "    var _needsDisplay = function (id) {\n        var parent = document.getElementById(id);\n        while (parent) {\n            if (parent.style.display == 'none') return true;\n            parent = parent.parentElement;\n        }\n        return false;\n    };\n\n    var _getMeasureContainer = function () {\n        var $container = $jobj(\"measure\");\n        if ($container.length == 0) {\n            $container = $(\"<div id='measure' style='position: absolute; width:0px; height:0px'></div>\");\n            $(\"body\").append($container);\n        }\n        return $container;\n    };\n\n    var _displayWidgetIfNeeded = function(id) {        \n        var jobj = $jobj(id);\n        var needsDisplay = _needsDisplay(id);\n        if(!needsDisplay) return {\n            jObject: jobj,\n            trap: undefined\n        };\n\n        var $container = _getMeasureContainer();\n        jobj = jobj.clone();\n        $container.append(jobj);\n        jobj.css('display', 'block');\n        \n        return {\n            jObject: jobj,\n            trap: function() {\n                jobj.remove();\n            }\n        };\n    }"
+        },
+        {
+          "start": 469,
+          "end": 552,
+          "text": "    var autofitWidget = function (id) {\n\n        var obj = $obj(id);\n        if (obj.autoFitHeight || obj.autoFitWidth) {\n\n            var values = _displayWidgetIfNeeded(id);\n            var jobj = values.jObject;\n            var trap = values.trap;\n\n            var query = $ax('#' + id);\n            var size = query.size();\n            var css = {\n                width: size.width,\n                height: size.height\n            };\n\n            var textId = $ax.GetTextPanelId(id, true);\n            var style = $ax.style.computeFullStyle(id, $ax.style.generateState(id), $ax.adaptive.currentViewId);\n\n            if (obj.autoFitHeight) {\n                var jText = jobj.children('#' + textId);\n                var newHeight = jText.height();\n                if (style.paddingTop) newHeight += Number(style.paddingTop);\n                if (style.paddingBottom) newHeight += Number(style.paddingBottom);\n\n                if (newHeight - size.height != 0) {\n                    css.height = newHeight;\n                }\n            };\n\n            if (obj.autoFitWidth) {\n                var pars = jobj.find('p');\n                var newWidth = 0;\n\n                for (var j = 0; j < pars.length; ++j) {\n                    var spans = $(pars[j]).children('span');\n                    var w = 0;\n                    for (var i = 0; i < spans.length; ++i) {\n                        w += $(spans[i]).width();\n                    }\n                    if (w > newWidth) newWidth = w;\n                }\n\n                if (style.paddingLeft) newWidth += Number(style.paddingLeft);\n                if (style.paddingRight) newWidth += Number(style.paddingRight);\n\n                if (newWidth - size.width != 0) {\n                    css.width = newWidth;\n                }\n            };\n\n            const deltaWidth = css.width - size.width;\n            const deltaHeight = css.height - size.height;\n\n            if (deltaWidth !== 0 || deltaHeight !== 0) {\n                query.resize(css, {});\n\n                const hAlign = style.horizontalAlignment;\n                const vAlign = style.verticalAlignment;\n                let dx = 0;\n                let dy = 0;\n\n                if (hAlign === \"right\") {\n                    dx = -deltaWidth;\n                } else if (hAlign === \"center\") {\n                    dx = -deltaWidth / 2;\n                }\n\n                if (vAlign === \"bottom\") {\n                    dy = -deltaHeight;\n                } else if (vAlign === \"middle\") {\n                    dy = -deltaHeight / 2;\n                }\n\n                if (dx !== 0 || dy !== 0) {\n                    $ax.move.MoveWidget(id, dx, dy, { easing: 'none', duration: 0 }, false, null, true);\n                }\n            }\n\n            if(trap) trap();\n\n            _setAutoFitId(id, css);\n        }\n    }"
+        }
+      ]
+    },
+    {
+      "file": "action.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "excerpts": [
+        {
+          "start": 357,
+          "end": 379,
+          "text": "    };\n\n    _actionHandlers.wait = function(eventInfo, actions, index) {\n        var action = actions[index];\n        var infoCopy = $ax.eventCopy(eventInfo);\n        window.setTimeout(function() {\n            infoCopy.now = new Date();\n            infoCopy.idToResizeMoveState = undefined;\n            _dispatchAction(infoCopy, actions, index + 1);\n            _action.flushAllResizeMoveActions(infoCopy);\n        }, action.waitTime);\n    };\n\n    _actionHandlers.expr = function(eventInfo, actions, index) {\n        var action = actions[index];\n\n        $ax.expr.evaluateExpr(action.expr, eventInfo); //this should be a block\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    _actionHandlers.setFunction = _actionHandlers.expr;\n"
+        }
+      ]
+    },
+    {
+      "file": "adaptive.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\adaptive.js",
+      "sha256": "e141ea07bb973b6007f2ad7d7205516a041a801ec97e410467352c27af3b2928",
+      "excerpts": [
+        {
+          "start": 131,
+          "end": 158,
+          "text": "                //align all text\n                var child = $jobj(elementId).children('.text');\n                if(child.length) $ax.style.transformTextWithVerticalAlignment(child[0].id, function() { });\n            });\n            // we have to reset visibility if we aren't applying a new view\n            $ax.visibility.resetLimboAndHiddenToDefaults();\n            $ax.visibility.clearMovedAndResized();\n            $ax.style.clearAppliedStyles();\n            $ax.repeater.refreshAllRepeaters();\n            $ax.dynamicPanelManager.updateParentsOfNonDefaultFitPanels();\n            $ax.dynamicPanelManager.updatePercentPanelCache($ax('*'));\n            $ax.expr.updateAutoFitted();\n        } else {\n            $ax.visibility.clearLimboAndHidden();\n            $ax.visibility.clearMovedAndResized();\n            $ax.style.clearAppliedStyles();\n            _applyView(viewId);\n            $ax.repeater.refreshAllRepeaters();\n            $ax.dynamicPanelManager.updateAllLayerSizeCaches();\n            $ax.dynamicPanelManager.updateParentsOfNonDefaultFitPanels();\n            $ax.expr.updateAutoFitted();\n        }\n\n        $ax.annotation.updateAllFootnotes();\n        //$ax.style.resumeSuspendTextAlignment();\n\n        $ax.adaptive.triggerEvent('viewChanged', {});\n        if(_loadFinished) $ax.viewChangePageAndMasters(forceSwitchTo);"
+        }
+      ]
+    },
+    {
+      "file": "repeater.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "excerpts": [
+        {
+          "start": 1070,
+          "end": 1077,
+          "text": "    var removeItems = function(repeaterId) {\n        var elementIds = $ax.getChildElementIdsForRepeater(repeaterId);\n        var itemId = $ax.getItemIdsForRepeater(repeaterId);\n        for(var i = 0; i < itemId.length; i++) $jobj(_createElementId(repeaterId, itemId[i])).remove();\n        $ax.visibility.clearLimboAndHiddenIds(elementIds);\n        $ax.visibility.clearMovedAndResizedIds(elementIds);\n        $ax.expr.clearAutoFittedIds(elementIds);\n        $ax.clearItemsForRepeater(repeaterId);"
+        }
+      ]
+    },
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c",
+      "excerpts": [
+        {
+          "start": 1647,
+          "end": 1700,
+          "text": "    var _applyImageAndTextJson = function (id, event, blockTransition) {\n        var hasNotrs;\n        if(!blockTransition) hasNotrs = _enableStateTransitions(id);\n\n        const textId = $ax.GetTextPanelId(id);\n        if(textId) _resetTextJson(id, textId);\n\n        var fullStyle = _computeFullStyle(id, event, $ax.adaptive.currentViewId);\n        if (_idToAppliedStyles[id] && _idToAppliedStyles[id].style) {\n            $.extend(fullStyle, _idToAppliedStyles[id].style);\n        }\n\n        if($ax.public.fn.IsImageBox($obj(id).type)) {\n            const imageUrl = $ax.adaptive.getImageForStateAndView(id, event);\n            if(imageUrl) {\n                _applyImage(id, imageUrl, event);\n            }\n        } else _applySvg(id, event, fullStyle);\n\n        if (textId) {\n            const overridedStyle = _computeAllOverrides(id, undefined, event, $ax.adaptive.currentViewId);\n            var borderElement = document.getElementById(id + '_div');\n            if($(borderElement).hasClass(\"bgImg\")) borderElement = undefined;\n            var textElement = document.getElementById(textId);\n            if (!$.isEmptyObject(overridedStyle)) {\n                var diagramObject = $ax.getObjectFromElementId(id);\n                //var fullStyle = _computeFullStyle(id, event, $ax.adaptive.currentViewId, overridedStyle);\n                var padding = { top: 0, right: 0, bottom: 0, left: 0 };\n                if (fullStyle.paddingTop) padding.top = +fullStyle.paddingTop;\n                if (fullStyle.paddingBottom) padding.bottom = +fullStyle.paddingBottom;\n                if (fullStyle.paddingLeft) padding.left = +fullStyle.paddingLeft;\n                if (fullStyle.paddingRight) padding.right = +fullStyle.paddingRight;\n                var newSize = _applyTextStyle(textId, overridedStyle, padding);\n                if (borderElement && textElement && (diagramObject.autoFitHeight || diagramObject.autoFitWidth)) {\n                    if (diagramObject.autoFitHeight) {\n                        var height = newSize.height;\n                        borderElement.style.height = height + 'px';\n                        textElement.style.top = 0;\n                    }\n                    if (diagramObject.autoFitWidth) {\n                        var width = newSize.width;\n                        borderElement.style.width = width + 'px';\n                        textElement.style.left = 0;\n                    }\n                }\n            } else if (borderElement && textElement) {\n                var parentElement = document.getElementById(id);\n                if (parentElement) {\n                    borderElement.style.height = parentElement.style.height;\n                    borderElement.style.width = parentElement.style.width;\n                }\n                textElement.style.top = '';\n                textElement.style.left = '';\n            }"
+        }
+      ]
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "excerpts": [
+        {
+          "start": 840,
+          "end": 881,
+          "text": "    $ax.public.fn.text = function() {\n        if(arguments[0] == undefined) {\n            var firstId = this.getElementIds()[0];\n\n            if(!firstId) { return undefined; }\n\n            return getWidgetText(firstId);\n        } else {\n            var elementIds = this.getElementIds();\n\n            for(var index = 0; index < elementIds.length; index++) {\n                var currentItem = elementIds[index];\n\n                var widgetType = $ax.getTypeFromElementId(currentItem);\n\n                if($ax.public.fn.IsTextBox(widgetType) || $ax.public.fn.IsTextArea(widgetType)) { //For non rtf\n                    SetWidgetFormText(currentItem, arguments[0]);\n                } else {\n                    var idRtf = '#' + currentItem;\n                    if($(idRtf).length == 0) idRtf = '#u' + (Number(currentItem.substring(1)) + 1);\n\n                    if($(idRtf).length != 0) {\n                        //If the richtext div already has some text in it,\n                        //preserve only the first style and get rid of the rest\n                        //If no pre-existing p-span tags, don't do anything\n                        if($(idRtf).find('p').find('span').length > 0) {\n                            $(idRtf).find('p:not(:first)').remove();\n                            $(idRtf).find('p').find('span:not(:first)').remove();\n\n                            //Replace new-lines with NEWLINE token, then html encode the string,\n                            //finally replace NEWLINE token with linebreak\n                            var textWithLineBreaks = arguments[0].replace(/\\n/g, '--NEWLINE--');\n                            var textHtml = $('<div/>').text(textWithLineBreaks).html();\n                            $(idRtf).find('span').html(textHtml.replace(/--NEWLINE--/g, '<br>'));\n                        }\n                    }\n                }\n            }\n\n            return this;\n        }\n    };"
+        }
+      ]
+    }
+  ],
+  "conclusions": {
+    "setterParameters": [
+      "ids",
+      "value",
+      "plain"
+    ],
+    "autoFitActionArgumentObserved": false,
+    "runtimeFlagSource": "$obj(id).autoFitHeight / autoFitWidth",
+    "nativeStoredToGeneratedFlagBridge": "not established in this bounded review",
+    "height": "direct text child jQuery.height() + effective paddingTop + paddingBottom",
+    "width": "max per descendant paragraph(sum direct span children jQuery.width())) + effective paddingLeft + paddingRight",
+    "order": [
+      "mutate text",
+      "measure height",
+      "measure width",
+      "resize if either exact delta nonzero",
+      "alignment-dependent move if displacement nonzero",
+      "remove hidden clone if used",
+      "register eligible instance even if zero delta"
+    ],
+    "alignment": {
+      "right": "dx=-deltaWidth",
+      "center": "dx=-deltaWidth/2",
+      "bottom": "dy=-deltaHeight",
+      "middle": "dy=-deltaHeight/2"
+    },
+    "registry": {
+      "initial": "empty",
+      "registration": "autofitWidget after eligible measurement; setter also publicly exposed",
+      "update": "remeasure registered IDs after both adaptive branches",
+      "removal": "repeater removeItems clears descendant IDs"
+    },
+    "distinctPaths": [
+      "input/textarea SetWidgetFormText does not call autofitWidget",
+      "axQuery.public.text setter does not call autofitWidget",
+      "state repaint id_div writes are not owner resize"
+    ]
+  },
+  "unknowns": [
+    "native AutoFit stored properties to generated object flag bridge",
+    "native action serializer argument schema beyond JS signature",
+    "downstream resize/move event ordering, constraints and rotation handling",
+    "initial generated-page or GUI geometry",
+    "nested rich-link/direct-span measurement parity",
+    "hidden clone inherited/ancestor-dependent CSS parity",
+    "cleanup beyond retained repeater removal call"
+  ],
+  "validation": {
+    "sourceFilesRead": 6,
+    "originalCodeExecuted": false,
+    "probesRun": 0,
+    "productTestsRun": 0
+  },
+  "relatedFrozenEvidence": [
+    "research/text-autofit-style-evidence.md",
+    "research/text-autofit-base-css-evidence.md"
+  ]
+}

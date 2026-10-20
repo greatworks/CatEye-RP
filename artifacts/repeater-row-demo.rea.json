@@ -1,0 +1,1245 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "5666c695-f746-4ed4-b00e-fe7192b7053f",
+  "name": "Fractional repeater rows and native geometry",
+  "pages": [
+    {
+      "id": "5f8f6ae9-68a2-47d9-9701-acbd9b2412b8",
+      "name": "Page 1",
+      "width": 1280,
+      "height": 780,
+      "background": "#f5f7fc",
+      "widgets": [
+        {
+          "id": "5edb63a3-5ff6-495c-9d97-c0548f955ffa",
+          "type": "text",
+          "name": "Heading",
+          "text": "Fractional rows: CSS assignments and geometry caches",
+          "notes": "",
+          "x": 32,
+          "y": 24,
+          "rotation": 0,
+          "width": 1200,
+          "height": 48,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.25,
+            "color": "#26334d",
+            "fontSize": 27,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "1591217d-97e2-4418-b31b-563bf7700ad3",
+          "type": "text",
+          "name": "Instructions",
+          "text": "Trim a nonmaximal row, grow it twice, grow later groups, then restore and refresh. Geometry logs read native This values.",
+          "notes": "",
+          "x": 32,
+          "y": 82,
+          "rotation": 0,
+          "width": 1210,
+          "height": 44,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.25,
+            "color": "#26334d",
+            "fontSize": 15,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "3c5b32d7-58ff-416c-a41c-7b0e80e6c11e",
+          "type": "text",
+          "name": "vertical title",
+          "text": "Vertical · 2 items per column",
+          "notes": "",
+          "x": 32,
+          "y": 142,
+          "rotation": 0,
+          "width": 552,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.25,
+            "color": "#26334d",
+            "fontSize": 19,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "4907b9a2-3cf9-4c17-94d7-60098b24aa37",
+          "type": "repeater",
+          "name": "vertical fractional records",
+          "text": "",
+          "notes": "",
+          "x": 32,
+          "y": 186,
+          "rotation": 0,
+          "width": 264,
+          "height": 123,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#edf3ff",
+            "stroke": "#3560a8",
+            "strokeWidth": 0,
+            "borderWidths": [
+              3,
+              5,
+              7,
+              2
+            ],
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "2f9feb06-16dc-4309-bd2e-faff9592de6d",
+              "event": "itemLoad",
+              "name": "itemLoad",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "2a157fcc-48bc-4433-a231-b85c3bc00b50",
+                  "type": "setVariable",
+                  "targetId": "VerticalLoads",
+                  "value": "[[VerticalLoads]][[Item.Name]]:[[This.width]],[[This.height]]|"
+                },
+                {
+                  "id": "bf2b8978-daaa-4a9c-9065-778bcdae6dd1",
+                  "type": "setText",
+                  "targetId": "caa68b42-670b-4777-aa5d-3858a94461ae",
+                  "value": "Loaded [[VerticalLoads]]"
+                }
+              ]
+            },
+            {
+              "id": "7343c4cc-4f7f-4113-84bf-db545c9bf244",
+              "event": "itemResize",
+              "name": "itemResize",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "2b836799-4971-4d70-994f-212cfd36d826",
+                  "type": "setVariable",
+                  "targetId": "VerticalEvents",
+                  "value": "[[VerticalEvents+1]]"
+                },
+                {
+                  "id": "0318caf0-1785-45ed-bd16-4fa7f391f38f",
+                  "type": "setText",
+                  "targetId": "0007561c-be0a-43d1-bcf4-022e02eb63b8",
+                  "value": "Resize [[VerticalEvents]]: [[Item.Name]]|[[This.x]]|[[This.y]]|[[This.width]]|[[This.height]]|[[Item.Repeater.width]]|[[Item.Repeater.height]]"
+                }
+              ]
+            }
+          ],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              },
+              {
+                "Name": "B"
+              },
+              {
+                "Name": "C"
+              },
+              {
+                "Name": "D"
+              },
+              {
+                "Name": "E"
+              }
+            ],
+            "template": [
+              {
+                "id": "f6dc1ca3-f3b7-4e68-8d9b-ac625710e78b",
+                "type": "text",
+                "name": "Row identity",
+                "text": "Row [[Item.Name]]",
+                "notes": "",
+                "x": 5,
+                "y": 2,
+                "rotation": 0,
+                "width": 120,
+                "height": 16,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "lineHeight": 1.25,
+                  "color": "#26334d",
+                  "fontSize": 11,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": []
+              },
+              {
+                "id": "2f2ec5c8-22f7-44b9-a078-fb69244959f7",
+                "type": "button",
+                "name": "Grow fractional row",
+                "text": "Grow",
+                "notes": "",
+                "x": 5,
+                "y": 21,
+                "rotation": 0,
+                "width": 38,
+                "height": 20,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#e7efff",
+                  "stroke": "#7795c7",
+                  "strokeWidth": 1,
+                  "radius": 4,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "lineHeight": "normal",
+                  "color": "#173866",
+                  "fontSize": 10,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "45b3308b-631b-4583-b196-3540467571b5",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "isNewIfGroup": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "4f9a6ba9-0b0b-4212-a524-fa9502f4d952",
+                        "type": "resizeItem",
+                        "targetId": "4907b9a2-3cf9-4c17-94d7-60098b24aa37",
+                        "x": 180.3,
+                        "y": 62.4
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "be0b95fa-fe09-4a0e-bcca-c7031a90649a",
+                "type": "button",
+                "name": "Restore fractional row",
+                "text": "Reset",
+                "notes": "",
+                "x": 47,
+                "y": 21,
+                "rotation": 0,
+                "width": 40,
+                "height": 20,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#e7efff",
+                  "stroke": "#7795c7",
+                  "strokeWidth": 1,
+                  "radius": 4,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "lineHeight": "normal",
+                  "color": "#173866",
+                  "fontSize": 10,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "9a47fdd8-2d31-4c6d-a79a-69b1899c36ef",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "isNewIfGroup": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "3fa6bc47-8918-46e6-9331-9c8c06d63d1d",
+                        "type": "resizeItem",
+                        "targetId": "4907b9a2-3cf9-4c17-94d7-60098b24aa37",
+                        "x": 140.1,
+                        "y": 46.2
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "998c8c17-bb4b-4bf9-b6bc-bd2da8d42d40",
+                "type": "button",
+                "name": "Trim cross axis",
+                "text": "Trim",
+                "notes": "",
+                "x": 91,
+                "y": 21,
+                "rotation": 0,
+                "width": 38,
+                "height": 20,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#e7efff",
+                  "stroke": "#7795c7",
+                  "strokeWidth": 1,
+                  "radius": 4,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "lineHeight": "normal",
+                  "color": "#173866",
+                  "fontSize": 10,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "6febaebc-a9cc-4232-8f98-cae1a81637c4",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "isNewIfGroup": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "8e2de7e3-4c30-4e57-b3da-5581360e087e",
+                        "type": "resizeItem",
+                        "targetId": "4907b9a2-3cf9-4c17-94d7-60098b24aa37",
+                        "x": 120.05
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "itemHeight": 46.2,
+            "gap": 0,
+            "itemWidth": 140.1,
+            "horizontalGap": 8.4,
+            "verticalGap": 6.3,
+            "layout": "vertical",
+            "fitToContent": false,
+            "padding": [
+              7.1,
+              4.2,
+              9.3,
+              6.4
+            ],
+            "wrap": 2
+          }
+        },
+        {
+          "id": "0007561c-be0a-43d1-bcf4-022e02eb63b8",
+          "type": "text",
+          "name": "vertical resize log",
+          "text": "No resize yet",
+          "notes": "",
+          "x": 32,
+          "y": 482,
+          "rotation": 0,
+          "width": 552,
+          "height": 90,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.25,
+            "color": "#26334d",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "caa68b42-670b-4777-aa5d-3858a94461ae",
+          "type": "text",
+          "name": "vertical load log",
+          "text": "Waiting for rows",
+          "notes": "",
+          "x": 32,
+          "y": 584,
+          "rotation": 0,
+          "width": 552,
+          "height": 58,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.25,
+            "color": "#26334d",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "51ec9ce0-f839-4f58-ae02-6eb9f3f3ce9a",
+          "type": "text",
+          "name": "vertical root log",
+          "text": "Inspect root geometry",
+          "notes": "",
+          "x": 32,
+          "y": 652,
+          "rotation": 0,
+          "width": 552,
+          "height": 32,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.25,
+            "color": "#26334d",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "52b19841-af13-4e28-8a12-15856443add7",
+          "type": "button",
+          "name": "Inspect vertical root",
+          "text": "Read root cache",
+          "notes": "",
+          "x": 32,
+          "y": 710,
+          "rotation": 0,
+          "width": 170,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e7efff",
+            "stroke": "#7795c7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": "normal",
+            "color": "#173866",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "74a39b6d-987c-4519-853e-2dd9eacadfa2",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "711e9da7-2aee-48ce-a986-bb9d08e28edb",
+                  "type": "setText",
+                  "targetId": "4907b9a2-3cf9-4c17-94d7-60098b24aa37",
+                  "value": "Root [[Target.width]]|[[Target.height]]"
+                },
+                {
+                  "id": "094c41da-029b-4058-9da7-defdad534a81",
+                  "type": "setText",
+                  "targetId": "51ec9ce0-f839-4f58-ae02-6eb9f3f3ce9a",
+                  "value": "[[Widget.4907b9a2-3cf9-4c17-94d7-60098b24aa37.text]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "22380412-57d3-4a24-af02-1e1c9d288a5e",
+          "type": "button",
+          "name": "Refresh vertical rows",
+          "text": "Refresh · reverse order",
+          "notes": "",
+          "x": 222,
+          "y": 710,
+          "rotation": 0,
+          "width": 220,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e7efff",
+            "stroke": "#7795c7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": "normal",
+            "color": "#173866",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "2f01ba8f-5da7-436e-8ae1-96f930d09264",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "72e88957-210c-4d18-afa1-331a66aa3773",
+                  "type": "setVariable",
+                  "targetId": "VerticalLoads",
+                  "value": ""
+                },
+                {
+                  "id": "3efa65cd-2de6-4862-9033-99b9bb82ba14",
+                  "type": "sortRows",
+                  "targetId": "4907b9a2-3cf9-4c17-94d7-60098b24aa37",
+                  "value": "Name:desc"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a8a13e23-7133-4844-aeba-3f5ee5614a63",
+          "type": "text",
+          "name": "horizontal title",
+          "text": "Horizontal · 2 items per row",
+          "notes": "",
+          "x": 696,
+          "y": 142,
+          "rotation": 0,
+          "width": 552,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.25,
+            "color": "#26334d",
+            "fontSize": 19,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "691befcf-f204-46d7-94f6-83c517bbeb4b",
+          "type": "repeater",
+          "name": "horizontal fractional records",
+          "text": "",
+          "notes": "",
+          "x": 696,
+          "y": 186,
+          "rotation": 0,
+          "width": 264,
+          "height": 123,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#edf3ff",
+            "stroke": "#3560a8",
+            "strokeWidth": 0,
+            "borderWidths": [
+              3,
+              5,
+              7,
+              2
+            ],
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "c50b0fd9-dceb-4387-83fe-0e943f7138c6",
+              "event": "itemLoad",
+              "name": "itemLoad",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "21d8fee7-4b78-4941-bdce-55aa4d0f9169",
+                  "type": "setVariable",
+                  "targetId": "HorizontalLoads",
+                  "value": "[[HorizontalLoads]][[Item.Name]]:[[This.width]],[[This.height]]|"
+                },
+                {
+                  "id": "60cfde0a-85de-4be5-ba4f-57fd7067d460",
+                  "type": "setText",
+                  "targetId": "d422e1f2-a443-49d4-8a5a-68dac22027d9",
+                  "value": "Loaded [[HorizontalLoads]]"
+                }
+              ]
+            },
+            {
+              "id": "35a878a9-6625-4f6f-8cce-ea1abb516a3e",
+              "event": "itemResize",
+              "name": "itemResize",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "5eced241-3ea2-4bcc-ae52-b6b0596cc904",
+                  "type": "setVariable",
+                  "targetId": "HorizontalEvents",
+                  "value": "[[HorizontalEvents+1]]"
+                },
+                {
+                  "id": "69b65e1d-b40c-499f-a8c6-318a046f4063",
+                  "type": "setText",
+                  "targetId": "4a30e96b-cb89-40fb-aa16-1962d30e0497",
+                  "value": "Resize [[HorizontalEvents]]: [[Item.Name]]|[[This.x]]|[[This.y]]|[[This.width]]|[[This.height]]|[[Item.Repeater.width]]|[[Item.Repeater.height]]"
+                }
+              ]
+            }
+          ],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "A"
+              },
+              {
+                "Name": "B"
+              },
+              {
+                "Name": "C"
+              },
+              {
+                "Name": "D"
+              },
+              {
+                "Name": "E"
+              }
+            ],
+            "template": [
+              {
+                "id": "230687d3-3db3-480e-b8ec-b24db4a37bfa",
+                "type": "text",
+                "name": "Row identity",
+                "text": "Row [[Item.Name]]",
+                "notes": "",
+                "x": 5,
+                "y": 2,
+                "rotation": 0,
+                "width": 120,
+                "height": 16,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "transparent",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "lineHeight": 1.25,
+                  "color": "#26334d",
+                  "fontSize": 11,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": []
+              },
+              {
+                "id": "1b7c6899-b54d-48da-8ab4-9a2cd9a76b5c",
+                "type": "button",
+                "name": "Grow fractional row",
+                "text": "Grow",
+                "notes": "",
+                "x": 5,
+                "y": 21,
+                "rotation": 0,
+                "width": 38,
+                "height": 20,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#e7efff",
+                  "stroke": "#7795c7",
+                  "strokeWidth": 1,
+                  "radius": 4,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "lineHeight": "normal",
+                  "color": "#173866",
+                  "fontSize": 10,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "221bf8ee-ba71-420c-85fd-7a659dcb44e5",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "isNewIfGroup": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "f330958d-5730-404e-a947-ae00b75652f5",
+                        "type": "resizeItem",
+                        "targetId": "691befcf-f204-46d7-94f6-83c517bbeb4b",
+                        "x": 180.3,
+                        "y": 62.4
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "282b6161-0925-4f9a-8c03-0f4914d03c07",
+                "type": "button",
+                "name": "Restore fractional row",
+                "text": "Reset",
+                "notes": "",
+                "x": 47,
+                "y": 21,
+                "rotation": 0,
+                "width": 40,
+                "height": 20,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#e7efff",
+                  "stroke": "#7795c7",
+                  "strokeWidth": 1,
+                  "radius": 4,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "lineHeight": "normal",
+                  "color": "#173866",
+                  "fontSize": 10,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "df6953da-c387-4b64-8f41-12f38898a028",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "isNewIfGroup": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "93e02c5b-0cc6-414d-9d82-ae900811195b",
+                        "type": "resizeItem",
+                        "targetId": "691befcf-f204-46d7-94f6-83c517bbeb4b",
+                        "x": 140.1,
+                        "y": 46.2
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "ba1a2d9d-ad4c-4ba4-8c78-9452867da5fa",
+                "type": "button",
+                "name": "Trim cross axis",
+                "text": "Trim",
+                "notes": "",
+                "x": 91,
+                "y": 21,
+                "rotation": 0,
+                "width": 38,
+                "height": 20,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#e7efff",
+                  "stroke": "#7795c7",
+                  "strokeWidth": 1,
+                  "radius": 4,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "lineHeight": "normal",
+                  "color": "#173866",
+                  "fontSize": 10,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "a70e3cac-dfbf-478f-b373-a5b9dcc9f793",
+                    "event": "click",
+                    "name": "click",
+                    "enabled": true,
+                    "isNewIfGroup": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "2772221e-aff7-4625-a424-2bbca100b36c",
+                        "type": "resizeItem",
+                        "targetId": "691befcf-f204-46d7-94f6-83c517bbeb4b",
+                        "y": 35.1
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "itemHeight": 46.2,
+            "gap": 0,
+            "itemWidth": 140.1,
+            "horizontalGap": 8.4,
+            "verticalGap": 6.3,
+            "layout": "horizontal",
+            "fitToContent": false,
+            "padding": [
+              7.1,
+              4.2,
+              9.3,
+              6.4
+            ],
+            "wrap": 2
+          }
+        },
+        {
+          "id": "4a30e96b-cb89-40fb-aa16-1962d30e0497",
+          "type": "text",
+          "name": "horizontal resize log",
+          "text": "No resize yet",
+          "notes": "",
+          "x": 696,
+          "y": 482,
+          "rotation": 0,
+          "width": 552,
+          "height": 90,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.25,
+            "color": "#26334d",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "d422e1f2-a443-49d4-8a5a-68dac22027d9",
+          "type": "text",
+          "name": "horizontal load log",
+          "text": "Waiting for rows",
+          "notes": "",
+          "x": 696,
+          "y": 584,
+          "rotation": 0,
+          "width": 552,
+          "height": 58,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.25,
+            "color": "#26334d",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "53c081c9-c072-4eae-af5e-fbdd8a2a3d1c",
+          "type": "text",
+          "name": "horizontal root log",
+          "text": "Inspect root geometry",
+          "notes": "",
+          "x": 696,
+          "y": 652,
+          "rotation": 0,
+          "width": 552,
+          "height": 32,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": 1.25,
+            "color": "#26334d",
+            "fontSize": 13,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "2a50e24e-afd1-4b5c-b178-808adb24e8c6",
+          "type": "button",
+          "name": "Inspect horizontal root",
+          "text": "Read root cache",
+          "notes": "",
+          "x": 696,
+          "y": 710,
+          "rotation": 0,
+          "width": 170,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e7efff",
+            "stroke": "#7795c7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": "normal",
+            "color": "#173866",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "c2fbce1c-bd37-4a3d-a9ae-b2ce31f2d187",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "67e86fb1-438e-4ff6-bae3-f45522fbbf82",
+                  "type": "setText",
+                  "targetId": "691befcf-f204-46d7-94f6-83c517bbeb4b",
+                  "value": "Root [[Target.width]]|[[Target.height]]"
+                },
+                {
+                  "id": "5fa3c354-ed37-4a41-9413-a39d284115c3",
+                  "type": "setText",
+                  "targetId": "53c081c9-c072-4eae-af5e-fbdd8a2a3d1c",
+                  "value": "[[Widget.691befcf-f204-46d7-94f6-83c517bbeb4b.text]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "83285d98-0dc7-4bf9-979d-fb16bb3ccf85",
+          "type": "button",
+          "name": "Refresh horizontal rows",
+          "text": "Refresh · reverse order",
+          "notes": "",
+          "x": 886,
+          "y": 710,
+          "rotation": 0,
+          "width": 220,
+          "height": 34,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#e7efff",
+            "stroke": "#7795c7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "lineHeight": "normal",
+            "color": "#173866",
+            "fontSize": 12,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "620ceae3-9f56-4575-9111-617b2f01ef6f",
+              "event": "click",
+              "name": "click",
+              "enabled": true,
+              "isNewIfGroup": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "9ceb238b-8060-4721-ac60-9223fabdc6cd",
+                  "type": "setVariable",
+                  "targetId": "HorizontalLoads",
+                  "value": ""
+                },
+                {
+                  "id": "7ceb9f77-0b40-4849-9654-2854a6fe47ad",
+                  "type": "sortRows",
+                  "targetId": "691befcf-f204-46d7-94f6-83c517bbeb4b",
+                  "value": "Name:desc"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {
+    "VerticalEvents": "0",
+    "VerticalLoads": "",
+    "HorizontalEvents": "0",
+    "HorizontalLoads": ""
+  },
+  "styles": []
+}

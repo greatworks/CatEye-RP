@@ -1,0 +1,38 @@
+{
+  "correctedAt": "2026-10-15T11:25:31.003Z",
+  "issue": "One current-stage log filename was shared by the set reader and product importer test runs. The later Vitest stdout replaced the earlier Node reader stdout.",
+  "originalReaderLog": {
+    "file": ".build/adaptive-import-sets-green.log",
+    "expectedSha256": "0e5932141e453a28cd3bfbbddb4ccee8afd488f44cb5d8d3b616ee97f6f0a6bc",
+    "originalBytesStillAvailable": false,
+    "currentOverwritingLogSha256": "1c54e26a5e63d419e64e13c5ca83642fd9381f2fdf09bffb32c1f5dac881db6e"
+  },
+  "retained": [
+    {
+      "file": ".build/adaptive-import-evidence-before-correction/adaptive-import-sets-manifest.json",
+      "sha256": "4b55af86454c250aaa126222675606ab1ba4c58a6e3e2e27f9d0df1d1a40f421"
+    },
+    {
+      "file": ".build/adaptive-import-evidence-before-correction/adaptive-import-sets-evidence.json",
+      "sha256": "96f33b5a5b45020b20a04793581b1cf500667418867c6c71220cdaf848c2c22d"
+    },
+    {
+      "file": ".build/adaptive-import-evidence-before-correction/adaptive-import-sets-green.log",
+      "sha256": "1c54e26a5e63d419e64e13c5ca83642fd9381f2fdf09bffb32c1f5dac881db6e"
+    },
+    {
+      "file": ".build/adaptive-import-evidence-before-correction/adaptive-import-reference-drift.json",
+      "sha256": "096b06bc055468923cc2aa11b4f602c8a2b94b48ed21fa9338a665374f3d36c8"
+    }
+  ],
+  "sourceFilesUnchanged": true,
+  "rerun": {
+    "command": "node --test research/scripts/read-rp-adaptive.test.mjs",
+    "file": ".build/adaptive-import-reader-sets-release.log",
+    "sha256": "4f387c8e2e5f38da019a04e4b10c6d755663daa0d753ba1e0cc7beb52840dc9e",
+    "passed": 41,
+    "failed": 0,
+    "skipped": 0
+  },
+  "resolution": "Retain the original manifest, original evidence record, drift result and overwriting log unchanged in the correction snapshot. Point the current reader evidence to the fresh uniquely named 41-case run. All other 194 referenced file hashes matched before correction. No previous-stage evidence was changed."
+}

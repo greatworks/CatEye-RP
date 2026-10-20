@@ -1,0 +1,220 @@
+{
+  "capturedAt": "2026-10-20T05:33:34.374Z",
+  "execution": "Same pinned original source harness; current TypeScript stripped without semantic transformation and standalone function serialized into separate VM. No browser or core consumer.",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6",
+      "bytes": 29187
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\sto.js",
+      "sha256": "c1ff17b0ed8a2e3a34cba550c7f4e9447827d131e38542d397e686c0e0b6b9b6",
+      "bytes": 9159
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\variables.js",
+      "sha256": "91c71787560b88e597b6baf934bd68075597901afccf4787b6aa9d8c43453188",
+      "bytes": 6971
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    }
+  ],
+  "implementation": [
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "d6c76c2ab5ad69595ef55f947143e47afbbbee0415845843efac009b5ae9f0b1"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/runtime-transform-review-probes-first.json",
+      "sha256": "e0bf8d38931234768eaaa413eea11a9e911c51a3be7499edd4e18a52f07f64fa"
+    },
+    {
+      "path": "research/runtime-transform-expression-probe.mjs",
+      "sha256": "0780410a9ba6c72fa6a2aa91f76fd6c9813214bb66861a8cf5c2c458ad6deb53"
+    }
+  ],
+  "script": {
+    "path": "research\\runtime-transform-review-correction-probe.mjs",
+    "sha256": "1a0f5962395d1fc374e1ecebd21c3f0b52233d215b98e82fe0d9632ba229fed4"
+  },
+  "summary": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "RTRANS-REVIEW-01 correction missing.width || 10",
+      "passed": true,
+      "observed": {
+        "original": "[[missing.width || 10]]",
+        "outcomes": [
+          {
+            "name": "MotionEvaluationError",
+            "message": "Motion expression evaluation failed: boolean coercion requires a defined value"
+          },
+          {
+            "name": "MotionEvaluationError",
+            "message": "Motion expression evaluation failed: boolean coercion requires a defined value"
+          }
+        ],
+        "inventedFiniteValuePrevented": true,
+        "consumerMarkerFallbackNotExecutedHere": true
+      }
+    },
+    {
+      "name": "RTRANS-REVIEW-01 correction (!missing.width) + 10",
+      "passed": true,
+      "observed": {
+        "original": "[[(!missing.width) + 10]]",
+        "outcomes": [
+          {
+            "name": "MotionEvaluationError",
+            "message": "Motion expression evaluation failed: boolean coercion requires a defined value"
+          },
+          {
+            "name": "MotionEvaluationError",
+            "message": "Motion expression evaluation failed: boolean coercion requires a defined value"
+          }
+        ],
+        "inventedFiniteValuePrevented": true,
+        "consumerMarkerFallbackNotExecutedHere": true
+      }
+    },
+    {
+      "name": "RTRANS-REVIEW-01 correction (missing.width == 0) + 10",
+      "passed": true,
+      "observed": {
+        "original": "[[(missing.width == 0) + 10]]",
+        "outcomes": [
+          {
+            "name": "MotionEvaluationError",
+            "message": "Motion expression evaluation failed: boolean coercion requires a defined value"
+          },
+          {
+            "name": "MotionEvaluationError",
+            "message": "Motion expression evaluation failed: boolean coercion requires a defined value"
+          }
+        ],
+        "inventedFiniteValuePrevented": true,
+        "consumerMarkerFallbackNotExecutedHere": true
+      }
+    },
+    {
+      "name": "RTRANS-REVIEW-01 correction missing.width && 10",
+      "passed": true,
+      "observed": {
+        "original": "[[missing.width && 10]]",
+        "outcomes": [
+          {
+            "name": "MotionEvaluationError",
+            "message": "Motion expression evaluation failed: boolean coercion requires a defined value"
+          },
+          {
+            "name": "MotionEvaluationError",
+            "message": "Motion expression evaluation failed: boolean coercion requires a defined value"
+          }
+        ],
+        "inventedFiniteValuePrevented": true,
+        "consumerMarkerFallbackNotExecutedHere": true
+      }
+    },
+    {
+      "name": "unchanged control false && missing.width",
+      "passed": true,
+      "observed": {
+        "original": "false",
+        "reads": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "unchanged control true || missing.width",
+      "passed": true,
+      "observed": {
+        "original": "true",
+        "reads": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "unchanged control missing.width + 10",
+      "passed": true,
+      "observed": {
+        "original": "undefined10",
+        "reads": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "unchanged control missing.width - 10",
+      "passed": true,
+      "observed": {
+        "original": "NaN",
+        "reads": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "explicit compiler cast boundary missing.width || 10",
+      "passed": true,
+      "observed": {
+        "original": "10",
+        "actual": "10",
+        "typedProvider": "NaN",
+        "explanation": "Controlled numeric cast, not evidence of what the native compiler emits."
+      }
+    },
+    {
+      "name": "explicit compiler cast boundary (!missing.width) + 10",
+      "passed": true,
+      "observed": {
+        "original": "11",
+        "actual": "11",
+        "typedProvider": "NaN",
+        "explanation": "Controlled numeric cast, not evidence of what the native compiler emits."
+      }
+    },
+    {
+      "name": "explicit compiler cast boundary (missing.width == 0) + 10",
+      "passed": true,
+      "observed": {
+        "original": "10",
+        "actual": "10",
+        "typedProvider": "NaN",
+        "explanation": "Controlled numeric cast, not evidence of what the native compiler emits."
+      }
+    },
+    {
+      "name": "explicit compiler cast boundary missing.width && 10",
+      "passed": true,
+      "observed": {
+        "original": "NaN",
+        "actual": "NaN",
+        "typedProvider": "NaN",
+        "explanation": "Controlled numeric cast, not evidence of what the native compiler emits."
+      }
+    },
+    {
+      "name": "unsafe failures remain distinguishable",
+      "passed": true,
+      "observed": {
+        "securityAndBudgetErrorsNotMotionEvaluationErrors": true
+      }
+    }
+  ]
+}

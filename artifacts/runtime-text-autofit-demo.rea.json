@@ -1,0 +1,1059 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "runtime-autofit-document",
+  "name": "Runtime SetText AutoFit demo",
+  "caseSelection": "never",
+  "pages": [
+    {
+      "id": "runtime-autofit-geometry-page",
+      "name": "Runtime geometry",
+      "width": 1200,
+      "height": 900,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "runtime-autofit-geometry-title",
+          "type": "text",
+          "name": "SetText measures the painted first run, then resizes and aligns the owner.",
+          "text": "SetText measures the painted first run, then resizes and aligns the owner.",
+          "x": 30,
+          "y": 20,
+          "width": 1000,
+          "height": 32,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "runtime-autofit-rich",
+          "type": "box",
+          "name": "Fitted rich shape",
+          "text": "Initial second\nparagraph",
+          "x": 400,
+          "y": 220,
+          "width": 80,
+          "height": 60,
+          "rotation": 30,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "right",
+            "opacity": 1,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "verticalAlign": "bottom",
+            "lineHeight": 1.2
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "runtime-autofit-case-1",
+              "name": "resize",
+              "event": "resize",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": "setText",
+                  "targetId": "runtime-autofit-resize-log",
+                  "value": "[[This.width]]|[[This.height]]|[[This.x]]|[[This.y]]|[[This.widthchange]]",
+                  "id": "runtime-autofit-action-2"
+                }
+              ]
+            },
+            {
+              "id": "runtime-autofit-case-3",
+              "name": "move",
+              "event": "move",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": "setText",
+                  "targetId": "runtime-autofit-move-log",
+                  "value": "[[This.width]]|[[This.height]]|[[This.x]]|[[This.y]]",
+                  "id": "runtime-autofit-action-4"
+                }
+              ]
+            }
+          ],
+          "shapeText": {
+            "autoFitWidth": true,
+            "autoFitHeight": true
+          },
+          "richText": {
+            "expressionMode": "literal",
+            "paragraphs": [
+              {
+                "textAlign": "right",
+                "lineHeightPx": 24,
+                "runs": [
+                  {
+                    "text": "Initial",
+                    "style": {
+                      "fontSize": 20,
+                      "fontWeight": 700
+                    }
+                  },
+                  {
+                    "text": " second",
+                    "style": {
+                      "fontSize": 30
+                    }
+                  }
+                ]
+              },
+              {
+                "runs": [
+                  {
+                    "text": "paragraph"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "runtime-autofit-resize-log",
+          "type": "text",
+          "name": "not resized",
+          "text": "not resized",
+          "x": 30,
+          "y": 390,
+          "width": 1000,
+          "height": 32,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "runtime-autofit-move-log",
+          "type": "text",
+          "name": "not moved",
+          "text": "not moved",
+          "x": 30,
+          "y": 460,
+          "width": 1000,
+          "height": 32,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "runtime-autofit-resize-caption",
+          "type": "text",
+          "name": "OnResize: new width | height | pre-alignment x | y | width change",
+          "text": "OnResize: new width | height | pre-alignment x | y | width change",
+          "x": 30,
+          "y": 360,
+          "width": 1000,
+          "height": 32,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "runtime-autofit-move-caption",
+          "type": "text",
+          "name": "OnMove: new width | height | aligned x | y",
+          "text": "OnMove: new width | height | aligned x | y",
+          "x": 30,
+          "y": 430,
+          "width": 1000,
+          "height": 32,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "runtime-autofit-grow",
+          "type": "button",
+          "name": "Grow text",
+          "text": "Grow text",
+          "x": 30,
+          "y": 70,
+          "width": 160,
+          "height": 40,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "runtime-autofit-case-5",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": "setText",
+                  "targetId": "runtime-autofit-rich",
+                  "value": "A much longer first-formatted line",
+                  "id": "runtime-autofit-action-6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "runtime-autofit-raw",
+          "type": "button",
+          "name": "Raw text",
+          "text": "Raw text",
+          "x": 210,
+          "y": 70,
+          "width": 160,
+          "height": 40,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "runtime-autofit-case-7",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": "setText",
+                  "targetId": "runtime-autofit-rich",
+                  "value": "  <b>A\rB C\r\n\nD\n",
+                  "id": "runtime-autofit-action-8"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "runtime-autofit-empty",
+          "type": "button",
+          "name": "Empty text",
+          "text": "Empty text",
+          "x": 390,
+          "y": 70,
+          "width": 160,
+          "height": 40,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "runtime-autofit-case-9",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": "setText",
+                  "targetId": "runtime-autofit-rich",
+                  "value": "",
+                  "id": "runtime-autofit-action-10"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    },
+    {
+      "id": "runtime-autofit-hidden-page",
+      "name": "Hidden and rows",
+      "width": 1200,
+      "height": 900,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "runtime-autofit-hidden-title",
+          "type": "text",
+          "name": "Hidden text uses an isolated measurement; only the clicked repeater row changes.",
+          "text": "Hidden text uses an isolated measurement; only the clicked repeater row changes.",
+          "x": 30,
+          "y": 20,
+          "width": 1000,
+          "height": 32,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "runtime-autofit-hidden",
+          "type": "box",
+          "name": "Hidden fitted shape",
+          "text": "Initial",
+          "x": 40,
+          "y": 180,
+          "width": 80,
+          "height": 60,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "verticalAlign": "top",
+            "lineHeight": 1.2
+          },
+          "hidden": true,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "shapeText": {
+            "autoFitWidth": true,
+            "autoFitHeight": true
+          }
+        },
+        {
+          "id": "runtime-autofit-hidden-panel",
+          "type": "panel",
+          "name": "Hidden disabled panel",
+          "text": "",
+          "x": 30,
+          "y": 470,
+          "width": 700,
+          "height": 160,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": true,
+          "locked": false,
+          "disabled": true,
+          "notes": "",
+          "interactions": [],
+          "activeStateId": "runtime-autofit-hidden-state",
+          "states": [
+            {
+              "id": "runtime-autofit-hidden-state",
+              "name": "State 1",
+              "widgets": [
+                {
+                  "id": "runtime-autofit-hidden-child",
+                  "type": "box",
+                  "name": "Hidden disabled panel child",
+                  "text": "Initial",
+                  "x": 10,
+                  "y": 10,
+                  "width": 80,
+                  "height": 60,
+                  "rotation": 0,
+                  "style": {
+                    "fill": "#ffffff",
+                    "stroke": "#b8bdc7",
+                    "strokeWidth": 0,
+                    "radius": 0,
+                    "color": "#263348",
+                    "fontSize": 20,
+                    "fontFamily": "Arial",
+                    "fontWeight": 400,
+                    "textAlign": "left",
+                    "opacity": 1,
+                    "textPadding": [
+                      0,
+                      0,
+                      0,
+                      0
+                    ],
+                    "verticalAlign": "top",
+                    "lineHeight": 1.2
+                  },
+                  "hidden": false,
+                  "locked": false,
+                  "disabled": false,
+                  "notes": "",
+                  "interactions": [],
+                  "shapeText": {
+                    "autoFitWidth": true,
+                    "autoFitHeight": true
+                  },
+                  "disabledStyle": {
+                    "fontSize": 30,
+                    "lineHeight": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "runtime-autofit-rows",
+          "type": "repeater",
+          "name": "Independent row instances",
+          "text": "",
+          "x": 450,
+          "y": 180,
+          "width": 220,
+          "height": 170,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "First row"
+              },
+              {
+                "Name": "Second row"
+              }
+            ],
+            "template": [
+              {
+                "id": "runtime-autofit-row-shape",
+                "type": "box",
+                "name": "Row fitted shape",
+                "text": "Initial",
+                "x": 10,
+                "y": 10,
+                "width": 80,
+                "height": 30,
+                "rotation": 0,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 20,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1,
+                  "textPadding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "verticalAlign": "top",
+                  "lineHeight": 1.2
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": [],
+                "shapeText": {
+                  "autoFitWidth": true,
+                  "autoFitHeight": true
+                }
+              },
+              {
+                "id": "runtime-autofit-row-button",
+                "type": "button",
+                "name": "Change row text",
+                "text": "Change row text",
+                "x": 140,
+                "y": 50,
+                "width": 160,
+                "height": 30,
+                "rotation": 0,
+                "style": {
+                  "fill": "#5b5ce2",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 0,
+                  "radius": 5,
+                  "color": "#ffffff",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": [
+                  {
+                    "id": "runtime-autofit-case-11",
+                    "name": "click",
+                    "event": "click",
+                    "enabled": true,
+                    "conditionMode": "all",
+                    "conditions": [],
+                    "actions": [
+                      {
+                        "type": "setText",
+                        "targetId": "runtime-autofit-row-shape",
+                        "value": "[[Item.Name]]\nOne\nTwo\nThree",
+                        "id": "runtime-autofit-action-12"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "layout": "vertical",
+            "itemWidth": 220,
+            "itemHeight": 80,
+            "gap": 10,
+            "fitToContent": true
+          }
+        },
+        {
+          "id": "runtime-autofit-set-hidden",
+          "type": "button",
+          "name": "Set hidden text",
+          "text": "Set hidden text",
+          "x": 30,
+          "y": 70,
+          "width": 160,
+          "height": 40,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "runtime-autofit-case-13",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": "setText",
+                  "targetId": "runtime-autofit-hidden",
+                  "value": "Measured while hidden",
+                  "id": "runtime-autofit-action-14"
+                },
+                {
+                  "type": "setText",
+                  "targetId": "runtime-autofit-hidden-child",
+                  "value": "Measured while hidden",
+                  "id": "runtime-autofit-action-15"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "runtime-autofit-show-hidden",
+          "type": "button",
+          "name": "Show hidden shape",
+          "text": "Show hidden shape",
+          "x": 210,
+          "y": 70,
+          "width": 160,
+          "height": 40,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "runtime-autofit-case-16",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": "show",
+                  "targetId": "runtime-autofit-hidden",
+                  "id": "runtime-autofit-action-17"
+                },
+                {
+                  "type": "show",
+                  "targetId": "runtime-autofit-hidden-panel",
+                  "id": "runtime-autofit-action-18"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    },
+    {
+      "id": "runtime-autofit-adaptive-page",
+      "name": "Adaptive registration",
+      "width": 1200,
+      "height": 900,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "runtime-autofit-adaptive-title",
+          "type": "text",
+          "name": "Only registered text remeasures after the viewport selects Phone text.",
+          "text": "Only registered text remeasures after the viewport selects Phone text.",
+          "x": 30,
+          "y": 20,
+          "width": 1000,
+          "height": 32,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "runtime-autofit-registered",
+          "type": "box",
+          "name": "Registered shape",
+          "text": "A repeated phrase that wraps into several lines",
+          "x": 40,
+          "y": 170,
+          "width": 100,
+          "height": 80,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "verticalAlign": "top",
+            "lineHeight": 1.2
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "shapeText": {
+            "autoFitWidth": false,
+            "autoFitHeight": true
+          }
+        },
+        {
+          "id": "runtime-autofit-untouched",
+          "type": "box",
+          "name": "Unregistered shape",
+          "text": "A repeated phrase that wraps into several lines",
+          "x": 190,
+          "y": 170,
+          "width": 100,
+          "height": 80,
+          "rotation": 0,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1,
+            "textPadding": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "verticalAlign": "top",
+            "lineHeight": 1.2
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "shapeText": {
+            "autoFitWidth": false,
+            "autoFitHeight": true
+          }
+        },
+        {
+          "id": "runtime-autofit-register",
+          "type": "button",
+          "name": "Register text",
+          "text": "Register text",
+          "x": 30,
+          "y": 70,
+          "width": 160,
+          "height": 40,
+          "rotation": 0,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [
+            {
+              "id": "runtime-autofit-case-19",
+              "name": "click",
+              "event": "click",
+              "enabled": true,
+              "conditionMode": "all",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": "setText",
+                  "targetId": "runtime-autofit-registered",
+                  "value": "A repeated phrase that wraps into several lines",
+                  "id": "runtime-autofit-action-20"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": [
+        {
+          "id": "runtime-autofit-phone-view",
+          "name": "Phone text",
+          "width": 390,
+          "overrides": {
+            "runtime-autofit-registered": {
+              "style": {
+                "fontSize": 30
+              }
+            },
+            "runtime-autofit-untouched": {
+              "style": {
+                "fontSize": 30
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "runtime-autofit-frame-page",
+      "name": "Embedded runtime",
+      "width": 1200,
+      "height": 900,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "runtime-autofit-frame-title",
+          "type": "text",
+          "name": "The same SetText interactions execute inside the sandboxed offline player.",
+          "text": "The same SetText interactions execute inside the sandboxed offline player.",
+          "x": 30,
+          "y": 20,
+          "width": 1000,
+          "height": 32,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": []
+        },
+        {
+          "id": "runtime-autofit-frame",
+          "type": "inlineFrame",
+          "name": "Embedded runtime geometry",
+          "text": "",
+          "x": 20,
+          "y": 70,
+          "width": 1140,
+          "height": 720,
+          "rotation": 0,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 20,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "notes": "",
+          "interactions": [],
+          "inlineFrame": {
+            "target": {
+              "kind": "page",
+              "pageId": "runtime-autofit-geometry-page"
+            },
+            "hideBorders": true,
+            "scrolling": "auto",
+            "preview": {
+              "kind": "none"
+            }
+          }
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "components": [],
+  "variables": {},
+  "styles": []
+}

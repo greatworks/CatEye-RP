@@ -1,0 +1,577 @@
+{
+  "schema": "runtime-text-autofit-adaptive-replay-v1",
+  "capturedAt": "2026-10-14T01:07:15.252Z",
+  "cases": 4,
+  "kind": "Exact retained JS slices executed in isolated Node VM with injected DOM/CSS/view/measurement sinks. Not a browser, generated original page, DLL or GUI execution.",
+  "sources": [
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\adaptive.js",
+      "sha256": "e141ea07bb973b6007f2ad7d7205516a041a801ec97e410467352c27af3b2928"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "adaptive.js",
+      "first": 48,
+      "last": 159,
+      "label": "_switchView",
+      "sha256": "95efcdb46e07996d53293f092214a07df6a3fc54ded37634543715b811e54315"
+    },
+    {
+      "file": "visibility.js",
+      "first": 1382,
+      "last": 1390,
+      "label": "getResizedSize",
+      "sha256": "0d278d19beb21b581fe29fd604141ae6b219e153ac911c96c54397586c3fd750"
+    },
+    {
+      "file": "visibility.js",
+      "first": 1392,
+      "last": 1394,
+      "label": "setResizedSize",
+      "sha256": "2bf1e406b051c014f2e5e8e80ce0b14b515ccd096e310e7d54df1b9d9b1a9a72"
+    },
+    {
+      "file": "visibility.js",
+      "first": 1416,
+      "last": 1421,
+      "label": "clearMovedAndResized",
+      "sha256": "d809b6486ded4232f5b7659752556cfe21c6296f45c3bc525bb0a64a3150d9de"
+    },
+    {
+      "file": "expr.js",
+      "first": 400,
+      "last": 404,
+      "label": "updateAutoFitted",
+      "sha256": "22defac7a4dfe80d202e17e5bac5cd16883537802c3fd3b957efad17283ca4fb"
+    }
+  ],
+  "boundary": [
+    "One ordinary non-contained, non-repeater shape.",
+    "View CSS application and eventual AutoFit measurement are injected; no glyph or cascade measurement.",
+    "Original routine also clears applied styles and more widget classes; the product transition scope remains explicitly narrower.",
+    "Same-view return is covered; masters, panels, tree branches and repeater internals are not replayed."
+  ],
+  "results": [
+    {
+      "name": "direct-remeasurement-retains-two-axis-cache",
+      "action": "$ax.expr.updateAutoFitted()",
+      "previousView": "",
+      "before": {
+        "moved": {
+          "w": {
+            "left": 400.5,
+            "top": 600.25
+          }
+        },
+        "resized": {
+          "w": {
+            "width": 500.75,
+            "height": 110.25
+          }
+        },
+        "rotated": {
+          "w": 123
+        },
+        "resizing": {
+          "w": {
+            "width": 500.75
+          }
+        },
+        "registered": {
+          "w": {
+            "width": 120.75,
+            "height": 50.25
+          }
+        }
+      },
+      "after": {
+        "moved": {
+          "w": {
+            "left": 400.5,
+            "top": 600.25
+          }
+        },
+        "resized": {
+          "w": {
+            "width": 500.75,
+            "height": 110.25
+          }
+        },
+        "rotated": {
+          "w": 123
+        },
+        "resizing": {
+          "w": {
+            "width": 500.75
+          }
+        },
+        "registered": {
+          "w": {
+            "width": 120.75,
+            "height": 50.25
+          }
+        }
+      },
+      "ownerCss": {
+        "left": 400.5,
+        "top": 600.25,
+        "width": 500.75,
+        "height": 110.25,
+        "transform": "rotate(123deg)"
+      },
+      "trace": [
+        {
+          "kind": "measure-sink",
+          "id": "w",
+          "ownerCss": {
+            "left": 400.5,
+            "top": 600.25,
+            "width": 500.75,
+            "height": 110.25,
+            "transform": "rotate(123deg)"
+          },
+          "state": {
+            "moved": {
+              "w": {
+                "left": 400.5,
+                "top": 600.25
+              }
+            },
+            "resized": {
+              "w": {
+                "width": 500.75,
+                "height": 110.25
+              }
+            },
+            "rotated": {
+              "w": 123
+            },
+            "resizing": {
+              "w": {
+                "width": 500.75
+              }
+            },
+            "registered": {
+              "w": {
+                "width": 120.75,
+                "height": 50.25
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "base-to-adaptive-clears-before-apply-refresh-measure",
+      "action": "_switchView(\"narrow\")",
+      "previousView": "",
+      "before": {
+        "moved": {
+          "w": {
+            "left": 400.5,
+            "top": 600.25
+          }
+        },
+        "resized": {
+          "w": {
+            "width": 500.75,
+            "height": 110.25
+          }
+        },
+        "rotated": {
+          "w": 123
+        },
+        "resizing": {
+          "w": {
+            "width": 500.75
+          }
+        },
+        "registered": {
+          "w": {
+            "width": 120.75,
+            "height": 50.25
+          }
+        }
+      },
+      "after": {
+        "moved": {},
+        "resized": {},
+        "rotated": {},
+        "resizing": {},
+        "registered": {
+          "w": {
+            "width": 120.75,
+            "height": 50.25
+          }
+        }
+      },
+      "ownerCss": {
+        "left": 45.5,
+        "top": 70.25,
+        "width": 61.125,
+        "height": 20.5,
+        "transform": "",
+        "opacity": "",
+        "webkitTransform": "",
+        "MozTransform": "",
+        "msTransform": "",
+        "OTransform": ""
+      },
+      "trace": [
+        {
+          "kind": "css-reset",
+          "id": "w",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "child-css-reset",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "resetFixedPanel"
+        },
+        {
+          "kind": "resetAdaptivePercentPanel"
+        },
+        {
+          "kind": "reselectElements"
+        },
+        {
+          "kind": "updateElementIdImageStyle"
+        },
+        {
+          "kind": "visibility-clear"
+        },
+        {
+          "kind": "clear-geometry",
+          "state": {
+            "moved": {},
+            "resized": {},
+            "rotated": {},
+            "resizing": {},
+            "registered": {
+              "w": {
+                "width": 120.75,
+                "height": 50.25
+              }
+            }
+          }
+        },
+        {
+          "kind": "clearAppliedStyles"
+        },
+        {
+          "kind": "apply-view",
+          "id": "narrow"
+        },
+        {
+          "kind": "refresh-repeaters"
+        },
+        {
+          "kind": "updateAllLayerSizeCaches"
+        },
+        {
+          "kind": "updateParentsOfNonDefaultFitPanels"
+        },
+        {
+          "kind": "measure-sink",
+          "id": "w",
+          "ownerCss": {
+            "left": 45.5,
+            "top": 70.25,
+            "width": 61.125,
+            "height": 20.5,
+            "transform": "",
+            "opacity": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          },
+          "state": {
+            "moved": {},
+            "resized": {},
+            "rotated": {},
+            "resizing": {},
+            "registered": {
+              "w": {
+                "width": 120.75,
+                "height": 50.25
+              }
+            }
+          }
+        },
+        {
+          "kind": "viewChanged"
+        }
+      ]
+    },
+    {
+      "name": "adaptive-to-base-clears-before-refresh-measure",
+      "action": "_switchView(\"\")",
+      "previousView": "narrow",
+      "before": {
+        "moved": {
+          "w": {
+            "left": 400.5,
+            "top": 600.25
+          }
+        },
+        "resized": {
+          "w": {
+            "width": 500.75,
+            "height": 110.25
+          }
+        },
+        "rotated": {
+          "w": 123
+        },
+        "resizing": {
+          "w": {
+            "width": 500.75
+          }
+        },
+        "registered": {
+          "w": {
+            "width": 120.75,
+            "height": 50.25
+          }
+        }
+      },
+      "after": {
+        "moved": {},
+        "resized": {},
+        "rotated": {},
+        "resizing": {},
+        "registered": {
+          "w": {
+            "width": 120.75,
+            "height": 50.25
+          }
+        }
+      },
+      "ownerCss": {
+        "left": "",
+        "top": "",
+        "width": "",
+        "height": "",
+        "transform": "",
+        "opacity": "",
+        "webkitTransform": "",
+        "MozTransform": "",
+        "msTransform": "",
+        "OTransform": ""
+      },
+      "trace": [
+        {
+          "kind": "css-reset",
+          "id": "w",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "child-css-reset",
+          "values": {
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "opacity": "",
+            "transform": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          }
+        },
+        {
+          "kind": "resetFixedPanel"
+        },
+        {
+          "kind": "resetAdaptivePercentPanel"
+        },
+        {
+          "kind": "clearAdaptiveStyles"
+        },
+        {
+          "kind": "remove-class",
+          "value": "narrow"
+        },
+        {
+          "kind": "updateElementIdImageStyle"
+        },
+        {
+          "kind": "visibility-defaults"
+        },
+        {
+          "kind": "clear-geometry",
+          "state": {
+            "moved": {},
+            "resized": {},
+            "rotated": {},
+            "resizing": {},
+            "registered": {
+              "w": {
+                "width": 120.75,
+                "height": 50.25
+              }
+            }
+          }
+        },
+        {
+          "kind": "clearAppliedStyles"
+        },
+        {
+          "kind": "refresh-repeaters"
+        },
+        {
+          "kind": "updateParentsOfNonDefaultFitPanels"
+        },
+        {
+          "kind": "updatePercentPanelCache"
+        },
+        {
+          "kind": "measure-sink",
+          "id": "w",
+          "ownerCss": {
+            "left": "",
+            "top": "",
+            "width": "",
+            "height": "",
+            "transform": "",
+            "opacity": "",
+            "webkitTransform": "",
+            "MozTransform": "",
+            "msTransform": "",
+            "OTransform": ""
+          },
+          "state": {
+            "moved": {},
+            "resized": {},
+            "rotated": {},
+            "resizing": {},
+            "registered": {
+              "w": {
+                "width": 120.75,
+                "height": 50.25
+              }
+            }
+          }
+        },
+        {
+          "kind": "viewChanged"
+        }
+      ]
+    },
+    {
+      "name": "same-view-does-not-reset-or-remeasure",
+      "action": "_switchView(\"narrow\")",
+      "previousView": "narrow",
+      "before": {
+        "moved": {
+          "w": {
+            "left": 400.5,
+            "top": 600.25
+          }
+        },
+        "resized": {
+          "w": {
+            "width": 500.75,
+            "height": 110.25
+          }
+        },
+        "rotated": {
+          "w": 123
+        },
+        "resizing": {
+          "w": {
+            "width": 500.75
+          }
+        },
+        "registered": {
+          "w": {
+            "width": 120.75,
+            "height": 50.25
+          }
+        }
+      },
+      "after": {
+        "moved": {
+          "w": {
+            "left": 400.5,
+            "top": 600.25
+          }
+        },
+        "resized": {
+          "w": {
+            "width": 500.75,
+            "height": 110.25
+          }
+        },
+        "rotated": {
+          "w": 123
+        },
+        "resizing": {
+          "w": {
+            "width": 500.75
+          }
+        },
+        "registered": {
+          "w": {
+            "width": 120.75,
+            "height": 50.25
+          }
+        }
+      },
+      "ownerCss": {
+        "left": 400.5,
+        "top": 600.25,
+        "width": 500.75,
+        "height": 110.25,
+        "transform": "rotate(123deg)"
+      },
+      "trace": []
+    }
+  ]
+}

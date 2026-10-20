@@ -1,0 +1,151 @@
+{
+  "scope": "Read-only narrow original DNCg and ordinary shape/text DOM attachment evidence; no production or historical artifact changes.",
+  "assembly": {
+    "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\AxureRP11.dll",
+    "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+    "bytes": 16314368
+  },
+  "findings": [
+    {
+      "status": "static-and-bounded-replay",
+      "claim": "DNCg always opens div, writes id/class and optional label/title/selectiongroup. Slot7 controls immediate closing.",
+      "token": 100699506
+    },
+    {
+      "status": "static-and-bounded-replay",
+      "claim": "DNCg synthesizes only display/visibility inline styles; no overflow. Generic dictionary forwarding is separately considered, not assumed safe/absent."
+    },
+    {
+      "status": "static-and-bounded-replay",
+      "claim": "zNPc conditionally adds width/height and optional left/top; no overflow. xNKd writer-mode meaning remains unresolved.",
+      "token": 100699659
+    },
+    {
+      "status": "static",
+      "claim": "The four requested calls comprise image/div owners, closed background child and compound vector-piece child; they are not all owners.",
+      "callSites": [
+        {
+          "method": "nNPR",
+          "token": 100699656,
+          "callIL": 395,
+          "kind": "ordinary owner"
+        },
+        {
+          "method": "nNPR",
+          "token": 100699656,
+          "callIL": 988,
+          "kind": "closed background child"
+        },
+        {
+          "method": "sNP3",
+          "token": 100699654,
+          "callIL": 2538,
+          "kind": "ordinary image-path owner, optional compound class"
+        },
+        {
+          "method": "sNP3",
+          "token": 100699654,
+          "callIL": 3639,
+          "kind": "compound vector-piece child, NOT ordinary owner"
+        }
+      ]
+    },
+    {
+      "status": "static-and-bounded-replay",
+      "claim": "Controlled ordinary GenerateAsDiv path: open owner, open/close background child, open text child, rich payload, close text, close owner. vNPI call order uses real CIL; complete child image/CSS generation is a documented sink.",
+      "tokens": [
+        100699653,
+        100699656,
+        100699662,
+        100699507
+      ]
+    },
+    {
+      "status": "static-and-bounded-replay",
+      "claim": "fNPD uses same generated owner ID plus _text, class text plus optional ID class, and attributes=null. Its text div therefore matches the previously decoded owner .text rule.",
+      "token": 100699662,
+      "il": [
+        181,
+        211,
+        513,
+        564,
+        355,
+        360,
+        255
+      ]
+    }
+  ],
+  "boundedReplayCases": 16,
+  "callSiteSlices": 4,
+  "priorManifestRecordsVerified": 44,
+  "unknowns": [
+    "Complete original generated page, style-derived owner class string, per-page/base stylesheet cascade and computed overflow.",
+    "Native graphics/font measurement and final rendered pixels for the four UX titles.",
+    "Formal writer-mode meaning of xNKd/nNKZ; output modes are kept conditional.",
+    "Full SVG payload generation and whole-project run/base style synchronization."
+  ],
+  "nextNarrowHook": "xNxg.rNxD class mapping and writer xNKd/nNKZ context, then emitted project stylesheet; intentionally not expanded in this task.",
+  "noProductChange": true,
+  "sources": [
+    {
+      "file": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128",
+      "bytes": 2734
+    },
+    {
+      "file": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f",
+      "bytes": 266142
+    },
+    {
+      "file": "research/scripts/inspect-rp-serialization.ps1",
+      "sha256": "2c3cebbef109bb692562cbf80d6b60f36449275a21d19060fa10089ab27389b5",
+      "bytes": 6543
+    },
+    {
+      "file": "research/text-autofit-native-manifest.json",
+      "sha256": "c97d652ee729a322348acaa7983f3b8999c05c096d110bbda6e63780ef88a150",
+      "bytes": 8292
+    },
+    {
+      "file": "research/text-autofit-native-evidence.md",
+      "sha256": "b6ff8f3ad2f236b02be7dc17063aed90bb2301f6a20f57e044204c984f3df341",
+      "bytes": 11503
+    },
+    {
+      "file": "research/text-autofit-native-literals.mjs",
+      "sha256": "2b8f2adee7d6e1ac5ac4e0188edf616057d1e129071b9818eb4900dfbf9e3091",
+      "bytes": 7389
+    },
+    {
+      "file": "research/text-autofit-native-text-callers-cil.json",
+      "sha256": "f83d4bf2230a0db5423fe30e0a08a0d78562394fcd8d0498a29c21c4bf338ce1",
+      "bytes": 47664
+    },
+    {
+      "file": "research/rotation-runtime-shape-writer-cil.json",
+      "sha256": "80a30009543337571c7148105135d306d2f6e701472e5db699e5f5c1aa39e0ea",
+      "bytes": 246552
+    },
+    {
+      "file": "research/font-size-runtime-layout-writer-cil.json",
+      "sha256": "4f611d9a51d4efa3ecce7919ebe15d3d20050ff15ac6f82440521da060909939",
+      "bytes": 39688
+    },
+    {
+      "file": "research/font-size-format-owners.json",
+      "sha256": "b7943d712e4be2f5ff01f8407368ca8ab1f253f9f75d6d11273952c885b1aac4",
+      "bytes": 221676
+    },
+    {
+      "file": "research/text-autofit-base-css-evidence.md",
+      "sha256": "13226480333a485ad234d32a617e9895b05be9201da7fc3026b46858fd65cfb1",
+      "bytes": 10616
+    },
+    {
+      "file": "research/text-autofit-base-css-evidence.json",
+      "sha256": "135728f1840689ee6a5af5a770cca8fe6db2d6a0f9f73f97d330b532cc2b94b0",
+      "bytes": 258705
+    }
+  ]
+}

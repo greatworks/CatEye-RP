@@ -1,0 +1,94 @@
+{
+  "timestamp": "2026-10-13T17:58:38.482Z",
+  "method": "Exact original navigate and needsReload in VM with inert window/location sinks; no browser and no network",
+  "file": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/doc.js",
+  "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1",
+  "sourceRange": {
+    "first": 768,
+    "last": 823
+  },
+  "source": "    $ax.public.navigate = $ax.navigate = function(to) { //url, includeVariables, type) {\n        var targetUrl;\n        if(typeof (to) === 'object') {\n            targetUrl = !to.includeVariables ? to.url : $ax.globalVariableProvider.getLinkUrl(to.url, to.useGlobalVarNameInUrl);\n\n            if(to.target == \"new\") {\n                window.open(targetUrl, \"\");\n            } else if(to.target == \"popup\") {\n                var features = _getPopupFeatures(to.popupOptions);\n                window.open(targetUrl, \"\", features);\n            } else {\n                var targetLocation = window.location;\n                if(to.target == \"current\") {\n                } else if(to.target == \"parent\") {\n                    if(!top.opener) return;\n                    targetLocation = top.opener.window.location;\n                } else if(to.target == \"parentFrame\") {\n                    targetLocation = parent.location;\n                } else if(to.target == \"frame\") {\n                    //                    targetLocation = to.frame.contentWindow.location;\n                    $(to.frame).attr('src', targetUrl || 'about:blank');\n                    return;\n                }\n\n                if (!_needsReload(targetLocation, to.url)) {\n                    targetLocation.href = targetUrl || 'about:blank';\n                } else {\n                    targetLocation.href = $axure.utils.getReloadPath() + \"?\" + encodeURI(targetUrl);\n                }\n            }\n        } else {\n            $ax.navigate({\n                url: to,\n                target: \"current\",\n                includeVariables: arguments[1]\n            });\n        }\n    };\n\n    var _needsReload = function(oldLocation, newBaseUrl) {\n        var reload = false;\n        try {\n            var oldUrl = oldLocation.href;\n            var oldBaseUrl = oldUrl.split(\"?\")[0];\n            var lastslash = oldBaseUrl.lastIndexOf(\"/\");\n            if(lastslash > 0) {\n                oldBaseUrl = oldBaseUrl.substring(lastslash + 1, oldBaseUrl.length);\n                if(oldBaseUrl == encodeURI(newBaseUrl)) {\n                    reload = true;\n                }\n            }\n        } catch(e) {\n        }\n        return reload;\n    };\n",
+  "cases": [
+    {
+      "name": "current literal uses same window location",
+      "to": {
+        "url": "https://example.invalid/path?x=1#part",
+        "target": "current",
+        "includeVariables": false
+      },
+      "trace": [
+        {
+          "kind": "assignLocation",
+          "value": "https://example.invalid/path?x=1#part"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "new literal calls window.open with empty window name and no feature string",
+      "to": {
+        "url": "https://example.invalid/path?x=1#part",
+        "target": "new",
+        "includeVariables": false
+      },
+      "trace": [
+        {
+          "kind": "window.open",
+          "args": [
+            "https://example.invalid/path?x=1#part",
+            ""
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "direct current empty value has about blank fallback",
+      "to": {
+        "url": "",
+        "target": "current",
+        "includeVariables": false
+      },
+      "trace": [
+        {
+          "kind": "assignLocation",
+          "value": "about:blank"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "direct new empty value is passed through",
+      "to": {
+        "url": "",
+        "target": "new",
+        "includeVariables": false
+      },
+      "trace": [
+        {
+          "kind": "window.open",
+          "args": [
+            "",
+            ""
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "navigation string shorthand uses current",
+      "to": "https://example.invalid/shortcut",
+      "trace": [
+        {
+          "kind": "assignLocation",
+          "value": "https://example.invalid/shortcut"
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "limits": [
+    "External literal URL path only; popup/player/global-variable integration outside scope",
+    "window.open return/opener/browser policy not simulated"
+  ]
+}

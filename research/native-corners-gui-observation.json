@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-15",
+  "target": "Axure RP 11.0.0.4150 retained official executable",
+  "method": "Computer Use skill with sky APIs through node_repl",
+  "authorizedByUser": true,
+  "window": {"id": 48763180, "title": "Untitled"},
+  "observations": [
+    "list_windows returned exactly one matching AxureRP11.exe window; process 23652 was independently observed running.",
+    "Screenshot and text observation first reported a minimized window.",
+    "activate_window, fresh window selection and screenshot+text retry returned FrameArrived timed out: timed out waiting on channel.",
+    "Fresh text-only state returned the Untitled editor menu bar with no account dialog.",
+    "Alt+V exposed View: Toolbars, Panes, Gallery Tab, Reset View, Rulers Grid and Guides, Masks, note/interaction markers, location/size tooltip, and background.",
+    "Escape returned to the original editor menu tree. No canvas edit, file save, project discard or account action was performed."
+  ],
+  "originalMenuTransitionObserved": true,
+  "originalCanvasInteractionsVerified": false,
+  "originalPixelsCompared": false,
+  "limitation": "Native menu accessibility works, but screenshot capture does not. Do not infer native widget or rendering parity from this observation. No prior screenshot coordinates or element indices were reused."
+}

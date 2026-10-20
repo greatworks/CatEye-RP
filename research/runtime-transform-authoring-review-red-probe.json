@@ -1,0 +1,869 @@
+{
+  "kind": "independent product review; not original Axure execution",
+  "generatedAt": "2026-10-20T05:49:50.373Z",
+  "results": [
+    {
+      "name": "alias rename: [[1e3 + e3.x]]",
+      "pass": false,
+      "actual": "[[1rail + rail.x]]",
+      "expected": "[[1e3 + rail.x]]"
+    },
+    {
+      "name": "binding identity: e3",
+      "pass": true,
+      "actual": {
+        "rail": {
+          "kind": "widget",
+          "targetId": "target-a"
+        }
+      },
+      "expected": {
+        "rail": {
+          "kind": "widget",
+          "targetId": "target-a"
+        }
+      }
+    },
+    {
+      "name": "input immutable: e3",
+      "pass": true,
+      "actual": "[[1e3 + e3.x]]",
+      "expected": "[[1e3 + e3.x]]"
+    },
+    {
+      "name": "alias rename: [[1e-3 + e.x]]",
+      "pass": false,
+      "actual": "[[1rail-3 + rail.x]]",
+      "expected": "[[1e-3 + rail.x]]"
+    },
+    {
+      "name": "binding identity: e",
+      "pass": true,
+      "actual": {
+        "rail": {
+          "kind": "widget",
+          "targetId": "target-a"
+        }
+      },
+      "expected": {
+        "rail": {
+          "kind": "widget",
+          "targetId": "target-a"
+        }
+      }
+    },
+    {
+      "name": "input immutable: e",
+      "pass": true,
+      "actual": "[[1e-3 + e.x]]",
+      "expected": "[[1e-3 + e.x]]"
+    },
+    {
+      "name": "alias rename: plain track [[Track.width + \"track.width\" + 'track.x']]",
+      "pass": true,
+      "actual": "plain track [[rail.width + \"track.width\" + 'track.x']]",
+      "expected": "plain track [[rail.width + \"track.width\" + 'track.x']]"
+    },
+    {
+      "name": "binding identity: track",
+      "pass": true,
+      "actual": {
+        "rail": {
+          "kind": "widget",
+          "targetId": "target-a"
+        }
+      },
+      "expected": {
+        "rail": {
+          "kind": "widget",
+          "targetId": "target-a"
+        }
+      }
+    },
+    {
+      "name": "input immutable: track",
+      "pass": true,
+      "actual": "plain track [[Track.width + \"track.width\" + 'track.x']]",
+      "expected": "plain track [[Track.width + \"track.width\" + 'track.x']]"
+    },
+    {
+      "name": "clone duplicate ordered target identities",
+      "pass": true,
+      "actual": [
+        {
+          "kind": "widget",
+          "id": "98757de6-25f2-4c50-a184-4efe5dfd1bb1"
+        },
+        {
+          "kind": "widget",
+          "id": "98757de6-25f2-4c50-a184-4efe5dfd1bb1"
+        }
+      ],
+      "expected": [
+        {
+          "kind": "widget",
+          "id": "98757de6-25f2-4c50-a184-4efe5dfd1bb1"
+        },
+        {
+          "kind": "widget",
+          "id": "98757de6-25f2-4c50-a184-4efe5dfd1bb1"
+        }
+      ]
+    },
+    {
+      "name": "clone bound and external identities",
+      "pass": true,
+      "actual": {
+        "track": {
+          "kind": "widget",
+          "targetId": "98757de6-25f2-4c50-a184-4efe5dfd1bb1"
+        },
+        "external": {
+          "kind": "widget",
+          "targetId": "outside"
+        }
+      },
+      "expected": {
+        "track": {
+          "kind": "widget",
+          "targetId": "98757de6-25f2-4c50-a184-4efe5dfd1bb1"
+        },
+        "external": {
+          "kind": "widget",
+          "targetId": "outside"
+        }
+      }
+    },
+    {
+      "name": "clone actual reference, preserving quoted literal",
+      "pass": true,
+      "actual": "[[track.x + Widget.98757de6-25f2-4c50-a184-4efe5dfd1bb1.text + \"Widget.target-a.text\"]]",
+      "expected": "[[track.x + Widget.98757de6-25f2-4c50-a184-4efe5dfd1bb1.text + \"Widget.target-a.text\"]]"
+    },
+    {
+      "name": "clone both boolean children",
+      "pass": true,
+      "actual": {
+        "track": {
+          "kind": "widget",
+          "targetId": "98757de6-25f2-4c50-a184-4efe5dfd1bb1"
+        },
+        "external": {
+          "kind": "widget",
+          "targetId": "outside"
+        }
+      },
+      "expected": {
+        "track": {
+          "kind": "widget",
+          "targetId": "98757de6-25f2-4c50-a184-4efe5dfd1bb1"
+        },
+        "external": {
+          "kind": "widget",
+          "targetId": "outside"
+        }
+      }
+    },
+    {
+      "name": "clone size expression scope",
+      "pass": true,
+      "actual": "98757de6-25f2-4c50-a184-4efe5dfd1bb1",
+      "expected": "98757de6-25f2-4c50-a184-4efe5dfd1bb1"
+    },
+    {
+      "name": "complete structured document roundtrip",
+      "pass": true,
+      "actual": {
+        "format": "rea-prototype",
+        "version": 1,
+        "id": "499f72c0-d1ee-4fb8-b2d1-2523f7d6d72f",
+        "name": "Untitled",
+        "pages": [
+          {
+            "id": "c8c91f7a-bef8-4923-afc0-66b562b7ee02",
+            "name": "Page 1",
+            "width": 1200,
+            "height": 900,
+            "background": "#ffffff",
+            "widgets": [
+              {
+                "id": "owner",
+                "type": "button",
+                "name": "Button",
+                "text": "Button",
+                "notes": "",
+                "x": 100,
+                "y": 100,
+                "rotation": 0,
+                "width": 140,
+                "height": 40,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#5b5ce2",
+                  "stroke": "#5b5ce2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#ffffff",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "event",
+                    "event": "click",
+                    "name": "Review",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "move",
+                        "type": "move",
+                        "move": {
+                          "targets": [
+                            {
+                              "target": {
+                                "kind": "widget",
+                                "id": "target-a"
+                              },
+                              "mode": "location",
+                              "x": {
+                                "text": "[[track.x + Widget.target-a.text + \"Widget.target-a.text\"]]",
+                                "bindings": {
+                                  "track": {
+                                    "kind": "widget",
+                                    "targetId": "target-a"
+                                  },
+                                  "external": {
+                                    "kind": "widget",
+                                    "targetId": "outside"
+                                  }
+                                }
+                              },
+                              "y": {
+                                "text": ""
+                              },
+                              "trajectory": "straight",
+                              "easing": "none",
+                              "duration": 500,
+                              "boundary": {
+                                "kind": "or",
+                                "left": {
+                                  "kind": "compare",
+                                  "operator": "<",
+                                  "direction": "right",
+                                  "left": {
+                                    "text": "[[track.x + Widget.target-a.text + \"Widget.target-a.text\"]]",
+                                    "bindings": {
+                                      "track": {
+                                        "kind": "widget",
+                                        "targetId": "target-a"
+                                      },
+                                      "external": {
+                                        "kind": "widget",
+                                        "targetId": "outside"
+                                      }
+                                    }
+                                  },
+                                  "right": {
+                                    "text": "1000"
+                                  }
+                                },
+                                "right": {
+                                  "kind": "compare",
+                                  "operator": "<",
+                                  "direction": "right",
+                                  "left": {
+                                    "text": "[[track.x + Widget.target-a.text + \"Widget.target-a.text\"]]",
+                                    "bindings": {
+                                      "track": {
+                                        "kind": "widget",
+                                        "targetId": "target-a"
+                                      },
+                                      "external": {
+                                        "kind": "widget",
+                                        "targetId": "outside"
+                                      }
+                                    }
+                                  },
+                                  "right": {
+                                    "text": "1000"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "target": {
+                                "kind": "widget",
+                                "id": "target-a"
+                              },
+                              "mode": "location",
+                              "x": {
+                                "text": ""
+                              },
+                              "y": {
+                                "text": ""
+                              },
+                              "trajectory": "straight",
+                              "easing": "none",
+                              "duration": 500
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "id": "resize",
+                        "type": "resize",
+                        "resize": {
+                          "targets": [
+                            {
+                              "target": {
+                                "kind": "widget",
+                                "id": "target-a"
+                              },
+                              "width": {
+                                "text": "[[track.x + Widget.target-a.text + \"Widget.target-a.text\"]]",
+                                "bindings": {
+                                  "track": {
+                                    "kind": "widget",
+                                    "targetId": "target-a"
+                                  },
+                                  "external": {
+                                    "kind": "widget",
+                                    "targetId": "outside"
+                                  }
+                                }
+                              },
+                              "height": {
+                                "text": ""
+                              },
+                              "anchor": "top left",
+                              "easing": "none",
+                              "duration": 500
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "target-a",
+                "type": "box",
+                "name": "Box",
+                "text": "",
+                "notes": "",
+                "x": 100,
+                "y": 100,
+                "rotation": 0,
+                "width": 180,
+                "height": 90,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": []
+              }
+            ],
+            "notes": "",
+            "interactions": [],
+            "adaptiveSelection": "native-size",
+            "adaptiveBaseSize": {
+              "width": 0,
+              "height": 0
+            },
+            "adaptiveViews": []
+          }
+        ],
+        "caseSelection": "auto",
+        "components": [],
+        "variables": {},
+        "styles": []
+      },
+      "expected": {
+        "format": "rea-prototype",
+        "version": 1,
+        "id": "499f72c0-d1ee-4fb8-b2d1-2523f7d6d72f",
+        "name": "Untitled",
+        "caseSelection": "auto",
+        "pages": [
+          {
+            "id": "c8c91f7a-bef8-4923-afc0-66b562b7ee02",
+            "name": "Page 1",
+            "width": 1200,
+            "height": 900,
+            "background": "#ffffff",
+            "widgets": [
+              {
+                "id": "owner",
+                "type": "button",
+                "name": "Button",
+                "text": "Button",
+                "x": 100,
+                "y": 100,
+                "width": 140,
+                "height": 40,
+                "rotation": 0,
+                "style": {
+                  "fill": "#5b5ce2",
+                  "stroke": "#5b5ce2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#ffffff",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": [
+                  {
+                    "id": "event",
+                    "name": "Review",
+                    "event": "click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "legacy",
+                        "type": "move",
+                        "targetId": "target-a",
+                        "x": 23,
+                        "y": 45,
+                        "duration": 123
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "target-a",
+                "type": "box",
+                "name": "Box",
+                "text": "",
+                "x": 100,
+                "y": 100,
+                "width": 180,
+                "height": 90,
+                "rotation": 0,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": []
+              }
+            ],
+            "notes": "",
+            "interactions": [],
+            "adaptiveViews": [],
+            "adaptiveSelection": "native-size",
+            "adaptiveBaseSize": {
+              "width": 0,
+              "height": 0
+            }
+          }
+        ],
+        "components": [],
+        "variables": {},
+        "styles": []
+      }
+    },
+    {
+      "name": "legacy numeric document roundtrip",
+      "pass": true,
+      "actual": {
+        "format": "rea-prototype",
+        "version": 1,
+        "id": "499f72c0-d1ee-4fb8-b2d1-2523f7d6d72f",
+        "name": "Untitled",
+        "pages": [
+          {
+            "id": "c8c91f7a-bef8-4923-afc0-66b562b7ee02",
+            "name": "Page 1",
+            "width": 1200,
+            "height": 900,
+            "background": "#ffffff",
+            "widgets": [
+              {
+                "id": "owner",
+                "type": "button",
+                "name": "Button",
+                "text": "Button",
+                "notes": "",
+                "x": 100,
+                "y": 100,
+                "rotation": 0,
+                "width": 140,
+                "height": 40,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#5b5ce2",
+                  "stroke": "#5b5ce2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#ffffff",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "event",
+                    "event": "click",
+                    "name": "Review",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "legacy",
+                        "type": "move",
+                        "targetId": "target-a",
+                        "x": 23,
+                        "y": 45,
+                        "duration": 123
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "target-a",
+                "type": "box",
+                "name": "Box",
+                "text": "",
+                "notes": "",
+                "x": 100,
+                "y": 100,
+                "rotation": 0,
+                "width": 180,
+                "height": 90,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": []
+              }
+            ],
+            "notes": "",
+            "interactions": [],
+            "adaptiveSelection": "native-size",
+            "adaptiveBaseSize": {
+              "width": 0,
+              "height": 0
+            },
+            "adaptiveViews": []
+          }
+        ],
+        "caseSelection": "auto",
+        "components": [],
+        "variables": {},
+        "styles": []
+      },
+      "expected": {
+        "format": "rea-prototype",
+        "version": 1,
+        "id": "499f72c0-d1ee-4fb8-b2d1-2523f7d6d72f",
+        "name": "Untitled",
+        "caseSelection": "auto",
+        "pages": [
+          {
+            "id": "c8c91f7a-bef8-4923-afc0-66b562b7ee02",
+            "name": "Page 1",
+            "width": 1200,
+            "height": 900,
+            "background": "#ffffff",
+            "widgets": [
+              {
+                "id": "owner",
+                "type": "button",
+                "name": "Button",
+                "text": "Button",
+                "x": 100,
+                "y": 100,
+                "width": 140,
+                "height": 40,
+                "rotation": 0,
+                "style": {
+                  "fill": "#5b5ce2",
+                  "stroke": "#5b5ce2",
+                  "strokeWidth": 1,
+                  "radius": 5,
+                  "color": "#ffffff",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 600,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": [
+                  {
+                    "id": "event",
+                    "name": "Review",
+                    "event": "click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "legacy",
+                        "type": "move",
+                        "targetId": "target-a",
+                        "x": 23,
+                        "y": 45,
+                        "duration": 123
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "target-a",
+                "type": "box",
+                "name": "Box",
+                "text": "",
+                "x": 100,
+                "y": 100,
+                "width": 180,
+                "height": 90,
+                "rotation": 0,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "notes": "",
+                "interactions": []
+              }
+            ],
+            "notes": "",
+            "interactions": [],
+            "adaptiveViews": [],
+            "adaptiveSelection": "native-size",
+            "adaptiveBaseSize": {
+              "width": 0,
+              "height": 0
+            }
+          }
+        ],
+        "components": [],
+        "variables": {},
+        "styles": []
+      }
+    },
+    {
+      "name": "strict rejects extra expression member",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "strict rejects uppercase alias",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "strict rejects mixed target identity",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "strict rejects extra resize mode",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "reorder actual target identity",
+      "pass": true,
+      "actual": [
+        "b",
+        "a"
+      ],
+      "expected": [
+        "b",
+        "a"
+      ]
+    },
+    {
+      "name": "invalid draft does not attach to target B after reorder",
+      "pass": false,
+      "actual": false,
+      "expected": true,
+      "observedDrafts": [
+        "bad name",
+        "local1"
+      ]
+    },
+    {
+      "name": "post-reorder draft correction observed recipient",
+      "pass": true,
+      "observation": [
+        {
+          "id": "b",
+          "x": {
+            "text": "[[repaired.x]]",
+            "bindings": {
+              "repaired": {
+                "kind": "widget",
+                "targetId": "b"
+              }
+            }
+          }
+        },
+        {
+          "id": "a",
+          "x": {
+            "text": "[[local1.x]]",
+            "bindings": {
+              "local1": {
+                "kind": "widget",
+                "targetId": "a"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "sourceBefore": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "0a243b7003db3325d55833046f34dbad6943a2d67f7b636af032d9e6634937ed"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "c81b8bc09fc5dc6eae6a42da14b3934b71f5fa431c0a497ccf90fa198ca56f9f"
+    },
+    {
+      "path": "src/components/MotionActionEditor.tsx",
+      "sha256": "77cae087e0a0ea78bf5552a79fbab41c21d3d0bd140cceb3cce9759a181db13d"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "b0ddc7dd7c24456dd7b129c684a653a4b8c144c20b3998e4a3c656845714a6a2"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "d6c76c2ab5ad69595ef55f947143e47afbbbee0415845843efac009b5ae9f0b1"
+    },
+    {
+      "path": "tests/runtime-transform-model.test.ts",
+      "sha256": "5c0657f6823882253ca9ad481e53a78fc2ac04bb0034e4ea2e802308b3fcd089"
+    },
+    {
+      "path": "tests/runtime-transform-authoring.test.ts",
+      "sha256": "cb4029f38aa9e1f8150e636d84e75a6b0aa917cb15df24cb86d48d0440b9b840"
+    },
+    {
+      "path": "tests/e2e/runtime-transform-authoring.spec.ts",
+      "sha256": "e398b68c70e0c1376e81a456bd23c789e1771ce98e581e6e9035ac1beaaddbf4"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "src/model/types.ts",
+      "sha256": "0a243b7003db3325d55833046f34dbad6943a2d67f7b636af032d9e6634937ed"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "c81b8bc09fc5dc6eae6a42da14b3934b71f5fa431c0a497ccf90fa198ca56f9f"
+    },
+    {
+      "path": "src/components/MotionActionEditor.tsx",
+      "sha256": "77cae087e0a0ea78bf5552a79fbab41c21d3d0bd140cceb3cce9759a181db13d"
+    },
+    {
+      "path": "src/components/Inspector.tsx",
+      "sha256": "b0ddc7dd7c24456dd7b129c684a653a4b8c144c20b3998e4a3c656845714a6a2"
+    },
+    {
+      "path": "src/runtime/expressions.ts",
+      "sha256": "d6c76c2ab5ad69595ef55f947143e47afbbbee0415845843efac009b5ae9f0b1"
+    },
+    {
+      "path": "tests/runtime-transform-model.test.ts",
+      "sha256": "5c0657f6823882253ca9ad481e53a78fc2ac04bb0034e4ea2e802308b3fcd089"
+    },
+    {
+      "path": "tests/runtime-transform-authoring.test.ts",
+      "sha256": "cb4029f38aa9e1f8150e636d84e75a6b0aa917cb15df24cb86d48d0440b9b840"
+    },
+    {
+      "path": "tests/e2e/runtime-transform-authoring.spec.ts",
+      "sha256": "e398b68c70e0c1376e81a456bd23c789e1771ce98e581e6e9035ac1beaaddbf4"
+    }
+  ],
+  "sourceStableDuringProbe": true,
+  "checks": {
+    "total": 23,
+    "passed": 20,
+    "failed": 3
+  }
+}

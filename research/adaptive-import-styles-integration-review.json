@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "scope": "Independent read-only adaptive import integration review",
+  "status": "two confirmed defects corrected; no remaining definite defect in bounded review",
+  "implementation": [
+    {
+      "path": "src/model/import-rp-adaptive.ts",
+      "sha256": "851ccaff2c8e987d9844afce66713e038df6844998fe5db6dcc80f51e6faa511"
+    },
+    {
+      "path": "src/model/import-rp.ts",
+      "sha256": "02454b55b5deee4e79f69e26dd464e48be922b3dae20f1a2f793d9e3b20a817f"
+    },
+    {
+      "path": "research/scripts/read-rp-semantics.mjs",
+      "sha256": "d246e353bf36015213fb27ac468a279764d2d9fdb60e18f49066ca9e178580ec"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/adaptive-import-styles-integration-review.md",
+      "sha256": "ea2dafc0583f53ae971576216bb918ed6addf46f9414622d50984abb6a088406"
+    },
+    {
+      "path": "research/adaptive-import-styles-integration-review.mjs",
+      "sha256": "4e874ecc372a573c5ee429117b2379d4c81cda9999127e5df0b7dcee39d3ca9d"
+    },
+    {
+      "path": "research/adaptive-import-styles-integration-review-red.json",
+      "sha256": "740a671588051ed2f2fc53b489cc588538921112df4ef05fac4ff2720c95db49"
+    },
+    {
+      "path": "research/adaptive-import-styles-integration-review-green.json",
+      "sha256": "0de19f4ae75d80b12bc936faecf6735c7be61227543f5f17ce9b1b6d90ce9372"
+    },
+    {
+      "path": "research/adaptive-import-styles-importer-probe.mjs",
+      "sha256": "939884d4ad0fcf3bec702b2fe9d7e5277bcc0c1434ec7e52b6b763643bc3c22f"
+    },
+    {
+      "path": "research/adaptive-import-styles-importer-red.json",
+      "sha256": "07edaf958566ac0c4f207a481cbf7a6bdd0fda7ea14db66130443a4c67980dc2"
+    },
+    {
+      "path": "research/adaptive-import-styles-importer-green.json",
+      "sha256": "76151de9102389e5eace31a13d41ea5f0ad31852fad9aaa765127ef012bf2d91"
+    },
+    {
+      "path": "research/adaptive-import-styles-importer-final.json",
+      "sha256": "501f40af50cd79da0e7e165bb47e0c6f11d0e2d548d422718ba8b925ce9dea73"
+    },
+    {
+      "path": "research/adaptive-import-styles-review.json",
+      "sha256": "6d7f2621da394367dd25a20ace5154653288693c7008f3179d5d26ccbf49b916"
+    },
+    {
+      "path": "research/adaptive-import-styles-evidence.json",
+      "sha256": "1fcefc81243c19a97ad9f7c11c841e0ddc34248da538d7d9d5008fc47f57d1d6"
+    }
+  ],
+  "independentChecks": {
+    "diagnosticProtocol": [
+      {
+        "name": "without diagnostic",
+        "passed": true
+      },
+      {
+        "name": "actual standalone-value-parts diagnostic",
+        "passed": true
+      }
+    ],
+    "containerRejection": [
+      {
+        "name": "admitted parent table",
+        "passed": true,
+        "counts": {
+          "widgets": 2,
+          "nested": 9,
+          "events": 1,
+          "skippedEvents": 0
+        }
+      },
+      {
+        "name": "rejected parent table",
+        "passed": true,
+        "counts": {
+          "widgets": 1,
+          "nested": 0,
+          "events": 0,
+          "skippedEvents": 1
+        }
+      }
+    ]
+  },
+  "ownerReportedValidation": {
+    "focusedImporterCases": 70,
+    "focusedImporterPassed": 70,
+    "typecheck": "passed",
+    "rerunByReviewer": false
+  },
+  "limits": [
+    "Exact-source VM evidence and synthetic product protocol probes are separate evidence kinds.",
+    "No original GUI, full product suite, build, or packaging executed by this review.",
+    "General named/provider synthesis, transforms, limbo, nonempty Page appearance and complete fit-panel generated CSS remain bounded or unsupported."
+  ]
+}

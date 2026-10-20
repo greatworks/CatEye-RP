@@ -1,0 +1,108 @@
+{
+  "synthetic": true,
+  "originalFileWitness": false,
+  "originalGeneratorEndToEndExecuted": false,
+  "method": "Structural composition from separately proven per-action writers. Expression records below are named opaque sinks, not actual BJC9 output. This is not a timing test or importer fixture.",
+  "sourceRefs": [
+    {
+      "file": "research/runtime-transform-format-actions-generator-cil.json",
+      "sha256": "c31a2aea9879ab5723c0a678a4a519bfcdc7ba5b57d190716f52f339e19694ea"
+    },
+    {
+      "file": "research/runtime-transform-format-action-dispatch-cil.json",
+      "sha256": "336cfbdb62b858c5e6b1edb8f9aec684e176e39240133520f8f51a814127ace8"
+    },
+    {
+      "file": "research/runtime-transform-format-static-probes.json",
+      "sha256": "c99d8b51b5916f9ade911d1813ce5a6fa6b66c8dac22d3c0780ffe27f2ef5dc6"
+    },
+    {
+      "file": "research/runtime-rotate-format-static-probe.mjs",
+      "sha256": "435dc74323d7a2edb39d869f00aeebd107262876c0818869961e95b2f633e4cf"
+    }
+  ],
+  "case": {
+    "actions": [
+      {
+        "action": "moveWidget",
+        "objectsToMoves": [
+          {
+            "objectPath": [
+              "SYNTHETIC_TARGET"
+            ],
+            "moveInfo": {
+              "moveType": "delta",
+              "xValue": {
+                "$expressionSink": "10"
+              },
+              "yValue": {
+                "$expressionSink": "20"
+              },
+              "options": {
+                "boundaryExpr": {
+                  "$expressionSink": null
+                },
+                "boundaryStos": {
+                  "$compilerSink": "empty boundary"
+                },
+                "easing": "linear",
+                "duration": 500,
+                "trajectory": "straight"
+              }
+            }
+          }
+        ],
+        "parentEventType": "onClick"
+      },
+      {
+        "action": "setWidgetSize",
+        "objectsToResize": [
+          {
+            "objectPath": [
+              "SYNTHETIC_TARGET"
+            ],
+            "sizeInfo": {
+              "width": {
+                "$expressionSink": "[[Target.width+10]]"
+              },
+              "height": {
+                "$expressionSink": "[[Target.height]]"
+              },
+              "anchor": "top left",
+              "easing": "none",
+              "duration": 500
+            }
+          }
+        ]
+      },
+      {
+        "action": "rotateWidget",
+        "objectsToRotate": [
+          {
+            "objectPath": [
+              "SYNTHETIC_TARGET"
+            ],
+            "rotateInfo": {
+              "rotateType": "delta",
+              "degree": {
+                "$expressionSink": "90"
+              },
+              "offsetX": {
+                "$expressionSink": "0"
+              },
+              "offsetY": {
+                "$expressionSink": "0"
+              },
+              "anchor": "center",
+              "options": {
+                "clockwise": true,
+                "easing": "linear",
+                "duration": 500
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

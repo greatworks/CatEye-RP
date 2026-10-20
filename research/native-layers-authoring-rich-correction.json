@@ -1,0 +1,148 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-20T07:34:57.244Z",
+  "stage": "native-layers",
+  "scope": "LAYER-AUTHOR-001 display-only rich-text correction",
+  "originalAxureGuiCompared": false,
+  "fullAxureParity": false,
+  "productionBefore": [
+    {
+      "path": ".build/native-layers-before-authoring-rich-fix/src/App.tsx",
+      "bytes": 91492,
+      "sha256": "db47e5d49e321c8ac9ff5b87c21b507baae398d2ea101991df5cdb85e4fd816e"
+    },
+    {
+      "path": ".build/native-layers-before-authoring-rich-fix/src/components/WidgetView.tsx",
+      "bytes": 32034,
+      "sha256": "dcba451039f33f694447bf6a7d6408258409381181b6250746b0dab954a916b8"
+    }
+  ],
+  "productionAfter": [
+    {
+      "path": "src/App.tsx",
+      "bytes": 91868,
+      "sha256": "1d84911a294c11838eb418bd96796caaed4f2a28a0d87b61beedcfe11b3e9baf"
+    },
+    {
+      "path": "src/components/WidgetView.tsx",
+      "bytes": 32948,
+      "sha256": "464de9281fc032a849397c648649b13d490909df849ace72a075a75a2c5a6b67"
+    }
+  ],
+  "newTest": {
+    "path": "tests/e2e/native-layers-rich-display.spec.ts",
+    "bytes": 7598,
+    "sha256": "1e56720dcb60482ef2b10a1f41190089978db8b4c4fc2947c511db8430456b58"
+  },
+  "firstFixtureTest": {
+    "path": ".build/native-layers-rich-display-first.spec.ts",
+    "bytes": 7549,
+    "sha256": "6c1d18daeded5008dbff0ac18b03f4cd1cfb30a3ba45a4996e67d9893ffb6d3e"
+  },
+  "unchangedRuntime": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "bytes": 322679,
+      "sha256": "5d8cb997dd29745add36a3270c40c7c743342a0621da1a001403544e8d651128"
+    },
+    {
+      "path": "src/runtime/engine.ts",
+      "bytes": 7588,
+      "sha256": "9df0fab611180061800d823172452b62ca18bb8a0375666066af9ef6604fb040"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "bytes": 25283,
+      "sha256": "aedf707cf12d3c460271723a86c47a750c670de9b884bb9555131cb35dfa8c1b"
+    },
+    {
+      "path": "src/runtime/inline-frame-runtime.ts",
+      "bytes": 11090,
+      "sha256": "474a0b36fb9170b8aa0b5c8ffaf97c3dac3e9a1557be4bda2cb0b0f48885fa7c"
+    }
+  ],
+  "priorRuntimeManifest": {
+    "path": "research/native-layers-runtime-implementation.json",
+    "bytes": 12247,
+    "sha256": "08b269171e27481bd156504caf62a493c0ee3c3d88b19930ea4ac64dc63eef79"
+  },
+  "red": {
+    "path": "research/native-layers-authoring-review-red-detail.json",
+    "bytes": 10038,
+    "sha256": "dc96d93a6c6fe6fdf0dcd22d76c529338ab15d447dd576f5f72f61595352b720"
+  },
+  "review": {
+    "path": "research/native-layers-authoring-review-green-final.json",
+    "bytes": 6204,
+    "sha256": "e0afd5bf5825743a1c43a04fb8ba2443cc2f4757a54a5862fbe600a09d032add",
+    "checks": {
+      "total": 9,
+      "passed": 9
+    },
+    "blockingFindings": []
+  },
+  "focused": {
+    "path": ".build/native-layers-authoring-rich-focused.json",
+    "bytes": 19051,
+    "sha256": "3cf97415f550dd2341550b3449fdb3e19a0485f2b56a30973c90e2d4b7d1a92d",
+    "total": 49,
+    "passed": 49,
+    "failed": 0
+  },
+  "typecheck": {
+    "path": ".build/native-layers-authoring-rich-typecheck-corrected-fixture.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exitCode": 0
+  },
+  "browser": [
+    {
+      "path": ".build/native-layers-rich-review-first.json",
+      "bytes": 9945,
+      "sha256": "5c25a0f4248b2e0a2d35991ffc9cba45b52f1ce300be147a4164a1e73d421589",
+      "stats": {
+        "startTime": "2026-10-20T07:30:42.880Z",
+        "duration": 8161.703,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "classification": "Fixture rejected before page navigation: undeclared Next column. Fixture corrected, original test bytes retained."
+    },
+    {
+      "path": ".build/native-layers-rich-review-second.json",
+      "bytes": 7183,
+      "sha256": "ad0f0ed334e643e5f5822211aa14297631903a02863cdea403815f5c63b485cf",
+      "stats": {
+        "startTime": "2026-10-20T07:31:34.993Z",
+        "duration": 68761.679,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "classification": "Development page.goto load timed out before behavioral assertions; not counted as rendering/functional pass."
+    },
+    {
+      "path": ".build/native-layers-rich-review-third.json",
+      "bytes": 7175,
+      "sha256": "443b7ec8b19457807831356da6913e3f583964c9ea113f15cf6ad6accc4ce855",
+      "stats": {
+        "startTime": "2026-10-20T07:33:09.772Z",
+        "duration": 68196.444,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "classification": "Development page.goto load timed out before behavioral assertions; not counted as rendering/functional pass."
+    }
+  ],
+  "browserNext": "New single E2E remains pending production candidate execution by parent. No assertion or timeout was relaxed.",
+  "report": {
+    "path": "research/native-layers-authoring-rich-correction.md",
+    "bytes": 3796,
+    "sha256": "7f223ee3b7514f65ef61faa59c831a659fd653bedf82195802a928fde968d834"
+  }
+}

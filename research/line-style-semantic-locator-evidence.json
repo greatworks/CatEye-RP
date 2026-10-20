@@ -1,0 +1,170 @@
+{
+  "status": "complete-frozen",
+  "generatedAt": "2026-10-13T22:51:00.670Z",
+  "scope": "Test and desktop smoke semantic SVG selectors only. No product implementation changes.",
+  "reason": "The line-style renderer now paints fill and stroke as separate SVG paths. Old path locators became ambiguous; exact expected colors, geometry, widths, glyph and interaction behaviors are preserved.",
+  "baseline": {
+    "file": ".build/line-style-e2e-first-full.json",
+    "sha256": "60b4f4cf4c38d05c95fdd0b182de3dafa45ad9653ac955073bcd7ef2f318a576",
+    "stats": {
+      "startTime": "2026-10-13T22:38:23.807Z",
+      "duration": 504021.94999999995,
+      "expected": 197,
+      "skipped": 0,
+      "unexpected": 11,
+      "flaky": 0
+    },
+    "failures": [
+      {
+        "file": "interaction-styles.spec.ts",
+        "title": "preview: real pointer and focus states compose, leave and restore without changing the design",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.preview-overlay').locator('.widget[aria-label=\"Vector effect\"]').locator('path')\nExpected: \u001b[32m\"#35b88a\"\u001b[39m\nError: strict mode violation: locator('.preview-overlay').locator('.widget[aria-label=\"Vector effect\"]').locator('path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#35b88a\" stroke-width=\"4\" data-shadow-fill=\"\" fill-rule=\"nonzero\" d=\"M 9 3.5 L 171 3.5 L 90 66.5 Z\" vector-effect=\"non-scaling-stroke\"></path> aka locator('.widget.runtime-widget > .widget-vector > path').first()\n    2) <path fill=\"none\" stroke=\"#173866\" stroke-width=\"4\" data-line-shaft=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 9 3.5 L 171 3.5 L 90 66.5 L 9 3.5 Z\"></path> aka locator('.widget.runtime-widget > .widget-vector > path:nth-child(2)')\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.preview-overlay').locator('.widget[aria-label=\"Vector effect\"]').locator('path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.preview-overlay').locator('.widget[aria-label=\"Vector effect\"]').locator('path')\u001b[22m\n"
+      },
+      {
+        "file": "interaction-styles.spec.ts",
+        "title": "offline: real pointer and focus states compose, leave and restore without changing the design",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.widget[aria-label=\"Vector effect\"]').locator('path')\nExpected: \u001b[32m\"#35b88a\"\u001b[39m\nError: strict mode violation: locator('.widget[aria-label=\"Vector effect\"]').locator('path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#35b88a\" stroke-width=\"4\" data-shadow-fill=\"\" fill-rule=\"nonzero\" d=\"M 9 3.5 L 171 3.5 L 90 66.5 Z\" vector-effect=\"non-scaling-stroke\"></path> aka locator('path').first()\n    2) <path fill=\"none\" stroke=\"#173866\" stroke-width=\"4\" data-line-shaft=\"\" stroke-dasharray=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 9 3.5 L 171 3.5 L 90 66.5 L 9 3.5 Z\"></path> aka locator('path').nth(1)\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.widget[aria-label=\"Vector effect\"]').locator('path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.widget[aria-label=\"Vector effect\"]').locator('path')\u001b[22m\n"
+      },
+      {
+        "file": "native-caption.spec.ts",
+        "title": "preview: real native form captions retain saved geometry and one-line ink after style recovery, with Required Fields control",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.preview-overlay').locator('.widget[data-widget-id=\"rp-w-784fffad1a36482594f6f965760990d6-521d7ce3a85d4cf0a40f3934f8677b75\"]').locator('svg.widget-vector path')\nExpected: \u001b[32m\"0px\"\u001b[39m\nError: strict mode violation: locator('.preview-overlay').locator('.widget[data-widget-id=\"rp-w-784fffad1a36482594f6f965760990d6-521d7ce3a85d4cf0a40f3934f8677b75\"]').locator('svg.widget-vector path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#ffffff00\" stroke-width=\"0\" data-shadow-fill=\"\" fill-rule=\"nonzero\" vector-effect=\"non-scaling-stroke\" d=\"M 0 0 L 78 0 L 78 16 L 0 16 L 0 0 Z\"></path> aka locator('.widget.runtime-widget > .widget-vector > path').first()\n    2) <path fill=\"none\" stroke=\"#797979\" stroke-width=\"0\" data-line-shaft=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 0 0 L 78 0 L 78 16 L 0 16 L 0 0 Z\"></path> aka locator('.widget.runtime-widget > .widget-vector > path:nth-child(2)').first()\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.preview-overlay').locator('.widget[data-widget-id=\"rp-w-784fffad1a36482594f6f965760990d6-521d7ce3a85d4cf0a40f3934f8677b75\"]').locator('svg.widget-vector path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.preview-overlay').locator('.widget[data-widget-id=\"rp-w-784fffad1a36482594f6f965760990d6-521d7ce3a85d4cf0a40f3934f8677b75\"]').locator('svg.widget-vector path')\u001b[22m\n"
+      },
+      {
+        "file": "native-caption.spec.ts",
+        "title": "offline: real native form captions retain saved geometry and one-line ink after style recovery, with Required Fields control",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.widget[data-widget-id=\"rp-w-784fffad1a36482594f6f965760990d6-521d7ce3a85d4cf0a40f3934f8677b75\"]').locator('svg.widget-vector path')\nExpected: \u001b[32m\"0px\"\u001b[39m\nError: strict mode violation: locator('.widget[data-widget-id=\"rp-w-784fffad1a36482594f6f965760990d6-521d7ce3a85d4cf0a40f3934f8677b75\"]').locator('svg.widget-vector path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#ffffff00\" stroke-width=\"0\" data-shadow-fill=\"\" fill-rule=\"nonzero\" vector-effect=\"non-scaling-stroke\" d=\"M 0 0 L 78 0 L 78 16 L 0 16 L 0 0 Z\"></path> aka locator('path').first()\n    2) <path fill=\"none\" stroke=\"#797979\" stroke-width=\"0\" data-line-shaft=\"\" stroke-dasharray=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 0 0 L 78 0 L 78 16 L 0 16 L 0 0 Z\"></path> aka locator('path').nth(1)\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.widget[data-widget-id=\"rp-w-784fffad1a36482594f6f965760990d6-521d7ce3a85d4cf0a40f3934f8677b75\"]').locator('svg.widget-vector path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.widget[data-widget-id=\"rp-w-784fffad1a36482594f6f965760990d6-521d7ce3a85d4cf0a40f3934f8677b75\"]').locator('svg.widget-vector path')\u001b[22m\n"
+      },
+      {
+        "file": "rp-interactions.spec.ts",
+        "title": "preview: real Tab Menu RP switches panel state and selected styles without losing inherited layout",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.preview-overlay').locator('.widget.box').filter({ hasText: /^Tab 1$/ }).locator('svg.widget-vector path')\nExpected: \u001b[32m\"rgb(129, 211, 248)\"\u001b[39m\nError: strict mode violation: locator('.preview-overlay').locator('.widget.box').filter({ hasText: /^Tab 1$/ }).locator('svg.widget-vector path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#81d3f8\" stroke-width=\"1\" data-shadow-fill=\"\" fill-rule=\"nonzero\" vector-effect=\"non-scaling-stroke\" d=\"M 0 5 C 0 2.1999999999999997 2.1999999999999997 0 5 0 L 135 0 C 137.8 0 140 2.1999999999999997 140 5 L 140 40 L 0 40 L 0 5 Z\"></path> aka getByRole('button', { name: 'box 2f76607a' })\n    2) <path fill=\"none\" stroke=\"#797979\" stroke-width=\"1\" data-line-shaft=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 0 5 C 0 2.1999999999999997 2.1999999999999997 0 5 0 L 135 0 C 137.8 0 140 2.1999999999999997 140 5 L 140 40 L 0 40 L 0 5 Z\"></path> aka getByRole('button', { name: 'box 2f76607a' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.preview-overlay').locator('.widget.box').filter({ hasText: /^Tab 1$/ }).locator('svg.widget-vector path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.preview-overlay').locator('.widget.box').filter({ hasText: /^Tab 1$/ }).locator('svg.widget-vector path')\u001b[22m\n"
+      },
+      {
+        "file": "rp-interactions.spec.ts",
+        "title": "offline: real Tab Menu RP switches panel state and selected styles without losing inherited layout",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCSS\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.widget.box').filter({ hasText: /^Tab 1$/ }).locator('svg.widget-vector path')\nExpected: \u001b[32m\"rgb(129, 211, 248)\"\u001b[39m\nError: strict mode violation: locator('.widget.box').filter({ hasText: /^Tab 1$/ }).locator('svg.widget-vector path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#81d3f8\" stroke-width=\"1\" data-shadow-fill=\"\" fill-rule=\"nonzero\" vector-effect=\"non-scaling-stroke\" d=\"M 0 5 C 0 2.1999999999999997 2.1999999999999997 0 5 0 L 135 0 C 137.8 0 140 2.1999999999999997 140 5 L 140 40 L 0 40 L 0 5 Z\"></path> aka getByRole('button', { name: 'box 2f76607a' })\n    2) <path fill=\"none\" stroke=\"#797979\" stroke-width=\"1\" data-line-shaft=\"\" stroke-dasharray=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 0 5 C 0 2.1999999999999997 2.1999999999999997 0 5 0 L 135 0 C 137.8 0 140 2.1999999999999997 140 5 L 140 40 L 0 40 L 0 5 Z\"></path> aka getByRole('button', { name: 'box 2f76607a' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveCSS\" locator('.widget.box').filter({ hasText: /^Tab 1$/ }).locator('svg.widget-vector path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.widget.box').filter({ hasText: /^Tab 1$/ }).locator('svg.widget-vector path')\u001b[22m\n"
+      },
+      {
+        "file": "vector-editing.spec.ts",
+        "title": "rotated nested point editing at 150% uses adaptive visible geometry and survives save, preview and offline export",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.preview-overlay').locator('.widget[aria-label=\"Nested edited vector\"]').locator('svg path')\nExpected: \u001b[32m\"M 0 0 L 179.99999999999997 10 L 200 100 L 0 100 Z\"\u001b[39m\nError: strict mode violation: locator('.preview-overlay').locator('.widget[aria-label=\"Nested edited vector\"]').locator('svg path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#ffffff\" stroke-width=\"1\" data-shadow-fill=\"\" fill-rule=\"nonzero\" vector-effect=\"non-scaling-stroke\" d=\"M 0 0 L 179.99999999999997 10 L 200 100 L 0 100 Z\"></path> aka locator('.widget.runtime-widget > .widget-vector > path').first()\n    2) <path fill=\"none\" stroke=\"#b8bdc7\" stroke-width=\"1\" data-line-shaft=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 0 0 L 179.99999999999997 10 L 200 100 L 0 100 L 0 0 Z\"></path> aka locator('.widget.runtime-widget > .widget-vector > path:nth-child(2)').first()\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.preview-overlay').locator('.widget[aria-label=\"Nested edited vector\"]').locator('svg path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.preview-overlay').locator('.widget[aria-label=\"Nested edited vector\"]').locator('svg path')\u001b[22m\n"
+      },
+      {
+        "file": "vector.spec.ts",
+        "title": "preview: cubic vector data, holes, fixed strokes, nested rows and live resize survive saved-file export",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.preview-overlay').locator('.widget[aria-label=\"Curved path\"]').locator('svg path')\nExpected: \u001b[32m\"M 0 50 C 0 -25 200 -25 200 50 C 200 125 0 125 0 50 Z\"\u001b[39m\nError: strict mode violation: locator('.preview-overlay').locator('.widget[aria-label=\"Curved path\"]').locator('svg path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#dbeafe\" stroke-width=\"4\" data-shadow-fill=\"\" fill-rule=\"nonzero\" vector-effect=\"non-scaling-stroke\" d=\"M 0 50 C 0 -25 200 -25 200 50 C 200 125 0 125 0 50 Z\"></path> aka getByRole('button', { name: 'Curved path' })\n    2) <path fill=\"none\" stroke=\"#2563eb\" stroke-width=\"4\" data-line-shaft=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 0 50 C 0 -25 200 -25 200 50 C 200 125 0 125 0 50 Z\"></path> aka getByRole('button', { name: 'Curved path' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.preview-overlay').locator('.widget[aria-label=\"Curved path\"]').locator('svg path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.preview-overlay').locator('.widget[aria-label=\"Curved path\"]').locator('svg path')\u001b[22m\n"
+      },
+      {
+        "file": "vector.spec.ts",
+        "title": "offline: cubic vector data, holes, fixed strokes, nested rows and live resize survive saved-file export",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.widget[aria-label=\"Curved path\"]').locator('svg path')\nExpected: \u001b[32m\"M 0 50 C 0 -25 200 -25 200 50 C 200 125 0 125 0 50 Z\"\u001b[39m\nError: strict mode violation: locator('.widget[aria-label=\"Curved path\"]').locator('svg path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#dbeafe\" stroke-width=\"4\" data-shadow-fill=\"\" fill-rule=\"nonzero\" vector-effect=\"non-scaling-stroke\" d=\"M 0 50 C 0 -25 200 -25 200 50 C 200 125 0 125 0 50 Z\"></path> aka getByRole('button', { name: 'Curved path' })\n    2) <path fill=\"none\" stroke=\"#2563eb\" stroke-width=\"4\" data-line-shaft=\"\" stroke-dasharray=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 0 50 C 0 -25 200 -25 200 50 C 200 125 0 125 0 50 Z\"></path> aka getByRole('button', { name: 'Curved path' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.widget[aria-label=\"Curved path\"]').locator('svg path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.widget[aria-label=\"Curved path\"]').locator('svg path')\u001b[22m\n"
+      },
+      {
+        "file": "vector.spec.ts",
+        "title": "library and Inspector create and edit cubic nodes without JSON, preserving normalized geometry after moving, scaling and reopening",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.preview-overlay').locator('.widget[aria-label=\"Path\"]').locator('svg path')\nExpected: \u001b[32m\"M 120 0 C 60 -24 288 90 216 96 L 0 120 Z M 60 30 L 180 30 Z\"\u001b[39m\nError: strict mode violation: locator('.preview-overlay').locator('.widget[aria-label=\"Path\"]').locator('svg path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#ffffff\" stroke-width=\"6\" data-shadow-fill=\"\" fill-rule=\"evenodd\" vector-effect=\"non-scaling-stroke\" d=\"M 120 0 C 60 -24 288 90 216 96 L 0 120 Z M 60 30 L 180 30 Z\"></path> aka locator('.widget.runtime-widget > .widget-vector > path').first()\n    2) <path fill=\"none\" stroke=\"#b8bdc7\" stroke-width=\"6\" data-line-shaft=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 120 0 C 60 -24 288 90 216 96 L 0 120 L 120 0 Z M 60 30 L 180 30 L 60 30 Z\"></path> aka locator('.widget.runtime-widget > .widget-vector > path:nth-child(2)')\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.preview-overlay').locator('.widget[aria-label=\"Path\"]').locator('svg path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.preview-overlay').locator('.widget[aria-label=\"Path\"]').locator('svg path')\u001b[22m\n"
+      },
+      {
+        "file": "vector.spec.ts",
+        "title": "multi-selection edits only the current vector while another path and a text input remain intact",
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.editor-widget.path').last().locator('svg path')\nExpected: \u001b[32m\"M 90 0 L 180 90 L 0 90 Z\"\u001b[39m\nError: strict mode violation: locator('.editor-widget.path').last().locator('svg path') resolved to 2 elements:\n    1) <path stroke=\"none\" fill=\"#ffffff\" stroke-width=\"1\" data-shadow-fill=\"\" fill-rule=\"nonzero\" d=\"M 90 0 L 180 90 L 0 90 Z\" vector-effect=\"non-scaling-stroke\"></path> aka locator('div:nth-child(3) > .widget-vector > path').first()\n    2) <path fill=\"none\" stroke=\"#b8bdc7\" stroke-width=\"1\" data-line-shaft=\"\" data-shadow-stroke=\"\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" vector-effect=\"non-scaling-stroke\" d=\"M 90 0 L 180 90 L 0 90 L 90 0 Z\"></path> aka locator('div:nth-child(3) > .widget-vector > path:nth-child(2)')\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.editor-widget.path').last().locator('svg path') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for locator('.editor-widget.path').last().locator('svg path')\u001b[22m\n"
+      }
+    ]
+  },
+  "files": [
+    {
+      "file": "tests/e2e/native-caption.spec.ts",
+      "sha256": "1dcd768de31232804c8eac053924e6cb1e904d2e65788f20c692e55d2e942509",
+      "reason": "Caption stroke-width checks use [data-shadow-stroke]; transparent fill checks use [data-shadow-fill]. Existing geometry, glyph and font expectations remain."
+    },
+    {
+      "file": "tests/e2e/rp-interactions.spec.ts",
+      "sha256": "3b75836a3decd33eca7996577876e70db9bcf8a9c173b18c72ba037470f7b037",
+      "reason": "Native Tab Menu selected fill checks target [data-shadow-fill]; expected colors and panel states are unchanged."
+    },
+    {
+      "file": "tests/e2e/vector-editing.spec.ts",
+      "sha256": "cdd3e8dd67d95e3094df5735602a2f9566f7da2c8f19b81c966af7b59fba6ebe",
+      "reason": "Saved, nested and adaptive path d checks target [data-shadow-fill]; normalized geometry and transform expectations remain unchanged."
+    },
+    {
+      "file": "tests/e2e/vector.spec.ts",
+      "sha256": "0367b742e89e7e7e9223016167bfeba919c72b46f324d6f10f9f667de5922f34",
+      "reason": "Geometry/fill-rule/fill/hole checks target [data-shadow-fill]; stroke-width/vector-effect use [data-shadow-stroke]. Added independent stroke geometry/color and fill/stroke isolation assertions."
+    },
+    {
+      "file": "scripts/interaction-style-scenario.mjs",
+      "sha256": "057ad76dd6dd9a37f6f9bf0bbf5412e7b581c086bb55bbcbf311cfeb6433ca75",
+      "reason": "Shared interaction-styles E2E and desktop scenario separates fill from stroke-width assertions, retaining exact original expected values."
+    },
+    {
+      "file": "scripts/smoke-gradient-borders.mjs",
+      "sha256": "63c7294325482c05849aad5b4d9634fb65b675037fc11971691126273a7816be",
+      "reason": "Repeater border color checks target [data-shadow-stroke]; line border checks use [data-line-shaft] across line/path representations."
+    },
+    {
+      "file": "scripts/smoke-vector-editing.mjs",
+      "sha256": "691bb5d3a12aacf4e30aa0a8c08ae53a72379e34f979240c102ddedd0bbe71d6",
+      "reason": "Path data, fill-rule and path length checks target [data-shadow-fill], retaining exact geometry and length bounds."
+    },
+    {
+      "file": "scripts/smoke-native-caption.mjs",
+      "sha256": "60dc1f7d22eb4ecc0a2d91553121a551c17a4bd0a5a33a173f27fdbf2d4f8981",
+      "reason": "Separate zero stroke-width from transparent fill checks using the corresponding SVG layers."
+    },
+    {
+      "file": "scripts/smoke-rp-import.mjs",
+      "sha256": "110ae4f0b8d8ef5f1f90b079d5dac06ed275dbe273a9bc7911e55b16e2b138d2",
+      "reason": "Native Tab Menu fill state checks target [data-shadow-fill], retaining original colors."
+    },
+    {
+      "file": "scripts/smoke-rp-shapes-forms.mjs",
+      "sha256": "efd06b1840f4a31c78172b62850c67aa2e7eb77664d7e58fbf3c79f3702fbf41",
+      "reason": "Stored contours, fill-rule and path length checks target [data-shadow-fill], retaining source command sequence and geometry expectations."
+    },
+    {
+      "file": "scripts/smoke-interaction-styles.mjs",
+      "sha256": "3fde640247e4df736967889181daaa2300adf5294a7023ac6b75852289ccecd1",
+      "reason": "Native hover fill check targets [data-shadow-fill]; shared scenario independently checks stroke width."
+    }
+  ],
+  "reviewedUnchanged": [
+    {
+      "file": "tests/e2e/interaction-styles.spec.ts",
+      "sha256": "4c8a56fd1a73d257bc28b91a0f77a2ca4b518d9b4b5d6ee085d01e1c5897fa70",
+      "reason": "Uses the corrected shared scenario; no local path assertion."
+    },
+    {
+      "file": "scripts/smoke-gradients.mjs",
+      "sha256": "659d6381f1441dae781cc34437f2f1e05ef90580678ed8103e50f706831f2f25",
+      "reason": "Already targets the semantic fill or shadow surface; no obsolete ambiguous path assertion."
+    },
+    {
+      "file": "scripts/smoke-shadows.mjs",
+      "sha256": "92ccaaf8d58e13fd12feacd18419264be5b24c89fe35a586e7d7ff6161ba86b2",
+      "reason": "Already targets the semantic fill or shadow surface; no obsolete ambiguous path assertion."
+    }
+  ],
+  "checks": {
+    "typecheck": "npm run typecheck — exit 0",
+    "scriptSyntax": "node --check passed for all eight requested smoke scripts plus scripts/interaction-style-scenario.mjs",
+    "browserCommand": "npx playwright test tests/e2e/interaction-styles.spec.ts:9 tests/e2e/native-caption.spec.ts:122 tests/e2e/rp-interactions.spec.ts:29 tests/e2e/vector-editing.spec.ts:246 tests/e2e/vector.spec.ts --output test-results/line-style-semantic-locators --reporter=list",
+    "browserLog": ".build/line-style-semantic-locators.log",
+    "browserResult": {
+      "mode": "development",
+      "passed": 11,
+      "failed": 0,
+      "totalSeconds": 49.5,
+      "processExitCode": 0,
+      "runnerExited": true,
+      "logSha256": "e5ce95cecf6a03057bba60757c0cd6b949ec1eb4cc3633281b1d35793c94ae3b"
+    }
+  },
+  "limitations": [
+    "Targeted browser run is development mode; parent will run the final complete production suite.",
+    "Packaged smoke scripts were syntax-checked only in this subtask; parent owns the new-package 24-script run.",
+    "The original first production failure report and earlier authoring manifests are not rewritten."
+  ],
+  "finishedAt": "2026-10-13T22:51:22.351Z"
+}

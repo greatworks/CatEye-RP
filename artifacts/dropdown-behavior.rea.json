@@ -1,0 +1,1297 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "cd7e60fc-eb1c-4ab6-9112-2ee11115c8eb",
+  "name": "Dropdown and ListBox behavior",
+  "pages": [
+    {
+      "id": "39982e69-9b3e-42a2-a4d3-ce580d3f5aa4",
+      "name": "Page 1",
+      "width": 1200,
+      "height": 1250,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "single",
+          "type": "select",
+          "name": "Single choice",
+          "text": "",
+          "notes": "",
+          "x": 30,
+          "y": 40,
+          "rotation": 0,
+          "width": 300,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "3a334983-de38-4270-9729-d0dbce1b3403",
+              "event": "change",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "d70a57ea-a64c-4cbb-a027-ea078989fd76",
+                  "type": "setVariable",
+                  "targetId": "Count",
+                  "value": "[[Count+1]]"
+                },
+                {
+                  "id": "6ad4d577-29e6-4ec4-aa33-0983b9bdf5e0",
+                  "type": "setVariable",
+                  "targetId": "Echo",
+                  "value": "[[Widget.single.text]]"
+                }
+              ]
+            }
+          ],
+          "focusedStyle": {
+            "stroke": "#e20f19",
+            "strokeWidth": 2
+          },
+          "options": [
+            "A",
+            "A",
+            "",
+            " ",
+            "B",
+            "[[literal]]",
+            "a\nb"
+          ],
+          "selectedIndices": [
+            0
+          ]
+        },
+        {
+          "id": "multi",
+          "type": "select",
+          "name": "Multiple choices",
+          "text": "",
+          "notes": "",
+          "x": 360,
+          "y": 40,
+          "rotation": 0,
+          "width": 300,
+          "height": 125,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "32516520-7fd7-4e8f-95d3-7ff6c2049e47",
+              "event": "change",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "5a624880-5d0f-4474-9158-33671931a42c",
+                  "type": "setVariable",
+                  "targetId": "Multi",
+                  "value": "[[Multi+1]]"
+                },
+                {
+                  "id": "12b4e777-8f91-4b62-a0e6-04818095dc69",
+                  "type": "setVariable",
+                  "targetId": "MultiEcho",
+                  "value": "[[Widget.multi.text]]"
+                }
+              ]
+            }
+          ],
+          "options": [
+            "A",
+            "A",
+            "",
+            " ",
+            "B",
+            "A,B"
+          ],
+          "selectMode": "listbox",
+          "multiple": true,
+          "selectedIndices": []
+        },
+        {
+          "id": "listbox",
+          "type": "select",
+          "name": "Unselected listbox",
+          "text": "",
+          "notes": "",
+          "x": 690,
+          "y": 40,
+          "rotation": 0,
+          "width": 200,
+          "height": 125,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [],
+          "options": [
+            "First",
+            "Second"
+          ],
+          "selectMode": "listbox",
+          "selectedIndices": []
+        },
+        {
+          "id": "empty",
+          "type": "select",
+          "name": "Empty choices",
+          "text": "",
+          "notes": "",
+          "x": 930,
+          "y": 40,
+          "rotation": 0,
+          "width": 200,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#ffffff",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 1,
+            "radius": 4,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": [],
+          "options": [],
+          "selectedIndices": []
+        },
+        {
+          "id": "0fae01c5-0d5d-4a76-b0ed-5079bb3545d0",
+          "type": "text",
+          "name": "Single count",
+          "text": "[[Count]]",
+          "notes": "",
+          "x": 30,
+          "y": 95,
+          "rotation": 0,
+          "width": 500,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "84478788-e8bb-424b-bf5d-b9bd62168bd4",
+          "type": "text",
+          "name": "Single echo",
+          "text": "[[Echo]]",
+          "notes": "",
+          "x": 30,
+          "y": 140,
+          "rotation": 0,
+          "width": 500,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "3acdba1a-34ce-47b6-8d77-f8ede7d9380b",
+          "type": "text",
+          "name": "Multiple count",
+          "text": "[[Multi]]",
+          "notes": "",
+          "x": 360,
+          "y": 180,
+          "rotation": 0,
+          "width": 500,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "77064fdc-1536-42d9-9a8e-22e0050185ec",
+          "type": "text",
+          "name": "Multiple echo",
+          "text": "[[MultiEcho]]",
+          "notes": "",
+          "x": 360,
+          "y": 225,
+          "rotation": 0,
+          "width": 500,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "9e030956-5d19-4096-9e84-9f9028974196",
+          "type": "button",
+          "name": "Set B",
+          "text": "Set B",
+          "notes": "",
+          "x": 30,
+          "y": 300,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "003f2d73-6559-485f-8c52-60ec9b7d4143",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ec5cb990-26a7-4706-8271-2e22c5f511b8",
+                  "type": "setSelectedOption",
+                  "targetId": "single",
+                  "value": "B"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ed66218c-ea25-4a42-a857-77fcf49ba1dc",
+          "type": "button",
+          "name": "Set A",
+          "text": "Set A",
+          "notes": "",
+          "x": 260,
+          "y": 300,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "2cde36b9-dd24-454c-8eec-7177d49720f3",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ca9dfb4c-95f2-4f4a-96f7-e3040c019ac5",
+                  "type": "setSelectedOption",
+                  "targetId": "single",
+                  "value": "A"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e8594cac-eca5-4f48-b746-97b82bbbf1d5",
+          "type": "button",
+          "name": "Set missing",
+          "text": "Set missing",
+          "notes": "",
+          "x": 490,
+          "y": 300,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "ebc8743a-ea87-4958-939b-70fd1cc1e172",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "1a77f2ae-0f69-4c43-8477-edc358442465",
+                  "type": "setSelectedOption",
+                  "targetId": "single",
+                  "value": "missing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "03ddf9e4-3186-4dc2-8900-f062a25ab347",
+          "type": "button",
+          "name": "Set blank",
+          "text": "Set blank",
+          "notes": "",
+          "x": 720,
+          "y": 300,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "51b2e9f9-12dd-4d4f-bf97-98978dea0fc0",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ec98b50c-d4b5-4e62-b5ef-c2d6f3898a89",
+                  "type": "setSelectedOption",
+                  "targetId": "single",
+                  "value": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "07b40caa-5d5e-4e33-b17a-4dbe1be0e457",
+          "type": "button",
+          "name": "Set space",
+          "text": "Set space",
+          "notes": "",
+          "x": 950,
+          "y": 300,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "0549029b-6ece-4efe-9ee2-7cdb780125e4",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "8d188a77-6583-41fe-b5c6-d22cb8a4881f",
+                  "type": "setSelectedOption",
+                  "targetId": "single",
+                  "value": " "
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f4ead110-1801-4185-bae5-c7b761db44de",
+          "type": "button",
+          "name": "Set Text no-op",
+          "text": "Set Text no-op",
+          "notes": "",
+          "x": 30,
+          "y": 355,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "401e8c1b-8e0f-44fc-ab30-90602dd18427",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "4dc7d450-85f4-4c93-be75-16642215d2a3",
+                  "type": "setText",
+                  "targetId": "single",
+                  "value": "B"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b00f16dc-323f-4122-bb63-cb0b5434c718",
+          "type": "button",
+          "name": "Refresh display",
+          "text": "Refresh display",
+          "notes": "",
+          "x": 260,
+          "y": 355,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "62e04f74-2c8b-4a32-ad8f-db198cd37290",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "a87afc43-a815-4cad-8b97-eec0f961a345",
+                  "type": "setVariable",
+                  "targetId": "Tick",
+                  "value": "[[Tick+1]]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0527cb71-1f01-4564-8c90-5cc9903b13db",
+          "type": "button",
+          "name": "Disable and set B",
+          "text": "Disable and set B",
+          "notes": "",
+          "x": 490,
+          "y": 355,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "aee9cda0-d605-4841-bdfd-5510f51a4d1e",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "711f293e-9f37-4433-bb34-38c142081690",
+                  "type": "disable",
+                  "targetId": "single"
+                },
+                {
+                  "id": "3a6e66b7-6e9a-4022-a7c8-c5b2566090a8",
+                  "type": "setSelectedOption",
+                  "targetId": "single",
+                  "value": "B"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2db4943d-0e03-498e-97a9-537e2212211d",
+          "type": "button",
+          "name": "Enable choice",
+          "text": "Enable choice",
+          "notes": "",
+          "x": 720,
+          "y": 355,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "cee8c2b7-0334-434e-adce-c2fbb3db78f2",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "dfe4fe9c-a182-4bf5-a8bd-f5d6afe92f15",
+                  "type": "enable",
+                  "targetId": "single"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "58e453f5-9676-4ca7-9ecb-f1ea7161fb95",
+          "type": "button",
+          "name": "Focus choice",
+          "text": "Focus choice",
+          "notes": "",
+          "x": 950,
+          "y": 355,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "bb4dedad-dbe4-4b26-8fb2-fd9f2e652e28",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "11a59850-501b-41d2-bde2-2203906b1c36",
+                  "type": "setFocus",
+                  "targetId": "single",
+                  "selectText": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "86342d67-ce40-4f50-b9e6-a86b8f5c0b71",
+          "type": "button",
+          "name": "Multi set A",
+          "text": "Multi set A",
+          "notes": "",
+          "x": 30,
+          "y": 410,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "f901cd5d-a515-4692-88d4-3ae98548fa4c",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "b0ef821b-d971-4a85-8d14-322281473c4b",
+                  "type": "setSelectedOption",
+                  "targetId": "multi",
+                  "value": "A"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d646aefe-2686-4d4b-bba7-03d8a71cb113",
+          "type": "button",
+          "name": "Multi set comma",
+          "text": "Multi set comma",
+          "notes": "",
+          "x": 260,
+          "y": 410,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "8f361fdc-3e68-4f3f-8c64-ef08d5636e20",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "40a9c22f-9737-4f8c-82f1-600cfa78c702",
+                  "type": "setSelectedOption",
+                  "targetId": "multi",
+                  "value": "A,B"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ede647db-3879-4660-b2cd-621a672021f4",
+          "type": "button",
+          "name": "Multi set blank",
+          "text": "Multi set blank",
+          "notes": "",
+          "x": 490,
+          "y": 410,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "84a359a9-f405-46e3-9122-411ce8ff7c13",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "9244d42b-8da4-45f3-91a9-2367c3b994b0",
+                  "type": "setSelectedOption",
+                  "targetId": "multi",
+                  "value": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d4f16915-22a7-4666-9149-1ee910d08a31",
+          "type": "button",
+          "name": "Hide choices",
+          "text": "Hide choices",
+          "notes": "",
+          "x": 720,
+          "y": 410,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "296b4568-a8a0-44f4-9f2a-c8c4e08d095b",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "c9c1916b-ee3f-4b68-b852-ef8601888db9",
+                  "type": "hide",
+                  "targetId": "single"
+                },
+                {
+                  "id": "8f92922d-f081-419e-bfd6-b173e63c3c1f",
+                  "type": "hide",
+                  "targetId": "multi"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "81095020-5133-4ece-89f3-cf243edd4bce",
+          "type": "button",
+          "name": "Show choices",
+          "text": "Show choices",
+          "notes": "",
+          "x": 950,
+          "y": 410,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "86ebe982-c827-4c2d-a768-abf3956eeca1",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "ef3b4cb8-bb50-44b9-a9d1-569001f3edbf",
+                  "type": "show",
+                  "targetId": "single"
+                },
+                {
+                  "id": "ee4559f7-124c-4206-8231-bcfadadd1da1",
+                  "type": "show",
+                  "targetId": "multi"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "004c0695-1c55-40fb-8b5f-b5e29288fe6e",
+          "type": "repeater",
+          "name": "Choice rows",
+          "text": "",
+          "notes": "",
+          "x": 30,
+          "y": 515,
+          "rotation": 0,
+          "width": 650,
+          "height": 210,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "First"
+              },
+              {
+                "Name": "Second"
+              }
+            ],
+            "template": [
+              {
+                "id": "row-choice",
+                "type": "select",
+                "name": "Row choice",
+                "text": "",
+                "notes": "",
+                "x": 10,
+                "y": 5,
+                "rotation": 0,
+                "width": 200,
+                "height": 38,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#ffffff",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 1,
+                  "radius": 4,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "left",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "ad814cae-5b45-4c15-9668-a7b3ade49669",
+                    "event": "change",
+                    "name": "Run",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "1cce7956-417d-4cd7-a2fb-1565d06d7ae8",
+                        "type": "setVariable",
+                        "targetId": "Row",
+                        "value": "[[Item.index]]:[[Widget.row-choice.text]]"
+                      }
+                    ]
+                  }
+                ],
+                "options": [
+                  "One",
+                  "One",
+                  "Two"
+                ],
+                "selectedIndices": [
+                  0
+                ]
+              }
+            ],
+            "itemHeight": 50,
+            "gap": 0,
+            "itemWidth": 264,
+            "layout": "vertical",
+            "fitToContent": true
+          }
+        },
+        {
+          "id": "de9385d1-36cf-4bf5-90c8-015b6bc820de",
+          "type": "text",
+          "name": "Row echo",
+          "text": "[[Row]]",
+          "notes": "",
+          "x": 760,
+          "y": 515,
+          "rotation": 0,
+          "width": 500,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "left",
+            "opacity": 1
+          },
+          "interactions": []
+        },
+        {
+          "id": "9cd63dc3-cbcb-42ed-bf98-272367819dfd",
+          "type": "button",
+          "name": "Refresh rows",
+          "text": "Refresh rows",
+          "notes": "",
+          "x": 30,
+          "y": 735,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "76003287-cb96-4dfc-b053-005466ddfd1b",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "178e23c2-3511-457d-b794-d7c70f8e3569",
+                  "type": "sortRows",
+                  "targetId": "004c0695-1c55-40fb-8b5f-b5e29288fe6e",
+                  "value": "Name"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7d429968-5a62-4206-a959-4bd2368459c7",
+          "type": "button",
+          "name": "Other page",
+          "text": "Other page",
+          "notes": "",
+          "x": 260,
+          "y": 735,
+          "rotation": 0,
+          "width": 205,
+          "height": 38,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "cbda1800-8707-4003-855c-953c310e7e6b",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "26511240-7e6f-47f2-85f4-ac00fc77f7ab",
+                  "type": "openPage",
+                  "targetId": "bfd30462-0cdd-4815-a4f9-3d9fa403617b"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    },
+    {
+      "id": "bfd30462-0cdd-4815-a4f9-3d9fa403617b",
+      "name": "Other",
+      "width": 1200,
+      "height": 900,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "ac42577f-d862-4bf7-b41c-8628ed598e1f",
+          "type": "button",
+          "name": "Back to choices",
+          "text": "Back to choices",
+          "notes": "",
+          "x": 30,
+          "y": 40,
+          "rotation": 0,
+          "width": 220,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "2cf79117-88c8-406b-95ff-fa6ff89574d0",
+              "event": "click",
+              "name": "Run",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "66a61615-79a1-45d5-9002-53c436eeb21b",
+                  "type": "openPage",
+                  "targetId": "39982e69-9b3e-42a2-a4d3-ce580d3f5aa4"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {
+    "Count": "0",
+    "Multi": "0",
+    "Echo": "",
+    "MultiEcho": "",
+    "Tick": "0",
+    "Row": ""
+  },
+  "styles": []
+}

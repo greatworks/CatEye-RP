@@ -1,0 +1,33 @@
+{
+  "recordedAt": "2026-10-15T10:03:35.352Z",
+  "version": "Axure RP 11.0.0.4150",
+  "authorizedByUser": true,
+  "observations": [
+    {
+      "operation": "list_windows",
+      "result": "One AxureRP11.exe window, title Untitled, ID 48763180"
+    },
+    {
+      "operation": "get_window_state text-only",
+      "result": "window is minimized; call activate_window, refresh with get_window, then retry get_window_state"
+    },
+    {
+      "operation": "activate_window/get_window/get_window_state screenshot+text",
+      "result": "FrameArrived timed out: timed out waiting on channel"
+    },
+    {
+      "operation": "fresh list_windows/get_window/get_window_state text-only",
+      "result": "Untitled editor tree with File/Edit/View/Project/Arrange/Publish/Team/Account/Help; no account dialog observed"
+    },
+    {
+      "operation": "click Project element 13 from the fresh tree",
+      "result": "coordinate input geometry is unavailable"
+    }
+  ],
+  "originalWindowObserved": true,
+  "originalCanvasInteractionsVerified": false,
+  "originalPixelsCompared": false,
+  "originalTestProjectCreated": false,
+  "nativeInputStoppedAfterFailure": true,
+  "limitation": "Windows Computer Use bridge capture/input geometry failed. Static and controlled retained-function probes are separate evidence, not original GUI validation."
+}

@@ -1,0 +1,186 @@
+{
+  "target": "Axure RP 11.0.0.4150",
+  "method": "Exact hash-pinned original function slices in Node VM; DOM/CSS, measurements, parent-panel layout, event action bodies and animation queue are explicit dependency stubs. No original app/GUI/browser rendering.",
+  "validation": {
+    "passed": 18,
+    "originalAppExecuted": false,
+    "originalGuiExecuted": false,
+    "browserPixelsMeasured": false,
+    "productFilesChanged": false
+  },
+  "contract": {
+    "sequence": [
+      "record old unrotated bounds",
+      "type gate",
+      "logical requested-size cache if width or height truthy",
+      "graphic/owner CSS write",
+      "parent fit",
+      "annotation",
+      "synthetic onResize",
+      "clear resizing rects",
+      "alignment direct move",
+      "move queue",
+      "synthetic onMove",
+      "clone cleanup",
+      "registration"
+    ],
+    "doubleZero": "CSS0x0 but previous logical size cache survives",
+    "fractional": "Unrounded requested cache and raw relative position deltas",
+    "negative": "No clamp in inspected query layer; browser used behavior not probed",
+    "rotation": "Owner rotation unchanged; alignment deltas in containing-coordinate axes",
+    "parentFit": "Before alignment move; no default second fit callback",
+    "reentrant": "Synchronous resize processing may alter geometry before subsequent alignment move",
+    "typeBoundary": "Only resizable ordinary VectorShape path recommended; emitted native flags alone are insufficient"
+  },
+  "sources": [
+    {
+      "file": "expr.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "file": "move.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/move.js",
+      "sha256": "c823954b5ed5862d56176b8984837e8f26588540ee4768d4483d68a399b95644"
+    },
+    {
+      "file": "visibility.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53"
+    },
+    {
+      "file": "events.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "file": "repeater.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b"
+    }
+  ],
+  "extraSources": [
+    {
+      "file": "axQuery.std.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "excerpts": [
+        {
+          "start": 75,
+          "end": 81,
+          "text": "    $ax.public.fn.IsResizable = function (type) { return $.inArray(type, RESIZABLE_TYPES) !== -1; }\n    var RESIZABLE_TYPES = [\n        $ax.constants.BUTTON_TYPE, $ax.constants.DYNAMIC_PANEL_TYPE, $ax.constants.IMAGE_BOX_TYPE, $ax.constants.IMAGE_MAP_REGION_TYPE,\n        $ax.constants.INLINE_FRAME_TYPE, $ax.constants.LAYER_TYPE, $ax.constants.LIST_BOX_TYPE, $ax.constants.COMBO_BOX_TYPE,\n        $ax.constants.VECTOR_SHAPE_TYPE, $ax.constants.TEXT_AREA_TYPE, $ax.constants.TEXT_BOX_TYPE, $ax.constants.SNAPSHOT_TYPE\n        //, $ax.constants.REFERENCE_DIAGRAM_OBJECT_TYPE\n    ];"
+        },
+        {
+          "start": 455,
+          "end": 482,
+          "text": "    }\n    //move one widget.  I didn't combine moveto and moveby, since this is in .public, and separate them maybe more clear for the user\n    var _move = function (elementId, x, y, options, moveTo) {\n        if(!options.easing) options.easing = 'none';\n        if(!options.duration) options.duration = 500;\n        var obj = $obj(elementId);\n\n        // Layer move using container now.\n        if($ax.public.fn.IsLayer(obj.type)) {\n            $ax.move.MoveWidget(elementId, x, y, options, moveTo,\n                function () {\n                    if(options.onComplete) options.onComplete();\n                    $ax.dynamicPanelManager.fitParentPanel(elementId);\n                }, false);\n        } else {\n            var xDelta = x;\n            var yDelta = y;\n            if (moveTo) {\n                var jobj = $jobj(elementId);\n                var left = $ax.getNumFromPx(jobj.css('left'));\n                var top = $ax.getNumFromPx(jobj.css('top'));\n                xDelta = x - left;\n                yDelta = y - top;\n            }\n            $ax.move.MoveWidget(elementId, xDelta, yDelta, options, false,\n                function () { $ax.dynamicPanelManager.fitParentPanel(elementId); }, true);\n        }\n    };"
+        },
+        {
+          "start": 1325,
+          "end": 1371,
+          "text": "    var _boundingRectForIds = function(childIds) {\n        // Default size\n        var childrenBoundingRect = { left: childIds.length > 0 ? 99999 : 0, top: childIds.length > 0 ? 99999 : 0, right: 0, bottom: 0 };\n        for (var i = 0; i < childIds.length; i++) {\n            var childId = childIds[i];\n            var childObj = $obj(childId);\n\n            if (!childObj) continue;\n\n            // Ignore fixed and hidden\n            if ($ax.visibility.limboIds[childId] ||\n                !$ax.visibility.IsIdVisible(childId) ||\n                $ax.public.fn.IsDynamicPanel(childObj.type) && childObj.fixedHorizontal) continue;\n\n            var boundingRect = $ax('#' + childId).offsetBoundingRect();\n\n            // Ignore empty groups\n            if ($ax.public.fn.IsLayer(childObj.type) && boundingRect.width == 0 && boundingRect.height == 0) continue;\n\n            childrenBoundingRect.left = Math.min(childrenBoundingRect.left, boundingRect.left);\n            childrenBoundingRect.top = Math.min(childrenBoundingRect.top, boundingRect.top);\n            childrenBoundingRect.right = Math.max(childrenBoundingRect.right, boundingRect.right);\n            childrenBoundingRect.bottom = Math.max(childrenBoundingRect.bottom, boundingRect.bottom);\n        }\n        childrenBoundingRect.width = childrenBoundingRect.right - childrenBoundingRect.left;\n        childrenBoundingRect.height = childrenBoundingRect.bottom - childrenBoundingRect.top;\n\n        return _populateBoundingRect(childrenBoundingRect);\n    }\n\n    $ax.public.fn.getPageSize = function() {\n        var containerQuery = $('#base');\n        var children = containerQuery.children();\n        var childIds = [];\n        for (var i = 0; i < children.length; i++) {\n            var child = $(children[i]);\n            var childId = child.attr('id');\n            childIds.push(childId);\n        }\n\n        return _boundingRectForIds(childIds);\n    }\n\n    $ax.public.fn.childrenBoundingRect = function () {        \n        var childIds = this.getChildren()[0].children;\n        return _boundingRectForIds(childIds);\n    };"
+        },
+        {
+          "start": 1512,
+          "end": 1547,
+          "text": "        if (resizedSize) {\n            size = resizedSize;\n        } else if (element && element.getAttribute('data-width')) {\n            size = {\n                width: Number(element.getAttribute('data-width')),\n                height: Number(element.getAttribute('data-height'))\n            };\n        } else if($obj(elementId)) {\n            state = state || $ax.style.generateState(elementId);\n            style = style || $ax.style.computeFullStyle(elementId, state, $ax.adaptive.currentViewId);\n            size = { width: style.size.width, height: style.size.height };\n\n            var oShadow = style.outerShadow;\n\n            if (oShadow.on && !ignoreOuterShadow) {\n                if (oShadow.offsetX < 0) size.width -= oShadow.offsetX;\n                else size.width += oShadow.offsetX;\n                if (oShadow.offsetY < 0) size.height -= oShadow.offsetY;\n                else size.height += oShadow.offsetY;\n\n                size.width += oShadow.blurRadius;\n                size.height += oShadow.blurRadius;\n            }\n        } else {\n            initTrapIfNeeded();\n            size = { width: displayObj.outerWidth(), height: displayObj.outerHeight() };\n        }\n        \n        var fixed = _fixedLocation(elementId, size);\n        if(fixed.valid) {\n            position.left = fixed.left;\n            position.top = fixed.top;\n        }\n\n        var boundingRect = {\n            left: position.left,"
+        },
+        {
+          "start": 1628,
+          "end": 1631,
+          "text": "    $ax.public.fn.size = function ({ ignoreRotation = true, ignoreOuterShadow = true } = {}) {\n        var boundingRect = this.offsetBoundingRect(ignoreRotation, ignoreOuterShadow, true);\n        return boundingRect ? boundingRect.size : undefined;\n    };"
+        }
+      ]
+    },
+    {
+      "file": "events.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3",
+      "excerpts": [
+        {
+          "start": 281,
+          "end": 404,
+          "text": "    var _handleEvent = $ax.event.handleEvent = function (elementId, eventInfo, axEventObject, skipShowDescriptions, synthetic) {\n        var eventType = axEventObject.eventType;\n        if(_enteredWidgets[elementId] && eventType == 'OnMouseEnter') return; // Suppress entering a widget when already in widget (ie only)\n        if(_isSuppressedEvent(elementId, eventType)) {\n            _removeSuppressedEvent(elementId, eventType);\n            return;\n        }\n\n        if(axEventObject.proxy) {\n            var firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                var firingObj = $obj(firingId);\n                var nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                eventInfo = $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), false, firingId);\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n//        var x = JSON.stringify(eventInfo);\n//        var y = JSON.stringify(axEventObject);\n\n        var fireTime = new Date().getTime();\n\n        if(fireTime - eventNestingTime > 100) {\n            eventNestingTime = fireTime;\n            eventNesting = 0;\n        }\n\n        if(eventNesting === 0) {\n            $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, fireTime);\n        }\n\n        eventNesting += 1;\n\n        if (!synthetic && !_getCanClick() && (eventType == 'OnClick' || eventType == 'OnPageClick')) return;\n        // If you are supposed to suppress, do that right away.\n        if(suppressedEventStatus[eventType]) {\n            return;\n        }\n\n        var currentEvent = $ax.getjBrowserEvent();\n        if(!synthetic && currentEvent && currentEvent.originalEvent && currentEvent.originalEvent.handled && !eventInfo.isMasterEvent) return;\n        if(!synthetic && elementId && !$ax.style.getObjVisible(elementId) && _notAllowedInvisible(elementId)) return;\n\n        //if debug\n        var axObj = $obj(elementId);\n        var axObjLabel = axObj ? axObj.label : eventInfo.label;\n        var axObjType = axObj ? axObj.friendlyType : eventInfo.friendlyType;\n        if (!skipShowDescriptions || eventType == 'OnPageLoad') postMessage('axEvent', { 'label': axObjLabel, 'type': axObjType, 'event': axEventObject, 'elementId': $ax.repeater.getScriptIdFromElementId(elementId) });\n\n        var bubble = true;\n        var showCaseDescriptions = !skipShowDescriptions && _shouldShowCaseDescriptions(axEventObject);\n        if(!showCaseDescriptions) {\n            //handle case descriptions\n            var caseGroups = [];\n            var currentCaseGroup = [];\n            caseGroups[0] = currentCaseGroup;\n\n            // Those refreshes not after a wait\n            var guaranteedRefreshes = {};\n\n            var caseGroupIndex = 0;\n            for(var i = 0; i < axEventObject.cases.length; i++) {\n                var currentCase = axEventObject.cases[i];\n                if(currentCase.isNewIfGroup && i != 0) {\n                    caseGroupIndex++;\n                    currentCaseGroup = [];\n                    caseGroups[caseGroups.length] = currentCaseGroup;\n                    // Joon: Isn't caseGroups.length always equal to caseGroupIndex?\n                }\n                currentCaseGroup[currentCaseGroup.length] = currentCase;\n\n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    var action = currentCase.actions[j];\n                    if(action.action == 'wait') break;\n                    if(action.action != 'refreshRepeater') continue;\n                    for(var k = 0; k < action.repeatersToRefresh.length; k++) {\n                        var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[k], eventInfo)[0];\n                        if(id) guaranteedRefreshes[id] = caseGroupIndex;\n                    }\n                }\n            }\n\n            for(var i = 0; i < caseGroups.length; i++) {\n                var groupRefreshes = [];\n                for(var key in guaranteedRefreshes) {\n                    if(guaranteedRefreshes[key] == i) groupRefreshes[groupRefreshes.length] = key;\n                }\n                bubble = _handleCaseGroup(eventInfo, caseGroups[i], groupRefreshes) && bubble;\n            }\n        } else {\n            _showCaseDescriptions(elementId, eventInfo, axEventObject, synthetic);\n            bubble = false;\n        }\n\n        // If not handled, synthetically bubble if you can\n        if(bubble && _widgetToFocusParent[elementId]) {\n            firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                firingObj = $obj(firingId);\n                nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n\n        // Only trigger a supression if it handled this event\n        if(!bubble && suppressingEvents[eventType]) {\n            suppressedEventStatus[suppressingEvents[eventType]] = true;\n        }\n\n        $ax.action.flushAllResizeMoveActions(eventInfo);\n\n        // This should not be needed anymore. All refreshes should be inserted, or handled earlier.\n        var repeaters = $ax.deepCopy($ax.action.repeatersToRefresh);\n        while($ax.action.repeatersToRefresh.length) $ax.action.repeatersToRefresh.pop();\n        for(i = 0; i < repeaters.length; i++) $ax.repeater.refreshRepeater(repeaters[i], eventInfo);\n\n        if(currentEvent && currentEvent.originalEvent) {\n            currentEvent.originalEvent.handled = !synthetic && !bubble && allowBubble.indexOf(eventType) == -1;\n            //currentEvent.originalEvent.donotdrag = currentEvent.donotdrag || (!bubble && eventDescription == 'OnMouseDown');\n"
+        },
+        {
+          "start": 563,
+          "end": 588,
+          "text": "                        }\n                    }\n                }\n\n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    var action = currentCase.actions[j];\n                    if(action.action == 'wait') break;\n                    if(action.action != 'refreshRepeater') continue;\n                    for(var k = 0; k < action.repeatersToRefresh.length; k++) {\n                        var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[i], eventInfo)[i];\n                        if(id) {\n                            var index = groupRefreshes.indexOf(id);\n                            if(index != -1) $ax.splice(groupRefreshes, index);\n                        }\n                    }\n                }\n\n                // Any guaranteed refreshes that aren't accounted for must be run still.\n                $ax.action.tryRefreshRepeaters(groupRefreshes, eventInfo);\n\n                $ax.action.dispatchAction(eventInfo, currentCase.actions);\n                return false;\n            }\n        }\n\n        // Any guaranteed refreshes that aren't accounted for must be run still."
+        }
+      ]
+    },
+    {
+      "file": "action.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "excerpts": [
+        {
+          "start": 76,
+          "end": 112,
+          "text": "    var _fireAnimationFromQueue = _action.fireAnimationFromQueue = function (id, type) {\n        _removeAnimationFromQueue(id, type);\n\n        // Fire the next func if there is one\n        var func = getAnimation(id, type);\n        if(func && !_checkFireActionGroup(id, type, func)) func();\n    };\n\n    var _removeAnimationFromQueue = _action.removeAnimationFromQueue = function (id, type) {\n        if (animationQueue[id] && animationQueue[id][type]) $ax.splice(animationQueue[id][type], 0, 1);\n    }\n\n    var _checkFireActionGroup = function(id, type, func) {\n        var group = actionToActionGroups[id];\n        group = group && group[type];\n        if (!group || group.length == 0) return false;\n\n        var animations = group[0];\n        var found = false;\n        for (var i = 0; i < animations.length; i++) {\n            var animation = animations[i];\n            if (animation.id == id && animation.type == type) {\n                found = func == animation.func;\n                break;\n            }\n        }\n\n        // if found then update this action group, otherwise, keep waiting for right action to fire\n        if(!found) return false;\n        $ax.splice(group, 0, 1);\n        var count = animationsToCount[animations.id] + 1;\n        if(count != animations.length) {\n            animationsToCount[animations.id] = count;\n            return true;\n        }\n        delete animationsToCount[animations.id];\n"
+        },
+        {
+          "start": 351,
+          "end": 378,
+          "text": "    var _dispatchAction = $ax.action.dispatchAction = function(eventInfo, actions, currentIndex) {\n        currentIndex = currentIndex || 0;\n        //If no actions, you can bubble\n        if(currentIndex >= actions.length) return;\n        //actions are responsible for doing their own dispatching\n        _actionHandlers[actions[currentIndex].action](eventInfo, actions, currentIndex);\n    };\n\n    _actionHandlers.wait = function(eventInfo, actions, index) {\n        var action = actions[index];\n        var infoCopy = $ax.eventCopy(eventInfo);\n        window.setTimeout(function() {\n            infoCopy.now = new Date();\n            infoCopy.idToResizeMoveState = undefined;\n            _dispatchAction(infoCopy, actions, index + 1);\n            _action.flushAllResizeMoveActions(infoCopy);\n        }, action.waitTime);\n    };\n\n    _actionHandlers.expr = function(eventInfo, actions, index) {\n        var action = actions[index];\n\n        $ax.expr.evaluateExpr(action.expr, eventInfo); //this should be a block\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    _actionHandlers.setFunction = _actionHandlers.expr;"
+        }
+      ]
+    },
+    {
+      "file": "repeater.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "excerpts": [
+        {
+          "start": 2022,
+          "end": 2078,
+          "text": "    var _updateFitPanel = function(panelId, stateIndex) {\n        if(!panelId) return false;\n\n        // Only fit if fitToContent is true\n        if(!$ax.dynamicPanelManager.isIdFitToContent(panelId)) return false;\n\n        // Traverse through children to find what size it should be.\n        var stateId = $ax.repeater.applySuffixToElementId(panelId, '_state' + stateIndex);\n\n        var stateContentId = stateId + '_content';\n        var stateQuery = $jobj(stateId);\n\n        //var size = getContainerSize(stateContentId);\n        var childrenRect = $ax('#' + stateContentId).childrenBoundingRect();\n        var size = {width: childrenRect.right, height: childrenRect.bottom};\n        \n        // Skip if size hasn't changed\n        var computedStyle = getComputedStyle(stateQuery[0]);\n        var oldWidth = $ax.getNumFromPx(computedStyle.width);\n        var oldHeight = $ax.getNumFromPx(computedStyle.height);\n        var borderRight = $ax.getNumFromPx(computedStyle.borderRightWidth);\n        var borderTop = $ax.getNumFromPx(computedStyle.borderTopWidth);\n        var borderLeft = $ax.getNumFromPx(computedStyle.borderLeftWidth);\n        var borderBottom = $ax.getNumFromPx(computedStyle.borderBottomWidth);\n        if(oldWidth == size.width && oldHeight== size.height) return false;\n\n        var isPercentWidth = $obj(panelId).percentWidth;\n        if(!isPercentWidth) stateQuery.width(size.width - borderRight - borderLeft);\n\n        var oldBoundingRect = $ax('#' + panelId).offsetBoundingRect(true, true);\n        $ax.visibility.setResizingRect(panelId, oldBoundingRect);\n        stateQuery.height(size.height - borderTop - borderBottom);\n\n        //updatePercentWidth on all child panels\n        $jobj(stateContentId).children('.ax_dynamic_panel').each(\n            function() { _updatePanelPercentWidth(this.id); }\n        );\n\n        //do the following only if it is the current state\n        if (stateId != $ax.visibility.GetPanelState(panelId)) {\n            $ax.visibility.clearMovedAndResizedIds(panelId);\n            return false;\n        }\n\n        //var panelQuery = $jobj(panelId);\n        //if (!isPercentWidth) panelQuery.attr('data-width', size.width);\n        //panelQuery.attr('data-height', size.height);\n        $ax.visibility.setResizedSize(panelId, isPercentWidth ? $ax('#' + panelId).width() : size.width, size.height);\n\n        _adjustFixed(panelId, oldWidth, oldHeight, size.width, size.height);\n        \n        $ax.event.raiseSyntheticEvent(panelId, 'onResize');\n        $ax.visibility.clearMovedAndResizedIds(panelId);\n        $ax.flyoutManager.updateFlyout(panelId);\n\n        return true;\n    };"
+        }
+      ]
+    }
+  ],
+  "reused": [
+    {
+      "file": "research/runtime-text-autofit-plan.md",
+      "sha256": "2ac5a57eaa54bec880bb8771e0bd4a3b84fe3a2edc31652c5b937ba92aaac819",
+      "bytes": 7214
+    },
+    {
+      "file": "research/runtime-text-autofit-bridge-evidence.md",
+      "sha256": "8e3d7470fdde13c30f4e2fbef9b28fd34e54259ca586ef97c1dd634ac4af44da",
+      "bytes": 8195
+    },
+    {
+      "file": "research/rotation-runtime-evidence.md",
+      "sha256": "66f36b03c41c05cc08d091f049f4981a70768eec1abe8253d7bbb377c229002e",
+      "bytes": 11594
+    },
+    {
+      "file": "research/repeater-fit-evidence.md",
+      "sha256": "4d1fc5dd2028b05ca2e8aead6c139b29ffadae8cfa77ab76015ea275b3f10fb5",
+      "bytes": 13628
+    },
+    {
+      "file": "research/repeater-row-geometry-evidence.md",
+      "sha256": "d5854a2902e3cce246ff00a337033a2b72186e319a45e390405e76e58f5a00c8",
+      "bytes": 12946
+    },
+    {
+      "file": "research/repeater-box-model-dpr-evidence.md",
+      "sha256": "c5cbc04b1871ddcb3db92abdf29f9b0a42331f701f31ec899150ce66983b12de",
+      "bytes": 10830
+    }
+  ],
+  "limits": [
+    "CSS stub records assignments; does not model browser clamping, used boxes, 1/64 quantization or border-box minimums",
+    "Height/width measurements are injected, not font measurements",
+    "Synthetic event dispatcher is original; handler body is a synchronous snapshot/mutation stub, not full case/menu/Wait execution",
+    "Repeater fit dispatch is original; child bounds and row-size sink are stubbed, not original push layout",
+    "No general transform, fixed panel/layer wrapper DOM, image offsets, parent panel full resize or SVG rendering is probed"
+  ]
+}

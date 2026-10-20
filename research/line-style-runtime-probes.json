@@ -1,0 +1,965 @@
+{
+  "timestamp": "2026-10-13T22:15:03.102Z",
+  "kind": "Exact retained original function slices in Node VM with mocked DOM/CSS sinks; not vendor GUI or browser pixel evidence",
+  "extractionEvidence": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "sources": [
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "file": "math.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\math.js",
+      "sha256": "f56ab4a6c3f6e91aaba9bebf2e81485965fc82bca63af0c606593d580c1de883"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "style.js",
+      "start": 349,
+      "end": 592,
+      "sha256": "1a53fd9ccecce185f790a7aa7b7affb0cb09af28668cd46706a6505fc0fa7e49"
+    },
+    {
+      "file": "style.js",
+      "start": 810,
+      "end": 812,
+      "sha256": "3e1b6421a0368c247f06faf08491f10acaf8953765819b05ff59f0942ba50adb"
+    },
+    {
+      "file": "style.js",
+      "start": 1157,
+      "end": 1494,
+      "sha256": "0616c463e7d8833a5f632f299bd6a3f7f26ac95875436ccd16bde1ee3bbbea3a"
+    },
+    {
+      "file": "style.js",
+      "start": 1499,
+      "end": 1628,
+      "sha256": "bd574cf0c6b52b216996d43f7e190893c2f18f4c44b8e17993b387846224ac1f"
+    },
+    {
+      "file": "style.js",
+      "start": 1763,
+      "end": 1915,
+      "sha256": "dc01c29c7c9dfef5e81290a3282d9e9e97d278580d8a3adac0a9467ebcb1dfc0"
+    },
+    {
+      "file": "style.js",
+      "start": 2503,
+      "end": 2532,
+      "sha256": "f292f9ad8903e3de371a13bf65eaa9e8dc5eea9ebaa656d59dd58f4fa08a1a7c"
+    },
+    {
+      "file": "math.js",
+      "start": 30,
+      "end": 44,
+      "sha256": "897b83e95df89d3825f300c29f1b900bdac254efee85ccb04a2876264df16d13"
+    },
+    {
+      "file": "style.js",
+      "start": 750,
+      "end": 751,
+      "sha256": "1ef19c95a2b3a523e0fad9239ba0c2a7edf2814abb3514f4c10ddd1285a7212c"
+    }
+  ],
+  "results": [
+    {
+      "name": "dash entries are width multipliers rather than CSS lengths",
+      "observed": {
+        "css": "#svg .stroke { stroke-width:2.5; stroke-dasharray:7.5,2.5,1.25,2.5; transition: all 0ms; } #svg .arrowhead { stroke-width: 1.5; transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "2.5"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "SVG dashed label alone does not synthesize a dash sequence",
+      "observed": {
+        "css": "#svg .stroke { stroke-width:4; transition: all 0ms; } #svg .arrowhead { stroke-width: 3; transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "4"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "zero width bypasses dash assignment and keeps prior path width attribute",
+      "observed": {
+        "css": "#svg .stroke {  } #svg .arrowhead {  } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "1"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "absent width bypasses dash assignment",
+      "observed": {
+        "css": "#svg .stroke {  } #svg .arrowhead {  } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "1"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "empty dash list emits an empty declaration, not a guessed solid preset",
+      "observed": {
+        "css": "#svg .stroke { stroke-width:4; stroke-dasharray:; transition: all 0ms; } #svg .arrowhead { stroke-width: 3; transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "4"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "odd list and explicit zero entries remain unnormalized",
+      "observed": {
+        "css": "#svg .stroke { stroke-width:4; stroke-dasharray:0,4,8; transition: all 0ms; } #svg .arrowhead { stroke-width: 3; transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "4"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "none overrides stroke width and dash while arrowhead output only clears fill",
+      "observed": {
+        "css": "#svg .stroke { stroke: url(#idee5ce11a9cc94); stroke-width: 0; stroke-dasharray: 0; transition: all 0ms; } #svg .arrowhead { fill: nonetransition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "1"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          },
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "idee5ce11a9cc94",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "open path arrowhead stroke width is current minus original baseline",
+      "observed": {
+        "css": "#svg .stroke { stroke-width:8; transition: all 0ms; } #svg .arrowhead { stroke-width: 5; transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "8"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "shrinking width produces a negative arrowhead CSS delta without clamp",
+      "observed": {
+        "css": "#svg .stroke { stroke-width:3; transition: all 0ms; } #svg .arrowhead { stroke-width: -5; transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "3"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "closed masked path doubles painted width but dash units use requested width",
+      "observed": {
+        "css": "#svg .stroke { stroke-width:8; stroke-dasharray:12,4; transition: all 0ms; } #svg .arrowhead {  } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0 Z",
+              "stroke-width": "8",
+              "mask": "url(#mask)"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "cap join and arrowhead geometry are not rewritten by SVG state painter",
+      "observed": {
+        "css": "#svg .stroke { stroke-width:6; transition: all 0ms; } #svg .arrowhead { stroke-width: 5; transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "6",
+              "stroke-linecap": "round",
+              "stroke-linejoin": "bevel"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "gradient dashed stroke and outer shadow coexist on SVG and arrowhead",
+      "observed": {
+        "css": "#svg .stroke { stroke: url(#id99ded6f39fcd8); stroke-width:4; stroke-dasharray:12,4; transition: all 0ms; } #svg .arrowhead { stroke: url(#id99ded6f39fcd8); fill: url(#id99ded6f39fcd8); stroke-width: 3; transition: all 0ms; } #svg { filter: drop-shadow(2px 3px 4px rgba(undefined, undefined, undefined, undefined)); transition: all 0ms;} ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "4"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          },
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "id99ded6f39fcd8",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "inner shadow targets fill only and does not replace the arrowhead or stroke paint",
+      "observed": {
+        "css": "#svg .stroke { stroke: url(#ide00b972f13364); stroke-width:4; transition: all 0ms; } #svg .arrowhead { stroke: url(#ide00b972f13364); fill: url(#ide00b972f13364); stroke-width: 3; transition: all 0ms; } #svg .fill, #svg .background-image { filter:url('#svginnerShadowFilter');} ",
+        "nodes": [
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 0 0 L 200 0",
+              "stroke-width": "4"
+            }
+          },
+          {
+            "tag": "path",
+            "attrs": {}
+          },
+          {
+            "tag": "path",
+            "attrs": {
+              "d": "M 190 -5 L 200 0 L 190 5 Z",
+              "stroke-width": "0"
+            }
+          },
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "ide00b972f13364",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          },
+          {
+            "tag": "filter",
+            "attrs": {
+              "x": "-50%",
+              "y": "-50%",
+              "width": "200%",
+              "height": "200%",
+              "filterUnits": "objectBoundingBox",
+              "id": "svginnerShadowFilter"
+            }
+          },
+          {
+            "tag": "feOffset",
+            "attrs": {
+              "dx": "1",
+              "dy": "2",
+              "in": "SourceGraphic",
+              "result": "offset",
+              "id": "offset"
+            }
+          },
+          {
+            "tag": "feMorphology",
+            "attrs": {
+              "radius": "4",
+              "operator": "erode",
+              "in": "offset",
+              "result": "morphology",
+              "id": "morphology"
+            }
+          },
+          {
+            "tag": "feGaussianBlur",
+            "attrs": {
+              "stdDeviation": "2",
+              "in": "morphology",
+              "result": "blur",
+              "id": "blur"
+            }
+          },
+          {
+            "tag": "feComposite",
+            "attrs": {
+              "in2": "blur",
+              "operator": "out",
+              "in": "SourceGraphic",
+              "result": "inverse",
+              "id": "inverse"
+            }
+          },
+          {
+            "tag": "feFlood",
+            "attrs": {
+              "flood-color": "rgba(undefined, undefined, undefined, undefined)",
+              "in": "inverse",
+              "result": "color",
+              "id": "color"
+            }
+          },
+          {
+            "tag": "feComposite",
+            "attrs": {
+              "in2": "inverse",
+              "operator": "in",
+              "in": "color",
+              "result": "shadow",
+              "id": "shadow"
+            }
+          },
+          {
+            "tag": "feComposite",
+            "attrs": {
+              "in2": "SourceGraphic",
+              "operator": "over",
+              "in": "shadow"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides none",
+      "observed": {
+        "stroke": {
+          "d": "",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides top",
+      "observed": {
+        "stroke": {
+          "d": "M 0 5 L 200 5",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides right",
+      "observed": {
+        "stroke": {
+          "d": "M 195 0 L 195 100",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides top+right",
+      "observed": {
+        "stroke": {
+          "d": "M 0 5 L 195 5 L 195 100",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides bottom",
+      "observed": {
+        "stroke": {
+          "d": "M 200 95 L 0 95",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides top+bottom",
+      "observed": {
+        "stroke": {
+          "d": "M 200 95 L 0 95 M 0 5 L 200 5",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides right+bottom",
+      "observed": {
+        "stroke": {
+          "d": "M 195 0 L 195 95 L 0 95",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides top+right+bottom",
+      "observed": {
+        "stroke": {
+          "d": "M 0 5 L 195 5 L 195 95 L 0 95",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides left",
+      "observed": {
+        "stroke": {
+          "d": "M 5 100 L 5 0",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides top+left",
+      "observed": {
+        "stroke": {
+          "d": "M 5 100 L 5 5 L 200 5",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides right+left",
+      "observed": {
+        "stroke": {
+          "d": "M 195 0 L 195 100 M 5 100 L 5 0",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides top+right+left",
+      "observed": {
+        "stroke": {
+          "d": "M 5 100 L 5 5 L 195 5 L 195 100",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides bottom+left",
+      "observed": {
+        "stroke": {
+          "d": "M 200 95 L 5 95 L 5 0",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides top+bottom+left",
+      "observed": {
+        "stroke": {
+          "d": "M 200 95 L 5 95 L 5 5 L 200 5",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides right+bottom+left",
+      "observed": {
+        "stroke": {
+          "d": "M 195 0 L 195 95 L 5 95 L 5 0",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle visible sides top+right+bottom+left",
+      "observed": {
+        "stroke": {
+          "d": "M 5 5 L 195 5 L 195 95 L 5 95 L 5 5 Z",
+          "stroke-width": "1",
+          "mask": ""
+        },
+        "fill": {
+          "d": "M 0 0 L 200 0 L 200 100 L 0 100 L 0 0 Z",
+          "mask": ""
+        },
+        "css": "#svg .stroke { stroke-width:10; transition: all 0ms; } #svg .arrowhead {  } "
+      },
+      "pass": true
+    },
+    {
+      "name": "top-only stroke square joins with hidden sides while opposite fill corners remain rounded",
+      "observed": {
+        "stroke": "M 0 5 L 200 5",
+        "fill": "M 0 0 L 200 0 L 200 80 C 200 91.2 191.2 100 180 100 L 20 100 C 8.8 100 0 91.2 0 80 L 0 0 Z"
+      },
+      "pass": true
+    },
+    {
+      "name": "all sides with radius rounds inward stroke and keeps independent full-size fill",
+      "observed": {
+        "stroke": "M 20 5 L 180 5 C 188.4 5 195 11.6 195 20 L 195 80 C 195 88.4 188.4 95 180 95 L 20 95 C 11.6 95 5 88.4 5 80 L 5 20 C 5 11.6 11.6 5 20 5 Z",
+        "fill": "M 20 0 L 180 0 C 191.2 0 200 8.8 200 20 L 200 80 C 200 91.2 191.2 100 180 100 L 20 100 C 8.8 100 0 91.2 0 80 L 0 20 C 0 8.8 8.8 0 20 0 Z"
+      },
+      "pass": true
+    },
+    {
+      "name": "hidden all sides keeps complete rounded fill",
+      "observed": {
+        "stroke": "",
+        "fill": "M 20 0 L 180 0 C 191.2 0 200 8.8 200 20 L 200 80 C 200 91.2 191.2 100 180 100 L 20 100 C 8.8 100 0 91.2 0 80 L 0 20 C 0 8.8 8.8 0 20 0 Z"
+      },
+      "pass": true
+    },
+    {
+      "name": "rectangle path dimensions round to integers before corner and side calculations",
+      "observed": {
+        "stroke": "M 5 5 L 95 5 L 95 46 L 5 46 L 5 5 Z",
+        "fill": "M 0 0 L 100 0 L 100 51 L 0 51 L 0 0 Z"
+      },
+      "pass": true
+    },
+    {
+      "name": "changing side visibility rewrites full paths and removes old corners",
+      "observed": {
+        "first": "M 20 5 L 180 5 C 188.4 5 195 11.6 195 20 L 195 80 C 195 88.4 188.4 95 180 95 L 20 95 C 11.6 95 5 88.4 5 80 L 5 20 C 5 11.6 11.6 5 20 5 Z",
+        "second": "M 0 5 L 200 5"
+      },
+      "pass": true
+    },
+    {
+      "name": "selected dash list overrides hover list atomically and does not affect border color",
+      "observed": {
+        "size": {
+          "width": 200,
+          "height": 100
+        },
+        "stateStyles": {
+          "mouseOver": {
+            "linePatternArray": [
+              3,
+              1
+            ]
+          },
+          "selected": {
+            "linePatternArray": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        },
+        "borderFill": {
+          "fillType": "linearGradient",
+          "startPoint": {
+            "x": 0,
+            "y": 0.5
+          },
+          "endPoint": {
+            "x": 1,
+            "y": 0.5
+          },
+          "stops": [
+            {
+              "offset": 0,
+              "color": 4294901760
+            },
+            {
+              "offset": 1,
+              "color": 2147483903
+            }
+          ]
+        },
+        "linePatternArray": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "image pattern passes CSS keyword verbatim instead of SVG dash array",
+      "observed": [
+        {
+          "border-style": "solid"
+        },
+        {
+          "border-style": "dashed"
+        },
+        {
+          "border-style": "dotted"
+        },
+        {
+          "border-style": "double"
+        },
+        {
+          "border-style": "none"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "image absent or zero-width gate leaves border style unchanged",
+      "observed": [
+        {},
+        {}
+      ],
+      "pass": true
+    }
+  ]
+}

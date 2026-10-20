@@ -1,0 +1,781 @@
+{
+  "timestamp": "2026-10-13T21:21:17.467Z",
+  "kind": "Exact retained function slices in Node VM; mocked DOM/CSS sinks, not original GUI or SVG pixel measurement",
+  "extractionEvidence": "ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7",
+  "sources": [
+    {
+      "file": "style.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "file": "math.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\math.js",
+      "sha256": "f56ab4a6c3f6e91aaba9bebf2e81485965fc82bca63af0c606593d580c1de883"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "style.js",
+      "start": 349,
+      "end": 592,
+      "sha256": "1a53fd9ccecce185f790a7aa7b7affb0cb09af28668cd46706a6505fc0fa7e49"
+    },
+    {
+      "file": "style.js",
+      "start": 1157,
+      "end": 1180,
+      "sha256": "3ca4b31611a5ab6fc71abe7ac20e214f671026c025461b9fa96532783174e3b8"
+    },
+    {
+      "file": "style.js",
+      "start": 1499,
+      "end": 1628,
+      "sha256": "bd574cf0c6b52b216996d43f7e190893c2f18f4c44b8e17993b387846224ac1f"
+    },
+    {
+      "file": "style.js",
+      "start": 1763,
+      "end": 1915,
+      "sha256": "dc01c29c7c9dfef5e81290a3282d9e9e97d278580d8a3adac0a9467ebcb1dfc0"
+    },
+    {
+      "file": "style.js",
+      "start": 2503,
+      "end": 2532,
+      "sha256": "f292f9ad8903e3de371a13bf65eaa9e8dc5eea9ebaa656d59dd58f4fa08a1a7c"
+    },
+    {
+      "file": "math.js",
+      "start": 30,
+      "end": 44,
+      "sha256": "897b83e95df89d3825f300c29f1b900bdac254efee85ccb04a2876264df16d13"
+    }
+  ],
+  "results": [
+    {
+      "name": "linear coordinates scale per dimension and add viewBox origin",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "g",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "-53",
+              "y1": "29",
+              "x2": "297",
+              "y2": "79"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "stops retain original order including duplicates and invalid offsets",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "g",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1.1",
+              "stop-color": "rgba(0, 0, 0, 0)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0.3",
+              "stop-color": "rgba(0, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0.3",
+              "stop-color": "rgba(255, 255, 255, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "-0.1",
+              "stop-color": "rgba(255, 255, 255, 0)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "stop color uses unsigned ARGB alpha independent of fill opacity",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "g",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "same-type default gradient preserves old offsets while changing colors and points",
+      "observed": {
+        "created": false,
+        "css": "#base stop:nth-of-type(1) { stop-color:rgba(255, 0, 0, 1); stop-opacity:1; } #base stop:nth-of-type(2) { stop-color:rgba(0, 0, 255, 0.5019607843137255); stop-opacity:1; } #base stop { transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "base",
+              "x1": "0",
+              "y1": "50",
+              "x2": "140",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "temporary gradient is removed before lookup so next same-count paint recreates offsets",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "g",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0.4",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "different stop count preserves default but creates new temporary gradient",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "base"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0.5"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1"
+            }
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "g",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "different gradient type creates new temporary gradient",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "radialGradient",
+            "attrs": {
+              "id": "base"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1"
+            }
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "g",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "stroke and fill temporary cleanup scopes are independent",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "base"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1"
+            }
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "stroke",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "200",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "radial non-square dimensions determine radii and transform",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "radialGradient",
+            "attrs": {
+              "id": "g",
+              "cx": "100",
+              "cy": "50",
+              "r": "100",
+              "gradientTransform": "matrix(1 0 0 0.5 0 25)",
+              "gradientUnits": "userSpaceOnUse"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "radial axis1 rotation uses physical dimension-scaled direction",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "radialGradient",
+            "attrs": {
+              "id": "g",
+              "cx": "100",
+              "cy": "50",
+              "r": "100",
+              "gradientTransform": "matrix(0 1 -0.5 0 125 -50)",
+              "gradientUnits": "userSpaceOnUse"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "radial viewBox center is rotation and scale pivot",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "radialGradient",
+            "attrs": {
+              "id": "g",
+              "cx": "90",
+              "cy": "57",
+              "r": "100",
+              "gradientTransform": "matrix(1 0 0 0.5 0 28.5)",
+              "gradientUnits": "userSpaceOnUse"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "radial axis2 direction is discarded when length is identical",
+      "observed": [
+        "matrix(1 0 0 0.5 0 25)",
+        "matrix(1 0 0 0.5 0 25)"
+      ],
+      "pass": true
+    },
+    {
+      "name": "radial zero axis1 writes NaN transform",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "radialGradient",
+            "attrs": {
+              "id": "g",
+              "cx": "100",
+              "cy": "50",
+              "r": "50",
+              "gradientTransform": "matrix(NaN NaN NaN NaN NaN NaN)",
+              "gradientUnits": "userSpaceOnUse"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "radial zero axis2 writes singular transform",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "radialGradient",
+            "attrs": {
+              "id": "g",
+              "cx": "100",
+              "cy": "50",
+              "r": "100",
+              "gradientTransform": "matrix(1 0 0 0 0 50)",
+              "gradientUnits": "userSpaceOnUse"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "same-count original radial preserves offsets and updates basis",
+      "observed": {
+        "created": false,
+        "css": "#base stop:nth-of-type(1) { stop-color:rgba(255, 0, 0, 1); stop-opacity:1; } #base stop:nth-of-type(2) { stop-color:rgba(0, 0, 255, 0.5019607843137255); stop-opacity:1; } #base stop { transition: all 0ms; } ",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "radialGradient",
+            "attrs": {
+              "id": "base",
+              "cx": "100",
+              "cy": "50",
+              "r": "100",
+              "gradientTransform": "matrix(1 0 0 0.5 0 25)",
+              "gradientUnits": "userSpaceOnUse"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0.2"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0.8"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "zero length linear endpoints remain identical finite coordinates",
+      "observed": {
+        "created": true,
+        "css": "",
+        "nodes": [
+          {
+            "tag": "defs",
+            "attrs": {}
+          },
+          {
+            "tag": "linearGradient",
+            "attrs": {
+              "id": "g",
+              "gradientUnits": "userSpaceOnUse",
+              "x1": "0",
+              "y1": "50",
+              "x2": "0",
+              "y2": "50"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "0",
+              "stop-color": "rgba(255, 0, 0, 1)"
+            }
+          },
+          {
+            "tag": "stop",
+            "attrs": {
+              "offset": "1",
+              "stop-color": "rgba(0, 0, 255, 0.5019607843137255)"
+            }
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "solid explicitly replaces gradient fill atomically",
+      "observed": {
+        "fillType": "solid",
+        "color": 255,
+        "opacity": 0
+      },
+      "pass": true
+    },
+    {
+      "name": "state absence retains authored gradient",
+      "observed": {
+        "fillType": "linearGradient",
+        "startPoint": {
+          "x": 0,
+          "y": 0.5
+        },
+        "endPoint": {
+          "x": 1,
+          "y": 0.5
+        },
+        "stops": [
+          {
+            "offset": 0,
+            "color": 4294901760
+          },
+          {
+            "offset": 1,
+            "color": 2147483903
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "active selected fill replaces hover fill without merging stops",
+      "observed": {
+        "fillType": "radialGradient"
+      },
+      "pass": true
+    },
+    {
+      "name": "adaptive fill replaces base and selected replaces adaptive",
+      "observed": [
+        "radialGradient",
+        "solid"
+      ],
+      "pass": true
+    },
+    {
+      "name": "absent fill produces an empty style rule",
+      "observed": "#svg .fill {  } ",
+      "pass": true
+    },
+    {
+      "name": "solid fill creates direct rgba CSS and no gradient nodes",
+      "observed": {
+        "css": "#svg .fill { fill:rgba(17, 34, 51, 0.4); transition: all 0ms; } ",
+        "nodes": []
+      },
+      "pass": true
+    }
+  ]
+}

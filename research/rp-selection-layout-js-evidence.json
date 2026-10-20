@@ -1,0 +1,2661 @@
+{
+  "inspection": "Read-only distribution JavaScript; retained excerpts are research evidence, not product code.",
+  "excerpts": [
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/repeater.js",
+      "file": "repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "purpose": "fit eligibility and recursive ancestor updates",
+      "range": [
+        1581,
+        1626
+      ],
+      "lines": [
+        {
+          "line": 1581,
+          "text": "    var _isIdFitToContent = _dynamicPanelManager.isIdFitToContent = function (id) {"
+        },
+        {
+          "line": 1582,
+          "text": "        var obj = $obj(id);"
+        },
+        {
+          "line": 1583,
+          "text": "        if(!obj || !$ax.public.fn.IsDynamicPanel(obj.type) || !obj.fitToContent) return false;"
+        },
+        {
+          "line": 1584,
+          "text": ""
+        },
+        {
+          "line": 1585,
+          "text": "        var jpanel = $jobj(id);"
+        },
+        {
+          "line": 1586,
+          "text": "        return !jpanel.attr('data-notfit');"
+        },
+        {
+          "line": 1587,
+          "text": "    };"
+        },
+        {
+          "line": 1588,
+          "text": ""
+        },
+        {
+          "line": 1589,
+          "text": "    //this function fit parent panel, also check for parent layer or repeaters"
+        },
+        {
+          "line": 1590,
+          "text": "    var _fitParentPanel = function (widgetId) {"
+        },
+        {
+          "line": 1591,
+          "text": ""
+        },
+        {
+          "line": 1592,
+          "text": "        var parentLayerOrRdo = getParentLayerOrRdo(widgetId);"
+        },
+        {
+          "line": 1593,
+          "text": "        if(parentLayerOrRdo) {"
+        },
+        {
+          "line": 1594,
+          "text": "            var isLayer = $ax.public.fn.IsLayer($obj(parentLayerOrRdo).type);"
+        },
+        {
+          "line": 1595,
+          "text": "            if(isLayer) {"
+        },
+        {
+          "line": 1596,
+          "text": "                if(_updateLayerRectCache(parentLayerOrRdo)) _fitParentPanel(parentLayerOrRdo);"
+        },
+        {
+          "line": 1597,
+          "text": "                return;"
+        },
+        {
+          "line": 1598,
+          "text": "            } else {"
+        },
+        {
+          "line": 1599,
+          "text": "                if(_updateRdoRect(parentLayerOrRdo)) _fitParentPanel(parentLayerOrRdo);"
+        },
+        {
+          "line": 1600,
+          "text": "                return;"
+        },
+        {
+          "line": 1601,
+          "text": "            }"
+        },
+        {
+          "line": 1602,
+          "text": "        }"
+        },
+        {
+          "line": 1603,
+          "text": ""
+        },
+        {
+          "line": 1604,
+          "text": "        // Find parent panel if there is one."
+        },
+        {
+          "line": 1605,
+          "text": "        var parentPanelInfo = getParentPanel(widgetId);"
+        },
+        {
+          "line": 1606,
+          "text": "        if(parentPanelInfo) {"
+        },
+        {
+          "line": 1607,
+          "text": "            var parentId = parentPanelInfo.parent;"
+        },
+        {
+          "line": 1608,
+          "text": "            _updateMobileScroll(parentId, parentPanelInfo.stateId, true);"
+        },
+        {
+          "line": 1609,
+          "text": "            if(_updateFitPanel(parentId, parentPanelInfo.state)) _fitParentPanel(parentId);"
+        },
+        {
+          "line": 1610,
+          "text": "            return;"
+        },
+        {
+          "line": 1611,
+          "text": "        }"
+        },
+        {
+          "line": 1612,
+          "text": ""
+        },
+        {
+          "line": 1613,
+          "text": "        // Otherwise, try to get parent repeater"
+        },
+        {
+          "line": 1614,
+          "text": "        var parentRepeaterId = $ax.getParentRepeaterFromElementId(widgetId);"
+        },
+        {
+          "line": 1615,
+          "text": "        var repeaterObj = $obj(parentRepeaterId);"
+        },
+        {
+          "line": 1616,
+          "text": "        if (repeaterObj && widgetId != parentRepeaterId && repeaterObj.repeaterPropMap.fitToContent) {"
+        },
+        {
+          "line": 1617,
+          "text": "            var itemId = $ax.repeater.getItemIdFromElementId(widgetId);"
+        },
+        {
+          "line": 1618,
+          "text": "            var containerId = $ax.repeater.createElementId(parentRepeaterId, itemId);"
+        },
+        {
+          "line": 1619,
+          "text": "            var childrenRect = $ax('#' + containerId).childrenBoundingRect();"
+        },
+        {
+          "line": 1620,
+          "text": "            $ax.repeater.setItemSize(parentRepeaterId, itemId, childrenRect.right, childrenRect.bottom);"
+        },
+        {
+          "line": 1621,
+          "text": "            return;"
+        },
+        {
+          "line": 1622,
+          "text": "        }"
+        },
+        {
+          "line": 1623,
+          "text": ""
+        },
+        {
+          "line": 1624,
+          "text": "        $ax.adaptive.updateMobileScrollOnBody();"
+        },
+        {
+          "line": 1625,
+          "text": "    };"
+        },
+        {
+          "line": 1626,
+          "text": "    _dynamicPanelManager.fitParentPanel = _fitParentPanel;"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/repeater.js",
+      "file": "repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "purpose": "fit enable/disable CSS",
+      "range": [
+        1951,
+        1983
+      ],
+      "lines": [
+        {
+          "line": 1951,
+          "text": "    _dynamicPanelManager.setFitToContentCss = function(elementId, fitToContent, oldWidth, oldHeight) {"
+        },
+        {
+          "line": 1952,
+          "text": ""
+        },
+        {
+          "line": 1953,
+          "text": "        if($ax.dynamicPanelManager.isIdFitToContent(elementId) == fitToContent) return;"
+        },
+        {
+          "line": 1954,
+          "text": ""
+        },
+        {
+          "line": 1955,
+          "text": "        var panel = $jobj(elementId);"
+        },
+        {
+          "line": 1956,
+          "text": "        var stateCss;"
+        },
+        {
+          "line": 1957,
+          "text": "        var scrollbars = $obj(elementId).scrollbars;"
+        },
+        {
+          "line": 1958,
+          "text": ""
+        },
+        {
+          "line": 1959,
+          "text": "        if(fitToContent) {"
+        },
+        {
+          "line": 1960,
+          "text": "            panel.attr('style', '');"
+        },
+        {
+          "line": 1961,
+          "text": "            panel.removeAttr('data-notfit');"
+        },
+        {
+          "line": 1962,
+          "text": "            stateCss = {};"
+        },
+        {
+          "line": 1963,
+          "text": "            stateCss.position = 'relative';"
+        },
+        {
+          "line": 1964,
+          "text": "            if(scrollbars != 'none') {"
+        },
+        {
+          "line": 1965,
+          "text": "                stateCss.overflow = 'visible';"
+        },
+        {
+          "line": 1966,
+          "text": "                stateCss['-webkit-overflow-scrolling'] = 'visible';"
+        },
+        {
+          "line": 1967,
+          "text": "            }"
+        },
+        {
+          "line": 1968,
+          "text": "            if(scrollbars == 'verticalAsNeeded') {"
+        },
+        {
+          "line": 1969,
+          "text": "                stateCss['overflow-x'] = 'visible';"
+        },
+        {
+          "line": 1970,
+          "text": "                stateCss['-ms-overflow-x'] = 'visible';"
+        },
+        {
+          "line": 1971,
+          "text": "            } else if(scrollbars == 'horizontalAsNeeded') {"
+        },
+        {
+          "line": 1972,
+          "text": "                stateCss['overflow-y'] = 'visible';"
+        },
+        {
+          "line": 1973,
+          "text": "                stateCss['-ms-overflow-y'] = 'visible';"
+        },
+        {
+          "line": 1974,
+          "text": "            }"
+        },
+        {
+          "line": 1975,
+          "text": "            panel.children().css(stateCss);"
+        },
+        {
+          "line": 1976,
+          "text": "        } else {"
+        },
+        {
+          "line": 1977,
+          "text": "            panel.attr('data-notfit', 'true');"
+        },
+        {
+          "line": 1978,
+          "text": "            var panelCss = { width: oldWidth, height: oldHeight };"
+        },
+        {
+          "line": 1979,
+          "text": "            stateCss = { width: oldWidth, height: oldHeight };"
+        },
+        {
+          "line": 1980,
+          "text": "            panelCss.overflow = 'hidden';"
+        },
+        {
+          "line": 1981,
+          "text": "            stateCss.position = 'absolute';"
+        },
+        {
+          "line": 1982,
+          "text": "            if(scrollbars != 'none') {"
+        },
+        {
+          "line": 1983,
+          "text": "                stateCss.overflow = 'auto';"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/repeater.js",
+      "file": "repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "purpose": "current state right/bottom size and border handling",
+      "range": [
+        2022,
+        2085
+      ],
+      "lines": [
+        {
+          "line": 2022,
+          "text": "    var _updateFitPanel = function(panelId, stateIndex) {"
+        },
+        {
+          "line": 2023,
+          "text": "        if(!panelId) return false;"
+        },
+        {
+          "line": 2024,
+          "text": ""
+        },
+        {
+          "line": 2025,
+          "text": "        // Only fit if fitToContent is true"
+        },
+        {
+          "line": 2026,
+          "text": "        if(!$ax.dynamicPanelManager.isIdFitToContent(panelId)) return false;"
+        },
+        {
+          "line": 2027,
+          "text": ""
+        },
+        {
+          "line": 2028,
+          "text": "        // Traverse through children to find what size it should be."
+        },
+        {
+          "line": 2029,
+          "text": "        var stateId = $ax.repeater.applySuffixToElementId(panelId, '_state' + stateIndex);"
+        },
+        {
+          "line": 2030,
+          "text": ""
+        },
+        {
+          "line": 2031,
+          "text": "        var stateContentId = stateId + '_content';"
+        },
+        {
+          "line": 2032,
+          "text": "        var stateQuery = $jobj(stateId);"
+        },
+        {
+          "line": 2033,
+          "text": ""
+        },
+        {
+          "line": 2034,
+          "text": "        //var size = getContainerSize(stateContentId);"
+        },
+        {
+          "line": 2035,
+          "text": "        var childrenRect = $ax('#' + stateContentId).childrenBoundingRect();"
+        },
+        {
+          "line": 2036,
+          "text": "        var size = {width: childrenRect.right, height: childrenRect.bottom};"
+        },
+        {
+          "line": 2037,
+          "text": "        "
+        },
+        {
+          "line": 2038,
+          "text": "        // Skip if size hasn't changed"
+        },
+        {
+          "line": 2039,
+          "text": "        var computedStyle = getComputedStyle(stateQuery[0]);"
+        },
+        {
+          "line": 2040,
+          "text": "        var oldWidth = $ax.getNumFromPx(computedStyle.width);"
+        },
+        {
+          "line": 2041,
+          "text": "        var oldHeight = $ax.getNumFromPx(computedStyle.height);"
+        },
+        {
+          "line": 2042,
+          "text": "        var borderRight = $ax.getNumFromPx(computedStyle.borderRightWidth);"
+        },
+        {
+          "line": 2043,
+          "text": "        var borderTop = $ax.getNumFromPx(computedStyle.borderTopWidth);"
+        },
+        {
+          "line": 2044,
+          "text": "        var borderLeft = $ax.getNumFromPx(computedStyle.borderLeftWidth);"
+        },
+        {
+          "line": 2045,
+          "text": "        var borderBottom = $ax.getNumFromPx(computedStyle.borderBottomWidth);"
+        },
+        {
+          "line": 2046,
+          "text": "        if(oldWidth == size.width && oldHeight== size.height) return false;"
+        },
+        {
+          "line": 2047,
+          "text": ""
+        },
+        {
+          "line": 2048,
+          "text": "        var isPercentWidth = $obj(panelId).percentWidth;"
+        },
+        {
+          "line": 2049,
+          "text": "        if(!isPercentWidth) stateQuery.width(size.width - borderRight - borderLeft);"
+        },
+        {
+          "line": 2050,
+          "text": ""
+        },
+        {
+          "line": 2051,
+          "text": "        var oldBoundingRect = $ax('#' + panelId).offsetBoundingRect(true, true);"
+        },
+        {
+          "line": 2052,
+          "text": "        $ax.visibility.setResizingRect(panelId, oldBoundingRect);"
+        },
+        {
+          "line": 2053,
+          "text": "        stateQuery.height(size.height - borderTop - borderBottom);"
+        },
+        {
+          "line": 2054,
+          "text": ""
+        },
+        {
+          "line": 2055,
+          "text": "        //updatePercentWidth on all child panels"
+        },
+        {
+          "line": 2056,
+          "text": "        $jobj(stateContentId).children('.ax_dynamic_panel').each("
+        },
+        {
+          "line": 2057,
+          "text": "            function() { _updatePanelPercentWidth(this.id); }"
+        },
+        {
+          "line": 2058,
+          "text": "        );"
+        },
+        {
+          "line": 2059,
+          "text": ""
+        },
+        {
+          "line": 2060,
+          "text": "        //do the following only if it is the current state"
+        },
+        {
+          "line": 2061,
+          "text": "        if (stateId != $ax.visibility.GetPanelState(panelId)) {"
+        },
+        {
+          "line": 2062,
+          "text": "            $ax.visibility.clearMovedAndResizedIds(panelId);"
+        },
+        {
+          "line": 2063,
+          "text": "            return false;"
+        },
+        {
+          "line": 2064,
+          "text": "        }"
+        },
+        {
+          "line": 2065,
+          "text": ""
+        },
+        {
+          "line": 2066,
+          "text": "        //var panelQuery = $jobj(panelId);"
+        },
+        {
+          "line": 2067,
+          "text": "        //if (!isPercentWidth) panelQuery.attr('data-width', size.width);"
+        },
+        {
+          "line": 2068,
+          "text": "        //panelQuery.attr('data-height', size.height);"
+        },
+        {
+          "line": 2069,
+          "text": "        $ax.visibility.setResizedSize(panelId, isPercentWidth ? $ax('#' + panelId).width() : size.width, size.height);"
+        },
+        {
+          "line": 2070,
+          "text": ""
+        },
+        {
+          "line": 2071,
+          "text": "        _adjustFixed(panelId, oldWidth, oldHeight, size.width, size.height);"
+        },
+        {
+          "line": 2072,
+          "text": "        "
+        },
+        {
+          "line": 2073,
+          "text": "        $ax.event.raiseSyntheticEvent(panelId, 'onResize');"
+        },
+        {
+          "line": 2074,
+          "text": "        $ax.visibility.clearMovedAndResizedIds(panelId);"
+        },
+        {
+          "line": 2075,
+          "text": "        $ax.flyoutManager.updateFlyout(panelId);"
+        },
+        {
+          "line": 2076,
+          "text": ""
+        },
+        {
+          "line": 2077,
+          "text": "        return true;"
+        },
+        {
+          "line": 2078,
+          "text": "    };"
+        },
+        {
+          "line": 2079,
+          "text": ""
+        },
+        {
+          "line": 2080,
+          "text": "    // widgetId is the one that crawls up masters until it finds a parent panel, targetId is the original widgetId (not the crawling master)"
+        },
+        {
+          "line": 2081,
+          "text": "    // finds the immediate parent panel and crawls up through masters but not repeaters "
+        },
+        {
+          "line": 2082,
+          "text": "    var getParentPanel = function(widgetId, path, targetId) {"
+        },
+        {
+          "line": 2083,
+          "text": "        path = path || $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(widgetId));"
+        },
+        {
+          "line": 2084,
+          "text": ""
+        },
+        {
+          "line": 2085,
+          "text": "        var obj = $obj(widgetId);"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "file": "axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "purpose": "bounding rect population, visibility exclusions and zero-anchored maxima",
+      "range": [
+        1299,
+        1371
+      ],
+      "lines": [
+        {
+          "line": 1299,
+          "text": "    var _populateBoundingRect = function(boundingRect) {"
+        },
+        {
+          "line": 1300,
+          "text": "        boundingRect.right = boundingRect.left + boundingRect.width;"
+        },
+        {
+          "line": 1301,
+          "text": "        boundingRect.bottom = boundingRect.top + boundingRect.height;"
+        },
+        {
+          "line": 1302,
+          "text": ""
+        },
+        {
+          "line": 1303,
+          "text": "        boundingRect.x = boundingRect.left;"
+        },
+        {
+          "line": 1304,
+          "text": "        boundingRect.y = boundingRect.top;"
+        },
+        {
+          "line": 1305,
+          "text": ""
+        },
+        {
+          "line": 1306,
+          "text": "        boundingRect.location = {"
+        },
+        {
+          "line": 1307,
+          "text": "            x: boundingRect.left,"
+        },
+        {
+          "line": 1308,
+          "text": "            y: boundingRect.top,"
+        },
+        {
+          "line": 1309,
+          "text": "            left: boundingRect.left,"
+        },
+        {
+          "line": 1310,
+          "text": "            top: boundingRect.top"
+        },
+        {
+          "line": 1311,
+          "text": "        };"
+        },
+        {
+          "line": 1312,
+          "text": ""
+        },
+        {
+          "line": 1313,
+          "text": "        boundingRect.size = {"
+        },
+        {
+          "line": 1314,
+          "text": "            width: boundingRect.width,"
+        },
+        {
+          "line": 1315,
+          "text": "            height: boundingRect.height"
+        },
+        {
+          "line": 1316,
+          "text": "        };"
+        },
+        {
+          "line": 1317,
+          "text": ""
+        },
+        {
+          "line": 1318,
+          "text": "        boundingRect.centerPoint = {"
+        },
+        {
+          "line": 1319,
+          "text": "            x: boundingRect.width / 2 + boundingRect.left,"
+        },
+        {
+          "line": 1320,
+          "text": "            y: boundingRect.height / 2 + boundingRect.top"
+        },
+        {
+          "line": 1321,
+          "text": "        };"
+        },
+        {
+          "line": 1322,
+          "text": "        return boundingRect;"
+        },
+        {
+          "line": 1323,
+          "text": "    }"
+        },
+        {
+          "line": 1324,
+          "text": ""
+        },
+        {
+          "line": 1325,
+          "text": "    var _boundingRectForIds = function(childIds) {"
+        },
+        {
+          "line": 1326,
+          "text": "        // Default size"
+        },
+        {
+          "line": 1327,
+          "text": "        var childrenBoundingRect = { left: childIds.length > 0 ? 99999 : 0, top: childIds.length > 0 ? 99999 : 0, right: 0, bottom: 0 };"
+        },
+        {
+          "line": 1328,
+          "text": "        for (var i = 0; i < childIds.length; i++) {"
+        },
+        {
+          "line": 1329,
+          "text": "            var childId = childIds[i];"
+        },
+        {
+          "line": 1330,
+          "text": "            var childObj = $obj(childId);"
+        },
+        {
+          "line": 1331,
+          "text": ""
+        },
+        {
+          "line": 1332,
+          "text": "            if (!childObj) continue;"
+        },
+        {
+          "line": 1333,
+          "text": ""
+        },
+        {
+          "line": 1334,
+          "text": "            // Ignore fixed and hidden"
+        },
+        {
+          "line": 1335,
+          "text": "            if ($ax.visibility.limboIds[childId] ||"
+        },
+        {
+          "line": 1336,
+          "text": "                !$ax.visibility.IsIdVisible(childId) ||"
+        },
+        {
+          "line": 1337,
+          "text": "                $ax.public.fn.IsDynamicPanel(childObj.type) && childObj.fixedHorizontal) continue;"
+        },
+        {
+          "line": 1338,
+          "text": ""
+        },
+        {
+          "line": 1339,
+          "text": "            var boundingRect = $ax('#' + childId).offsetBoundingRect();"
+        },
+        {
+          "line": 1340,
+          "text": ""
+        },
+        {
+          "line": 1341,
+          "text": "            // Ignore empty groups"
+        },
+        {
+          "line": 1342,
+          "text": "            if ($ax.public.fn.IsLayer(childObj.type) && boundingRect.width == 0 && boundingRect.height == 0) continue;"
+        },
+        {
+          "line": 1343,
+          "text": ""
+        },
+        {
+          "line": 1344,
+          "text": "            childrenBoundingRect.left = Math.min(childrenBoundingRect.left, boundingRect.left);"
+        },
+        {
+          "line": 1345,
+          "text": "            childrenBoundingRect.top = Math.min(childrenBoundingRect.top, boundingRect.top);"
+        },
+        {
+          "line": 1346,
+          "text": "            childrenBoundingRect.right = Math.max(childrenBoundingRect.right, boundingRect.right);"
+        },
+        {
+          "line": 1347,
+          "text": "            childrenBoundingRect.bottom = Math.max(childrenBoundingRect.bottom, boundingRect.bottom);"
+        },
+        {
+          "line": 1348,
+          "text": "        }"
+        },
+        {
+          "line": 1349,
+          "text": "        childrenBoundingRect.width = childrenBoundingRect.right - childrenBoundingRect.left;"
+        },
+        {
+          "line": 1350,
+          "text": "        childrenBoundingRect.height = childrenBoundingRect.bottom - childrenBoundingRect.top;"
+        },
+        {
+          "line": 1351,
+          "text": ""
+        },
+        {
+          "line": 1352,
+          "text": "        return _populateBoundingRect(childrenBoundingRect);"
+        },
+        {
+          "line": 1353,
+          "text": "    }"
+        },
+        {
+          "line": 1354,
+          "text": ""
+        },
+        {
+          "line": 1355,
+          "text": "    $ax.public.fn.getPageSize = function() {"
+        },
+        {
+          "line": 1356,
+          "text": "        var containerQuery = $('#base');"
+        },
+        {
+          "line": 1357,
+          "text": "        var children = containerQuery.children();"
+        },
+        {
+          "line": 1358,
+          "text": "        var childIds = [];"
+        },
+        {
+          "line": 1359,
+          "text": "        for (var i = 0; i < children.length; i++) {"
+        },
+        {
+          "line": 1360,
+          "text": "            var child = $(children[i]);"
+        },
+        {
+          "line": 1361,
+          "text": "            var childId = child.attr('id');"
+        },
+        {
+          "line": 1362,
+          "text": "            childIds.push(childId);"
+        },
+        {
+          "line": 1363,
+          "text": "        }"
+        },
+        {
+          "line": 1364,
+          "text": ""
+        },
+        {
+          "line": 1365,
+          "text": "        return _boundingRectForIds(childIds);"
+        },
+        {
+          "line": 1366,
+          "text": "    }"
+        },
+        {
+          "line": 1367,
+          "text": ""
+        },
+        {
+          "line": 1368,
+          "text": "    $ax.public.fn.childrenBoundingRect = function () {        "
+        },
+        {
+          "line": 1369,
+          "text": "        var childIds = this.getChildren()[0].children;"
+        },
+        {
+          "line": 1370,
+          "text": "        return _boundingRectForIds(childIds);"
+        },
+        {
+          "line": 1371,
+          "text": "    };"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "file": "axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "purpose": "moved/resized overrides, shadow and rotated bounds",
+      "range": [
+        1438,
+        1575
+      ],
+      "lines": [
+        {
+          "line": 1438,
+          "text": "    $ax.public.fn.offsetBoundingRect = function (ignoreRotation, ignoreOuterShadow, ignorePosition) {"
+        },
+        {
+          "line": 1439,
+          "text": "        var elementId = this.getElementIds()[0];"
+        },
+        {
+          "line": 1440,
+          "text": "        if (!elementId) return undefined;"
+        },
+        {
+          "line": 1441,
+          "text": "        "
+        },
+        {
+          "line": 1442,
+          "text": "        //element is null if RDO"
+        },
+        {
+          "line": 1443,
+          "text": "        //data- values are for layers (legacy compound) "
+        },
+        {
+          "line": 1444,
+          "text": "        var element = document.getElementById(elementId);"
+        },
+        {
+          "line": 1445,
+          "text": "        var position, size, rotation;"
+        },
+        {
+          "line": 1446,
+          "text": ""
+        },
+        {
+          "line": 1447,
+          "text": "        var trap;"
+        },
+        {
+          "line": 1448,
+          "text": "        var displayObj;"
+        },
+        {
+          "line": 1449,
+          "text": "        var state;"
+        },
+        {
+          "line": 1450,
+          "text": "        var style;"
+        },
+        {
+          "line": 1451,
+          "text": "        var movedLoc = $ax.visibility.getMovedLocation(elementId);"
+        },
+        {
+          "line": 1452,
+          "text": "        var resizedSize = $ax.visibility.getResizedSize(elementId);"
+        },
+        {
+          "line": 1453,
+          "text": "        "
+        },
+        {
+          "line": 1454,
+          "text": "        var initTrapIfNeeded = function() {"
+        },
+        {
+          "line": 1455,
+          "text": "            if(!trap) {"
+        },
+        {
+          "line": 1456,
+          "text": "                var trimmedId = $ax.repeater.removeSuffixFromElementId(elementId);"
+        },
+        {
+          "line": 1457,
+          "text": "                if(ignorePosition) {"
+        },
+        {
+          "line": 1458,
+          "text": "                    var values = $ax.expr.displayWidgetIfNeeded(trimmedId);"
+        },
+        {
+          "line": 1459,
+          "text": "                    displayObj = trimmedId == elementId ? values.jObject : values.jObject.find('#' + elementId);"
+        },
+        {
+          "line": 1460,
+          "text": "                    trap = values.trap;"
+        },
+        {
+          "line": 1461,
+          "text": "                } else {"
+        },
+        {
+          "line": 1462,
+          "text": "                    displayObj = $(element);"
+        },
+        {
+          "line": 1463,
+          "text": "                    trap = $ax.expr.displayWidgetAndParents(trimmedId);"
+        },
+        {
+          "line": 1464,
+          "text": "                }"
+        },
+        {
+          "line": 1465,
+          "text": "            }"
+        },
+        {
+          "line": 1466,
+          "text": "        }"
+        },
+        {
+          "line": 1467,
+          "text": ""
+        },
+        {
+          "line": 1468,
+          "text": "        if (!ignorePosition) {"
+        },
+        {
+          "line": 1469,
+          "text": "            if (movedLoc) {"
+        },
+        {
+          "line": 1470,
+          "text": "                position = movedLoc;"
+        },
+        {
+          "line": 1471,
+          "text": "            } else if(element && element.getAttribute('data-left')) {"
+        },
+        {
+          "line": 1472,
+          "text": "                position = {"
+        },
+        {
+          "line": 1473,
+          "text": "                    left: Number(element.getAttribute('data-left')),"
+        },
+        {
+          "line": 1474,
+          "text": "                    top: Number(element.getAttribute('data-top'))"
+        },
+        {
+          "line": 1475,
+          "text": "                };"
+        },
+        {
+          "line": 1476,
+          "text": "            } else if($obj(elementId)) {"
+        },
+        {
+          "line": 1477,
+          "text": "                state = $ax.style.generateState(elementId);"
+        },
+        {
+          "line": 1478,
+          "text": "                style = $ax.style.computeFullStyle(elementId, state, $ax.adaptive.currentViewId);"
+        },
+        {
+          "line": 1479,
+          "text": "                position = { left: style.location.x, top: style.location.y };"
+        },
+        {
+          "line": 1480,
+          "text": ""
+        },
+        {
+          "line": 1481,
+          "text": "                var oShadow = style.outerShadow;"
+        },
+        {
+          "line": 1482,
+          "text": ""
+        },
+        {
+          "line": 1483,
+          "text": "                if (oShadow.on && !ignoreOuterShadow) {"
+        },
+        {
+          "line": 1484,
+          "text": "                    if (oShadow.offsetX < 0) {"
+        },
+        {
+          "line": 1485,
+          "text": "                        position.left += oShadow.offsetX;"
+        },
+        {
+          "line": 1486,
+          "text": "                        position.left -= oShadow.blurRadius;"
+        },
+        {
+          "line": 1487,
+          "text": "                    }"
+        },
+        {
+          "line": 1488,
+          "text": "                    if (oShadow.offsetY < 0) {"
+        },
+        {
+          "line": 1489,
+          "text": "                        position.top += oShadow.offsetY;"
+        },
+        {
+          "line": 1490,
+          "text": "                        position.top -= oShadow.blurRadius;"
+        },
+        {
+          "line": 1491,
+          "text": "                    }"
+        },
+        {
+          "line": 1492,
+          "text": "                }"
+        },
+        {
+          "line": 1493,
+          "text": ""
+        },
+        {
+          "line": 1494,
+          "text": "                var parents = this.getParents(true, '*')[0];"
+        },
+        {
+          "line": 1495,
+          "text": "                for(var i = 0; i < parents.length; i++) {"
+        },
+        {
+          "line": 1496,
+          "text": "                    var parentId = parents[i];"
+        },
+        {
+          "line": 1497,
+          "text": "                    var type = $ax.getTypeFromElementId(parentId);"
+        },
+        {
+          "line": 1498,
+          "text": "                    if ($axure.fn.IsReferenceDiagramObject(type)) {"
+        },
+        {
+          "line": 1499,
+          "text": "                        var rdoLoc = $ax('#' + parentId).offsetLocation();"
+        },
+        {
+          "line": 1500,
+          "text": "                        position.left += rdoLoc.x;"
+        },
+        {
+          "line": 1501,
+          "text": "                        position.top += rdoLoc.y;"
+        },
+        {
+          "line": 1502,
+          "text": "                        break;"
+        },
+        {
+          "line": 1503,
+          "text": "                    } else if (!$axure.fn.IsLayer(type)) break;"
+        },
+        {
+          "line": 1504,
+          "text": "                }"
+        },
+        {
+          "line": 1505,
+          "text": "            } else {"
+        },
+        {
+          "line": 1506,
+          "text": "                initTrapIfNeeded();"
+        },
+        {
+          "line": 1507,
+          "text": "                var jObjPosition = displayObj.position();"
+        },
+        {
+          "line": 1508,
+          "text": "                position = { left: jObjPosition.left, top: jObjPosition.top };"
+        },
+        {
+          "line": 1509,
+          "text": "            }"
+        },
+        {
+          "line": 1510,
+          "text": "        } else position = { left: 0, top: 0 };"
+        },
+        {
+          "line": 1511,
+          "text": ""
+        },
+        {
+          "line": 1512,
+          "text": "        if (resizedSize) {"
+        },
+        {
+          "line": 1513,
+          "text": "            size = resizedSize;"
+        },
+        {
+          "line": 1514,
+          "text": "        } else if (element && element.getAttribute('data-width')) {"
+        },
+        {
+          "line": 1515,
+          "text": "            size = {"
+        },
+        {
+          "line": 1516,
+          "text": "                width: Number(element.getAttribute('data-width')),"
+        },
+        {
+          "line": 1517,
+          "text": "                height: Number(element.getAttribute('data-height'))"
+        },
+        {
+          "line": 1518,
+          "text": "            };"
+        },
+        {
+          "line": 1519,
+          "text": "        } else if($obj(elementId)) {"
+        },
+        {
+          "line": 1520,
+          "text": "            state = state || $ax.style.generateState(elementId);"
+        },
+        {
+          "line": 1521,
+          "text": "            style = style || $ax.style.computeFullStyle(elementId, state, $ax.adaptive.currentViewId);"
+        },
+        {
+          "line": 1522,
+          "text": "            size = { width: style.size.width, height: style.size.height };"
+        },
+        {
+          "line": 1523,
+          "text": ""
+        },
+        {
+          "line": 1524,
+          "text": "            var oShadow = style.outerShadow;"
+        },
+        {
+          "line": 1525,
+          "text": ""
+        },
+        {
+          "line": 1526,
+          "text": "            if (oShadow.on && !ignoreOuterShadow) {"
+        },
+        {
+          "line": 1527,
+          "text": "                if (oShadow.offsetX < 0) size.width -= oShadow.offsetX;"
+        },
+        {
+          "line": 1528,
+          "text": "                else size.width += oShadow.offsetX;"
+        },
+        {
+          "line": 1529,
+          "text": "                if (oShadow.offsetY < 0) size.height -= oShadow.offsetY;"
+        },
+        {
+          "line": 1530,
+          "text": "                else size.height += oShadow.offsetY;"
+        },
+        {
+          "line": 1531,
+          "text": ""
+        },
+        {
+          "line": 1532,
+          "text": "                size.width += oShadow.blurRadius;"
+        },
+        {
+          "line": 1533,
+          "text": "                size.height += oShadow.blurRadius;"
+        },
+        {
+          "line": 1534,
+          "text": "            }"
+        },
+        {
+          "line": 1535,
+          "text": "        } else {"
+        },
+        {
+          "line": 1536,
+          "text": "            initTrapIfNeeded();"
+        },
+        {
+          "line": 1537,
+          "text": "            size = { width: displayObj.outerWidth(), height: displayObj.outerHeight() };"
+        },
+        {
+          "line": 1538,
+          "text": "        }"
+        },
+        {
+          "line": 1539,
+          "text": "        "
+        },
+        {
+          "line": 1540,
+          "text": "        var fixed = _fixedLocation(elementId, size);"
+        },
+        {
+          "line": 1541,
+          "text": "        if(fixed.valid) {"
+        },
+        {
+          "line": 1542,
+          "text": "            position.left = fixed.left;"
+        },
+        {
+          "line": 1543,
+          "text": "            position.top = fixed.top;"
+        },
+        {
+          "line": 1544,
+          "text": "        }"
+        },
+        {
+          "line": 1545,
+          "text": ""
+        },
+        {
+          "line": 1546,
+          "text": "        var boundingRect = {"
+        },
+        {
+          "line": 1547,
+          "text": "            left: position.left,"
+        },
+        {
+          "line": 1548,
+          "text": "            top: position.top,"
+        },
+        {
+          "line": 1549,
+          "text": "            width: size.width,"
+        },
+        {
+          "line": 1550,
+          "text": "            height: size.height,"
+        },
+        {
+          "line": 1551,
+          "text": "            isFixed: fixed.valid"
+        },
+        {
+          "line": 1552,
+          "text": "        };"
+        },
+        {
+          "line": 1553,
+          "text": ""
+        },
+        {
+          "line": 1554,
+          "text": "        if(!ignoreRotation) {"
+        },
+        {
+          "line": 1555,
+          "text": "            var rotatedAngle = $ax.visibility.getRotatedAngle(elementId);"
+        },
+        {
+          "line": 1556,
+          "text": "            if(rotatedAngle) {"
+        },
+        {
+          "line": 1557,
+          "text": "                rotation = rotatedAngle;"
+        },
+        {
+          "line": 1558,
+          "text": "            } else if(element && element.getAttribute('data-rotation')) {"
+        },
+        {
+          "line": 1559,
+          "text": "                rotation = Number(element.getAttribute('data-rotation'));"
+        },
+        {
+          "line": 1560,
+          "text": "            } else if($obj(elementId)) {"
+        },
+        {
+          "line": 1561,
+          "text": "                state = state || $ax.style.generateState(elementId);"
+        },
+        {
+          "line": 1562,
+          "text": "                style = style || $ax.style.computeFullStyle(elementId, state, $ax.adaptive.currentViewId);"
+        },
+        {
+          "line": 1563,
+          "text": "                rotation = style.rotation;"
+        },
+        {
+          "line": 1564,
+          "text": "            } else {"
+        },
+        {
+          "line": 1565,
+          "text": "                initTrapIfNeeded();"
+        },
+        {
+          "line": 1566,
+          "text": "                rotation = $ax.move.getRotationDegreeFromElement(displayObj[0]);"
+        },
+        {
+          "line": 1567,
+          "text": "            }"
+        },
+        {
+          "line": 1568,
+          "text": "            if(rotation && rotation != 0)"
+        },
+        {
+          "line": 1569,
+          "text": "                boundingRect = $ax.public.fn.getBoundingRectForRotate(_populateBoundingRect(boundingRect), rotation);"
+        },
+        {
+          "line": 1570,
+          "text": "        }"
+        },
+        {
+          "line": 1571,
+          "text": ""
+        },
+        {
+          "line": 1572,
+          "text": "        if (trap) trap();"
+        },
+        {
+          "line": 1573,
+          "text": ""
+        },
+        {
+          "line": 1574,
+          "text": "        return _populateBoundingRect(boundingRect);"
+        },
+        {
+          "line": 1575,
+          "text": "    };"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "file": "axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "purpose": "show/hide completion refits parent",
+      "range": [
+        400,
+        413
+      ],
+      "lines": [
+        {
+          "line": 400,
+          "text": "        var animateInfo = _getAnimateInfo(options, 0, useHide);"
+        },
+        {
+          "line": 401,
+          "text": ""
+        },
+        {
+          "line": 402,
+          "text": "        var wasShown = $ax.visibility.IsIdVisible(elementId);"
+        },
+        {
+          "line": 403,
+          "text": "        var compress = options && _shouldCompress(options.showType) && wasShown != value;"
+        },
+        {
+          "line": 404,
+          "text": "        if (compress) $ax.dynamicPanelManager.compressToggle(elementId, options.vertical, value, options.compressEasing, options.compressDuration, options.compressDelta ?? NaN);"
+        },
+        {
+          "line": 405,
+          "text": ""
+        },
+        {
+          "line": 406,
+          "text": "        var onComplete = function () {"
+        },
+        {
+          "line": 407,
+          "text": "            $ax.dynamicPanelManager.fitParentPanel(elementId);"
+        },
+        {
+          "line": 408,
+          "text": "        };"
+        },
+        {
+          "line": 409,
+          "text": "        $ax.visibility.SetWidgetVisibility(elementId, {"
+        },
+        {
+          "line": 410,
+          "text": "            value: value,"
+        },
+        {
+          "line": 411,
+          "text": "            easing: animateInfo.easingType,"
+        },
+        {
+          "line": 412,
+          "text": "            direction: animateInfo.direction,"
+        },
+        {
+          "line": 413,
+          "text": "            duration: animateInfo.duration,"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "file": "axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "purpose": "move completion refits parent",
+      "range": [
+        454,
+        481
+      ],
+      "lines": [
+        {
+          "line": 454,
+          "text": "        "
+        },
+        {
+          "line": 455,
+          "text": "    }"
+        },
+        {
+          "line": 456,
+          "text": "    //move one widget.  I didn't combine moveto and moveby, since this is in .public, and separate them maybe more clear for the user"
+        },
+        {
+          "line": 457,
+          "text": "    var _move = function (elementId, x, y, options, moveTo) {"
+        },
+        {
+          "line": 458,
+          "text": "        if(!options.easing) options.easing = 'none';"
+        },
+        {
+          "line": 459,
+          "text": "        if(!options.duration) options.duration = 500;"
+        },
+        {
+          "line": 460,
+          "text": "        var obj = $obj(elementId);"
+        },
+        {
+          "line": 461,
+          "text": ""
+        },
+        {
+          "line": 462,
+          "text": "        // Layer move using container now."
+        },
+        {
+          "line": 463,
+          "text": "        if($ax.public.fn.IsLayer(obj.type)) {"
+        },
+        {
+          "line": 464,
+          "text": "            $ax.move.MoveWidget(elementId, x, y, options, moveTo,"
+        },
+        {
+          "line": 465,
+          "text": "                function () {"
+        },
+        {
+          "line": 466,
+          "text": "                    if(options.onComplete) options.onComplete();"
+        },
+        {
+          "line": 467,
+          "text": "                    $ax.dynamicPanelManager.fitParentPanel(elementId);"
+        },
+        {
+          "line": 468,
+          "text": "                }, false);"
+        },
+        {
+          "line": 469,
+          "text": "        } else {"
+        },
+        {
+          "line": 470,
+          "text": "            var xDelta = x;"
+        },
+        {
+          "line": 471,
+          "text": "            var yDelta = y;"
+        },
+        {
+          "line": 472,
+          "text": "            if (moveTo) {"
+        },
+        {
+          "line": 473,
+          "text": "                var jobj = $jobj(elementId);"
+        },
+        {
+          "line": 474,
+          "text": "                var left = $ax.getNumFromPx(jobj.css('left'));"
+        },
+        {
+          "line": 475,
+          "text": "                var top = $ax.getNumFromPx(jobj.css('top'));"
+        },
+        {
+          "line": 476,
+          "text": "                xDelta = x - left;"
+        },
+        {
+          "line": 477,
+          "text": "                yDelta = y - top;"
+        },
+        {
+          "line": 478,
+          "text": "            }"
+        },
+        {
+          "line": 479,
+          "text": "            $ax.move.MoveWidget(elementId, xDelta, yDelta, options, false,"
+        },
+        {
+          "line": 480,
+          "text": "                function () { $ax.dynamicPanelManager.fitParentPanel(elementId); }, true);"
+        },
+        {
+          "line": 481,
+          "text": "        }"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "file": "axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "purpose": "resize a panel disables fit",
+      "range": [
+        599,
+        620
+      ],
+      "lines": [
+        {
+          "line": 599,
+          "text": ""
+        },
+        {
+          "line": 600,
+          "text": "            var isDynamicPanel = $ax.public.fn.IsDynamicPanel(obj.type);"
+        },
+        {
+          "line": 601,
+          "text": "            if(isDynamicPanel) {"
+        },
+        {
+          "line": 602,
+          "text": "                // No longer fitToContent, calculate additional styling that needs to be done."
+        },
+        {
+          "line": 603,
+          "text": "                $ax.dynamicPanelManager.setFitToContentCss(elementId, false, oldWidth, oldHeight);"
+        },
+        {
+          "line": 604,
+          "text": ""
+        },
+        {
+          "line": 605,
+          "text": "                if (query.css('position') == 'fixed' && ((obj.fixedHorizontal && obj.fixedHorizontal == 'center') || (obj.fixedVertical && obj.fixedVertical == 'middle'))) {"
+        },
+        {
+          "line": 606,
+          "text": "                    moves = true;"
+        },
+        {
+          "line": 607,
+          "text": "                    var loc = $ax.dynamicPanelManager.getFixedPosition(elementId, oldWidth, oldHeight, newLocationAndSizeCss.width, newLocationAndSizeCss.height);"
+        },
+        {
+          "line": 608,
+          "text": "                    if(loc) {"
+        },
+        {
+          "line": 609,
+          "text": "                        if (loc[0] != 0 && !$ax.dynamicPanelManager.isPercentWidthPanel(obj)) newLocationAndSizeCss['margin-left'] = '+=' + (Number(newLocationAndSizeCss['margin-left'].substr(2)) + loc[0]);"
+        },
+        {
+          "line": 610,
+          "text": "                        if (loc[1] != 0) newLocationAndSizeCss['margin-top'] = '+=' + (Number(newLocationAndSizeCss['margin-top'].substr(2)) + loc[1]);"
+        },
+        {
+          "line": 611,
+          "text": "                    }"
+        },
+        {
+          "line": 612,
+          "text": "                }"
+        },
+        {
+          "line": 613,
+          "text": ""
+        },
+        {
+          "line": 614,
+          "text": "                var onComplete = function() {"
+        },
+        {
+          "line": 615,
+          "text": "                    $ax.flyoutManager.updateFlyout(elementId);"
+        },
+        {
+          "line": 616,
+          "text": "                    $ax.dynamicPanelManager.fitParentPanel(elementId);"
+        },
+        {
+          "line": 617,
+          "text": "                    $ax.dynamicPanelManager.updatePanelPercentWidth(elementId);"
+        },
+        {
+          "line": 618,
+          "text": "                    $ax.dynamicPanelManager.updatePanelContentPercentWidth(elementId);"
+        },
+        {
+          "line": 619,
+          "text": ""
+        },
+        {
+          "line": 620,
+          "text": "                    completeAndFire(moves, elementId);"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "file": "axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd",
+      "purpose": "resize child refits parent",
+      "range": [
+        654,
+        662
+      ],
+      "lines": [
+        {
+          "line": 654,
+          "text": ""
+        },
+        {
+          "line": 655,
+          "text": "                //get all the other children that matters"
+        },
+        {
+          "line": 656,
+          "text": "                onComplete = function() {"
+        },
+        {
+          "line": 657,
+          "text": "                    $ax.dynamicPanelManager.fitParentPanel(elementId);"
+        },
+        {
+          "line": 658,
+          "text": "                    completeAndFire(moves, elementId);"
+        },
+        {
+          "line": 659,
+          "text": ""
+        },
+        {
+          "line": 660,
+          "text": "                    $ax.annotation.adjustIconLocation(elementId);"
+        },
+        {
+          "line": 661,
+          "text": "                    $ax.event.raiseSyntheticEvent(elementId, 'onResize');"
+        },
+        {
+          "line": 662,
+          "text": "                    $ax.visibility.clearResizingRects();"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/visibility.js",
+      "file": "visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53",
+      "purpose": "state already current and visibility change",
+      "range": [
+        689,
+        702
+      ],
+      "lines": [
+        {
+          "line": 689,
+          "text": "    $ax.visibility.SetPanelState = function(id, stateId, animationOutInfo, animationInInfo, showWhenSet) {"
+        },
+        {
+          "line": 690,
+          "text": "        var show = !$ax.visibility.IsIdVisible(id) && showWhenSet;"
+        },
+        {
+          "line": 691,
+          "text": "        if(show) $ax.visibility.SetIdVisible(id, true);"
+        },
+        {
+          "line": 692,
+          "text": ""
+        },
+        {
+          "line": 693,
+          "text": "        // Exit here if already at desired state."
+        },
+        {
+          "line": 694,
+          "text": "        if($ax.visibility.IsIdVisible(stateId)) {"
+        },
+        {
+          "line": 695,
+          "text": "            if(show) {"
+        },
+        {
+          "line": 696,
+          "text": "                $ax.event.raiseSyntheticEvent(id, 'onShow');"
+        },
+        {
+          "line": 697,
+          "text": "                // If showing size changes and need to update parent panels"
+        },
+        {
+          "line": 698,
+          "text": "                $ax.dynamicPanelManager.fitParentPanel(id);"
+        },
+        {
+          "line": 699,
+          "text": "            }"
+        },
+        {
+          "line": 700,
+          "text": ""
+        },
+        {
+          "line": 701,
+          "text": "            $ax.action.fireAnimationFromQueue(id, $ax.action.queueTypes.setState);"
+        },
+        {
+          "line": 702,
+          "text": "            return;"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/visibility.js",
+      "file": "visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53",
+      "purpose": "state switch updates own fit size",
+      "range": [
+        733,
+        753
+      ],
+      "lines": [
+        {
+          "line": 733,
+          "text": "        _bringPanelStateToFront(id, stateId, oldStateId, animationInInfo.easingType == 'none' || animationInInfo.duration == '0');"
+        },
+        {
+          "line": 734,
+          "text": ""
+        },
+        {
+          "line": 735,
+          "text": "        var fitToContent = $ax.dynamicPanelManager.isIdFitToContent(id);"
+        },
+        {
+          "line": 736,
+          "text": "        var resized = false;"
+        },
+        {
+          "line": 737,
+          "text": "        if(fitToContent) {"
+        },
+        {
+          "line": 738,
+          "text": "            // Set resized"
+        },
+        {
+          "line": 739,
+          "text": "            //var width = state.width();"
+        },
+        {
+          "line": 740,
+          "text": "            //var height = state.height();"
+        },
+        {
+          "line": 741,
+          "text": "            var newBoundingRect = $ax('#' + stateId).childrenBoundingRect();"
+        },
+        {
+          "line": 742,
+          "text": "            var width = newBoundingRect.right;"
+        },
+        {
+          "line": 743,
+          "text": "            var height = newBoundingRect.bottom;"
+        },
+        {
+          "line": 744,
+          "text": "            var oldBoundingRect = $ax('#' + id).offsetBoundingRect();"
+        },
+        {
+          "line": 745,
+          "text": "            var oldWidth = oldBoundingRect.right;"
+        },
+        {
+          "line": 746,
+          "text": "            var oldHeight = oldBoundingRect.bottom;"
+        },
+        {
+          "line": 747,
+          "text": "            resized = width != oldWidth || height != oldHeight;"
+        },
+        {
+          "line": 748,
+          "text": "            //resized = width != oldState.width() || height != oldState.height();"
+        },
+        {
+          "line": 749,
+          "text": ""
+        },
+        {
+          "line": 750,
+          "text": "            $ax.visibility.setResizedSize(id, $obj(id).percentWidth ? oldWidth : width, height);"
+        },
+        {
+          "line": 751,
+          "text": "            $ax.visibility.setResizingRect(id, oldBoundingRect);"
+        },
+        {
+          "line": 752,
+          "text": "        }"
+        },
+        {
+          "line": 753,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/visibility.js",
+      "file": "visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53",
+      "purpose": "state switch completion refits ancestor and fires event",
+      "range": [
+        756,
+        779
+      ],
+      "lines": [
+        {
+          "line": 756,
+          "text": "        var onCompleteCount = 0;"
+        },
+        {
+          "line": 757,
+          "text": "        var onComplete = function () {"
+        },
+        {
+          "line": 758,
+          "text": "            //move this call from _setVisibility() for animate out."
+        },
+        {
+          "line": 759,
+          "text": "            //Because this will make the order of dp divs consistence: the showing panel is always in front after both animation finished"
+        },
+        {
+          "line": 760,
+          "text": "            //tested in the cases where one panel is out/show slower/faster/same time/instantly. "
+        },
+        {
+          "line": 761,
+          "text": "            _bringPanelStateToFront(id, stateId, oldStateId, false);"
+        },
+        {
+          "line": 762,
+          "text": ""
+        },
+        {
+          "line": 763,
+          "text": "            if (window.modifiedDynamicPanleParentOverflowProp) {"
+        },
+        {
+          "line": 764,
+          "text": "                var parent = id ? $jobj(id) : child.parent();"
+        },
+        {
+          "line": 765,
+          "text": "                parent.css('overflow', 'hidden');"
+        },
+        {
+          "line": 766,
+          "text": "                window.modifiedDynamicPanleParentOverflowProp = false;"
+        },
+        {
+          "line": 767,
+          "text": "            }"
+        },
+        {
+          "line": 768,
+          "text": ""
+        },
+        {
+          "line": 769,
+          "text": "            $ax.dynamicPanelManager.fitParentPanel(id);"
+        },
+        {
+          "line": 770,
+          "text": "            $ax.dynamicPanelManager.updatePanelPercentWidth(id);"
+        },
+        {
+          "line": 771,
+          "text": "            $ax.dynamicPanelManager.updatePanelContentPercentWidth(id);"
+        },
+        {
+          "line": 772,
+          "text": "            $ax.action.fireAnimationFromQueue(id, $ax.action.queueTypes.setState);"
+        },
+        {
+          "line": 773,
+          "text": "            $ax.event.raiseSyntheticEvent(id, \"onPanelStateChange\");"
+        },
+        {
+          "line": 774,
+          "text": "            $ax.event.leavingState(oldStateId);"
+        },
+        {
+          "line": 775,
+          "text": "            if (hasEasing) _popContainer(id, true);"
+        },
+        {
+          "line": 776,
+          "text": ""
+        },
+        {
+          "line": 777,
+          "text": "            $ax.dynamicPanelManager.updateMobileScroll(id, stateId, true);"
+        },
+        {
+          "line": 778,
+          "text": "        };"
+        },
+        {
+          "line": 779,
+          "text": "        // Must do state out first, so if we cull by new state, location is correct"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/style.js",
+      "file": "style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c",
+      "purpose": "normal base plus ordered state overrides",
+      "range": [
+        1794,
+        1866
+      ],
+      "lines": [
+        {
+          "line": 1794,
+          "text": "    var _computeAllOverrides = $ax.style.computeAllOverrides = function(id, parentId, state, currentViewId) {"
+        },
+        {
+          "line": 1795,
+          "text": "        var computedStyle = {};"
+        },
+        {
+          "line": 1796,
+          "text": "        if(parentId) computedStyle = _computeAllOverrides(parentId, null, state, currentViewId);"
+        },
+        {
+          "line": 1797,
+          "text": ""
+        },
+        {
+          "line": 1798,
+          "text": "        var diagramObject = $ax.getObjectFromElementId(id);"
+        },
+        {
+          "line": 1799,
+          "text": ""
+        },
+        {
+          "line": 1800,
+          "text": "        var viewIdChain = _getViewIdChain(currentViewId, id, diagramObject);"
+        },
+        {
+          "line": 1801,
+          "text": "        var excludeFont = _shapesWithSetRichText[id];"
+        },
+        {
+          "line": 1802,
+          "text": "        for(var i = 0; i < viewIdChain.length; i++) {"
+        },
+        {
+          "line": 1803,
+          "text": "            var viewId = viewIdChain[i];"
+        },
+        {
+          "line": 1804,
+          "text": "            var style = diagramObject.adaptiveStyles[viewId];"
+        },
+        {
+          "line": 1805,
+          "text": "            if(style) {"
+        },
+        {
+          "line": 1806,
+          "text": "                // we want to exclude the normal font style for shapes where the rich text has been set with an interaction"
+        },
+        {
+          "line": 1807,
+          "text": "                // so we copy the style so we don't modify the original, then delete all the font props."
+        },
+        {
+          "line": 1808,
+          "text": "                if(excludeFont) {"
+        },
+        {
+          "line": 1809,
+          "text": "                    style = $ax.deepCopy(style);"
+        },
+        {
+          "line": 1810,
+          "text": "                    for(var prop in FONT_PROPS) delete style[prop];"
+        },
+        {
+          "line": 1811,
+          "text": "                }"
+        },
+        {
+          "line": 1812,
+          "text": ""
+        },
+        {
+          "line": 1813,
+          "text": "                if(style) {"
+        },
+        {
+          "line": 1814,
+          "text": "                    var customStyle = style.baseStyle && $ax.document.stylesheet.stylesById[style.baseStyle];"
+        },
+        {
+          "line": 1815,
+          "text": "                    //make sure not to extend the customStyle this can mutate it for future use"
+        },
+        {
+          "line": 1816,
+          "text": "                    $.extend(computedStyle, customStyle);"
+        },
+        {
+          "line": 1817,
+          "text": "                }"
+        },
+        {
+          "line": 1818,
+          "text": "                $.extend(computedStyle, style);"
+        },
+        {
+          "line": 1819,
+          "text": "            }"
+        },
+        {
+          "line": 1820,
+          "text": "        }"
+        },
+        {
+          "line": 1821,
+          "text": ""
+        },
+        {
+          "line": 1822,
+          "text": "        // order matters so higher priority styles override lower priority"
+        },
+        {
+          "line": 1823,
+          "text": "        $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, NORMAL, viewIdChain, true));"
+        },
+        {
+          "line": 1824,
+          "text": "        if (_stateHasMouseOver(state)) {"
+        },
+        {
+          "line": 1825,
+          "text": "            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_OVER, viewIdChain, true));"
+        },
+        {
+          "line": 1826,
+          "text": "        }"
+        },
+        {
+          "line": 1827,
+          "text": "        if (_stateHasMouseDown(state)) {"
+        },
+        {
+          "line": 1828,
+          "text": "            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, MOUSE_DOWN, viewIdChain, true));"
+        },
+        {
+          "line": 1829,
+          "text": "        }"
+        },
+        {
+          "line": 1830,
+          "text": "        if (_stateHasFocused(state)) {"
+        },
+        {
+          "line": 1831,
+          "text": "            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, FOCUSED, viewIdChain, true));"
+        },
+        {
+          "line": 1832,
+          "text": "        }"
+        },
+        {
+          "line": 1833,
+          "text": "        if (_stateHasSelected(state)) {"
+        },
+        {
+          "line": 1834,
+          "text": "            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, SELECTED, viewIdChain, true));"
+        },
+        {
+          "line": 1835,
+          "text": "        }"
+        },
+        {
+          "line": 1836,
+          "text": "        if (_stateHasError(state)) {"
+        },
+        {
+          "line": 1837,
+          "text": "            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, ERROR, viewIdChain, true));"
+        },
+        {
+          "line": 1838,
+          "text": "        }"
+        },
+        {
+          "line": 1839,
+          "text": "        if (_stateHasHint(state)) {"
+        },
+        {
+          "line": 1840,
+          "text": "            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, HINT, viewIdChain, true));"
+        },
+        {
+          "line": 1841,
+          "text": "        }"
+        },
+        {
+          "line": 1842,
+          "text": "        if (_stateHasDisabled(state)) {"
+        },
+        {
+          "line": 1843,
+          "text": "            $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, DISABLED, viewIdChain, true));"
+        },
+        {
+          "line": 1844,
+          "text": "        }"
+        },
+        {
+          "line": 1845,
+          "text": ""
+        },
+        {
+          "line": 1846,
+          "text": "        return _removeUnsupportedProperties(computedStyle, diagramObject);"
+        },
+        {
+          "line": 1847,
+          "text": "    };"
+        },
+        {
+          "line": 1848,
+          "text": ""
+        },
+        {
+          "line": 1849,
+          "text": "    var _computeStateStyleForViewChain = function(diagramObject, state, viewIdChain, excludeNormal) {"
+        },
+        {
+          "line": 1850,
+          "text": "        var styleObject = diagramObject;"
+        },
+        {
+          "line": 1851,
+          "text": "        while(styleObject.isContained) styleObject = styleObject.parent;"
+        },
+        {
+          "line": 1852,
+          "text": ""
+        },
+        {
+          "line": 1853,
+          "text": "        var adaptiveStyles = styleObject.adaptiveStyles;"
+        },
+        {
+          "line": 1854,
+          "text": ""
+        },
+        {
+          "line": 1855,
+          "text": "        for(var i = viewIdChain.length - 1; i >= 0; i--) {"
+        },
+        {
+          "line": 1856,
+          "text": "            var viewId = viewIdChain[i];"
+        },
+        {
+          "line": 1857,
+          "text": "            var viewStyle = adaptiveStyles[viewId];"
+        },
+        {
+          "line": 1858,
+          "text": "            var stateStyle = viewStyle && _getFullStateStyle(viewStyle, state, excludeNormal);"
+        },
+        {
+          "line": 1859,
+          "text": "            if (stateStyle) return $.extend({}, stateStyle);"
+        },
+        {
+          "line": 1860,
+          "text": "            else if (viewStyle && viewStyle.stateStyles) return {}; //stateStyles are overriden but states could be null"
+        },
+        {
+          "line": 1861,
+          "text": "        }"
+        },
+        {
+          "line": 1862,
+          "text": ""
+        },
+        {
+          "line": 1863,
+          "text": "        // we dont want to actually include the object style because those are not overrides, hence the true for \"excludeNormal\" and not passing the val through"
+        },
+        {
+          "line": 1864,
+          "text": "        var stateStyleFromDefault = _getFullStateStyle(styleObject.style, state, true);"
+        },
+        {
+          "line": 1865,
+          "text": "        return $.extend({}, stateStyleFromDefault);"
+        },
+        {
+          "line": 1866,
+          "text": "    };"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/style.js",
+      "file": "style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c",
+      "purpose": "missing state style yields undefined",
+      "range": [
+        1906,
+        1916
+      ],
+      "lines": [
+        {
+          "line": 1906,
+          "text": "    var _getFullStateStyle = function(style, state, excludeNormal) {"
+        },
+        {
+          "line": 1907,
+          "text": "        //'normal' is needed because now DiagramObjects get their image from the Style and unapplying a rollover needs the image"
+        },
+        {
+          "line": 1908,
+          "text": "        var stateStyle = state == NORMAL && !excludeNormal ? style : style && style.stateStyles && style.stateStyles[state];"
+        },
+        {
+          "line": 1909,
+          "text": "        if(stateStyle) {"
+        },
+        {
+          "line": 1910,
+          "text": "            var customStyle = stateStyle.baseStyle && $ax.document.stylesheet.stylesById[stateStyle.baseStyle];"
+        },
+        {
+          "line": 1911,
+          "text": "            //make sure not to extend the customStyle this can mutate it for future use"
+        },
+        {
+          "line": 1912,
+          "text": "            return $.extend({}, customStyle, stateStyle);"
+        },
+        {
+          "line": 1913,
+          "text": "        }"
+        },
+        {
+          "line": 1914,
+          "text": "        return undefined;"
+        },
+        {
+          "line": 1915,
+          "text": "    };"
+        },
+        {
+          "line": 1916,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/events.js",
+      "file": "events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3",
+      "purpose": "radio self name versus shared group",
+      "range": [
+        1207,
+        1236
+      ],
+      "lines": [
+        {
+          "line": 1207,
+          "text": "                }).on('input', function(e) {"
+        },
+        {
+          "line": 1208,
+          "text": "                    $ax.setjBrowserEvent(e);"
+        },
+        {
+          "line": 1209,
+          "text": "                    $ax.event.TryFireTextChanged(elementId);"
+        },
+        {
+          "line": 1210,
+          "text": "                });"
+        },
+        {
+          "line": 1211,
+          "text": "            };"
+        },
+        {
+          "line": 1212,
+          "text": ""
+        },
+        {
+          "line": 1213,
+          "text": "            // Attach synthetic onCheckedChange event to radiobutton and checkbox elements"
+        },
+        {
+          "line": 1214,
+          "text": "            if ($ax.public.fn.IsCheckBox(dObj.type) || $ax.public.fn.IsRadioButton(dObj.type)) {"
+        },
+        {
+          "line": 1215,
+          "text": "                var input = $jobj($ax.INPUT(elementId));"
+        },
+        {
+          "line": 1216,
+          "text": "                if($ax.public.fn.IsRadioButton(dObj.type)) {"
+        },
+        {
+          "line": 1217,
+          "text": "                    var radioGroupName = input.attr('name');"
+        },
+        {
+          "line": 1218,
+          "text": "                    if(input.prop('selected')) {"
+        },
+        {
+          "line": 1219,
+          "text": "                        $ax.updateRadioButtonSelected(radioGroupName, elementId);"
+        },
+        {
+          "line": 1220,
+          "text": "                    }"
+        },
+        {
+          "line": 1221,
+          "text": "                    var selected = $ax.style.IsWidgetSelected(elementId);"
+        },
+        {
+          "line": 1222,
+          "text": "                    if (selected) $ax.style.SetWidgetSelected(elementId, selected, true);"
+        },
+        {
+          "line": 1223,
+          "text": ""
+        },
+        {
+          "line": 1224,
+          "text": "                    var onClick = function(e) {"
+        },
+        {
+          "line": 1225,
+          "text": "                        if ($ax.style.IsWidgetDisabled(elementId)) return;"
+        },
+        {
+          "line": 1226,
+          "text": "                        if(radioGroupName !== elementId) {"
+        },
+        {
+          "line": 1227,
+          "text": "                            var radioGroup = $(\"input[name='\" + radioGroupName + \"']\").parent();"
+        },
+        {
+          "line": 1228,
+          "text": "                            for(var i = 0; i < radioGroup.length; i++) {"
+        },
+        {
+          "line": 1229,
+          "text": "                                $ax.style.SetWidgetSelected(radioGroup[i].id, false, true);"
+        },
+        {
+          "line": 1230,
+          "text": "                            }"
+        },
+        {
+          "line": 1231,
+          "text": "                        }"
+        },
+        {
+          "line": 1232,
+          "text": "                        $ax.style.SetWidgetSelected(elementId, true, true);"
+        },
+        {
+          "line": 1233,
+          "text": "                        e.originalEvent.handled = true;"
+        },
+        {
+          "line": 1234,
+          "text": "                    };"
+        },
+        {
+          "line": 1235,
+          "text": "                } else {"
+        },
+        {
+          "line": 1236,
+          "text": "                    var selected = $ax.style.IsWidgetSelected(elementId);"
+        }
+      ]
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/repeater.js",
+      "file": "repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "purpose": "per-repeater row radio isolation",
+      "range": [
+        256,
+        271
+      ],
+      "lines": [
+        {
+          "line": 256,
+          "text": "                    return `${prop}=\"url(#${elementId})\"`;"
+        },
+        {
+          "line": 257,
+          "text": "                };"
+        },
+        {
+          "line": 258,
+          "text": ""
+        },
+        {
+          "line": 259,
+          "text": "                var copy = (useAlt ? altDiv : div).clone();"
+        },
+        {
+          "line": 260,
+          "text": "                useAlt = !useAlt;"
+        },
+        {
+          "line": 261,
+          "text": "                copy.attr('id', itemElementId);"
+        },
+        {
+          "line": 262,
+          "text": "                var rep = div.html().replace(/(id|for)=\"?u([0-9]+(p([0-9]){3})?(_[_a-z0-9]*)?)\"?/g, processId);"
+        },
+        {
+          "line": 263,
+          "text": "                rep = rep.replace(/(fill|stroke|mask) ?= ?\"url\\(\\#u([0-9]+(p([0-9]){3})?(_[_a-z0-9]*)?)\\)\"/g, processSvgUrlId);"
+        },
+        {
+          "line": 264,
+          "text": "                copy.html(rep);"
+        },
+        {
+          "line": 265,
+          "text": "                if(obj.repeaterPropMap.isolateRadio) {"
+        },
+        {
+          "line": 266,
+          "text": "                    var radioButtons = copy.find(':radio');"
+        },
+        {
+          "line": 267,
+          "text": "                    for(var radioIndex = 0; radioIndex < radioButtons.length; radioIndex++) {"
+        },
+        {
+          "line": 268,
+          "text": "                        var radio = $(radioButtons[radioIndex]);"
+        },
+        {
+          "line": 269,
+          "text": "                        var oldName = radio.attr('name') || '';"
+        },
+        {
+          "line": 270,
+          "text": "                        // Can't use create element id because there could be an underscore in name"
+        },
+        {
+          "line": 271,
+          "text": "                        if(oldName) radio.attr('name', oldName + '-' + itemId);"
+        }
+      ]
+    }
+  ]
+}

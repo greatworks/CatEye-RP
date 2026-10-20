@@ -1,0 +1,35 @@
+import { createDocument, createPage, createWidget, uid } from '../../src/model/document';
+import type { Action, Interaction } from '../../src/model/types';
+const actions = (...values: Omit<Action, 'id'>[]): Interaction => ({ id: uid(), name: 'Run', event: 'click', enabled: true, conditions: [], conditionMode: 'all', actions: values.map(a => ({ ...a, id: uid() })) });
+export function dropdownFixture() {
+  const doc = createDocument(); doc.name = 'Dropdown and ListBox behavior'; doc.caseSelection = 'never'; doc.variables = { Count: '0', Multi: '0', Echo: '', MultiEcho: '', Tick: '0', Row: '' }; doc.pages[0].height = 1250;
+  const single = createWidget('select', 30, 40); Object.assign(single, { id: 'single', name: 'Single choice', options: ['A', 'A', '', ' ', 'B', '[[literal]]', 'a\nb'], selectedIndices: [0], text: '', width: 300, height: 40, focusedStyle: { stroke: '#e20f19', strokeWidth: 2 } });
+  const multiple = createWidget('select', 360, 40); Object.assign(multiple, { id: 'multi', name: 'Multiple choices', options: ['A', 'A', '', ' ', 'B', 'A,B'], selectedIndices: [], text: '', multiple: true, selectMode: 'listbox', width: 300, height: 125 });
+  const listbox = createWidget('select', 690, 40); Object.assign(listbox, { id: 'listbox', name: 'Unselected listbox', options: ['First', 'Second'], selectedIndices: [], text: '', selectMode: 'listbox', width: 200, height: 125 });
+  const empty = createWidget('select', 930, 40); Object.assign(empty, { id: 'empty', name: 'Empty choices', options: [], selectedIndices: [], text: '', width: 200 });
+  for (const [w, count, echo] of [[single, 'Count', 'Echo'], [multiple, 'Multi', 'MultiEcho']] as const) w.interactions = [{ ...actions({ type: 'setVariable', targetId: count, value: `[[${count}+1]]` }, { type: 'setVariable', targetId: echo, value: `[[Widget.${w.id}.text]]` }), event: 'change' }];
+  doc.pages[0].widgets.push(single, multiple, listbox, empty);
+  const label = (name: string, text: string, x: number, y: number) => { const w = createWidget('text', x, y); Object.assign(w, { name, text, width: 500, height: 40 }); doc.pages[0].widgets.push(w); return w; };
+  label('Single count', '[[Count]]', 30, 95); label('Single echo', '[[Echo]]', 30, 140); label('Multiple count', '[[Multi]]', 360, 180); label('Multiple echo', '[[MultiEcho]]', 360, 225);
+  let buttonIndex = 0;
+  const button = (name: string, ...value: Omit<Action, 'id'>[]) => { const w = createWidget('button', 30 + buttonIndex % 5 * 230, 300 + Math.floor(buttonIndex++ / 5) * 55); Object.assign(w, { name, text: name, width: 205, height: 38, interactions: [actions(...value)] }); doc.pages[0].widgets.push(w); return w; };
+  for (const [name, value] of [['Set B', 'B'], ['Set A', 'A'], ['Set missing', 'missing'], ['Set blank', ''], ['Set space', ' ']]) button(name, { type: 'setSelectedOption', targetId: single.id, value });
+  button('Set Text no-op', { type: 'setText', targetId: single.id, value: 'B' });
+  button('Refresh display', { type: 'setVariable', targetId: 'Tick', value: '[[Tick+1]]' });
+  button('Disable and set B', { type: 'disable', targetId: single.id }, { type: 'setSelectedOption', targetId: single.id, value: 'B' });
+  button('Enable choice', { type: 'enable', targetId: single.id });
+  button('Focus choice', { type: 'setFocus', targetId: single.id, selectText: true });
+  button('Multi set A', { type: 'setSelectedOption', targetId: multiple.id, value: 'A' });
+  button('Multi set comma', { type: 'setSelectedOption', targetId: multiple.id, value: 'A,B' });
+  button('Multi set blank', { type: 'setSelectedOption', targetId: multiple.id, value: '' });
+  button('Hide choices', { type: 'hide', targetId: single.id }, { type: 'hide', targetId: multiple.id });
+  button('Show choices', { type: 'show', targetId: single.id }, { type: 'show', targetId: multiple.id });
+  const repeater = createWidget('repeater', 30, 515), row = createWidget('select', 10, 5); repeater.name = 'Choice rows'; repeater.width = 650; repeater.height = 210;
+  Object.assign(row, { id: 'row-choice', name: 'Row choice', options: ['One', 'One', 'Two'], selectedIndices: [0], text: '', width: 200, height: 38 });
+  row.interactions = [{ ...actions({ type: 'setVariable', targetId: 'Row', value: '[[Item.index]]:[[Widget.row-choice.text]]' }), event: 'change' }];
+  repeater.repeater!.columns = ['Name']; repeater.repeater!.rows = [{ Name: 'First' }, { Name: 'Second' }]; repeater.repeater!.template = [row]; repeater.repeater!.itemHeight = 50; doc.pages[0].widgets.push(repeater); label('Row echo', '[[Row]]', 760, 515);
+  const refresh = button('Refresh rows', { type: 'sortRows', targetId: repeater.id, value: 'Name' }); refresh.y = 735;
+  const other = createPage('Other'), back = createWidget('button', 30, 40); Object.assign(back, { name: 'Back to choices', text: 'Back to choices', width: 220, interactions: [actions({ type: 'openPage', targetId: doc.pages[0].id })] }); other.widgets = [back]; doc.pages.push(other);
+  const leave = button('Other page', { type: 'openPage', targetId: other.id }); leave.y = 735;
+  return doc;
+}

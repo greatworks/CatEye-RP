@@ -1,0 +1,3421 @@
+{
+  "method": "Exact hash-pinned original function slices in Node VM; DOM/CSS, measurements, parent-panel layout, event action bodies and animation queue are explicit dependency stubs. No original app/GUI/browser rendering.",
+  "sources": [
+    {
+      "file": "expr.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "file": "axQuery.std.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "file": "move.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/move.js",
+      "sha256": "c823954b5ed5862d56176b8984837e8f26588540ee4768d4483d68a399b95644"
+    },
+    {
+      "file": "visibility.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53"
+    },
+    {
+      "file": "events.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "file": "repeater.js",
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b"
+    }
+  ],
+  "excerpts": [
+    {
+      "file": "axQuery.std.js",
+      "start": 570,
+      "end": 826,
+      "sha256": "fc2eb12a09373fe1c29a9a43235e8fde5f93bf3c4acec98b7075cce59fab8f41",
+      "text": "    $ax.public.fn.resize = function(newLocationAndSizeCss, resizeInfo, axShouldFire, moves, onCompletedFunc) {\n        var elementIds = this.getElementIds();\n        if(!elementIds) return;\n\n        var completeAndFire = function(moved, id) {\n            if(axShouldFire) {\n                $ax.action.fireAnimationFromQueue(id, $ax.action.queueTypes.resize);\n                if(moves) $ax.action.fireAnimationFromQueue(id, $ax.action.queueTypes.move);\n            }\n\n            if(onCompletedFunc) onCompletedFunc();\n        };\n\n        for(var index = 0; index < elementIds.length; index++) {\n            var elementId = elementIds[index];\n            var oldBoundingRect = $ax('#' + elementId).offsetBoundingRect(true);\n            $ax.visibility.setResizingRect(elementId, oldBoundingRect);\n\n            var obj = $obj(elementId);\n            if(!$ax.public.fn.IsResizable(obj.type)) {\n                //$ax.dynamicPanelManager.fitParentPanel(elementId);\n                completeAndFire(moves, elementId);\n                continue;\n            }\n\n            var oldSize = $ax('#' + elementId).size();\n            var oldWidth = oldSize.width;\n            var oldHeight = oldSize.height;\n            var query = $jobj(elementId);\n\n            var isDynamicPanel = $ax.public.fn.IsDynamicPanel(obj.type);\n            if(isDynamicPanel) {\n                // No longer fitToContent, calculate additional styling that needs to be done.\n                $ax.dynamicPanelManager.setFitToContentCss(elementId, false, oldWidth, oldHeight);\n\n                if (query.css('position') == 'fixed' && ((obj.fixedHorizontal && obj.fixedHorizontal == 'center') || (obj.fixedVertical && obj.fixedVertical == 'middle'))) {\n                    moves = true;\n                    var loc = $ax.dynamicPanelManager.getFixedPosition(elementId, oldWidth, oldHeight, newLocationAndSizeCss.width, newLocationAndSizeCss.height);\n                    if(loc) {\n                        if (loc[0] != 0 && !$ax.dynamicPanelManager.isPercentWidthPanel(obj)) newLocationAndSizeCss['margin-left'] = '+=' + (Number(newLocationAndSizeCss['margin-left'].substr(2)) + loc[0]);\n                        if (loc[1] != 0) newLocationAndSizeCss['margin-top'] = '+=' + (Number(newLocationAndSizeCss['margin-top'].substr(2)) + loc[1]);\n                    }\n                }\n\n                var onComplete = function() {\n                    $ax.flyoutManager.updateFlyout(elementId);\n                    $ax.dynamicPanelManager.fitParentPanel(elementId);\n                    $ax.dynamicPanelManager.updatePanelPercentWidth(elementId);\n                    $ax.dynamicPanelManager.updatePanelContentPercentWidth(elementId);\n\n                    completeAndFire(moves, elementId);\n                    $ax.event.raiseSyntheticEvent(elementId, 'onResize');\n                    $ax.visibility.clearResizingRects();\n                };\n\n            } else {\n                ////if contains text\n                //var textChildren = query.children('div.text');\n                //if(textChildren && textChildren.length != 0) {\n                //    var textDivId = textChildren.attr('id');\n                //    var padding = $ax.style.getPadding(textDivId);\n                //    var leftPadding = padding.paddingLeft;\n                //    var rightPadding = padding.paddingRight;\n                //    //var textObj = $ax('#' + textDivId);\n                //    //var leftPadding = textObj.left(true);\n                //    //var rightPadding = oldWidth - leftPadding - textObj.width();\n\n                //    //greater or equal to 1px\n                //    var newTextWidth = Math.max(newLocationAndSizeCss.width - leftPadding - rightPadding, 1);\n                //    var textChildCss = { width: newTextWidth };\n\n                //    var textStepFunction = function() {\n                //        //change the width of the text div may effect the height\n                //        //var currentTextHeight = Number($(textChildren.children('p')[0]).css('height').replace('px', ''));\n                //        //textChildren.css('height', currentTextHeight);\n                //        //var display = $ax.public.fn.displayHackStart(document.getElementById(textDivId));\n\n                //        var trap = _displayWidget(textDivId);\n                //        $ax.style.setTextAlignment([textDivId]);\n                //        trap();\n\n                //        //$ax.public.fn.displayHackEnd(display);\n                //    };\n                //}\n\n                //get all the other children that matters\n                onComplete = function() {\n                    $ax.dynamicPanelManager.fitParentPanel(elementId);\n                    completeAndFire(moves, elementId);\n\n                    $ax.annotation.adjustIconLocation(elementId);\n                    $ax.event.raiseSyntheticEvent(elementId, 'onResize');\n                    $ax.visibility.clearResizingRects();\n                };\n            }\n\n            var children = query.children().not('div.text, object.img');\n            while(children && children.length && $(children[0]).attr('id').indexOf('container') != -1) {\n                children = children.children().not('div.text, object.img');\n            }\n\n            if(children && children.length !== 0) {\n                var childAnimationArray = [];\n                var isConnector = $ax.public.fn.IsConnector(obj.type);\n                children.each(function (i, child) {\n                    var childCss = {\n                        width: newLocationAndSizeCss.width,\n                        height: newLocationAndSizeCss.height\n                    };\n\n                    //$ax.size() use outerWidth/Height(false), which include padding and borders(no margins)\n                    var childSizingObj = $ax('#' + child.id).size();\n                    var differentSizedImage = childSizingObj.width - oldWidth != 0 || childSizingObj.height - oldHeight != 0;\n                    if ((differentSizedImage || isConnector) && (child.tagName == 'IMG' || $(child).hasClass(\"bgImg\"))) {\n                        //oldwidth is zero for connectors\n                        var widthOffset = oldWidth ? (childSizingObj.width - oldWidth) * newLocationAndSizeCss.width / oldWidth : childSizingObj.width;\n                        var heightOffset = oldHeight ? (childSizingObj.height - oldHeight) * newLocationAndSizeCss.height / oldHeight : childSizingObj.height;\n\n                        childCss.width += widthOffset;\n                        childCss.height += heightOffset;\n                    }\n                    //there are elements like inputs, come with a padding and border, so need to use outerwidth for starting point, due to jquery 1.7 css() on width/height bugs\n                    if($(child).css('position') === 'absolute') {\n                        if(child.offsetLeft) {\n                            childSizingObj.left = child.offsetLeft;\n                            childCss.left = oldWidth ? child.offsetLeft * newLocationAndSizeCss.width / oldWidth : child.offsetLeft; //- transformedShift.x;\n                        }\n                        if(child.offsetTop) {\n                            childSizingObj.top = child.offsetTop;\n                            childCss.top = oldHeight ? child.offsetTop * newLocationAndSizeCss.height / oldHeight : child.offsetTop; //- transformedShift.y;\n                        }\n                    }\n                    childAnimationArray.push({ obj: child, sizingObj: childSizingObj, sizingCss: childCss });\n                });\n            }\n\n            var svgChildren = query.children('svg.img');\n            if(svgChildren && svgChildren.length !== 0) {\n                var childAnimationArray = [];\n                svgChildren.each(function (i, child) {\n                    child.style.transformOrigin = 'top left';\n                    var oldTransformMatrix = new WebKitCSSMatrix(window.getComputedStyle(child).transform);\n                    var oldScaleX = oldTransformMatrix.m11;\n                    var oldScaleY = oldTransformMatrix.m22;\n                    var scaleX = (newLocationAndSizeCss.width / oldWidth) * oldScaleX;\n                    var scaleY = (newLocationAndSizeCss.height / oldHeight) * oldScaleY;\n                    if(oldScaleX !== scaleX || oldScaleY !== scaleY) {\n                        childAnimationArray.push({obj: child, scaleX, scaleY, oldScaleX, oldScaleY });\n                    }\n                });\n            }\n            \n            if (newLocationAndSizeCss.left || newLocationAndSizeCss.top) {\n                //var movedLeft = newLocationAndSizeCss.left;\n                //var movedTop = newLocationAndSizeCss.top;\n                //$ax.visibility.setMovedLocation(elementId, movedLeft, movedTop);\n                var movedLeft = newLocationAndSizeCss.deltaX;\n                var movedTop = newLocationAndSizeCss.deltaY;\n                $ax.visibility.moveMovedLocation(elementId, movedLeft, movedTop);\n            }\n            if (newLocationAndSizeCss.width || newLocationAndSizeCss.height) {\n                var resizedWidth = newLocationAndSizeCss.width;\n                var resizedHeight = newLocationAndSizeCss.height;\n                $ax.visibility.setResizedSize(elementId, resizedWidth, resizedHeight);\n            }\n\n            if (!resizeInfo.easing || resizeInfo.easing == 'none') {\n                if (childAnimationArray) {\n                    $(childAnimationArray).each(function (i, animationObj) {\n                        if(animationObj.resizeMatrixFunction) {\n                            $(animationObj.obj).css($ax.public.fn.setTransformHowever(animationObj.resizeMatrixFunction(animationObj.width, animationObj.height)));\n                        } else if(animationObj.scaleX !== undefined) {\n                            animationObj.obj.style.transform = 'Scale(' + animationObj.scaleX + ', ' + animationObj.scaleY + ')';\n                        } else {\n                            $(animationObj.obj).css(animationObj.sizingCss);\n                            // $(animationObj.obj).animate(animationObj.sizingCss, { queue: false, duration: 0 });\n                        }\n                    });\n                }\n                //if(childCss) children.animate(childCss, 0);\n                //if(sketchyImage && sketchyImageCss) $(sketchyImage).animate(sketchyImageCss, 0);\n                //if(textChildCss) {\n                //    textChildren.animate(textChildCss, {\n                //        duration: 0,\n                //        step: textStepFunction\n                //    });\n                //}\n                query.css(newLocationAndSizeCss);\n                onComplete();\n                // query.animate(newLocationAndSizeCss, { queue: false, duration: 0, complete: onComplete });\n            } else {\n                if(childAnimationArray) {\n                    $(childAnimationArray).each(function (i, animationObj) {\n                        if(animationObj.resizeMatrixFunction) {\n                            $(animationObj.sizingObj).animate(animationObj.sizingCss, {\n                                queue: false,\n                                duration: resizeInfo.duration,\n                                easing: resizeInfo.easing,\n                                step: function (now) {\n                                    var widthRatio = (animationObj.width - 1.0) * now + 1.0;\n                                    var heightRatio = (animationObj.height - 1.0) * now + 1.0;\n                                    $(animationObj.obj).css($ax.public.fn.setTransformHowever(animationObj.resizeMatrixFunction(widthRatio, heightRatio)));\n                                }\n                            });\n                        } else if(animationObj.scaleX !== undefined) {\n                            $({ offset: 0 }).animate({ offset: 1 }, {\n                                duration: resizeInfo.duration,\n                                easing: resizeInfo.easing,\n                                queue: false,\n                                step: function (now, fx) {\n                                    var scaleX = (animationObj.scaleX - animationObj.oldScaleX) * now + animationObj.oldScaleX;\n                                    var scaleY = (animationObj.scaleY - animationObj.oldScaleY) * now + animationObj.oldScaleY;\n                                    animationObj.obj.style.transform = 'Scale(' + scaleX + ', ' + scaleY + ')';\n                                },\n                            });\n                        } else {\n                            $(animationObj.sizingObj).animate(animationObj.sizingCss, {\n                                queue: false,\n                                duration: resizeInfo.duration,\n                                easing: resizeInfo.easing,\n                                step: function (now, tween) {\n                                    $(animationObj.obj).css(tween.prop, now);\n                                }\n                            });\n                        }\n                    });\n                }\n\n                //if(textChildCss) {\n                //    textChildren.animate(textChildCss, {\n                //        queue: false,\n                //        duration: resizeInfo.duration,\n                //        easing: resizeInfo.easing,\n                //        step: textStepFunction\n                //    });\n                //}\n\n                if(isDynamicPanel) {\n                    query.animate(newLocationAndSizeCss, { queue: false, duration: resizeInfo.duration, easing: resizeInfo.easing, complete: onComplete });\n                } else {\n                    var locObj = {\n                        left: $ax.public.fn.GetFieldFromStyle(query, 'left'), top: $ax.public.fn.GetFieldFromStyle(query, 'top'),\n                        width: $ax.public.fn.GetFieldFromStyle(query, 'width'), height: $ax.public.fn.GetFieldFromStyle(query, 'height'),\n                    };\n                    $(locObj).animate(newLocationAndSizeCss, {\n                        queue: false,\n                        duration: resizeInfo.duration,\n                        easing: resizeInfo.easing,\n                        step: function (now, tween) {\n                            query.css(tween.prop, now);\n                        },\n                        complete: onComplete\n                    });\n                }\n            }\n        }\n    };"
+    },
+    {
+      "file": "move.js",
+      "start": 7,
+      "end": 108,
+      "sha256": "bf654d7bae0096623ab9a8ddedf45d7246520781da6867cb238947870491027d",
+      "text": "    $ax.move.PrepareForMove = function (id, x, y, to, options, jobj, rootLayer, skipContainerForRootLayer) {\n        var fixedInfo = jobj ? {} : $ax.dynamicPanelManager.getFixedInfo(id);\n\n        var widget = $jobj(id);\n        var query = $ax('#' + id);\n        var isLayer = $ax.public.fn.IsLayer($ax.getTypeFromElementId(id));\n        if(!rootLayer) {\n            rootLayer = _move.getRootLayer(id);\n            if (rootLayer && !skipContainerForRootLayer) {\n                $ax.visibility.pushContainer(rootLayer, false);\n                if (isLayer) widget = $ax.visibility.applyWidgetContainer(id, true);\n            }\n        }\n        if (!jobj) jobj = widget;\n\n        var horzProp = 'left';\n        var vertProp = 'top';\n        var offsetLocation = to ? query.offsetLocation() : undefined;\n        var horzX = to ? x - offsetLocation.x : x;\n        var vertY = to ? y - offsetLocation.y : y;\n        //var horzX = to ? x - query.locRelativeIgnoreLayer(false) : x;\n        //var vertY = to ? y - query.locRelativeIgnoreLayer(true) : y;\n\n        if (fixedInfo.horizontal == 'right') {\n            horzProp = 'right';\n            horzX = to ? $(window).width() - x - $ax.getNumFromPx(jobj.css('right')) - query.width() : -x;\n            var leftChanges = -horzX;\n        } else if(fixedInfo.horizontal == 'center') {\n            horzProp = 'margin-left';\n            if (to) horzX = x - $(window).width() / 2;\n        }\n\n        if (fixedInfo.vertical == 'bottom') {\n            vertProp = 'bottom';\n            vertY = to ? $(window).height() - y - $ax.getNumFromPx(jobj.css('bottom')) - query.height() : -y;\n            var topChanges = -vertY;\n        } else if (fixedInfo.vertical == 'middle') {\n            vertProp = 'margin-top';\n            if (to) vertY = y - $(window).height() / 2;\n        }\n\n        //todo currently this always save the info, which is not needed for compound vector children and maybe some other cases\n        //let's optimize it later, only register if registerid is valid..\n        widgetMoveInfo[id] = {\n            x: leftChanges === undefined ? horzX : leftChanges,\n            y: topChanges === undefined ? vertY : topChanges,\n            options: options\n        };\n\n        return {\n            horzX: horzX,\n            vertY: vertY,\n            horzProp: horzProp,\n            vertProp: vertProp,\n            rootLayer: rootLayer,\n            jobj: jobj\n        };\n    };\n    $ax.move.GetWidgetMoveInfo = function() {\n        return $.extend({}, widgetMoveInfo);\n    };\n\n    _move.getRootLayer = function (id) {\n        var isLayer = $ax.public.fn.IsLayer($ax.getTypeFromElementId(id));\n        var rootLayer = isLayer ? id : '';\n\n        var parentIds = $ax('#' + id).getParents(true, '*')[0];\n        for(var i = 0; i < parentIds.length; i++) {\n            var parentId = parentIds[i];\n            // Keep climbing up layers until you hit a non-layer. At that point you have your root layer\n            if($ax.public.fn.IsLayer($ax.getTypeFromElementId(parentId))) rootLayer = parentId;\n            else break;\n        }\n\n        return rootLayer;\n    };\n\n    $ax.move.MoveWidget = function (id, x, y, options, to, animationCompleteCallback, shouldFire, jobj, skipOnMoveEvent) {\n        var moveInfo = $ax.move.PrepareForMove(id, x, y, to, options, jobj);\n        $ax.drag.LogMovedWidgetForDrag(id, options.dragInfo);\n\n        var object = $obj(id);\n        if(object && $ax.public.fn.IsLayer(object.type)) {\n            var childrenIds = $ax.public.fn.getLayerChildrenDeep(id, true);\n            //don't push container when register moveinfo for child\n            if(!skipOnMoveEvent) {\n                for(var i = 0; i < childrenIds.length; i++) $ax.move.PrepareForMove(childrenIds[i], x, y, to, options, null, moveInfo.rootLayer, true);\n            }\n        }\n\n        //if(!moveInfo) moveInfo = _getMoveInfo(id, x, y, to, options, jobj);\n\n        jobj = moveInfo.jobj;\n\n        _moveElement(id, options, animationCompleteCallback, shouldFire, jobj, moveInfo);\n\n        if(skipOnMoveEvent) return;\n        $ax.event.raiseSyntheticEvent(id, \"onMove\");\n        if(childrenIds) {\n            for(var i = 0; i < childrenIds.length; i++) $ax.event.raiseSyntheticEvent(childrenIds[i], 'onMove');\n        }\n    };"
+    },
+    {
+      "file": "move.js",
+      "start": 120,
+      "end": 208,
+      "sha256": "fcc2610538728e061d35e5a5b13c958d9843b1ae8d5f0576dcc68492a544822b",
+      "text": "    var _moveElement = function (id, options, animationCompleteCallback, shouldFire,  jobj, moveInfo){\n        var cssStyles = {};\n\n        if(!$ax.dynamicPanelManager.isPercentWidthPanel($obj(id))) cssStyles[moveInfo.horzProp] = '+=' + moveInfo.horzX;\n        cssStyles[moveInfo.vertProp] = '+=' + moveInfo.vertY;\n        \n        $ax.visibility.moveMovedLocation(id, moveInfo.horzX, moveInfo.vertY);\n\n        // I don't think root layer is necessary anymore after changes to layer container structure.\n        //  Wait to try removing it until more stable.\n        var rootLayer = moveInfo.rootLayer;\n\n        var query = $addAll(jobj, id);\n        var completeCount = query.length;\n        // use this hack to return the state scroll position to the original location because smthg unexpectedly sets it to(0,0). RP-2809\n        var parentPanelStates = $ax('#' + id).getParents(true, 'state');\n        var scrollPrevented = false;\n        var completeAnimation = function () {\n            // scroll hack, see above. RP-2809\n            var preventNextStateScroll = function () {\n                if(scrollPrevented || !parentPanelStates || !parentPanelStates.length) return;\n                var state = document.getElementById(parentPanelStates[0]);\n                if(!state) return;\n                var trapScroll = _trapScrollLoc(state);\n                var preventFunc = () => trapScroll();\n                state.addEventListener(\"scroll\", preventFunc, { once: true });\n                scrollPrevented = true;\n            }\n\n            completeCount--;\n            if(completeCount == 0 && rootLayer) $ax.visibility.popContainer(rootLayer, false);\n            if(animationCompleteCallback) animationCompleteCallback();\n            if(shouldFire) $ax.action.fireAnimationFromQueue(id, $ax.action.queueTypes.move);\n            preventNextStateScroll();\n        };\n        if (options.easing === 'none') {\n            //if not having this requestAnimationFrame causes performance issues,\n            //add it back and move the above call to moveMovedLocation into it and the\n            //query.animate calls below\n            //window.requestAnimationFrame(function () {\n                query.css(cssStyles);\n                if (rootLayer) $ax.visibility.popContainer(rootLayer, false);\n                if (animationCompleteCallback) animationCompleteCallback();\n            //});\n            //if this widget is inside a layer, we should just remove the layer from the queue\n            if(shouldFire) $ax.action.fireAnimationFromQueue(id, $ax.action.queueTypes.move);\n        } else if (options.trajectory === 'straight' || moveInfo.horzX === 0 || moveInfo.vertY === 0) {\n                query.animate(cssStyles, {\n                    duration: options.duration, easing: options.easing, queue: false, complete: completeAnimation});\n        } else {\n            var initialHorzProp = $ax.getNumFromPx(query.css(moveInfo.horzProp));\n            var initialVertProp = $ax.getNumFromPx(query.css(moveInfo.vertProp));\n            var state = { parameter: 0 };\n            var ellipseArcFunctionY = function(param) {\n                return {\n                    x: initialHorzProp + (1.0 - Math.cos(param * Math.PI * 0.5)) * moveInfo.horzX,\n                    y: initialVertProp + Math.sin(param * Math.PI * 0.5) * moveInfo.vertY\n                };\n            };\n            var ellipseArcFunctionX = function (param) {\n                return {\n                    x: initialHorzProp + Math.sin(param * Math.PI * 0.5) * moveInfo.horzX,\n                    y: initialVertProp + (1.0 - Math.cos(param * Math.PI * 0.5)) * moveInfo.vertY\n                };\n            };\n            var ellipseArcFunction = (moveInfo.horzX > 0) ^ (moveInfo.vertY > 0) ^ options.trajectory === 'arcClockwise'\n                    ? ellipseArcFunctionX : ellipseArcFunctionY;\n            var inverseFunction = $ax.public.fn.inversePathLengthFunction(ellipseArcFunction);\n            $(state).animate({ parameter: 1.0 }, {\n                duration: options.duration, easing: options.easing, queue: false,\n                step: function (now) {\n                    var newPos = ellipseArcFunction(inverseFunction(now));\n                    var changeFields = {};\n                    changeFields[moveInfo.horzProp] = newPos.x;\n                    changeFields[moveInfo.vertProp] = newPos.y;\n                    query.css(changeFields);\n                },\n                complete: completeAnimation});\n        }\n\n        //        //moveinfo is used for moving 'with this'\n        //        var moveInfo = new Object();\n        //        moveInfo.x = horzX;\n        //        moveInfo.y = vertY;\n        //        moveInfo.options = options;\n        //        widgetMoveInfo[id] = moveInfo;\n\n\n    };"
+    },
+    {
+      "file": "visibility.js",
+      "start": 1363,
+      "end": 1380,
+      "sha256": "37a7ace6f97cffd69e4fd65364d21f6762580dfde1851700d71a52b9c68dc360",
+      "text": "    $ax.visibility.setMovedLocation = function (scriptId, left, top) {\n        if ($jobj(scriptId).css('position') == 'fixed') return;\n        _movedIds[scriptId] = { left: left, top: top };\n    };\n\n    $ax.visibility.moveMovedLocation = function (scriptId, deltaLeft, deltaTop) {\n        if(_blockSetMoveIds) return false;\n\n        var offsetLocation = $ax('#' + scriptId).offsetLocation();\n        $ax.visibility.setMovedLocation(scriptId, offsetLocation.x + deltaLeft, offsetLocation.y + deltaTop);\n\n        if($ax.public.fn.IsLayer($ax.getTypeFromElementId(scriptId))) {\n            var childIds = $ax('#' + scriptId).getChildren()[0].children;\n            for (var i = 0; i < childIds.length; i++) {\n                $ax.visibility.moveMovedLocation(childIds[i], deltaLeft, deltaTop);\n            }\n        }\n    };"
+    },
+    {
+      "file": "visibility.js",
+      "start": 1392,
+      "end": 1406,
+      "sha256": "d9cc270799aa3fe440a0a96db99bca4b8888a5d82779ba046dc5cefc218ce691",
+      "text": "    $ax.visibility.setResizedSize = function(scriptId, width, height) {\n        _resizedIds[scriptId] = { width: width, height: height };\n    };\n\n    $ax.visibility.getResizingRect = function (scriptId) {\n        return _resizingIds[scriptId];\n    }\n\n    $ax.visibility.setResizingRect = function (scriptId, offsetBoundingRect) {\n        _resizingIds[scriptId] = offsetBoundingRect;\n    }\n\n    $ax.visibility.clearResizingRects = function () {\n        _resizingIds = _visibility.resizingIds = {};\n    }"
+    },
+    {
+      "file": "events.js",
+      "start": 1701,
+      "end": 1717,
+      "sha256": "eef2b919a91e51f1ee32de213fe0a7965d87ef0625522bd4b9ede183048efb4f",
+      "text": "    var _raiseSyntheticEvent = function (elementId, eventName, skipShowDescription, eventInfo, nonSynthetic) {\n        if ($ax.style.IsWidgetDisabled(elementId) && _shouldStopOnDisabledWidget(eventName)) return;\n        // Empty string used when this is an event directly on the page.\n        var dObj = elementId === '' ? $ax.pageData.page : $ax.getObjectFromElementId(elementId);\n        var axEventObject = dObj && dObj.interactionMap && dObj.interactionMap[eventName];\n        if (!axEventObject) return;\n        \n        eventInfo = eventInfo || $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), skipShowDescription, elementId);\n        //        $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, new Date().getTime());\n        _handleEvent(elementId, eventInfo, axEventObject, false, !nonSynthetic);\n    };\n    $ax.event.raiseSyntheticEvent = _raiseSyntheticEvent;\n\n    var _shouldStopOnDisabledWidget = function (eventName) {\n        var blackList = [\"onLongClick\"];\n        return blackList.some(x => x === eventName);\n    }"
+    },
+    {
+      "file": "repeater.js",
+      "start": 1590,
+      "end": 1626,
+      "sha256": "664c7f1ae03a49742a26c39446b1b057ef3de8337966afd1257b74ea4e062de5",
+      "text": "    var _fitParentPanel = function (widgetId) {\n\n        var parentLayerOrRdo = getParentLayerOrRdo(widgetId);\n        if(parentLayerOrRdo) {\n            var isLayer = $ax.public.fn.IsLayer($obj(parentLayerOrRdo).type);\n            if(isLayer) {\n                if(_updateLayerRectCache(parentLayerOrRdo)) _fitParentPanel(parentLayerOrRdo);\n                return;\n            } else {\n                if(_updateRdoRect(parentLayerOrRdo)) _fitParentPanel(parentLayerOrRdo);\n                return;\n            }\n        }\n\n        // Find parent panel if there is one.\n        var parentPanelInfo = getParentPanel(widgetId);\n        if(parentPanelInfo) {\n            var parentId = parentPanelInfo.parent;\n            _updateMobileScroll(parentId, parentPanelInfo.stateId, true);\n            if(_updateFitPanel(parentId, parentPanelInfo.state)) _fitParentPanel(parentId);\n            return;\n        }\n\n        // Otherwise, try to get parent repeater\n        var parentRepeaterId = $ax.getParentRepeaterFromElementId(widgetId);\n        var repeaterObj = $obj(parentRepeaterId);\n        if (repeaterObj && widgetId != parentRepeaterId && repeaterObj.repeaterPropMap.fitToContent) {\n            var itemId = $ax.repeater.getItemIdFromElementId(widgetId);\n            var containerId = $ax.repeater.createElementId(parentRepeaterId, itemId);\n            var childrenRect = $ax('#' + containerId).childrenBoundingRect();\n            $ax.repeater.setItemSize(parentRepeaterId, itemId, childrenRect.right, childrenRect.bottom);\n            return;\n        }\n\n        $ax.adaptive.updateMobileScrollOnBody();\n    };\n    _dynamicPanelManager.fitParentPanel = _fitParentPanel;"
+    },
+    {
+      "file": "expr.js",
+      "start": 469,
+      "end": 552,
+      "sha256": "7f0a69da84847907080f082227ed48ba944e48eef72232f257e1587d8a958584",
+      "text": "    var autofitWidget = function (id) {\n\n        var obj = $obj(id);\n        if (obj.autoFitHeight || obj.autoFitWidth) {\n\n            var values = _displayWidgetIfNeeded(id);\n            var jobj = values.jObject;\n            var trap = values.trap;\n\n            var query = $ax('#' + id);\n            var size = query.size();\n            var css = {\n                width: size.width,\n                height: size.height\n            };\n\n            var textId = $ax.GetTextPanelId(id, true);\n            var style = $ax.style.computeFullStyle(id, $ax.style.generateState(id), $ax.adaptive.currentViewId);\n\n            if (obj.autoFitHeight) {\n                var jText = jobj.children('#' + textId);\n                var newHeight = jText.height();\n                if (style.paddingTop) newHeight += Number(style.paddingTop);\n                if (style.paddingBottom) newHeight += Number(style.paddingBottom);\n\n                if (newHeight - size.height != 0) {\n                    css.height = newHeight;\n                }\n            };\n\n            if (obj.autoFitWidth) {\n                var pars = jobj.find('p');\n                var newWidth = 0;\n\n                for (var j = 0; j < pars.length; ++j) {\n                    var spans = $(pars[j]).children('span');\n                    var w = 0;\n                    for (var i = 0; i < spans.length; ++i) {\n                        w += $(spans[i]).width();\n                    }\n                    if (w > newWidth) newWidth = w;\n                }\n\n                if (style.paddingLeft) newWidth += Number(style.paddingLeft);\n                if (style.paddingRight) newWidth += Number(style.paddingRight);\n\n                if (newWidth - size.width != 0) {\n                    css.width = newWidth;\n                }\n            };\n\n            const deltaWidth = css.width - size.width;\n            const deltaHeight = css.height - size.height;\n\n            if (deltaWidth !== 0 || deltaHeight !== 0) {\n                query.resize(css, {});\n\n                const hAlign = style.horizontalAlignment;\n                const vAlign = style.verticalAlignment;\n                let dx = 0;\n                let dy = 0;\n\n                if (hAlign === \"right\") {\n                    dx = -deltaWidth;\n                } else if (hAlign === \"center\") {\n                    dx = -deltaWidth / 2;\n                }\n\n                if (vAlign === \"bottom\") {\n                    dy = -deltaHeight;\n                } else if (vAlign === \"middle\") {\n                    dy = -deltaHeight / 2;\n                }\n\n                if (dx !== 0 || dy !== 0) {\n                    $ax.move.MoveWidget(id, dx, dy, { easing: 'none', duration: 0 }, false, null, true);\n                }\n            }\n\n            if(trap) trap();\n\n            _setAutoFitId(id, css);\n        }\n    }"
+    }
+  ],
+  "results": [
+    {
+      "name": "ordinary resize and alignment move expose intermediate geometry",
+      "input": {
+        "alignX": "center",
+        "alignY": "middle"
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "drag-log",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -5,
+              "y": 12.5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -5,
+              "top": 12.5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "queue:move",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -5,
+              "y": 12.5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -5,
+              "top": 12.5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "OnMove",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -5,
+              "y": 12.5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -5,
+              "top": 12.5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -5,
+              "y": 12.5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -5,
+              "top": 12.5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 130,
+            "height": 35
+          },
+          "position": {
+            "x": -5,
+            "y": 12.5
+          },
+          "css": {
+            "width": 130,
+            "height": 35,
+            "left": -5,
+            "top": 12.5,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 130,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "same measured dimensions only register",
+      "input": {
+        "measureW": 100,
+        "measureH": 20
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 100,
+            "height": 20
+          },
+          "position": {
+            "x": 10,
+            "y": 20
+          },
+          "css": {
+            "width": 100,
+            "height": 20,
+            "left": 10,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 100,
+            "height": 20
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "both flags false perform no work",
+      "input": {
+        "flags": [
+          false,
+          false
+        ]
+      },
+      "observed": {
+        "log": [],
+        "final": {
+          "size": {
+            "width": 100,
+            "height": 20
+          },
+          "position": {
+            "x": 10,
+            "y": 20
+          },
+          "css": {
+            "width": 100,
+            "height": 20,
+            "left": 10,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {},
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "fractional sizes and right bottom moves remain unrounded",
+      "input": {
+        "measureW": 130.125,
+        "measureH": 35.375,
+        "alignX": "right",
+        "alignY": "bottom"
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130.125,
+              "height": 35.375
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130.125,
+              "height": 35.375,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 130.125,
+              "height": 35.375
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130.125,
+              "height": 35.375,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 130.125,
+              "height": 35.375
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130.125,
+              "height": 35.375,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 130.125,
+              "height": 35.375
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130.125,
+              "height": 35.375,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "drag-log",
+            "size": {
+              "width": 130.125,
+              "height": 35.375
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130.125,
+              "height": 35.375,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130.125,
+              "height": 35.375
+            },
+            "position": {
+              "x": -20.125,
+              "y": 4.625
+            },
+            "css": {
+              "width": 130.125,
+              "height": 35.375,
+              "left": -20.125,
+              "top": 4.625,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "queue:move",
+            "size": {
+              "width": 130.125,
+              "height": 35.375
+            },
+            "position": {
+              "x": -20.125,
+              "y": 4.625
+            },
+            "css": {
+              "width": 130.125,
+              "height": 35.375,
+              "left": -20.125,
+              "top": 4.625,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "OnMove",
+            "size": {
+              "width": 130.125,
+              "height": 35.375
+            },
+            "position": {
+              "x": -20.125,
+              "y": 4.625
+            },
+            "css": {
+              "width": 130.125,
+              "height": 35.375,
+              "left": -20.125,
+              "top": 4.625,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 130.125,
+              "height": 35.375
+            },
+            "position": {
+              "x": -20.125,
+              "y": 4.625
+            },
+            "css": {
+              "width": 130.125,
+              "height": 35.375,
+              "left": -20.125,
+              "top": 4.625,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 130.125,
+            "height": 35.375
+          },
+          "position": {
+            "x": -20.125,
+            "y": 4.625
+          },
+          "css": {
+            "width": 130.125,
+            "height": 35.375,
+            "left": -20.125,
+            "top": 4.625,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 130.125,
+            "height": 35.375
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "both zero updates CSS but does not replace logical size cache",
+      "input": {
+        "measureW": 0,
+        "measureH": 0
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 0,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 0,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 0,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 0,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 0,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 100,
+            "height": 20
+          },
+          "position": {
+            "x": 10,
+            "y": 20
+          },
+          "css": {
+            "width": 0,
+            "height": 0,
+            "left": 10,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "both zero also retains a previous nonzero logical cache",
+      "input": {
+        "measureW": 0,
+        "measureH": 0,
+        "priorCache": {
+          "width": 80,
+          "height": 15
+        }
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 80,
+              "height": 15
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 80,
+              "height": 15
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 0,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 80,
+              "height": 15
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 0,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 80,
+              "height": 15
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 0,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 80,
+              "height": 15
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 0,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 80,
+              "height": 15
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 0,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 80,
+            "height": 15
+          },
+          "position": {
+            "x": 10,
+            "y": 20
+          },
+          "css": {
+            "width": 0,
+            "height": 0,
+            "left": 10,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "one zero axis is cached when other is nonzero",
+      "input": {
+        "measureW": 0,
+        "measureH": 35
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 0,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 0,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 0,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 0,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 0,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 0,
+            "height": 35
+          },
+          "position": {
+            "x": 10,
+            "y": 20
+          },
+          "css": {
+            "width": 0,
+            "height": 35,
+            "left": 10,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 0,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "negative requested dimensions are not clamped by query resize",
+      "input": {},
+      "observed": {
+        "log": [
+          {
+            "kind": "css",
+            "size": {
+              "width": -2.25,
+              "height": -3.5
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": -2.25,
+              "height": -3.5,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": -2.25,
+              "height": -3.5
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": -2.25,
+              "height": -3.5,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": -2.25,
+              "height": -3.5
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": -2.25,
+              "height": -3.5,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": -2.25,
+              "height": -3.5
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": -2.25,
+              "height": -3.5,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          }
+        ],
+        "final": {
+          "size": {
+            "width": -2.25,
+            "height": -3.5
+          },
+          "position": {
+            "x": 10,
+            "y": 20
+          },
+          "css": {
+            "width": -2.25,
+            "height": -3.5,
+            "left": 10,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {},
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "pure owner rotation does not rotate alignment movement",
+      "input": {
+        "rotation": 90,
+        "alignX": "right",
+        "alignY": "bottom"
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(90deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(90deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(90deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(90deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(90deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "drag-log",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(90deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 5,
+              "transform": "rotate(90deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "queue:move",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 5,
+              "transform": "rotate(90deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "OnMove",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 5,
+              "transform": "rotate(90deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 5,
+              "transform": "rotate(90deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 130,
+            "height": 35
+          },
+          "position": {
+            "x": -20,
+            "y": 5
+          },
+          "css": {
+            "width": 130,
+            "height": 35,
+            "left": -20,
+            "top": 5,
+            "transform": "rotate(90deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 130,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "resize handler mutation is observable before alignment correction",
+      "input": {
+        "alignX": "center",
+        "alignY": "middle",
+        "resizeHandlerMove": true
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "drag-log",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 100,
+              "y": 200
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 85,
+              "y": 192.5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -5,
+              "top": 12.5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "queue:move",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 85,
+              "y": 192.5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -5,
+              "top": 12.5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "OnMove",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 85,
+              "y": 192.5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -5,
+              "top": 12.5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 85,
+              "y": 192.5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -5,
+              "top": 12.5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 130,
+            "height": 35
+          },
+          "position": {
+            "x": 85,
+            "y": 192.5
+          },
+          "css": {
+            "width": 130,
+            "height": 35,
+            "left": -5,
+            "top": 12.5,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 130,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "repeater fits at resized old position but not after direct alignment move",
+      "input": {
+        "repeater": true,
+        "alignX": "right",
+        "alignY": "bottom"
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "row-fit",
+            "row": 7,
+            "width": 140,
+            "height": 55,
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "drag-log",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "queue:move",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "OnMove",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 5
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 5,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 130,
+            "height": 35
+          },
+          "position": {
+            "x": -20,
+            "y": 5
+          },
+          "css": {
+            "width": 130,
+            "height": 35,
+            "left": -20,
+            "top": 5,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 130,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "fixed repeater disables automatic row fit",
+      "input": {
+        "repeater": true,
+        "fit": false
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 130,
+            "height": 35
+          },
+          "position": {
+            "x": 10,
+            "y": 20
+          },
+          "css": {
+            "width": 130,
+            "height": 35,
+            "left": 10,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 130,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "panel parent stops direct traversal to repeater",
+      "input": {
+        "repeater": true,
+        "panel": true
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "panel-scroll",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "panel-fit",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 130,
+            "height": 35
+          },
+          "position": {
+            "x": 10,
+            "y": 20
+          },
+          "css": {
+            "width": 130,
+            "height": 35,
+            "left": 10,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 130,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "hidden owner still resizes and fires synthetic events; fit excludes hidden owner",
+      "input": {
+        "hidden": true,
+        "repeater": true,
+        "alignX": "right"
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": true,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "row-fit",
+            "row": 7,
+            "width": 0,
+            "height": 0,
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "drag-log",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "queue:move",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "OnMove",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "remove-clone",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "hidden"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 130,
+            "height": 35
+          },
+          "position": {
+            "x": -20,
+            "y": 20
+          },
+          "css": {
+            "width": 130,
+            "height": 35,
+            "left": -20,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "hidden"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 130,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "disabled flag does not suppress resize/move synthetic event names",
+      "input": {
+        "disabled": true,
+        "alignX": "right"
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "drag-log",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "queue:move",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "OnMove",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 130,
+            "height": 35
+          },
+          "position": {
+            "x": -20,
+            "y": 20
+          },
+          "css": {
+            "width": 130,
+            "height": 35,
+            "left": -20,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 130,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "table cell rejects resize but alignment move still executes",
+      "input": {
+        "type": "tableCell",
+        "alignX": "right"
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "drag-log",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "queue:move",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnMove",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": -20,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": -20,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 100,
+            "height": 20
+          },
+          "position": {
+            "x": -20,
+            "y": 20
+          },
+          "css": {
+            "width": 100,
+            "height": 20,
+            "left": -20,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": true
+        },
+        "registered": {
+          "w": {
+            "width": 130,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "matrix(1,0,0,1,0,0)"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "SVG child scales from old size with raw fractional ratio",
+      "input": {
+        "svg": true,
+        "measureW": 150,
+        "measureH": 25
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 100,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 100,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 150,
+              "height": 25
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 150,
+              "height": 25,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 150,
+              "height": 25
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 150,
+              "height": 25,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 150,
+              "height": 25
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 150,
+              "height": 25,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 150,
+              "height": 25
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 150,
+              "height": 25,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 150,
+              "height": 25
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 150,
+              "height": 25,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 150,
+            "height": 25
+          },
+          "position": {
+            "x": 10,
+            "y": 20
+          },
+          "css": {
+            "width": 150,
+            "height": 25,
+            "left": 10,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 150,
+            "height": 25
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "Scale(1.5, 1.25)",
+            "transformOrigin": "top left"
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "SVG zero old axis produces unguarded infinite scale",
+      "input": {
+        "svg": true,
+        "oldW": 0,
+        "measureW": 130
+      },
+      "observed": {
+        "log": [
+          {
+            "kind": "measure",
+            "hidden": false,
+            "size": {
+              "width": 0,
+              "height": 20
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 0,
+              "height": 20,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          },
+          {
+            "kind": "css",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "body-scroll",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "annotation",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "OnResize",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": true
+          },
+          {
+            "kind": "registered",
+            "size": {
+              "width": 130,
+              "height": 35
+            },
+            "position": {
+              "x": 10,
+              "y": 20
+            },
+            "css": {
+              "width": 130,
+              "height": 35,
+              "left": 10,
+              "top": 20,
+              "transform": "rotate(0deg)",
+              "visibility": "visible"
+            },
+            "resizing": false
+          }
+        ],
+        "final": {
+          "size": {
+            "width": 130,
+            "height": 35
+          },
+          "position": {
+            "x": 10,
+            "y": 20
+          },
+          "css": {
+            "width": 130,
+            "height": 35,
+            "left": 10,
+            "top": 20,
+            "transform": "rotate(0deg)",
+            "visibility": "visible"
+          },
+          "resizing": false
+        },
+        "registered": {
+          "w": {
+            "width": 130,
+            "height": 35
+          }
+        },
+        "svg": {
+          "id": "w_svg",
+          "style": {
+            "transform": "Scale(Infinity, 1.75)",
+            "transformOrigin": "top left"
+          }
+        }
+      },
+      "pass": true
+    }
+  ],
+  "passed": 18,
+  "limitations": [
+    "CSS stub records assignments; does not model browser clamping, used boxes, 1/64 quantization or border-box minimums",
+    "Height/width measurements are injected, not font measurements",
+    "Synthetic event dispatcher is original; handler body is a synchronous snapshot/mutation stub, not full case/menu/Wait execution",
+    "Repeater fit dispatch is original; child bounds and row-size sink are stubbed, not original push layout",
+    "No general transform, fixed panel/layer wrapper DOM, image offsets, parent panel full resize or SVG rendering is probed"
+  ]
+}

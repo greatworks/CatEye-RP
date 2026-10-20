@@ -1,0 +1,185 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-15T17:03:07.375Z",
+  "mode": "read-only-design",
+  "status": "awaiting-native-commit-contract",
+  "report": {
+    "file": "research/native-point-commit-authoring-analysis.md",
+    "sha256": "978564f3118533416994f7314e61b887156da82ab43b8c4401df9b5573a24c55"
+  },
+  "sources": [
+    {
+      "file": "src/App.tsx",
+      "locations": "89-147;316-318;372-373;419-435;468-470",
+      "sha256": "8bd415064cfbe7a237473e0e8eb3e83cfc5a0eb3573a0939a0d2654b0a9fc092"
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "locations": "17-30;125-175;387-479;486-547",
+      "sha256": "0581444169bd91244d6ab56dd2ad2850675fc54734f4b4b33ffbe8de8ec16a82"
+    },
+    {
+      "file": "src/model/adaptive-view-sets.ts",
+      "locations": "98-104;192-215",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+    },
+    {
+      "file": "src/model/vector-editing.ts",
+      "locations": "19-54;61-147;175-195",
+      "sha256": "5beb656467c33b73b6a0425bb003a78f2325127f6f4c4c2a7e3bc4b9b028512d"
+    },
+    {
+      "file": "src/model/vector-authoring.ts",
+      "locations": "8-24",
+      "sha256": "3a11a65829362183b40407adb5543dbc38dcf9560709578ee5d3f8dc19af697c"
+    },
+    {
+      "file": "src/model/vector.ts",
+      "locations": "3-33",
+      "sha256": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147"
+    },
+    {
+      "file": "src/model/rotation-geometry.ts",
+      "locations": "1-34",
+      "sha256": "8749f3fb6ef037b1a75d59e848096be8312ce985b32ba583aea77c85ca587334"
+    },
+    {
+      "file": "src/model/types.ts",
+      "locations": "150-166;208-212",
+      "sha256": "0c8669d7778a150b2036b4b30125c85ac71d32836de5d240029d027e536a201e"
+    },
+    {
+      "file": "src/model/document.ts",
+      "locations": "819-826;1026-1036",
+      "sha256": "b2bd73800782f5252c1042e94aba39dff48b8e39553b927cefd69a55b4a899fb"
+    },
+    {
+      "file": "src/model/shape-text.ts",
+      "locations": "8-20",
+      "sha256": "97e80768ff72e48f3e2cfc03199672149c5c2462b082c58d2891e0397d275e90"
+    },
+    {
+      "file": "src/model/components.ts",
+      "locations": "31;102-160",
+      "sha256": "b3f1119dbd80d735eac9c4ca4648fd035753895855458141878ac5287035101e"
+    },
+    {
+      "file": "src/components/CanvasVectorTools.tsx",
+      "locations": "16-38;59-132",
+      "sha256": "1236da274e59e765ff247cdb0e5a3131f3eeb78c9c34ac55dbe1c2ed7d547225"
+    },
+    {
+      "file": "src/components/Inspector.tsx",
+      "locations": "113-126;487-533",
+      "sha256": "0a96d36e485ca5e3a47b09326c68f9e4709f7e8ecf1400178588fe90ba0b4d88"
+    },
+    {
+      "file": "src/components/WidgetView.tsx",
+      "locations": "71-79;147-183",
+      "sha256": "1d20650b830c03fb9dc0dda93553ef9054ee05fa94306030a1e181a269b52544"
+    },
+    {
+      "file": "src/components/RichTextContent.tsx",
+      "locations": "25-53",
+      "sha256": "302b63dbccd1c4d01f4d19cadc6aeae47032d2ab3d71e6b1437ecfc8c134e88e"
+    },
+    {
+      "file": "src/runtime/export-runtime.ts",
+      "locations": "498;1338-1364;1727-1768;2553;2650-2708",
+      "sha256": "b0631b578a95479d97d56f0095df5f6b0bfe54e559a56ef4b97f129f2dff5b71"
+    },
+    {
+      "file": "src/runtime/shape-text-measure.ts",
+      "locations": "95-150",
+      "sha256": "ffae0a66a538519f583bf0d0b809e1b91a993c464d8a7ee15905c853132410ee"
+    },
+    {
+      "file": "tests/native-point-editing-authoring.test.ts",
+      "locations": "1-163",
+      "sha256": "37948585d90e6e6d6136f6edca8306d8a43e41c0033838af50d22388356bfb3d"
+    },
+    {
+      "file": "tests/native-text-layout.test.ts",
+      "locations": "shapeText validation and preservation tests",
+      "sha256": "d94352a32850273e3a405080a9db8bda90d7fb5b06f110f884f9657ca84085fb"
+    },
+    {
+      "file": "research/native-point-editing-evidence.md",
+      "locations": "Conversion and history boundaries",
+      "sha256": "50d139304a523d2f56e373d67e139d80e9c6af34a8cd2bcba5cd4b2a705932e9"
+    },
+    {
+      "file": "research/native-point-editing-format-evidence.md",
+      "locations": "Geometry writes and adaptive boundary",
+      "sha256": "656601a06cf35c0105935be972ab41c26320e15a79a7c79ed58e15ed253e4f0e"
+    }
+  ],
+  "frozenAuthoringScopeCheck": {
+    "manifest": "research/native-point-editing-authoring-implementation.json",
+    "sha256": "f794419aad334d6d93ee0fb18f6475dfecd9eefdb1f32c7628acf3d19b60eb50",
+    "checked": 5,
+    "differences": []
+  },
+  "changes": {
+    "production": [],
+    "tests": [],
+    "oldEvidence": [],
+    "newFiles": [
+      "research/native-point-commit-authoring-analysis.md",
+      "research/native-point-commit-authoring-analysis.json"
+    ]
+  },
+  "execution": {
+    "testSuites": false,
+    "browser": false,
+    "nativeApplication": false,
+    "targetDll": false,
+    "build": false,
+    "package": false
+  },
+  "findings": [
+    {
+      "id": "two-frames",
+      "classification": "peer-in-progress-native-trace",
+      "description": "Rounded pre-minimum normalization bounds and expanded final owner bounds must remain separate; final extrema/rotation contract awaited."
+    },
+    {
+      "id": "shared-versus-layout",
+      "classification": "verified-current-source",
+      "description": "type/vectorPath/shapeText are shared; location/size/rotation are adaptive declarations; ordinary allViews writes are not automatically native point commit semantics."
+    },
+    {
+      "id": "legacy-shapeText-presence",
+      "classification": "verified-current-source-and-parent-approved-compatibility",
+      "description": "Only existing shapeText should be set false/false; materializing it on an omitted legacy widget could activate native layout."
+    },
+    {
+      "id": "rotation-recenter",
+      "classification": "mathematical-conditional-invariant",
+      "description": "Equivalent reparameterization under center rotation needs compensated origin; native quantization/min-size branches require their own oracle."
+    },
+    {
+      "id": "gesture-frame",
+      "classification": "verified-current-source",
+      "description": "Held path previews use the old owner frame. Rebound frame/path must commit together; geometry-key remount currently resets selected anchor."
+    }
+  ],
+  "openQuestions": [
+    "Final hN4K enabled-segment/extrema/rounding/rotation oracle and degenerate mapping",
+    "RN4I/TN46 entry-specific side effects, including numeric and fill-rule changes",
+    "tN4P per-view read/write ordering, inactive-map handling and Affect all views relation"
+  ],
+  "recommendedTests": [
+    "Curve extrema versus control hull and enabled segment cases",
+    "Rounding tolerance boundaries; separate min-size owner versus normalization frame; zero axes",
+    "Rotation and zoom plus nested parent-local scopes",
+    "Base/child/shared-set/inactive per-view updates and both scope-toggle values",
+    "Existing AutoFit flags clear atomically; omitted shapeText remains omitted; SetText runtime does not refit",
+    "Numeric/canvas parity, single undo, no-op/cancel atomicity, second consecutive handle edit",
+    "Unsupported geometry gate, custom identity, save/clone/component preservation"
+  ],
+  "confirmedAuthoringPolicy": {
+    "successfulSelfCommit": "Preserve selected logical anchor for consecutive drag/sharp operations.",
+    "externalContextChange": "Cancel on view, scope and open/document changes."
+  }
+}

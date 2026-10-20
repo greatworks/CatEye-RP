@@ -1,0 +1,358 @@
+{
+  "version": 1,
+  "target": "Axure RP 11.0.0.4150",
+  "method": "SHA-pinned narrow original JavaScript functions with explicit object tree/jQuery/DOM environment mocks, not original app/browser execution",
+  "files": [
+    {
+      "name": "doc.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\doc.js",
+      "sha256": "986e90c2fc4ddefc64063b8e865b88466bf76ea76ca26df5d72104f7f3a1e8b1",
+      "bytes": 41976
+    },
+    {
+      "name": "repeater.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\repeater.js",
+      "sha256": "d4c44f2392e126263bdfec6e8c0392f4e186f30e26da9aeeecf8bab2e0b91b2b",
+      "bytes": 122627
+    },
+    {
+      "name": "variables.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\variables.js",
+      "sha256": "91c71787560b88e597b6baf934bd68075597901afccf4787b6aa9d8c43453188",
+      "bytes": 6971
+    },
+    {
+      "name": "events.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3",
+      "bytes": 101724
+    },
+    {
+      "name": "expr.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6",
+      "bytes": 29187
+    },
+    {
+      "name": "action.js",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Prototype_Files\\resources\\scripts\\axure\\action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3",
+      "bytes": 109376
+    }
+  ],
+  "excerpts": [
+    {
+      "file": "doc.js",
+      "startLine": 107,
+      "endLine": 150,
+      "purpose": "native-parent-repeater-mapping",
+      "text": "            var mapScriptIdToRepeaterId = function(scriptId, repeaterId) {\n                scriptIdToRepeaterId[scriptId] = repeaterId;\n                var scriptIds = repeaterIdToScriptIds[repeaterId];\n                if(scriptIds) scriptIds[scriptIds.length] = scriptId;\n                else repeaterIdToScriptIds[repeaterId] = [scriptId];\n            };\n            var mapScriptIdToLayerId = function(obj, layerId, path) {\n                var pathCopy = $ax.deepCopy(path);\n                pathCopy[path.length] = obj.id;\n                var scriptId = $ax.getScriptIdFromPath(pathCopy);\n                scriptIdToParentLayer[scriptId] = layerId;\n            }\n            var mapIdsToRepeaterAndLayer = function(path, objs, repeaterId) {\n                var pathCopy = $ax.deepCopy(path);\n\n                for(var i = 0; i < objs.length; i++) {\n                    var obj = objs[i];\n                    pathCopy[path.length] = obj.id;\n                    var scriptId = $ax.getScriptIdFromPath(pathCopy);\n                    // Rdo have no element on page and are not mapped to the repeater\n                    if(repeaterId) mapScriptIdToRepeaterId(scriptId, repeaterId);\n\n                    if($ax.public.fn.IsDynamicPanel(obj.type)) {\n                        for(var j = 0; j < obj.diagrams.length; j++) mapIdsToRepeaterAndLayer(path, obj.diagrams[j].objects, repeaterId);\n                    } else if($ax.public.fn.IsReferenceDiagramObject(obj.type)) {\n                        mapIdsToRepeaterAndLayer(pathCopy, $ax.pageData.masters[obj.masterId].diagram.objects, repeaterId);\n                    } else if($ax.public.fn.IsRepeater(obj.type)) {\n                        mapScriptIdToRepeaterId(scriptId, scriptId);\n                        mapIdsToRepeaterAndLayer(path, obj.objects, scriptId);\n                    } else if($ax.public.fn.IsLayer(obj.type)) {\n                        var layerObjs = obj.objs;\n                        for(var j = 0; j < layerObjs.length; j++) {\n                            mapScriptIdToLayerId(layerObjs[j], scriptId, path);\n                        }\n                        mapIdsToRepeaterAndLayer(path, layerObjs, repeaterId);\n                    } else if(obj.objects && obj.objects.length) {\n                        if(repeaterId) {\n                            for(var j = 0; j < obj.objects.length; j++) {\n                                mapIdsToRepeaterAndLayer(path, obj.objects, repeaterId);\n                            }\n                        }\n                    }\n                }\n            };"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 221,
+      "endLine": 244,
+      "purpose": "target-enumeration",
+      "text": "        var _getElementsIdFromEventAndScriptId = function(eventInfo, scriptId) {\n            var itemId = eventInfo && $ax.repeater.getItemIdFromElementId(eventInfo.srcElement);\n            var target = false;\n            // Try to get itemId from target if you can't get it from source.\n            if(!itemId) {\n                itemId = eventInfo && eventInfo.targetElement && $ax.repeater.getItemIdFromElementId(eventInfo.targetElement);\n                if(itemId) target = true;\n            }\n\n            var parentRepeater = $ax.getParentRepeaterFromScriptId(scriptId);\n            if(parentRepeater && scriptId != parentRepeater) {\n                if(itemId && (!eventInfo || parentRepeater == $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(target ? eventInfo.targetElement : eventInfo.srcElement)))) {\n                    return [$ax.repeater.createElementId(scriptId, itemId)];\n                }\n                var elementIds = [];\n                var itemIds = $ax.getItemIdsForRepeater(parentRepeater);\n                if(!itemIds) return [];\n\n                for(var i = 0; i < itemIds.length; i++) elementIds[i] = $ax.repeater.createElementId(scriptId, itemIds[i]);\n                return elementIds;\n            }\n            return [scriptId];\n        };\n        $ax.getElementIdsFromEventAndScriptId = _getElementsIdFromEventAndScriptId;"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 255,
+      "endLine": 299,
+      "purpose": "event-frame",
+      "text": "        var _getEventInfoFromEvent = function(event, skipShowDescriptions, elementId) {\n            var eventInfo = {};\n            eventInfo.srcElement = elementId;\n            eventInfo.now = new Date();\n\n            if(event != null) {\n                //elementId can be empty string, so can't simple use \"or\" assignment here.\n                eventInfo.srcElement = elementId || elementId == '' ? elementId : _getSrcElementIdFromEvent(event);\n                eventInfo.which = event.which;\n\n                // When getting locations in mobile, need to extract the touch object to get the mouse location attributes\n                var mouseEvent = (event.originalEvent && event.originalEvent.changedTouches && event.originalEvent.changedTouches[0]) || event.originalEvent;\n                if(mouseEvent && !mouseEvent.type) mouseEvent.type = event.type;\n\n                if(skipShowDescriptions) eventInfo.skipShowDescriptions = true;\n\n                // Always update mouse location if possible\n                $ax.event.updateMouseLocation(mouseEvent);\n            }\n\n            // Always set event info about cursor\n            var _cursor = eventInfo.cursor = {};\n            _cursor.x = $ax.mouseLocation.x;\n            _cursor.y = $ax.mouseLocation.y;\n\n            var body = $('body');\n            if(body.css('position') == 'relative') {\n                _cursor.x -= ($ax.getNumFromPx(body.css('left')) + Math.max(0, ($(window).width() - body.width()) / 2));\n            }\n\n            eventInfo.pageX = _cursor.x + 'px';\n            eventInfo.pageY = _cursor.y + 'px';\n\n            // Do Keyboard Info\n            eventInfo.keyInfo = $ax.event.keyState();\n\n            eventInfo.window = $ax.getWindowInfo();\n\n            eventInfo.thiswidget = _getWidgetInfo(eventInfo.srcElement);\n            eventInfo.item = _getItemInfo(eventInfo.srcElement);\n            eventInfo.dragInfo = $ax.drag.GetWidgetDragInfo();\n\n            return eventInfo;\n        };\n        $ax.getEventInfoFromEvent = _getEventInfoFromEvent;"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 328,
+      "endLine": 543,
+      "purpose": "item-and-widget-info",
+      "text": "        var _getItemInfo = function(elementId) {\n            if(!elementId) return { valid: false };\n\n            elementId = _getParentElement(elementId);\n\n            var index = $ax.repeater.getItemIdFromElementId(elementId);\n            if(!index) return { valid: false };\n\n            var item = { valid: true };\n\n            var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n            var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);\n            item.repeater = repeaterInfoCache[repeaterId] ? repeaterInfoCache[repeaterId] : _getWidgetInfo(repeaterId);\n            $ax.repeater.setDisplayProps(item, repeaterId, index);\n            item.ismarked = $ax.repeater.isEditItem(repeaterId, index);\n            item.isvisible = Boolean($jobj(elementId).length);\n\n            return item;\n        };\n        $ax.getItemInfo = _getItemInfo;\n\n        var _getWidgetInfo = function(elementId) {\n            if(!elementId) return { valid: false };\n\n            elementId = _getParentElement(elementId);\n\n            //var elementAxQuery = $ax('#' + elementId);\n            var elementQuery = $jobj(elementId);\n            var obj = $obj(elementId);\n            var widget = { valid: true, isWidget: true, obj: obj, elementQuery: elementQuery, isLayer: $ax.public.fn.IsLayer(obj.type) };\n            widget.elementId = elementId;\n            widget.name = widget.label = (elementQuery.data('label') ? elementQuery.data('label') : '');\n            //widget.text = $ax('#' + elementId).text();\n            if (widget.isLayer) {\n                widget.opacity = function() {\n                    var layerOpacity = elementQuery.attr('layer-opacity');\n                    if (layerOpacity) return Number(layerOpacity) * 100;\n                    return Number(elementQuery.css('opacity')) * 100;\n                }\n            } else {\n                widget.opacity = function() { return Number(elementQuery.css('opacity')) * 100; }\n            }\n            //widget.rotation = $ax.move.getRotationDegree(widget.elementId);\n            var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);\n            var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);\n            if(repeaterId) widget.repeater = $ax.public.fn.IsRepeater(obj.type) ? widget : _getWidgetInfo(repeaterId);\n            \n            // Right now only dynamic panel can scroll\n            if($ax.public.fn.IsDynamicPanel(obj.type)) {\n                var stateId = $ax.visibility.GetPanelState(elementId);\n                //can be empty when refreshing repeater and applying filter\n                if(stateId) {\n                    var stateQuery = $('#' + stateId);\n                    widget.scrollx = stateQuery.scrollLeft();\n                    widget.scrolly = stateQuery.scrollTop();\n                    //widget.stateQuery = stateQuery;\n                }\n            } else {\n                widget.scrollx = 0;\n                widget.scrolly = 0;\n            }\n\n            // repeater only props\n            if($ax.public.fn.IsRepeater(obj.type)) {\n                widget.visibleitemcount = repeaterIdToItemIds[scriptId] ? repeaterIdToItemIds[scriptId].length : $ax.repeater.getVisibleDataCount(scriptId);\n                widget.itemcount = $ax.repeater.getFilteredDataCount(scriptId);\n                widget.datacount = $ax.repeater.getDataCount(scriptId);\n                widget.pagecount = $ax.repeater.getPageCount(scriptId);\n                widget.pageindex = $ax.repeater.getPageIndex(scriptId);\n            }\n\n            // Get widget info funcs\n            //widget.elementAxQuery = function () {\n            //    return this.elementAxQueryProp || (this.elementAxQueryProp = $ax('#' + this.elementId));\n            //}\n\n            //widget.isFitToContent = function () {\n            //    if (this.isFitToContentProp === undefined) {\n            //        if (!this.stateQuery) this.isFitToContentProp = false;\n            //        else this.isFitToContentProp = $ax.dynamicPanelManager.isIdFitToContent(this.elementId);\n            //    }\n            //    return this.isFitToContentProp;\n            //}\n\n            widget.x = function () { return this.getProp('x'); }\n            widget.y = function () { return this.getProp('y'); }\n            widget.pagex = function () { return this.getProp('pagex'); }\n            widget.pagey = function () { return this.getProp('pagey'); }\n            widget.width = function () { return this.getProp('width'); }\n            widget.height = function () { return this.getProp('height'); }\n            widget.left = function () { return this.x(); }\n            widget.top = function () { return this.y(); }\n            widget.right = function () { return this.x() + this.width(); }\n            widget.bottom = function () { return this.y() + this.height(); }\n            widget.rotation = function () { return this.getProp('rotation'); }\n            widget.text = function () { return this.getProp('text'); }\n\n            //height and width change aren't cached as they're only valid during an event\n            widget.heightchange = function () {\n\n                //if this is during a set state\n                var panelSizeChange = $ax.dynamicPanelManager.getPanelSizeChange(elementId);\n                if ($ax.public.fn.IsDynamicPanel(obj.type) && panelSizeChange) {\n                    return panelSizeChange.height;\n                }\n\n                var oldHeight = $ax.visibility.getResizingRect(this.elementId).height;\n                return oldHeight ? this.height() - oldHeight : 0;\n\n            }\n\n            widget.widthchange = function () {\n                //if this is during a set state\n                var panelSizeChange = $ax.dynamicPanelManager.getPanelSizeChange(elementId);\n                if ($ax.public.fn.IsDynamicPanel(obj.type) && panelSizeChange) {\n                    return panelSizeChange.width;\n                }\n                var oldWidth = $ax.visibility.getResizingRect(this.elementId).width;\n                return oldWidth ? this.width() - oldWidth : 0;\n            }    \n            \n            widget.getProp = function (prop) {\n                var propName = prop + 'Prop';\n                if (typeof (this[propName]) != 'undefined') return this[propName];\n                return this[propName] = this.cacheProp(prop);\n            };\n\n            widget.cacheProp = function (prop) {\n\n                if (prop == 'x' || prop == 'y' || prop == 'width' || prop == 'height') {\n                    // Lets ignore outer shadow size (see RP-1816)\n                    var boundingRect = $ax('#' + this.elementId).offsetBoundingRect(true, true);\n                    this.xProp = boundingRect.left;\n                    this.yProp = boundingRect.top;\n                    this.widthProp = boundingRect.width;\n                    this.heightProp = boundingRect.height;                    \n                }\n\n                if(prop == 'pagex' || prop == 'pagey') {\n                    var viewportLocation = $ax('#' + this.elementId).viewportLocation();\n                    this.pagexProp = viewportLocation.left;\n                    this.pageyProp = viewportLocation.top;\n                }\n\n                if(prop == 'rotation') {\n                    this.rotationProp = $ax.move.getRotationDegree(this.elementId);\n                }\n\n                if (prop == 'text') {\n                    this.textProp = $ax('#' + this.elementId).text();\n                }\n\n                return this[prop + 'Prop'];\n\n                //// I'm keeping the returned undefineds the same as before, but really I could probably return undefined right away if elementQuery is empty\n                //if (this.isLayer) {\n                //    if (prop == 'pagex' || prop == 'pagey') {\n                //        if (this.elementQuery.length > 0) {\n                //            if (prop == 'pagex') return this.elementAxQuery().left();\n                //            else return this.elementAxQuery().top();\n                //        }\n                //        return undefined; // Otherwise, it is undefined as there is no element\n                //    }\n                //    var boundingRect = $ax.public.fn.getWidgetBoundingRect(this.elementId);\n                //    this.xProp = boundingRect.left;\n                //    this.yProp = boundingRect.top;\n                //    this.widthProp = boundingRect.width;\n                //    this.heightProp = boundingRect.height;\n                //    return this[prop + 'Prop'];\n                //}\n\n                //if (this.elementQuery.length <= 0) return prop == 'x' || prop == 'y' ? 0 : undefined;\n\n                //switch (prop) {\n                //    case 'x': return this.elementAxQuery().locRelativeIgnoreLayer(false);\n                //    case 'y': return this.elementAxQuery().locRelativeIgnoreLayer(true);\n                //    case 'pagex': return this.elementAxQuery().left();\n                //    case 'pagey': return this.elementAxQuery().top();\n                //}\n\n                //var val = this.elementAxQuery()[prop]();\n                //if (this.isFitToContent()) val = this.stateQuery[prop]();\n\n                //return val;\n            };\n\n            //widget.leftfixed = function() { this.getFixed('left'); }\n            //widget.topfixed = function() { this.getFixed('top'); }\n            //widget.rightfixed = function() { this.getFixed('right'); }\n            //widget.bottomfixed = function() { this.getFixed('bottom'); }\n\n            //widget.isFixed = function() {\n            //    if(this.isFixedProp === undefined) this.isFixedProp = this.elementQuery.css('position') == 'fixed)';\n            //    return this.isFixedProp;\n            //}\n\n            //widget.getFixed = function (prop) {\n            //    var fixed = prop + 'fixedProp';\n            //    if(!this.isFixed()) widget[fixed] = widget[prop]();\n            //    if(widget[fixed] === undefined) {\n\n            //        if(prop == 'left' || prop == 'right') {\n            //            if(this.windowScrollX === undefined) this.windowScrollX = $(window).scrollLeft();\n            //            var windowScroll = this.windowScrollX;\n            //        } else {\n            //            if(this.windowScrollY === undefined) this.windowScrollY = $(window).scrollTop();\n            //            windowScroll = this.windowScrollY;\n            //        }\n            //        widget[fixed] = widget[prop]() - windowScroll;\n            //    }\n            //    return widget[fixed];\n            //}\n\n            return widget;\n        };\n        $ax.getWidgetInfo = _getWidgetInfo;"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 613,
+      "endLine": 624,
+      "purpose": "contained-widget-parent",
+      "text": "        var _getParentElement = $ax.getParentElement = function(elementId) {\n            var obj = $obj(elementId);\n            while(obj.isContained) {\n                var path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(elementId));\n                var itemId = $ax.repeater.getItemIdFromElementId(elementId);\n                path[path.length - 1] = obj.parent.id;\n                elementId = $ax.getElementIdFromPath(path, { itemNum: itemId });\n                obj = $obj(elementId);\n            }\n\n            return elementId;\n        };"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 626,
+      "endLine": 633,
+      "purpose": "register-rendered-item",
+      "text": "        $ax.addItemIdToRepeater = function(itemId, repeaterId) {\n            var itemIds = repeaterIdToItemIds[repeaterId];\n            if(itemIds) itemIds[itemIds.length] = itemId;\n            else repeaterIdToItemIds[repeaterId] = [itemId];\n\n            var scriptIds = repeaterIdToScriptIds[repeaterId];\n            for(var i = 0; i < scriptIds.length; i++) elementIdToObject[$ax.repeater.createElementId(scriptIds[i], itemId)] = $ax.getObjectFromScriptId(scriptIds[i]);\n        };"
+    },
+    {
+      "file": "doc.js",
+      "startLine": 669,
+      "endLine": 685,
+      "purpose": "parent-and-visible-item-ids",
+      "text": "        $ax.getParentRepeaterFromScriptId = function(scriptId) {\n            return scriptIdToRepeaterId[scriptId];\n        };\n\n        var _getChildScriptIdsForRepeater = function(repeaterId) {\n            return repeaterIdToScriptIds[repeaterId];\n        };\n\n        var _getItemIdsForRepeater = function(repeaterId) {\n            return repeaterIdToItemIds[repeaterId] || [];\n        };\n        $ax.getItemIdsForRepeater = _getItemIdsForRepeater;\n\n        var _clearItemIdsForRepeater = function(repeaterId) {\n            repeaterIdToItemIds[repeaterId] = [];\n        };\n        $ax.clearItemsForRepeater = _clearItemIdsForRepeater;"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 229,
+      "endLine": 245,
+      "purpose": "reset-then-register-only-visible-bounds",
+      "text": "            removeItems(repeaterId);\n            resetItemSizes(repeaterId, offset, bounds, orderedIds, vertical, wrap);\n\n            var i = 0;\n            var startTop = paddingTop;\n            var startLeft = paddingLeft;\n            if(repeaterObj.css('box-sizing') == 'border-box') {\n                startTop -= $ax.getNumFromPx(repeaterObj.css('border-top-width')) || 0;\n                startLeft -= $ax.getNumFromPx(repeaterObj.css('border-left-width')) || 0;\n            }\n            var top = startTop;\n            var left = startLeft;\n            for(pos = start; pos < end; pos++) {\n                itemId = orderedIds[pos];\n\n                var itemElementId = _createElementId(repeaterId, itemId);\n                $ax.addItemIdToRepeater(itemId, repeaterId);"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 594,
+      "endLine": 669,
+      "purpose": "native-repeater-count-and-display-providers",
+      "text": "    _repeaterManager.getItemCount = function(repeaterId) {\n        var data = repeaterToActiveDataSet[repeaterId].length;\n        var info = repeaterToPageInfo[repeaterId];\n        if(!info.noLimit) {\n            var start = Math.min(data, info.itemsPerPage * info.currPage);\n            var end = Math.min(data, start + info.itemsPerPage);\n            data = end - start;\n        }\n        return data;\n    };\n\n    _repeaterManager.setDisplayProps = function(obj, repeaterId, itemIndex) {\n        var data = repeaterToActiveDataSet[repeaterId];\n        var info = repeaterToPageInfo[repeaterId];\n        var start = 0;\n        var end = data.length;\n        if(!info.noLimit) {\n            start = Math.min(end, info.itemsPerPage * (info.currPage - 1));\n            end = Math.min(end, start + info.itemsPerPage);\n        }\n        var count = end - start;\n        var index = -1;\n        for(var i = 0; i < count; i++) {\n            if(data[start + i].index == itemIndex) index = i + 1;\n        }\n        if(index == -1) return;\n        obj.index = index;\n        obj.isfirst = index == 1;\n        obj.islast = index == end - start;\n        obj.iseven = index % 2 == 0;\n        obj.isodd = index % 2 == 1;\n    };\n\n    var _getVisibleDataBounds = function(pageInfo, count) {\n        var retval = [0, count];\n        if(!pageInfo.noLimit) {\n            var end = pageInfo.itemsPerPage * pageInfo.currPage;\n            var start = end - pageInfo.itemsPerPage;\n\n            // If past the end, move to last page\n            if(start >= count) {\n                pageInfo.currPage = Math.floor((count - 1) / pageInfo.itemsPerPage) + 1;\n                if(pageInfo.currPage <= 0) pageInfo.currPage = 1;\n\n                end = pageInfo.itemsPerPage * pageInfo.currPage;\n                start = end - pageInfo.itemsPerPage;\n            }\n            end = Math.min(end, count);\n            retval[0] = start;\n            retval[1] = end;\n        }\n        return retval;\n    };\n\n    _repeaterManager.getVisibleDataCount = function(repeaterId) {\n        var bounds = _getVisibleDataBounds(repeaterToPageInfo[repeaterId], repeaterToActiveDataSet[repeaterId].length);\n        return bounds[1] - bounds[0];\n    };\n\n    _repeaterManager.getDataCount = function(repeaterId) {\n        return repeaterToCurrentDataSet[repeaterId].length;\n    };\n\n    var _getFilteredDataCount = _repeaterManager.getFilteredDataCount = function(repeaterId) {\n        return repeaterToActiveDataSet[repeaterId].length;\n    };\n\n    _repeaterManager.getPageCount = function(repeaterId) {\n        var info = repeaterToPageInfo[repeaterId];\n        return info.noLimit ? 1 : Math.ceil(_getFilteredDataCount(repeaterId) / info.itemsPerPage);\n    };\n\n    _repeaterManager.getPageIndex = function(repeaterId) {\n        var info = repeaterToPageInfo[repeaterId];\n        return info.noLimit ? 1 : info.currPage;\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1070,
+      "endLine": 1078,
+      "purpose": "remove-old-rendered-item-ids",
+      "text": "    var removeItems = function(repeaterId) {\n        var elementIds = $ax.getChildElementIdsForRepeater(repeaterId);\n        var itemId = $ax.getItemIdsForRepeater(repeaterId);\n        for(var i = 0; i < itemId.length; i++) $jobj(_createElementId(repeaterId, itemId[i])).remove();\n        $ax.visibility.clearLimboAndHiddenIds(elementIds);\n        $ax.visibility.clearMovedAndResizedIds(elementIds);\n        $ax.expr.clearAutoFittedIds(elementIds);\n        $ax.clearItemsForRepeater(repeaterId);\n    };"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1483,
+      "endLine": 1490,
+      "purpose": "element-id-single-suffix",
+      "text": "    var _createElementId = function(scriptId, itemId) {\n        if(!itemId) return scriptId;\n        var i = scriptId.indexOf('_');\n        var sections = i > -1 ? [scriptId.substring(0, i), scriptId.substring(i + 1)] : [scriptId];\n        var retval = sections[0] + '-' + itemId;\n        return sections.length > 1 ? retval + '_' + sections[1] : retval;\n    };\n    _repeaterManager.createElementId = _createElementId;"
+    },
+    {
+      "file": "repeater.js",
+      "startLine": 1503,
+      "endLine": 1519,
+      "purpose": "single-item-suffix-parser",
+      "text": "    var _getScriptIdFromElementId = function(elementId) {\n        if(!elementId) return elementId;\n        var sections = elementId.split('-');\n        var retval = sections[0];\n        if(sections.length <= 1) return retval;\n        sections = sections[1].split('_');\n        return sections.length > 1 ? retval + '_' + sections[1] : retval;\n    };\n    _repeaterManager.getScriptIdFromElementId = _getScriptIdFromElementId;\n\n    var _getItemIdFromElementId = function(elementId) {\n        var sections = elementId.split('-');\n        if(sections.length < 2) return '';\n        sections = sections[1].split('_');\n        return sections[0];\n    };\n    _repeaterManager.getItemIdFromElementId = _getItemIdFromElementId;"
+    },
+    {
+      "file": "variables.js",
+      "startLine": 33,
+      "endLine": 85,
+      "purpose": "Item-TargetItem-This-providers",
+      "text": "    var getVariableValue = function(variable, eventInfo, ignoreDefaultsForLinkUrl) {\n        variable = variable.toLowerCase();\n        if(_globalVariableValues[variable] !== undefined) {\n            //If this is for the GetLinkUrl function and \n            //the current value of the global variable is the same as the default defined in the document, don't return it\n            if(ignoreDefaultsForLinkUrl == true && $ax.document.globalVariables[variable] == _globalVariableValues[variable]) {\n                return null;\n            }\n\n            return _globalVariableValues[variable];\n        }\n        if($ax.document.globalVariables[variable] !== undefined) return ignoreDefaultsForLinkUrl == true ? null : $ax.document.globalVariables[variable];\n        switch(variable) {\n            case \"pagename\": return $ax.pageData.page.name;\n\n            case \"now\": return eventInfo.now;\n            case \"gendate\": return $ax.pageData.generationDate;\n\n            case \"dragx\": return $ax.drag.GetDragX();\n            case \"dragy\": return $ax.drag.GetDragY();\n            case \"totaldragx\": return $ax.drag.GetTotalDragX();\n            case \"totaldragy\": return $ax.drag.GetTotalDragY();\n            case \"dragtime\": return $ax.drag.GetDragTime();\n\n            case \"math\": return Math;\n            case \"date\": return Date;\n\n            case \"window\": return eventInfo && eventInfo.window;\n            case \"this\": return eventInfo && eventInfo.thiswidget && $ax.getWidgetInfo(eventInfo.thiswidget.elementId);\n            case \"item\": return (eventInfo && eventInfo.item && eventInfo.item.valid && eventInfo.item) || getVariableValue('targetitem', eventInfo, ignoreDefaultsForLinkUrl);\n            case \"targetitem\": return eventInfo && eventInfo.targetElement && $ax.getItemInfo(eventInfo.targetElement);\n            case \"repeater\": return eventInfo && eventInfo.repeater;\n            case \"target\": return eventInfo && eventInfo.targetElement && $ax.getWidgetInfo(eventInfo.targetElement);\n            case \"cursor\": return eventInfo && eventInfo.cursor;\n            default:\n                var gen = variable.substr(0, 3) == \"gen\";\n                var date = gen ? $ax.pageData.generationDate : new Date();\n                var prop = gen ? variable.substr(3) : variable;\n                switch(prop) {\n                    case \"day\": return date.getDate();\n                    case \"month\": return date.getMonth() + 1;\n                    case \"monthname\": return $ax.getMonthName(date.getMonth());\n                    case \"dayofweek\": return $ax.getDayOfWeek(date.getDay());\n                    case \"year\": return date.getFullYear();\n                    case \"time\": return date.toLocaleTimeString();\n                    case \"hours\": return date.getHours();\n                    case \"minutes\": return date.getMinutes();\n                    case \"seconds\": return date.getSeconds();\n                    default: return '';\n                }\n        }\n    };\n    _globalVariableProvider.getVariableValue = getVariableValue;"
+    },
+    {
+      "file": "events.js",
+      "startLine": 281,
+      "endLine": 415,
+      "purpose": "event-handler",
+      "text": "    var _handleEvent = $ax.event.handleEvent = function (elementId, eventInfo, axEventObject, skipShowDescriptions, synthetic) {\n        var eventType = axEventObject.eventType;\n        if(_enteredWidgets[elementId] && eventType == 'OnMouseEnter') return; // Suppress entering a widget when already in widget (ie only)\n        if(_isSuppressedEvent(elementId, eventType)) {\n            _removeSuppressedEvent(elementId, eventType);\n            return;\n        }\n\n        if(axEventObject.proxy) {\n            var firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                var firingObj = $obj(firingId);\n                var nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                eventInfo = $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), false, firingId);\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n//        var x = JSON.stringify(eventInfo);\n//        var y = JSON.stringify(axEventObject);\n\n        var fireTime = new Date().getTime();\n\n        if(fireTime - eventNestingTime > 100) {\n            eventNestingTime = fireTime;\n            eventNesting = 0;\n        }\n\n        if(eventNesting === 0) {\n            $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, fireTime);\n        }\n\n        eventNesting += 1;\n\n        if (!synthetic && !_getCanClick() && (eventType == 'OnClick' || eventType == 'OnPageClick')) return;\n        // If you are supposed to suppress, do that right away.\n        if(suppressedEventStatus[eventType]) {\n            return;\n        }\n\n        var currentEvent = $ax.getjBrowserEvent();\n        if(!synthetic && currentEvent && currentEvent.originalEvent && currentEvent.originalEvent.handled && !eventInfo.isMasterEvent) return;\n        if(!synthetic && elementId && !$ax.style.getObjVisible(elementId) && _notAllowedInvisible(elementId)) return;\n\n        //if debug\n        var axObj = $obj(elementId);\n        var axObjLabel = axObj ? axObj.label : eventInfo.label;\n        var axObjType = axObj ? axObj.friendlyType : eventInfo.friendlyType;\n        if (!skipShowDescriptions || eventType == 'OnPageLoad') postMessage('axEvent', { 'label': axObjLabel, 'type': axObjType, 'event': axEventObject, 'elementId': $ax.repeater.getScriptIdFromElementId(elementId) });\n\n        var bubble = true;\n        var showCaseDescriptions = !skipShowDescriptions && _shouldShowCaseDescriptions(axEventObject);\n        if(!showCaseDescriptions) {\n            //handle case descriptions\n            var caseGroups = [];\n            var currentCaseGroup = [];\n            caseGroups[0] = currentCaseGroup;\n\n            // Those refreshes not after a wait\n            var guaranteedRefreshes = {};\n\n            var caseGroupIndex = 0;\n            for(var i = 0; i < axEventObject.cases.length; i++) {\n                var currentCase = axEventObject.cases[i];\n                if(currentCase.isNewIfGroup && i != 0) {\n                    caseGroupIndex++;\n                    currentCaseGroup = [];\n                    caseGroups[caseGroups.length] = currentCaseGroup;\n                    // Joon: Isn't caseGroups.length always equal to caseGroupIndex?\n                }\n                currentCaseGroup[currentCaseGroup.length] = currentCase;\n\n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    var action = currentCase.actions[j];\n                    if(action.action == 'wait') break;\n                    if(action.action != 'refreshRepeater') continue;\n                    for(var k = 0; k < action.repeatersToRefresh.length; k++) {\n                        var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[k], eventInfo)[0];\n                        if(id) guaranteedRefreshes[id] = caseGroupIndex;\n                    }\n                }\n            }\n\n            for(var i = 0; i < caseGroups.length; i++) {\n                var groupRefreshes = [];\n                for(var key in guaranteedRefreshes) {\n                    if(guaranteedRefreshes[key] == i) groupRefreshes[groupRefreshes.length] = key;\n                }\n                bubble = _handleCaseGroup(eventInfo, caseGroups[i], groupRefreshes) && bubble;\n            }\n        } else {\n            _showCaseDescriptions(elementId, eventInfo, axEventObject, synthetic);\n            bubble = false;\n        }\n\n        // If not handled, synthetically bubble if you can\n        if(bubble && _widgetToFocusParent[elementId]) {\n            firingId = _widgetToFocusParent[elementId];\n            if(firingId) {\n                firingObj = $obj(firingId);\n                nextEventObj = firingObj.interactionMap && firingObj.interactionMap[_eventTypeToKey[eventType]];\n                if(!nextEventObj) nextEventObj = axEventObject;\n                _handleEvent(firingId, eventInfo, nextEventObj, skipShowDescriptions, synthetic);\n            }\n            return;\n        }\n\n        // Only trigger a supression if it handled this event\n        if(!bubble && suppressingEvents[eventType]) {\n            suppressedEventStatus[suppressingEvents[eventType]] = true;\n        }\n\n        $ax.action.flushAllResizeMoveActions(eventInfo);\n\n        // This should not be needed anymore. All refreshes should be inserted, or handled earlier.\n        var repeaters = $ax.deepCopy($ax.action.repeatersToRefresh);\n        while($ax.action.repeatersToRefresh.length) $ax.action.repeatersToRefresh.pop();\n        for(i = 0; i < repeaters.length; i++) $ax.repeater.refreshRepeater(repeaters[i], eventInfo);\n\n        if(currentEvent && currentEvent.originalEvent) {\n            currentEvent.originalEvent.handled = !synthetic && !bubble && allowBubble.indexOf(eventType) == -1;\n            //currentEvent.originalEvent.donotdrag = currentEvent.donotdrag || (!bubble && eventDescription == 'OnMouseDown');\n\n            // Prevent default if necessary\n            if (currentEvent.originalEvent.handled && preventDefaultEvents.indexOf(eventType) != -1) {\n                currentEvent.preventDefault();\n            }\n        }\n\n        eventNesting -= 1;\n\n        if(!showCaseDescriptions) postMessage('axEventComplete');\n\n    };"
+    },
+    {
+      "file": "events.js",
+      "startLine": 544,
+      "endLine": 591,
+      "purpose": "case-group",
+      "text": "    var _handleCaseGroup = function (eventInfo, caseGroup, groupRefreshes) {\n        for(var i = 0; i < caseGroup.length; i++) {\n            var currentCase = caseGroup[i];\n            if(currentCase.disabled) continue;\n            if(!currentCase.condition || _processCondition(currentCase.condition, eventInfo)) {\n                postMessage('axCase', { 'item': currentCase.description, 'description': currentCase.conditionString, 'color': currentCase.caseColorHex })\n                \n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    var currentAction = currentCase.actions[j];\n                    if (currentAction.action != 'refreshRepeater') {\n                        // Only use action's direct description if no action info descriptions exist\n                        postMessage('axAction', { 'name': currentAction.displayName });\n                        //postMessage('axAction', { 'item': currentAction.description, 'description': (Object.keys(currentAction.actionInfoDescriptions).length > 0 ? \"\" : currentAction.description) });\n\n                        for (var target in currentAction.actionInfoDescriptions) {\n                            var infoDescriptions = currentAction.actionInfoDescriptions[target];\n                            for (var shortDescription in infoDescriptions) {\n                                postMessage('axInfo', { 'item': target, 'description': shortDescription, 'longDescription': infoDescriptions[shortDescription] });\n                            }\n                        }\n                    }\n                }\n\n                for(var j = 0; j < currentCase.actions.length; j++) {\n                    var action = currentCase.actions[j];\n                    if(action.action == 'wait') break;\n                    if(action.action != 'refreshRepeater') continue;\n                    for(var k = 0; k < action.repeatersToRefresh.length; k++) {\n                        var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[i], eventInfo)[i];\n                        if(id) {\n                            var index = groupRefreshes.indexOf(id);\n                            if(index != -1) $ax.splice(groupRefreshes, index);\n                        }\n                    }\n                }\n\n                // Any guaranteed refreshes that aren't accounted for must be run still.\n                $ax.action.tryRefreshRepeaters(groupRefreshes, eventInfo);\n\n                $ax.action.dispatchAction(eventInfo, currentCase.actions);\n                return false;\n            }\n        }\n\n        // Any guaranteed refreshes that aren't accounted for must be run still.\n        $ax.action.tryRefreshRepeaters(groupRefreshes, eventInfo);\n        return true;\n    };"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1701,
+      "endLine": 1717,
+      "purpose": "synthetic-entry",
+      "text": "    var _raiseSyntheticEvent = function (elementId, eventName, skipShowDescription, eventInfo, nonSynthetic) {\n        if ($ax.style.IsWidgetDisabled(elementId) && _shouldStopOnDisabledWidget(eventName)) return;\n        // Empty string used when this is an event directly on the page.\n        var dObj = elementId === '' ? $ax.pageData.page : $ax.getObjectFromElementId(elementId);\n        var axEventObject = dObj && dObj.interactionMap && dObj.interactionMap[eventName];\n        if (!axEventObject) return;\n        \n        eventInfo = eventInfo || $ax.getEventInfoFromEvent($ax.getjBrowserEvent(), skipShowDescription, elementId);\n        //        $ax.recording.maybeRecordEvent(elementId, eventInfo, axEventObject, new Date().getTime());\n        _handleEvent(elementId, eventInfo, axEventObject, false, !nonSynthetic);\n    };\n    $ax.event.raiseSyntheticEvent = _raiseSyntheticEvent;\n\n    var _shouldStopOnDisabledWidget = function (eventName) {\n        var blackList = [\"onLongClick\"];\n        return blackList.some(x => x === eventName);\n    }"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1921,
+      "endLine": 2018,
+      "purpose": "container-loaded-traversal",
+      "text": "    // Filters include page, referenceDiagramObject, dynamicPanel, and repeater.\n    var _callFilterCheck = function(callFilter, type) {\n        for(var index = 0; index < callFilter.length; index++) {\n            var currentType = callFilter[index];\n            if(currentType === $ax.constants.ALL_TYPE || currentType === type) return true;\n        }\n        return false;\n    };\n\n    var fireEventThroughContainers = function(eventName, objects, synthetic, searchFilter, callFilter, path, itemId) {\n        // TODO: may want to pass in this as a parameter. At that point, may want to convert some of them to an option parameter. For now this is the only case\n        var skipShowDescription = eventName == 'onLoad';\n\n        // If objects undefined, load page\n        if(!objects) {\n            if(_callFilterCheck(callFilter, $ax.constants.PAGE_TYPE)) {\n                //if scrolling, set direction, later master will know\n                if(eventName === \"onScroll\") {\n                    var currentScrollTop = ((SAFARI && IOS) || SHARE_APP) ? $('#ios-safari-html').scrollTop() : $(window).scrollTop();\n                    _event.windowScrollingUp = currentScrollTop < lastScrollTop;\n                    _event.windowScrollingDown = currentScrollTop > lastScrollTop;\n                }\n\n                fireEventForPageOrMaster('', eventName, $ax.pageData.page.interactionMap, true, skipShowDescription, synthetic);\n            }\n            if(searchFilter.indexOf($ax.constants.PAGE_TYPE) != -1) fireEventThroughContainers(eventName, $ax.pageData.page.diagram.objects, synthetic, searchFilter, callFilter);\n            //reset and save scrolling info at the end\n            if(currentScrollTop) {\n                lastScrollTop = currentScrollTop;\n                _event.windowScrollingUp = undefined;\n                _event.windowScrollingDown = undefined;\n            }\n\n            return;\n        }\n\n        if(!path) path = [];\n\n        var pathCopy = [];\n        for(var j = 0; j < path.length; j++) pathCopy[j] = path[j];\n\n        for(var i = 0; i < objects.length; i++) {\n            var obj = objects[i];\n            pathCopy[path.length] = obj.id;\n            if (!$ax.public.fn.IsReferenceDiagramObject(obj.type) && !$ax.public.fn.IsDynamicPanel(obj.type) && !$ax.public.fn.IsRepeater(obj.type) && !$ax.public.fn.IsLayer(obj.type)) {\n                if(_callFilterCheck(callFilter)) { //fire current event for all types\n                    if ($ax.public.fn.IsTable(obj.type) || $ax.public.fn.IsMenuObject(obj.type) || $ax.public.fn.IsTreeNodeObject(obj.type)) {\n                        _fireEventsForTableMenuAndTree(obj, eventName, skipShowDescription, undefined, path, !synthetic);\n                    } else {\n                        var scriptId = $ax.getScriptIdFromPath(pathCopy);\n                        if(scriptId && itemId) scriptId = $ax.repeater.createElementId(scriptId, itemId);\n                        $ax.event.raiseSyntheticEvent(scriptId, eventName, skipShowDescription, undefined, !synthetic);\n                    }\n                }\n                continue;\n            }\n\n            var objId = $ax.getScriptIdFromPath(pathCopy);\n            // If limboed, move on to next item\n            if(!objId) continue;\n            if(itemId) objId = $ax.repeater.createElementId(objId, itemId);\n\n            if($ax.public.fn.IsReferenceDiagramObject(obj.type)) {\n                if(_callFilterCheck(callFilter, $ax.constants.REFERENCE_DIAGRAM_OBJECT_TYPE)) {\n                    fireEventForPageOrMaster(objId, eventName, $ax.pageData.masters[obj.masterId].interactionMap, false, skipShowDescription, synthetic);\n                    if(eventName == \"onLoad\") $ax.event.raiseSyntheticEvent(objId, eventName, skipShowDescription, undefined, !synthetic);\n                }\n                if(searchFilter.indexOf($ax.constants.REFERENCE_DIAGRAM_OBJECT_TYPE) != -1) fireEventThroughContainers(eventName, $ax.pageData.masters[obj.masterId].diagram.objects, synthetic, searchFilter, callFilter, pathCopy, itemId);\n            } else if($ax.public.fn.IsDynamicPanel(obj.type)) {\n                if(_callFilterCheck(callFilter, $ax.constants.DYNAMIC_PANEL_TYPE)) $ax.event.raiseSyntheticEvent(objId, eventName, skipShowDescription, undefined, !synthetic);\n\n                if(searchFilter.indexOf($ax.constants.DYNAMIC_PANEL_TYPE) != -1) {\n                    var diagrams = obj.diagrams;\n                    for(var j = 0; j < diagrams.length; j++) {\n                        fireEventThroughContainers(eventName, diagrams[j].objects, synthetic, searchFilter, callFilter, path, itemId);\n                    }\n                }\n            } else if($ax.public.fn.IsRepeater(obj.type)) {\n                // TODO: possible an option for repeater item? Now fires overall for the repeater\n                if(_callFilterCheck(callFilter, $ax.constants.REPEATER)) $ax.event.raiseSyntheticEvent(objId, eventName, skipShowDescription, undefined, !synthetic);\n                if(searchFilter.indexOf($ax.constants.REPEATER) != -1) {\n                    var itemIds = $ax.getItemIdsForRepeater(objId);\n                    for(var j = 0; j < itemIds.length; j++) {\n                        fireEventThroughContainers(eventName, obj.objects, synthetic, searchFilter, callFilter, path, itemIds[j]);\n                    }\n                }\n            } else if($ax.public.fn.IsLayer(obj.type)) {\n                if(_callFilterCheck(callFilter, $ax.constants.LAYER_TYPE)) $ax.event.raiseSyntheticEvent(objId, eventName, skipShowDescription, undefined, !synthetic);\n\n                if(obj.objs && obj.objs.length > 0) {\n                    fireEventThroughContainers(eventName, obj.objs, synthetic, searchFilter, callFilter, path, itemId);\n                }\n            }\n        }\n\n        eventNesting -= 1;\n\n    }; // FOCUS stuff"
+    },
+    {
+      "file": "events.js",
+      "startLine": 1833,
+      "endLine": 1838,
+      "purpose": "loaded-wrapper",
+      "text": "    //onload everything now, not only dp and master\n    var _loadDynamicPanelsAndMasters = function (objects, path, itemId) {\n        fireEventThroughContainers('onLoad', objects, true, [$ax.constants.PAGE_TYPE, $ax.constants.REFERENCE_DIAGRAM_OBJECT_TYPE, $ax.constants.DYNAMIC_PANEL_TYPE],\n            [$ax.constants.ALL_TYPE], path, itemId);\n    };\n    $ax.loadDynamicPanelsAndMasters = _loadDynamicPanelsAndMasters;"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 76,
+      "endLine": 115,
+      "purpose": "block-and-path-literal",
+      "text": "    var _exprHandlers = {};\n    _exprHandlers.array = function(expr, eventInfo) {\n        var returnVal = [];\n        for(var i = 0; i < expr.items.length; i++) {\n            returnVal[returnVal.length] = _evaluateExpr(expr.items[i], eventInfo);\n        }\n        return returnVal;\n    };\n\n    _exprHandlers.binaryOp = function(expr, eventInfo) {\n        var left = function() { return expr.leftExpr && _evaluateExpr(expr.leftExpr, eventInfo); };\n        var right = function() { return expr.rightExpr && _evaluateExpr(expr.rightExpr, eventInfo); };\n\n        if(left == undefined || right == undefined) return false;\n        return _binOpHandlers[expr.op](left, right);\n    };\n\n    _exprHandlers.block = function(expr, eventInfo) {\n        var subExprs = expr.subExprs;\n        for(var i = 0; i < subExprs.length; i++) {\n            _evaluateExpr(subExprs[i], eventInfo); //ignore the result\n        }\n    };\n\n    _exprHandlers.booleanLiteral = function(expr) {\n        return expr.value;\n    };\n\n    _exprHandlers.nullLiteral = function() { return null; };\n\n    _exprHandlers.pathLiteral = function(expr, eventInfo) {\n        if(expr.isThis) return [eventInfo.srcElement];\n        if(expr.isFocused && window.lastFocusedControl) {\n            $ax('#' + window.lastFocusedControl).focus();\n            return [window.lastFocusedControl];\n        }\n        if(expr.isTarget) return [eventInfo.targetElement];\n\n        return $ax.getElementIdsFromPath(expr.value, eventInfo);\n    };"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 127,
+      "endLine": 184,
+      "purpose": "fcall-target-binding",
+      "text": "    _exprHandlers.fcall = function(expr, eventInfo) {\n        var oldTarget = eventInfo.targetElement;\n        var targets = [];\n        var fcallArgs = [];\n        var exprArgs = expr.arguments;\n        for(var i = 0; i < expr.arguments.length; i++) {\n            var exprArg = exprArgs[i];\n            var fcallArg = '';\n            if(targets.length) {\n                for(var j = 0; j < targets.length; j++) {\n                    if(exprArg == null) {\n                        fcallArgs[j][i] = null;\n                        continue;\n                    }\n                    eventInfo.targetElement = targets[j];\n                    fcallArg = _evaluateExpr(exprArg, eventInfo);\n                    if(typeof (fcallArg) == 'undefined') return '';\n                    fcallArgs[j][i] = fcallArg;\n                }\n            } else {\n                if(exprArg == null) {\n                    fcallArgs[i] = null;\n                    continue;\n                }\n                fcallArg = _evaluateExpr(exprArg, eventInfo);\n                if(typeof (fcallArg) == 'undefined') return '';\n                fcallArgs[i] = fcallArg;\n            }\n\n            // We do support null exprArgs...\n            // TODO: This makes 2 assumptions that may change in the future. 1. The pathLiteral is the always the first arg. 2. there is always only 1 pathLiteral\n            if(exprArg && exprArg.exprType == 'pathLiteral') {\n                targets = fcallArg;\n\n                // fcallArgs is now an array of an array of args\n                for(j = 0; j < targets.length; j++) fcallArgs[j] = [[fcallArg[j]]];\n            }\n        }\n\n        // we want to preserve the target element from outside this function.\n        eventInfo.targetElement = oldTarget;\n\n        var retval = '';\n        if(targets.length) {\n            // Go backwards so retval is the first item.\n            for(i = targets.length - 1; i >= 0; i--) {\n                var args = fcallArgs[i];\n                // Add event info to the end\n                args[args.length] = eventInfo;\n                retval = _exprFunctions[expr.functionName].apply(this, args);\n            }\n        } else fcallArgs[fcallArgs.length] = eventInfo;\n        return targets.length ? retval : _exprFunctions[expr.functionName].apply(this, fcallArgs);\n    };\n\n    _exprHandlers.globalVariableLiteral = function(expr) {\n        return expr.variableName;\n    };"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 285,
+      "endLine": 300,
+      "purpose": "global-variable-and-form-text-actions",
+      "text": "    _exprFunctions.SetGlobalVariableValue = function(varName, value) {\n        $ax.globalVariableProvider.setVariableValue(varName, value);\n    };\n\n    _exprFunctions.SetWidgetFormText = function(elementIds, value) {\n        for(var i = 0; i < elementIds.length; i++) {\n            var elementId = elementIds[i];\n            var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');\n\n            var obj = $jobj(inputId);\n            if(obj.val() == value || (value == '' && $ax.placeholderManager.isActive(elementId))) return;\n            obj.val(value);\n            $ax.placeholderManager.updatePlaceholder(elementId, !value);\n            if($ax.event.HasTextChanged($ax.getObjectFromElementId(elementId))) $ax.event.TryFireTextChanged(elementId);\n        }\n    };"
+    },
+    {
+      "file": "expr.js",
+      "startLine": 760,
+      "endLine": 765,
+      "purpose": "expression-dispatch",
+      "text": "    var _evaluateExpr = $ax.expr.evaluateExpr = function(expr, eventInfo, toString) {\n        if(expr === undefined || expr === null) return undefined;\n        var result = _exprHandlers[expr.exprType](expr, eventInfo);\n        return toString ? _exprFunctions.ToString(result) : result;\n    };\n"
+    },
+    {
+      "file": "action.js",
+      "startLine": 351,
+      "endLine": 357,
+      "purpose": "action-dispatch",
+      "text": "    var _dispatchAction = $ax.action.dispatchAction = function(eventInfo, actions, currentIndex) {\n        currentIndex = currentIndex || 0;\n        //If no actions, you can bubble\n        if(currentIndex >= actions.length) return;\n        //actions are responsible for doing their own dispatching\n        _actionHandlers[actions[currentIndex].action](eventInfo, actions, currentIndex);\n    };"
+    },
+    {
+      "file": "action.js",
+      "startLine": 370,
+      "endLine": 378,
+      "purpose": "expression-action",
+      "text": "    _actionHandlers.expr = function(eventInfo, actions, index) {\n        var action = actions[index];\n\n        $ax.expr.evaluateExpr(action.expr, eventInfo); //this should be a block\n\n        _dispatchAction(eventInfo, actions, index + 1);\n    };\n\n    _actionHandlers.setFunction = _actionHandlers.expr;"
+    }
+  ],
+  "probe": {
+    "count": 13,
+    "outcomes": [
+      {
+        "name": "nested-object-map-overwrites-inner-parent-with-self",
+        "actual": {
+          "outer": "outer",
+          "outerText": "outer",
+          "inner": "inner",
+          "child": "inner"
+        },
+        "pass": true
+      },
+      {
+        "name": "outer-suffix-is-not-hierarchical-row-path",
+        "actual": {
+          "empty": "inner-7",
+          "next": "inner-7-3",
+          "script": "inner",
+          "item": "7"
+        },
+        "pass": true
+      },
+      {
+        "name": "synthetic-suffixed-inner-source-is-valid-but-not-outer-item",
+        "actual": {
+          "valid": true,
+          "indexPresent": false,
+          "repeaterId": "inner",
+          "marked": false,
+          "visible": false
+        },
+        "pass": true
+      },
+      {
+        "name": "suffixed-inner-This-counts-use-inner-script-id",
+        "actual": {
+          "valid": true,
+          "id": "inner-7",
+          "self": true,
+          "data": 1,
+          "items": 0,
+          "visible": 0
+        },
+        "pass": true
+      },
+      {
+        "name": "hypothetical-suffix-targets-inner-template-with-outer-looking-number",
+        "actual": {
+          "inside": [
+            "child-7"
+          ],
+          "outer": [
+            "outerText-7"
+          ]
+        },
+        "pass": true
+      },
+      {
+        "name": "ordinary-external-targets-only-registered-rendered-rows",
+        "actual": [
+          "child-2",
+          "child-5"
+        ],
+        "pass": true
+      },
+      {
+        "name": "zero-rendered-targets-even-while-source-data-remains",
+        "actual": {
+          "sourceCount": 1,
+          "external": [],
+          "empty": []
+        },
+        "pass": true
+      },
+      {
+        "name": "explicit-matching-row-source-does-not-require-visible-registration",
+        "actual": [
+          "child-2"
+        ],
+        "pass": true
+      },
+      {
+        "name": "target-row-fallback-only-when-source-has-no-suffix",
+        "actual": [
+          "child-5"
+        ],
+        "pass": true
+      },
+      {
+        "name": "no-dom-template-source-can-create-native-event-frame",
+        "actual": {
+          "source": "child",
+          "item": {
+            "valid": false
+          },
+          "widgetValid": true,
+          "widgetId": "child",
+          "domLength": 0,
+          "repeater": "inner"
+        },
+        "pass": true
+      },
+      {
+        "name": "no-dom-template-This-Repeater-counts-remain-readable",
+        "actual": {
+          "data": 1,
+          "items": 0,
+          "visible": 0,
+          "pages": 1,
+          "page": 1
+        },
+        "pass": true
+      },
+      {
+        "name": "explicit-This-path-bypasses-rendered-template-enumeration",
+        "actual": [
+          "child"
+        ],
+        "pass": true
+      },
+      {
+        "name": "no-dom-child-Loaded-runs-native-case-and-variable-external-form-actions",
+        "actual": {
+          "globalValues": {
+            "seen": "loaded"
+          },
+          "writes": [
+            {
+              "id": "outside_input",
+              "value": "external changed"
+            }
+          ],
+          "templateExists": false
+        },
+        "pass": true
+      }
+    ],
+    "limitations": [
+      "The nested tree and suffix IDs are constructed inputs, not a generated native nested repeater fixture. They falsify a naive hierarchical suffix interpretation but do not establish a supported native independent nested dataset lifecycle.",
+      "Exact native event/frame/case/dispatch/expression/form actions execute, but jQuery empty-selection behavior and an external input are mocked; rich text and layout actions are not tested.",
+      "Script-path lookup is a direct synthetic object-ID mapping; master/adaptive-view path resolution is not exercised.",
+      "The prior 21 empty lifecycle probes are not rerun by this script."
+    ]
+  }
+}

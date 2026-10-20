@@ -1,0 +1,67 @@
+{
+  "schema": "adaptive-behavior-state-model-v1",
+  "generatedAt": "2026-10-15T09:56:08.041Z",
+  "evidence": [
+    {
+      "path": "research/adaptive-behavior-state-evidence.json",
+      "sha256": "a1d49816d50e0aa9a7ad224946363fea37b068ff541a37fba42ebf2b4589b6ff"
+    },
+    {
+      "path": "research/adaptive-behavior-state-model.md",
+      "sha256": "e6cda0c40b3e95e628f1216304010fe88a75763e70c00092faf10435fbc4664a"
+    },
+    {
+      "path": "research/adaptive-behavior-state-model-red.json",
+      "sha256": "ffc95b414ecd19d029b3cd004295f3f09d2bb6dbbf863a7f05a02722ef043387"
+    },
+    {
+      "path": "research/adaptive-behavior-state-model-green.json",
+      "sha256": "f6eeda3e0a954b5d057db608ab503979febc62a97b78fae60d60c5ab40848097"
+    }
+  ],
+  "implementation": [
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "57fc932baf61dedd3964d6395490a7b7a4434be1ea0374a2259440dfa3160297"
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/adaptive-state-styles.test.ts",
+      "sha256": "ca687b230102d865809ca09580dbf9d0afea331d61859d5d2acb5e21c393d827"
+    },
+    {
+      "path": "tests/adaptive-hierarchy.test.ts",
+      "sha256": "b371e1df7f2802a3dd0c6769ae3f6b09b868b2c4548a9ccf576b11e1ccd571cb"
+    },
+    {
+      "path": "tests/adaptive.test.ts",
+      "sha256": "fed83e8a6d231b825ed7a21025c5e98b079729c60d6b549e179b98d7cc9fd00c"
+    },
+    {
+      "path": "tests/gradient-model.test.ts",
+      "sha256": "25078a6075ea6920c344ec73109c82c6d0c27a447497c3a9de256d9d19f723e2"
+    },
+    {
+      "path": "tests/gradient-border-model.test.ts",
+      "sha256": "f418a7231a7b04bf574997a937abe49c9d9f8e635a2cbe1e2c299326efd3d424"
+    }
+  ],
+  "sources": [],
+  "screenshots": [],
+  "validation": {
+    "passed": 97,
+    "failed": 0,
+    "newTests": 28,
+    "priorRed": {
+      "failed": 17,
+      "passed": 2
+    },
+    "typecheck": "First implementation passed. Last check blocked only by concurrent Inspector.tsx:356 AdaptiveViewTarget.viewId narrowing, reported to parent."
+  },
+  "boundaries": [
+    "No product runtime/renderer or validator changes owned here.",
+    "Whole-map snapshot authoring is an independent editor design, not a claim of native author implementation.",
+    "Native case typo/focused-class and contained/image override gates remain outside this model API."
+  ]
+}

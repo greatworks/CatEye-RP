@@ -1,0 +1,52 @@
+✔ real Layer retains ordered references in the same flat diagram without fabricated local geometry (343.5533ms)
+✔ stored Layer location is source evidence, not a child-coordinate translation (305.2065ms)
+✔ Layer rejects wrong key without editing flat members (379.0932ms)
+✔ Layer rejects missing child without editing flat members (406.1251ms)
+✔ Layer rejects duplicate child without editing flat members (334.6928ms)
+✔ Layer rejects wrong ref tag without editing flat members (364.2368ms)
+✔ Layer rejects noncontained member without editing flat members (346.8192ms)
+✔ Layer rejects self cycle without editing flat members (332.6064ms)
+✔ Layer rejects different scope without editing flat members (329.5959ms)
+✔ Layer rejects duplicate scope member without editing flat members (381.3305ms)
+✔ Layer rejects duplicate parent without editing flat members (324.9063ms)
+✔ Layer rejects order mismatch without editing flat members (327.0553ms)
+✔ Layer rejects unknown field without editing flat members (301.1187ms)
+✔ Layer rejects unknown style without editing flat members (321.4673ms)
+✔ Layer rejects adaptive local without editing flat members (330.5119ms)
+✖ Layer rejects named style without editing flat members (348.312ms)
+✔ Layer rejects invalid pin without editing flat members (313.1233ms)
+✔ Layer rejects old version without editing flat members (435.4498ms)
+✔ empty literal Layer is an explicit zero-member group, not a missing membership field (341.0245ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 18
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7204.5294
+
+✖ failing tests:
+
+test at research\scripts\read-rp-layer.test.mjs:11:288
+✖ Layer rejects named style without editing flat members (348.312ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'unsupported-layer-membership'
+  
+      at TestContext.<anonymous> (file:///D:/WSCodex/REA/research/scripts/read-rp-layer.test.mjs:16:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'unsupported-layer-membership',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

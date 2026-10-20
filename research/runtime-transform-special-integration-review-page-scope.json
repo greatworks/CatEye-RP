@@ -1,0 +1,65 @@
+{
+  "capturedAt": "2026-10-20T06:00:15.148Z",
+  "kind": "Exact native action+size+repeater consumers with the declared special harness versus current core Page Loaded, not GUI",
+  "native": {
+    "nodes": {
+      "base": {
+        "left": 0,
+        "top": 0,
+        "width": 0,
+        "height": 0,
+        "display": "block"
+      }
+    },
+    "calls": [
+      {
+        "kind": "evaluate",
+        "value": "120",
+        "source": "page"
+      },
+      {
+        "kind": "evaluate",
+        "value": "35",
+        "source": "page"
+      },
+      {
+        "kind": "dispatch",
+        "index": 1
+      }
+    ],
+    "moved": {},
+    "resized": {},
+    "sizes": {},
+    "pending": 0
+  },
+  "cases": [
+    {
+      "portable": false,
+      "ok": false,
+      "error": "Error: Resize thisItem requires a widget event source",
+      "log": ""
+    },
+    {
+      "portable": true,
+      "ok": false,
+      "error": "Error: Resize thisItem requires a widget event source",
+      "log": ""
+    }
+  ],
+  "expected": "Outside any repeater, evaluate dimensions and no-op, then dispatch continuation; no widget is needed for constant dimensions.",
+  "sources": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "8d8f318ebab90d39c67428037879516362e45072e2b33fd5e4c138f7c3d348ca"
+    },
+    {
+      "path": "research/runtime-transform-special-probe.mjs",
+      "sha256": "11870fe01e55a5b0ef4e47b883705c88130b84ed5f9b22c7dbfcc1c593e086e8"
+    }
+  ],
+  "script": {
+    "path": "research/runtime-transform-special-integration-review-page-scope-probe.mjs",
+    "sha256": "735bb613135ad1406a541e15eaf9c0df5954cc434e0091de7e8b13725f367b98"
+  },
+  "defect": true
+}

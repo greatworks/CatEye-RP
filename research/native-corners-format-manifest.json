@@ -1,0 +1,309 @@
+{
+  "stage": "native-corners-format",
+  "capturedAt": "2026-10-15T14:41:35.504Z",
+  "validation": {
+    "newNodeTests": 23,
+    "newImporterTests": 20,
+    "focusedNode": 121,
+    "focusedVitest": 133,
+    "typecheck": true,
+    "completeSuitesRunByThisAgent": false,
+    "corrections": [
+      "Initial real Tab oracle expected radius3; immutable matching cache actually stores5. Corrected independent expected value to5, not production behavior.",
+      "First audit duplicated child changes through parent objects and treated two initial selected base/snapshot splits as unexplained. Audit now compares child identities separately and explicitly proves non-corner selected paint equality.",
+      "One initial importer test run exposed an own(raw) typo; repaired to own(style) before final focused passes.",
+      "Legacy Required/Tab cornerRadii assertions replaced only for actual native records by explicit P71 radius and P81 mask; legacy snapshot tests unchanged.",
+      "Legacy adaptive P71/P81 unknown-property negatives replaced by valid exact independent zero projections plus malformed negatives; unknown transform and extra-paint negatives retained. Missing projected fields still rejected."
+    ]
+  },
+  "totals": {
+    "samples": 11,
+    "admitted": 10,
+    "rejected": 1,
+    "nativeCornerWidgets": 1256,
+    "partialMasks": 52,
+    "positiveRadius": 460,
+    "changedWidgets": 1256,
+    "addedWidgets": 0,
+    "addedEvents": 6,
+    "addedActions": 6
+  },
+  "files": [
+    {
+      "file": "research/native-corners-format-census.mjs",
+      "sha256": "9338a5c3fbc5d07adea60d800ebeadcaf651746e8625c4f40dcb4e0ff89e3ab4"
+    },
+    {
+      "file": "research/native-corners-format-census.json",
+      "sha256": "9ec93f38ebd345b1861dfc179500689dbe948b117d46145487e72abef18e1ccd"
+    },
+    {
+      "file": "research/native-corners-format-fixture.mjs",
+      "sha256": "c8747294dfece37b5e2cc0995e1031ccc2b4cd10281d49e28edb4512e487c9ef"
+    },
+    {
+      "file": "research/native-corners-format-import-audit.mjs",
+      "sha256": "610310eee21d7f3b9c84c9aecb7ee2e5df578e954c8bcad2d41352542e36eb19"
+    },
+    {
+      "file": "research/native-corners-format-import-audit.json",
+      "sha256": "f20d4031adca705fb38320ca5af82aea2bd6124047c6cc7ff48e8d21a9473563"
+    },
+    {
+      "file": "research/native-corners-format-freeze.mjs",
+      "sha256": "b1fe6d9dc03ffcec5af2b8f6e6c10ac71c20f750c49933b8ade3df71f1575f4d"
+    },
+    {
+      "file": "research/native-corners-format-evidence.md",
+      "sha256": "1ea111e6684cb88f21118ffcffe52e0b442e44e4ab451321b8f6f47c5b8bb00d"
+    },
+    {
+      "file": "research/native-corners-format-evidence.json",
+      "sha256": "8311e7163ebe54e2931f16dffabcad7c878419cc9f6516bb921aa6d43f92fb06"
+    },
+    {
+      "file": "research/native-corners-format-property-cil.json",
+      "sha256": "891f7289683178724c0157533aa6eedc2900fca4161d348526c7eafd1a005874"
+    },
+    {
+      "file": "research/native-corners-format-provider-cil.json",
+      "sha256": "9f5b88911b4386cff9554a6b6e5504132dd237798178d69cb86579f128b909e9"
+    },
+    {
+      "file": "research/native-corners-format-json-cil.json",
+      "sha256": "14c27e31e7794996b324e9765fea0818d0f62c7f7fd29eee936887e06e62312a"
+    },
+    {
+      "file": "research/native-corners-format-css-cil.json",
+      "sha256": "f681c512c2489dd1ba469197a8e32c09dfdf0135d0d096c48deeea767f5c1a28"
+    },
+    {
+      "file": "research/scripts/read-rp-native-corners.test.mjs",
+      "sha256": "7b5feb22b6c15f2389759ff25b2d628b2360b6290b83ea5bb459ee1de575fe13"
+    },
+    {
+      "file": "tests/import-rp-native-corners.test.ts",
+      "sha256": "bfcbcfba8559b935c3f8f80795f9a05526e3f164e89400bafa55c4d2e6f1c08e"
+    },
+    {
+      "file": "research/scripts/read-rp-adaptive-styles.test.mjs",
+      "sha256": "6e9fd622c1c208abc5248ee4569b077fc7989d0f72f02591d53c6862d5c40f0a"
+    },
+    {
+      "file": "tests/import-rp.test.ts",
+      "sha256": "4a401d6b8a7a51e2aacab2498511da54ffd11e2ad5fccd5bddf83bd8eb55e275"
+    },
+    {
+      "file": "tests/import-rp-adaptive-styles.test.ts",
+      "sha256": "9716e55c318941fc4bb8204406f46b96598e00390b6950ee1e4db9859f128ca0"
+    },
+    {
+      "file": ".build/native-corners-format-reader-red.log",
+      "sha256": "e5470edcbaff10568077030a848ac3ac0eda11123fad11b409e0dda73ca5dc5a"
+    },
+    {
+      "file": ".build/native-corners-format-reader-first.log",
+      "sha256": "bbcdd380d3c4c2e05c431a40bbfbe91803a63900d7c0c30f3f6183a682999971"
+    },
+    {
+      "file": ".build/native-corners-format-reader-green.log",
+      "sha256": "b19f4bee7d4dc35b9178c66cec7801fefa75750fb06a922eac49f6eeb4343656"
+    },
+    {
+      "file": ".build/native-corners-format-reader-final.log",
+      "sha256": "aa404d58d02d9f53be3f24572eac15b587d0f4056dc669071121d1d9764627f6"
+    },
+    {
+      "file": ".build/native-corners-format-import-red.log",
+      "sha256": "3964ea7e16da5b6fd87a30be855b8276aa450a7e1050926a8c5ebbe98c295016"
+    },
+    {
+      "file": ".build/native-corners-format-import-first.log",
+      "sha256": "4d702c5e9065450ef779ce3d4104f0ea4a90d1520ac64b6e2b269ebc97ad9b34"
+    },
+    {
+      "file": ".build/native-corners-format-import-second.log",
+      "sha256": "4374a49a0897a6959c2927f42afa2fae83b404821abba15770527bef75c86b46"
+    },
+    {
+      "file": ".build/native-corners-format-import-final.log",
+      "sha256": "5ecf84cc8d525357397071aa969fbe95373ba8eecda3f206e371b3b4a402a9f9"
+    },
+    {
+      "file": ".build/native-corners-format-typecheck-final.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217"
+    },
+    {
+      "file": ".build/native-corners-format-import-audit-final.log",
+      "sha256": "fcdf96b6636375a0165500f171cced41a82ca7481bed07d34d78cb4249269de9"
+    },
+    {
+      "file": "research/selected-style-filter-json-entry.json",
+      "sha256": "16f4db126c8078c7237bf31ff91794df4e2eb519c56ffe7081b246ab8b306618"
+    },
+    {
+      "file": "research/native-corners-metadata.json",
+      "sha256": "b8773ced9d09b2fffacf895af0ce5719e6d089a7c691781487a4f60a4828c1e6"
+    },
+    {
+      "file": "research/native-corners-owner-cil.json",
+      "sha256": "312c65c3d4ef24d420e4fb885e6a984fd7e6cf5615292b0866299b8c269ca7c4"
+    },
+    {
+      "file": "research/native-corners-evidence.md",
+      "sha256": "8242cbbe2205a5d3f0819e6dae9c04a7b41ee3ed6e88a1f23a27e890e46c3b29"
+    },
+    {
+      "file": "research/native-corners-evidence.json",
+      "sha256": "bfe40fe1f738a4ca7d461630b4c19af0c0ecbfe9ce02e3e179997128471ecfd4"
+    },
+    {
+      "file": "research/native-corners-css-literals.json",
+      "sha256": "52209a1c50d5421b3e4fb790dd92c7f0595f09fed5c9341c837b3a66e16697ea"
+    }
+  ],
+  "sources": [
+    {
+      "file": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/AxureRP11.dll",
+      "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+    },
+    {
+      "file": ".build/before-adaptive-placement/corpus-baseline.json",
+      "sha256": "c3029c75b54e9419988119fb12d05b28fe78c13574b0d6f2587c01a66c369377"
+    },
+    {
+      "file": "research/adaptive-placement-corpus-audit.json",
+      "sha256": "a4911e428e03aa416259b889659890b51176f2f9565f4a40e98acf43da1f2d2a"
+    },
+    {
+      "file": "research/native-corners-format-import-audit.mjs",
+      "sha256": "610310eee21d7f3b9c84c9aecb7ee2e5df578e954c8bcad2d41352542e36eb19"
+    },
+    {
+      "file": "research/scripts/read-rp-container.mjs",
+      "sha256": "e9ec939defe3e926740096fa294510f27e026748e9e3effdfa8a2e27cdc461cc"
+    },
+    {
+      "file": "research/scripts/read-rp-objects.mjs",
+      "sha256": "6e94582d21efacec6e75cfcf41953cc02913fa68031056637387df34f6cb59b9"
+    },
+    {
+      "file": "research/scripts/read-rp-semantics.mjs",
+      "sha256": "181cd54e084f9b3611d5a11110c7043b1d3375be3a0683ea327025170928f9e8"
+    },
+    {
+      "file": "research/scripts/read-rp-interactions.mjs",
+      "sha256": "2e6efca388f2bfe2b779ec8b3a041060e9481a32073c94b53bc5796b121d5274"
+    },
+    {
+      "file": "research/scripts/read-rp-adaptive.mjs",
+      "sha256": "047c8715b39ad64921ba52e23c18c81c28ca9a60a2ccf3ee35e647ca77ad82f9"
+    },
+    {
+      "file": "src/model/types.ts",
+      "sha256": "0c8669d7778a150b2036b4b30125c85ac71d32836de5d240029d027e536a201e"
+    },
+    {
+      "file": "src/model/shadow-color.ts",
+      "sha256": "5125d7eeaeddb613f2d4ec6d97bd8965a7848436a45f1a6c65f4b7c35b43f093"
+    },
+    {
+      "file": "src/model/vector.ts",
+      "sha256": "3d80b2c85f2045c311d5030a0701d41bdfdd7bd7b3efd3c5cddfd189c11e0147"
+    },
+    {
+      "file": "src/model/page-tree-core.ts",
+      "sha256": "29997e6044176b33a42cb011a1fb382da5025c110655513a821b7553f7c32792"
+    },
+    {
+      "file": "src/model/rich-text.ts",
+      "sha256": "01fa723e9e158cb16125753c5993fd2e86a370133b0a246cccced8d578d6863f"
+    },
+    {
+      "file": "src/model/table.ts",
+      "sha256": "3c28bb0868dc5ebdc55558bd3fe89f1921e0a8f7c90165fd089e658b0e0354f3"
+    },
+    {
+      "file": "src/model/menu.ts",
+      "sha256": "a3667d8e46b1d66c183bb5c70db2450105bc74cb7147b0ac9a062b90818ef85b"
+    },
+    {
+      "file": "src/model/tree-widget.ts",
+      "sha256": "feac601a36941438779ea2c740a2be208ed169799c52959bedc2c6208afce597"
+    },
+    {
+      "file": "src/model/inline-frame.ts",
+      "sha256": "6354cafc01f1719fd5783f7c5ab00ea24598d0b34c59c83ba0fb09372bbe4760"
+    },
+    {
+      "file": "src/model/document.ts",
+      "sha256": "b2bd73800782f5252c1042e94aba39dff48b8e39553b927cefd69a55b4a899fb"
+    },
+    {
+      "file": "src/model/line-style.ts",
+      "sha256": "3915cc61def68759309f58d7c586ccfc15f800eeb3ed813545578794cc3f36d9"
+    },
+    {
+      "file": "src/model/import-rp-adaptive.ts",
+      "sha256": "f9ae36e93f0cee480a03ecfe647d27199076dbb39b3f6812b58c771e6b14ff97"
+    },
+    {
+      "file": "src/model/import-rp.ts",
+      "sha256": "d76fb978118c0f03f5fb8120bb252a29f0aff6f229f24c01d035c32bb4bdd4e6"
+    },
+    {
+      "file": "research/rotation-import-audit.json",
+      "sha256": "f081e275cfa0f702027b470c5e48d81c1a20923a080cbba66735945ef85a7973"
+    },
+    {
+      "file": "research/native-corners-format-census.mjs",
+      "sha256": "9338a5c3fbc5d07adea60d800ebeadcaf651746e8625c4f40dcb4e0ff89e3ab4"
+    }
+  ],
+  "samples": [
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Default.rplib",
+      "sha256": "9b4f398eab76f6e081f3275824ad15396f670fd2448e7e36b4e4399c40f85d50"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Flow.rplib",
+      "sha256": "95d85ffaddac36144ae8ebd645341b2e557f0a6157b092319e7dac7b71d9d451"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Icons.rplib",
+      "sha256": "83f450088f81f6047dfb196919fff3a4aae2f3adb56668da4d4c8cfd3b813bda"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample UI patterns.rplib",
+      "sha256": "cf1787fded7a74278209f9aee4b07a266a10360f2e0dd552c49cca158f65e36b"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototype Starter.rp",
+      "sha256": "6a961a496fb35d3c51be967c6bc0342aaef334ac4e4b58a31774f131dd3dc714"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Prototyping Basics.rp",
+      "sha256": "26b9f0cc5937eb29791a9085d8364c54a50e228a1c8685241726c19e33ff73b7"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\Quick Win.rp",
+      "sha256": "04bd8925f26c78263b26a0ec108b779939b174e69da0ee2acf3b4ed1c09cc051"
+    },
+    {
+      "file": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Training\\UX Prototyping.rp",
+      "sha256": "1c95cf119e7cda30943c87f8ba9f95406835b988adb55e49da6e010f028eca72"
+    },
+    {
+      "file": "research/samples/the-basics-tab-menu.rp",
+      "sha256": "0aaae2dbc56b5c55ed3ef23bc3bf076ea82e36052bc90ed2682228ab5194c4d4"
+    },
+    {
+      "file": "research/samples/complex-interactions-required-fields.rp",
+      "sha256": "0139703abe8e30b27279997ccfd0dd31b4cac97f4900dc59a2af3c310618d77c"
+    }
+  ]
+}

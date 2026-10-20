@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-10-15T08:57:16.801Z",
+  "method": "Independent model review, targeted actual-product Node probes and Vitest. No original GUI or complete browser suite.",
+  "implementation": [
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "d1af0bf71c959916f800ef70516e06e7efa8f19b01e60dd3082cc745546598f7"
+    },
+    {
+      "path": "src/model/adaptive-selection.ts",
+      "sha256": "cd0085a3b91837e31118d04bcccbc8cd0e5a0466664177fb1b1af52806946980"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "b3d905526a836d9ce0d793d23ca3650995e7fd12c4f2cd51d2ff7fc39a0c5c57"
+    },
+    {
+      "path": "src/components/AdaptiveControls.tsx",
+      "sha256": "51b3079f4c92b4a61b6d62ae003e0ea9b3552bb8e85370848efd99cf830de685"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "d52866d4424c73f7469db6b9ca021008c0d8f5c97b74f9a70fa400e8e04776e7"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/adaptive-hierarchy-review.md",
+      "sha256": "739f1018aaf45f55efecd9003ceaccd2ef6d45b55ce9a86f768818a2caa42963"
+    },
+    {
+      "path": "research/adaptive-hierarchy-review-probe.mjs",
+      "sha256": "12ae0c93b1b5415472781159b06f1f72c233c125c9a232038bdd6bd30043fd20"
+    },
+    {
+      "path": "research/adaptive-hierarchy-review-probe.json",
+      "sha256": "fb6f5f8d46a3d8f77da68144659fb57c88022e831025e679570fd2a1875de3c8"
+    },
+    {
+      "path": "research/adaptive-hierarchy-review-probe-after.json",
+      "sha256": "6b4cd7b44af0132578b08c82f233977b9ba9a9eb6ee5eec002f78a1d1a897a26"
+    },
+    {
+      "path": "research/adaptive-hierarchy-evidence.md",
+      "sha256": "07d61d42e4bd4a37a2d921a7372503e3f31b890142d4c8589ae80c56fa2d7092"
+    },
+    {
+      "path": "research/adaptive-hierarchy-evidence.json",
+      "sha256": "ce8b173717f7f35d5e16791b50f7a900d40f4d4a5bab89f1b3ae6834d6cc323b"
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/adaptive-hierarchy.test.ts",
+      "sha256": "b371e1df7f2802a3dd0c6769ae3f6b09b868b2c4548a9ccf576b11e1ccd571cb"
+    },
+    {
+      "path": "tests/e2e/adaptive-hierarchy.spec.ts",
+      "sha256": "acb88dcf65f726a04ba10ccc45b9708d5d23e6b0df45d99da02611eec98f857c"
+    },
+    {
+      "path": "scripts/smoke-adaptive-hierarchy.mjs",
+      "sha256": "f1beba0d03efd21e4712159c99a233297e744190a22313ad28d6c7b3f8542e9d"
+    },
+    {
+      "path": ".build/adaptive-hierarchy-local-declarations-red.json",
+      "sha256": "ff5a54914af0561dca57d148c174ad6c6319762f88ebdbd96a46f73aef281863"
+    },
+    {
+      "path": ".build/adaptive-hierarchy-local-declarations-green.json",
+      "sha256": "a86f064f1461bbc5e2ea54d635d3d5d1e5a16fec39ad25314164d0c95afc116f"
+    },
+    {
+      "path": ".build/adaptive-hierarchy-local-declarations-related.json",
+      "sha256": "b615a58082b1391a4665a9d77f02eec29818bff6c8934efa5fa3b75e134c62d0"
+    },
+    {
+      "path": ".build/adaptive-hierarchy-local-declarations-consumers.json",
+      "sha256": "11dfa2f042b6eaadbd8299a840c591ef7110499f5092ff9299e146ac2ac82f4b"
+    }
+  ],
+  "results": {
+    "initialRed": {
+      "passed": 23,
+      "failed": 4
+    },
+    "correctedRelated": {
+      "passed": 69,
+      "failed": 0
+    },
+    "correctedConsumers": {
+      "passed": 102,
+      "failed": 0
+    },
+    "independentProbe": {
+      "beforeFailures": 4,
+      "afterPasses": 4
+    },
+    "typecheckPassed": true,
+    "desktopScriptSyntaxPassed": true
+  }
+}

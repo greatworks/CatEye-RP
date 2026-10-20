@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-15T15:42:08.795Z",
+  "method": "Read-only source review plus one Node-native TypeScript fixture construction. No browser, original application, importer rerun, full test suite, package, artifact or product mutation.",
+  "sources": [
+    {
+      "path": "tests/fixtures/native-pills.ts",
+      "sha256": "6e93c5e78d33c12f86baec6179d7e0305591ca9bac787dc95b45b86d3a4e2d9d"
+    },
+    {
+      "path": "tests/e2e/native-pills.spec.ts",
+      "sha256": "565c74089b56c5be21e1b672f1cb47fd623682d10fd52f9bc47c38da640614f2"
+    },
+    {
+      "path": "scripts/native-pills-scenario.mjs",
+      "sha256": "42209170ee3a491987c3f1bba990921f984a0b22f712aad9262cad09aaf84316"
+    },
+    {
+      "path": "scripts/smoke-native-pills.mjs",
+      "sha256": "e0e12145fc6ad4299cdb5587ba5c48f279646da2fabe1fe87b9b3038fad41899"
+    },
+    {
+      "path": ".build/verify-native-pills.mjs",
+      "sha256": "fe1720970bcc295a129028232b330426171f3907ab586845fc34a63255be5735"
+    },
+    {
+      "path": "tests/import-rp-native-pills.test.ts",
+      "sha256": "552909919dca75733f7e97ef44959bfcf95656b4783a1bb94e319a5d7b038bc6"
+    },
+    {
+      "path": "research/native-pills-imported-widgets.json",
+      "sha256": "f615d633a59757226c7fa2d185cbfb1799ea032fa96038a39cc935f066ba5462"
+    },
+    {
+      "path": "research/native-pills-format-import-audit.json",
+      "sha256": "5c472f788e55256a2276459308160f0dd5c7af06a367fd33a573c34e55528175"
+    },
+    {
+      "path": "research/native-pills-format-inventory.json",
+      "sha256": "9e49e559aaca3f084425af27d354dbf9c708f686c4d634359fbf9f2558405ba7"
+    }
+  ],
+  "blockingFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "gallery-rich-text-clear",
+      "status": "resolved-before-final-review",
+      "description": "Clearing text alone left six nonempty richText projections; parent now uses replaceWidgetText imported from rich-text.ts. Current fixture strictly parses."
+    },
+    {
+      "id": "gallery-self-targets",
+      "status": "resolved-before-final-review",
+      "description": "Renaming six Chip widget IDs retained self-action targets using old imported IDs; parent now explicitly makes all gallery entries static with interactions:[], while original imported-widget JSON remains unchanged."
+    },
+    {
+      "id": "pixel-and-selection-oracles",
+      "status": "reviewed-parent-corrections",
+      "description": "The exterior pixel is now (2,2), outside the radius-18 painted corner rather than on the stroke/antialias boundary at (5,5). The node Undo case reselects the widget after App clears selection. Both retain the geometry, color, full-document and history assertions."
+    }
+  ],
+  "checks": {
+    "fixtureConstructed": true,
+    "totalFixtureWidgets": 26,
+    "galleryWidgets": 18,
+    "galleryInteractions": 0,
+    "galleryRichTextEmptyWidgets": 6,
+    "galleryPreservesSourcePathDimensionsRadiusMask": true,
+    "originalWidgetIdentitiesUnique": 18,
+    "originalSourceFileVerified": {
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\\Axure RP 11\\DefaultSettings\\Libraries\\Sample form patterns.rplib",
+      "sha256": "1044b386c12c170876c0423ccd07b515d9c9e063d4cde108cb6a4bbe96131179"
+    },
+    "counts": {
+      "raw": 28,
+      "semantic": 26,
+      "fullDocument": 18,
+      "fitParents": 8,
+      "repeaterTemplates": 2
+    },
+    "desktopNativeImport": "Actual original .rplib import then native Electron Save to .rea.json; deep equality of all 18 saved full widgets by original ID against complete-document import records; source hash checked before and after.",
+    "runtimeScenario": "Preview and exported offline HTML share radius, size, mask, hover/selected composition and two local pixel assertions on one genuine imported slider; 18 gallery paths each assert four cubic segments.",
+    "authoring": "Width/height/radius/mask edits deep-compare whole document; four undo/redo commands; numeric cubic handle edit exits family, save retains exact modified path, undo restores. Reopen is exercised through UI.",
+    "artifactVerification": "Verifier requires no skipped/flaky/unexpected results, source/build/package hashes, saved/exported/screenshot byte hashes, five exact-package scripts, historical artifact restoration and explicit original-GUI/pixel/DLL false flags."
+  },
+  "validationLimits": [
+    "This review validates workflow construction and assertions, not completion of the parent browser/package runs. Final verifier counts remain acceptance requirements until those runs finish.",
+    "The desktop original-file action imports .rplib and saves .rea.json. It does not write original .rp/.rplib format; mocked native picker selection is not native-dialog GUI automation.",
+    "The gallery is an authored layout and paint demonstration with original path/dimensions/radius/mask. It is not an original Axure canvas screenshot or unchanged original page.",
+    "All 28 raw paths are covered by inventory/renderer tests; only 18 fully imported widgets are exercised in this workflow. Eight fit-parent and two repeater-template exclusions remain explicit.",
+    "Gallery curve-count checks do not establish complete original initial-paint pixel equality. Independent raw path/import tests and source comparisons provide geometry provenance.",
+    "The node-edit test uses numeric Control 1 X %, not pointer dragging; parameterized rendering versus stored editing anchors remains an explicitly retained product limitation.",
+    "Reopen currently starts from the same expected document state. The picker/open call is exercised, but equality alone is not a negative control proving the old state was replaced; existing distinct-state initial open/import checks remain independent."
+  ],
+  "observedParentReports": {
+    "unit": ".build/native-pills-unit-final.json",
+    "focusedInProgress": ".build/native-pills-focused-e2e.json"
+  },
+  "pendingAcceptanceWiring": [
+    "The reviewed verifier still names native-pills-focused-e2e.json and focused-artifacts. Parent stated it will bind the successful validated report/restoration record after the in-progress run. Review does not certify the earlier failed focused report."
+  ]
+}

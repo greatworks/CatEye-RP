@@ -1,0 +1,823 @@
+/** Read-only, evidence-bound recovery, NOT a native RP importer or renderer. */
+import { pathToFileURL } from 'node:url';
+import { createHash } from 'node:crypto';
+import { inflateSync } from 'node:zlib';
+import { readObjectPackage } from './read-rp-objects.mjs';
+import { inspectRpFile } from './read-rp-container.mjs';
+import { recoverInteractionMap } from './read-rp-interactions.mjs';
+
+export const IMAGE_LIMITS = Object.freeze({ bytes: 4 * 1024 * 1024, dataUrlCharacters: 8 * 1024 * 1024, pixels: 8 * 1024 * 1024, dimension: 8192, inflatedBytes: 32 * 1024 * 1024, chunks: 4096 });
+const digest = bytes => createHash('sha256').update(bytes).digest('hex');
+const imageError = message => { throw new Error(message); };
+const crcTable = Uint32Array.from({ length: 256 }, (_, n) => { for (let i = 0; i < 8; i++) n = (n >>> 1) ^ (n & 1 ? 0xedb88320 : 0); return n >>> 0; });
+function crc32(bytes) { let n = 0xffffffff;for (const b of bytes) n = (n >>> 8) ^ crcTable[(n ^ b) & 255];return (n ^ 0xffffffff) >>> 0; }
+
+/** Restricted static PNG validation. No image/target code is executed; no ancillary data is decompressed. */
+export function inspectStaticPng(bytes) {
+  if (!Buffer.isBuffer(bytes) || bytes.length > IMAGE_LIMITS.bytes || bytes.length < 45) imageError('PNG byte limit or truncated image');
+  if (bytes.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a') imageError('Only embedded PNG is supported');
+  let at = 8, width, height, bitDepth, colorType, idatEnded = false, paletteEntries = 0, ended = false;
+  const seen = new Set(), compressed = [], chunks = [];
+  while (at < bytes.length) {
+    if (chunks.length >= IMAGE_LIMITS.chunks || at + 12 > bytes.length) imageError('PNG chunk count/bounds');
+    const length = bytes.readUInt32BE(at), name = bytes.toString('latin1', at + 4, at + 8), end = at + 12 + length;
+    if (end > bytes.length || !/^[A-Za-z]{4}$/.test(name)) imageError('PNG chunk bounds/type');
+    if (crc32(bytes.subarray(at + 4, end - 4)) !== bytes.readUInt32BE(end - 4)) imageError('PNG CRC mismatch');
+    const data = bytes.subarray(at + 8, end - 4);
+    if (!['IHDR','PLTE','tRNS','IDAT','IEND','sRGB','pHYs'].includes(name)) imageError(`Unsupported PNG chunk ${name}; animation, orientation and unknown metadata are not recovered`);
+    if (name !== 'IDAT' && seen.has(name)) imageError('Duplicate PNG chunk');
+    if (!chunks.length && name !== 'IHDR') imageError('PNG requires first IHDR');
+    if (compressed.length && name !== 'IDAT') idatEnded = true;
+    if (name === 'IHDR') {
+      if (length !== 13) imageError('PNG IHDR length');
+      width = data.readUInt32BE(0);height = data.readUInt32BE(4);bitDepth = data[8];colorType = data[9];
+      if (!width || !height || width > IMAGE_LIMITS.dimension || height > IMAGE_LIMITS.dimension || width * height > IMAGE_LIMITS.pixels) imageError('PNG pixel/dimension limit');
+      const depths = { 0: [1,2,4,8,16], 2: [8,16], 3: [1,2,4,8], 4: [8,16], 6: [8,16] };
+      if (!depths[colorType]?.includes(bitDepth) || data[10] !== 0 || data[11] !== 0 || data[12] !== 0) imageError('Unsupported PNG color/bit-depth/compression/interlace');
+    } else if (name === 'PLTE') {
+      if (compressed.length || !length || length % 3 || length > 768 || [0,4].includes(colorType)) imageError('PNG palette bounds/order');
+      paletteEntries = length / 3;
+      if (colorType === 3 && paletteEntries > 2 ** bitDepth) imageError('PNG palette depth mismatch');
+    } else if (name === 'tRNS') {
+      if (compressed.length || !([0,2,3].includes(colorType)) || (colorType === 0 && length !== 2) || (colorType === 2 && length !== 6) || (colorType === 3 && (!paletteEntries || !length || length > paletteEntries))) imageError('PNG transparency bounds/order');
+    } else if (name === 'IDAT') {
+      if (idatEnded || (colorType === 3 && !paletteEntries)) imageError('PNG IDAT order/palette');compressed.push(data);
+    } else if (name === 'IEND') {
+      if (length !== 0 || !compressed.length || end !== bytes.length) imageError('PNG IEND/trailing data');ended = true;
+    } else if (name === 'sRGB') {
+      if (length !== 1 || data[0] > 3 || seen.has('PLTE') || compressed.length) imageError('PNG sRGB bounds/order');
+    } else if (name === 'pHYs' && (length !== 9 || data[8] > 1 || compressed.length)) imageError('PNG pHYs bounds/order');
+    chunks.push(name);seen.add(name);at = end;
+  }
+  if (!ended) imageError('PNG missing IEND');
+  const channels = { 0: 1, 2: 3, 3: 1, 4: 2, 6: 4 }[colorType], stride = Math.ceil(width * bitDepth * channels / 8) + 1, expected = stride * height;
+  if (expected > IMAGE_LIMITS.inflatedBytes) imageError('PNG inflated size limit');
+  let inflated;
+  try { inflated = inflateSync(Buffer.concat(compressed), { maxOutputLength: expected }); } catch { imageError('PNG invalid/oversized compressed pixel data'); }
+  if (inflated.length !== expected) imageError('PNG pixel data length mismatch');
+  for (let row = 0; row < height; row++) if (inflated[row * stride] > 4) imageError('PNG unknown row filter');
+  return { mime: 'image/png', width, height, bitDepth, colorType, decodedBytes: bytes.length, sha256: digest(bytes), chunks };
+}
+
+export function property(map, key) {
+  if (map == null) return undefined;
+  if (!Array.isArray(map.$map)) throw new Error(`Expected a property map for ${key}`);
+  const pairs = map.$map.filter(pair => pair[0] === key);
+  if (pairs.length > 1) throw new Error(`Ambiguous duplicate property ${key}`);
+  return pairs[0]?.[1];
+}
+
+// Constants come from the shipped AxureRP11.dll ECMA-335 metadata, not numeric guesses.
+// See metadata-PName.json and metadata-DOAName.json (assembly SHA-256 in both).
+const PROPERTY_NAME_MASK = 0x0fffffff, LOCATION = 101, SIZE = 105;
+const VECTOR_SHAPE_TYPES = new Set([0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,100,101,102,103,104,105,106,202,203,204,205,206,207,208,210,211,212,213,214,216,300]);
+function storedStyleProperty(style, name) {
+  const list = property(style?.properties, 'PropList');
+  if (list === undefined) return null;
+  if (!Array.isArray(list)) throw new Error('Invalid PropList');
+  const matches = list.filter(p => {
+    const raw = property(p, 'DOAName');
+    if (!Number.isInteger(raw)) throw new Error('Invalid DOAName');
+    return (raw & PROPERTY_NAME_MASK) === name;
+  });
+  if (matches.length > 1) throw new Error(`Ambiguous duplicate style property ${name}`);
+  if (!matches.length) return null;
+  const raw = property(matches[0], 'DOAName');
+  return { rawDoaName: raw, determined: Boolean(raw & 0x80000000), overridden: Boolean(raw & 0x40000000), value: property(matches[0], 'Value') };
+}
+
+function coordinatePair(entry, names) {
+  if (!entry) return null;
+  const result = Object.fromEntries(names.map(name => [name, property(entry.value, name)]));
+  if (!names.every(name => Number.isFinite(result[name]))) throw new Error('Non-finite or missing stored geometry');
+  return { ...entry, value: result };
+}
+
+export function recoverRectanglePath(paths, width, height) {
+  if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return null;
+  if (!Array.isArray(paths) || paths.length !== 1 || !Array.isArray(paths[0]) || paths[0].length < 4 || paths[0].length > 8) return null;
+  const near = (a, b) => Number.isFinite(a) && Math.abs(a - b) < 1e-6;
+  const point = p => { const x = property(p, 'X'), y = property(p, 'Y'); return Number.isFinite(x) && Number.isFinite(y) ? [x * width, y * height] : null; };
+  const none = p => ['X', 'Y'].every(k => { const n = property(p, k); return n?.$number === 'NaN' && n.numberTag === 6; });
+  const vertices = paths[0].map(p => ({ xy: point(property(p, 'Path')), lower: property(p, 'LowerHandle'), higher: property(p, 'HigherHandle'), segment: property(p, 'HigherSegmentExists') }));
+  if (vertices.some(v => !v.xy || v.segment !== true || v.xy[0] < -1e-6 || v.xy[0] > width + 1e-6 || v.xy[1] < -1e-6 || v.xy[1] > height + 1e-6)) return null;
+  const top = vertices.filter(v => near(v.xy[1], 0)).map(v => v.xy[0]), bottom = vertices.filter(v => near(v.xy[1], height)).map(v => v.xy[0]);
+  const left = vertices.filter(v => near(v.xy[0], 0)).map(v => v.xy[1]), right = vertices.filter(v => near(v.xy[0], width)).map(v => v.xy[1]);
+  if ([top, bottom, left, right].some(a => !a.length)) return null;
+  const radii = [Math.min(...top), width - Math.max(...top), width - Math.max(...bottom), Math.min(...bottom)];
+  const cross = [Math.min(...left), Math.min(...right), height - Math.max(...right), height - Math.max(...left)];
+  if (radii.some((r, i) => !near(r, cross[i]) || r < -1e-6 || r > Math.min(width, height) / 2 + 1e-6)) return null;
+  const expected = [], add = (xy, lower = null, higher = null) => expected.push({ xy, lower, higher });
+  // These control handles (0.44*r from the corner) are directly observed in both tutorial files.
+  // This intentionally rejects arbitrary paths and other rounded-curve encodings.
+  const [tl, tr, br, bl] = radii;
+  if (tl > 1e-6) { add([0, tl], null, [0, tl * .44]); add([tl, 0], [tl * .44, 0]); } else add([0, 0]);
+  if (tr > 1e-6) { add([width - tr, 0], null, [width - tr * .44, 0]); add([width, tr], [width, tr * .44]); } else add([width, 0]);
+  if (br > 1e-6) { add([width, height - br], null, [width, height - br * .44]); add([width - br, height], [width - br * .44, height]); } else add([width, height]);
+  if (bl > 1e-6) { add([bl, height], null, [bl * .44, height]); add([0, height - bl], [0, height - bl * .44]); } else add([0, height]);
+  if (vertices.length !== expected.length) return null;
+  const matchPoint = (a, b) => a && near(a[0], b[0]) && near(a[1], b[1]);
+  const matches = (v, e) => matchPoint(v.xy, e.xy) && (e.lower ? matchPoint(point(v.lower), e.lower) : none(v.lower)) && (e.higher ? matchPoint(point(v.higher), e.higher) : none(v.higher));
+  const matched = vertices.some((_, shift) => expected.every((e, i) => matches(vertices[(i + shift) % vertices.length], e)));
+  return matched ? { cornerRadii: radii.map(r => Math.abs(r) < 1e-6 ? 0 : Math.round(r * 1e6) / 1e6), evidence: 'Stored Shape=0, perimeter vertices and observed cubic corner handles; dimensions from stored SIZE' } : null;
+}
+
+/** Recognize only the four-extrema ellipse encoding witnessed in shipped RP11 files. */
+export function recoverEllipsePath(paths) {
+  if (!Array.isArray(paths) || paths.length !== 1 || !Array.isArray(paths[0]) || paths[0].length !== 4) return null;
+  const expected = [
+    [[.5, 0], [.22, 0], [.78, 0]],
+    [[1, .5], [1, .22], [1, .78]],
+    [[.5, 1], [.78, 1], [.22, 1]],
+    [[0, .5], [0, .78], [0, .22]],
+  ];
+  const pointMatches = (value, point) => ['X', 'Y'].every((key, i) => {
+    const number = property(value, key);
+    return Number.isFinite(number) && Math.abs(number - point[i]) < 1e-12;
+  });
+  const matches = (vertex, points) => property(vertex, 'HigherSegmentExists') === true
+    && ['Path', 'LowerHandle', 'HigherHandle'].every((key, i) => pointMatches(property(vertex, key), points[i]));
+  if (!paths[0].some((_, offset) => expected.every((points, i) => matches(paths[0][(i + offset) % 4], points)))) return null;
+  return { sourceShape: 15, evidence: 'RPShapeType.Ellipse=15; four extrema with the observed normalized cubic handles' };
+}
+
+/** Recover stored normalized control geometry; this does not solve native layout or paint effects. */
+export function recoverVectorPath(paths) {
+  if (!Array.isArray(paths) || !paths.length || paths.length > 256) return null;
+  const exactMap = (value, keys) => value && Array.isArray(value.$map) && value.$map.length === keys.length
+    && keys.every(key => value.$map.filter(pair => Array.isArray(pair) && pair.length === 2 && pair[0] === key).length === 1);
+  const scalar = value => typeof value === 'number' && Number.isFinite(value) && Math.abs(value) <= 10000;
+  const nan = value => value?.$number === 'NaN' && value.numberTag === 6 && Object.keys(value).length === 2;
+  const point = (value, handle = false) => {
+    if (!exactMap(value, ['X', 'Y'])) throw new Error('Unknown control-point coordinate fields');
+    const x = property(value, 'X'), y = property(value, 'Y');
+    // Native builder branches disagree on partial-axis NaN; only their common domain is recovered.
+    if (handle && nan(x) && nan(y)) return null;
+    if (!scalar(x) || !scalar(y)) throw new Error('Unsupported control-point coordinate');
+    return { x, y };
+  };
+  const commands = [];
+  let verticesTotal = 0;
+  try {
+    for (const source of paths) {
+      if (!Array.isArray(source) || source.length < 2 || (verticesTotal += source.length) > 3500) return null;
+      const vertices = source.map(value => {
+        if (!exactMap(value, ['Path', 'LowerHandle', 'HigherHandle', 'HigherSegmentExists'])) throw new Error('Unknown control-point fields');
+        const segment = property(value, 'HigherSegmentExists');
+        if (typeof segment !== 'boolean') throw new Error('Unknown segment flag');
+        return { point: point(property(value, 'Path')), lower: point(property(value, 'LowerHandle'), true), higher: point(property(value, 'HigherHandle'), true), segment };
+      });
+      // Interior segment breaks need a verified figure/fill grouping; do not connect them by inference.
+      if (vertices.slice(0, -1).some(v => !v.segment)) return null;
+      commands.push({ op: 'M', ...vertices[0].point });
+      const closed = vertices.at(-1).segment;
+      for (let i = 0; i < vertices.length - (closed ? 0 : 1); i++) {
+        const a = vertices[i], b = vertices[(i + 1) % vertices.length];
+        if (!a.higher && !b.lower) {
+          if (a.point.x !== b.point.x || a.point.y !== b.point.y) commands.push({ op: 'L', ...b.point });
+        } else {
+          const first = a.higher ?? a.point, second = b.lower ?? b.point;
+          commands.push({ op: 'C', x1: first.x, y1: first.y, x2: second.x, y2: second.y, ...b.point });
+        }
+      }
+      if (closed) commands.push({ op: 'Z' });
+    }
+    if (commands.length > 4096 || !commands.some(c => c.op === 'L' || c.op === 'C')) return null;
+    // SVG fill implementation dHbV.G3jJ explicitly passes FillRuleSvg.NonZero=0.
+    // Native fill closes open contours, while stroke follows HigherSegmentExists.
+    // See research/rp-vector-path-evidence.md for the exact CIL chains and limits.
+    return { fillRule: 'nonzero', commands };
+  } catch { return null; }
+}
+
+// AllTypes chooser is the witnessed 11-value subset; GNpV's return strings are
+// obfuscated. HTML spellings below are the documented standard input mapping.
+const NATIVE_INPUT_TYPES = new Map([[0, 'text'], [1, 'password'], [2, 'email'], [3, 'number'], [4, 'tel'], [5, 'url'], [6, 'search'], [12, 'file'], [17, 'date'], [18, 'month'], [19, 'time']]);
+function basicTypeCandidate(widget, size) {
+  const p = widget.properties;
+  if (widget.type === 'Axure:DiagramObject:ImageBox') return { type: 'image', evidence: 'Exact ImageBox type; embedded image and layout require separate validation' };
+  const inputType = property(p, 'Type');
+  if (widget.type === 'Axure:DiagramObject:TextBox' && NATIVE_INPUT_TYPES.has(inputType) && property(p, 'WordWrap') === false && typeof property(p, 'ReadOnly') === 'boolean') {
+    if (inputType === 12 && (property(property(p, 'TextBlock'), 'text') !== '' || property(p, 'PlaceholderText') !== '')) return null;
+    return { type: 'input', inputType: NATIVE_INPUT_TYPES.get(inputType), nativeInputType: inputType, inputTypeMapping: 'standard-html-input-type', evidence: 'TextBox explicit Type in the verified 11-value AllTypes chooser; documented standard HTML mapping, native obfuscated return literals not decoded; file only empty text and hint; form properties validated separately' };
+  }
+  if (widget.type === 'Axure:DiagramObject:TextArea') {
+    const submit = property(p, 'SubmitButton');
+    if (inputType === 0 && property(p, 'WordWrap') === true && typeof property(p, 'ReadOnly') === 'boolean'
+      && typeof property(p, 'PlaceholderText') === 'string' && property(p, 'PlaceholderText').length <= 100000 && typeof property(p, 'HideHintOnFocus') === 'boolean'
+      && submit?.referenceTag === 3 && submit.$reference === '0'.repeat(32)) {
+      return { type: 'textarea', evidence: 'Exact TextArea type; explicit wrapped plain text; form properties and hint validated separately' };
+    }
+    return null;
+  }
+  if (['Axure:DiagramObject:RadioButton', 'Axure:DiagramObject:CheckBox'].includes(widget.type) && property(p, 'align-selection-button-right') === 'False') return { type: widget.type.endsWith(':RadioButton') ? 'radio' : 'checkbox', evidence: 'Exact native form type and explicit left selection button alignment' };
+  if (widget.type === 'Axure:DiagramObject:DynamicPanel' && Array.isArray(property(p, 'panel-diagrams'))) return { type: 'panel', evidence: 'DynamicPanel and explicit ordered PanelState package references' };
+  if (widget.type !== 'Axure:DiagramObject:VectorShape') return null;
+  const sourceShape = property(p, 'Shape'), paths = property(p, 'ControlPoints');
+  if (!VECTOR_SHAPE_TYPES.has(sourceShape)) return null;
+  const vectorPath = recoverVectorPath(paths);
+  if (!vectorPath) return null;
+  const ellipse = sourceShape === 15 ? recoverEllipsePath(paths) : null;
+  const rectangle = sourceShape === 0 ? recoverRectanglePath(paths, size?.value.Width, size?.value.Height) : null;
+  return { type: ellipse ? 'ellipse' : rectangle ? 'box' : 'path', ...(ellipse ?? rectangle ?? {}),
+    sourceShape, mapping: 'native-control-points-to-svg', storedControlGeometryPreserved: true, vectorPath,
+    evidence: 'VectorShape.ControlPoints: normalized anchors, previous HigherHandle and next LowerHandle; NonZero SVG fill. Stored geometry only, not native paint/layout equivalence.' };
+}
+
+/** Explicit native form fields; no inference of a missing flag or nonzero binding. */
+export function recoverFormProperties(widget) {
+  if (!['Axure:DiagramObject:TextBox', 'Axure:DiagramObject:TextArea'].includes(widget.type)) return undefined;
+  try {
+    const p = widget.properties, readOnly = property(p, 'ReadOnly'), submit = property(p, 'SubmitButton');
+    if (typeof readOnly !== 'boolean') throw new Error('ReadOnly must be an explicit Boolean');
+    if (!submit || submit.referenceTag !== 3 || submit.$reference !== '0'.repeat(32) || Object.keys(submit).some(k => !['referenceTag', '$reference'].includes(k))) throw new Error('Nonzero, missing or compound SubmitButton is not yet evidenced');
+    const sourceType = widget.type.endsWith(':TextBox') ? 'TextBox' : 'TextArea';
+    const nativeLength = property(p, 'MaxLength');
+    if (sourceType === 'TextBox' && (!Number.isInteger(nativeLength) || nativeLength < 0 || nativeLength > 2147483647)) throw new Error('Invalid or missing native MaxLength');
+    if (sourceType === 'TextArea' && nativeLength !== undefined) throw new Error('TextArea MaxLength is not a witnessed native field');
+    return { status: 'recovered-form-properties', sourceType, readOnly, maxLength: sourceType === 'TextBox' ? nativeLength : null, submitButton: null };
+  } catch (error) { return { status: 'unsupported-form-properties', reason: error.message }; }
+}
+
+// PName constants are recorded in metadata-PName.json. This is a restricted cache-chain reader,
+// not the complete Axure stylesheet, adaptive-view, or interaction-style evaluator.
+const STYLE_NAMES = new Map([[1,'FONT_NAME'],[2,'FONT_SIZE'],[3,'BOLD'],[6,'FORE_GROUND_FILL'],[7,'FILL'],[8,'BORDER_FILL'],[9,'HORIZONTAL_ALIGNMENT'],[15,'BORDER_WIDTH'],[16,'LINE_PATTERN'],[21,'IX_STYLES'],[50,'ROTATION'],[70,'OPACITY'],[71,'CORNER_RADIUS'],[80,'BORDER_VISIBILITY'],[81,'CORNER_VISIBILITY'],[1001,'FONT_WEIGHT'],[110,'VISIBLE'],[1401,'TRANSFORM']]);
+function styleEntries(props, source) {
+  if (!Array.isArray(props)) throw new Error('Invalid style property list');
+  const result = new Map();
+  for (const p of props) {
+    const raw = property(p, 'DOAName');
+    if (!Number.isInteger(raw)) throw new Error('Invalid DOAName');
+    const key = raw & PROPERTY_NAME_MASK;
+    if (result.has(key)) throw new Error('Duplicate style property');
+    result.set(key, { value: property(p, 'Value'), determined: Boolean(raw & 0x80000000), overridden: Boolean(raw & 0x40000000), rawDoaName: raw, source });
+  }
+  return result;
+}
+export function argbColor(value) {
+  if (!Number.isInteger(value) || value < -2147483648 || value > 4294967295) return null;
+  const unsigned = value >>> 0, alpha = unsigned >>> 24, rgb = (unsigned & 0xffffff).toString(16).padStart(6, '0');
+  return `#${rgb}${alpha === 255 ? '' : alpha.toString(16).padStart(2, '0')}`;
+}
+function commonRichStyle(props) {
+  const paragraphs = property(property(property(props, 'RichTextBlock'), 'attributed-string'), 'Paragraphs');
+  if (!Array.isArray(paragraphs)) return null;
+  const runs = paragraphs.flatMap(p => property(p, 'Inlines') || []);
+  if (!runs.length || runs.some(r => property(r, 'Type') !== 'Axure:AttributedString:AxRun')) return null;
+  const result = { mixedFields: [] };
+  for (const [out, field] of [['fontFamily','Family'],['fontSize','Size'],['fontWeight','Weight'],['color','Color']]) {
+    const values = runs.map(r => property(r, field));
+    if (values.every(v => v === values[0])) result[out] = values[0]; else result.mixedFields.push(out);
+  }
+  const align = paragraphs.map(p => property(p, 'HorizontalAlignment'));
+  if (align.every(v => v === align[0])) result.textAlign = align[0]; else result.mixedFields.push('textAlign');
+  const spacing = paragraphs.map(p => property(p, 'LineSpacing'));
+  if (spacing.length && spacing.every(v => v === spacing[0])) result.lineSpacing = spacing[0]; else result.mixedFields.push('lineSpacing');
+  return result;
+}
+function resolveStyleChain(style, root, defaultStyleId) {
+  const effective = new Map();
+  const merge = (props, source) => { for (const [key, entry] of styleEntries(props, source)) effective.set(key, entry); };
+  const caches = property(property(root.properties, 'StyleCache'), 'Styles');
+  const match = property(style?.properties, 'MatchInfo'), matchId = property(match, 'Id')?.$guid, matchLibrary = property(match, 'LibraryId')?.$guid;
+  const baseId = storedStyleProperty(style, 0)?.value?.$guid;
+  let chainComplete = false;
+  if (Array.isArray(caches) && defaultStyleId) {
+    const defaults = caches.filter(c => property(property(c, 'Info'), 'Id')?.$guid === defaultStyleId && property(property(c, 'Info'), 'LibraryId')?.$guid === '0'.repeat(32));
+    const bases = caches.filter(c => property(property(c, 'Info'), 'Id')?.$guid === matchId && property(property(c, 'Info'), 'LibraryId')?.$guid === matchLibrary);
+    if (defaults.length === 1 && bases.length === 1 && baseId === matchId) {
+      merge(property(defaults[0], 'Props'), { kind: 'cached-document-default', styleId: defaultStyleId });
+      merge(property(bases[0], 'Props'), { kind: 'cached-matched-base', styleId: baseId, libraryId: matchLibrary });
+      chainComplete = true;
+    }
+  }
+  if (style) merge(property(style.properties, 'PropList') || [], { kind: 'local-object-style', objectId: style.id });
+  return { effective, chainComplete, baseId };
+}
+export function recoverStyle(widget, style, root, defaultStyleId, resolve, typeCandidate, forcedSelected, forcedState) {
+  const p = widget.properties, unknown = [], provenance = {}, css = {};
+  const { effective, chainComplete, baseId } = resolveStyleChain(style, root, defaultStyleId);
+  const merge = (props, source) => { for (const [key, entry] of styleEntries(props, source)) effective.set(key, entry); };
+  if (!chainComplete) unknown.push({ reason: 'No unique, matching cached base/default chain; inherited properties not resolved.' });
+  const interactionStyles = effective.get(21);
+  const selectionMapKnown = !interactionStyles || interactionStyles.determined && Array.isArray(interactionStyles.value?.$map);
+  const selectedRef = interactionStyles?.determined ? property(interactionStyles.value, 'Selected') : undefined;
+  const selectionRefKnown = selectedRef === undefined || selectedRef?.referenceTag === 3 && /^[a-f0-9]{32}$/.test(selectedRef.$reference);
+  const selectedTarget = selectionRefKnown ? resolve(selectedRef) : undefined;
+  const active = forcedState !== undefined ? (forcedState === null ? [] : [forcedState]) : ['Selected','Disabled','Error'].filter(key => (key === 'Selected' && forcedSelected !== undefined ? forcedSelected : property(p, key)) === true);
+  if (active.length === 1) {
+    const interactions = effective.get(21);
+    const ref = interactions?.determined ? property(interactions.value, active[0]) : undefined, selectedStyle = ref?.referenceTag === 3 ? resolve(ref) : undefined;
+    if (selectedStyle?.type === 'Axure:Style') {
+      const stateProps = property(selectedStyle.properties, 'PropList');
+      if (active[0] === 'Selected' && !Array.isArray(stateProps)) throw new Error('Selected style requires an explicit PropList array');
+      merge(stateProps || [], { kind: 'stored-active-state-style', state: active[0], objectId: selectedStyle.id });
+    }
+    else if (ref?.$reference && ref.$reference !== '0'.repeat(32)) unknown.push({ reason: `Active ${active[0]} style is unresolved.` });
+  } else if (active.length > 1) unknown.push({ reason: 'Combined selected/disabled/error style precedence is not resolved.', states: active });
+  const consumed = new Set([0,101,105,21]), rich = commonRichStyle(p);
+  const take = (key, output, convert) => {
+    const entry = effective.get(key); if (!entry?.determined) return;
+    const value = convert(entry.value);
+    if (value !== null && value !== undefined) { css[output] = value; provenance[output] = { ...entry.source, property: STYLE_NAMES.get(key) || key }; consumed.add(key); }
+  };
+  const finite = (min,max) => value => Number.isFinite(value) && value >= min && value <= max ? value : null;
+  const solid = fill => property(fill, 'fill-type') === 'solid' ? argbColor(property(fill, 'fill-color')) : null;
+  take(7,'fill',solid); take(8,'stroke',solid); take(6,'color',solid);
+  take(15,'strokeWidth',finite(0,100)); take(70,'opacity',finite(0,1));
+  take(1,'fontFamily',v => typeof v === 'string' && v.length <= 200 && /^[\p{L}\p{N}\s,'"_-]+$/u.test(v) ? v : null);
+  take(2,'fontSize',v => finite(.75,384)(v) === null ? null : v / .75);
+  take(1001,'fontWeight',finite(100,1000));
+  const alignment = v => Number.isInteger(v) && v >= 0 && v <= 2 ? ['left','center','right'][v] : null;
+  take(9,'textAlign',alignment);
+  take(10,'verticalAlign',v => Number.isInteger(v) && v >= 0 && v <= 2 ? ['top','middle','bottom'][v] : null);
+  // Zero is automatic spacing, not 0px. Browser font metrics are our rendering
+  // choice for this documented subset, not a claim of exact native glyph layout.
+  if (rich?.lineSpacing === 0 && effective.get(20)?.determined && effective.get(20).value === 0) {
+    css.lineHeight = 'normal'; consumed.add(20);
+    provenance.lineHeight = { kind: 'browser-default-for-automatic-spacing', property: 'LINE_SPACING=0 and all Paragraph.LineSpacing=0', nativeFontMetricsVerified: false };
+  }
+  // PName explicitly identifies left/top/right/bottom padding as 11/12/13/14.
+  // Preserve the CSS clockwise order only when every side is determined.
+  const paddingKeys = [12,13,14,11], padding = paddingKeys.map(key => effective.get(key));
+  if (padding.every(entry => entry?.determined && finite(0,1000)(entry.value) !== null)) {
+    css.textPadding = padding.map(entry => entry.value);
+    provenance.textPadding = { kind: 'determined-text-padding', order: 'top,right,bottom,left', sides: padding.map((entry,i) => ({ ...entry.source, property: paddingKeys[i] })) };
+    paddingKeys.forEach(key => consumed.add(key));
+  }
+  // Rich-text values provide actual uniform run formatting; explicit object/state overrides win.
+  for (const [field,key,convert] of [['fontFamily',1,v=>typeof v==='string'&&v.length<=200&&/^[\p{L}\p{N}\s,'"_-]+$/u.test(v)?v:null],['fontSize',2,v=>finite(.75,384)(v)===null?null:v/.75],['fontWeight',1001,finite(100,1000)],['color',6,argbColor],['textAlign',9,alignment]]) {
+    const local = effective.get(key)?.source.kind;
+    if (rich && (local !== 'local-object-style' && local !== 'stored-active-state-style')) {
+      if (rich.mixedFields.includes(field)) { delete css[field]; delete provenance[field]; unknown.push({ property: field, reason: 'Mixed rich-text formatting cannot be represented by one widget style.' }); continue; }
+      const value = convert(rich[field]); if (value !== null && value !== undefined) { css[field] = value; provenance[field] = { kind: 'uniform-rich-text-runs', conversion: field === 'fontSize' ? 'stored Size / 0.75, evidenced in RPFormatExtensions.bJcT' : 'direct stored value' }; }
+    }
+  }
+  const visibility = effective.get(80);
+  if (visibility?.determined && visibility.value === 0) { css.strokeWidth = 0; provenance.strokeWidth = { ...visibility.source, property: 'BORDER_VISIBILITY=0' }; consumed.add(80); }
+  else if (visibility?.determined && visibility.value === 15) consumed.add(80);
+  if (typeCandidate?.cornerRadii) { css.cornerRadii = typeCandidate.cornerRadii; css.radius = Math.max(...typeCandidate.cornerRadii); provenance.cornerRadii = { kind: 'stored-rectangle-control-path', evidence: typeCandidate.evidence }; provenance.radius = provenance.cornerRadii; consumed.add(71); consumed.add(81); }
+  // Preserve every unconverted property and its origin for the import report.
+  for (const [key, entry] of effective) if (!consumed.has(key)) unknown.push({ property: STYLE_NAMES.get(key) || `PName:${key}`, value: entry.value, source: entry.source, reason: 'Not mapped by the restricted style converter.' });
+  const visible = effective.get(110);
+  return { style: css, provenance, unknown, cacheChainComplete: chainComplete, baseStyleId: baseId ?? null, defaultStyleId: defaultStyleId ?? null, visible: visible?.determined && typeof visible.value === 'boolean' ? visible.value : null,
+    resolvedGeometry: chainComplete ? { location: coordinatePair(effective.get(101), ['X','Y']), size: coordinatePair(effective.get(105), ['Width','Height']) } : null,
+    boundsRecovery: { outerShadowAbsent: effective.get(72)?.determined === true && property(effective.get(72).value, 'On') === false },
+    selectedStyleReference: selectedRef ?? null, selectedStyleResolved: Boolean(selectionMapKnown && selectionRefKnown && (!selectedRef || selectedRef.$reference === '0'.repeat(32) || selectedTarget?.type === 'Axure:Style')),
+    ...(widget.type === 'Axure:DiagramObject:ImageBox' ? { imageProperties: Object.fromEntries([30,71,90,50,1401].map(key => [key, effective.get(key) ?? null])) } : {}) };
+}
+
+const INTERACTION_STYLE_STATES = Object.freeze({ mouseover: 'MouseOver', mousedown: 'MouseDown', focused: 'Focused', disabled: 'Disabled' });
+const INTERACTION_STYLE_FIELDS = new Map([[1,'fontFamily'],[2,'fontSize'],[6,'color'],[7,'fill'],[8,'stroke'],[9,'textAlign'],[10,'verticalAlign'],[15,'strokeWidth'],[20,'lineHeight'],[70,'opacity'],[1001,'fontWeight']]);
+/** Independent, explicit appearance patches. This does not evaluate combined native state precedence. */
+export function recoverInteractionStyles(widget, style, root, defaultStyleId, resolve, typeCandidate) {
+  return recoverNamedInteractionStyles(widget, style, root, defaultStyleId, resolve, typeCandidate, INTERACTION_STYLE_STATES);
+}
+function recoverNamedInteractionStyles(widget, style, root, defaultStyleId, resolve, typeCandidate, stateNames, allowNamedColors = false) {
+  try {
+    const { effective, chainComplete } = resolveStyleChain(style, root, defaultStyleId);
+    const entry = effective.get(21), rawMap = entry?.value;
+    if (!chainComplete && (!entry?.determined || !entry.overridden || entry.source.kind !== 'local-object-style')) throw new Error('Interaction styles have neither a complete cache chain nor an explicit local IX_STYLES map');
+    const pairs = entry === undefined ? [] : rawMap?.$map;
+    if (entry && (!entry.determined || !Array.isArray(pairs) || pairs.length > 7)) throw new Error('Unknown or invalid IX_STYLES map');
+    const names = new Set(), knownStates = new Set([...Object.values(INTERACTION_STYLE_STATES),'Selected','Error','Hint']);
+    for (const pair of pairs) {
+      if (!Array.isArray(pair) || pair.length !== 2 || !knownStates.has(pair[0]) || names.has(pair[0])) throw new Error('Unknown or duplicate interaction state key');
+      names.add(pair[0]);
+    }
+    const base = recoverStyle(widget, style, root, defaultStyleId, resolve, typeCandidate, undefined, null);
+    const states = {};
+    for (const [name, sourceState] of Object.entries(stateNames)) {
+      const record = { sourceState }, ref = property(rawMap, sourceState);
+      try {
+        if (ref === undefined) {
+          if (!chainComplete) throw new Error('An absent local state cannot establish absence in an unresolved base style');
+          states[name] = { ...record, status: 'no-state-style' }; continue;
+        }
+        if (ref?.referenceTag !== 3 || typeof ref.$reference !== 'string' || !/^[a-f0-9]{32}$/.test(ref.$reference) || Object.keys(ref).some(key => !['$reference','referenceTag'].includes(key))) throw new Error('Invalid local interaction-style reference');
+        if (ref.$reference === '0'.repeat(32)) { states[name] = { ...record, status: 'no-state-style' }; continue; }
+        record.sourceStyleId = ref.$reference;
+        const target = resolve(ref);
+        if (target?.type !== 'Axure:Style') throw new Error('Unresolved or wrong-type interaction-style target');
+        const knownStyleKeys = new Set(['LibraryId','LibraryName','LegacyName','style-name','Id','PropList','Capabilities','All']);
+        if (allowNamedColors) knownStyleKeys.add('MatchInfo');
+        if (!Array.isArray(target.properties?.$map) || target.properties.$map.some(pair => !Array.isArray(pair) || pair.length !== 2 || !knownStyleKeys.has(pair[0]))) throw new Error('Unknown interaction-style metadata or inheritance');
+        if (property(target.properties, 'All') !== false) throw new Error('Only explicit local interaction-style patches are recovered');
+        let props = property(target.properties, 'PropList');
+        if (!Array.isArray(props)) throw new Error('Interaction style requires an explicit PropList array');
+        let entries = styleEntries(props, { kind: 'interaction-state-style', state: sourceState, objectId: target.id });
+        if (allowNamedColors && (entries.has(0) || property(target.properties, 'MatchInfo') !== undefined)) {
+          const base = entries.get(0), match = property(target.properties, 'MatchInfo'), styleId = property(match, 'Id')?.$guid, libraryId = property(match, 'LibraryId')?.$guid;
+          if (!base?.determined || !base.overridden || base.value?.$guid !== styleId || !/^[a-f0-9]{32}$/.test(styleId) || !/^[a-f0-9]{32}$/.test(libraryId) || property(target.properties,'LibraryId')?.$guid !== libraryId) throw new Error('Named state style identity is not explicit and matching');
+          const caches = property(property(root.properties,'StyleCache'),'Styles');
+          const matches = Array.isArray(caches) ? caches.filter(cache => property(property(cache,'Info'),'Id')?.$guid === styleId && property(property(cache,'Info'),'LibraryId')?.$guid === libraryId) : [];
+          if (matches.length !== 1) throw new Error('Named state cache is missing or ambiguous');
+          const cached = property(matches[0],'Props'), inherited = styleEntries(cached,{kind:'cached-interaction-state-style',styleId,libraryId});
+          if (!inherited.size || [...inherited].some(([key,e]) => ![6,7,8].includes(key) || !e.determined) || [...entries].some(([key,e]) => ![0,6,7,8].includes(key) || !e.determined || !e.overridden)) throw new Error('Named state cache supports only complete solid color patches');
+          record.namedStyleMatch = { styleId, libraryId, localProperties:[...entries.keys()] };
+          props = [...cached, ...props.filter(prop => (property(prop,'DOAName') & 0x0fffffff) !== 0)];
+          const merged = new Map();for(const prop of props)merged.set(property(prop,'DOAName') & 0x0fffffff,prop);props=[...merged.values()];
+          entries = styleEntries(props,{kind:'cached-interaction-state-style',styleId,libraryId});
+        }
+        record.sourceProperties = [...entries.keys()];
+        if (!chainComplete) {
+          // A directly stored solid color fully specifies that color, regardless of
+          // normal appearance. Do not extend this rule to geometry/font inheritance.
+          if (!entries.size || [...entries].some(([key,value]) => ![6,7,8].includes(key) || !value.determined || !value.overridden)) throw new Error('Unresolved base style permits only explicit independent solid color properties');
+          record.independentOfInheritedBase = true;
+        }
+        const paddingKeys = [12,13,14,11], hasPadding = paddingKeys.some(key => entries.has(key));
+        if (hasPadding && !paddingKeys.every(key => entries.has(key))) throw new Error('Partial state text padding cannot be represented by a complete style tuple');
+        for (const [key, value] of entries) {
+          if (!INTERACTION_STYLE_FIELDS.has(key) && !paddingKeys.includes(key)) throw new Error(`Unsupported interaction style property ${key}`);
+          if (!value.determined) throw new Error(`Undetermined interaction style property ${key}`);
+        }
+        const stateResolver = record.namedStyleMatch ? value => value?.$reference === target.id && value.referenceTag === 3 ? { ...target, properties:{ $map:target.properties.$map.map(([key,value]) => [key,key==='PropList'?props:value]) } } : resolve(value) : resolve;
+        const active = recoverStyle(widget, style, root, defaultStyleId, stateResolver, typeCandidate, undefined, sourceState);
+        if (active.unknown.some(item => item.source?.kind === 'stored-active-state-style')) throw new Error('Interaction style contains values that cannot be represented');
+        const outputs = [...entries.keys()].map(key => INTERACTION_STYLE_FIELDS.get(key)).filter(Boolean);
+        if (hasPadding) outputs.push('textPadding');
+        const patch = {}, provenance = {};
+        for (const output of outputs) {
+          if (!Object.hasOwn(active.style, output)) throw new Error(`Interaction style ${output} has no supported value`);
+          // Keep an explicitly stored reset even when it equals the normal appearance.
+          patch[output] = active.style[output]; provenance[output] = { ...active.provenance[output], ...(record.namedStyleMatch ? { namedStyleMatch:record.namedStyleMatch } : {}) };
+        }
+        states[name] = { ...record, status: 'supported-state-style', style: patch, provenance };
+      } catch (error) { states[name] = { ...record, status: 'unsupported-state-style', reason: error.message }; }
+    }
+    return { status: 'recovered-interaction-styles', cacheChainComplete: chainComplete, baseStyleRecovery: { style: base.style, provenance: base.provenance, visible: base.visible }, states,
+      unhandledStates: ['Error','Hint'].filter(name => names.has(name) && !Object.values(stateNames).includes(name)), evidence: 'PName.IX_STYLES=21, IxStyleState metadata, local Style references and explicit PropList appearance fields; no native combined-state evaluation' };
+  } catch (error) { return { status: 'unsupported-interaction-styles', reason: error.message }; }
+}
+
+export function recoverErrorHint(widget, style, root, defaultStyleId, resolve, typeCandidate) {
+  try {
+    const error = property(widget.properties,'Error');
+    if (typeof error !== 'boolean') throw new Error('Initial Error flag is not explicitly known');
+    const input = ['Axure:DiagramObject:TextBox','Axure:DiagramObject:TextArea'].includes(widget.type);
+    let inputHint;
+    if (input) {
+      const hintText = property(widget.properties,'PlaceholderText'), hide = property(widget.properties,'HideHintOnFocus');
+      if (typeof hintText !== 'string' || hintText.length > 100000 || typeof hide !== 'boolean') throw new Error('Hint text or focus policy is not explicitly known');
+      if (hintText.includes('[[') || hintText.includes(']]')) throw new Error('Hint expression substitution has not been recovered');
+      inputHint = { hintText, hintHideOn:hide?'focus':'typing', sourceFields:['PlaceholderText','HideHintOnFocus'] };
+    }
+    const { baseStyleRecovery: _base, ...styles } = recoverNamedInteractionStyles(widget,style,root,defaultStyleId,resolve,typeCandidate,{error:'Error',hint:'Hint'},true);
+    return { status:'recovered-error-hint', error, ...(inputHint ? {inputHint} : {}),
+      ...(error ? {normalStyleRecovery:recoverStyle(widget,style,root,defaultStyleId,resolve,typeCandidate,undefined,null)} : {}), styles };
+  } catch(error) { return { status:'unsupported-error-hint',reason:error.message }; }
+}
+
+/** Source group identity survives unsupported geometry, styles, and type candidates. */
+export function recoverSelectionGroups(widget) {
+  try {
+    const name = (value, field) => {
+      if (typeof value !== 'string' || value.length > 256 || /[\u0000-\u001f\u007f-\u009f]/.test(value)) throw new Error(`Unknown or invalid ${field}`);
+      return value;
+    };
+    const selectionGroup = name(property(widget.properties, 'SelectedStyleGroup'), 'selection group');
+    const radioGroup = widget.type === 'Axure:DiagramObject:RadioButton' ? name(property(widget.properties, 'radio-group'), 'radio group') : undefined;
+    return { status: 'known-selection-groups', selectionGroup, ...(radioGroup === undefined ? {} : { radioGroup }) };
+  } catch (error) { return { status: 'unknown-selection-groups', reason: error.message }; }
+}
+
+export function recoverSelection(widget, style, root, defaultStyleId, resolve, typeCandidate) {
+  try {
+    const p = widget.properties, selected = property(p, 'Selected'), groups = recoverSelectionGroups(widget);
+    if (groups.status !== 'known-selection-groups') throw new Error(groups.reason);
+    const group = groups.selectionGroup;
+    if (typeof selected !== 'boolean') throw new Error('Unknown selected state');
+    if (property(p, 'Disabled') !== false || property(p, 'Error') !== false) throw new Error('Combined disabled/error selection appearance is not recovered');
+    const base = recoverStyle(widget, style, root, defaultStyleId, resolve, typeCandidate, false);
+    const active = recoverStyle(widget, style, root, defaultStyleId, resolve, typeCandidate, true);
+    if (!base.cacheChainComplete || !active.selectedStyleResolved) throw new Error('Selection style has an unresolved cache or reference');
+    const target = resolve(active.selectedStyleReference);
+    if (target) {
+      const supported = new Set([1,2,6,7,8,9,10,11,12,13,14,15,20,70,80,1001]);
+      const selectedProps = property(target.properties, 'PropList');
+      if (!Array.isArray(selectedProps)) throw new Error('Selected style requires an explicit PropList array');
+      for (const [key, entry] of styleEntries(selectedProps, { kind: 'selected' })) {
+        if (!supported.has(key) || !entry.determined) throw new Error(`Unsupported selected style property ${key}`);
+      }
+      if (active.unknown.some(item => item.source?.kind === 'stored-active-state-style')) throw new Error('Selected style contains values that cannot be represented');
+    }
+    const selectedStyle = Object.fromEntries(Object.entries(active.style).filter(([key,value]) => JSON.stringify(value) !== JSON.stringify(base.style[key])));
+    const result = { status: 'supported-selection', selected, selectionGroup: group, baseStyleRecovery: { style: base.style, provenance: base.provenance, visible: base.visible }, selectedStyle, evidence: 'Native Selected and SelectedStyleGroup; selected style remains separate from base appearance' };
+    if (typeCandidate?.type === 'radio') {
+      if (groups.radioGroup === undefined || group) throw new Error('Unknown or combined radio/selection grouping');
+      result.radioGroup = groups.radioGroup;
+    } else if (typeCandidate?.type === 'checkbox' && group) throw new Error('Checkbox selection-style groups are not recovered');
+    return result;
+  } catch (error) { return { status: 'unsupported-selection', reason: error.message }; }
+}
+
+export function recoverEmbeddedImage(widget, style, size, styleRecovery, part, budget) {
+  let source;
+  try {
+    const p = widget.properties, entry = storedStyleProperty(style, 27);
+    if (!entry?.determined || !entry.overridden) imageError('Image depends on absent, undetermined or inherited IMAGE property');
+    const stream = property(entry.value, 'Stream')?.$bytes, extension = property(entry.value, 'Extension');
+    source = { styleId: style.id, property: 'IMAGE=27', storedExtension: extension ?? null, storedHash: property(entry.value, 'Hash') ?? null, stream: stream ?? null, packagePath: part?.path ?? null };
+    if (!stream) imageError('No embedded Stream; vector/hash-only/external image references are unsupported');
+    if (extension !== '.png' && extension !== '') imageError('Only explicit PNG or empty extension with validated PNG bytes is supported');
+    if (property(p, 'fit-to-image') !== false || property(p, 'AutoFitWidth') !== false || property(p, 'AutoFitHeight') !== false) imageError('Image automatic sizing/fit-to-image is unsupported');
+    const corners = property(p, 'PreserveCornersRectangle');
+    if (!['X','Y','Width','Height'].every(key => property(corners, key) === 0)) imageError('Image preserve-corners/nine-slice geometry is unsupported');
+    if (['Selected','Disabled','Error'].some(key => property(p, key) !== false)) imageError('Image interaction-state appearance is unsupported');
+    if (!styleRecovery.cacheChainComplete || styleRecovery.style.strokeWidth !== 0) imageError('Image needs a resolved cache chain and zero border for verified aspect mapping');
+    const known = key => { const v = styleRecovery.imageProperties?.[key];if (!v?.determined) imageError(`Image layout property ${key} is unresolved`);return v.value; };
+    if (known(30) !== 0 || known(71) !== 0 || known(50) !== 0 || property(known(90), 'On') !== false) imageError('Image repetition, corner clipping, rotation or filters are unsupported');
+    const transform = known(1401);
+    if (![['ScaleX',1],['ScaleY',1],['TranslateX',0],['TranslateY',0],['Rotate',0]].every(([key,v]) => property(transform,key) === v)) imageError('Image transform is unsupported');
+    if (!size?.determined || !size.overridden) imageError('Image stored size is unresolved');
+    if (!part || !Buffer.isBuffer(part.data) || !Number.isSafeInteger(stream.offset) || !Number.isSafeInteger(stream.length) || stream.offset < 0 || stream.length < 1 || stream.length > IMAGE_LIMITS.bytes || stream.offset + stream.length > part.data.length) imageError('Embedded image byte range/limit is invalid');
+    const bytes = part.data.subarray(stream.offset, stream.offset + stream.length);
+    if (digest(bytes) !== stream.sha256) imageError('Embedded image source SHA-256 mismatch');
+    const image = inspectStaticPng(bytes), { Width, Height } = size.value;
+    if (!Number.isFinite(Width) || !Number.isFinite(Height) || Width <= 0 || Height <= 0 || Math.abs(Width * image.height - Height * image.width) > 1e-6) imageError('Image target/source aspect ratios differ; crop/stretch mapping is not inferred');
+    const characters = 22 + 4 * Math.ceil(bytes.length / 3);
+    if (!budget || !Number.isSafeInteger(budget.used) || budget.used < 0 || budget.used + characters > IMAGE_LIMITS.dataUrlCharacters) imageError('Total embedded image data URL budget exceeded');
+    budget.used += characters;
+    return { status: 'validated-embedded-png', ...image, source, mapping: 'same-aspect-stored-rectangle', dataUrl: 'data:image/png;base64,' + bytes.toString('base64') };
+  } catch (error) { return { status: 'unsupported-image', reason: error.message, ...(source ? { source } : {}) }; }
+}
+
+export function recoverPlainText(props) {
+  const plain = property(props, 'TextBlock');
+  if (plain !== undefined) {
+    const text = property(plain, 'text');
+    return typeof text === 'string' ? { status: 'stored-plain-text', text } : { status: 'unsupported-plain-text' };
+  }
+  const rich = property(props, 'RichTextBlock');
+  if (rich === undefined) return { status: 'no-observed-text-field' };
+  const paragraphs = property(property(rich, 'attributed-string'), 'Paragraphs');
+  if (!Array.isArray(paragraphs)) return { status: 'unsupported-rich-text' };
+  const texts = [];
+  for (const paragraph of paragraphs) {
+    const inlines = property(paragraph, 'Inlines');
+    if (!Array.isArray(inlines)) return { status: 'unsupported-rich-text' };
+    let text = '';
+    for (const inline of inlines) {
+      const type = property(inline, 'Type'), value = property(inline, 'Text');
+      if (type !== 'Axure:AttributedString:AxRun' || typeof value !== 'string') return { status: 'unsupported-rich-text-inline', inlineType: type ?? null };
+      text += value;
+    }
+    texts.push(text);
+  }
+  return { status: 'stored-rich-text-as-plain', text: texts.join('\n'), paragraphCount: texts.length, formattingRecovered: false };
+}
+
+function recoverWidgetText(widget, version) {
+  const recovered = recoverPlainText(widget.properties);
+  // RichTextObject initializes an empty attributed string. Its serializer omits
+  // empty content and its reader leaves that default in place when absent.
+  // This inference is restricted to the witnessed VectorShape hierarchy.
+  const emptyShapeFields = new Set(['ControlPoints', 'Shape', 'reference-page-package-id', 'name-block', 'tooltip', 'IsContained', 'IsLocked', 'SelectedStyleGroup', 'MyStyle', 'AdaptiveStyles', 'SubmitButton', 'Disabled', 'Selected', 'Error', 'VisibleFromSettings', 'AutoFitHeight', 'AutoFitWidth', 'InteractionMap']);
+  const witnessedVersion = Array.isArray(version) && version.length === 4 && version.every((n, i) => n === (i === 0 ? 11 : 0));
+  if (witnessedVersion && widget.type === 'Axure:DiagramObject:VectorShape' && VECTOR_SHAPE_TYPES.has(property(widget.properties, 'Shape'))
+    && recovered.status === 'no-observed-text-field' && widget.properties.$map.every(([key]) => emptyShapeFields.has(key))) {
+    return { status: 'stored-empty-rich-text', text: '', source: 'native-omitted-empty-rich-text' };
+  }
+  return recovered;
+}
+
+/** Sitemap grammar witnessed in six official samples; fail the tree atomically, not the diagrams. */
+export function recoverPageTree(decoded) {
+  try {
+    const fail = message => { throw new Error(message); };
+    const guid = value => { if (typeof value !== 'string' || !/^[a-f0-9]{32}$/.test(value)) fail('Invalid sitemap GUID'); return value; };
+    const ref = (value, tag, name) => {
+      if (!value || value.referenceTag !== tag || (name !== undefined && value.name !== name)) fail('Unknown sitemap reference kind');
+      return guid(value.$reference);
+    };
+    const name = value => { if (typeof value !== 'string' || value.length > 500) fail('Unknown page/folder name'); return value; };
+    const documents = decoded.packages.filter(pack => pack.path === 'DesignDocument');
+    if (documents.length !== 1 || !Array.isArray(documents[0].objects)) fail('Missing or ambiguous DesignDocument');
+    const pack = documents[0], objects = new Map();
+    for (const object of pack.objects) {
+      guid(object.id); if (objects.has(object.id)) fail('Duplicate document object ID'); objects.set(object.id, object);
+    }
+    const get = (id, type) => { const object = objects.get(id); if (object?.type !== type) fail(`Missing or unexpected ${type}`); return object; };
+    const root = get(guid(pack.rootId), 'Axure:DesignDocument');
+    const sitemap = get(ref(property(root.properties, 'sitemap'), 3), 'Axure:SiteTreeMap');
+    const tree = get(ref(property(sitemap.properties, 'tree'), 3), 'Axure:Tree');
+    if (ref(property(tree.properties, 'tree'), 3) !== tree.id) fail('Sitemap tree self-reference mismatch');
+    const infos = property(root.properties, 'PackageInfos');
+    if (!Array.isArray(infos)) fail('Missing PackageInfos array');
+    const pageInfos = new Map(), seenInfoIds = new Set();
+    for (const value of infos) {
+      const infoId = ref(value, 3), info = get(infoId, 'Axure:PackageInfo');
+      if (seenInfoIds.has(infoId)) fail('Duplicate PackageInfo reference'); seenInfoIds.add(infoId);
+      const target = property(info.properties, 'package-id');
+      if (target?.name !== 'Axure:Page') continue;
+      const packageId = ref(target, 19, 'Axure:Page');
+      if (pageInfos.has(packageId)) fail('Duplicate page PackageInfo');
+      pageInfos.set(packageId, name(property(info.properties, 'package-name')));
+    }
+    const pagePackages = new Set();
+    for (const candidate of decoded.packages) {
+      const roots = candidate.objects?.filter(object => object.id === candidate.rootId) ?? [];
+      if (!roots.some(object => object.type === 'Axure:Page')) continue;
+      if (roots.length !== 1 || pagePackages.has(candidate.packageId) || candidate.path !== `${candidate.packageId}/package`) fail('Ambiguous page package identity');
+      pagePackages.add(guid(candidate.packageId));
+    }
+    if (pageInfos.size !== pagePackages.size || [...pageInfos.keys()].some(id => !pagePackages.has(id))) fail('Page packages and PackageInfos do not match');
+    const pairs = property(sitemap.properties, 'node-table')?.$map;
+    if (!Array.isArray(pairs) || pairs.length > 400) fail('Missing sitemap node table or node limit');
+    const table = new Map();
+    for (const pair of pairs) {
+      if (!Array.isArray(pair) || pair.length !== 2) fail('Invalid sitemap node-table pair');
+      const nodeId = ref(pair[0], 3); get(nodeId, 'Axure:Node');
+      if (table.has(nodeId)) fail('Duplicate sitemap node-table entry'); table.set(nodeId, pair[1]);
+    }
+    for (const object of objects.values()) if (object.type === 'Axure:Node' && property(object.properties, 'tree')?.$reference === tree.id && !table.has(object.id)) fail('Sitemap-owned node absent from node table');
+    const nodes = [], visited = new Set(), usedPages = new Set(), usedFolders = new Set(), folderObjects = new Set();
+    const walk = (owner, depth) => {
+      const children = property(owner.properties, 'children');
+      if (!Array.isArray(children) || children.length > 400) fail('Missing or invalid sitemap children');
+      for (const child of children) {
+        if (depth >= 12 || nodes.length >= 400) fail('Sitemap depth/node limit');
+        const nodeId = ref(child, 3), node = get(nodeId, 'Axure:Node');
+        if (visited.has(nodeId)) fail('Cyclic or duplicate sitemap attachment'); visited.add(nodeId);
+        if (!table.has(nodeId)) fail('Sitemap child absent from node table');
+        if (ref(property(node.properties, 'parent-node'), 3) !== owner.id || ref(property(node.properties, 'tree'), 3) !== tree.id) fail('Sitemap parent/tree mismatch');
+        const content = table.get(nodeId), common = { nodeId, parentNodeId: owner === tree ? null : owner.id };
+        if (content?.referenceTag === 19) {
+          const packageId = ref(content, 19, 'Axure:PackageInfo');
+          if (!pageInfos.has(packageId) || usedPages.has(packageId)) fail('Missing or duplicate sitemap page');
+          usedPages.add(packageId); if (usedPages.size > 200) fail('Sitemap page limit');
+          nodes.push({ ...common, kind: 'page', packageId, name: pageInfos.get(packageId) });
+        } else {
+          const objectId = ref(content, 3), folder = get(objectId, 'Axure:MasterTreeFolder');
+          const folderId = guid(property(folder.properties, 'folder-id')?.$guid);
+          if (usedFolders.has(folderId) || folderObjects.has(objectId)) fail('Duplicate sitemap folder identity');
+          usedFolders.add(folderId); folderObjects.add(objectId); if (usedFolders.size > 200) fail('Sitemap folder limit');
+          nodes.push({ ...common, kind: 'folder', folderId, name: name(property(folder.properties, 'name')) });
+        }
+        walk(node, depth + 1);
+      }
+    };
+    walk(tree, 0);
+    if (visited.size !== table.size) fail('Unreachable sitemap node-table entry');
+    if (usedPages.size !== pageInfos.size) fail('Sitemap does not cover every page package');
+    return { status: 'supported-page-tree', rootId: root.id, treeId: tree.id, sourcePartSha256: pack.sha256, nodes };
+  } catch (error) { return { status: 'unsupported-page-tree', reason: error.message, nodes: [] }; }
+}
+
+function recoverDocumentSettings(decoded) {
+  const result = { variables: { status: 'unsupported', reason: 'Missing DesignDocument' }, caseSelection: { status: 'unsupported', reason: 'Missing DesignDocument' } };
+  try {
+    const documents = decoded.packages.filter(pack => pack.path === 'DesignDocument');
+    if (documents.length !== 1 || !documents[0].objects) throw new Error('Missing or ambiguous DesignDocument');
+    const pack = documents[0], objects = new Map();
+    for (const object of pack.objects) { if (objects.has(object.id)) throw new Error('Duplicate document object ID'); objects.set(object.id, object); }
+    const root = objects.get(pack.rootId);
+    if (root?.type !== 'Axure:DesignDocument') throw new Error('Unexpected DesignDocument root type');
+    try {
+      const setRef = property(root.properties, 'GlobalVariableSet'), set = objects.get(setRef?.$reference);
+      if (setRef?.referenceTag !== 3 || set?.type !== 'Axure:GlobalVariableSet') throw new Error('Unknown global variable set reference');
+      const refs = property(set.properties, 'global-variables');
+      if (!Array.isArray(refs) || refs.length > 1000) throw new Error('Invalid global variable collection');
+      const usedIds = new Set(), names = new Set();
+      const variables = refs.map(ref => {
+        const item = objects.get(ref?.$reference);
+        if (ref?.referenceTag !== 3 || item?.type !== 'Axure:GlobalVariable') throw new Error('Unknown global variable reference');
+        const name = property(item.properties, 'name'), value = property(item.properties, 'default-value'), id = property(item.properties, 'variable-id')?.$guid;
+        if (typeof name !== 'string' || !name.trim() || name.length > 256 || typeof value !== 'string' || value.length > 100000 || !/^[a-f0-9]{32}$/.test(id)) throw new Error('Invalid global variable fields');
+        if (usedIds.has(id) || names.has(name.toLowerCase())) throw new Error('Duplicate global variable identity or case-insensitive name');
+        usedIds.add(id); names.add(name.toLowerCase()); return { id, name, value };
+      });
+      result.variables = { status: 'supported', variables, sourcePartSha256: pack.sha256 };
+    } catch (error) { result.variables = { status: 'unsupported', reason: error.message }; }
+    try {
+      const ref = property(root.properties, 'default-prototype-configuration-id');
+      if (ref?.referenceTag !== 19 || ref?.name !== 'Axure:HtmlPrototypeGeneratorConfiguration') throw new Error('Unknown default HTML configuration reference');
+      const candidates = decoded.packages.filter(candidate => candidate.packageId === ref.$reference);
+      if (candidates.length !== 1 || !candidates[0].objects) throw new Error('Missing or ambiguous default HTML configuration package');
+      const configPack = candidates[0], roots = configPack.objects.filter(item => item.id === configPack.rootId);
+      if (roots.length !== 1 || roots[0].type !== 'Axure:HtmlPrototypeGeneratorConfiguration') throw new Error('Unknown default HTML configuration root');
+      const sourceValue = property(roots[0].properties, 'link-style');
+      // The serializer uses a custom string table, not Enum.ToString. Only this
+      // spelling is corroborated by both shipped files and the native enum.
+      const choices = new Map([['DisplayMultipleTargetsOnly', 'auto']]);
+      if (!choices.has(sourceValue)) throw new Error('Unknown native Case Behavior setting');
+      result.caseSelection = { status: 'supported', value: choices.get(sourceValue), sourceValue, sourcePackageId: configPack.packageId, sourcePartSha256: configPack.sha256 };
+    } catch (error) { result.caseSelection = { status: 'unsupported', reason: error.message }; }
+  } catch (error) { result.variables.reason = error.message; result.caseSelection.reason = error.message; }
+  return result;
+}
+
+export function recoverRpSemantics(decoded, parts = new Map()) {
+  const imageBudget = { used: 0 };
+  const result = {
+    status: 'partial-read-only-recovery', recoveryVersion: 1, fileSha256: decoded.fileSha256,
+    limitations: [
+      'Stored base geometry only; a restricted, uniquely matched cached-style chain and uniform run formatting are recovered. No adaptive override or automatic layout computation.',
+      'Diagram list follows package enumeration; independently validated pageTreeRecovery supplies sitemap hierarchy/order when supported. Diagram member arrays retain stored order; paint-order equivalence is unverified.',
+      'Plain text only; unsupported rich-text inline forms are reported rather than silently flattened.',
+      'Images recover only explicit, static embedded PNG with validated bytes, supported metadata and matching aspect ratio. Other formats/crops/layouts are omitted.',
+      'Only explicitly decoded interaction events, conditions and actions are exposed; unsupported events are rejected atomically. Masters, component overrides, repeater instances and native write-back are not implemented.',
+      'No Axure GUI round-trip, rendered-position, or interaction differential validation has been performed.',
+    ],
+    packageFailures: decoded.packages.filter(p => p.status === 'unsupported').map(p => ({ path: p.path, reason: p.reason })),
+    semanticFailures: [], diagrams: [],
+  };
+  result.documentSettingsRecovery = recoverDocumentSettings(decoded);
+  result.pageTreeRecovery = recoverPageTree(decoded);
+  const names = new Map();
+  let defaultStyleId = null;
+  for (const pack of decoded.packages) if (pack.path === 'DesignDocument' && pack.objects) {
+    try {
+      const objects = new Map(pack.objects.map(o => [o.id, o])), doc = objects.get(pack.rootId);
+      const sheet = objects.get(property(doc?.properties, 'StyleSheet')?.$reference);
+      const style = objects.get(property(sheet?.properties, 'DefaultStyle')?.$reference);
+      if (sheet?.type === 'Axure:StyleSheet' && style?.type === 'Axure:Style') defaultStyleId = property(style.properties, 'Id')?.$guid ?? null;
+    } catch (error) { result.semanticFailures.push({ path: pack.path, reason: `Default style reference: ${error.message}` }); }
+  }
+  for (const pack of decoded.packages) if (pack.path === 'DesignDocument') for (const o of pack.objects || []) if (o.type === 'Axure:PackageInfo') {
+    try {
+      const id = property(o.properties, 'package-id')?.$reference, name = property(o.properties, 'package-name');
+      if (id && typeof name === 'string') {
+        if (names.has(id) && names.get(id) !== name) throw new Error('Ambiguous package name');
+        names.set(id, name);
+      }
+    } catch (error) { result.semanticFailures.push({ path: pack.path, objectId: o.id, reason: error.message }); }
+  }
+  for (const pack of decoded.packages) {
+    if (!pack.objects?.length) continue;
+    try {
+      const objects = new Map();
+      for (const o of pack.objects) { if (objects.has(o.id)) throw new Error('Duplicate object ID'); objects.set(o.id, o); }
+      const resolve = ref => objects.get(ref?.$reference);
+      const root = objects.get(pack.rootId);
+      if (!root || !['Axure:Page', 'Axure:PanelState'].includes(root.type)) continue;
+      const diagram = resolve(property(root.properties, 'diagram'));
+      if (!diagram || !['Axure:Diagram', 'Axure:PanelDiagram'].includes(diagram.type)) throw new Error('Missing or unsupported root diagram');
+      const refs = property(diagram.properties, 'diagram-objects');
+      if (!Array.isArray(refs)) throw new Error('Missing diagram member list');
+      const output = {
+        packagePath: pack.path, packageId: pack.packageId, sourcePartSha256: pack.sha256,
+        rootId: root.id, rootType: root.type, diagramId: diagram.id,
+        name: root.type === 'Axure:PanelState' ? property(diagram.properties, 'Name') ?? null : names.get(pack.packageId) ?? null,
+        interactionRecovery: recoverInteractionMap({ owner: root, objects, packageId: pack.packageId }),
+        widgets: [],
+      };
+      for (let index = 0; index < refs.length; index++) {
+        const widget = resolve(refs[index]);
+        if (!widget || !widget.type?.startsWith('Axure:DiagramObject:')) {
+          output.widgets.push({ storedIndex: index, status: 'unsupported-member', reference: refs[index] }); continue;
+        }
+        const identity = { storedIndex: index, id: widget.id, type: widget.type, selectionGroups: recoverSelectionGroups(widget), panelStatePackages: null };
+        try {
+          const references = property(widget.properties, 'panel-diagrams');
+          if (widget.type === 'Axure:DiagramObject:DynamicPanel' && !Array.isArray(references)) throw new Error('Missing or invalid panel state references');
+          identity.panelStatePackages = references ?? null;
+        }
+        catch (error) { identity.panelStatePackagesError = error.message; }
+        try {
+          const p = widget.properties, style = resolve(property(p, 'MyStyle'));
+          if (style && style.type !== 'Axure:Style') throw new Error('Unexpected MyStyle target type');
+          const location = coordinatePair(storedStyleProperty(style, LOCATION), ['X', 'Y']);
+          const size = coordinatePair(storedStyleProperty(style, SIZE), ['Width', 'Height']);
+          const rotation = storedStyleProperty(style, 50), transform = storedStyleProperty(style, 1401);
+          const adaptiveStyles = property(p, 'AdaptiveStyles');
+          const typeCandidate = basicTypeCandidate(widget, size);
+          const styleRecovery = recoverStyle(widget, style, root, defaultStyleId, resolve, typeCandidate);
+          output.widgets.push({
+            ...identity, status: 'stored-fields-recovered',
+            sourceDecodedOffset: widget.offset, label: property(property(p, 'name-block'), 'text') ?? null,
+            typeCandidate,
+            interactionRecovery: recoverInteractionMap({ owner: widget, objects, packageId: pack.packageId }),
+            storedGeometry: { styleId: style?.id ?? null, location, size, rotation, transform, adaptiveStyleCount: Array.isArray(adaptiveStyles) ? adaptiveStyles.length : null, isComputedLayout: false },
+            text: recoverWidgetText(widget, pack.version),
+            styleRecovery,
+            selectionRecovery: recoverSelection(widget, style, root, defaultStyleId, resolve, typeCandidate),
+            interactionStyleRecovery: recoverInteractionStyles(widget, style, root, defaultStyleId, resolve, typeCandidate),
+            errorHintRecovery: recoverErrorHint(widget, style, root, defaultStyleId, resolve, typeCandidate),
+            ...(widget.type === 'Axure:DiagramObject:TextBox' || widget.type === 'Axure:DiagramObject:TextArea' ? { formPropertiesRecovery: recoverFormProperties(widget) } : {}),
+            ...(widget.type === 'Axure:DiagramObject:ImageBox' ? { imageRecovery: recoverEmbeddedImage(widget, style, size, styleRecovery, parts.get(pack.path), imageBudget) } : {}),
+            storedFlags: Object.fromEntries(['AutoFitWidth', 'AutoFitHeight', 'fit-to-content', 'is-fixed', 'is-percent-width', 'Disabled', 'Selected', 'Error', 'VisibleFromSettings', 'IsContained', 'IsLocked'].map(key => [key, property(p, key) ?? null])),
+          });
+        } catch (error) { output.widgets.push({ ...identity, status: 'unsupported-widget-fields', reason: error.message }); }
+      }
+      result.diagrams.push(output);
+    } catch (error) { result.semanticFailures.push({ path: pack.path, reason: error.message }); }
+  }
+  return result;
+}
+
+export function inspectRpSemantics(file) {
+  // Read one immutable container snapshot; byte ranges always refer to this exact decoded part.
+  const container = inspectRpFile(file), parts = new Map();
+  for (const entry of container.entries) { if (parts.has(entry.path)) throw new Error('Ambiguous duplicate container part path');parts.set(entry.path, entry); }
+  const packages = container.entries.filter(e => e.data.length >= 4 && e.data.readUInt32LE(0) === 27).map(entry => {
+    try { return { path: entry.path, sha256: entry.sha256, ...readObjectPackage(entry.data) }; }
+    catch (error) { return { path: entry.path, sha256: entry.sha256, status: 'unsupported', reason: error.message }; }
+  });
+  return recoverRpSemantics({ fileSha256: container.fileSha256, packages }, parts);
+}
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  if (!process.argv[2]) { console.error('Usage: node read-rp-semantics.mjs <file.rp|file.rplib>'); process.exitCode = 2; }
+  else { try { console.log(JSON.stringify(inspectRpSemantics(process.argv[2]), null, 2)); } catch (error) { console.error(error.message); process.exitCode = 1; } }
+}

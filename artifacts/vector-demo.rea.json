@@ -1,0 +1,551 @@
+{
+  "format": "rea-prototype",
+  "version": 1,
+  "id": "b18b405f-63f9-4343-9d0c-f8277403fc58",
+  "name": "Editable vector geometry",
+  "pages": [
+    {
+      "id": "75b51a19-1060-4e86-a179-b00484acd73a",
+      "name": "Page 1",
+      "width": 1200,
+      "height": 800,
+      "background": "#ffffff",
+      "widgets": [
+        {
+          "id": "51649cfd-d3af-4450-a84d-6e7cce81ada3",
+          "type": "path",
+          "name": "Curved path",
+          "text": "Curve <text>",
+          "notes": "",
+          "x": 80,
+          "y": 80,
+          "rotation": 0,
+          "width": 200,
+          "height": 100,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#dbeafe",
+            "stroke": "#2563eb",
+            "strokeWidth": 4,
+            "borderWidths": [
+              20,
+              15,
+              10,
+              5
+            ],
+            "radius": 90,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "80374dec-c95a-484b-8c08-b5bc4d237759",
+              "event": "click",
+              "name": "Click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "cec9848b-be7c-4455-a487-433036469c85",
+                  "type": "setSelected",
+                  "targetId": "51649cfd-d3af-4450-a84d-6e7cce81ada3",
+                  "value": "toggle"
+                }
+              ]
+            }
+          ],
+          "selectedStyle": {
+            "fill": "#fee2e2",
+            "stroke": "#b91c1c",
+            "strokeWidth": 7,
+            "color": "#7f1d1d"
+          },
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0,
+                "y": 0.5
+              },
+              {
+                "op": "C",
+                "x1": 0,
+                "y1": -0.25,
+                "x2": 1,
+                "y2": -0.25,
+                "x": 1,
+                "y": 0.5
+              },
+              {
+                "op": "C",
+                "x1": 1,
+                "y1": 1.25,
+                "x2": 0,
+                "y2": 1.25,
+                "x": 0,
+                "y": 0.5
+              },
+              {
+                "op": "Z"
+              }
+            ]
+          }
+        },
+        {
+          "id": "002760b1-43f7-4b69-987c-01d814096755",
+          "type": "box",
+          "name": "Even odd hole",
+          "text": "",
+          "notes": "",
+          "x": 450,
+          "y": 70,
+          "rotation": 0,
+          "width": 160,
+          "height": 160,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#bbf7d0",
+            "stroke": "#15803d",
+            "strokeWidth": 2,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "vectorPath": {
+            "fillRule": "evenodd",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "op": "L",
+                "x": 1,
+                "y": 0
+              },
+              {
+                "op": "L",
+                "x": 1,
+                "y": 1
+              },
+              {
+                "op": "L",
+                "x": 0,
+                "y": 1
+              },
+              {
+                "op": "Z"
+              },
+              {
+                "op": "M",
+                "x": 0.25,
+                "y": 0.25
+              },
+              {
+                "op": "L",
+                "x": 0.75,
+                "y": 0.25
+              },
+              {
+                "op": "L",
+                "x": 0.75,
+                "y": 0.75
+              },
+              {
+                "op": "L",
+                "x": 0.25,
+                "y": 0.75
+              },
+              {
+                "op": "Z"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ac130151-32c6-4104-a5f0-6f0477aa5414",
+          "type": "ellipse",
+          "name": "Stored cubic ellipse",
+          "text": "",
+          "notes": "",
+          "x": 680,
+          "y": 80,
+          "rotation": 0,
+          "width": 180,
+          "height": 100,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#fef3c7",
+            "stroke": "#92400e",
+            "strokeWidth": 3,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "vectorPath": {
+            "fillRule": "nonzero",
+            "commands": [
+              {
+                "op": "M",
+                "x": 0.5,
+                "y": 0
+              },
+              {
+                "op": "C",
+                "x1": 0.78,
+                "y1": 0,
+                "x2": 1,
+                "y2": 0.22,
+                "x": 1,
+                "y": 0.5
+              },
+              {
+                "op": "C",
+                "x1": 1,
+                "y1": 0.78,
+                "x2": 0.78,
+                "y2": 1,
+                "x": 0.5,
+                "y": 1
+              },
+              {
+                "op": "C",
+                "x1": 0.22,
+                "y1": 1,
+                "x2": 0,
+                "y2": 0.78,
+                "x": 0,
+                "y": 0.5
+              },
+              {
+                "op": "C",
+                "x1": 0,
+                "y1": 0.22,
+                "x2": 0.22,
+                "y2": 0,
+                "x": 0.5,
+                "y": 0
+              },
+              {
+                "op": "Z"
+              }
+            ]
+          }
+        },
+        {
+          "id": "871d3396-4663-4158-af16-63b66afd8f54",
+          "type": "panel",
+          "name": "Path panel",
+          "text": "",
+          "notes": "",
+          "x": 80,
+          "y": 360,
+          "rotation": 0,
+          "width": 280,
+          "height": 140,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "activeStateId": "0d8e4d31-dd4c-4b2a-912e-39f1627924f5",
+          "states": [
+            {
+              "id": "0d8e4d31-dd4c-4b2a-912e-39f1627924f5",
+              "name": "State 1",
+              "widgets": [
+                {
+                  "id": "52c225eb-6a5f-4632-a0eb-b7a4224e9e49",
+                  "type": "path",
+                  "name": "Nested triangle",
+                  "text": "Nested",
+                  "notes": "",
+                  "x": 20,
+                  "y": 20,
+                  "rotation": 0,
+                  "width": 100,
+                  "height": 60,
+                  "hidden": false,
+                  "locked": false,
+                  "disabled": false,
+                  "style": {
+                    "fill": "#ffffff",
+                    "stroke": "#b8bdc7",
+                    "strokeWidth": 1,
+                    "radius": 0,
+                    "color": "#263348",
+                    "fontSize": 14,
+                    "fontFamily": "Arial",
+                    "fontWeight": 400,
+                    "textAlign": "center",
+                    "opacity": 1
+                  },
+                  "interactions": [],
+                  "vectorPath": {
+                    "fillRule": "nonzero",
+                    "commands": [
+                      {
+                        "op": "M",
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      {
+                        "op": "L",
+                        "x": 1,
+                        "y": 1
+                      },
+                      {
+                        "op": "L",
+                        "x": 0,
+                        "y": 1
+                      },
+                      {
+                        "op": "Z"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2b101b07-cbc8-4dcf-a90e-f192435251bd",
+          "type": "repeater",
+          "name": "Path rows",
+          "text": "",
+          "notes": "",
+          "x": 450,
+          "y": 350,
+          "rotation": 0,
+          "width": 264,
+          "height": 123,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "transparent",
+            "stroke": "#b8bdc7",
+            "strokeWidth": 0,
+            "radius": 0,
+            "color": "#263348",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 400,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [],
+          "repeater": {
+            "columns": [
+              "Name"
+            ],
+            "rows": [
+              {
+                "Name": "Alpha"
+              },
+              {
+                "Name": "Beta"
+              }
+            ],
+            "template": [
+              {
+                "id": "5a706e07-d20d-449e-b17e-e9870a148f1b",
+                "type": "path",
+                "name": "Row path",
+                "text": "[[Item.Name]]",
+                "notes": "",
+                "x": 10,
+                "y": 10,
+                "rotation": 0,
+                "width": 160,
+                "height": 65,
+                "hidden": false,
+                "locked": false,
+                "disabled": false,
+                "style": {
+                  "fill": "#e5e7eb",
+                  "stroke": "#b8bdc7",
+                  "strokeWidth": 1,
+                  "radius": 0,
+                  "color": "#263348",
+                  "fontSize": 14,
+                  "fontFamily": "Arial",
+                  "fontWeight": 400,
+                  "textAlign": "center",
+                  "opacity": 1
+                },
+                "interactions": [
+                  {
+                    "id": "98b8a85e-c2bb-491c-80b7-5232aad5aae5",
+                    "event": "click",
+                    "name": "Click",
+                    "enabled": true,
+                    "conditions": [],
+                    "conditionMode": "all",
+                    "actions": [
+                      {
+                        "id": "4b95acb7-f850-424b-862b-05e912433b14",
+                        "type": "setSelected",
+                        "targetId": "5a706e07-d20d-449e-b17e-e9870a148f1b",
+                        "value": "toggle"
+                      },
+                      {
+                        "id": "63c6c495-abb4-4192-ae48-55fb275ae5aa",
+                        "type": "resize",
+                        "targetId": "5a706e07-d20d-449e-b17e-e9870a148f1b",
+                        "x": 130,
+                        "y": 55
+                      }
+                    ]
+                  }
+                ],
+                "selectedStyle": {
+                  "fill": "#ffedd5",
+                  "stroke": "#c2410c",
+                  "strokeWidth": 5
+                },
+                "vectorPath": {
+                  "fillRule": "nonzero",
+                  "commands": [
+                    {
+                      "op": "M",
+                      "x": 0.5,
+                      "y": 0
+                    },
+                    {
+                      "op": "L",
+                      "x": 1,
+                      "y": 1
+                    },
+                    {
+                      "op": "L",
+                      "x": 0,
+                      "y": 1
+                    },
+                    {
+                      "op": "Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "itemHeight": 90,
+            "gap": 10,
+            "itemWidth": 190,
+            "layout": "vertical",
+            "fitToContent": false
+          }
+        },
+        {
+          "id": "f1ed1289-9eb2-405a-9441-ca04ba9e29a5",
+          "type": "button",
+          "name": "Resize vector",
+          "text": "Move and resize curve",
+          "notes": "",
+          "x": 80,
+          "y": 560,
+          "rotation": 0,
+          "width": 240,
+          "height": 40,
+          "hidden": false,
+          "locked": false,
+          "disabled": false,
+          "style": {
+            "fill": "#5b5ce2",
+            "stroke": "#5b5ce2",
+            "strokeWidth": 1,
+            "radius": 5,
+            "color": "#ffffff",
+            "fontSize": 14,
+            "fontFamily": "Arial",
+            "fontWeight": 600,
+            "textAlign": "center",
+            "opacity": 1
+          },
+          "interactions": [
+            {
+              "id": "b5d62428-4c1c-4563-9546-82329a8416e4",
+              "event": "click",
+              "name": "Click",
+              "enabled": true,
+              "conditions": [],
+              "conditionMode": "all",
+              "actions": [
+                {
+                  "id": "4bc280da-173e-4bd1-ba46-aa9dd3335f50",
+                  "type": "move",
+                  "targetId": "51649cfd-d3af-4450-a84d-6e7cce81ada3",
+                  "x": 100,
+                  "y": 100
+                },
+                {
+                  "id": "a89b4d27-9b3b-4dfa-a3ac-53fa20961ab3",
+                  "type": "resize",
+                  "targetId": "51649cfd-d3af-4450-a84d-6e7cce81ada3",
+                  "x": 300,
+                  "y": 180
+                },
+                {
+                  "id": "731c3618-e541-4ba9-863c-8a316281c68d",
+                  "type": "setStyle",
+                  "targetId": "51649cfd-d3af-4450-a84d-6e7cce81ada3",
+                  "style": {
+                    "borderWidths": [
+                      30,
+                      25,
+                      20,
+                      15
+                    ],
+                    "radius": 120
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": "",
+      "interactions": [],
+      "adaptiveViews": []
+    }
+  ],
+  "caseSelection": "never",
+  "components": [],
+  "variables": {},
+  "styles": []
+}

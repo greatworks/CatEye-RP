@@ -1,0 +1,5546 @@
+{
+  "schema": 1,
+  "kind": "source-derived independent numeric composition; not original DLL results",
+  "source": {
+    "path": "research/native-point-contours-rotation-probes.json",
+    "sha256": "0755149097978470797f74b20094b0fcacc53c17f706ade5188dd0973991a5a5"
+  },
+  "fixtureCount": 64,
+  "numericComparison": {
+    "absoluteTolerance": 1e-9,
+    "appliesTo": "these bounded fixtures only; exact equality for route and frame class",
+    "reason": "JS arithmetic sinks and matrix composition do not promise original CLR floating point operation order"
+  },
+  "fixtures": [
+    {
+      "name": "polygon commit 0",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 0,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 0,
+        "frameClass": "boxed-j5u5",
+        "reportedAngle": 0,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "iN4x-unrotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -0",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 0,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 0,
+        "frameClass": "boxed-j5u5",
+        "reportedAngle": 0,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "iN4x-unrotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 1e-12",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 1e-12,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 1e-12,
+        "frameClass": "boxed-j5u5",
+        "reportedAngle": 0,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "iN4x-unrotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -1e-12",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -1e-12,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -1e-12,
+        "frameClass": "boxed-j5u5",
+        "reportedAngle": 0,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "iN4x-unrotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 0.000001",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 0.000001,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 0.000001,
+        "frameClass": "boxed-j5u5",
+        "reportedAngle": 0,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "iN4x-unrotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -0.000001",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -0.000001,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -0.000001,
+        "frameClass": "boxed-j5u5",
+        "reportedAngle": 0,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "iN4x-unrotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 0.000009999999",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 0.000009999999,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 0.000009999999,
+        "frameClass": "boxed-j5u5",
+        "reportedAngle": 0,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "iN4x-unrotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -0.000009999999",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -0.000009999999,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -0.000009999999,
+        "frameClass": "boxed-j5u5",
+        "reportedAngle": 0,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "iN4x-unrotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 0.00001",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 0.00001,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 0.00001,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 0.00001,
+        "trig": {
+          "s": 1.745329251994321e-7,
+          "c": 0.9999999999999848
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50.00000872664853,
+            "y": 99.99997382006198
+          },
+          {
+            "x": 300.00000872664475,
+            "y": 100.00001745329328
+          },
+          {
+            "x": 299.99999127335224,
+            "y": 200.00001745329178
+          },
+          {
+            "x": 99.99999127335526,
+            "y": 199.99998254670672
+          }
+        ],
+        "exactBounds": {
+          "x": 49.99999999999998,
+          "y": 100,
+          "width": 250.00000000000003,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50.00000000000034,
+          "y": 99.99999563667689,
+          "width": 250.00000000000003,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 99.99999563667689,
+          "width": 250.00000000000034,
+          "height": 100.00000436332311
+        },
+        "owner": {
+          "x": 50,
+          "y": 99.99999563667689,
+          "width": 250.00000000000034,
+          "height": 100.00000436332311
+        },
+        "normalizedPoints": [
+          {
+            "x": -5.684341886080794e-17,
+            "y": -2.8421708190273043e-16
+          },
+          {
+            "x": 0.9999999999999987,
+            "y": 0
+          },
+          {
+            "x": 0.9999999999999989,
+            "y": 0.9999999563667707
+          },
+          {
+            "x": 0.19999999999999973,
+            "y": 0.9999999563667705
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -0.00001",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -0.00001,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -0.00001,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -0.00001,
+        "trig": {
+          "s": -1.745329251994321e-7,
+          "c": 0.9999999999999848
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 49.99999127335602,
+            "y": 100.00002617993954
+          },
+          {
+            "x": 299.99999127335224,
+            "y": 99.99998254670824
+          },
+          {
+            "x": 300.00000872664475,
+            "y": 199.99998254670672
+          },
+          {
+            "x": 100.00000872664778,
+            "y": 200.00001745329178
+          }
+        ],
+        "exactBounds": {
+          "x": 49.99999999999998,
+          "y": 100,
+          "width": 250.00000000000003,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50.00000000000035,
+          "y": 100.00000436332314,
+          "width": 250.00000000000003,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250.0000000000004,
+          "height": 100.00000436332314
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250.0000000000004,
+          "height": 100.00000436332314
+        },
+        "normalizedPoints": [
+          {
+            "x": -2.8421709430403965e-17,
+            "y": 4.363322952411646e-8
+          },
+          {
+            "x": 0.9999999999999987,
+            "y": 4.363322923989938e-8
+          },
+          {
+            "x": 0.9999999999999984,
+            "y": 0.9999999999999997
+          },
+          {
+            "x": 0.19999999999999962,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 0.000010000001",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 0.000010000001,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 0.000010000001,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 0.000010000001,
+        "trig": {
+          "s": 1.7453294265272461e-7,
+          "c": 0.9999999999999848
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50.000008726649426,
+            "y": 99.99997382005935
+          },
+          {
+            "x": 300.0000087266456,
+            "y": 100.00001745329502
+          },
+          {
+            "x": 299.9999912733513,
+            "y": 200.0000174532935
+          },
+          {
+            "x": 99.99999127335438,
+            "y": 199.99998254670498
+          }
+        ],
+        "exactBounds": {
+          "x": 49.999999999999986,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50.00000000000038,
+          "y": 99.99999563667646,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 99.99999563667646,
+          "width": 250.0000000000004,
+          "height": 100.00000436332354
+        },
+        "owner": {
+          "x": 50,
+          "y": 99.99999563667646,
+          "width": 250.0000000000004,
+          "height": 100.00000436332354
+        },
+        "normalizedPoints": [
+          {
+            "x": 2.8421709430403965e-17,
+            "y": -2.8421708190272924e-16
+          },
+          {
+            "x": 0.9999999999999984,
+            "y": -2.8421708190272924e-16
+          },
+          {
+            "x": 0.9999999999999984,
+            "y": 0.9999999563667662
+          },
+          {
+            "x": 0.19999999999999962,
+            "y": 0.9999999563667662
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -0.000010000001",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -0.000010000001,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -0.000010000001,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -0.000010000001,
+        "trig": {
+          "s": -1.7453294265272461e-7,
+          "c": 0.9999999999999848
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 49.99999127335515,
+            "y": 100.00002617994215
+          },
+          {
+            "x": 299.9999912733513,
+            "y": 99.99998254670649
+          },
+          {
+            "x": 300.0000087266456,
+            "y": 199.99998254670498
+          },
+          {
+            "x": 100.00000872664866,
+            "y": 200.0000174532935
+          }
+        ],
+        "exactBounds": {
+          "x": 49.99999999999997,
+          "y": 100,
+          "width": 250.00000000000003,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50.000000000000334,
+          "y": 100.00000436332357,
+          "width": 250.00000000000003,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250.00000000000034,
+          "height": 100.00000436332357
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250.00000000000034,
+          "height": 100.00000436332357
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 4.36332337873725e-8
+          },
+          {
+            "x": 0.9999999999999987,
+            "y": 4.36332337873725e-8
+          },
+          {
+            "x": 0.9999999999999987,
+            "y": 1
+          },
+          {
+            "x": 0.19999999999999973,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 0.00002",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 0.00002,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 0.00002,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 0.00002,
+        "trig": {
+          "s": 3.4906585039885884e-7,
+          "c": 0.999999999999939
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50.00001745330165,
+            "y": 99.9999476401255
+          },
+          {
+            "x": 300.00001745328643,
+            "y": 100.0000349065881
+          },
+          {
+            "x": 299.9999825467014,
+            "y": 200.000034906582
+          },
+          {
+            "x": 99.99998254671358,
+            "y": 199.9999650934119
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000002,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50.00000000000156,
+          "y": 99.99999127335371,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 99.99999127335371,
+          "width": 250.00000000000153,
+          "height": 100.00000872664629
+        },
+        "owner": {
+          "x": 50,
+          "y": 99.99999127335371,
+          "width": 250.00000000000153,
+          "height": 100.00000872664629
+        },
+        "normalizedPoints": [
+          {
+            "x": -2.8421709430403835e-17,
+            "y": 2.842170695014217e-16
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 2.842170695014217e-16
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 0.999999912733545
+          },
+          {
+            "x": 0.19999999999999882,
+            "y": 0.999999912733545
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -0.00002",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -0.00002,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -0.00002,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -0.00002,
+        "trig": {
+          "s": -3.4906585039885884e-7,
+          "c": 0.999999999999939
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 49.99998254671662,
+            "y": 100.00005235988061
+          },
+          {
+            "x": 299.9999825467014,
+            "y": 99.99996509341801
+          },
+          {
+            "x": 300.00001745328643,
+            "y": 199.9999650934119
+          },
+          {
+            "x": 100.00001745329861,
+            "y": 200.000034906582
+          }
+        ],
+        "exactBounds": {
+          "x": 50.000000000000036,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50.00000000000157,
+          "y": 100.00000872664626,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250.00000000000153,
+          "height": 100.00000872664626
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250.00000000000153,
+          "height": 100.00000872664626
+        },
+        "normalizedPoints": [
+          {
+            "x": 2.8421709430403835e-17,
+            "y": 8.72664549562986e-8
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 8.72664549562986e-8
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 1
+          },
+          {
+            "x": 0.19999999999999876,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 360",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 360,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 360,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 360,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -360",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -360,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -360,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -360,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 720",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 720,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 720,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 720,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -720",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -720,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -720,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -720,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 359.999995",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 359.999995,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 359.999995,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 359.999995,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 360.000005",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 360.000005,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 360.000005,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 360.000005,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -359.999995",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -359.999995,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -359.999995,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -359.999995,
+        "trig": {
+          "s": 8.72664627456084e-8,
+          "c": 0.9999999999999962
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50.00000436332371,
+            "y": 99.99998691003077
+          },
+          {
+            "x": 300.0000043633228,
+            "y": 100.00000872664646
+          },
+          {
+            "x": 299.9999956366765,
+            "y": 200.0000087266461
+          },
+          {
+            "x": 99.99999563667724,
+            "y": 199.99999127335354
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50.00000000000009,
+          "y": 99.99999781833847,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 99.99999781833847,
+          "width": 250.0000000000001,
+          "height": 100.00000218166153
+        },
+        "owner": {
+          "x": 50,
+          "y": 99.99999781833847,
+          "width": 250.0000000000001,
+          "height": 100.00000218166153
+        },
+        "normalizedPoints": [
+          {
+            "x": -2.8421709430403996e-17,
+            "y": -2.842170881033852e-16
+          },
+          {
+            "x": 0.9999999999999998,
+            "y": -2.842170881033852e-16
+          },
+          {
+            "x": 0.9999999999999996,
+            "y": 0.9999999781833846
+          },
+          {
+            "x": 0.1999999999999999,
+            "y": 0.9999999781833849
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -360.000005",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -360.000005,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -360.000005,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -360.000005,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 359.99998",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 359.99998,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 359.99998,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 359.99998,
+        "trig": {
+          "s": -3.490658502476389e-7,
+          "c": 0.999999999999939
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 49.99998254671662,
+            "y": 100.00005235988058
+          },
+          {
+            "x": 299.9999825467014,
+            "y": 99.99996509341803
+          },
+          {
+            "x": 300.00001745328643,
+            "y": 199.99996509341193
+          },
+          {
+            "x": 100.00001745329861,
+            "y": 200.00003490658196
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000002,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50.00000000000156,
+          "y": 100.00000872664626,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250.00000000000153,
+          "height": 100.00000872664626
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250.00000000000153,
+          "height": 100.00000872664626
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 8.72664549562986e-8
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 8.72664549562986e-8
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 1
+          },
+          {
+            "x": 0.19999999999999882,
+            "y": 0.9999999999999997
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 360.00002",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 360.00002,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 360.00002,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 360.00002,
+        "trig": {
+          "s": 3.4906585064595857e-7,
+          "c": 0.999999999999939
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50.00001745330167,
+            "y": 99.99994764012546
+          },
+          {
+            "x": 300.00001745328643,
+            "y": 100.00003490658811
+          },
+          {
+            "x": 299.9999825467014,
+            "y": 200.00003490658202
+          },
+          {
+            "x": 99.99998254671357,
+            "y": 199.9999650934119
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000001,
+          "y": 100,
+          "width": 250.00000000000006,
+          "height": 100.00000000000003
+        },
+        "rawOwner": {
+          "x": 50.00000000000155,
+          "y": 99.99999127335371,
+          "width": 250.00000000000006,
+          "height": 100.00000000000003
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 99.99999127335371,
+          "width": 250.0000000000016,
+          "height": 100.00000872664629
+        },
+        "owner": {
+          "x": 50,
+          "y": 99.99999127335371,
+          "width": 250.0000000000016,
+          "height": 100.00000872664629
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 2.842170695014217e-16
+          },
+          {
+            "x": 0.9999999999999937,
+            "y": 2.842170695014217e-16
+          },
+          {
+            "x": 0.9999999999999937,
+            "y": 0.999999912733545
+          },
+          {
+            "x": 0.1999999999999988,
+            "y": 0.999999912733545
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -359.99998",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -359.99998,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -359.99998,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -359.99998,
+        "trig": {
+          "s": 3.490658502476389e-7,
+          "c": 0.999999999999939
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 50.00001745330165,
+            "y": 99.99994764012551
+          },
+          {
+            "x": 300.00001745328643,
+            "y": 100.00003490658807
+          },
+          {
+            "x": 299.9999825467014,
+            "y": 200.00003490658196
+          },
+          {
+            "x": 99.99998254671358,
+            "y": 199.99996509341193
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000003,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 50.00000000000157,
+          "y": 99.99999127335371,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 99.99999127335371,
+          "width": 250.00000000000153,
+          "height": 100.00000872664629
+        },
+        "owner": {
+          "x": 50,
+          "y": 99.99999127335371,
+          "width": 250.00000000000153,
+          "height": 100.00000872664629
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 2.842170695014217e-16
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 2.842170695014217e-16
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 0.999999912733545
+          },
+          {
+            "x": 0.19999999999999882,
+            "y": 0.999999912733545
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -360.00002",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -360.00002,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -360.00002,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -360.00002,
+        "trig": {
+          "s": -3.4906585064595857e-7,
+          "c": 0.999999999999939
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 49.99998254671661,
+            "y": 100.00005235988064
+          },
+          {
+            "x": 299.9999825467014,
+            "y": 99.99996509341798
+          },
+          {
+            "x": 300.00001745328643,
+            "y": 199.9999650934119
+          },
+          {
+            "x": 100.00001745329863,
+            "y": 200.00003490658202
+          }
+        ],
+        "exactBounds": {
+          "x": 50.000000000000014,
+          "y": 100,
+          "width": 250.00000000000006,
+          "height": 100.00000000000003
+        },
+        "rawOwner": {
+          "x": 50.00000000000153,
+          "y": 100.00000872664626,
+          "width": 250.00000000000006,
+          "height": 100.00000000000003
+        },
+        "roundedOwner": {
+          "x": 50,
+          "y": 100,
+          "width": 250.0000000000016,
+          "height": 100.00000872664629
+        },
+        "owner": {
+          "x": 50,
+          "y": 100,
+          "width": 250.0000000000016,
+          "height": 100.00000872664629
+        },
+        "normalizedPoints": [
+          {
+            "x": 2.842170943040383e-17,
+            "y": 8.726645495629858e-8
+          },
+          {
+            "x": 0.9999999999999937,
+            "y": 8.726645495629858e-8
+          },
+          {
+            "x": 0.9999999999999937,
+            "y": 1
+          },
+          {
+            "x": 0.19999999999999873,
+            "y": 0.9999999999999997
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 89.99998",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 89.99998,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 89.99998,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 89.99998,
+        "trig": {
+          "s": 0.999999999999939,
+          "c": 3.4906585050803106e-7
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 249.9999476401194,
+            "y": -0.00001745328338387253
+          },
+          {
+            "x": 250.00003490658202,
+            "y": 249.99998254670137
+          },
+          {
+            "x": 150.0000349065881,
+            "y": 250.00001745328643
+          },
+          {
+            "x": 149.99996509341798,
+            "y": 50.000017453298625
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 99.99999999999999,
+          "width": 250,
+          "height": 100.00000000000004
+        },
+        "rawOwner": {
+          "x": 74.99999127335373,
+          "y": 75.00000000000149,
+          "width": 250,
+          "height": 100.00000000000004
+        },
+        "roundedOwner": {
+          "x": 74.99999127335373,
+          "y": 75,
+          "width": 250.00000872664629,
+          "height": 100.00000000000153
+        },
+        "owner": {
+          "x": 74.99999127335373,
+          "y": 75,
+          "width": 250.00000872664629,
+          "height": 100.00000000000153
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.7453288949254187e-8,
+            "y": 4.363323895972759e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": 4.363323895972759e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": 1.0000000436332237
+          },
+          {
+            "x": 0.20000001047197216,
+            "y": 1.0000000436332241
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 89.999995",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 89.999995,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 89.999995,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 89.999995,
+        "trig": {
+          "s": 1,
+          "c": 0
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 250,
+            "y": 0
+          },
+          {
+            "x": 250,
+            "y": 250
+          },
+          {
+            "x": 150,
+            "y": 250
+          },
+          {
+            "x": 150,
+            "y": 50
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75,
+          "y": 75,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 75,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 75,
+          "y": 75,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 90",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 90,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 90,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 90,
+        "trig": {
+          "s": 1,
+          "c": 0
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 250,
+            "y": 0
+          },
+          {
+            "x": 250,
+            "y": 250
+          },
+          {
+            "x": 150,
+            "y": 250
+          },
+          {
+            "x": 150,
+            "y": 50
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75,
+          "y": 75,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 75,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 75,
+          "y": 75,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 90.000005",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 90.000005,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 90.000005,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 90.000005,
+        "trig": {
+          "s": 1,
+          "c": 0
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 250,
+            "y": 0
+          },
+          {
+            "x": 250,
+            "y": 250
+          },
+          {
+            "x": 150,
+            "y": 250
+          },
+          {
+            "x": 150,
+            "y": 50
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75,
+          "y": 75,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 75,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 75,
+          "y": 75,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 90.00002",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 90.00002,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 90.00002,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 90.00002,
+        "trig": {
+          "s": 0.999999999999939,
+          "c": -3.490658503855664e-7
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 250.0000523598745,
+            "y": 0.000017453301651926267
+          },
+          {
+            "x": 249.9999650934119,
+            "y": 250.00001745328643
+          },
+          {
+            "x": 149.999965093418,
+            "y": 249.9999825467014
+          },
+          {
+            "x": 150.0000349065881,
+            "y": 49.99998254671358
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000003,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75.0000087266463,
+          "y": 75.00000000000156,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 75,
+          "width": 250.00000872664629,
+          "height": 100.00000000000156
+        },
+        "owner": {
+          "x": 75,
+          "y": 75,
+          "width": 250.00000872664629,
+          "height": 100.00000000000156
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.745328877872394e-8,
+            "y": -4.3633223185678846e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": -4.3633223185678846e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": 0.9999999563667609
+          },
+          {
+            "x": 0.2000000104719721,
+            "y": 0.9999999563667609
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 179.99998",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 179.99998,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 179.99998,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 179.99998,
+        "trig": {
+          "s": 3.490658505692634e-7,
+          "c": -0.999999999999939
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 350.00001745328336,
+            "y": 199.9999476401194
+          },
+          {
+            "x": 100.00001745329863,
+            "y": 200.00003490658202
+          },
+          {
+            "x": 99.99998254671357,
+            "y": 100.0000349065881
+          },
+          {
+            "x": 299.9999825467014,
+            "y": 99.99996509341798
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000004,
+          "y": 99.99999999999997,
+          "width": 249.99999999999994,
+          "height": 100.00000000000003
+        },
+        "rawOwner": {
+          "x": 99.99999999999848,
+          "y": 99.99999127335374,
+          "width": 249.99999999999994,
+          "height": 100.00000000000003
+        },
+        "roundedOwner": {
+          "x": 99.99999999999848,
+          "y": 99.99999127335374,
+          "width": 250.00000000000153,
+          "height": 100.00000872664626
+        },
+        "owner": {
+          "x": 99.99999999999848,
+          "y": 99.99999127335374,
+          "width": 250.00000000000153,
+          "height": 100.00000872664626
+        },
+        "normalizedPoints": [
+          {
+            "x": 2.842170943040383e-16,
+            "y": 8.72664549562986e-8
+          },
+          {
+            "x": 0.9999999999999941,
+            "y": 8.726645524051567e-8
+          },
+          {
+            "x": 0.9999999999999941,
+            "y": 1.0000000000000007
+          },
+          {
+            "x": 0.19999999999999882,
+            "y": 1.0000000000000007
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 179.999995",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 179.999995,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 179.999995,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 179.999995,
+        "trig": {
+          "s": 0,
+          "c": -1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 350,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 180",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 180,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 180,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 180,
+        "trig": {
+          "s": 0,
+          "c": -1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 350,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 180.000005",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 180.000005,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 180.000005,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 180.000005,
+        "trig": {
+          "s": 0,
+          "c": -1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 350,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 180.00002",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 180.00002,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 180.00002,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 180.00002,
+        "trig": {
+          "s": -3.4906585032433407e-7,
+          "c": -0.999999999999939
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 349.99998254669833,
+            "y": 200.0000523598745
+          },
+          {
+            "x": 99.99998254671357,
+            "y": 199.9999650934119
+          },
+          {
+            "x": 100.0000174532986,
+            "y": 99.99996509341801
+          },
+          {
+            "x": 300.00001745328643,
+            "y": 100.00003490658808
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000002,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 99.99999999999847,
+          "y": 100.00000872664626,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 99.99999999999847,
+          "y": 100,
+          "width": 250.00000000000153,
+          "height": 100.00000872664626
+        },
+        "owner": {
+          "x": 99.99999999999847,
+          "y": 100,
+          "width": 250.00000000000153,
+          "height": 100.00000872664626
+        },
+        "normalizedPoints": [
+          {
+            "x": 5.684341886080767e-17,
+            "y": -2.842170695014218e-16
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": -2.842170695014218e-16
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 0.9999999127335447
+          },
+          {
+            "x": 0.19999999999999876,
+            "y": 0.9999999127335445
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 269.99998",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 269.99998,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 269.99998,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 269.99998,
+        "trig": {
+          "s": -0.999999999999939,
+          "c": -3.4906585018640656e-7
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 150.00005235988058,
+            "y": 300.00001745328336
+          },
+          {
+            "x": 149.99996509341804,
+            "y": 50.0000174532986
+          },
+          {
+            "x": 249.99996509341193,
+            "y": 49.99998254671357
+          },
+          {
+            "x": 250.00003490658196,
+            "y": 249.9999825467014
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000003,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75.00000872664626,
+          "y": 124.99999999999844,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 124.99999999999844,
+          "width": 250.00000872664623,
+          "height": 100.00000000000156
+        },
+        "owner": {
+          "x": 75,
+          "y": 124.99999999999844,
+          "width": 250.00000872664623,
+          "height": 100.00000000000156
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.745328866503711e-8,
+            "y": 4.363323910183612e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": 4.363323910183612e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": 1.0000000436332235
+          },
+          {
+            "x": 0.20000001047197194,
+            "y": 1.0000000436332235
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 269.999995",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 269.999995,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 269.999995,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 269.999995,
+        "trig": {
+          "s": -1,
+          "c": 0
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 150,
+            "y": 300
+          },
+          {
+            "x": 150,
+            "y": 50
+          },
+          {
+            "x": 250,
+            "y": 50
+          },
+          {
+            "x": 250,
+            "y": 250
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 270",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 270,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 270,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 270,
+        "trig": {
+          "s": -1,
+          "c": 0
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 150,
+            "y": 300
+          },
+          {
+            "x": 150,
+            "y": 50
+          },
+          {
+            "x": 250,
+            "y": 50
+          },
+          {
+            "x": 250,
+            "y": 250
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 270.000005",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 270.000005,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 270.000005,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 270.000005,
+        "trig": {
+          "s": -1,
+          "c": 0
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 150,
+            "y": 300
+          },
+          {
+            "x": 150,
+            "y": 50
+          },
+          {
+            "x": 250,
+            "y": 50
+          },
+          {
+            "x": 250,
+            "y": 250
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit 270.00002",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 270.00002,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": 270.00002,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 270.00002,
+        "trig": {
+          "s": -0.999999999999939,
+          "c": 3.490658507071909e-7
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 149.99994764012544,
+            "y": 299.99998254669833
+          },
+          {
+            "x": 150.00003490658813,
+            "y": 49.99998254671357
+          },
+          {
+            "x": 250.00003490658202,
+            "y": 50.000017453298625
+          },
+          {
+            "x": 249.99996509341187,
+            "y": 250.00001745328643
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 74.99999127335371,
+          "y": 124.99999999999851,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 74.99999127335371,
+          "y": 124.99999999999851,
+          "width": 250.00000872664629,
+          "height": 100.00000000000149
+        },
+        "owner": {
+          "x": 74.99999127335371,
+          "y": 124.99999999999851,
+          "width": 250.00000872664629,
+          "height": 100.00000000000149
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.7453289006097605e-8,
+            "y": -4.363322375411306e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": -4.363322361200452e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": 0.9999999563667614
+          },
+          {
+            "x": 0.20000001047197233,
+            "y": 0.9999999563667612
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -90.00002",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -90.00002,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -90.00002,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -90.00002,
+        "trig": {
+          "s": -0.999999999999939,
+          "c": -3.490658503855664e-7
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 150.0000523598806,
+            "y": 300.00001745328336
+          },
+          {
+            "x": 149.999965093418,
+            "y": 50.0000174532986
+          },
+          {
+            "x": 249.9999650934119,
+            "y": 49.99998254671357
+          },
+          {
+            "x": 250.000034906582,
+            "y": 249.9999825467014
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000003,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75.00000872664631,
+          "y": 124.99999999999841,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 124.99999999999841,
+          "width": 250.00000872664629,
+          "height": 100.00000000000159
+        },
+        "owner": {
+          "x": 75,
+          "y": 124.99999999999841,
+          "width": 250.00000872664629,
+          "height": 100.00000000000159
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.7453288892410772e-8,
+            "y": 4.3633239101836115e-8
+          },
+          {
+            "x": 0.9999999825467047,
+            "y": 4.3633239101836115e-8
+          },
+          {
+            "x": 0.9999999825467047,
+            "y": 1.0000000436332233
+          },
+          {
+            "x": 0.200000010471972,
+            "y": 1.0000000436332233
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -90.000005",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -90.000005,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -90.000005,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -90.000005,
+        "trig": {
+          "s": -0.9999999999999962,
+          "c": -8.726646266149131e-8
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 150.00001308996957,
+            "y": 300.00000436332255
+          },
+          {
+            "x": 149.99999127335394,
+            "y": 50.00000436332351
+          },
+          {
+            "x": 249.99999127335354,
+            "y": 49.999995636677255
+          },
+          {
+            "x": 250.00000872664606,
+            "y": 249.9999956366765
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 99.99999999999999,
+          "width": 250,
+          "height": 100.00000000000001
+        },
+        "rawOwner": {
+          "x": 75.00000218166154,
+          "y": 124.99999999999989,
+          "width": 250,
+          "height": 100.00000000000001
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 124.99999999999989,
+          "width": 250.00000218166156,
+          "height": 100.00000000000011
+        },
+        "owner": {
+          "x": 75,
+          "y": 124.99999999999989,
+          "width": 250.00000218166156,
+          "height": 100.00000000000011
+        },
+        "normalizedPoints": [
+          {
+            "x": 4.363322905768385e-9,
+            "y": 1.0908308354373718e-8
+          },
+          {
+            "x": 0.9999999956366767,
+            "y": 1.0908308638590813e-8
+          },
+          {
+            "x": 0.9999999956366767,
+            "y": 1.0000000109083071
+          },
+          {
+            "x": 0.2000000026179936,
+            "y": 1.000000010908307
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -90",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -90,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -90,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -90,
+        "trig": {
+          "s": -1,
+          "c": 6.123233995736766e-17
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 150,
+            "y": 300
+          },
+          {
+            "x": 150,
+            "y": 50
+          },
+          {
+            "x": 250,
+            "y": 50
+          },
+          {
+            "x": 250,
+            "y": 250
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75,
+          "y": 125.00000000000001,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 75,
+          "y": 125,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 1.4210854715202004e-16
+          },
+          {
+            "x": 1,
+            "y": -1.4210854715202004e-16
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -89.999995",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -89.999995,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -89.999995,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -89.999995,
+        "trig": {
+          "s": -0.9999999999999962,
+          "c": 8.726646256191138e-8
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 149.99998691003083,
+            "y": 299.9999956366763
+          },
+          {
+            "x": 150.00000872664646,
+            "y": 49.999995636677255
+          },
+          {
+            "x": 250.00000872664606,
+            "y": 50.00000436332351
+          },
+          {
+            "x": 249.99999127335354,
+            "y": 250.00000436332274
+          }
+        ],
+        "exactBounds": {
+          "x": 49.99999999999997,
+          "y": 100.00000000000001,
+          "width": 250.00000000000003,
+          "height": 99.99999999999996
+        },
+        "rawOwner": {
+          "x": 74.99999781833843,
+          "y": 124.99999999999994,
+          "width": 250.00000000000003,
+          "height": 99.99999999999996
+        },
+        "roundedOwner": {
+          "x": 74.99999781833843,
+          "y": 124.99999999999994,
+          "width": 250.00000218166156,
+          "height": 100.00000000000006
+        },
+        "owner": {
+          "x": 74.99999781833843,
+          "y": 124.99999999999994,
+          "width": 250.00000218166156,
+          "height": 100.00000000000006
+        },
+        "normalizedPoints": [
+          {
+            "x": 4.363322962611803e-9,
+            "y": -1.0908307217505346e-8
+          },
+          {
+            "x": 0.999999995636677,
+            "y": -1.0908307359613894e-8
+          },
+          {
+            "x": 0.999999995636677,
+            "y": 0.9999999890916916
+          },
+          {
+            "x": 0.20000000261799378,
+            "y": 0.9999999890916916
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -89.99998",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -89.99998,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -89.99998,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -89.99998,
+        "trig": {
+          "s": -0.999999999999939,
+          "c": 3.4906585050803106e-7
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 149.99994764012547,
+            "y": 299.99998254669833
+          },
+          {
+            "x": 150.0000349065881,
+            "y": 49.99998254671357
+          },
+          {
+            "x": 250.00003490658202,
+            "y": 50.000017453298625
+          },
+          {
+            "x": 249.9999650934119,
+            "y": 250.00001745328643
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000003,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100.00000000000003
+        },
+        "rawOwner": {
+          "x": 74.99999127335383,
+          "y": 124.99999999999842,
+          "width": 249.99999999999997,
+          "height": 100.00000000000003
+        },
+        "roundedOwner": {
+          "x": 74.99999127335383,
+          "y": 124.99999999999842,
+          "width": 250.00000872664617,
+          "height": 100.00000000000158
+        },
+        "owner": {
+          "x": 74.99999127335383,
+          "y": 124.99999999999842,
+          "width": 250.00000872664617,
+          "height": 100.00000000000158
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.745328855135028e-8,
+            "y": -4.363322403833012e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": -4.363322403833012e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": 0.9999999563667603
+          },
+          {
+            "x": 0.20000001047197186,
+            "y": 0.9999999563667603
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -180.00002",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -180.00002,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -180.00002,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -180.00002,
+        "trig": {
+          "s": 3.4906585032433407e-7,
+          "c": -0.999999999999939
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 350.00001745328336,
+            "y": 199.9999476401194
+          },
+          {
+            "x": 100.0000174532986,
+            "y": 200.000034906582
+          },
+          {
+            "x": 99.99998254671357,
+            "y": 100.00003490658808
+          },
+          {
+            "x": 299.9999825467014,
+            "y": 99.99996509341801
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000003,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 99.99999999999847,
+          "y": 99.99999127335371,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 99.99999999999847,
+          "y": 99.99999127335371,
+          "width": 250.00000000000153,
+          "height": 100.00000872664629
+        },
+        "owner": {
+          "x": 99.99999999999847,
+          "y": 99.99999127335371,
+          "width": 250.00000000000153,
+          "height": 100.00000872664629
+        },
+        "normalizedPoints": [
+          {
+            "x": 5.684341886080767e-17,
+            "y": 8.726645495629858e-8
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 8.726645495629858e-8
+          },
+          {
+            "x": 0.9999999999999939,
+            "y": 0.9999999999999997
+          },
+          {
+            "x": 0.19999999999999876,
+            "y": 0.9999999999999997
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -180.000005",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -180.000005,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -180.000005,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -180.000005,
+        "trig": {
+          "s": 8.726646237821436e-8,
+          "c": -0.9999999999999962
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 350.00000436332255,
+            "y": 199.99998691003046
+          },
+          {
+            "x": 100.00000436332351,
+            "y": 200.00000872664606
+          },
+          {
+            "x": 99.99999563667728,
+            "y": 100.00000872664643
+          },
+          {
+            "x": 299.9999956366765,
+            "y": 99.99999127335396
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100,
+          "width": 249.99999999999994,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 99.99999999999997,
+          "y": 99.99999781833844,
+          "width": 249.99999999999994,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 99.99999999999997,
+          "y": 99.99999781833844,
+          "width": 250.00000000000003,
+          "height": 100.00000218166156
+        },
+        "owner": {
+          "x": 99.99999999999997,
+          "y": 99.99999781833844,
+          "width": 250.00000000000003,
+          "height": 100.00000218166156
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.13686837721616e-16,
+            "y": 2.1816615095914377e-8
+          },
+          {
+            "x": 1,
+            "y": 2.1816615095914377e-8
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2000000000000001,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -180",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -180,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -180,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -180,
+        "trig": {
+          "s": -1.2246467991473532e-16,
+          "c": -1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 350,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 99.99999999999999
+          },
+          {
+            "x": 300,
+            "y": 100.00000000000001
+          }
+        ],
+        "exactBounds": {
+          "x": 49.99999999999999,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 2.842170943040401e-16
+          },
+          {
+            "x": 1,
+            "y": -2.842170943040401e-16
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 0.2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -179.999995",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -179.999995,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -179.999995,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -179.999995,
+        "trig": {
+          "s": -8.726646262314372e-8,
+          "c": -0.9999999999999962
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 349.9999956366763,
+            "y": 200.00001308996917
+          },
+          {
+            "x": 99.99999563667726,
+            "y": 199.99999127335354
+          },
+          {
+            "x": 100.00000436332351,
+            "y": 99.99999127335393
+          },
+          {
+            "x": 300.0000043633228,
+            "y": 100.00000872664646
+          }
+        ],
+        "exactBounds": {
+          "x": 49.99999999999998,
+          "y": 100,
+          "width": 250.00000000000003,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 99.9999999999999,
+          "y": 100.00000218166156,
+          "width": 250.00000000000003,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 99.9999999999999,
+          "y": 100,
+          "width": 250.0000000000001,
+          "height": 100.00000218166156
+        },
+        "owner": {
+          "x": 99.9999999999999,
+          "y": 100,
+          "width": 250.0000000000001,
+          "height": 100.00000218166156
+        },
+        "normalizedPoints": [
+          {
+            "x": -1.7053025658242397e-16,
+            "y": 2.842170881033851e-16
+          },
+          {
+            "x": 0.9999999999999996,
+            "y": 0
+          },
+          {
+            "x": 0.9999999999999996,
+            "y": 0.9999999781833849
+          },
+          {
+            "x": 0.19999999999999973,
+            "y": 0.9999999781833846
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -179.99998",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -179.99998,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -179.99998,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -179.99998,
+        "trig": {
+          "s": -3.490658505692634e-7,
+          "c": -0.999999999999939
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 349.99998254669833,
+            "y": 200.00005235987453
+          },
+          {
+            "x": 99.99998254671357,
+            "y": 199.9999650934119
+          },
+          {
+            "x": 100.00001745329863,
+            "y": 99.99996509341798
+          },
+          {
+            "x": 300.00001745328643,
+            "y": 100.0000349065881
+          }
+        ],
+        "exactBounds": {
+          "x": 50.000000000000014,
+          "y": 100,
+          "width": 250,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 99.99999999999845,
+          "y": 100.00000872664626,
+          "width": 250,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 99.99999999999845,
+          "y": 100,
+          "width": 250.00000000000153,
+          "height": 100.00000872664626
+        },
+        "owner": {
+          "x": 99.99999999999845,
+          "y": 100,
+          "width": 250.00000000000153,
+          "height": 100.00000872664626
+        },
+        "normalizedPoints": [
+          {
+            "x": -1.70530256582423e-16,
+            "y": -2.842170695014218e-16
+          },
+          {
+            "x": 0.9999999999999937,
+            "y": -5.684341390028436e-16
+          },
+          {
+            "x": 0.9999999999999937,
+            "y": 0.9999999127335447
+          },
+          {
+            "x": 0.1999999999999986,
+            "y": 0.9999999127335447
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -270.00002",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -270.00002,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -270.00002,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -270.00002,
+        "trig": {
+          "s": 0.999999999999939,
+          "c": 3.490658507071909e-7
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 249.99994764011933,
+            "y": -0.00001745328338387253
+          },
+          {
+            "x": 250.00003490658202,
+            "y": 249.99998254670137
+          },
+          {
+            "x": 150.00003490658813,
+            "y": 250.00001745328643
+          },
+          {
+            "x": 149.99996509341798,
+            "y": 50.000017453298625
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000003,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 74.99999127335374,
+          "y": 75.00000000000153,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 74.99999127335374,
+          "y": 75,
+          "width": 250.00000872664626,
+          "height": 100.00000000000153
+        },
+        "owner": {
+          "x": 74.99999127335374,
+          "y": 75,
+          "width": 250.00000872664626,
+          "height": 100.00000000000153
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.7453288892410772e-8,
+            "y": 4.363323938605323e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": 4.3633239243944686e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": 1.0000000436332237
+          },
+          {
+            "x": 0.20000001047197213,
+            "y": 1.0000000436332237
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -270.000005",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -270.000005,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -270.000005,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -270.000005,
+        "trig": {
+          "s": 0.9999999999999962,
+          "c": 8.726646231698202e-8
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 249.99998691003046,
+            "y": -0.000004363322531730773
+          },
+          {
+            "x": 250.00000872664603,
+            "y": 249.9999956366765
+          },
+          {
+            "x": 150.00000872664643,
+            "y": 250.00000436332272
+          },
+          {
+            "x": 149.99999127335397,
+            "y": 50.0000043633235
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 100.00000000000001,
+          "width": 250,
+          "height": 99.99999999999999
+        },
+        "rawOwner": {
+          "x": 74.99999781833846,
+          "y": 75.0000000000001,
+          "width": 250,
+          "height": 99.99999999999999
+        },
+        "roundedOwner": {
+          "x": 74.99999781833846,
+          "y": 75,
+          "width": 250.00000218166156,
+          "height": 100.00000000000009
+        },
+        "owner": {
+          "x": 74.99999781833846,
+          "y": 75,
+          "width": 250.00000218166156,
+          "height": 100.00000000000009
+        },
+        "normalizedPoints": [
+          {
+            "x": 4.3633228489249666e-9,
+            "y": 1.0908308212265174e-8
+          },
+          {
+            "x": 0.9999999956366767,
+            "y": 1.0908308212265174e-8
+          },
+          {
+            "x": 0.9999999956366767,
+            "y": 1.0000000109083076
+          },
+          {
+            "x": 0.20000000261799367,
+            "y": 1.0000000109083071
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -270",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -270,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -270,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -270,
+        "trig": {
+          "s": 1,
+          "c": -1.8369701987210297e-16
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 250.00000000000006,
+            "y": 1.4210854715202004e-14
+          },
+          {
+            "x": 249.99999999999997,
+            "y": 250
+          },
+          {
+            "x": 149.99999999999997,
+            "y": 250
+          },
+          {
+            "x": 150.00000000000003,
+            "y": 49.999999999999986
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 99.99999999999997,
+          "width": 250,
+          "height": 100.00000000000003
+        },
+        "rawOwner": {
+          "x": 75.00000000000001,
+          "y": 74.99999999999997,
+          "width": 250,
+          "height": 100.00000000000003
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 74.99999999999997,
+          "width": 250,
+          "height": 100.00000000000003
+        },
+        "owner": {
+          "x": 75,
+          "y": 74.99999999999997,
+          "width": 250,
+          "height": 100.00000000000003
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.1368683772161603e-16,
+            "y": -1.4210854715202e-16
+          },
+          {
+            "x": 1,
+            "y": 1.4210854715202e-16
+          },
+          {
+            "x": 1,
+            "y": 0.9999999999999997
+          },
+          {
+            "x": 0.2,
+            "y": 0.9999999999999994
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -269.999995",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -269.999995,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -269.999995,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -269.999995,
+        "trig": {
+          "s": 0.9999999999999962,
+          "c": -8.726646268437606e-8
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 250.00001308996923,
+            "y": 0.000004363323704126287
+          },
+          {
+            "x": 249.99999127335354,
+            "y": 250.00000436332274
+          },
+          {
+            "x": 149.9999912733539,
+            "y": 249.9999956366765
+          },
+          {
+            "x": 150.00000872664646,
+            "y": 49.999995636677255
+          }
+        ],
+        "exactBounds": {
+          "x": 50,
+          "y": 99.99999999999999,
+          "width": 250,
+          "height": 100.00000000000001
+        },
+        "rawOwner": {
+          "x": 75.00000218166159,
+          "y": 75.0000000000001,
+          "width": 250,
+          "height": 100.00000000000001
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 75,
+          "width": 250.00000218166156,
+          "height": 100.00000000000011
+        },
+        "owner": {
+          "x": 75,
+          "y": 75,
+          "width": 250.00000218166156,
+          "height": 100.00000000000011
+        },
+        "normalizedPoints": [
+          {
+            "x": 4.363322792081548e-9,
+            "y": -1.0908307359613887e-8
+          },
+          {
+            "x": 0.9999999956366767,
+            "y": -1.090830721750534e-8
+          },
+          {
+            "x": 0.9999999956366767,
+            "y": 0.9999999890916916
+          },
+          {
+            "x": 0.2000000026179936,
+            "y": 0.9999999890916914
+          }
+        ]
+      }
+    },
+    {
+      "name": "polygon commit -269.99998",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -269.99998,
+        "strokeWidth": 1,
+        "closed": true,
+        "path": "M -.25 0 L 1 0 L 1 1 L 0 1 Z"
+      },
+      "expected": {
+        "suppliedAngle": -269.99998,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -269.99998,
+        "trig": {
+          "s": 0.999999999999939,
+          "c": -3.4906585018640656e-7
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 250.00005235987447,
+            "y": 0.000017453301651926267
+          },
+          {
+            "x": 249.99996509341193,
+            "y": 250.00001745328643
+          },
+          {
+            "x": 149.99996509341804,
+            "y": 249.9999825467014
+          },
+          {
+            "x": 150.00003490658807,
+            "y": 49.99998254671358
+          }
+        ],
+        "exactBounds": {
+          "x": 50.00000000000003,
+          "y": 100,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "rawOwner": {
+          "x": 75.00000872664624,
+          "y": 75.00000000000153,
+          "width": 249.99999999999997,
+          "height": 100
+        },
+        "roundedOwner": {
+          "x": 75,
+          "y": 75,
+          "width": 250.00000872664623,
+          "height": 100.00000000000153
+        },
+        "owner": {
+          "x": 75,
+          "y": 75,
+          "width": 250.00000872664623,
+          "height": 100.00000000000153
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.7453288835567357e-8,
+            "y": -4.363322375411304e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": -4.363322375411304e-8
+          },
+          {
+            "x": 0.999999982546705,
+            "y": 0.9999999563667609
+          },
+          {
+            "x": 0.2000000104719721,
+            "y": 0.9999999563667609
+          }
+        ]
+      }
+    },
+    {
+      "name": "cubic commit 0",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 0,
+        "strokeWidth": 1,
+        "closed": false,
+        "path": "M 0 0 C 0 -1 1 0 1 1"
+      },
+      "expected": {
+        "suppliedAngle": 0,
+        "frameClass": "boxed-j5u5",
+        "reportedAngle": 0,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "iN4x-unrotated",
+        "world": [
+          {
+            "x": 100,
+            "y": 100
+          },
+          {
+            "x": 100,
+            "y": 0
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 100,
+          "y": 58.57864376269049,
+          "width": 200,
+          "height": 141.4213562373095,
+          "extrema": {
+            "x": [
+              1,
+              0
+            ],
+            "y": [
+              0.2928932188134524
+            ]
+          }
+        },
+        "rawOwner": {
+          "x": 100,
+          "y": 58.57864376269049,
+          "width": 200,
+          "height": 141.4213562373095,
+          "extrema": {
+            "x": [
+              1,
+              0
+            ],
+            "y": [
+              0.2928932188134524
+            ]
+          }
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 58,
+          "width": 200,
+          "height": 142
+        },
+        "owner": {
+          "x": 100,
+          "y": 58,
+          "width": 200,
+          "height": 142
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0.29577464788732394
+          },
+          {
+            "x": 0,
+            "y": -0.4084507042253521
+          },
+          {
+            "x": 1,
+            "y": 0.29577464788732394
+          },
+          {
+            "x": 1,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "cubic commit 0.000009999999",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 0.000009999999,
+        "strokeWidth": 1,
+        "closed": false,
+        "path": "M 0 0 C 0 -1 1 0 1 1"
+      },
+      "expected": {
+        "suppliedAngle": 0.000009999999,
+        "frameClass": "boxed-j5u5",
+        "reportedAngle": 0,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "iN4x-unrotated",
+        "world": [
+          {
+            "x": 100,
+            "y": 100
+          },
+          {
+            "x": 100,
+            "y": 0
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 100,
+          "y": 58.57864376269049,
+          "width": 200,
+          "height": 141.4213562373095,
+          "extrema": {
+            "x": [
+              1,
+              0
+            ],
+            "y": [
+              0.2928932188134524
+            ]
+          }
+        },
+        "rawOwner": {
+          "x": 100,
+          "y": 58.57864376269049,
+          "width": 200,
+          "height": 141.4213562373095,
+          "extrema": {
+            "x": [
+              1,
+              0
+            ],
+            "y": [
+              0.2928932188134524
+            ]
+          }
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 58,
+          "width": 200,
+          "height": 142
+        },
+        "owner": {
+          "x": 100,
+          "y": 58,
+          "width": 200,
+          "height": 142
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0.29577464788732394
+          },
+          {
+            "x": 0,
+            "y": -0.4084507042253521
+          },
+          {
+            "x": 1,
+            "y": 0.29577464788732394
+          },
+          {
+            "x": 1,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "cubic commit 0.00001",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 0.00001,
+        "strokeWidth": 1,
+        "closed": false,
+        "path": "M 0 0 C 0 -1 1 0 1 1"
+      },
+      "expected": {
+        "suppliedAngle": 0.00001,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 0.00001,
+        "trig": {
+          "s": 1.745329251994321e-7,
+          "c": 0.9999999999999848
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 100.00000872664778,
+            "y": 99.99998254670824
+          },
+          {
+            "x": 100.00002617994029,
+            "y": -0.00001745329024060993
+          },
+          {
+            "x": 300.00000872664475,
+            "y": 100.00001745329328
+          },
+          {
+            "x": 299.99999127335224,
+            "y": 200.00001745329178
+          }
+        ],
+        "exactBounds": {
+          "x": 99.99999999999999,
+          "y": 58.57864376269048,
+          "width": 200,
+          "height": 141.4213562373095,
+          "extrema": {
+            "x": [
+              1,
+              0
+            ],
+            "y": [
+              0.2928932188134525
+            ]
+          }
+        },
+        "rawOwner": {
+          "x": 100.00000361469522,
+          "y": 58.5786437626908,
+          "width": 200,
+          "height": 141.4213562373095
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 58,
+          "width": 200.00000361469523,
+          "height": 142.0000000000003
+        },
+        "owner": {
+          "x": 100,
+          "y": 58,
+          "width": 200.00000361469523,
+          "height": 142.0000000000003
+        },
+        "normalizedPoints": [
+          {
+            "x": 1.8325956740638175e-8,
+            "y": 0.29577464788732327
+          },
+          {
+            "x": 1.8325956740638175e-8,
+            "y": -0.40845070422535124
+          },
+          {
+            "x": 1.0000000002524811,
+            "y": 0.2957746478873232
+          },
+          {
+            "x": 1.0000000002524811,
+            "y": 0.9999999999999978
+          }
+        ]
+      }
+    },
+    {
+      "name": "cubic commit -0.00001",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -0.00001,
+        "strokeWidth": 1,
+        "closed": false,
+        "path": "M 0 0 C 0 -1 1 0 1 1"
+      },
+      "expected": {
+        "suppliedAngle": -0.00001,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -0.00001,
+        "trig": {
+          "s": -1.745329251994321e-7,
+          "c": 0.9999999999999848
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 99.99999127335526,
+            "y": 100.00001745329328
+          },
+          {
+            "x": 99.99997382006275,
+            "y": 0.00001745329478808344
+          },
+          {
+            "x": 299.99999127335224,
+            "y": 99.99998254670824
+          },
+          {
+            "x": 300.00000872664475,
+            "y": 199.99998254670672
+          }
+        ],
+        "exactBounds": {
+          "x": 100,
+          "y": 58.57864376269048,
+          "width": 200,
+          "height": 141.4213562373095,
+          "extrema": {
+            "x": [
+              1,
+              0
+            ],
+            "y": [
+              0.2928932188134525
+            ]
+          }
+        },
+        "rawOwner": {
+          "x": 99.99999638530475,
+          "y": 58.5786437626908,
+          "width": 200,
+          "height": 141.4213562373095
+        },
+        "roundedOwner": {
+          "x": 99.99999638530475,
+          "y": 58,
+          "width": 200.00000361469523,
+          "height": 142.0000000000003
+        },
+        "owner": {
+          "x": 99.99999638530475,
+          "y": 58,
+          "width": 200.00000361469523,
+          "height": 142.0000000000003
+        },
+        "normalizedPoints": [
+          {
+            "x": -2.524809116109282e-10,
+            "y": 0.2957746478873232
+          },
+          {
+            "x": -2.524809116109282e-10,
+            "y": -0.4084507042253514
+          },
+          {
+            "x": 0.9999999816740434,
+            "y": 0.29577464788732327
+          },
+          {
+            "x": 0.9999999816740434,
+            "y": 0.9999999999999978
+          }
+        ]
+      }
+    },
+    {
+      "name": "cubic commit 360",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 360,
+        "strokeWidth": 1,
+        "closed": false,
+        "path": "M 0 0 C 0 -1 1 0 1 1"
+      },
+      "expected": {
+        "suppliedAngle": 360,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 360,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 100,
+            "y": 100
+          },
+          {
+            "x": 100,
+            "y": 0
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 100,
+          "y": 58.57864376269049,
+          "width": 200,
+          "height": 141.4213562373095,
+          "extrema": {
+            "x": [
+              1,
+              0
+            ],
+            "y": [
+              0.2928932188134524
+            ]
+          }
+        },
+        "rawOwner": {
+          "x": 100,
+          "y": 58.57864376269049,
+          "width": 200,
+          "height": 141.4213562373095
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 58,
+          "width": 200,
+          "height": 142
+        },
+        "owner": {
+          "x": 100,
+          "y": 58,
+          "width": 200,
+          "height": 142
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0.29577464788732394
+          },
+          {
+            "x": 0,
+            "y": -0.4084507042253521
+          },
+          {
+            "x": 1,
+            "y": 0.29577464788732394
+          },
+          {
+            "x": 1,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "cubic commit -360",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -360,
+        "strokeWidth": 1,
+        "closed": false,
+        "path": "M 0 0 C 0 -1 1 0 1 1"
+      },
+      "expected": {
+        "suppliedAngle": -360,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -360,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 100,
+            "y": 100
+          },
+          {
+            "x": 100,
+            "y": 0
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 100,
+          "y": 58.57864376269049,
+          "width": 200,
+          "height": 141.4213562373095,
+          "extrema": {
+            "x": [
+              1,
+              0
+            ],
+            "y": [
+              0.2928932188134524
+            ]
+          }
+        },
+        "rawOwner": {
+          "x": 100,
+          "y": 58.57864376269049,
+          "width": 200,
+          "height": 141.4213562373095
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 58,
+          "width": 200,
+          "height": 142
+        },
+        "owner": {
+          "x": 100,
+          "y": 58,
+          "width": 200,
+          "height": 142
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0.29577464788732394
+          },
+          {
+            "x": 0,
+            "y": -0.4084507042253521
+          },
+          {
+            "x": 1,
+            "y": 0.29577464788732394
+          },
+          {
+            "x": 1,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "cubic commit 359.999995",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": 359.999995,
+        "strokeWidth": 1,
+        "closed": false,
+        "path": "M 0 0 C 0 -1 1 0 1 1"
+      },
+      "expected": {
+        "suppliedAngle": 359.999995,
+        "frameClass": "rotated-frame",
+        "reportedAngle": 359.999995,
+        "trig": {
+          "s": 0,
+          "c": 1
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 100,
+            "y": 100
+          },
+          {
+            "x": 100,
+            "y": 0
+          },
+          {
+            "x": 300,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 200
+          }
+        ],
+        "exactBounds": {
+          "x": 100,
+          "y": 58.57864376269049,
+          "width": 200,
+          "height": 141.4213562373095,
+          "extrema": {
+            "x": [
+              1,
+              0
+            ],
+            "y": [
+              0.2928932188134524
+            ]
+          }
+        },
+        "rawOwner": {
+          "x": 100,
+          "y": 58.57864376269049,
+          "width": 200,
+          "height": 141.4213562373095
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 58,
+          "width": 200,
+          "height": 142
+        },
+        "owner": {
+          "x": 100,
+          "y": 58,
+          "width": 200,
+          "height": 142
+        },
+        "normalizedPoints": [
+          {
+            "x": 0,
+            "y": 0.29577464788732394
+          },
+          {
+            "x": 0,
+            "y": -0.4084507042253521
+          },
+          {
+            "x": 1,
+            "y": 0.29577464788732394
+          },
+          {
+            "x": 1,
+            "y": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "cubic commit -359.999995",
+      "input": {
+        "owner": {
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 100
+        },
+        "effectiveRotation": -359.999995,
+        "strokeWidth": 1,
+        "closed": false,
+        "path": "M 0 0 C 0 -1 1 0 1 1"
+      },
+      "expected": {
+        "suppliedAngle": -359.999995,
+        "frameClass": "rotated-frame",
+        "reportedAngle": -359.999995,
+        "trig": {
+          "s": 8.72664627456084e-8,
+          "c": 0.9999999999999962
+        },
+        "route": "hN4K-rotated",
+        "world": [
+          {
+            "x": 100.00000436332353,
+            "y": 99.99999127335391
+          },
+          {
+            "x": 100.00001308996981,
+            "y": -0.000008726645717160864
+          },
+          {
+            "x": 300.0000043633228,
+            "y": 100.00000872664646
+          },
+          {
+            "x": 299.9999956366765,
+            "y": 200.0000087266461
+          }
+        ],
+        "exactBounds": {
+          "x": 100.00000000000001,
+          "y": 58.57864376269048,
+          "width": 200,
+          "height": 141.4213562373095,
+          "extrema": {
+            "x": [
+              1,
+              0
+            ],
+            "y": [
+              0.2928932188134525
+            ]
+          }
+        },
+        "rawOwner": {
+          "x": 100.00000180734763,
+          "y": 58.57864376269056,
+          "width": 200,
+          "height": 141.4213562373095
+        },
+        "roundedOwner": {
+          "x": 100,
+          "y": 58,
+          "width": 200.00000180734764,
+          "height": 142.00000000000006
+        },
+        "owner": {
+          "x": 100,
+          "y": 58,
+          "width": 200.00000180734764,
+          "height": 142.00000000000006
+        },
+        "normalizedPoints": [
+          {
+            "x": 9.16297855970393e-9,
+            "y": 0.2957746478873238
+          },
+          {
+            "x": 9.162978630758204e-9,
+            "y": -0.4084507042253521
+          },
+          {
+            "x": 1.0000000001262404,
+            "y": 0.2957746478873238
+          },
+          {
+            "x": 1.0000000001262404,
+            "y": 0.9999999999999996
+          }
+        ]
+      }
+    }
+  ]
+}

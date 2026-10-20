@@ -1,0 +1,61 @@
+# Native parameterized shapes: point-editing integration analysis
+
+This is a read-only product-source analysis. It does not implement a conversion policy or claim original GUI behavior. The companion JSON binds the reviewed files and records a narrow, browser-free product-helper probe. Native command timing, parameter cleanup and authoring-provider semantics remain subject to the separate original-source investigation.
+
+## Confirmed discrepancy and entry points
+
+The real imported slider `d515a37dfd114af6877e6c6d4d244032` has a saved 200×6 capsule path and effective radius 5. At its original size, the first stored anchor and product fill start both lie at `(0,3)`. Resizing to 240×60 leaves the normalized path unchanged: the point editor's first anchor becomes `(0,30)`, while the parameterized fill starts at `(0,5)`. Setting radius 18 still leaves the stored anchor at `(0,30)`, while the fill starts at `(0,18)`. These are current product-function results, not original application measurements.
+
+| Entry / stage | Current source | Consequence |
+| --- | --- | --- |
+| Edit points / Ctrl+Alt+P | `App.tsx:118–125,423,443` | Gates the current stored vector path, then sets an editing ID. Entry itself does not change the document. |
+| Border double-click | `App.tsx:415–420` | Tests distance against `vectorSegments(w.vectorPath)`, even though `w` has display-resolved style. A visible regenerated edge may not be the tested edge. |
+| Canvas anchors, handles and split targets | `CanvasVectorTools.tsx:24–32,146–155` | All read `draft ?? widget.vectorPath`. Coordinates correctly use visible width/height, rotation and zoom, but the contour is the stored one. |
+| Pointer draft painting | `App.tsx:456,458`; `WidgetView.tsx:171–180` | Replaces only the displayed widget's vectorPath. WidgetView still attempts parameter regeneration, so a draft that remains in the recognized family can be overwritten; a draft that exits the family falls back to stored-path painting. |
+| Pointer / keyboard commit | `CanvasVectorTools.tsx:37–40,84–121`; `App.tsx:458` | Commits a path only to the current root-scope widget. It carries no conversion intent or parameter provenance. |
+| Numeric path editing | `Inspector.tsx:485–527,579`; `App.tsx:343–360` | Edits stored commands directly, including fill rule, node type, coordinates, append/remove/close/new subpath. The existing current-only guard prevents a path from being copied to unrelated multi-selected widgets. |
+| Parameterized painting | `line-style.ts:28–65,72–83,151–156` | Eligibility is derived from geometry plus the mask/type boundary, not persistent native shape identity. Qualifying boxes regenerate from radius/mask/size; old hidden-border snapshots have a separate fallback branch. |
+
+The two editing UIs also expose different indexing: the canvas uses logical anchors and joins a final endpoint equal to the first `M`, whereas the numeric Inspector lists raw M/L/C/Z commands. This is established product behavior. A newly prepared contour can change command count, so stale numeric selection indices must not silently target a different point.
+
+## Adaptive, state and transaction boundaries
+
+`App.tsx:83–108` resolves the shared view set and adaptive widget tree before obtaining `current`. Its canvas display at `:456` additionally applies selected/error/disabled effects or the temporary Inspector effect preview. The overlay at `:458` receives the earlier `current`; `editPoints` does not clear effect preview. Thus a single path preparation function must have an explicit authoring-style policy. It must not accidentally bake temporary hover/selected preview geometry into shared source content. Which original authoring provider participates is still being researched.
+
+`applyAdaptiveWidgetEdits` at `adaptive.ts:467–528` treats vectorPath as shared content. At `:523`, it restores Base placement/layout/style while retaining the edited path. There is no per-view vectorPath override. Furthermore, `:471–474` rejects changing an existing widget's type. Consequently, a future box-to-freeform conversion needs a dedicated model operation if type conversion is the evidence-backed contract; an App-only `{type:'path'}` patch cannot satisfy the existing adaptive API.
+
+Deleting `cornerVisibility` alone is not a robust conversion strategy: the hidden-border rectangle branch can still recognize the path, and adaptive/state declarations can supply a mask again. Persisting an arbitrary edited path while retaining automatic family inference can also reactivate regeneration when the path happens to regain a recognized shape. The original evidence must determine whether the reconstruction should explicitly change type or store another narrowly justified geometry identity. No new field is proposed as settled schema here.
+
+The current pointer editor preserves useful history behavior: drafts are transient; a completed gesture commits once; selection and an out-and-back drag do not commit; pointer cancellation drops the draft. Ordinary widget resize uses a document snapshot and resets point mode (`App.tsx:409–414`). Undo/redo reset tools and clear selection (`:362–363`). Page, panel state, adaptive view, preview and gallery changes also reset point mode. These guarantees should survive conversion.
+
+`vectorContext` currently covers geometry, zoom and scope but not radius/mask/effect-preview changes. CanvasVectorTools only detects an externally changed stored path during an active gesture. Once the working path is derived from parameters, changes to those parameters must invalidate or safely cancel the gesture as well. A session fingerprint should cover the source identity and effective authoring geometry, without recording selection or mere display updates as document history.
+
+Panel/repeater editing already enters a local authoring scope and edits the source state/template. It does not edit one runtime repeater row. Shared menu/table/tree descendants have their existing specialized routing; table cells and tree text labels cannot acquire arbitrary vectorPath under the current schema. Clipboard/component operations preserve serialized path data through ordinary clone/remap; they must retain any subsequently approved conversion state and keep IDs/references stable.
+
+## Minimal consistent architecture, pending native contract
+
+1. **One typed geometry preparation function.** Given the authored widget, current adaptive size/style and an explicit editing policy, return bounded normalized `VectorPath`, source kind, and a geometry fingerprint. Existing freeform and legacy unsupported snapshots pass through unchanged. Parameterized preparation should use the proven authoring contour generator, not parse rendered SVG strings or reuse inset stroke paths. Source-path mutation is unnecessary for read-only hit testing or inspection.
+2. **One editing session shared by all entrances.** Toolbar, shortcut, border hit test, overlay and numeric Inspector must use the same prepared contour and revision. The visible editing preview must draw that contour without a second parameter reconstruction. Either pass an explicit transient authoring geometry projection to WidgetView or use an equivalent owner-approved path rendering route; do not smuggle transient flags into saved Widget data.
+3. **One model commit operation.** Accept source identity/context, prepared baseline and actual path mutation. If the native contract requires conversion, atomically apply conversion plus path change while preserving text, links, interactions, component identity and unrelated styles. The operation must define shared adaptive content and retained per-view declarations explicitly. Enter/Done/Cancel/no-op timing must follow the upcoming evidence contract; the current no-op/history guarantees are a regression baseline, not proof of native timing.
+4. **Preserve gesture atomicity.** Conversion and the first mutation should not become two accidental undo steps. An out-and-back gesture must compare against the prepared editing baseline rather than the different persisted capsule snapshot. Cancel and context changes must restore the full pre-gesture document and parameter identity. Subsequent edits use the converted stored path, including numeric, split, delete and sharp/curve operations.
+5. **Keep author and runtime contracts separate.** Runtime radius/state actions still use the runtime renderer until their own approved semantics change. Save/reopen/preview/offline must agree on the meaning of a converted widget. Width/height, border visibility and stroke inset must not be baked twice into normalized edit coordinates.
+
+Likely files after approval: a pure geometry/conversion helper owned with the model contract; App entrance/session/commit routing; CanvasVectorTools working-path input; Inspector VectorPathEditor input/commit routing; a narrow WidgetView editing-preview hook; adaptive/model validation only if the approved conversion needs it. The current generic vector-editing math can be reused.
+
+## Required regression cases
+
+- Real 200×6 capsule → 240×60/radius5 and radius18: independent expected editing anchors follow the author contour; pointer hit targets, preview and numeric coordinates agree. Preserve source bytes before the authorized mutation boundary.
+- Both horizontal and vertical/square capsules, regular eight-point rectangles, aspect resize, fractional size, and oversized radius/masked corners. Include border masks where fill and stroke differ so the wrong contour cannot accidentally pass.
+- Each entrance: toolbar, shortcut, double-click on a regenerated edge far from a stored edge, numeric coordinate/segment editing, split, delete and sharp/curve conversion. Text Enter/double-click behavior must remain available.
+- Entry/Done with no edit; point click; no-op numeric value; drag out-and-back; pointercancel; Escape; first edit Undo and Redo; context change mid-gesture. Assert full document equality and exactly the intended history behavior, including conversion metadata when agreed.
+- Mixed selection with an input and a second shape: only the current shape converts or receives path edits; unrelated source/style/view maps remain byte-equivalent.
+- Base versus inherited child view at another size, Affect all views on/off, temporary effect preview, selected/error/disabled style states. First establish which author provider the native command uses, then assert no incidental preview-state baking.
+- Rotated, zoomed local panel/repeater-template scopes using the existing 150%/90° geometry oracle. Keep source template identity; do not introduce runtime-row editing claims.
+- Save/reopen and real preview/offline export after conversion, duplicate/copy/component publish; original IDs/references/content remain valid, arbitrary freeform paths never regain parameter rendering merely by coincidence.
+- Legacy no-mask vectors, nonrectangular curves, compound paths and open contours keep existing behavior and validation limits; node command count and coordinate budgets remain enforced.
+
+Existing useful baselines are `tests/vector-editing.test.ts`, `tests/vector-editing-review.test.ts`, `tests/e2e/vector-editing.spec.ts:175,246,307,372`, the mixed-selection case in `tests/e2e/vector.spec.ts:91`, and `tests/e2e/native-pills.spec.ts`. The last currently proves numeric-handle invalidation/undo, not correct synchronization of parameterized contours and point anchors.
+
+## Unresolved original-source questions
+
+The separate evidence worker preliminarily identified a non-300 path that obtains the current sizing rectangle and effective P71/P81, then a transition toward native Shape300 with gesture snapshot state. This report has not independently replayed that chain. Required decisions remain: exact conversion trigger, whether conversion alone creates history, P71/P81 and other shape-style cleanup, current-view/shared geometry policy, effect-preview participation, managed author contour versus final SVG painting, and behavior after returning a freeform shape to rectangle-like coordinates. The current editor also permits points outside the owner's box without recomputing that box; whether the original gesture re-bounds the owner must be established before choosing a path-only versus path-and-geometry commit API. These must be resolved before product changes.
