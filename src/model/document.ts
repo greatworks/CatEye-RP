@@ -25,7 +25,7 @@ const WIDGET_TYPES: WidgetType[] = ['box', 'ellipse', 'path', 'text', 'button', 
 const ACTION_TYPES: ActionType[] = ['openUrl', 'openPage', 'show', 'hide', 'toggle', 'setText', 'setSelectedOption', 'setFocus', 'setState', 'nextState', 'previousState', 'setVariable', 'move', 'resize', 'resizeItem', 'setStyle', 'enable', 'disable', 'wait', 'addRow', 'deleteRow', 'sortRows', 'filterRows', 'updateRow', 'setSelected', 'setError', 'markRows', 'unmarkRows', 'setRepeaterPage', 'setItemsPerPage', 'addFilter', 'removeFilter', 'addSort', 'removeSort', 'expandTreeNode', 'collapseTreeNode', 'toggleTreeNode'];
 const NAMED_REPEATER_ACTIONS = ['addFilter', 'removeFilter', 'addSort', 'removeSort'];
 const EVENTS: EventType[] = ['click', 'doubleClick', 'mouseEnter', 'mouseLeave', 'change', 'focus', 'blur', 'load', 'itemLoad', 'itemResize', 'resize', 'move', 'selectedChange', 'select', 'unselect', 'errorSet', 'errorRemoved', 'show', 'hide'];
-const STYLE_KEYS = ['fill', 'fillGradient', 'stroke', 'strokeGradient', 'linePattern', 'lineEnds', 'borderVisibility', 'strokeWidth', 'borderWidths', 'radius', 'cornerRadii', 'cornerVisibility', 'textPadding', 'verticalAlign', 'lineHeight', 'color', 'fontSize', 'fontFamily', 'fontWeight', 'fontStyle', 'underline', 'strikethrough', 'textAlign', 'opacity', 'outerShadow', 'innerShadow', 'textShadow'];
+const STYLE_KEYS = ['fill', 'fillGradient', 'stroke', 'strokeGradient', 'linePattern', 'lineEnds', 'borderVisibility', 'strokeWidth', 'borderWidths', 'radius', 'cornerRadii', 'cornerVisibility', 'textPadding', 'verticalAlign', 'lineHeight', 'color', 'fontSize', 'fontFamily', 'fontWeight', 'fontStyle', 'underline', 'strikethrough', 'textAlign', 'opacity', 'outerShadow', 'innerShadow', 'textShadow', 'selectionButtonSize'];
 const AUTHOR_STYLE_KEYS = ['pinHorizontal', 'pinVertical', 'fixedWidth', 'fixedHeight'];
 const WIDGET_KEYS = ['id', 'type', 'name', 'text', 'x', 'y', 'width', 'height', 'rotation', 'style', 'placed', 'hidden', 'locked', 'disabled', 'notes', 'interactions', 'groupId', 'imageSrc', 'options', 'selectMode', 'multiple', 'selectedIndices', 'checked', 'selected', 'selectionGroup', 'radioGroup', 'selectedStyle', 'mouseOverStyle', 'mouseDownStyle', 'focusedStyle', 'disabledStyle', 'error', 'errorStyle', 'hintText', 'hintHideOn', 'hintStyle', 'inputType', 'readOnly', 'maxLength', 'submitButtonId', 'states', 'activeStateId', 'repeater', 'fitToContent', 'componentId', 'componentInstance', 'vectorPath'];
 const UNSAFE_KEYS = new Set(['__proto__', 'prototype', 'constructor']);
@@ -34,7 +34,7 @@ WIDGET_TYPES.push('inlineFrame', 'layer');
 ACTION_TYPES.push('openLinkInFrame', 'setAdaptiveView', 'rotate');
 EVENTS.push('adaptiveViewChange', 'rotate');
 EVENTS.push('dragStart', 'drag', 'dragDrop', 'swipeLeft', 'swipeRight', 'swipeUp', 'swipeDown');
-WIDGET_KEYS.push('inlineFrame', 'shapeText', 'layer');
+WIDGET_KEYS.push('inlineFrame', 'shapeText', 'selectionText', 'layer');
 
 export function uid(): string {
   return globalThis.crypto.randomUUID();
@@ -489,13 +489,15 @@ function style(value: unknown, path: string, partial = false, author = false): W
   const obj = object(value, path, keys), result: Partial<WidgetStyle> = {};
   for (const name of keys) {
     if (AUTHOR_STYLE_KEYS.includes(name) && obj[name] === undefined) continue;
-    if (['fillGradient', 'strokeGradient', 'linePattern', 'lineEnds', 'borderVisibility', 'borderWidths', 'cornerRadii', 'cornerVisibility', 'textPadding', 'verticalAlign', 'lineHeight', 'fontStyle', 'underline', 'strikethrough', 'outerShadow', 'innerShadow', 'textShadow'].includes(name) && obj[name] === undefined) continue;
+    if (['fillGradient', 'strokeGradient', 'linePattern', 'lineEnds', 'borderVisibility', 'borderWidths', 'cornerRadii', 'cornerVisibility', 'textPadding', 'verticalAlign', 'lineHeight', 'fontStyle', 'underline', 'strikethrough', 'outerShadow', 'innerShadow', 'textShadow', 'selectionButtonSize'].includes(name) && obj[name] === undefined) continue;
     if (partial && obj[name] === undefined) continue;
     const field = `${path}.${name}`;
     switch (name) {
       case 'pinHorizontal': result.pinHorizontal = choice(obj[name], field, PIN_HORIZONTAL_VALUES); break;
       case 'pinVertical': result.pinVertical = choice(obj[name], field, PIN_VERTICAL_VALUES); break;
       case 'fixedWidth': case 'fixedHeight': result[name] = bool(obj[name], field); break;
+      // Independent product storage bound, not a claimed native P94 legal range.
+      case 'selectionButtonSize': result.selectionButtonSize = num(obj[name], field, 0, 100_000); break;
       case 'linePattern': result.linePattern = choice(obj[name], field, LINE_PATTERNS); break;
       case 'lineEnds': {
         const ends = object(obj[name], field, ['start', 'end']);
@@ -939,6 +941,11 @@ function validateWidget(value: unknown, path: string, ctx: ValidationContext, de
     if (!['box', 'ellipse', 'path'].includes(result.type ?? '')) fail(`${path}.shapeText`, 'shapeText is only supported on box, ellipse and path widgets');
     const p = `${path}.shapeText`, layout = object(o.shapeText, p, ['autoFitWidth', 'autoFitHeight']);
     result.shapeText = { autoFitWidth: bool(layout.autoFitWidth, `${p}.autoFitWidth`), autoFitHeight: bool(layout.autoFitHeight, `${p}.autoFitHeight`) };
+  }
+  if (o.selectionText !== undefined) {
+    if (result.type !== 'checkbox' && result.type !== 'radio') fail(`${path}.selectionText`, 'selectionText is only supported on checkbox and radio widgets');
+    const p = `${path}.selectionText`, layout = object(o.selectionText, p, ['autoFitWidth', 'autoFitHeight', 'alignRight']);
+    result.selectionText = { autoFitWidth: bool(layout.autoFitWidth, `${p}.autoFitWidth`), autoFitHeight: bool(layout.autoFitHeight, `${p}.autoFitHeight`), alignRight: bool(layout.alignRight, `${p}.alignRight`) };
   }
   if (o.fitToContent !== undefined) {
     if (result.type !== 'panel') fail(`${path}.fitToContent`, 'fitToContent is only supported on panel widgets');

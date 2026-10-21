@@ -13,7 +13,11 @@ import { createShadowRenderer } from '../model/shadow';
 import { createGradientRenderer } from '../model/gradient';
 import { createLineStyleRenderer } from '../model/line-style';
 import { createShapeTextRenderer } from '../model/shape-text';
+import { createSelectionTextLayout } from '../runtime/selection-text-layout';
+import { createSelectionDisplay } from '../runtime/selection-display';
+import { createSelectionIndicatorRenderer } from '../model/selection-indicator';
 const shapeText = createShapeTextRenderer();
+const selectionDisplay = createSelectionDisplay(createSelectionTextLayout(shapeText), createSelectionIndicatorRenderer());
 const shadows = createShadowRenderer();
 const lines = createLineStyleRenderer();
 const gradients = createGradientRenderer(lines);
@@ -74,10 +78,12 @@ export function widgetStyle(widget: Widget, resolved = false, paintSize?: {width
   const layout = !resolved ? getStaticRepeaterLayout(w) : undefined;
   const size=paintSize??(layout&&!layout.error?layout:undefined)??w;
   const gradient = gradients.supports(w.type) && !w.vectorPath && w.style.fillGradient;
+  const selectionTextLayout = Boolean(w.selectionText && (w.type === 'checkbox' || w.type === 'radio')
+    && w.style.textPadding !== undefined && w.style.verticalAlign !== undefined);
   return { display:shapeText.supports(w)?'flex':undefined, position: 'absolute', left:w.x, top:w.y, width:Math.max(0,size.width), height:Math.max(0,size.height), transform:`rotate(${w.rotation}deg)`,
     backgroundColor:w.vectorPath||gradient?'transparent':w.style.fill, backgroundImage:!w.vectorPath?gradients.backgrounds(w.style,w.type,size.width,size.height):'none', backgroundSize:'100% 100%', backgroundOrigin:'border-box', backgroundRepeat:'no-repeat', borderStyle:w.type==='image'?lines.pattern(w.style).css:'solid', borderColor:lines.paintedBorder(w.style,w.type)?'transparent':gradients.strokeColor(w.style,w.type), borderWidth:w.vectorPath||w.type==='line'?0:w.style.borderWidths?.map(value=>`${value}px`).join(' ')??w.style.strokeWidth, borderRadius:w.vectorPath?0:w.type==='ellipse'?'50%':(lines.supportsCorners(w)&&w.style.cornerVisibility?lines.cssRadii(w.style):lines.supportsSides(w)&&w.style.borderVisibility?.some(v=>!v)?lines.rectangle(w.style,size.width,size.height).radii:w.style.cornerRadii)?.map(radius=>`${radius}px`).join(' ')??w.style.radius,
     color:w.style.color, fontSize:w.style.fontSize, fontFamily:w.style.fontFamily, fontWeight:w.style.fontWeight, fontStyle:w.style.fontStyle??'normal',
-    textAlign:w.style.textAlign, opacity:w.style.opacity, boxSizing:'border-box', boxShadow:shadows.css(w.style,shadows.mode(w.type,Boolean(w.vectorPath))).boxShadow, textShadow:'none', overflow:shapeText.supports(w)||w.vectorPath||w.type==='line'||['menu','tree','treeNode'].includes(w.type)?'visible':'hidden' };
+    textAlign:w.style.textAlign, opacity:w.style.opacity, boxSizing:'border-box', boxShadow:shadows.css(w.style,shadows.mode(w.type,Boolean(w.vectorPath))).boxShadow, textShadow:'none', overflow:shapeText.supports(w)||selectionTextLayout||w.vectorPath||w.type==='line'||['menu','tree','treeNode'].includes(w.type)?'visible':'hidden' };
 }
 /** A value-controlled select collapses duplicate option identities; synchronize exact indices instead. */
 function SelectControl({ widget, text, style, indices, onSelectOptions, onFocus, onBlur }: {
@@ -131,8 +137,17 @@ export function WidgetContent(props: Parameters<typeof WidgetContentBody>[0]): R
   return <>{!widget.vectorPath&&(gradients.supports(widget.type)||gradients.supportsStroke(widget.type))&&gradients.needsComputedColor(widget.style)&&<GradientContextPaint widget={widget}/>}<WidgetContentBody {...props}/></>;
 }
 
-function WidgetContentBody({widget,gradientBase,strokeGradientBase,gradientSession,textEditor,tableAuthoring,menuAuthoring,treeAuthoring,resolveChildDisplay,onLinkClick,onLinkPointer,linksDisabled,runtime,row,resolvedText,nativeTextSet=false,resolved=false,radioName,hintValue,initialValue,files,selectedIndices,onSelectOptions,onFiles,onHideHint,onTextCheck,onSubmit,onInput,onCheck,onFocus,onBlur}:{widget:Widget;gradientBase?:GradientFill;strokeGradientBase?:GradientFill;gradientSession?:unknown;textEditor?:ReactNode;tableAuthoring?:TableAuthoringProps;menuAuthoring?:MenuAuthoringProps;treeAuthoring?:TreeAuthoringProps;resolveChildDisplay?:(source:Widget)=>Widget;runtime?:RuntimeState;row?:Record<string,string>;resolvedText?:string;nativeTextSet?:boolean;resolved?:boolean;radioName?:string;hintValue?:string;initialValue?:string;files?:readonly File[];selectedIndices?:readonly number[];onSelectOptions?:(indices:number[],element:HTMLSelectElement)=>void;onFiles?:(files:readonly File[])=>void;onHideHint?:()=>boolean;onTextCheck?:(element:HTMLElement)=>void;onSubmit?:(element:HTMLElement)=>void;onInput?:(value:string,valid?:boolean)=>void;onCheck?:(checked:boolean,element:HTMLElement)=>void;onFocus?:(element:HTMLElement)=>void;onBlur?:(element:HTMLElement)=>void} & RichLinkHandlers) {
+function SelectionControl({source,current,inputProps,textStyle,children}:{source:Widget;current:Widget;inputProps:React.ComponentProps<'input'>;textStyle:CSSProperties;children:ReactNode}) {
+  const id=useId(),label=useRef<HTMLLabelElement>(null),text=useRef<HTMLSpanElement>(null),input=useRef<HTMLInputElement>(null);
+  useLayoutEffect(()=>{if(label.current&&text.current&&input.current)selectionDisplay.update(label.current,text.current,input.current,source,current)});
+  return <><label ref={label} htmlFor={id} className="selection-control-label" onClick={event=>event.stopPropagation()}>
+    <span ref={text} className="selection-text" style={textStyle}>{children}</span>
+  </label><input {...inputProps} ref={input} id={id}/></>;
+}
+
+function WidgetContentBody({widget,selectionLayoutSource,gradientBase,strokeGradientBase,gradientSession,textEditor,tableAuthoring,menuAuthoring,treeAuthoring,resolveChildDisplay,onLinkClick,onLinkPointer,linksDisabled,runtime,row,resolvedText,nativeTextSet=false,resolved=false,radioName,hintValue,initialValue,files,selectedIndices,onSelectOptions,onFiles,onHideHint,onTextCheck,onSubmit,onInput,onCheck,onFocus,onBlur}:{widget:Widget;selectionLayoutSource?:Widget;gradientBase?:GradientFill;strokeGradientBase?:GradientFill;gradientSession?:unknown;textEditor?:ReactNode;tableAuthoring?:TableAuthoringProps;menuAuthoring?:MenuAuthoringProps;treeAuthoring?:TreeAuthoringProps;resolveChildDisplay?:(source:Widget)=>Widget;runtime?:RuntimeState;row?:Record<string,string>;resolvedText?:string;nativeTextSet?:boolean;resolved?:boolean;radioName?:string;hintValue?:string;initialValue?:string;files?:readonly File[];selectedIndices?:readonly number[];onSelectOptions?:(indices:number[],element:HTMLSelectElement)=>void;onFiles?:(files:readonly File[])=>void;onHideHint?:()=>boolean;onTextCheck?:(element:HTMLElement)=>void;onSubmit?:(element:HTMLElement)=>void;onInput?:(value:string,valid?:boolean)=>void;onCheck?:(checked:boolean,element:HTMLElement)=>void;onFocus?:(element:HTMLElement)=>void;onBlur?:(element:HTMLElement)=>void} & RichLinkHandlers) {
   const renderId=useId(), shadowId = shadows.filterId(renderId), gradientId=gradients.id(renderId+'/fill'), strokeGradientId=gradients.id(renderId+'/stroke');
+  const checkActivation=useRef<{checked:boolean}|undefined>(undefined);
   const gradientPaint = useRef<{session:unknown;paint:ReturnType<typeof gradients.paintSession>;stroke:ReturnType<typeof gradients.paintSession>} | null>(null);
   if (!gradientPaint.current || gradientPaint.current.session!==gradientSession) gradientPaint.current={session:gradientSession,paint:gradients.paintSession(gradientBase),stroke:gradients.paintSession(strokeGradientBase)};
   const w = resolved ? widget : { ...widget, style: resolveSelectedStyle(widget) };
@@ -149,9 +164,12 @@ function WidgetContentBody({widget,gradientBase,strokeGradientBase,gradientSessi
   }
   if (row && !runtime && richText && richText.expressionMode !== 'literal') richText = mapRichTextMatches(richText, /\[\[Item\.([^\]]+)\]\]/g, match => row[match[1]] ?? '');
   const nativeTextStyle = shapeText.css(w);
-  const plainText = nativeTextStyle ? explicitTextBreaks(text) : text;
+  const selectionTextLayout = Boolean(w.selectionText && (w.type === 'checkbox' || w.type === 'radio')
+    && w.style.textPadding !== undefined && w.style.verticalAlign !== undefined);
+  const nativeTextLayout = Boolean(nativeTextStyle) || selectionTextLayout;
+  const plainText = nativeTextLayout ? explicitTextBreaks(text) : text;
   const displayedRichText = richText ?? (nativeTextSet ? { paragraphs: [{ runs: [{ text }] }] } : undefined);
-  const textContent=textEditor??(displayedRichText?<RichTextContent richText={displayedRichText} baseStyle={widget.style} nativeLayout={Boolean(nativeTextStyle)} plainSetter={nativeTextSet} onLinkClick={onLinkClick} onLinkPointer={onLinkPointer} linksDisabled={linksDisabled}/>:w.style.underline||w.style.strikethrough?<span style={{textDecorationLine:textDecorationLine(w.style)}}>{plainText}</span>:plainText);
+  const textContent=textEditor??(displayedRichText?<RichTextContent richText={displayedRichText} baseStyle={widget.style} nativeLayout={nativeTextLayout} plainSetter={nativeTextSet} onLinkClick={onLinkClick} onLinkPointer={onLinkPointer} linksDisabled={linksDisabled}/>:w.style.underline||w.style.strikethrough?<span style={{textDecorationLine:textDecorationLine(w.style)}}>{plainText}</span>:plainText);
   const focusEvents = {
     onFocus: onFocus ? (event: React.FocusEvent<HTMLElement>) => { event.stopPropagation(); onFocus(event.currentTarget); } : undefined,
     onBlur: onBlur ? (event: React.FocusEvent<HTMLElement>) => { event.stopPropagation(); onBlur(event.currentTarget); } : undefined,
@@ -224,9 +242,19 @@ function WidgetContentBody({widget,gradientBase,strokeGradientBase,gradientSessi
     };
     return w.type==='input'?<input key={file?'file':'value'} {...props} type={displayHint&&w.inputType==='password'?'text':w.inputType??'text'}/>:<textarea {...props}/>;
   }
-  if (w.type==='checkbox'||w.type==='radio') return <label className="check-widget"><input aria-label={w.name} type={w.type} name={runtime&&w.type==='radio'?radioName:undefined} checked={Boolean(w.checked)} disabled={w.disabled}
-    onClick={w.type==='radio'&&onCheck?e=>onCheck(e.currentTarget.checked,e.currentTarget):undefined}
-    onChange={e=>{if(onCheck){if(w.type==='checkbox')onCheck(e.target.checked,e.currentTarget)}else onInput?.(String(e.target.checked))}} {...focusEvents}/><span style={{textShadow:shadowCss.textShadow}}>{textContent}</span></label>;
+  if (w.type==='checkbox'||w.type==='radio') {
+    const inputProps:React.ComponentProps<'input'>={'aria-label':w.name,type:w.type,name:runtime&&w.type==='radio'?radioName:undefined,checked:Boolean(w.checked),disabled:w.disabled,
+      onClickCapture:w.type==='checkbox'?event=>{const activation={checked:event.currentTarget.checked};checkActivation.current=activation;setTimeout(()=>{if(checkActivation.current===activation)checkActivation.current=undefined},0)}:undefined,
+      onClick:w.type==='radio'&&onCheck?e=>onCheck(e.currentTarget.checked,e.currentTarget):undefined,
+      onChange:e=>{const checked=checkActivation.current?.checked??e.target.checked;checkActivation.current=undefined;if(onCheck){if(w.type==='checkbox')onCheck(checked,e.currentTarget)}else onInput?.(String(checked))},...focusEvents};
+    const selectionStyle:CSSProperties={textShadow:shadowCss.textShadow,...(selectionTextLayout?{
+      display:nativeTextSet&&text===''?'none':'block',lineHeight:w.style.lineHeight??'normal',
+      whiteSpace:w.selectionText!.autoFitWidth?'nowrap':'normal',overflowWrap:w.selectionText!.autoFitWidth?'normal':'break-word',
+    }: {})};
+    const source=selectionLayoutSource??widget;
+    if(selectionDisplay.supports(source))return <SelectionControl source={source} current={w} inputProps={inputProps} textStyle={selectionStyle}>{textContent}</SelectionControl>;
+    return <label className="check-widget"><input {...inputProps} style={selectionTextLayout?{flex:'none'}:undefined}/><span className={selectionTextLayout?'selection-text':undefined} style={selectionStyle}>{textContent}</span></label>;
+  }
   if (w.type==='select') return <SelectControl widget={w} text={text} style={paddingStyle} indices={selectedIndices} onSelectOptions={onSelectOptions} {...focusEvents}/>;
   if (w.type==='image') return w.imageSrc?<img src={w.imageSrc} alt={w.name} draggable={false}/>:<div className="image-empty"><ImageIcon size={32}/><span>Image</span></div>;
   if (w.type==='placeholder') return <div className="placeholder-cross"><span style={{textShadow:shadowCss.textShadow}}>{textContent}</span></div>;

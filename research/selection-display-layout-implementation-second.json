@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "stage": "selection-display-layout",
+  "revision": 2,
+  "createdAt": "2026-10-20T10:43:13.902Z",
+  "previous": [
+    {
+      "path": "research/selection-display-layout-implementation.json",
+      "sha256": "33b093a367338ec190781a948aa84c8b63851752ec2c1845a324f51e4f00917d",
+      "bytes": 4117
+    },
+    {
+      "path": "research/selection-display-layout-implementation.md",
+      "sha256": "49e4b553a8e2c2271e529d660fd3f0f8612794c9936331891eafd88ee237ca95",
+      "bytes": 5732
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/runtime/selection-text-layout.ts",
+      "sha256": "c14a31fd95ecd5d28c49e56944e81f69691f28329accccd5a013d6d934ac855e",
+      "bytes": 10734
+    },
+    {
+      "path": "tests/selection-text-layout.test.ts",
+      "sha256": "30e63ca25fd19cefa4332ec58f9f3a46a4e71718ea7ba6ada9d7dc5a52da4a53",
+      "bytes": 13717
+    }
+  ],
+  "snapshots": [
+    {
+      "path": ".build/selection-display-layout-second/src/runtime/selection-text-layout.ts",
+      "sha256": "c14a31fd95ecd5d28c49e56944e81f69691f28329accccd5a013d6d934ac855e",
+      "bytes": 10734
+    },
+    {
+      "path": ".build/selection-display-layout-second/tests/selection-text-layout.test.ts",
+      "sha256": "30e63ca25fd19cefa4332ec58f9f3a46a4e71718ea7ba6ada9d7dc5a52da4a53",
+      "bytes": 13717
+    }
+  ],
+  "results": [
+    {
+      "phase": "width-limit-red",
+      "total": 56,
+      "passed": 54,
+      "failed": 2,
+      "files": [
+        {
+          "path": ".build/selection-display-layout-width-limit-red.json",
+          "sha256": "3f0b4053a4fb37780490f6ba19e0fd9688a5149d521182bb34c6f2e72c965760",
+          "bytes": 22297
+        },
+        {
+          "path": ".build/selection-display-layout-width-limit-red.log",
+          "sha256": "cb5210534f806a0419f9a889ee11e6aeec45a7994d0605d732dd51ab204f8150",
+          "bytes": 438
+        }
+      ]
+    },
+    {
+      "phase": "second",
+      "total": 56,
+      "passed": 56,
+      "failed": 0,
+      "files": [
+        {
+          "path": ".build/selection-display-layout-second.json",
+          "sha256": "bff629477f02e8d89d78fbf7c7dd9546cf2cb65783df91a0ed17d5aed793e985",
+          "bytes": 20466
+        },
+        {
+          "path": ".build/selection-display-layout-second.log",
+          "sha256": "e722f73802f66e406d6daec45e7b27c7ebb9285ac7ff7fc7b7e3c8e6d71e5ca3",
+          "bytes": 429
+        }
+      ]
+    }
+  ],
+  "typecheck": {
+    "first": {
+      "exitCode": 0,
+      "file": {
+        "path": ".build/selection-display-layout-typecheck-first.log",
+        "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217",
+        "bytes": 60
+      }
+    },
+    "second": {
+      "exitCode": 1,
+      "file": {
+        "path": ".build/selection-display-layout-typecheck-second.log",
+        "sha256": "66535fc7cb820854e49675b0dec939f05c317a5a2a60386701c8bea007b08fd3",
+        "bytes": 332
+      },
+      "unrelatedErrors": [
+        "tests/e2e/selection-display.spec.ts:23 EventType loaded",
+        "tests/selection-display-source.test.ts:130 lineHeight string"
+      ]
+    }
+  },
+  "readme": {
+    "path": "research/selection-display-layout-implementation-second.md",
+    "sha256": "afa6acab532d403faf72212288bfd02135aa4b40fb0c9e359360978460e27db9",
+    "bytes": 1747
+  },
+  "boundary": "AFWidth measured content >10000px rejects; DOM finally cleanup and owner immutability",
+  "hostIntegrationIncluded": false,
+  "browserExecuted": false,
+  "originalGuiCompared": false
+}

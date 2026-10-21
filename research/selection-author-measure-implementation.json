@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "stage": "selection-author-measure",
+  "createdAt": "2026-10-20T11:12:57.646Z",
+  "files": [
+    {
+      "path": "src/runtime/selection-author-measure.ts",
+      "sha256": "7df2ddf8f060b6f60c9b9185cc0e80f488f3230420e75b93d57ea208ff5e5bba",
+      "bytes": 7580
+    },
+    {
+      "path": "tests/selection-author-measure.test.ts",
+      "sha256": "ab68b2771e917c981c02f0eeaf4d130e8c2aabcb471577bbef3ebab3829e1119",
+      "bytes": 14659
+    }
+  ],
+  "snapshots": [
+    {
+      "path": ".build/selection-author-measure-final/src/runtime/selection-author-measure.ts",
+      "sha256": "7df2ddf8f060b6f60c9b9185cc0e80f488f3230420e75b93d57ea208ff5e5bba",
+      "bytes": 7580
+    },
+    {
+      "path": ".build/selection-author-measure-final/tests/selection-author-measure.test.ts",
+      "sha256": "ab68b2771e917c981c02f0eeaf4d130e8c2aabcb471577bbef3ebab3829e1119",
+      "bytes": 14659
+    }
+  ],
+  "results": [
+    {
+      "phase": "red",
+      "total": 20,
+      "passed": 0,
+      "failed": 20,
+      "files": [
+        {
+          "path": ".build/selection-author-measure-red.json",
+          "sha256": "85fa7265e36c4d3fbd6987d8d3dce8622f66760f42cab0d906cf285d184f8654",
+          "bytes": 26759
+        },
+        {
+          "path": ".build/selection-author-measure-red.log",
+          "sha256": "1342dc0b54e43aa520e5bd10cd748b3dcc72d5da4b6efb55bfc74cb842564acc",
+          "bytes": 426
+        }
+      ]
+    },
+    {
+      "phase": "first",
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "files": [
+        {
+          "path": ".build/selection-author-measure-first.json",
+          "sha256": "a441008d72b3e1f6ad57681cd9a9009defd655e054737bb71183cd2c4519a83d",
+          "bytes": 8924
+        },
+        {
+          "path": ".build/selection-author-measure-first.log",
+          "sha256": "a45f2a80e1f187984ca7de8051c8254f90924d4392be8972c7c951ad82c4cab2",
+          "bytes": 428
+        }
+      ]
+    }
+  ],
+  "typecheck": {
+    "exitCode": 0,
+    "file": {
+      "path": ".build/selection-author-measure-typecheck-first.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217",
+      "bytes": 60
+    }
+  },
+  "redScaffold": {
+    "path": ".build/selection-author-measure-red-source.ts.txt",
+    "sha256": "b4389c0ffa3d975a6f41ba03966c594286f345122b3d14a9265f281af24dedef",
+    "bytes": 896
+  },
+  "dependencies": [
+    {
+      "path": "src/model/selection-layout.ts",
+      "sha256": "fe18d99c7b85f17435fe668a3cb720183f82d34b113cefe790e32fa086605c94",
+      "bytes": 17970
+    },
+    {
+      "path": "src/model/shape-text.ts",
+      "sha256": "97e80768ff72e48f3e2cfc03199672149c5c2462b082c58d2891e0397d275e90",
+      "bytes": 2531
+    },
+    {
+      "path": "src/runtime/selection-text-layout.ts",
+      "sha256": "c14a31fd95ecd5d28c49e56944e81f69691f28329accccd5a013d6d934ac855e",
+      "bytes": 10734
+    },
+    {
+      "path": "research/selection-layout-integration-review.md",
+      "sha256": "3e06ce1b91fcf519aa37c6f1a78a39ea720991b9a9e50a743254fcf79f3e24d8",
+      "bytes": 19139
+    },
+    {
+      "path": "research/selection-layout-transaction-evidence.md",
+      "sha256": "9f16651b6248fa84206de91dff4690aca0d20aeafd6ed70254a89f9808656b5f",
+      "bytes": 11349
+    }
+  ],
+  "readme": {
+    "path": "research/selection-author-measure-implementation.md",
+    "sha256": "34b33520ba1b320492032a418717b4b3236c41972c92e824eca69159b09ea584",
+    "bytes": 5286
+  },
+  "contract": {
+    "origin": "browser-derived",
+    "returnsRawMeasurements": true,
+    "commitsDocument": false,
+    "derivesRequestWidthFromSavedOwner": false
+  },
+  "browserExecuted": false,
+  "nativeDllExecuted": false,
+  "originalGuiCompared": false,
+  "limits": [
+    "Browser font substitute",
+    "Host owns stale command, revision, undo and commit policy",
+    "No minimum-size, graphics-unit conversion or union implementation",
+    "Width-fit content above 10000px rejects"
+  ]
+}

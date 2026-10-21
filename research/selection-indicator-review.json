@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "stage": "selection-indicator-review",
+  "createdAt": "2026-10-20T10:53:28.140Z",
+  "originalDllExecuted": false,
+  "originalAxureGuiCompared": false,
+  "browserRasterizationChecked": false,
+  "summary": {
+    "passed": 261,
+    "failed": 0,
+    "unresolvedConfirmedProductDefects": 0
+  },
+  "test": {
+    "command": "npx vitest run tests/selection-indicator.test.ts --maxWorkers=1 --reporter=json --outputFile=.build/selection-indicator-review-first.json",
+    "module": 130,
+    "serialized": 130,
+    "oracleIntegrity": 1,
+    "perFactory": {
+      "borderRecords": 45,
+      "glyphRecords": 56,
+      "domainNegatives": 21,
+      "opaqueSpellings": 6,
+      "stateAndIdentity": 2
+    },
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "exitCode": 0
+    },
+    "firstRun": "green; radio four-cubic update had already landed before this test execution"
+  },
+  "oracle": {
+    "border": {
+      "total": 45,
+      "shape0Paths": 15,
+      "shape15InsetRecords": 15,
+      "shape15CubicPaths": 15
+    },
+    "glyph": {
+      "total": 56,
+      "positive": 48,
+      "zeroProductRejected": 8
+    },
+    "comparison": "Parse actual SVG attributes into line/cubic segments; compare points with absolute decimal tolerance1e-10 to retained source outputs. Dot bounds from glyph records, template from independent border CIL records."
+  },
+  "resolvedFindings": [
+    {
+      "id": "SIR-01",
+      "kind": "static-source-review",
+      "description": "Initial host guarded source only, permitting unsupported live gradient/shadow paint into bounded indicator.",
+      "fix": "Host checks supports(source) and indicator.supports(current), deletes entry before fallback.",
+      "source": {
+        "file": "src/runtime/selection-display.ts",
+        "path": "src/runtime/selection-display.ts",
+        "sha256": "e83ab17cad8b56775debfb59545c6d76470bc87ecd2f039e34dfd137342d9a8b",
+        "bytes": 6215,
+        "snapshot": ".build/selection-indicator-review-snapshot/src/runtime/selection-display.ts"
+      },
+      "beforeBrowserOrRedTest": false,
+      "after": "Read-only source confirmation; indicator tests do not claim host E2E coverage."
+    }
+  ],
+  "boundaries": [
+    "Ordinary rotation0, opaque solid fills/strokes, uniform radius0, full uniform borders, b>stroke>=0",
+    "Product b-by-b overflow-visible viewport is not a proven native crop box",
+    "Original graphics/font engine and GUI not executed",
+    "No raster/cap/join/theme pixel equivalence",
+    "Initial radio dot fill-only; later runtime SVG generic stroke mutation remains separately scoped",
+    "Complex current paint fallback still requires host/browser integration checks"
+  ],
+  "sources": [
+    {
+      "file": "src/model/selection-indicator.ts",
+      "path": "src/model/selection-indicator.ts",
+      "sha256": "3f4e2cd66dedb79a0d94f21b987b6b73aa597ea1cde8f63c8669eec4a5ca2fc4",
+      "bytes": 4600,
+      "snapshot": ".build/selection-indicator-review-snapshot/src/model/selection-indicator.ts"
+    },
+    {
+      "file": "src/runtime/selection-display.ts",
+      "path": "src/runtime/selection-display.ts",
+      "sha256": "e83ab17cad8b56775debfb59545c6d76470bc87ecd2f039e34dfd137342d9a8b",
+      "bytes": 6215,
+      "snapshot": ".build/selection-indicator-review-snapshot/src/runtime/selection-display.ts"
+    },
+    {
+      "file": "tests/selection-indicator.test.ts",
+      "path": "tests/selection-indicator.test.ts",
+      "sha256": "0917c300345884ebe3f35ff5ae8e4130b182bf2a847f956512609790e5017d8c",
+      "bytes": 14903,
+      "snapshot": ".build/selection-indicator-review-snapshot/tests/selection-indicator.test.ts"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "research/selection-layout-border-geometry-probes.json",
+      "path": "research/selection-layout-border-geometry-probes.json",
+      "sha256": "73c51956fdf08edc054c39139aba8da17eb7130d8afa945ed62dfb58a94444c6",
+      "bytes": 140404
+    },
+    {
+      "file": "research/selection-layout-indicator-glyph-probes.json",
+      "path": "research/selection-layout-indicator-glyph-probes.json",
+      "sha256": "3abef9322455e3d0e32c6e40cddac26fe908cd92d788974325fb083c91b541a8",
+      "bytes": 48594
+    },
+    {
+      "file": "research/selection-layout-indicator-evidence.md",
+      "path": "research/selection-layout-indicator-evidence.md",
+      "sha256": "7407c4f39e17d1fb0c4c87524f7ef562d35151eb4971cc26ee9e9fc2be595861",
+      "bytes": 11142
+    },
+    {
+      "file": "research/selection-layout-border-ellipse-container-cil.json",
+      "path": "research/selection-layout-border-ellipse-container-cil.json",
+      "sha256": "6ec06fbe18d2467fc2d670359030c2ea60c0ce3f9bd7f0c2a349ef0c5f9f78a7",
+      "bytes": 40891
+    },
+    {
+      "file": "research/line-style-svg-writer-cil.json",
+      "path": "research/line-style-svg-writer-cil.json",
+      "sha256": "adea6d808efd1ebca149ca3de029527ee7a0b0b99eaf6393d1f7d0bb85ae77fc",
+      "bytes": 1084461
+    },
+    {
+      "file": ".build/selection-indicator-review-first.json",
+      "path": ".build/selection-indicator-review-first.json",
+      "sha256": "eafd3bf1d8c24739d75dbf0899fbeecc5c1c03c8a9d9aad7d779516ddf942d6f",
+      "bytes": 91232
+    },
+    {
+      "file": "research/selection-indicator-review.md",
+      "path": "research/selection-indicator-review.md",
+      "sha256": "7e2340e8bf07f07bc1e1e8b7c17230b49f6fee8d67de0bd295f9b5d40d485f43",
+      "bytes": 4903
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-10-20T11:22:36.248Z",
+  "scope": "Read-only corrected App source review plus parent-executed browser report inspection",
+  "previousReview": {
+    "file": "research/selection-author-host-review-first.json",
+    "sha256": "05f54102f5fe6ee2f2011c4c1fd23647aaf4daf6b4c79fa74d6007a09c7f14e3"
+  },
+  "sources": [
+    {
+      "file": "src/App.tsx",
+      "sha256": "d134417c4204b0ff7d6a5afdd5258c8ba18b424c8b3aec30e5fd0d341b1443b3",
+      "snapshot": ".build/selection-author-host-review-after-rich-projection.ts.txt"
+    },
+    {
+      "file": "tests/e2e/selection-author-stale.spec.ts",
+      "sha256": "28ebc0eb10fe52f6692a3f8d38d51aeb39ca26e2ffc2d88a73bdfccb71060c09"
+    }
+  ],
+  "evidence": [
+    {
+      "file": ".build/selection-author-second.json",
+      "sha256": "3a8d563dc3c694aa5e1ea6a2785d74531bef14d38aa018e3041313e69c295e6f"
+    },
+    {
+      "file": ".build/selection-author-host-review-after-rich-projection.ts.txt",
+      "sha256": "d134417c4204b0ff7d6a5afdd5258c8ba18b424c8b3aec30e5fd0d341b1443b3"
+    },
+    {
+      "file": ".build/selection-author-host-review-before-rich-projection.ts.txt",
+      "sha256": "cda9715ff7c9a6a4f93cfec5407bc56fcf6e266284c9ef55fb47c57e7010827f"
+    },
+    {
+      "file": "research/selection-author-host-review-correction.md",
+      "sha256": "702a3f7db9736dd49aed4607eb59f87c227cb2561965afd0d293465d627d2b86"
+    }
+  ],
+  "parentBrowserBeforeRichFix": {
+    "file": ".build/selection-author-second.json",
+    "stats": {
+      "startTime": "2026-10-20T11:20:29.481Z",
+      "duration": 27162.102,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "file": "selection-author-stale.spec.ts",
+        "title": "font-delayed author command stays cancelled after a view round trip and reselect",
+        "ok": true,
+        "tests": [
+          {
+            "status": "expected",
+            "attempts": [
+              {
+                "status": "passed",
+                "errors": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "selection-author-stale.spec.ts",
+        "title": "Undo cancels font-delayed author work with either populated or empty history",
+        "ok": true,
+        "tests": [
+          {
+            "status": "expected",
+            "attempts": [
+              {
+                "status": "passed",
+                "errors": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "selection-author-stale.spec.ts",
+        "title": "a later ordinary property patch cancels waiting layout and owns the only undo entry",
+        "ok": true,
+        "tests": [
+          {
+            "status": "expected",
+            "attempts": [
+              {
+                "status": "passed",
+                "errors": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "selection-author-stale.spec.ts",
+        "title": "the newest font-delayed size command commits once and preserves other declarations",
+        "ok": true,
+        "tests": [
+          {
+            "status": "expected",
+            "attempts": [
+              {
+                "status": "passed",
+                "errors": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "selection-author-stale.spec.ts",
+        "title": "adaptive font declarations project into measurement runs without changing saved rich text",
+        "ok": false,
+        "tests": [
+          {
+            "status": "unexpected",
+            "attempts": [
+              {
+                "status": "failed",
+                "errors": [
+                  "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m180\u001b[39m\nReceived:   \u001b[31m118\u001b[39m\n\n  218 |   await expect(page.locator('.statusbar')).toContainText('Selection layout updated');\n  219 |   const saved = await save(page, info, 'adaptive-font-measured'), overrides = saved.pages[0].adaptiveViews[0].overrides;\n> 220 |   expect(overrides[first.id].width).toBeGreaterThan(180);\n      |                                     ^\n  221 |   expect(overrides[first.id].width).toEqual(overrides[second.id].width);\n  222 |   expect(overrides[first.id].style).toEqual({ fontSize: 32 });\n  223 |   expect(overrides[second.id].style).toEqual({ fontSize: 32 });\n    at D:\\WSCodex\\REA\\tests\\e2e\\selection-author-stale.spec.ts:220:37"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "selection-author-stale.spec.ts",
+        "title": "second-target measurement failure discards the first plan and retry commits both in one undo",
+        "ok": true,
+        "tests": [
+          {
+            "status": "expected",
+            "attempts": [
+              {
+                "status": "passed",
+                "errors": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "selection-author.spec.ts",
+        "title": "selection text fit is one undoable command, persists through reopen, and indicator side is independent",
+        "ok": true,
+        "tests": [
+          {
+            "status": "expected",
+            "attempts": [
+              {
+                "status": "passed",
+                "errors": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "selection-author.spec.ts",
+        "title": "all-view Size and internal current-view correction preserve their ordered scopes",
+        "ok": true,
+        "tests": [
+          {
+            "status": "expected",
+            "attempts": [
+              {
+                "status": "passed",
+                "errors": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "selection-author.spec.ts",
+        "title": "current-view fit changes shared flags without overwriting sibling geometry",
+        "ok": true,
+        "tests": [
+          {
+            "status": "expected",
+            "attempts": [
+              {
+                "status": "passed",
+                "errors": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "correctedFindings": [
+    {
+      "id": "SELECTION-AUTHOR-HOST-01",
+      "status": "corrected-and-browser-regression-passed",
+      "note": "The source and passing round-trip test cover intervening context cancellation"
+    },
+    {
+      "id": "SELECTION-AUTHOR-HOST-02",
+      "status": "corrected-source-reviewed-post-fix-browser-pending",
+      "note": "Only explicit adaptive text declarations enter a temporary measurement richText"
+    }
+  ],
+  "blockingFindings": [],
+  "pendingValidation": [
+    "Parent post-fix adaptive rich-font browser regression and final production suite"
+  ],
+  "limits": [
+    "No original DLL/GUI execution",
+    "Browser measurements are product substitutes",
+    "Reviewer did not modify production files or run browser/full suite/build"
+  ]
+}

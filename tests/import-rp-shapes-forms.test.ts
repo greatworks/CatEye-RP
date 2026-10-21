@@ -58,8 +58,9 @@ describe('strict RP ellipse and textarea conversion from actual sample recovery'
     const source = structuredClone(samples.get(name));
     // Isolate the earlier shape/form boundary. Native lists now have their own
     // end-to-end import contract in import-rp-dropdown.test.ts.
-    // Later select/table/menu/tree/inlineFrame recovery has independent end-to-end native audits.
-    for (const page of source.diagrams) for (const widget of page.widgets) if (['select','table','menu','tree','inlineFrame'].includes(widget.typeCandidate?.type)) widget.typeCandidate = null;
+    // Later select/table/menu/tree/inlineFrame and exact Checkbox recovery have
+    // independent native import audits; keep this historical shape delta fixed.
+    for (const page of source.diagrams) for (const widget of page.widgets) if (['select','table','menu','tree','inlineFrame','checkbox'].includes(widget.typeCandidate?.type)) widget.typeCandidate = null;
     const before = JSON.stringify(source), legacyProtocol = structuredClone(source);
     // Reconstruct the previous acceptance boundary, not a substitute successful fixture.
     for (const page of legacyProtocol.diagrams) for (const widget of page.widgets) {

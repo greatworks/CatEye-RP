@@ -31,6 +31,12 @@ import { LayerOutlineEntries } from './components/LayerEditor';
 import { translateWidget, widgetOwnershipPath } from './model/widget-structure';
 import { fitLayerTree, layerAuthoringBounds, moveLayer } from './model/layer-geometry';
 import { planAuthorLayerResize } from './model/author-layer-resize';
+import { planSelectionAuthorCommand, type SelectionAuthorCommand } from './model/selection-author-command';
+import { applySelectionAuthorEffects } from './model/selection-author-edits';
+import { selectionAuthorGeometry } from './model/selection-author-geometry';
+import { createShapeTextRenderer } from './model/shape-text';
+import { createSelectionTextLayout } from './runtime/selection-text-layout';
+import { createSelectionAuthorMeasurer } from './runtime/selection-author-measure';
 import { PageTabs } from './components/PageTabs';
 import { RichTextEditor } from './components/RichTextEditor';
 import { FrameTargetEditor } from './components/FrameTargetEditor';
@@ -55,6 +61,8 @@ type LayerResizeContext={pageId:string;viewId:string|null;scopeId:string|null;st
 type Drag={kind:'move'|'resize'|'marquee';startX:number;startY:number;original:Widget[];ids:string[];handle?:string;initialSelection?:string[];document?:Document;wasSaved?:boolean;layerResize?:LayerResizeContext};
 const LAYER_RESIZE_HANDLES={w:1,n:2,nw:3,e:4,ne:6,s:8,sw:9,se:12} as const;
 const RESIZE_PIN_FIELDS=['pinHorizontal','pinVertical','fixedWidth','fixedHeight'] as const;
+const selectionAuthorShapeText=createShapeTextRenderer();
+const selectionAuthorMeasurer=createSelectionAuthorMeasurer(selectionAuthorShapeText,createSelectionTextLayout(selectionAuthorShapeText));
 export default function App(){
   const {prompt}=useDialogs();
   const [doc,setDoc]=useState<Document>(initialDocument);const [pageId,setPageId]=useState(doc.pages[0].id);
@@ -124,6 +132,14 @@ export default function App(){
   const localTreeSelection=Boolean(selectedTreeNode);
   const treeCurrent=selectedTreeNode?(treeSelection?.part==='label'?selectedTreeNode.treeNode!.label:selectedTreeNode):undefined;
   const current=treeCurrent??menuCurrent??selectedTable?.table?.cells.find(cell=>cell.id===(tableSelection?.focusCellId??tableSelection?.cellIds[0]))??rootCurrent;
+  const selectionCommandSerial=useRef(0);
+  const selectionCommandContext=useRef('');
+  const nextSelectionCommandContext=JSON.stringify([doc.id,page.id,viewId,panel?.id,activeState?.id,zoom,selected,preview,gallery,tool,editing,richEditing,placementAllViews,effectPreview?.field]);
+  // Switching away and back is still cancellation, even when the final
+  // selection/view key equals the one captured before fonts started loading.
+  if(selectionCommandContext.current!==nextSelectionCommandContext){
+    ++selectionCommandSerial.current;selectionCommandContext.current=nextSelectionCommandContext;
+  }
   const activeTable=selectedTable??(rootCurrent?.type==='table'?rootCurrent:undefined);
   useEffect(()=>{setTreeSelection(null);setRevealedTreeIds([]);setMenuSelection(null);setExpandedMenuIds([]);setTableSelection(null);tableSelectionDrag.current=null},[page.id,panel?.id,activeState?.id,viewId,preview,gallery,doc.id,tool]);
   useEffect(()=>{if(!tableSelection)return;if(!selectedTable){setTableSelection(null);return}const ids=tableSelection.cellIds.filter(id=>selectedTable.table!.cells.some(cell=>cell.id===id));if(ids.length!==tableSelection.cellIds.length)setTableSelection(ids.length?{...tableSelection,cellIds:ids,anchorCellId:ids.includes(tableSelection.anchorCellId??'')?tableSelection.anchorCellId:ids[0],focusCellId:ids.includes(tableSelection.focusCellId??'')?tableSelection.focusCellId:ids[0]}:null)},[selectedTable,tableSelection]);
@@ -382,8 +398,61 @@ export default function App(){
       return JSON.stringify(result)===JSON.stringify(source)?source:result;
     }catch(error){setNotice(`Group resize unavailable: ${error instanceof Error?error.message:String(error)}`);return;}
   }
+  async function editSelectionLayout(command:SelectionAuthorCommand){
+    const serial=++selectionCommandSerial.current,source=docRef.current,context=selectionCommandContext.current;
+    const stillCurrent=()=>serial===selectionCommandSerial.current&&docRef.current===source&&selectionCommandContext.current===context&&!drag.current&&!tableResize.current;
+    try{
+      const targets=widgets.filter(widget=>selected.includes(widget.id));
+      if(!targets.length||targets.length!==selected.length||targets.some(widget=>!widget.selectionText||!['checkbox','radio'].includes(widget.type)))
+        throw Error('Edit selection control layout separately from other widget types');
+      const sessions=targets.map(widget=>{
+        const ancestors=(widgetOwnershipPath(pageWidgets,widget.id)??[]).slice(0,-1);
+        if(ancestors.some(owner=>!owner.layer||owner.rotation!==0))
+          throw Error('Selection text fitting inside containers is not available yet');
+        if(widget.rotation!==0)throw Error('Text fitting for rotated selection controls is not available');
+        if((widget.selected??widget.checked)&&widget.selectedStyle&&['fontFamily','fontSize','fontWeight','fontStyle','lineHeight'].some(key=>Object.hasOwn(widget.selectedStyle!,key)))
+          throw Error('Selection text fitting with selected-state fonts is not available yet');
+        // The effective declaration has its view style on the owner, while
+        // stored rich runs remain shared. Project only the explicit view text
+        // patch into this measurement snapshot; never persist that projection.
+        const textPatch=projectTextStyleOverride(resolveAdaptiveOverride(page,viewId,widget.id)?.style??{});
+        const measuredSource=widget.richText?{...widget,richText:applyRichTextStyle(widget.richText,textPatch)}:widget;
+        const session=selectionAuthorMeasurer.prepare(measuredSource,document);
+        if(!session)throw Error('Selection text layout requires explicit padding, alignment and indicator size');
+        return session;
+      });
+      await Promise.all(sessions.map(session=>session.fontsReady()));
+      if(!stillCurrent())return;
+      // Plan every target before touching the page. One measurement failure
+      // must not persist an earlier target or create an undo entry.
+      const plans=sessions.map(session=>{
+        const snapshot=session.sourceSnapshot(),panel=session.capturePanel();
+        if(!panel)throw Error('Selection text measurement is unavailable');
+        const result=planSelectionAuthorCommand(snapshot,panel.panel,command,{
+          ...selectionAuthorGeometry,measureText:session.measureText,
+        });
+        if(!result.ok)throw Error(result.reason);
+        return {id:snapshot.id,result};
+      });
+      let next=resolveAdaptivePage(source,source.pages.find(item=>item.id===page.id)!);
+      for(const plan of plans)next=applySelectionAuthorEffects(next,viewId,plan.id,plan.result);
+      const result=commitAdaptivePage(source,next);
+      if(!stillCurrent())return;
+      if(JSON.stringify(result)!==JSON.stringify(source))commit(result);
+      setNotice('Selection layout updated');
+    }catch(error){if(stillCurrent())setNotice(`Selection layout unavailable: ${error instanceof Error?error.message:String(error)}`)}
+  }
   function patchSelected(patch:Partial<Widget>,explicitTextStyle?:Partial<WidgetStyle>,styleIntent?:WidgetStyleEditIntent){
+    ++selectionCommandSerial.current;
     const sizeEdit=Object.hasOwn(patch,'width')||Object.hasOwn(patch,'height');
+    if(patch.selectionText&&current?.selectionText){
+      const keys=(['autoFitWidth','autoFitHeight','alignRight'] as const).filter(key=>patch.selectionText![key]!==current.selectionText![key]);
+      if(keys.length===1){const key=keys[0];void editSelectionLayout(key==='alignRight'?{kind:'alignRight',value:patch.selectionText[key]}:{kind:'fit',axis:key==='autoFitWidth'?'width':'height',value:patch.selectionText[key]});}
+      return;
+    }
+    if(sizeEdit&&widgets.some(widget=>selected.includes(widget.id)&&widget.selectionText)){
+      void editSelectionLayout({kind:'size',width:patch.width,height:patch.height,allViews:placementAllViews});return;
+    }
     if(sizeEdit&&widgets.some(widget=>selected.includes(widget.id)&&widget.layer)){
       const handle=Object.hasOwn(patch,'width')?(Object.hasOwn(patch,'height')?'se':'e'):'s';
       const result=planLayerResizeDocument(docRef.current,widgets,selected,handle,widget=>({x:patch.width===undefined?0:patch.width-widget.width,y:patch.height===undefined?0:patch.height-widget.height}),layerResizeContext());
@@ -456,8 +525,8 @@ export default function App(){
       return next;
     }),true,explicitTextStyle);
   }
-  function undo(){if(drag.current||tableResize.current){pointerCancel();return}if(!past.length)return;resetVectorTools();const previous=past[past.length-1];setFuture(f=>[docRef.current,...f]);setPast(p=>p.slice(0,-1));setDoc(previous);setSelected([]);setSaved(false)}
-  function redo(){if(drag.current||tableResize.current){pointerCancel();return}if(!future.length)return;resetVectorTools();setPast(p=>[...p,docRef.current]);setDoc(future[0]);setFuture(f=>f.slice(1));setSelected([]);setSaved(false)}
+  function undo(){++selectionCommandSerial.current;if(drag.current||tableResize.current){pointerCancel();return}if(!past.length)return;resetVectorTools();const previous=past[past.length-1];setFuture(f=>[docRef.current,...f]);setPast(p=>p.slice(0,-1));setDoc(previous);setSelected([]);setSaved(false)}
+  function redo(){++selectionCommandSerial.current;if(drag.current||tableResize.current){pointerCancel();return}if(!future.length)return;resetVectorTools();setPast(p=>[...p,docRef.current]);setDoc(future[0]);setFuture(f=>f.slice(1));setSelected([]);setSaved(false)}
   function switchPage(id:string){resetVectorTools();setEditing(null);setPageId(id);setPageNodeId(id);setOpenPageIds(ids=>ids.includes(id)?ids:[...ids,id]);setPanelPath(null);setAdaptiveViewId(null);setSelected([]);setGallery(false)}
   function changePageTree(next:Document){if(next===docRef.current)return;resetVectorTools();commit(next);if(!next.pages.some(p=>p.id===page.id))switchPage(next.pages[0].id)}
   function showGallery(){resetVectorTools();setSelected([]);setEditing(null);setPanelPath(null);setGallery(true)}
@@ -503,7 +572,7 @@ export default function App(){
   async function makeComponent(){const list=widgets.filter(w=>selected.includes(w.id));if(!list.length)return;const name=await prompt('Component name','Component 1');if(!name)return;try{commit({...doc,components:[...doc.components,createComponent(list,name)]});setLibraryTab('Components');setNotice('Component created. Click its name to insert a linked copy.')}catch(e){setNotice(String(e))}}
   function publishComponent(){if(!linkedInstance)return;try{commit(applyComponentInstanceChanges(doc,linkedInstance.id));setNotice('Component changes applied to all linked copies')}catch(e){setNotice(String(e))}}
   function detachComponent(){if(!linkedInstance)return;const next=detachComponentInstance(linkedInstance);commit({...doc,pages:doc.pages.map(p=>p.id===page.id?{...p,widgets:updateWidgetTree(p.widgets,linkedInstance.id,()=>({...next,componentId:undefined,componentInstance:undefined}))}:p)});setNotice('Component detached; this copy is now a regular panel')}
-  function startDrag(e:ReactPointerEvent,w:Widget,handle?:string){if(e.button!==0||w.placed===false||!scopePlaced)return;setTreeSelection(null);setMenuSelection(null);setTableSelection(null);e.stopPropagation();if(editing===w.id)return;if(pointEditing){setPointEditingId(null);setVectorDraft(null)}const groupIds=w.groupId?canvasWidgets.filter(a=>a.groupId===w.groupId).map(a=>a.id):[w.id];const ids=(e.shiftKey?[...new Set([...selected,...groupIds])]:selected.includes(w.id)?selected:groupIds).filter(id=>canvasWidgets.some(w=>w.id===id));const layerResize=Boolean(handle&&widgets.some(widget=>ids.includes(widget.id)&&widget.layer));if(layerResize&&ids.some(id=>!widgets.find(widget=>widget.id===id)?.layer)){setNotice('Resize groups separately from ordinary widgets. No widgets were changed.');return;}setSelected(ids);if(w.locked)return;drag.current={kind:handle?'resize':'move',startX:e.clientX,startY:e.clientY,original:structuredClone(widgets),ids,handle,document:docRef.current,wasSaved:saved,...(layerResize?{layerResize:layerResizeContext()}:{})};e.currentTarget.setPointerCapture(e.pointerId)}
+  function startDrag(e:ReactPointerEvent,w:Widget,handle?:string){++selectionCommandSerial.current;if(e.button!==0||w.placed===false||!scopePlaced)return;setTreeSelection(null);setMenuSelection(null);setTableSelection(null);e.stopPropagation();if(editing===w.id)return;if(pointEditing){setPointEditingId(null);setVectorDraft(null)}const groupIds=w.groupId?canvasWidgets.filter(a=>a.groupId===w.groupId).map(a=>a.id):[w.id];const ids=(e.shiftKey?[...new Set([...selected,...groupIds])]:selected.includes(w.id)?selected:groupIds).filter(id=>canvasWidgets.some(w=>w.id===id));const layerResize=Boolean(handle&&widgets.some(widget=>ids.includes(widget.id)&&widget.layer));if(layerResize&&ids.some(id=>!widgets.find(widget=>widget.id===id)?.layer)){setNotice('Resize groups separately from ordinary widgets. No widgets were changed.');return;}setSelected(ids);if(w.locked)return;drag.current={kind:handle?'resize':'move',startX:e.clientX,startY:e.clientY,original:structuredClone(widgets),ids,handle,document:docRef.current,wasSaved:saved,...(layerResize?{layerResize:layerResizeContext()}:{})};e.currentTarget.setPointerCapture(e.pointerId)}
   function point(e:ReactPointerEvent){const rect=surface.current!.getBoundingClientRect();return{x:(e.clientX-rect.left)/zoom,y:(e.clientY-rect.top)/zoom}}
   function canvasDown(e:ReactPointerEvent){if(e.button!==0)return;setTreeSelection(null);setRevealedTreeIds([]);setTableSelection(null);if(tool==='hand'||tool==='pen')return;const p=point(e);if(tool!=='select'){addWidget(tool,p.x,p.y);return}setPointEditingId(null);if(!e.shiftKey)setSelected([]);drag.current={kind:'marquee',startX:p.x,startY:p.y,original:widgets,ids:[],initialSelection:e.shiftKey?selected.filter(id=>canvasWidgets.some(w=>w.id===id)):[]};setMarquee({x:p.x,y:p.y,width:0,height:0});e.currentTarget.setPointerCapture(e.pointerId)}
   function pointerMove(e:ReactPointerEvent){const gridDrag=tableSelectionDrag.current;if(gridDrag){const table=widgets.find(w=>w.id===gridDrag.tableId),id=document.elementFromPoint(e.clientX,e.clientY)?.closest<HTMLElement>('[data-table-cell-id]')?.dataset.tableCellId;if(table&&id&&table.table!.cells.some(cell=>cell.id===id))setTableSelection({tableId:table.id,anchorCellId:gridDrag.anchor,focusCellId:id,cellIds:[...new Set([...gridDrag.initial,...tableRectangleIds(table,gridDrag.anchor,id)])]});return}const d=drag.current;if(!d)return;if(d.kind==='marquee'){const p=point(e);const r={x:Math.min(p.x,d.startX),y:Math.min(p.y,d.startY),width:Math.abs(p.x-d.startX),height:Math.abs(p.y-d.startY)};setMarquee(r);setSelected([...new Set([...(d.initialSelection??[]),...d.original.filter(w=>w.placed!==false&&rotatedBoundsIntersect(w.layer?{...w,rotation:0}:w,r)).map(w=>w.id)])]);return}let dx=(e.clientX-d.startX)/zoom,dy=(e.clientY-d.startY)/zoom;if(snap){dx=Math.round(dx/8)*8;dy=Math.round(dy/8)*8}if(e.shiftKey&&d.kind==='move'){if(Math.abs(dx)>Math.abs(dy))dy=0;else dx=0}if(d.layerResize&&d.document){const result=planLayerResizeDocument(d.document,d.original,d.ids,(d.handle??'se') as keyof typeof LAYER_RESIZE_HANDLES,()=>({x:dx,y:dy}),d.layerResize,{control:e.ctrlKey,alt:e.altKey,shift:e.shiftKey},true);const next=result??d.document;if(JSON.stringify(next)!==JSON.stringify(docRef.current)){docRef.current=next;setDoc(next);}setSaved(next===d.document?(d.wasSaved??false):false);return;}if(dx===0&&dy===0){changeWidgets(d.original,false,undefined,d.document);return}changeWidgets(d.original.map(w=>{if(!d.ids.includes(w.id)||w.locked||w.placed===false)return w;if(d.kind==='move')return translateWidget(w,Math.round(w.x+dx)-w.x,Math.round(w.y+dy)-w.y);if(w.layer)return w;const h=d.handle??'se';const {width,height}=resizeRotatedBounds(w,h,{x:dx,y:dy});const resized=w.type==='menu'?resizeMenu(w,Math.max(w.menu!.padding[1]+w.menu!.padding[3]+w.menu!.table.table!.columnWidths.length,width),Math.max(w.menu!.padding[0]+w.menu!.padding[2]+w.menu!.table.table!.rowHeights.length,height)):w.type==='table'?resizeTable(w,Math.max(w.table!.columnWidths.length,width),Math.max(w.table!.rowHeights.length,height)):{...w,width:width,height:height};return{...resized,...anchorRotatedResize(w,h,resized.width,resized.height)}}),false,undefined,d.document)}

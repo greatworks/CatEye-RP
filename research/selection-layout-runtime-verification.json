@@ -1,0 +1,211 @@
+{
+  "createdAt": "2026-10-20T10:30:38.308Z",
+  "stage": "selection-layout-runtime-dom",
+  "status": "runtime-measurement-integrated-not-released",
+  "fullAxureParity": false,
+  "originalGuiCompared": false,
+  "published": false,
+  "checks": {
+    "typecheck": true,
+    "unit": {
+      "passed": 5059,
+      "failed": 0
+    },
+    "reader": {
+      "reusedUnchangedInputs": true,
+      "passed": 856
+    },
+    "finalBuild": ".build/selection-layout-measure-visible-dist",
+    "finalFocusedBrowser": {
+      "passed": 17,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0
+    },
+    "broadBrowser": {
+      "passed": 337,
+      "build": ".build/selection-layout-measure-first-dist",
+      "scope": "Before selection input-flex and owner-overflow fixes; not a full final-build run",
+      "finalBuildDelta": [
+        "src/components/WidgetView.tsx",
+        "src/runtime/export-runtime.ts"
+      ]
+    },
+    "inspectedFinalScreenshots": [
+      ".build/selection-layout-measure-visible-results/selection-input-visibility-9b172-input-visible-and-clickable/selection-input-visible-preview.png",
+      ".build/selection-layout-measure-visible-results/selection-input-visibility-ddf1c-input-visible-and-clickable/selection-input-visible-offline.png",
+      ".build/selection-layout-measure-visible-results/selection-text-measure-fra-c20a9-lls-back-unsupported-height/selection-measure-frame.png"
+    ],
+    "historicalEvidencePreserved": 1535
+  },
+  "sources": [
+    {
+      "file": "src/components/Preview.tsx",
+      "sha256": "48f78e23f0e85d9a8a87b4a907fdf506b59d3b22b138dc973ac26cb9bab324a6",
+      "previousCoreSha256": "aedf707cf12d3c460271723a86c47a750c670de9b884bb9555131cb35dfa8c1b",
+      "snapshot": ".build/selection-layout-runtime-snapshot/src/components/Preview.tsx"
+    },
+    {
+      "file": "src/components/WidgetView.tsx",
+      "sha256": "018c3ee57c199d3d564cde0df9b7b209b75ab075836d05bc20d456753628e2e3",
+      "previousCoreSha256": "464de9281fc032a849397c648649b13d490909df849ace72a075a75a2c5a6b67",
+      "snapshot": ".build/selection-layout-runtime-snapshot/src/components/WidgetView.tsx"
+    },
+    {
+      "file": "src/runtime/export-runtime.ts",
+      "sha256": "a5a1e646f47a27cf3141bde2324a7b6bdbd5fae2f136d86bfabbe0d7e048ac0d",
+      "previousCoreSha256": "b08385882de39564d78bf26d43d00cf576a05c19e1fc5d15b3aa4040f78d4978",
+      "snapshot": ".build/selection-layout-runtime-snapshot/src/runtime/export-runtime.ts"
+    },
+    {
+      "file": "src/runtime/shape-text-measure.ts",
+      "sha256": "8496413c0330b9a2429c3ad8fc5c65fec25808db989d4e06a675c95f771cac56",
+      "previousCoreSha256": "ffae0a66a538519f583bf0d0b809e1b91a993c464d8a7ee15905c853132410ee",
+      "snapshot": ".build/selection-layout-runtime-snapshot/src/runtime/shape-text-measure.ts"
+    },
+    {
+      "file": "tests/e2e/selection-input-visibility.spec.ts",
+      "sha256": "3652b1694e9efbf1f0627f5ac022fd2bbdef940aff6374bd58ba8eae249c252f",
+      "previousCoreSha256": null,
+      "snapshot": ".build/selection-layout-runtime-snapshot/tests/e2e/selection-input-visibility.spec.ts"
+    },
+    {
+      "file": "tests/e2e/selection-layout-data.spec.ts",
+      "sha256": "d66dcffe064b33c1cd3d1a3af9c54f39043b31dff1bf55a5742d2cc26a85f6be",
+      "previousCoreSha256": "7d248ab7e3cfcb13c4847dd5bc49ca12c3b93e0c2975027503b74a0e41974983",
+      "snapshot": ".build/selection-layout-runtime-snapshot/tests/e2e/selection-layout-data.spec.ts"
+    },
+    {
+      "file": "tests/e2e/selection-text-measure.spec.ts",
+      "sha256": "76b3123907bb351a82ccfd0a70f80922bd3ebff80ef81411a957e023ce015999",
+      "previousCoreSha256": null,
+      "snapshot": ".build/selection-layout-runtime-snapshot/tests/e2e/selection-text-measure.spec.ts"
+    },
+    {
+      "file": "tests/selection-text-measure.test.ts",
+      "sha256": "db358c51bbd097b74a4133105fde28172f3dd89d2ae94c712d760e48c287694e",
+      "previousCoreSha256": null,
+      "snapshot": ".build/selection-layout-runtime-snapshot/tests/selection-text-measure.test.ts"
+    },
+    {
+      "file": "docs/implementation-status.md",
+      "sha256": "7a2a560aebe2e72fde9c9213e44213f1354e8957fd628ab6d807ab6ecb118b19",
+      "previousCoreSha256": "5fda527de179253c0c6b523e5fa05b517af50b6101af5c27f4cb7b74149e12b0",
+      "snapshot": ".build/selection-layout-runtime-snapshot/docs/implementation-status.md"
+    },
+    {
+      "file": "research/selection-layout-runtime-integration.md",
+      "sha256": "42e62c620e4e153b7cd10677e6c3a31f29d551995ccdf9421511df4bc0f86e35",
+      "previousCoreSha256": null,
+      "snapshot": ".build/selection-layout-runtime-snapshot/research/selection-layout-runtime-integration.md"
+    }
+  ],
+  "evidence": [
+    {
+      "file": ".build/selection-layout-measure-visible-unit.json",
+      "sha256": "bf8057abdf637c101d5215d2af56bb35a06dd9f3db8613a256dcf67b8a729e42"
+    },
+    {
+      "file": ".build/selection-layout-measure-visible-unit-run.json",
+      "sha256": "cffe41f629bdfcd057a6499267a9bfc828b82487c296d61247113ae32e02a659"
+    },
+    {
+      "file": ".build/selection-layout-measure-visible-typecheck-run.json",
+      "sha256": "8223ee020d0a2d3fbd48aedcbbc3086a538eae0bd2ec3ffe0a025dac7d611c37"
+    },
+    {
+      "file": ".build/selection-layout-measure-visible-build-run.json",
+      "sha256": "5d247e8e07ad0afe483b2778f60964fb8d2f8f7c058455c64d9cf6fe518b64bb"
+    },
+    {
+      "file": ".build/selection-layout-measure-visible-build-inputs.json",
+      "sha256": "dd8fe87b66d2119bc6cee6e60d3d00406d4796865a83c5c38ffbd570b16ef998"
+    },
+    {
+      "file": ".build/selection-layout-measure-visible.json",
+      "sha256": "edbe01acec0dad7c94dc5af867848c3826281c3313e79c6a441c9a2fc06629a6"
+    },
+    {
+      "file": ".build/selection-layout-measure-full.json",
+      "sha256": "3b164f9f7df4a8eb7141874597843d2c951309c7a33cfb34b8e96e2fd86cf7d6"
+    },
+    {
+      "file": ".build/selection-layout-measure-first-build-inputs.json",
+      "sha256": "f8b982f02c8337f2508a9bdca5932ff6c7336460a0e453539fa19c7b68dedc23"
+    },
+    {
+      "file": ".build/selection-layout-measure-red.json",
+      "sha256": "931ced067988f208119a12a93d0993d2ea5467f46069bfede0bdf2eb7d189d3e"
+    },
+    {
+      "file": ".build/selection-layout-input-red.json",
+      "sha256": "4c604e5ac0afa451db73651687ac91af8e1fe7f8ae1868a5cbeded7daeea2056"
+    },
+    {
+      "file": ".build/selection-layout-overflow-red.json",
+      "sha256": "951c4519a79a7858fc49c57799c9d72de0d8d57ef7078c033a8f65cb9dbc73ad"
+    },
+    {
+      "file": ".build/selection-text-measure-implementation.json",
+      "sha256": "8040fada4c51cc47a46f2c82f57d3bd3dddb961bfed89f9b4c0ee8ccec8bc674"
+    },
+    {
+      "file": ".build/selection-layout-measure-visible-playwright.config.ts",
+      "sha256": "af965abd4dd5e9d4c5a15c5e3d54ef2cfa3fb6534f312a50069869c821ffffe1"
+    },
+    {
+      "file": ".build/selection-layout-data-first-reader-run.json",
+      "sha256": "094290c171117cd7826cae67047ed57eaa18aa4493a904db9dc0d6276f2ed65d"
+    },
+    {
+      "file": "research/selection-layout-core-verification.json",
+      "sha256": "43a37d26647bb3fe74e2ca08e07e0f69fa88d27ee7ac6a71963d077a4d970ea3"
+    },
+    {
+      "file": "research/selection-layout-import-origin-checked.json",
+      "sha256": "a93dfcdf59b98296aef4df7baa96164ca6fdcfaecb1787cbf64fecbad9a55af6"
+    },
+    {
+      "file": "research/selection-layout-integration-review.md",
+      "sha256": "3e06ce1b91fcf519aa37c6f1a78a39ea720991b9a9e50a743254fcf79f3e24d8"
+    },
+    {
+      "file": "research/selection-layout-indicator-manifest.json",
+      "sha256": "bba0ea77ec61b78d44d24d35f21d1437d17cf186e71484a34b28a3225a576173"
+    },
+    {
+      "file": "research/selection-layout-runtime-integration.md",
+      "sha256": "42e62c620e4e153b7cd10677e6c3a31f29d551995ccdf9421511df4bc0f86e35"
+    },
+    {
+      "file": ".build/selection-layout-measure-visible-results/selection-input-visibility-9b172-input-visible-and-clickable/selection-input-visible-preview.png",
+      "sha256": "30d5eb43202c3de3b3ac661783ae327b1c14be384372acc282150705090e06cf"
+    },
+    {
+      "file": ".build/selection-layout-measure-visible-results/selection-input-visibility-ddf1c-input-visible-and-clickable/selection-input-visible-offline.png",
+      "sha256": "365392cd2a6b1e0fff1f4682d80387620c79433593780f0ae626c80e6ba906fa"
+    },
+    {
+      "file": ".build/selection-layout-measure-visible-results/selection-text-measure-fra-c20a9-lls-back-unsupported-height/selection-measure-frame.png",
+      "sha256": "17e27544694ce6b478d2b3a1dd0790fdbce0cb634765423a67f651900f5ef514"
+    }
+  ],
+  "publishedArtifactsUnchanged": [
+    {
+      "file": "D:\\WSCodex\\REA\\release\\REA-Prototype-Studio-0.1.0-win64.zip",
+      "sha256": "2442a0d03dab9b2f8a858fe1a6ff23b0c99befb650412ddbf919d153d053e915"
+    },
+    {
+      "file": "release/REA Prototype Studio-win32-x64/resources/app.asar",
+      "sha256": "5947768c26184cc4aee045a5f2b50cbcbefab1a7e2fbbaeb1b0366e9c662d106"
+    }
+  ],
+  "generatedArtifactRestorations": [],
+  "remaining": [
+    "Managed author font/graphics services and transient TextPanel display layout",
+    "Source-based SVG indicator, P94 rendering and state/adaptive assets",
+    "Author gestures/fit/style commands and native right-indicator admission",
+    "Complete final-stage browser and Windows package acceptance",
+    "Original GUI and pixel comparison; full Axure feature parity"
+  ]
+}

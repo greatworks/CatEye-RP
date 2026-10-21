@@ -1,0 +1,1276 @@
+{
+  "method": "Actual controlled Edge DOM with retained jQuery and exact original JS function slices; not original Axure application/generated-page pixels.",
+  "browser": "155.0.4283.62",
+  "sources": [
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/expr.js",
+      "sha256": "530036aff9f8c349642d34555cdcbefc72a92511382279551bca08669ffe0ae6"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/visibility.js",
+      "sha256": "bbf8974eaa4ffa2b9800797725ada6805c47c532f47d9a5647dc205966ab8a53"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/css/axure_rp_page.css",
+      "sha256": "595bfcd275dc80732aeecbb8365067ccecc4f0277df316ea47656816939ece4a"
+    },
+    {
+      "path": "research/selection-layout-render-browser.mjs",
+      "sha256": "f99a8aef6ff647336fe0f044002e7fd2bc7841c3c91584d6497611bc1dece7a7"
+    },
+    {
+      "path": "research/selection-layout-render-dom-probes.json",
+      "sha256": "5c116122977197f21c77fe86645a692c042ce742d27ca12544b5d4c7c9ec30bd"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "expr.js",
+      "start": 316,
+      "end": 385
+    },
+    {
+      "file": "expr.js",
+      "start": 469,
+      "end": 552
+    },
+    {
+      "file": "visibility.js",
+      "start": 40,
+      "end": 53
+    }
+  ],
+  "summary": {
+    "total": 22,
+    "passed": 22,
+    "failed": 0
+  },
+  "sinks": [
+    "DOM structure is independently replayed; actual generated project CSS/SVG and original rich-font metrics unavailable.",
+    "Fixture monospace 16px/20px and text left13 are controlled inputs, not recovered native defaults.",
+    "GetTextPanelId/style providers/owner-size/visibility display helper are explicit facades.",
+    "query.resize is original consumer and selection early-return executes; movement is a recording sink (no live MoveWidget geometry).",
+    "No hidden ancestor clone/rotation/custom master/adaptive state included.",
+    "Nonfinite candidate values encoded as NaN string; product must not silently store invalid geometry."
+  ],
+  "results": [
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": false,
+        "fitH": false,
+        "value": "A longer label",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\">A longer label</span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 20,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              123
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": false,
+        "fitH": false,
+        "value": "",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 0,
+        "display": "none",
+        "paragraphs": [
+          {
+            "directSpans": [
+              0
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": false,
+        "fitH": true,
+        "value": "A longer label",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": 0,
+            "dy": "NaN",
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 100,
+              "height": "NaN"
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\">A longer label</span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 20,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              123
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": false,
+        "fitH": true,
+        "value": "",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": 0,
+            "dy": "NaN",
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 100,
+              "height": "NaN"
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 0,
+        "display": "none",
+        "paragraphs": [
+          {
+            "directSpans": [
+              0
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": true,
+        "fitH": false,
+        "value": "A longer label",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": -35,
+            "dy": 0,
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 135,
+              "height": 20
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\">A longer label</span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 20,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              123
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": true,
+        "fitH": false,
+        "value": "",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": 88,
+            "dy": 0,
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 12,
+              "height": 20
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 0,
+        "display": "none",
+        "paragraphs": [
+          {
+            "directSpans": [
+              0
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": true,
+        "fitH": true,
+        "value": "A longer label",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": -35,
+            "dy": "NaN",
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 135,
+              "height": "NaN"
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\">A longer label</span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 20,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              123
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": true,
+        "fitH": true,
+        "value": "",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": 88,
+            "dy": "NaN",
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 12,
+              "height": "NaN"
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 0,
+        "display": "none",
+        "paragraphs": [
+          {
+            "directSpans": [
+              0
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "radioButton",
+        "fitW": false,
+        "fitH": false,
+        "value": "A longer label",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\">A longer label</span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 20,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              123
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "radioButton",
+        "fitW": false,
+        "fitH": false,
+        "value": "",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 0,
+        "display": "none",
+        "paragraphs": [
+          {
+            "directSpans": [
+              0
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "radioButton",
+        "fitW": false,
+        "fitH": true,
+        "value": "A longer label",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": 0,
+            "dy": "NaN",
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 100,
+              "height": "NaN"
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\">A longer label</span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 20,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              123
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "radioButton",
+        "fitW": false,
+        "fitH": true,
+        "value": "",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": 0,
+            "dy": "NaN",
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 100,
+              "height": "NaN"
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 0,
+        "display": "none",
+        "paragraphs": [
+          {
+            "directSpans": [
+              0
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "radioButton",
+        "fitW": true,
+        "fitH": false,
+        "value": "A longer label",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": -35,
+            "dy": 0,
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 135,
+              "height": 20
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\">A longer label</span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 20,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              123
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "radioButton",
+        "fitW": true,
+        "fitH": false,
+        "value": "",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": 88,
+            "dy": 0,
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 12,
+              "height": 20
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 0,
+        "display": "none",
+        "paragraphs": [
+          {
+            "directSpans": [
+              0
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "radioButton",
+        "fitW": true,
+        "fitH": true,
+        "value": "A longer label",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": -35,
+            "dy": "NaN",
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 135,
+              "height": "NaN"
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\">A longer label</span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 20,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              123
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "radioButton",
+        "fitW": true,
+        "fitH": true,
+        "value": "",
+        "align": "right",
+        "vAlign": "bottom"
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "MoveWidget",
+            "id": "u",
+            "dx": 88,
+            "dy": "NaN",
+            "options": {
+              "easing": "none",
+              "duration": 0
+            },
+            "rest": [
+              false,
+              null,
+              true
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 12,
+              "height": "NaN"
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 0,
+        "display": "none",
+        "paragraphs": [
+          {
+            "directSpans": [
+              0
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": true,
+        "fitH": false,
+        "value": "One",
+        "linked": false
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 38,
+              "height": 20
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\">One</span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 20,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              26
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": true,
+        "fitH": false,
+        "value": "One\nTwo",
+        "linked": false
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 38,
+              "height": 20
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"><span>One</span><br><span>Two</span></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 40,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              26
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": true,
+        "fitH": false,
+        "value": "One\n\nTwo",
+        "linked": false
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 38,
+              "height": 20
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"><span>One</span><br><br><span>Two</span></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 60,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              26
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": true,
+        "fitH": false,
+        "value": "One",
+        "linked": true
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 12,
+              "height": 20
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><a href=\"#\"><span id=\"u_span\">One</span></a></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 20,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": []
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": true,
+        "fitH": false,
+        "value": "One\nTwo",
+        "linked": true
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 38,
+              "height": 20
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"><span>One</span><br><span>Two</span></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 40,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              26
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "type": "checkbox",
+        "fitW": true,
+        "fitH": false,
+        "value": "One\n\nTwo",
+        "linked": true
+      },
+      "actual": {
+        "events": [
+          {
+            "kind": "setResizingRect",
+            "args": [
+              "u",
+              {
+                "left": 40,
+                "top": 30,
+                "width": 100,
+                "height": 20
+              }
+            ]
+          },
+          {
+            "kind": "candidate",
+            "id": "u",
+            "css": {
+              "width": 38,
+              "height": 20
+            }
+          }
+        ],
+        "owner": {
+          "width": "100px",
+          "height": "20px"
+        },
+        "textHTML": "<p><span id=\"u_span\"><span>One</span><br><br><span>Two</span></span></p>",
+        "directTextCount": 0,
+        "jqueryNestedHeight": 60,
+        "display": "",
+        "paragraphs": [
+          {
+            "directSpans": [
+              26
+            ]
+          }
+        ],
+        "liveFont": "16px / 20px monospace"
+      },
+      "passed": true
+    }
+  ]
+}

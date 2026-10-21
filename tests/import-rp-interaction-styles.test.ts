@@ -121,9 +121,9 @@ describe('official sample appearance through actual reader and importer', () => 
       return w[field] ? [{sourceId:w.id.slice(-32),state:name,style:w[field]}] : [];
     }));
     if (name === 'Prototyping Basics.rp') {
-      // One native Layer wraps three previously admitted leaves, including the
-      // same source-linked style carriers; no existing appearance is discarded.
-      expect(result.report).toMatchObject({widgetsImported:171,widgetsSkipped:25,nestedWidgetsImported:55});
+      // One native Layer wraps three previously admitted leaves. The newly
+      // recovered Checkbox adds one ordinary widget without changing states.
+      expect(result.report).toMatchObject({widgetsImported:172,widgetsSkipped:24,nestedWidgetsImported:55});
       expect(widgets.filter(w=>w.type==='layer')).toHaveLength(1);
       expect(widgets.find(w => w.id.endsWith('4f4e187b657a4108aa50438dd7d0fca8'))?.richText?.links).toHaveLength(1);
       expect(actual).toEqual([{sourceId:'6916f399031443218a91b11e4e423a30',state:'mouseover',style:{fill:'#f3f3f3'}},{sourceId:'3471e28ded924670841f3dfd061d33a0',state:'disabled',style:{fill:'#9e9e9e'}}]);

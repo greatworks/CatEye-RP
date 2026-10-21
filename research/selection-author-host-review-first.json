@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-10-20T11:21:50.286Z",
+  "kind": "read-only-production-review-and-prepared-browser-regressions",
+  "sources": [
+    {
+      "file": "src/App.tsx",
+      "sha256": "cda9715ff7c9a6a4f93cfec5407bc56fcf6e266284c9ef55fb47c57e7010827f",
+      "snapshot": ".build/selection-author-host-review-before-rich-projection.ts.txt"
+    },
+    {
+      "file": "src/model/selection-author-command.ts",
+      "sha256": "32dba04fa22fff57341837895c2fdc75c21dfe057ced9e472e94eafc311c282b"
+    },
+    {
+      "file": "src/model/selection-author-geometry.ts",
+      "sha256": "d8d7587646a04d52e48c6fe0736137c49cacefcbd69d6dfec681ea81b4e0877e"
+    },
+    {
+      "file": "src/model/selection-author-edits.ts",
+      "sha256": "ec025356b9a4d40b61d15a186f6dd44bbd8b4c58c0419ad43855ef163e21dc78"
+    },
+    {
+      "file": "src/model/selection-layout.ts",
+      "sha256": "fe18d99c7b85f17435fe668a3cb720183f82d34b113cefe790e32fa086605c94"
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "ce058f7fb26e2ab8658ae3d637981770143b9fd68d1717ad1210460439f53079"
+    },
+    {
+      "file": "src/model/rich-text.ts",
+      "sha256": "01fa723e9e158cb16125753c5993fd2e86a370133b0a246cccced8d578d6863f"
+    },
+    {
+      "file": "src/runtime/selection-author-measure.ts",
+      "sha256": "7df2ddf8f060b6f60c9b9185cc0e80f488f3230420e75b93d57ea208ff5e5bba"
+    },
+    {
+      "file": "src/runtime/selection-text-layout.ts",
+      "sha256": "c14a31fd95ecd5d28c49e56944e81f69691f28329accccd5a013d6d934ac855e"
+    },
+    {
+      "file": "tests/e2e/selection-author-stale.spec.ts",
+      "sha256": "28ebc0eb10fe52f6692a3f8d38d51aeb39ca26e2ffc2d88a73bdfccb71060c09"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": ".build/selection-author-host-review-before-rich-projection.ts.txt",
+      "sha256": "cda9715ff7c9a6a4f93cfec5407bc56fcf6e266284c9ef55fb47c57e7010827f"
+    },
+    {
+      "file": ".build/selection-author-host-review-tests-ready.ts.txt",
+      "sha256": "28ebc0eb10fe52f6692a3f8d38d51aeb39ca26e2ffc2d88a73bdfccb71060c09"
+    },
+    {
+      "file": ".build/selection-author-host-review-test-before-type-fix.ts.txt",
+      "sha256": "5f4428466aed5a1e9f530827cb748fb1ed73881ed44b1462ca33c9bdb29fff5a"
+    },
+    {
+      "file": ".build/selection-author-host-review-test-before-size-oracle.ts.txt",
+      "sha256": "efa08b4cbce9d729f56d59da673bc22b8a5e9d91ca7168f49e8dde332cb98f00"
+    },
+    {
+      "file": ".build/selection-author-host-review-typecheck-first.log",
+      "sha256": "7461b1f6d47ea324dfdc1a23f896e4e538d1ae06124f62e4b5be702a50b37d93"
+    },
+    {
+      "file": ".build/selection-author-host-review-typecheck-second.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217"
+    },
+    {
+      "file": ".build/selection-author-host-review-typecheck-third.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217"
+    },
+    {
+      "file": ".build/selection-author-host-review-list-first.log",
+      "sha256": "3e7e91cdff4dbae1c2a04251b4d862f34cd20801d84ebbf2975923e1bdc81b98"
+    },
+    {
+      "file": ".build/selection-author-host-review-list-second.log",
+      "sha256": "21484be671096b09768ba7af63654baac02ef7c9e6eb2c7c377947750d53e1ef"
+    },
+    {
+      "file": "research/selection-author-host-review-first.md",
+      "sha256": "43d19b088cf759bffa2b62c2d674ee7488fc6d5391eee7c92cd6db0f669d0567"
+    }
+  ],
+  "tests": {
+    "discovered": 6,
+    "browserExecuted": 0,
+    "typecheckExitCode": 0
+  },
+  "findings": [
+    {
+      "id": "SELECTION-AUTHOR-HOST-01",
+      "status": "parent-corrected-static-review-browser-pending",
+      "issue": "Context equality allowed stale commands to survive a view round trip",
+      "correction": "Monotonic serial on context changes and pointer start; undo/redo cancellation including empty history"
+    },
+    {
+      "id": "SELECTION-AUTHOR-HOST-02",
+      "status": "open",
+      "issue": "Adaptive outer font declaration is not applied to raw rich runs in the measurement snapshot",
+      "reproduction": "Base run14px plus named declaration32px: canvas32, prepare still run14",
+      "proposedCorrection": "Project only explicit adaptive text styles into a temporary measurement richText"
+    }
+  ],
+  "blockingFindings": [
+    "SELECTION-AUTHOR-HOST-02"
+  ],
+  "limits": [
+    "No browser execution in this report; tests are prepared only",
+    "No original DLL or GUI execution",
+    "No full scheduler, font provenance or pixel equivalence claim",
+    "No product edits by this reviewer"
+  ]
+}

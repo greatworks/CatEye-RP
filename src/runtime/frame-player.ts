@@ -7,6 +7,9 @@ import { vectorPathData } from '../model/vector';
 import { frameFileUrl } from '../model/inline-frame';
 import { createShapeTextRenderer } from '../model/shape-text';
 import { createShapeTextMeasurer } from './shape-text-measure';
+import { createSelectionTextLayout } from './selection-text-layout';
+import { createSelectionDisplay } from './selection-display';
+import { createSelectionIndicatorRenderer } from '../model/selection-indicator';
 import { createShadowRenderer } from '../model/shadow';
 import { createGradientRenderer } from '../model/gradient';
 import { createLineStyleRenderer } from '../model/line-style';
@@ -30,6 +33,6 @@ window.addEventListener('message', event => {
   const runtime = createOfflineRuntime(doc, pageId, evaluateExpression, createBrowserBoxReader(), { width: window.innerWidth, height: window.innerHeight, clampToPage: true });
   const frames = createInlineFrameHost(doc, runtime, options);
   const shapeText = createShapeTextRenderer();
-  mountOfflinePrototype(doc, runtime, document.getElementById('prototype')!, vectorPathData, { frames, dragInput: bindRuntimeDrag, embedded: true, previewImages: true, shapeText, shapeTextMeasure: createShapeTextMeasurer(shapeText), shadows: createShadowRenderer(), lines:createLineStyleRenderer(), gradients:createGradientRenderer(createLineStyleRenderer()) });
+  mountOfflinePrototype(doc, runtime, document.getElementById('prototype')!, vectorPathData, { frames, dragInput: bindRuntimeDrag, embedded: true, previewImages: true, shapeText, shapeTextMeasure: createShapeTextMeasurer(shapeText), selectionDisplay: createSelectionDisplay(createSelectionTextLayout(shapeText), createSelectionIndicatorRenderer()), shadows: createShadowRenderer(), lines:createLineStyleRenderer(), gradients:createGradientRenderer(createLineStyleRenderer()) });
 });
 window.parent.postMessage({ channel: 'rea-inline-frame', operation: 'ready', token }, '*');

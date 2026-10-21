@@ -204,6 +204,7 @@ export function recoverVectorPath(paths) {
 // AllTypes chooser is the witnessed 11-value subset; GNpV's return strings are
 // obfuscated. HTML spellings below are the documented standard input mapping.
 const NATIVE_INPUT_TYPES = new Map([[0, 'text'], [1, 'password'], [2, 'email'], [3, 'number'], [4, 'tel'], [5, 'url'], [6, 'search'], [12, 'file'], [17, 'date'], [18, 'month'], [19, 'time']]);
+const NATIVE_SELECTION_TYPES = new Map([['Axure:DiagramObject:Checkbox','checkbox'],['Axure:DiagramObject:CheckBox','checkbox'],['Axure:DiagramObject:RadioButton','radio']]);
 function basicTypeCandidate(widget, size) {
   const p = widget.properties;
   if (widget.type === 'Axure:DiagramObject:ImageBox') return { type: 'image', evidence: 'Exact ImageBox type; embedded image and layout require separate validation' };
@@ -221,7 +222,9 @@ function basicTypeCandidate(widget, size) {
     }
     return null;
   }
-  if (['Axure:DiagramObject:RadioButton', 'Axure:DiagramObject:CheckBox'].includes(widget.type) && property(p, 'align-selection-button-right') === 'False') return { type: widget.type.endsWith(':RadioButton') ? 'radio' : 'checkbox', evidence: 'Exact native form type and explicit left selection button alignment' };
+  // RP11 stores Checkbox (lowercase b); CheckBox remains the previously
+  // accepted protocol spelling, not an additional witnessed native class.
+  if (NATIVE_SELECTION_TYPES.has(widget.type) && property(p, 'align-selection-button-right') === 'False') return { type: NATIVE_SELECTION_TYPES.get(widget.type), evidence: 'Exact native form type and explicit left selection button alignment' };
   if (widget.type === 'Axure:DiagramObject:DynamicPanel' && Array.isArray(property(p, 'panel-diagrams'))) return { type: 'panel', evidence: 'DynamicPanel and explicit ordered PanelState package references' };
   if (widget.type !== 'Axure:DiagramObject:VectorShape') return null;
   const sourceShape = property(p, 'Shape'), paths = property(p, 'ControlPoints');
@@ -297,7 +300,7 @@ export function recoverSelectProperties(widget, objects) {
 
 // PName constants are recorded in metadata-PName.json. This is a restricted cache-chain reader,
 // not the complete Axure stylesheet, adaptive-view, or interaction-style evaluator.
-const STYLE_NAMES = new Map([[1,'FONT_NAME'],[2,'FONT_SIZE'],[3,'BOLD'],[5,'UNDERLINE'],[6,'FORE_GROUND_FILL'],[7,'FILL'],[8,'BORDER_FILL'],[9,'HORIZONTAL_ALIGNMENT'],[15,'BORDER_WIDTH'],[16,'LINE_PATTERN'],[17,'LINE_ENDS'],[21,'IX_STYLES'],[50,'ROTATION'],[70,'OPACITY'],[71,'CORNER_RADIUS'],[72,'OUTER_SHADOW'],[73,'INNER_SHADOW'],[74,'TEXT_SHADOW'],[80,'BORDER_VISIBILITY'],[81,'CORNER_VISIBILITY'],[95,'STRIKETHROUGH'],[1001,'FONT_WEIGHT'],[1002,'FONT_STYLE'],[110,'VISIBLE'],[1401,'TRANSFORM']]);
+const STYLE_NAMES = new Map([[1,'FONT_NAME'],[2,'FONT_SIZE'],[3,'BOLD'],[5,'UNDERLINE'],[6,'FORE_GROUND_FILL'],[7,'FILL'],[8,'BORDER_FILL'],[9,'HORIZONTAL_ALIGNMENT'],[15,'BORDER_WIDTH'],[16,'LINE_PATTERN'],[17,'LINE_ENDS'],[21,'IX_STYLES'],[50,'ROTATION'],[70,'OPACITY'],[71,'CORNER_RADIUS'],[72,'OUTER_SHADOW'],[73,'INNER_SHADOW'],[74,'TEXT_SHADOW'],[80,'BORDER_VISIBILITY'],[81,'CORNER_VISIBILITY'],[94,'SELECTION_BUTTON_SIZE'],[95,'STRIKETHROUGH'],[1001,'FONT_WEIGHT'],[1002,'FONT_STYLE'],[110,'VISIBLE'],[1401,'TRANSFORM']]);
 // Platform.LineStyle=1..9 and ArrowStyle=1..29, confirmed by property signatures.
 // LINE_ENDS is a single SHeh value: never merge Start and End independently.
 const LINE_PATTERNS = ['solid','long-dash','medium-dash','short-dash','dash-dot','dash-dot-dot','long-dash-short-dash','dot','none'];
@@ -436,6 +439,40 @@ function resolveStyleChain(style, root, defaultStyleId) {
   if (style) merge(property(style.properties, 'PropList') || [], { kind: 'local-object-style', objectId: style.id });
   return { effective, chainComplete, baseId };
 }
+/** Selection fit/alignment are shared object fields. P94 is a separate style
+ * property; the four witnessed absent local records use identified caches,
+ * never a guessed universal size. These records do not recompute geometry. */
+function selectionIndicator(style, root, defaultStyleId) {
+  if (!style?.id || style.type !== 'Axure:Style') throw new Error('Selection layout requires a resolved MyStyle');
+  const local = storedStyleProperty(style,94);
+  const validSize = value => Number.isFinite(value) && value >= 0 && value <= 100000;
+  if (local && (!validSize(local.value) || local.rawDoaName < -2147483648 || local.rawDoaName > 2147483647
+    || (local.rawDoaName & 0x3fffffff) !== 94 || local.overridden && !local.determined)) throw new Error('Invalid or indeterminate selection indicator size');
+  const inactive = local && !local.overridden;
+  const filtered = inactive ? { ...style, properties: { $map: style.properties.$map.map(([key,value]) => [key,
+    key === 'PropList' ? value.filter(prop => (property(prop,'DOAName') & PROPERTY_NAME_MASK) !== 94) : value]) } } : style;
+  const {effective,chainComplete} = resolveStyleChain(filtered,root,defaultStyleId), entry = effective.get(94);
+  if (!chainComplete || !entry?.determined || !entry.overridden || entry.rawDoaName !== (94 | 0xc0000000)
+    || !validSize(entry.value)) throw new Error('Selection indicator requires an identified, complete and determined style chain');
+  return {entry,...(inactive ? {inactive:{rawDoaName:local.rawDoaName,value:local.value}} : {})};
+}
+export function recoverSelectionLayout(widget, style, root, defaultStyleId, nativeVersion) {
+  if (!NATIVE_SELECTION_TYPES.has(widget.type)) return undefined;
+  const identity = { schema: 1, sourceId: widget.id };
+  try {
+    if (JSON.stringify(nativeVersion) !== '[11,0,0,0]') throw new Error('Selection layout requires the evidenced RP11 package version');
+    const sharedFields = Object.fromEntries(['AutoFitWidth','AutoFitHeight','align-selection-button-right'].map(key => [key,property(widget.properties,key)]));
+    if (typeof sharedFields.AutoFitWidth !== 'boolean' || typeof sharedFields.AutoFitHeight !== 'boolean'
+      || !['False','True'].includes(sharedFields['align-selection-button-right'])) throw new Error('Selection layout requires explicit fit booleans and alignment string');
+    const {entry,inactive} = selectionIndicator(style,root,defaultStyleId);
+    return { ...identity, status:'supported-selection-layout', styleId:style.id, packageVersion:[...nativeVersion],
+      sharedFields, cacheChainComplete:true,
+      buttonSize:{key:94,value:entry.value,rawDoaName:entry.rawDoaName,source:entry.source},
+      ...(inactive ? {inactive} : {}) };
+  } catch (error) {
+    return { ...identity, status:'unsupported-selection-layout', reason:error.message };
+  }
+}
 const AUTHOR_PIN_KEYS = [106,107,108,109];
 const validAuthorPin = (key,value) => key === 106 ? [0,1,4,5,256].includes(value)
   : key === 107 ? [0,2,8,10,512].includes(value) : typeof value === 'boolean';
@@ -537,6 +574,15 @@ export function recoverRotation(widget, style, root, defaultStyleId, typeCandida
 export function recoverStyle(widget, style, root, defaultStyleId, resolve, typeCandidate, forcedSelected, forcedState, resolvedState, nativeVersion) {
   const p = widget.properties, unknown = [], provenance = {}, css = {};
   const { effective, chainComplete, baseId } = resolveStyleChain(style, root, defaultStyleId);
+  const selectionSurface = NATIVE_SELECTION_TYPES.get(widget.type) === typeCandidate?.type
+    && ['checkbox','radio'].includes(typeCandidate?.type) && JSON.stringify(nativeVersion) === '[11,0,0,0]';
+  let indicatorKnown = false;
+  if (selectionSurface) {
+    try {
+      const {entry} = selectionIndicator(style,root,defaultStyleId);
+      effective.set(94,entry); indicatorKnown = true;
+    } catch { /* Keep unresolved P94 in the normal source diagnostics. */ }
+  }
   // P71 and P81 are independent native parameters. The stored ControlPoints
   // identify a supported rectangle, but do not supply either style parameter.
   const cornerSurface = typeCandidate?.type === 'box' && typeCandidate.sourceShape === 0 && typeCandidate.cornerRadii?.length === 4 && typeCandidate.vectorPath
@@ -580,6 +626,7 @@ export function recoverStyle(widget, style, root, defaultStyleId, resolve, typeC
     if(css[field]?.type==='linear'&&Array.isArray(nativeVersion)&&nativeVersion.length===4&&nativeVersion.every((n,i)=>n===(i===0?11:0)))provenance[field].nativeAngle={stored:property(entry.value,'fill-angle'),policy:'ignored-rp11-reserved-field',packageVersion:[...nativeVersion],readerMethodToken:100718382};
   }
   take(15,'strokeWidth',finite(0,100)); take(70,'opacity',finite(0,1));
+  if (indicatorKnown && effective.get(94)?.rawDoaName === (94 | 0xc0000000)) take(94,'selectionButtonSize',finite(0,100000));
   for (const [key,field,convert] of [[16,'linePattern',nativeLinePattern],[17,'lineEnds',nativeLineEnds]]) {
     const entry=effective.get(key);
     if(entry?.source.kind!=='local-object-style'||entry.overridden)take(key,field,convert);
@@ -658,7 +705,7 @@ export function recoverStyle(widget, style, root, defaultStyleId, resolve, typeC
 }
 
 const INTERACTION_STYLE_STATES = Object.freeze({ mouseover: 'MouseOver', mousedown: 'MouseDown', focused: 'Focused', disabled: 'Disabled' });
-const INTERACTION_STYLE_FIELDS = new Map([[1,'fontFamily'],[2,'fontSize'],[5,'underline'],[6,'color'],[7,'fill'],[8,'stroke'],[9,'textAlign'],[10,'verticalAlign'],[15,'strokeWidth'],[16,'linePattern'],[17,'lineEnds'],[20,'lineHeight'],[70,'opacity'],[71,'radius'],[72,'outerShadow'],[73,'innerShadow'],[74,'textShadow'],[80,'borderVisibility'],[81,'cornerVisibility'],[95,'strikethrough'],[1001,'fontWeight'],[1002,'fontStyle']]);
+const INTERACTION_STYLE_FIELDS = new Map([[1,'fontFamily'],[2,'fontSize'],[5,'underline'],[6,'color'],[7,'fill'],[8,'stroke'],[9,'textAlign'],[10,'verticalAlign'],[15,'strokeWidth'],[16,'linePattern'],[17,'lineEnds'],[20,'lineHeight'],[70,'opacity'],[71,'radius'],[72,'outerShadow'],[73,'innerShadow'],[74,'textShadow'],[80,'borderVisibility'],[81,'cornerVisibility'],[94,'selectionButtonSize'],[95,'strikethrough'],[1001,'fontWeight'],[1002,'fontStyle']]);
 /** Independent, explicit appearance patches. This does not evaluate combined native state precedence. */
 export function recoverInteractionStyles(widget, style, root, defaultStyleId, resolve, typeCandidate, nativeVersion) {
   return recoverNamedInteractionStyles(widget, style, root, defaultStyleId, resolve, typeCandidate, INTERACTION_STYLE_STATES, false, nativeVersion);
@@ -767,6 +814,7 @@ export function recoverLocalAdaptiveStyles(widget, style, root, defaultStyleId, 
       const props=property(target.properties,'PropList');if(!Array.isArray(props)||props.length>1000)fail('Missing or oversized local adaptive PropList');
       for(const p of props){exact(p,['DOAName','Value']);const raw=property(p,'DOAName');if(!Number.isInteger(raw)||raw< -2147483648||raw>2147483647)fail('Invalid native local DOAName');if((raw&PROPERTY_NAME_MASK)===111){if(nativeVersion.join('.')!=='11.0.0.0')fail('Local placement requires the evidenced RP11 package version');nativePlaced(property(p,'Value'));}
         const key=raw&PROPERTY_NAME_MASK;if(AUTHOR_PIN_KEYS.includes(key)&&(nativeVersion.join('.')!=='11.0.0.0'||(raw&0x3fffffff)!==key||!validAuthorPin(key,property(p,'Value'))))fail('Invalid or unevidenced local author pin carrier');
+        if(key===94&&(nativeVersion.join('.')!=='11.0.0.0'||(raw&0x3fffffff)!==94||!Number.isFinite(property(p,'Value'))||property(p,'Value')<0||property(p,'Value')>100000))fail('Invalid or unevidenced selection indicator carrier');
       }
       const all=styleEntries(props,{kind:'native-local-adaptive-style',objectId:target.id}),eligible=new Map([...all].filter(([,e])=>e.determined&&e.overridden));
       return {props,eligible,source:props.map(p=>({rawDoaName:property(p,'DOAName'),value:property(p,'Value')}))};
@@ -872,7 +920,7 @@ export function recoverSelection(widget, style, root, defaultStyleId, resolve, t
     if (target) {
       const knownStyleKeys = new Set(['LibraryId','LibraryName','LegacyName','style-name','Id','PropList','Capabilities','All']);
       if (!Array.isArray(target.properties?.$map) || target.properties.$map.some(pair => !Array.isArray(pair) || pair.length !== 2 || !knownStyleKeys.has(pair[0])) || property(target.properties,'All') !== false) throw new Error('Unknown selected style metadata or inheritance');
-      const supported = new Set([1,2,5,6,7,8,9,10,11,12,13,14,15,16,17,20,70,71,72,73,74,80,81,95,1001,1002]);
+      const supported = new Set([1,2,5,6,7,8,9,10,11,12,13,14,15,16,17,20,70,71,72,73,74,80,81,94,95,1001,1002]);
       const selectedProps = property(target.properties, 'PropList');
       if (!Array.isArray(selectedProps)) throw new Error('Selected style requires an explicit PropList array');
       const entries = styleEntries(localStateProps(selectedProps,{kind:'selected'}),{kind:'selected'});
@@ -1587,6 +1635,7 @@ export function recoverRpSemantics(decoded, parts = new Map()) {
           const styleRecovery = recoverStyle(widget, style, root, defaultStyleId, resolve, typeCandidate, undefined, undefined, undefined, pack.version);
           const rotationRecovery = recoverRotation(widget,style,root,defaultStyleId,typeCandidate,pack.version);
           const authorResizePinRecovery = recoverAuthorResizePins(widget,style,root,defaultStyleId,pack.version);
+          const selectionLayoutRecovery = recoverSelectionLayout(widget,style,root,defaultStyleId,pack.version);
           const compoundDescendant=!!(tableOwnerId||menuOwnerId||treeContext),placementRecovery=recoverPlacement(widget,style,root,defaultStyleId,typeCandidate,compoundDescendant,pack.version);
           const richTextRecovery=recoverRichText(widget,{objects,root,packageId:pack.packageId});
           return {
@@ -1597,6 +1646,7 @@ export function recoverRpSemantics(decoded, parts = new Map()) {
             storedGeometry: { styleId: style?.id ?? null, location, size, rotation, transform, transformOrigin: storedStyleProperty(style,1402), ...(storedStyleProperty(style,111)?{placement:storedStyleProperty(style,111)}:{}), adaptiveStyleCount: Array.isArray(adaptiveStyles) ? adaptiveStyles.length : null, isComputedLayout: false },
             ...(rotationRecovery ? {rotationRecovery} : {}),
             ...(authorResizePinRecovery ? {authorResizePinRecovery} : {}),
+            ...(selectionLayoutRecovery ? {selectionLayoutRecovery} : {}),
             ...(placementRecovery ? {placementRecovery} : {}),
             text: richTextRecovery.status==='supported-rich-text'&&richTextRecovery.richText.links?.length?{status:'stored-rich-text-as-plain',text:richTextRecovery.richText.paragraphs.map(p=>p.runs.map(r=>r.text).join('')).join('\n\n'),paragraphCount:richTextRecovery.richText.paragraphs.length,formattingRecovered:false}:recoverWidgetText(widget, pack.version),
             richTextRecovery,

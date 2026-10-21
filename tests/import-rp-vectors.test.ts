@@ -16,7 +16,8 @@ const flowInactiveViews = ['301a102265704a1ba43362cd46da1b72', '72fc7bbc6b7d473a
 describe('stored native vector path import', () => {
   it.each([
     // Starter's 12 native Layer nodes reclassify existing leaves as nested.
-    ['Default.rplib', 34, 6, 25], ['Flow.rplib', 30, 7, 0], ['Prototype Starter.rp', 46, 18, 52],
+    // Default now also admits its native Checkbox; vector payloads stay exact.
+    ['Default.rplib', 35, 5, 25], ['Flow.rplib', 30, 7, 0], ['Prototype Starter.rp', 46, 18, 52],
   ] as const)('retains exact recovered commands through document persistence for %s', (name, widgetsImported, widgetsSkipped, nestedWidgetsImported) => {
     const source = sources.get(name), before = JSON.stringify(source), { document, report } = importRpSemantics(source);
     expect(report).toMatchObject({ widgetsImported, widgetsSkipped, nestedWidgetsImported });
