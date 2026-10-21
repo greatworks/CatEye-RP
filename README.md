@@ -1,4 +1,4 @@
-# catEye-RP
+# CatEye-RP
 
 对照 Axure RP 11 研究并独立实现的 Windows 原型编辑器。当前为 **0.1.0 开发版**。
 
