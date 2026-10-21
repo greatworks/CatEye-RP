@@ -5,6 +5,7 @@ import { normalizePageTree } from './page-tree-core';
 import { layerAuthoringBounds } from './layer-geometry';
 import { importAdaptiveSets, importAdaptiveStyles, importPlacement } from './import-rp-adaptive';
 import { importAuthorResizePins, importNativeAuthorPin } from './import-rp-resize-pins';
+import { importSelectionLayout, parseNativeSelectionStylePatch } from './import-rp-selection-layout';
 import { INPUT_TYPES, LINE_PATTERNS, ARROW_STYLES, ROTATION_ANCHORS, ROTATION_EASINGS } from './types';
 import type { Action, AdaptiveWidgetOverride, Condition, Document, EventType, InputType, Interaction, MotionBoundary, MotionExpression, Page, PageFolder, Widget, WidgetStyle } from './types';
 
@@ -185,6 +186,9 @@ function recoveredStyle(value: unknown, type: Widget['type'], asPatch = false): 
       }
       case 'fontFamily': { const family = text(v, 200); if (!/^[\p{L}\p{N}\s,'"_-]+$/u.test(family)) throw new Error('恢复的字体名无效。'); result.fontFamily = family; break; }
       case 'fontSize': result.fontSize = number(v, 1, 512); break;
+      case 'selectionButtonSize':
+        if (type !== 'checkbox' && type !== 'radio') throw new Error('选择控件布局尺寸附着到错误元件类型。');
+        result.selectionButtonSize = number(v, 0, 100000); break;
       case 'fontWeight': result.fontWeight = number(v, 100, 1000); break;
       case 'fontStyle': if (v !== 'normal' && v !== 'italic') throw new Error('恢复的字体样式无效。'); result.fontStyle = v; break;
       case 'underline': case 'strikethrough': result[key] = boolean(v); break;
@@ -328,7 +332,7 @@ const RP_STYLE_STATES = {
   mouseover: ['MouseOver', 'mouseOverStyle'], mousedown: ['MouseDown', 'mouseDownStyle'],
   focused: ['Focused', 'focusedStyle'], disabled: ['Disabled', 'disabledStyle'],
 } as const;
-const RP_STATE_STYLE_FIELDS = new Map<number, keyof WidgetStyle>([[1,'fontFamily'],[2,'fontSize'],[5,'underline'],[6,'color'],[7,'fill'],[8,'stroke'],[9,'textAlign'],[10,'verticalAlign'],[15,'strokeWidth'],[16,'linePattern'],[17,'lineEnds'],[20,'lineHeight'],[70,'opacity'],[71,'radius'],[72,'outerShadow'],[73,'innerShadow'],[74,'textShadow'],[80,'borderVisibility'],[81,'cornerVisibility'],[95,'strikethrough'],[1001,'fontWeight'],[1002,'fontStyle']]);
+const RP_STATE_STYLE_FIELDS = new Map<number, keyof WidgetStyle>([[1,'fontFamily'],[2,'fontSize'],[5,'underline'],[6,'color'],[7,'fill'],[8,'stroke'],[9,'textAlign'],[10,'verticalAlign'],[15,'strokeWidth'],[16,'linePattern'],[17,'lineEnds'],[20,'lineHeight'],[70,'opacity'],[71,'radius'],[72,'outerShadow'],[73,'innerShadow'],[74,'textShadow'],[80,'borderVisibility'],[81,'cornerVisibility'],[94,'selectionButtonSize'],[95,'strikethrough'],[1001,'fontWeight'],[1002,'fontStyle']]);
 /** Validate the worker's explicit patch independently; never fill omitted fields from normal appearance. */
 function recoveredInteractionStyle(value: unknown, nativeState: string, complete: boolean, type: Widget['type'], allowNamedColors = false): Partial<WidgetStyle> {
   const state = record(value);
@@ -355,7 +359,7 @@ function recoveredInteractionStyle(value: unknown, nativeState: string, complete
   if (Object.keys(raw).length !== expected.size || Object.keys(raw).some(key => !expected.has(key as keyof WidgetStyle))) throw new Error('状态样式输出与明确源属性不一致。');
   // Native import accepts its narrower color/font vocabulary before the general model parser.
   recoveredStyle({ style: raw }, type, true);
-  return parseWidgetStylePatch(raw);
+  return parseNativeSelectionStylePatch(raw,type);
 }
 
 function recoveredImage(value: unknown, width: number, height: number): { dataUrl: string; details: Data } {
@@ -473,7 +477,7 @@ export function importRpSemantics(input: unknown, name = 'Imported RP'): RpImpor
           if(type==='tableCell'&&own(candidate,'tableOwnerId')!==tableOwnerId)throw new Error('单元格所属表格不一致。');
         }else if(own(item,'tableRecovery')!==undefined||own(item,'borderRecovery')!==undefined)throw new Error('非表格对象包含表格恢复数据。');
         if (type === 'select' && !['Axure:DiagramObject:ComboBox', 'Axure:DiagramObject:ListBox'].includes(sourceType)) throw new Error('列表类型候选与源类型不一致。');
-        if ((['box', 'ellipse', 'path'].includes(type) && sourceType !== 'Axure:DiagramObject:VectorShape') || (type === 'input' && sourceType !== 'Axure:DiagramObject:TextBox') || (type === 'textarea' && sourceType !== 'Axure:DiagramObject:TextArea') || (type === 'panel' && sourceType !== 'Axure:DiagramObject:DynamicPanel') || (type === 'image' && sourceType !== 'Axure:DiagramObject:ImageBox') || (type === 'radio' && sourceType !== 'Axure:DiagramObject:RadioButton') || (type === 'checkbox' && sourceType !== 'Axure:DiagramObject:CheckBox')) throw new Error('类型候选与源类型不一致。');
+        if ((['box', 'ellipse', 'path'].includes(type) && sourceType !== 'Axure:DiagramObject:VectorShape') || (type === 'input' && sourceType !== 'Axure:DiagramObject:TextBox') || (type === 'textarea' && sourceType !== 'Axure:DiagramObject:TextArea') || (type === 'panel' && sourceType !== 'Axure:DiagramObject:DynamicPanel') || (type === 'image' && sourceType !== 'Axure:DiagramObject:ImageBox') || (type === 'radio' && sourceType !== 'Axure:DiagramObject:RadioButton') || (type === 'checkbox' && !['Axure:DiagramObject:Checkbox','Axure:DiagramObject:CheckBox'].includes(sourceType))) throw new Error('类型候选与源类型不一致。');
         const vectorValue = own(candidate, 'vectorPath');
         if (vectorValue !== undefined && !['box', 'ellipse', 'path'].includes(type)) throw new Error('非图形元件不能携带矢量路径。');
         if (vectorValue !== undefined || type === 'ellipse' || type === 'path') {
@@ -523,11 +527,17 @@ export function importRpSemantics(input: unknown, name = 'Imported RP'): RpImpor
         if (['radio', 'checkbox'].includes(type) && !selectionSupported) throw new Error('表单勾选状态或分组尚未可靠恢复。');
         const recoveredVisibility = styleRecovery === undefined ? null : own(record(styleRecovery), 'visible');
         if (recoveredVisibility !== null && typeof recoveredVisibility !== 'boolean') throw new Error('恢复的可见性格式无效。');
+        const normalStyle = recoveredStyle(styleRecovery, type);
+        const selectionLayout = importSelectionLayout(own(item,'selectionLayoutRecovery'),type,sourceId,own(geometry,'styleId'),flags,styleRecovery);
+        if (normalStyle.selectionButtonSize !== undefined && (!selectionLayout
+          || normalStyle.selectionButtonSize !== selectionLayout.selectionButtonSize)) throw new Error('选择控件布局尺寸与已验证的普通样式来源不一致。');
         const widget: Widget = {
           id: `rp-w-${packageId}-${sourceId}`, type, name: typeof label === 'string' && label ? text(label, 500) : `${type} ${sourceId.slice(0, 8)}`,
           text: widgetText, x: number(own(location, 'X')), y: number(own(location, 'Y')),
           width: number(own(size, 'Width'), 1), height: number(own(size, 'Height'), 1), rotation,
-          style: { ...recoveredStyle(styleRecovery, type), ...authorPins },
+          style: { ...normalStyle, ...authorPins,
+            ...(selectionLayout ? {selectionButtonSize:selectionLayout.selectionButtonSize} : {}) },
+          ...(selectionLayout ? {selectionText:selectionLayout.selectionText} : {}),
           ...(vectorPath ? { vectorPath } : {}),
           hidden: own(flags, 'VisibleFromSettings') === false || recoveredVisibility === false, disabled: own(flags, 'Disabled') === true, locked: own(flags, 'IsLocked') === true,
           interactions: [], notes: `Experimental RP import\nSource package: ${packageId}\nSource object: ${sourceId}\nSource type: ${sourceType}\nStored base rectangle, recognized cached styles and uniform text. Layout was not recomputed. See import report for supported behavior and omitted fields.`,
@@ -545,7 +555,7 @@ export function importRpSemantics(input: unknown, name = 'Imported RP'): RpImpor
           if (status === 'supported-rich-text') {
             const richCarrier = sourceType === 'Axure:DiagramObject:VectorShape' && (['box','ellipse','path'].includes(type)||type==='text'&&treeContext?.role==='label')
               || sourceType === 'Axure:DiagramObject:RadioButton' && type === 'radio'
-              || sourceType === 'Axure:DiagramObject:CheckBox' && type === 'checkbox'
+              || ['Axure:DiagramObject:Checkbox','Axure:DiagramObject:CheckBox'].includes(sourceType) && type === 'checkbox'
               || sourceType === 'Axure:DiagramObject:TableCell' && type === 'tableCell';
             if (!richCarrier || textStatus !== 'stored-rich-text-as-plain') throw new Error('原生富文本载体与元件类型不一致。');
             const recovered = recoveredRichText(recovery,widgetText);
@@ -593,7 +603,7 @@ export function importRpSemantics(input: unknown, name = 'Imported RP'): RpImpor
             if(own(selectedPatch,paint+'Gradient')!==undefined)recoveredStyle({style:{[paint+'Gradient']:own(selectedPatch,paint+'Gradient')}},type);
           }
           for(const field of ['linePattern','lineEnds','borderVisibility','radius','cornerVisibility'])if(own(selectedPatch,field)!==undefined)recoveredStyle({style:{[field]:own(selectedPatch,field)}},type,true);
-          const patch = parseWidgetStylePatch(selectedPatch);
+          const patch = parseNativeSelectionStylePatch(selectedPatch,type);
           validateNativeBorderSurface(patch,widget);
           for(const field of ['outerShadow','innerShadow','textShadow'] as const)if(patch[field]!==undefined)recoveredStyle({style:{[field]:patch[field]}},type);
           if (Object.keys(patch).length) widget.selectedStyle = patch;
@@ -892,6 +902,7 @@ export function importRpSemantics(input: unknown, name = 'Imported RP'): RpImpor
         if (textStatus === 'stored-empty-rich-text') issue('omitted-empty-shape-text', '原生图形省略了空富文本字段；按已核对的构造、序列化与读取规则恢复为空文本。', 'warning', packageId, sourceId, storedText);
         if (type === 'textarea' && widgetText !== own(storedText, 'text')) issue('textarea-line-endings', '多行文本框的 CRLF/CR 已按原型浏览器 value 规则规范为 LF。', 'warning', packageId, sourceId, storedText);
         if (selectionSupported) selectionTargets.add(widget.id);
+        if (selectionLayout) issue('selection-layout-recovery', '已保留选择控件的共享自动宽高、左右排列和独立指示器尺寸，尺寸来自明确样式链；保持保存矩形，未重算原版字体度量。', 'warning', packageId, sourceId, own(item,'selectionLayoutRecovery'));
         if (errorKnown) errorTargets.add(widget.id);
         if (own(flags, 'AutoFitWidth') === true || own(flags, 'AutoFitHeight') === true) issue('stored-autofit-snapshot', widget.shapeText ? '已保留自动文字尺寸标志和原矩形，普通形状使用独立文字层排版。原生运行时 AutoFit 改变元件尺寸的行为尚未实现。' : '已冻结明确保存的矩形；源对象启用自动文字尺寸，导入后不重算字体度量或自动尺寸。', 'warning', packageId, sourceId, { AutoFitWidth: own(flags, 'AutoFitWidth'), AutoFitHeight: own(flags, 'AutoFitHeight') });
         if (styleRecovery !== undefined) issue('partial-style-recovery', '已恢复可识别样式；未映射属性及来源保留在报告 details，选中状态独立保存，交互恢复结果单独列出。', 'warning', packageId, sourceId, own(item, 'styleRecovery'));

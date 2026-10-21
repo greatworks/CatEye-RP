@@ -42,7 +42,7 @@ export function applyAdaptivePointEdit(page: Page, viewId: string | null | undef
     ...(viewId && Object.keys(layout).length ? { adaptiveViews: page.adaptiveViews.map(view => view.id !== viewId ? view : { ...view, overrides: { ...view.overrides, [widgetId]: { ...view.overrides[widgetId], ...layout } } }) } : {}),
   };
 }
-const STYLE_FIELDS: (keyof WidgetStyle)[] = ['fill', 'stroke', 'strokeWidth', 'radius', 'color', 'fontSize', 'fontFamily', 'fontWeight', 'textAlign', 'opacity'];
+const STYLE_FIELDS: (keyof WidgetStyle)[] = ['fill', 'stroke', 'strokeWidth', 'radius', 'color', 'fontSize', 'fontFamily', 'fontWeight', 'textAlign', 'opacity', 'selectionButtonSize'];
 const PADDING_SIDES = ['top', 'right', 'bottom', 'left'] as const;
 function effectivePadding(widget: Widget): [number, number, number, number] {
   if (widget.style.textPadding) return [...widget.style.textPadding];

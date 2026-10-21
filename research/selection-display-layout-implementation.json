@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "stage": "selection-display-layout",
+  "createdAt": "2026-10-20T10:42:06.403Z",
+  "sourceDomain": "unrotated selection initial display only; browser-derived font metrics",
+  "productionAndTests": [
+    {
+      "path": "src/runtime/selection-text-layout.ts",
+      "sha256": "072acc643c7551e887459be08ffc4b129c9ea727d7507e7d146d71f7fcd6aec7",
+      "bytes": 10439
+    },
+    {
+      "path": "tests/selection-text-layout.test.ts",
+      "sha256": "d9598466e1279de38759a451347d0a7d14c6266bec69c7db03011af8bad7026d",
+      "bytes": 13107
+    }
+  ],
+  "snapshots": [
+    {
+      "path": ".build/selection-display-layout-final/src/runtime/selection-text-layout.ts",
+      "sha256": "072acc643c7551e887459be08ffc4b129c9ea727d7507e7d146d71f7fcd6aec7",
+      "bytes": 10439
+    },
+    {
+      "path": ".build/selection-display-layout-final/tests/selection-text-layout.test.ts",
+      "sha256": "d9598466e1279de38759a451347d0a7d14c6266bec69c7db03011af8bad7026d",
+      "bytes": 13107
+    }
+  ],
+  "results": [
+    {
+      "phase": "red",
+      "total": 54,
+      "passed": 0,
+      "failed": 54,
+      "evidence": [
+        {
+          "path": ".build/selection-display-layout-red.json",
+          "sha256": "654630a4655889bf8696782fecfa76c1a4601243aec88771326f73c1a8af5ed9",
+          "bytes": 65070
+        },
+        {
+          "path": ".build/selection-display-layout-red.log",
+          "sha256": "1f3c521a0aa292d49b4b6948949a75360c65122e9440f1d7daffca5b1ea581e0",
+          "bytes": 426
+        }
+      ]
+    },
+    {
+      "phase": "first",
+      "total": 54,
+      "passed": 54,
+      "failed": 0,
+      "evidence": [
+        {
+          "path": ".build/selection-display-layout-first.json",
+          "sha256": "26fe14a31a5153f6f4dca3a5a5c6696de04436c95f7a79d5fb1f68b9dc1fd07f",
+          "bytes": 19693
+        },
+        {
+          "path": ".build/selection-display-layout-first.log",
+          "sha256": "2b18b0a8f87f77d86d249b1f891a8fd4c89e54478402062f63dc4413b40a2e50",
+          "bytes": 428
+        }
+      ]
+    }
+  ],
+  "typecheck": {
+    "exitCode": 0,
+    "log": {
+      "path": ".build/selection-display-layout-typecheck-first.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217",
+      "bytes": 60
+    }
+  },
+  "redScaffold": {
+    "path": ".build/selection-display-layout-red-source.ts.txt",
+    "sha256": "f7cf7dd35e8cc2e65649788bb47c3cd5942b624ebb73cf059b0c5310ad9276a6",
+    "bytes": 1281
+  },
+  "sources": [
+    {
+      "path": "research/selection-layout-integration-review.md",
+      "sha256": "3e06ce1b91fcf519aa37c6f1a78a39ea720991b9a9e50a743254fcf79f3e24d8",
+      "bytes": 19139
+    },
+    {
+      "path": "research/selection-layout-transaction-evidence.md",
+      "sha256": "9f16651b6248fa84206de91dff4690aca0d20aeafd6ed70254a89f9808656b5f",
+      "bytes": 11349
+    },
+    {
+      "path": "research/selection-layout-render-evidence.md",
+      "sha256": "159db793b19ac0f4b214f2558cd5858f148924dc01ec1f9b15d604c23c47ff0c",
+      "bytes": 14623
+    },
+    {
+      "path": "src/model/selection-layout.ts",
+      "sha256": "debf1e4e9f857b66c0f4780ba3347ba515261afb6ccebc824202e4a07d53d11b",
+      "bytes": 17402
+    },
+    {
+      "path": "src/model/shape-text.ts",
+      "sha256": "97e80768ff72e48f3e2cfc03199672149c5c2462b082c58d2891e0397d275e90",
+      "bytes": 2531
+    }
+  ],
+  "report": {
+    "path": "research/selection-display-layout-implementation.md",
+    "sha256": "49e4b553a8e2c2271e529d660fd3f0f8612794c9936331891eafd88ee237ca95",
+    "bytes": 5732
+  },
+  "browserExecuted": false,
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "writesSavedGeometry": false,
+  "hostIntegrationIncluded": false,
+  "limitations": [
+    "Font/line measurement is a browser substitute; immediate measurement can use fallback fonts.",
+    "Empty uses product paragraph-text semantics, not a newly recovered native IsEmpty getter.",
+    "AFW nowrap content can exceed the 10000px measuring container for extremely long lines.",
+    "No rotated/general-transform/live-editor/native graphics-union/runtime setter integration."
+  ]
+}

@@ -23,6 +23,8 @@ export interface RepeaterInfo { dataCount: number; itemCount: number; visibleIte
 export interface ControlHost {
   flush(): void;
   measureShapeText?(id: string, context: RowContext): ShapeTextMeasurement | undefined;
+  /** Selection candidates use the runtime paragraph measurement, without P94. */
+  measureSelectionText?(id: string, context: RowContext): ShapeTextMeasurement | undefined;
   anchor?(id: string, context: RowContext, event?: EventType): { x: number; y: number } | undefined;
   focus(id: string, context: RowContext): void;
   selectText(id: string, context: RowContext): void;
@@ -87,6 +89,9 @@ export interface OfflineRuntime {
   adaptiveViewId(): string | undefined;
   /** Effective declaration only: no actions, interaction state, or mutable model references. */
   adaptiveWidgetOverride(id: string): AdaptiveWidgetOverride | undefined;
+  /** Authored selection template for display measurement. Never reads action
+   * overrides, row values or runtime expressions; generated text CSS predates them. */
+  selectionDisplaySource(id: string): Widget | undefined;
   /** Own physical placement; descendant suppression is supplied by its DOM ancestor. */
   placementHidden(id: string, context?: RowContext): boolean;
   releasePointerStyles(): void;
@@ -519,7 +524,10 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     if (keep) next.links = rich.links?.filter(link => link.id === keep); else delete next.links;
     return next;
   };
-  const supportsNativeText = (w: Widget) => Boolean(w.shapeText && ['box', 'ellipse', 'path'].includes(w.type) && w.style.textPadding && w.style.verticalAlign);
+  const supportsNativeText = (w: Widget) => Boolean(
+    (w.shapeText && ['box', 'ellipse', 'path'].includes(w.type)
+      || w.selectionText && ['checkbox','radio'].includes(w.type))
+    && w.style.textPadding && w.style.verticalAlign);
   const replaceNativePlain = (rich: RichText | undefined, text: string): RichText => {
     const paragraph = rich?.paragraphs[0], first = paragraph?.runs[0];
     const keep = rich?.paragraphs.length === 1 && paragraph?.runs.length === 1 && !/\n/.test(text) ? first?.linkId : undefined;
@@ -2755,33 +2763,47 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
   };
   const autoFitText = (w: Widget, context: RowContext, group: TaskGroup): void => {
     const initial = currentWidget(w, context);
-    if (!supportsNativeText(initial) || !initial.shapeText || !initial.shapeText.autoFitWidth && !initial.shapeText.autoFitHeight || !controlHost?.measureShapeText) return;
+    const selection = isCheck(initial) && !!initial.selectionText;
+    const flags = selection ? initial.selectionText : initial.shapeText;
+    const measure = selection ? controlHost?.measureSelectionText : controlHost?.measureShapeText;
+    if (!supportsNativeText(initial) || !flags || !flags.autoFitWidth && !flags.autoFitHeight || !measure || !controlHost) return;
+    // Native selection text is under a label, but its height query addresses
+    // direct owner children and produces NaN. Reject this unsupported branch
+    // through the existing transaction rollback instead of saving NaN geometry.
+    if (selection && flags.autoFitHeight) throw new Error('Native selection text height AutoFit is unsupported');
     const navigation = navigationVersion, key = instanceKey(w.id, context);
     controlHost.flush();
-    const measurement = controlHost.measureShapeText(w.id, context);
+    const measurement = measure.call(controlHost,w.id,context);
     if (!measurement || disposed || navigationVersion !== navigation || !validContext(context)) return;
     const current = currentWidget(w, context), old = measurement.rect;
-    const width = current.shapeText!.autoFitWidth ? measurement.width : old.width;
-    const height = current.shapeText!.autoFitHeight ? measurement.height : old.height;
+    const currentFlags = selection ? current.selectionText! : current.shapeText!;
+    const width = currentFlags.autoFitWidth ? measurement.width : old.width;
+    const height = currentFlags.autoFitHeight ? measurement.height : old.height;
     if (![width, height, old.x, old.y, old.width, old.height].every(Number.isFinite) || width < 0 || height < 0) throw new Error('Invalid shape text measurement');
     const deltaX = width - old.width, deltaY = height - old.height;
     if (deltaX || deltaY) {
-      const beforeFit = ancestorBounds(w, context);
-      // Original query.resize writes zero CSS but skips its logical cache when
-      // BOTH requested axes are zero; retain that distinction for expressions.
-      shapeCssSizes.set(key, { width, height });
-      if (width || height) patch(w, { width, height }, context);
-      resizingRects.set(key, { ...old });
-      try {
-        fitFrom(w, context, group, beforeFit, true);
-        if (!disposed && navigationVersion === navigation && validContext(context)) geometryEvent(w, 'resize', context, group);
-      } finally { resizingRects.delete(key); }
+      // Original query.resize skips selection controls entirely. AutoFit still
+      // applies alignment Move and registers them for subsequent remeasurement.
+      if (!selection) {
+        const beforeFit = ancestorBounds(w, context);
+        // Original query.resize writes zero CSS but skips its logical cache when
+        // BOTH requested axes are zero; retain that distinction for expressions.
+        shapeCssSizes.set(key, { width, height });
+        if (width || height) patch(w, { width, height }, context);
+        resizingRects.set(key, { ...old });
+        try {
+          fitFrom(w, context, group, beforeFit, true);
+          if (!disposed && navigationVersion === navigation && validContext(context)) geometryEvent(w, 'resize', context, group);
+        } finally { resizingRects.delete(key); }
+      }
       if (disposed || navigationVersion !== navigation || !validContext(context)) return;
       const dx = measurement.textAlign === 'right' ? -deltaX : measurement.textAlign === 'center' ? -deltaX / 2 : 0;
       const dy = measurement.verticalAlign === 'bottom' ? -deltaY : measurement.verticalAlign === 'middle' ? -deltaY / 2 : 0;
       if (dx || dy) {
         const afterHandlers = currentWidget(w, context);
-        patch(w, { x: afterHandlers.x + dx, y: afterHandlers.y + dy }, context);
+        const movement = { x: afterHandlers.x + dx, y: afterHandlers.y + dy };
+        if (![movement.x,movement.y].every(Number.isFinite)) throw new Error('Invalid text alignment movement');
+        patch(w, movement, context);
         // Direct native MoveWidget has no second default fitParent callback.
         geometryEvent(w, 'move', context, group);
       }
@@ -3328,6 +3350,14 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     hasInteractionStyle,
     adaptiveViewId: () => activeSelectionId,
     adaptiveWidgetOverride: id => { const w = widgets.get(id), value = w && adaptiveOverride(w); return value && structuredClone(value); },
+    selectionDisplaySource: id => {
+      const w = widgets.get(id);
+      if (!w?.selectionText || w.type !== 'checkbox' && w.type !== 'radio') return;
+      const declaration = adaptiveOverride(w);
+      const result = structuredClone({ ...w, ...declaration, style: mergeStyle(w.style, declaration?.style) });
+      if (result.richText) result.richText = richStyle(result.richText, projectTextStyle(declaration?.style ?? {}));
+      return result;
+    },
     placementHidden,
     nativeTextSet: (id, context = []) => !disposed && nativeTextSetters.has(instanceKey(id, context)),
     updateAutoFitted: (refresh = false) => enqueue(group => atomic(() => {
@@ -3496,7 +3526,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
 }
 
 /** DOM-only renderer. No HTML interpretation, dynamic code evaluation, or remote resource loading. */
-export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRuntime, host: HTMLElement, pathData?: (path: VectorPath, width: number, height: number) => string, options: { frames?: InlineFrameHost; embedded?: boolean; previewImages?: boolean; shadows?: ShadowRenderer; gradients?: GradientRenderer; lines?: LineStyleRenderer; shapeText?: ShapeTextRenderer; shapeTextMeasure?: import('./shape-text-measure').ShapeTextMeasurer; dragInput?: typeof import('./drag-input').bindRuntimeDrag } = {}): void {
+export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRuntime, host: HTMLElement, pathData?: (path: VectorPath, width: number, height: number) => string, options: { frames?: InlineFrameHost; embedded?: boolean; previewImages?: boolean; shadows?: ShadowRenderer; gradients?: GradientRenderer; lines?: LineStyleRenderer; shapeText?: ShapeTextRenderer; shapeTextMeasure?: import('./shape-text-measure').ShapeTextMeasurer; selectionDisplay?: import('./selection-display').SelectionDisplay; dragInput?: typeof import('./drag-input').bindRuntimeDrag } = {}): void {
   // Render identity only: getRandomValues also works on ordinary HTTP pages,
   // unlike randomUUID, which browsers restrict to secure contexts.
   const shadowScope = Array.from(crypto.getRandomValues(new Uint32Array(4)), value => value.toString(16)).join('-');
@@ -3532,6 +3562,13 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
     try { element.focus({ preventScroll: true }); } finally { suppressControlFocus = previous; }
   };
   const nodes = new Map<string, HTMLDivElement>();
+  // A click action can flush a render before native change is dispatched.
+  // Retain the browser's activation value without changing event ordering.
+  const checkActivations = new WeakMap<HTMLInputElement, { checked: boolean }>();
+  const controlBounds = (element: HTMLElement) => {
+    const owner=element.parentElement;
+    return (element.matches('input[type=checkbox],input[type=radio]')&&owner?.querySelector(':scope > label[data-selection-display]')?owner:element).getBoundingClientRect();
+  };
   const gradientPaints = new WeakMap<HTMLElement, {fill:ReturnType<GradientRenderer['paintSession']>;stroke:ReturnType<GradientRenderer['paintSession']>}>();
   const paintLineArrows=(svg:SVGSVGElement,geometry:ReturnType<LineStyleRenderer['geometry']>|undefined,paint:string,width:number,border?:ReturnType<GradientRenderer['svg']>)=>{
     for(const old of svg.querySelectorAll(':scope > g[data-line-arrow]'))old.remove();
@@ -3680,6 +3717,9 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
       };
       const s = w.style, drawn = runtime.renderSize(w, context); Object.assign(element.style, { display: hidden || ownUnplaced ? 'none' : options.shapeText?.supports(w) ? 'flex' : '', visibility: ownUnplaced ? 'hidden' : '', position: 'absolute', left: `${w.x}px`, top: `${w.y}px`, width: `${drawn.width}px`, height: `${drawn.height}px`, transform: (w.menu || w.tree || w.treeNode) && w.rotation === 0 ? 'none' : `rotate(${w.rotation}deg)`, backgroundColor: w.vectorPath || w.type === 'hotspot' || s.fillGradient && options.gradients?.supports(w.type) ? 'transparent' : s.fill, backgroundImage: !w.vectorPath && options.gradients ? options.gradients.backgrounds(s,w.type,drawn.width,drawn.height) : 'none', backgroundSize:'100% 100%', backgroundOrigin:'border-box', backgroundRepeat:'no-repeat', borderStyle: w.type==='image'?options.lines?.pattern(s).css??'solid':'solid', borderColor: options.lines?.paintedBorder(s,w.type)?'transparent':options.gradients?.strokeColor(s,w.type)??s.stroke, borderWidth: w.vectorPath || w.type==='line' ? '0' : s.borderWidths ? s.borderWidths.map(value => `${value}px`).join(' ') : `${s.strokeWidth}px`, borderRadius: w.vectorPath ? '0' : w.type === 'ellipse' ? '50%' : options.lines?.supportsCorners(w)&&s.cornerVisibility ? options.lines.cssRadii(s).map(value=>`${value}px`).join(' ') : options.lines?.supportsSides(w)&&s.borderVisibility?.some(v=>!v) ? options.lines.rectangle(s,drawn.width,drawn.height).radii.map(value=>`${value}px`).join(' ') : s.cornerRadii ? s.cornerRadii.map(value => `${value}px`).join(' ') : `${s.radius}px`, overflow: options.shapeText?.supports(w) || w.vectorPath || w.menu || w.tree || w.treeNode ? 'visible' : 'hidden', zIndex: String(runtime.menuLayer(w.id, context) ?? ''), color: s.color, fontSize: `${s.fontSize}px`, fontFamily: s.fontFamily, fontWeight: String(s.fontWeight), fontStyle: s.fontStyle ?? 'normal', textAlign: s.textAlign, justifyContent: s.textAlign === 'center' ? 'center' : s.textAlign === 'right' ? 'flex-end' : 'flex-start', opacity: String(s.opacity), cursor: w.interactions.length > 0 ? 'pointer' : '' });
       if (w.layer) Object.assign(element.style, { transform: 'none', overflow: 'visible', background: 'transparent', border: '0', boxShadow: 'none' });
+      // The ordinary native selection writer emits no owner clipping. This
+      // preserves long label painting without overriding any ancestor's clip.
+      if (w.selectionText && (w.type === 'checkbox' || w.type === 'radio') && s.textPadding && s.verticalAlign !== undefined) element.style.overflow = 'visible';
       if (w.inlineFrame) Object.assign(element.style, { background: 'transparent', border: '0', borderRadius: '0' });
       if (!w.vectorPath && options.gradients?.needsComputedColor(s)) element.style.backgroundImage=options.gradients.backgrounds(s,w.type,drawn.width,drawn.height,getComputedStyle(element).color);
       const shadowCss = options.shadows?.css(s, options.shadows.mode(w.type, Boolean(w.vectorPath))) ?? { boxShadow: 'none', textShadow: 'none', filter: 'none' };
@@ -3739,8 +3779,11 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
           if (w.disabled) return;
           error.textContent = '';
           const before = Boolean(runtime.widget(original, context).checked), pageId = runtime.state().pageId;
-          const rect = input.getBoundingClientRect();
-          const pending = runtime.check(w.id, (input as HTMLInputElement).checked, context, { x: rect.left, y: rect.bottom });
+          const rect = controlBounds(input);
+          const controlInput = input as HTMLInputElement;
+          const checked = checkActivations.get(controlInput)?.checked ?? controlInput.checked;
+          checkActivations.delete(controlInput);
+          const pending = runtime.check(w.id, checked, context, { x: rect.left, y: rect.bottom });
           report(pending.then(() => { if (runtime.state().pageId === pageId && input.isConnected && before !== Boolean(runtime.widget(original, context).checked)) fire('change'); }));
         };
         const commitText = () => {
@@ -3756,7 +3799,11 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
           const pending = runtime.chooseOptions(w.id, Array.from((input as HTMLSelectElement).selectedOptions, option => option.index), context, point);
           report(pending); void pending.then(() => sourceFocus.delete(key), () => sourceFocus.delete(key));
         } : null;
-        input.onclick = check && w.type === 'radio' ? commitCheck : null;
+        input.onclick = check && w.type === 'radio' ? commitCheck : check && w.type === 'checkbox' ? () => {
+          const controlInput = input as HTMLInputElement, activation = { checked: controlInput.checked };
+          checkActivations.set(controlInput, activation);
+          setTimeout(() => { if (checkActivations.get(controlInput) === activation) checkActivations.delete(controlInput); }, 0);
+        } : null;
         const caret = () => { if (runtime.hint(w.id, context) !== undefined && !(input instanceof HTMLSelectElement)) { try { input.setSelectionRange(0, 0); } catch { /* Numeric inputs lack selection ranges. */ } } };
         const clearHint = () => { if (w.hintHideOn !== 'focus' && runtime.hideHint(w.id, context)) { input.value = ''; if (w.type === 'input') (input as HTMLInputElement).type = w.inputType ?? 'text'; } };
         const checkText = () => { if (runtime.textChanged(w.id, context)) fire('change'); };
@@ -3767,7 +3814,7 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
         input.onpaste = formText ? clearHint : null;
         input.onmouseup = formText ? caret : null;
         const controlFocus = (focused: boolean) => {
-          const rect = input.getBoundingClientRect(), point = { x: rect.left, y: rect.bottom }, event = focused ? 'focus' : 'blur';
+          const rect = controlBounds(input), point = { x: rect.left, y: rect.bottom }, event = focused ? 'focus' : 'blur';
           const key = sourceFocusKey(w.id, event, point); sourceFocus.set(key, input);
           const pending = runtime.focus(w.id, focused, context, point, suppressControlFocus, input.validity.valid);
           report(pending); void pending.then(() => sourceFocus.delete(key), () => sourceFocus.delete(key));
@@ -3779,8 +3826,9 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
       const paintRichContent = (span: HTMLSpanElement) => {
         span.style.textShadow = shadowCss.textShadow;
         span.style.textDecorationLine = w.richText ? '' : decoration(s);
-        const nativeLayout = options.shapeText?.supports(w);
-        const plainSetter = nativeLayout && runtime.nativeTextSet(w.id, context);
+        const nativeLayout = Boolean(options.shapeText && (options.shapeText.supports(w)
+          || w.selectionText && (w.type === 'checkbox' || w.type === 'radio') && s.textPadding && s.verticalAlign !== undefined));
+        const plainSetter = (nativeLayout || !!w.selectionText && (w.type === 'checkbox' || w.type === 'radio')) && runtime.nativeTextSet(w.id, context);
         const richText: RichText | undefined = w.richText ?? (plainSetter ? { paragraphs: [{ runs: [{ text }] }] } : undefined);
         if (!richText) { if (nativeLayout) options.shapeText!.paint(span, text); else if (span.textContent !== text || span.firstElementChild) span.textContent = text; return; }
         // Keep the element under mousedown alive through focus/blur renders.
@@ -3940,7 +3988,36 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
       else if (w.type === 'input') { const input = content('input'); input.type = w.inputType ?? 'text'; control(input); }
       else if (w.type === 'textarea') { control(content('textarea')); }
       else if (w.type === 'select') { const select = content('select'); select.multiple = Boolean(w.multiple); if (w.selectMode === 'listbox') select.size = 2; else select.removeAttribute('size'); if (JSON.stringify(Array.from(select.options, o => o.value)) !== JSON.stringify(w.options ?? [])) { select.replaceChildren(); for (const option of w.options ?? []) { const o = document.createElement('option'); o.textContent = option; o.value = option; select.append(o); } } control(select); }
-      else if (w.type === 'checkbox' || w.type === 'radio') { const label = content('label'); if (!label.querySelector('input')) label.replaceChildren(document.createElement('input'), document.createElement('span')); const input = label.querySelector('input')!, span = label.querySelector('span')!; input.type = w.type; control(input, true); paintRichContent(span); }
+      else if (w.type === 'checkbox' || w.type === 'radio') {
+        const displaySource = options.selectionDisplay && runtime.selectionDisplaySource(w.id);
+        const svgLayout = !!displaySource && !!options.selectionDisplay?.supports(displaySource);
+        let label: HTMLLabelElement, input: HTMLInputElement, span: HTMLSpanElement;
+        if (svgLayout) {
+          label = element.querySelector<HTMLLabelElement>(':scope > label.selection-control-label')!;
+          input = element.querySelector<HTMLInputElement>(':scope > input')!;
+          if (!label || !input) {
+            label = document.createElement('label'); label.className = 'selection-control-label';
+            input = document.createElement('input'); input.id = `selection-${shadowScope}-${encodeURIComponent(key)}`;
+            label.htmlFor = input.id; label.append(document.createElement('span')); element.replaceChildren(label, input);
+          }
+          span = label.querySelector<HTMLSpanElement>(':scope > span')!;
+          // Let default label activation reach its separate input exactly once.
+          label.onclick = e => e.stopPropagation();
+        } else {
+          label = content('label');
+          if (!label.querySelector('input')) label.replaceChildren(document.createElement('input'), document.createElement('span'));
+          input = label.querySelector('input')!; span = label.querySelector('span')!;
+        }
+        input.type = w.type; control(input, true); paintRichContent(span);
+        const selectionLayout = !!w.selectionText && s.textPadding !== undefined && s.verticalAlign !== undefined;
+        input.style.flex = selectionLayout ? 'none' : '';
+        span.className = selectionLayout ? 'selection-text' : '';
+        Object.assign(span.style, { display: selectionLayout ? runtime.nativeTextSet(w.id,context) && text === '' ? 'none' : 'block' : '',
+          lineHeight: selectionLayout ? String(s.lineHeight ?? 'normal') : '',
+          whiteSpace: selectionLayout ? w.selectionText!.autoFitWidth ? 'nowrap' : 'normal' : '',
+          overflowWrap: selectionLayout ? w.selectionText!.autoFitWidth ? 'normal' : 'break-word' : '' });
+        if (svgLayout) options.selectionDisplay!.update(label, span, input, displaySource!, w);
+      }
       else if (w.type === 'image') { if (w.imageSrc && (/^data:image\/(png|jpeg|webp|gif);base64,[A-Za-z0-9+/=\r\n]+$/.test(w.imageSrc) || options.previewImages && /^https?:\/\//i.test(w.imageSrc))) { const image = content('img'); if (image.getAttribute('src') !== w.imageSrc) image.src = w.imageSrc; image.alt = w.name; } else content('span').textContent = 'Image'; }
       else if (w.type === 'line') {
         let svg=element.querySelector<SVGSVGElement>(':scope > svg.widget-line');
@@ -3986,7 +4063,7 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
     }
   };
   for (const page of doc.pages) indexShapes(page.widgets);
-  const measureShapeText = (id: string, context: RowContext) => {
+  const measureText = (id: string, context: RowContext, selection = false) => {
     const source = shapeSources.get(id), helper = options.shapeTextMeasure;
     if (!source || !helper) return;
     const effective = (original: Widget, parentDisabled = false) => runtime.widget(original, context, parentDisabled);
@@ -3996,10 +4073,13 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
     else if (!runtime.hasOverride(id, 'text', context)) widget.text = runtime.text(widget.text, undefined, context);
     const key = JSON.stringify(context);
     const owner = [...nodes.values()].find(node => node.isConnected && node.dataset.widgetId === id && node.dataset.rowContext === key);
-    const size = helper.measure(widget, owner, document, { plainSetter: runtime.nativeTextSet(id, context) });
+    const measureOptions = { plainSetter: runtime.nativeTextSet(id, context) };
+    const size = selection ? helper.measureSelection(widget, owner, document, measureOptions) : helper.measure(widget, owner, document, measureOptions);
     return size && { ...size, rect: { x: widget.x, y: widget.y, width: widget.width, height: widget.height }, textAlign: widget.style.textAlign, verticalAlign: widget.style.verticalAlign ?? 'top' };
   };
-  runtime.bindControls({ flush: safeRender, measureShapeText, anchor: (id, context, event = 'focus') => { const element = findControl(id, context); if (!element) return; const rect = element.getBoundingClientRect(), point = { x: rect.left, y: rect.bottom }; sourceFocus.set(sourceFocusKey(id, event, point), element); if (sourceFocus.size > 256) sourceFocus.delete(sourceFocus.keys().next().value!); return point; }, focus: (id, context) => findControl(id, context)?.focus(), selectText: (id, context) => { const element = findControl(id, context); if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) element.select(); } });
+  runtime.bindControls({ flush: safeRender, measureShapeText: (id,context) => measureText(id,context),
+    measureSelectionText: (id,context) => measureText(id,context,true),
+    anchor: (id, context, event = 'focus') => { const element = findControl(id, context); if (!element) return; const rect = controlBounds(element), point = { x: rect.left, y: rect.bottom }; sourceFocus.set(sourceFocusKey(id, event, point), element); if (sourceFocus.size > 256) sourceFocus.delete(sourceFocus.keys().next().value!); return point; }, focus: (id, context) => findControl(id, context)?.focus(), selectText: (id, context) => { const element = findControl(id, context); if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) element.select(); } });
   const schedule = () => { if (drag?.hasActiveDrag() && !runtime.state().motionState?.drag?.started) drag.cancel(); if (!renderPending) { renderPending = true; queueMicrotask(safeRender); } };
   runtime.subscribe(schedule); report(runtime.start()); safeRender();
   window.addEventListener('resize', () => report(runtime.setViewport({ width: window.innerWidth, height: window.innerHeight, clampToPage: true }).then(safeRender)));

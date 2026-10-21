@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "stage": "selection-display-host",
+  "createdAt": "2026-10-20T10:46:21.062Z",
+  "scope": "Read-only source/retained-evidence review plus one authorized new focused test. Product host integration continues independently.",
+  "originalAxureGuiCompared": false,
+  "originalDllExecuted": false,
+  "nativeFontsMeasured": false,
+  "newBrowserTestsExecuted": false,
+  "summary": {
+    "passed": 18,
+    "failed": 0,
+    "confirmedBlockingFindings": 0
+  },
+  "sourceApi": {
+    "name": "OfflineRuntime.selectionDisplaySource(id)",
+    "policy": "Immutable authored literal text and active view normal declarations; ignore runtime globals/rows/actions/interaction paint.",
+    "getter": {
+      "file": ".build/selection-display-host-review-snapshot/selection-display-source.txt",
+      "path": ".build/selection-display-host-review-snapshot/selection-display-source.txt",
+      "sha256": "d50b72c8a557ee1f6a7cb72e9f3e3a3b69be52479cd63650700aabb1f5b26547",
+      "bytes": 457
+    },
+    "body": "    selectionDisplaySource: id => {\n      const w = widgets.get(id);\n      if (!w?.selectionText || w.type !== 'checkbox' && w.type !== 'radio') return;\n      const declaration = adaptiveOverride(w);\n      const result = structuredClone({ ...w, ...declaration, style: mergeStyle(w.style, declaration?.style) });\n      if (result.richText) result.richText = richStyle(result.richText, projectTextStyle(declaration?.style ?? {}));\n      return result;\n    },\n"
+  },
+  "checks": {
+    "command": "npx vitest run tests/selection-display-source.test.ts --maxWorkers=1 --reporter=json --outputFile=.build/selection-display-host-source-final.json",
+    "module": 9,
+    "serialized": 9,
+    "first": {
+      "total": 18,
+      "passed": 18,
+      "failed": 0
+    },
+    "final": {
+      "total": 18,
+      "passed": 18,
+      "failed": 0
+    },
+    "typecheck": {
+      "command": "npx tsc --noEmit",
+      "exitCode": 0
+    },
+    "note": "No red product failure claimed. First run passed; fixture lineHeight string corrected to number after typecheck. Parent corrected its separate E2E event name."
+  },
+  "findings": [],
+  "requiredBrowserContracts": [
+    "One owner Click for label/SVG activation with forwarded input event",
+    "Radio re-click retains unselect/select; checkbox change path remains single",
+    "Native input focus/keyboard remains available despite zero dimensions",
+    "Separate visual anchor from focusable zero-size input",
+    "Rich-link activation stays in link scope",
+    "Stable input IDs and radio groups across full repeater instance context",
+    "Loaded-before-render and hidden-first reveal preserve authored panel source",
+    "SetText does not remeasure author panel; save/readback unchanged",
+    "Committed view/rollback and font-ready invalidation preserve source identity"
+  ],
+  "boundaries": [
+    "Browser-derived normal declaration measurement is explicit product proxy, not observed native fonts",
+    "Initial selected/disabled font contribution to vendor author measurement is not closed",
+    "Source result is display-only, not a saved widget; do not apply selected style or resolve runtime expressions",
+    "RichTextObject.get_IsEmpty token100702331 body not present in reviewed evidence; LF-joined empty is independent policy",
+    "Complete state/adaptive P94 asset geometry remains outside this host contract",
+    "Full project cascade/general transform/original GUI not checked"
+  ],
+  "sources": [
+    {
+      "file": "src/runtime/export-runtime.ts",
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "852e09e9520dfe753ed0415e9e5477e885edf149cdea0a3fcd6b9de10b21cced",
+      "bytes": 327330,
+      "snapshot": ".build/selection-display-host-review-snapshot/src/runtime/export-runtime.ts"
+    },
+    {
+      "file": "src/components/Preview.tsx",
+      "path": "src/components/Preview.tsx",
+      "sha256": "ff3c41cf9ba65e186122bb289f0f5bcb643ad330ef12130edb2028ed3998e50b",
+      "bytes": 25607,
+      "snapshot": ".build/selection-display-host-review-snapshot/src/components/Preview.tsx"
+    },
+    {
+      "file": "src/components/WidgetView.tsx",
+      "path": "src/components/WidgetView.tsx",
+      "sha256": "290a689581acca39ccca0eab7df7b770d492af5565169d8ed2946484965bf87e",
+      "bytes": 35273,
+      "snapshot": ".build/selection-display-host-review-snapshot/src/components/WidgetView.tsx"
+    },
+    {
+      "file": "src/runtime/selection-text-layout.ts",
+      "path": "src/runtime/selection-text-layout.ts",
+      "sha256": "c14a31fd95ecd5d28c49e56944e81f69691f28329accccd5a013d6d934ac855e",
+      "bytes": 10734,
+      "snapshot": ".build/selection-display-host-review-snapshot/src/runtime/selection-text-layout.ts"
+    },
+    {
+      "file": "src/runtime/shape-text-measure.ts",
+      "path": "src/runtime/shape-text-measure.ts",
+      "sha256": "8496413c0330b9a2429c3ad8fc5c65fec25808db989d4e06a675c95f771cac56",
+      "bytes": 13945,
+      "snapshot": ".build/selection-display-host-review-snapshot/src/runtime/shape-text-measure.ts"
+    },
+    {
+      "file": "src/model/rich-text.ts",
+      "path": "src/model/rich-text.ts",
+      "sha256": "01fa723e9e158cb16125753c5993fd2e86a370133b0a246cccced8d578d6863f",
+      "bytes": 12869,
+      "snapshot": ".build/selection-display-host-review-snapshot/src/model/rich-text.ts"
+    },
+    {
+      "file": "src/model/selection-layout.ts",
+      "path": "src/model/selection-layout.ts",
+      "sha256": "debf1e4e9f857b66c0f4780ba3347ba515261afb6ccebc824202e4a07d53d11b",
+      "bytes": 17402,
+      "snapshot": ".build/selection-display-host-review-snapshot/src/model/selection-layout.ts"
+    },
+    {
+      "file": "tests/selection-display-source.test.ts",
+      "path": "tests/selection-display-source.test.ts",
+      "sha256": "5acae2001f90f071a2d801cb0d3642a93805bfb11e71d2fcf653696b8237379f",
+      "bytes": 13542,
+      "snapshot": ".build/selection-display-host-review-snapshot/tests/selection-display-source.test.ts"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "research/selection-layout-render-evidence.md",
+      "path": "research/selection-layout-render-evidence.md",
+      "sha256": "159db793b19ac0f4b214f2558cd5858f148924dc01ec1f9b15d604c23c47ff0c",
+      "bytes": 14623
+    },
+    {
+      "file": "research/selection-layout-indicator-evidence.md",
+      "path": "research/selection-layout-indicator-evidence.md",
+      "sha256": "7407c4f39e17d1fb0c4c87524f7ef562d35151eb4971cc26ee9e9fc2be595861",
+      "bytes": 11142
+    },
+    {
+      "file": "research/selection-layout-integration-review.md",
+      "path": "research/selection-layout-integration-review.md",
+      "sha256": "3e06ce1b91fcf519aa37c6f1a78a39ea720991b9a9e50a743254fcf79f3e24d8",
+      "bytes": 19139
+    },
+    {
+      "file": "research/selection-author-resize-metadata.json",
+      "path": "research/selection-author-resize-metadata.json",
+      "sha256": "db83dfe460df95e36344814a2a7275042607b1bff4068e0054dbbe7446a98e11",
+      "bytes": 27500
+    },
+    {
+      "file": "research/selection-display-layout-implementation-second.json",
+      "path": "research/selection-display-layout-implementation-second.json",
+      "sha256": "ab0cc982c7f7d0f84dfe292f7d562b958a5a4f20124a6a2d6a57ef52a214a393",
+      "bytes": 3469
+    },
+    {
+      "file": ".build/selection-display-host-source-first.json",
+      "path": ".build/selection-display-host-source-first.json",
+      "sha256": "1a1100a9928f5c0a0b98ed0300d97192290d006c5fc280ff2b7bcc30029780b3",
+      "bytes": 7638
+    },
+    {
+      "file": ".build/selection-display-host-source-final.json",
+      "path": ".build/selection-display-host-source-final.json",
+      "sha256": "2574d7683461c8e6a43f81e9a5a91836e20fcc648a7a8efeaafc0c38bdf5e8df",
+      "bytes": 7640
+    },
+    {
+      "file": "research/selection-display-host-review.md",
+      "path": "research/selection-display-host-review.md",
+      "sha256": "c6b8435a34a9500d65c25813e4acf8f10a92d5de1c1a92b53cfe531a210f83d0",
+      "bytes": 12027
+    }
+  ]
+}

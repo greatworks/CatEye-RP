@@ -1,6 +1,6 @@
 import type { AdaptiveViewSet, AdaptiveViewTarget, AdaptiveWidgetOverride, Widget, WidgetStyle, GradientFill } from './types';
 import { ARROW_STYLES, LINE_PATTERNS } from './types';
-import { parseWidgetStylePatch } from './document';
+import { parseNativeSelectionStylePatch } from './import-rp-selection-layout';
 import { importNativeAuthorPin } from './import-rp-resize-pins';
 
 type Data = Record<string, unknown>;
@@ -122,6 +122,7 @@ function eligibleProperties(value:unknown):Map<number,unknown>{
     const key=raw&0x0fffffff;if(all.has(key))fail('重复的原生局部样式属性。');all.add(key);
     if(key===111)placedEnum(p.value);
     if([106,107,108,109].includes(key)){if((raw&0x3fffffff)!==key)fail('固定边约束包含未知标记。');importNativeAuthorPin(key,p.value);}
+    if(key===94){if((raw&0x3fffffff)!==94)fail('选择控件尺寸包含未知标记。');number(p.value,0,100000);}
     if((raw>>>30)===3)result.set(key,p.value);
   }
   return result;
@@ -165,12 +166,13 @@ function nativeVisual(properties:Map<number,unknown>,version:string,widget:Widge
       out[key===72?'outerShadow':key===73?'innerShadow':'textShadow']={on:bool(m.get('On')),offsetX:number(m.get('OffsetX'),-1000,1000),offsetY:number(m.get('OffsetY'),-1000,1000),blurRadius:number(m.get('BlurRadius'),0,1000),color:argb(m.get('Color')),...(key===73?{spread}:{})};
     }else if(key===80){const n=number(value,0,15);if(!Number.isInteger(n)||!['box','input','textarea','select'].includes(widget.type))fail('此原生元件的四边显隐未验证。');out.borderVisibility=[2,4,8,1].map(bit=>Boolean(n&bit));}
     else if(key===81){const n=number(value,0,15);if(!Number.isInteger(n)||!['box','input','textarea','select'].includes(widget.type))fail('此原生元件的四角显隐未验证。');out.cornerVisibility=[1,2,4,8].map(bit=>Boolean(n&bit));}
+    else if(key===94){if(version!=='11.0.0.0'||!['checkbox','radio'].includes(widget.type))fail('此原生元件或版本的选择控件尺寸未验证。');out.selectionButtonSize=number(value,0,100000);}
     else if(key===1001)out.fontWeight=number(value,100,1000);
     else if(key===1002){if(value!==0&&value!==1)fail('此原生字体样式未支持。');out.fontStyle=value===0?'normal':'italic';}
     else fail(`未支持的有效局部视觉属性 ${key}。`);
   }
   if(padding.every(key=>properties.has(key)))out.textPadding=padding.map(key=>number(properties.get(key),0,1000));
-  const parsed=parseWidgetStylePatch(out);validateSurface(parsed,widget);return parsed;
+  const parsed=parseNativeSelectionStylePatch(out,widget.type);validateSurface(parsed,widget);return parsed;
 }
 function equalData(a:unknown,b:unknown):boolean{
   if(a===b)return true;if(!a||!b||typeof a!=='object'||typeof b!=='object'||Array.isArray(a)!==Array.isArray(b))return false;

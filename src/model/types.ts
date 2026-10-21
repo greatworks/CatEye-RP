@@ -76,6 +76,9 @@ export interface WidgetStyle {
   pinVertical?: PinVertical;
   fixedWidth?: boolean;
   fixedHeight?: boolean;
+  /** Native P94, independent from shared selection text flags. No saved default.
+   * Normal/named/adaptive/state styles and SetStyle carry this same scalar. */
+  selectionButtonSize?: number;
   /** Atomic fill paint. A fill-only style patch returns to the supplied solid color. */
   fillGradient?: GradientFill;
   /** Independent atomic border paint. A stroke-only patch restores its solid color. */
@@ -205,6 +208,10 @@ export interface LayerData {
   /** Native group propagation setting; false when omitted. */
   propagate?: boolean;
 }
+/** Shared selection-object fields, independent from adaptive style P94. */
+export interface SelectionTextLayout {
+  autoFitWidth: boolean; autoFitHeight: boolean; alignRight: boolean;
+}
 export interface Widget {
   id: string; type: WidgetType; name: string; text: string;
   /** text must equal each paragraph's concatenated runs, joined with one LF. */
@@ -222,6 +229,8 @@ export interface Widget {
   vectorPath?: VectorPath;
   /** Native shape text layout flags. They do not change the saved owner rectangle. */
   shapeText?: { autoFitWidth: boolean; autoFitHeight: boolean };
+  /** Checkbox/radio only. Omission preserves legacy layout; no flags are inferred. */
+  selectionText?: SelectionTextLayout;
   /** Checkbox/radio selection uses checked instead; omitted ordinary selection is false. */
   selected?: boolean;
   selectionGroup?: string;

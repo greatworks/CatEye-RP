@@ -1,19 +1,54 @@
 {
-  "stage": "Completed MVP 0.1.0 through verified Layer resize and constraints",
-  "snapshotDate": "2026-10-20",
-  "sourceFilesMatched": 604,
-  "rebuiltProductionFilesMatched": 6,
-  "unitTests": {
-    "total": 4712,
-    "firstRunPassed": 4710,
-    "firstRunTimeouts": 2,
-    "failedAssertions": 0,
-    "recheckedFiles": 2,
-    "recheckPassed": 30,
-    "recheckFailed": 0,
-    "fixturePrerequisite": "Local original Axure samples; not distributed"
+  "snapshotDate": "2026-10-21",
+  "stage": "Validated selection author, display and runtime source milestone",
+  "base": "5000ef371a1a513f81924f9e4219c214184037fb",
+  "previousMilestone": "b3254d8e6b7ca3291c6cdcff861766530307003d",
+  "sourceFilesMatched": 628,
+  "sourceEvidenceFiles": 190,
+  "priorChecks": {
+    "unit": {
+      "passed": 5469,
+      "failed": 0,
+      "pending": 0,
+      "inputsUnchanged": true
+    },
+    "typecheck": true,
+    "build": ".build/selection-layout-author-second-dist",
+    "focusedProductionBrowser": {
+      "passed": 29,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0
+    },
+    "fullBrowserRegressionOnThisBuild": false,
+    "reader": {
+      "reusedUnchangedInputs": true,
+      "passed": 856
+    },
+    "sourceServices": {
+      "passed": 73,
+      "failed": 0,
+      "rehashedFiles": 56
+    },
+    "inspectedFinalScreenshots": [
+      ".build/selection-author-final-results/selection-author-selection-c1046-dicator-side-is-independent/selection-author-fit.png"
+    ],
+    "historicalEvidencePreserved": 1535
   },
-  "releaseEvidence": "research/layer-resize-verification.json",
-  "excludedWorkInProgress": "Selection control layout and rendering",
-  "fullAxureParity": false
+  "sourceStageOnly": true,
+  "windowsPackagePublished": false,
+  "fullAxureParity": false,
+  "verification": "research/selection-author-verification.json",
+  "uploadValidation": {
+    "unit": {
+      "total": 5469,
+      "passed": 5469,
+      "failed": 0,
+      "pending": 0
+    },
+    "typecheck": true,
+    "rebuiltProductionFilesMatched": 6,
+    "focusedBrowser": "29 prior checks reused after exact production-byte match",
+    "newWindowsPackage": false
+  }
 }

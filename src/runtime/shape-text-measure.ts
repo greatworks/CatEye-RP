@@ -82,6 +82,39 @@ export function createShapeTextMeasurer(
     }
     element.style.textDecorationLine = decoration({ underline: style?.underline ?? base.underline, strikethrough: style?.strikethrough ?? base.strikethrough });
   };
+  const appendRichCopy = (widget: Widget, layer: HTMLElement, document: Document, options: ShapeTextMeasureOptions, fullWidth: boolean) => {
+    const style = widget.style, block = document.createElement('span'); block.className = 'rich-text-content';
+    Object.assign(block.style, { display: 'block', ...(fullWidth ? { width: '100%' } : {}), minWidth: '0', whiteSpace: 'inherit', overflowWrap: 'inherit' });
+    const paragraphs = widget.richText?.paragraphs ?? [{ runs: [{ text: widget.text }] }];
+    for (const [paragraphIndex, paragraph] of paragraphs.entries()) {
+      const p = document.createElement('span'); p.dataset.richParagraph = String(paragraphIndex);
+      Object.assign(p.style, { display: 'block', margin: '0px', textAlign: paragraph.textAlign ?? '', lineHeight: typeof paragraph.lineHeightPx === 'number' ? `${paragraph.lineHeightPx}px` : paragraph.lineHeightPx ?? '' });
+      for (let index = 0; index < paragraph.runs.length;) {
+        const id = paragraph.runs[index].linkId;
+        const parent = id ? document.createElement('a') : p;
+        if (id) { parent.dataset.richLinkId = id; Object.assign(parent.style, { color: 'inherit', textDecoration: 'none' }); p.append(parent); }
+        do {
+          const run = paragraph.runs[index], span = document.createElement('span');
+          span.dataset.richRun = String(index); applyRunStyle(span, style, run.style);
+          if (options.plainSetter) paintPlainSetter(span, run.text);
+          else shapeText.paint(span, run.text, index === 0);
+          parent.append(span); index++;
+        } while (id && index < paragraph.runs.length && paragraph.runs[index].linkId === id);
+      }
+      if (!options.plainSetter && paragraph.runs.every(run => run.text === '')) p.append(document.createElement('br'));
+      block.append(p);
+    }
+    layer.append(block);
+  };
+  const paragraphWidth = (layer: HTMLElement) => {
+    let width = 0;
+    for (const paragraph of layer.querySelectorAll<HTMLElement>('[data-rich-paragraph]')) {
+      let sum = 0;
+      for (const span of Array.from(paragraph.children)) if (span.tagName === 'SPAN') sum += finite(contentBox(span as HTMLElement, 'width'));
+      width = Math.max(width, sum);
+    }
+    return width;
+  };
   const structuredText = (owner: HTMLElement) => {
     const layer = owner.querySelector<HTMLElement>(':scope > .widget-text');
     return layer && layer.querySelector('[data-rich-paragraph]') ? layer : undefined;
@@ -118,43 +151,60 @@ export function createShapeTextMeasurer(
           lineHeight: 'normal', textAlign: style.textAlign, justifyContent: style.textAlign === 'center' ? 'center' : style.textAlign === 'right' ? 'flex-end' : 'flex-start', transform: 'none', textDecorationLine: 'none' });
         layer = document.createElement('span'); layer.className = 'widget-text';
         Object.assign(layer.style, shapeText.css(widget));
-        const block = document.createElement('span'); block.className = 'rich-text-content';
-        Object.assign(block.style, { display: 'block', width: '100%', minWidth: '0', whiteSpace: 'inherit', overflowWrap: 'inherit' });
-        const paragraphs = widget.richText?.paragraphs ?? [{ runs: [{ text: widget.text }] }];
-        for (const [paragraphIndex, paragraph] of paragraphs.entries()) {
-          const p = document.createElement('span'); p.dataset.richParagraph = String(paragraphIndex);
-          Object.assign(p.style, { display: 'block', margin: '0px', textAlign: paragraph.textAlign ?? '', lineHeight: typeof paragraph.lineHeightPx === 'number' ? `${paragraph.lineHeightPx}px` : paragraph.lineHeightPx ?? '' });
-          for (let index = 0; index < paragraph.runs.length;) {
-            const id = paragraph.runs[index].linkId;
-            const parent = id ? document.createElement('a') : p;
-            if (id) { parent.dataset.richLinkId = id; Object.assign(parent.style, { color: 'inherit', textDecoration: 'none' }); p.append(parent); }
-            do {
-              const run = paragraph.runs[index], span = document.createElement('span');
-              span.dataset.richRun = String(index); applyRunStyle(span, style, run.style);
-              if (options.plainSetter) paintPlainSetter(span, run.text);
-              else shapeText.paint(span, run.text, index === 0);
-              parent.append(span); index++;
-            } while (id && index < paragraph.runs.length && paragraph.runs[index].linkId === id);
-          }
-          if (!options.plainSetter && paragraph.runs.every(run => run.text === '')) p.append(document.createElement('br'));
-          block.append(p);
-        }
-        layer.append(block); copy.append(layer); container.append(copy); document.body.append(container);
+        appendRichCopy(widget, layer, document, options, true);
+        copy.append(layer); container.append(copy); document.body.append(container);
       }
       let height = widget.height, width = widget.width;
       if (widget.shapeText.autoFitHeight) height = finite(contentBox(layer, 'height')) + padding[0] + padding[2];
       if (widget.shapeText.autoFitWidth) {
-        width = 0;
-        for (const paragraph of layer.querySelectorAll<HTMLElement>('[data-rich-paragraph]')) {
-          let sum = 0;
-          for (const span of Array.from(paragraph.children)) if (span.tagName === 'SPAN') sum += finite(contentBox(span as HTMLElement, 'width'));
-          width = Math.max(width, sum);
-        }
-        width += padding[1] + padding[3];
+        width = paragraphWidth(layer) + padding[1] + padding[3];
       }
       return { width: finite(width), height: finite(height) };
     } finally { container?.remove(); }
   };
-  return { measure, paintPlainSetter };
+  /** Selection runtime AutoFit is distinct from managed author sizing. The
+   * source width sums paragraph direct spans plus padding, without P94. Its
+   * height query misses text nested under label and yields NaN; the product
+   * explicitly rejects that branch instead of inventing a corrected height.
+   */
+  const measureSelection = (widget: Widget, owner: HTMLElement | undefined, document: Document, options: ShapeTextMeasureOptions = {}): ShapeTextMeasurement | undefined => {
+    const flags = widget.selectionText, style = widget.style;
+    if (!flags || !['checkbox', 'radio'].includes(widget.type) || !style.textPadding || style.verticalAlign === undefined
+      || !flags.autoFitWidth && !flags.autoFitHeight) return;
+    if (flags.autoFitHeight) throw new Error('Native selection text height AutoFit is unsupported');
+    if (!document.body || !document.defaultView) return;
+    if (owner && owner.ownerDocument !== document) throw new Error('Selection text owner and measurement document must share a realm');
+    let layer: HTMLElement | undefined;
+    if (owner?.isConnected && !widget.hidden && !hiddenByInlineStyle(owner)) {
+      const candidate = owner.querySelector<HTMLElement>(':scope > label')?.querySelector<HTMLElement>(':scope > .selection-text');
+      if (candidate?.querySelector('[data-rich-paragraph]') && !hiddenByInlineStyle(candidate)) layer = candidate;
+    }
+    let container: HTMLElement | undefined;
+    try {
+      if (!layer) {
+        container = document.createElement('div');
+        container.setAttribute('aria-hidden', 'true'); container.dataset.selectionTextMeasure = '';
+        Object.assign(container.style, { position: 'absolute', left: '0px', top: '0px', width: '0px', height: '0px',
+          visibility: 'hidden', pointerEvents: 'none' });
+        const copy = document.createElement('div');
+        copy.className = `widget ${widget.type}`;
+        Object.assign(copy.style, { position: 'absolute', left: '0px', top: '0px', width: `${widget.width}px`, height: `${widget.height}px`,
+          display: 'block', boxSizing: 'border-box', padding: '0px', margin: '0px', borderWidth: '0px', overflow: 'visible', transform: 'none',
+          fontFamily: style.fontFamily, fontSize: `${style.fontSize}px`, fontWeight: String(style.fontWeight), fontStyle: style.fontStyle ?? 'normal',
+          color: style.color, lineHeight: style.lineHeight ?? 'normal', textAlign: style.textAlign, textDecorationLine: 'none' });
+        const label = document.createElement('label');
+        Object.assign(label.style, { position: 'absolute', left: '0px', width: '100%', height: '100%', padding: '0px', margin: '0px' });
+        layer = document.createElement('span'); layer.className = 'selection-text';
+        // No author TextPanel rectangle is available here. Width-only nowrap
+        // measurement needs neither that rectangle nor ordinary-shape CSS.
+        Object.assign(layer.style, { display: 'block', padding: '0px', margin: '0px',
+          whiteSpace: 'nowrap', overflowWrap: 'normal', wordBreak: 'normal', lineHeight: 'inherit' });
+        appendRichCopy(widget, layer, document, options, false);
+        label.append(layer); copy.append(label); container.append(copy); document.body.append(container);
+      }
+      return { width: finite(paragraphWidth(layer) + style.textPadding[1] + style.textPadding[3]), height: finite(widget.height) };
+    } finally { container?.remove(); }
+  };
+  return { measure, measureSelection, paintPlainSetter };
 }
 export type ShapeTextMeasurer = ReturnType<typeof createShapeTextMeasurer>;

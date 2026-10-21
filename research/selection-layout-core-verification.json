@@ -1,0 +1,260 @@
+{
+  "createdAt": "2026-10-20T10:06:36.416Z",
+  "stage": "selection-layout-core",
+  "status": "verified-core-not-integrated-release",
+  "fullAxureParity": false,
+  "originalGuiCompared": false,
+  "published": false,
+  "scope": "Data/import, pure author transaction, optional-host runtime core; actual selection measurement and rendering remain unconnected.",
+  "checks": {
+    "typecheck": true,
+    "unit": {
+      "passed": 5017,
+      "failed": 0
+    },
+    "reader": {
+      "passed": 856,
+      "failed": 0
+    },
+    "build": {
+      "output": ".build/selection-layout-core-final-dist",
+      "sourceStable": true
+    },
+    "productionBrowser": {
+      "scope": "12 focused tests, not complete suite",
+      "passed": 12,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0
+    }
+  },
+  "nativeImport": {
+    "samples": 11,
+    "admitted": 10,
+    "previousDocumentsExact": 10,
+    "sameRejections": 1,
+    "newCheckboxes": 20,
+    "newLayers": 10,
+    "changedExistingWidgets": 0,
+    "sourceStable": true
+  },
+  "sourceStable": true,
+  "changedSources": [
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "ce058f7fb26e2ab8658ae3d637981770143b9fd68d1717ad1210460439f53079",
+      "previousSha256": "110ae6811273c8f074f2246f5cf67702d32879d122fe04ff57fdad8dd39ec8d5",
+      "snapshot": ".build/selection-layout-core-snapshot/src/model/adaptive.ts"
+    },
+    {
+      "file": "src/model/document.ts",
+      "sha256": "b599acec94bb5cf552073f6a84649b31c4dd4b2e9e2c53a749ce7c98091d5441",
+      "previousSha256": "91a2c145f801bee4e9a7130f37e93145eba812ae0842ca193f9165fc6b3ae1c3",
+      "snapshot": ".build/selection-layout-core-snapshot/src/model/document.ts"
+    },
+    {
+      "file": "src/model/import-rp-adaptive.ts",
+      "sha256": "c6a2023533f5c69a9fe558fb9f2ffdada41e3f059e08815dc1021e74f408cf4b",
+      "previousSha256": "cf3a49d8547922f03dd202b74e5548dd7e1dfe76eddbec77e8a090f48d43dc6e",
+      "snapshot": ".build/selection-layout-core-snapshot/src/model/import-rp-adaptive.ts"
+    },
+    {
+      "file": "src/model/import-rp-selection-layout.ts",
+      "sha256": "6d9dd3a125590932b518eb91b2bcc19340e4ca83cd724e4302f0ee82214e483e",
+      "previousSha256": null,
+      "snapshot": ".build/selection-layout-core-snapshot/src/model/import-rp-selection-layout.ts"
+    },
+    {
+      "file": "src/model/import-rp.ts",
+      "sha256": "72f05b094033df06575b78c733a8adbfe2ff1e8ec888115cc5e3557ed247df1c",
+      "previousSha256": "b9c09b8bbb2cd291b35a5b49abe35b48865f3920babeeef75d44099df62d1e98",
+      "snapshot": ".build/selection-layout-core-snapshot/src/model/import-rp.ts"
+    },
+    {
+      "file": "src/model/selection-layout.ts",
+      "sha256": "debf1e4e9f857b66c0f4780ba3347ba515261afb6ccebc824202e4a07d53d11b",
+      "previousSha256": null,
+      "snapshot": ".build/selection-layout-core-snapshot/src/model/selection-layout.ts"
+    },
+    {
+      "file": "src/model/types.ts",
+      "sha256": "7adedc6ac00c7d2cdc9e2eebdfb77147a8adc02aeac5d09bc83c4088e8e59718",
+      "previousSha256": "226a7068ddf0626587494f2bb30577ab8268241a497ea5cc0b6298f8c18a702d",
+      "snapshot": ".build/selection-layout-core-snapshot/src/model/types.ts"
+    },
+    {
+      "file": "src/runtime/export-runtime.ts",
+      "sha256": "b08385882de39564d78bf26d43d00cf576a05c19e1fc5d15b3aa4040f78d4978",
+      "previousSha256": "5d8cb997dd29745add36a3270c40c7c743342a0621da1a001403544e8d651128",
+      "snapshot": ".build/selection-layout-core-snapshot/src/runtime/export-runtime.ts"
+    },
+    {
+      "file": "tests/e2e/selection-layout-data.spec.ts",
+      "sha256": "7d248ab7e3cfcb13c4847dd5bc49ca12c3b93e0c2975027503b74a0e41974983",
+      "previousSha256": null,
+      "snapshot": ".build/selection-layout-core-snapshot/tests/e2e/selection-layout-data.spec.ts"
+    },
+    {
+      "file": "tests/import-rp-dropdown.test.ts",
+      "sha256": "19def406e61401d7705eb0e05c11d263adb395eb94efd157e0cd3ea63b8a1809",
+      "previousSha256": "55827a00b5c0d29cf16b3cf94f036c54a8823d2bffa6b359e5614a4c3a62c34f",
+      "snapshot": ".build/selection-layout-core-snapshot/tests/import-rp-dropdown.test.ts"
+    },
+    {
+      "file": "tests/import-rp-input-types.test.ts",
+      "sha256": "47421f595c53ef41f85bfc141e8420aa3c7a75fcb4d6086f428933a5920e385f",
+      "previousSha256": "98d90a0d8b8a09ec554aee46c2375b35b5be6ef0c7cb5092b7f31e891394a1d6",
+      "snapshot": ".build/selection-layout-core-snapshot/tests/import-rp-input-types.test.ts"
+    },
+    {
+      "file": "tests/import-rp-interaction-styles.test.ts",
+      "sha256": "6e03aa0f8ac3991b50167fa8f97536586065de37accb1bddbe72b4b69f4dcf14",
+      "previousSha256": "fb2b50234850148d6d2316a88ea63690b02ad84cb8dabb726b898e167d456df9",
+      "snapshot": ".build/selection-layout-core-snapshot/tests/import-rp-interaction-styles.test.ts"
+    },
+    {
+      "file": "tests/import-rp-shapes-forms.test.ts",
+      "sha256": "2999fdc727feb72a2d59d33c1492797af4d1643ad07f9569d2d07a1abd6aba01",
+      "previousSha256": "35e76a3569b3d584027b3ca283baba5458062ec0029cdcc61108e41dcc2b7a1d",
+      "snapshot": ".build/selection-layout-core-snapshot/tests/import-rp-shapes-forms.test.ts"
+    },
+    {
+      "file": "tests/import-rp-vectors.test.ts",
+      "sha256": "2cb59ec09473c8c7d935cf5a2a8dc76748a4bfd5a6c54059e75f7d4c77f1397e",
+      "previousSha256": "5383008a3a0cd757e6358b71f96c7e4e18a1b1393c212466da2532f1bb952449",
+      "snapshot": ".build/selection-layout-core-snapshot/tests/import-rp-vectors.test.ts"
+    },
+    {
+      "file": "tests/selection-layout-geometry.test.ts",
+      "sha256": "8db3c5f3558da802d40d0d3378db995342c37307e114f997f2055b28f23f4d83",
+      "previousSha256": null,
+      "snapshot": ".build/selection-layout-core-snapshot/tests/selection-layout-geometry.test.ts"
+    },
+    {
+      "file": "tests/selection-layout-import.test.ts",
+      "sha256": "154af4f700f125ab75059366dc850b86a41f7fc2984f6680c260d40c18defc0e",
+      "previousSha256": null,
+      "snapshot": ".build/selection-layout-core-snapshot/tests/selection-layout-import.test.ts"
+    },
+    {
+      "file": "tests/selection-layout-model.test.ts",
+      "sha256": "26ebea5311d80637d197fe498f51ff6b0e0d06ee2a187bfd7addbd40d2a6951e",
+      "previousSha256": null,
+      "snapshot": ".build/selection-layout-core-snapshot/tests/selection-layout-model.test.ts"
+    },
+    {
+      "file": "tests/selection-layout-runtime.test.ts",
+      "sha256": "de5b5f324078f274259f08bc7b3e44b17dca0b57b243bf6eafc5723b885965e0",
+      "previousSha256": null,
+      "snapshot": ".build/selection-layout-core-snapshot/tests/selection-layout-runtime.test.ts"
+    },
+    {
+      "file": "research/scripts/read-rp-selection-layout.test.mjs",
+      "sha256": "d6d8ac723f4bdbe2ff5190335ab7bf4eeb308206c5154212555d11152edd92f3",
+      "previousSha256": null,
+      "snapshot": ".build/selection-layout-core-snapshot/research/scripts/read-rp-selection-layout.test.mjs"
+    },
+    {
+      "file": "research/scripts/read-rp-semantics.mjs",
+      "sha256": "c4630a23c35c3f2d9be3f9fc53b269c483581f637c75fc8df7d5ab8a711fe8e6",
+      "previousSha256": "628e5f8334bc8e9fb0e616a8319cd35cd30265439bebc3c87e5214aa6e765add",
+      "snapshot": ".build/selection-layout-core-snapshot/research/scripts/read-rp-semantics.mjs"
+    },
+    {
+      "file": "docs/implementation-status.md",
+      "sha256": "5fda527de179253c0c6b523e5fa05b517af50b6101af5c27f4cb7b74149e12b0",
+      "previousSha256": "f671924c054e01d54cd23160fe8be2fcf80cbc7861926130e54fe3de6fe266cf",
+      "snapshot": ".build/selection-layout-core-snapshot/docs/implementation-status.md"
+    },
+    {
+      "file": "research/selection-layout-implementation.md",
+      "sha256": "9e378ec37b646789f08348b3b14403362b3febfd0b4783aa1265bf4210f11f08",
+      "previousSha256": null,
+      "snapshot": ".build/selection-layout-core-snapshot/research/selection-layout-implementation.md"
+    }
+  ],
+  "evidence": [
+    {
+      "file": ".build/selection-layout-core-final-unit.json",
+      "sha256": "b6a3f3063211b76e707a0dba0fc72a405738dd871bf45e855610135006d1ec4e"
+    },
+    {
+      "file": ".build/selection-layout-core-final-unit-run.json",
+      "sha256": "ce2706656ca66bd3c9c91762761e694a8cfcd4d4a925ff43ceac4823f588274c"
+    },
+    {
+      "file": ".build/selection-layout-core-final-typecheck-run.json",
+      "sha256": "77f70a70eb24804b7a56cc4667179dbd5786fc221865e2a045f192539616d874"
+    },
+    {
+      "file": ".build/selection-layout-data-first-reader-run.json",
+      "sha256": "094290c171117cd7826cae67047ed57eaa18aa4493a904db9dc0d6276f2ed65d"
+    },
+    {
+      "file": ".build/selection-layout-core-final-build-run.json",
+      "sha256": "971f7c1d3e25681bda7f73e0499de084fbbceea694257ec01760f1a3a8030849"
+    },
+    {
+      "file": ".build/.build/selection-layout-core-final-second-browser.json",
+      "sha256": "f8c9b402e540d0ca4e7fe90e41279499d03b68fdf91601b3845d67df38a32162"
+    },
+    {
+      "file": "research/selection-layout-import-origin-checked.json",
+      "sha256": "a93dfcdf59b98296aef4df7baa96164ca6fdcfaecb1787cbf64fecbad9a55af6"
+    },
+    {
+      "file": ".build/selection-layout-core-final-build-inputs.json",
+      "sha256": "c88f078564920755571f8f1cf4ebd60e6a48773e1605088e9432210f7f845e30"
+    },
+    {
+      "file": ".build/selection-layout-geometry-implementation.json",
+      "sha256": "c7f5e17b9fe97abee3228cba1a678e7cd304f9625680b9510b823a7167b245db"
+    },
+    {
+      "file": ".build/selection-layout-import-review-green-summary.json",
+      "sha256": "a6f080e9abf3786db6172fbf3d2870d9ceca49db84a7b5aef8bb0f75af73c2a2"
+    },
+    {
+      "file": "research/selection-layout-transaction-manifest.json",
+      "sha256": "b664a8179091cb08d1032840125f6f68a530717524b3e2c78a3f9ca0d7e487ea"
+    },
+    {
+      "file": "research/selection-layout-render-manifest.json",
+      "sha256": "ffa1224006d6edd41ff649531c3eaeec110bcf3e99d92e5279c185958144995a"
+    },
+    {
+      "file": "research/selection-layout-gui-observation-20261020.md",
+      "sha256": "a1c7152b4e3f4467b660caa056db8017680a01aa356528181ef469f59566aecb"
+    },
+    {
+      "file": "research/selection-layout-implementation.md",
+      "sha256": "9e378ec37b646789f08348b3b14403362b3febfd0b4783aa1265bf4210f11f08"
+    },
+    {
+      "file": ".build/selection-layout-core-final-playwright.config.ts",
+      "sha256": "a210d0cf62109042b78bdabe8bc4aeb040350e753f1b9fa9c0e783b06e3f4127"
+    },
+    {
+      "file": "tests/e2e/selection-layout-data.spec.ts",
+      "sha256": "7d248ab7e3cfcb13c4847dd5bc49ca12c3b93e0c2975027503b74a0e41974983"
+    }
+  ],
+  "publishedArtifactsUnchanged": [
+    {
+      "file": "release/REA-Prototype-Studio-0.1.0-win64.zip",
+      "sha256": "2442a0d03dab9b2f8a858fe1a6ff23b0c99befb650412ddbf919d153d053e915"
+    },
+    {
+      "file": "release/REA Prototype Studio-win32-x64/resources/app.asar",
+      "sha256": "5947768c26184cc4aee045a5f2b50cbcbefab1a7e2fbbaeb1b0366e9c662d106"
+    }
+  ],
+  "remaining": [
+    "Author font/graphics services and UI/Layer gesture integration",
+    "Selection indicator and text rendering",
+    "DOM measureSelectionText host in preview/offline/frames",
+    "Native right-indicator admission",
+    "Complete production-browser/desktop/package acceptance",
+    "Original editor GUI and pixel comparison"
+  ]
+}

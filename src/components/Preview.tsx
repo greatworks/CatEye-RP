@@ -18,6 +18,10 @@ import { CaseMenus } from './CaseMenus';
 import { PreviewPageTree } from './PageTree';
 import { createPreviewNavigation } from '../runtime/navigation';
 const shapeTextMeasurer=createShapeTextMeasurer(createShapeTextRenderer());
+function controlBounds(element:HTMLElement) {
+  const owner=element.parentElement;
+  return (element.matches('input[type=checkbox],input[type=radio]')&&owner?.querySelector(':scope > label[data-selection-display]')?owner:element).getBoundingClientRect();
+}
 export function Preview({document:doc,pageId,onClose}:{document:Document;pageId:string;onClose:()=>void}) {
   const [runtime,setRuntime]=useState(()=>createRuntime(doc,pageId));
   const [device,setDevice]=useState(0);const [showPages,setShowPages]=useState(true);
@@ -61,24 +65,27 @@ export function Preview({document:doc,pageId,onClose}:{document:Document;pageId:
       const key=JSON.stringify([session.state().pageId,...context.map(item=>item.rowId),id]),element=widgetElements.current.get(key);
       return element?sourceElement(element):undefined;
     };
+    const measureText=(id:string,context:RowContext,selection=false)=>{
+      const key=JSON.stringify([session.state().pageId,...context.map(item=>item.rowId),id]);
+      let widget=measuredWidgets.current.get(key);
+      if(!widget){
+        const source=measurementSources.get(id);if(!source||source.pageId!==session.state().pageId)return;
+        const effective=(source:Widget,parentDisabled=false)=>session.widget(source,context,parentDisabled);
+        widget=effective(source.widget,source.disabledParents.some(parent=>effective(parent).disabled));
+        if(widget.richText)widget={...widget,richText:session.richText(widget,undefined,context)};
+        else if(!session.hasOverride(id,'text',context))widget={...widget,text:session.text(widget.text,undefined,context)};
+      }
+      const owner=widgetElements.current.get(key),options={plainSetter:session.nativeTextSet(id,context)};
+      const measurement=selection?shapeTextMeasurer.measureSelection(widget,owner,globalThis.document,options):shapeTextMeasurer.measure(widget,owner,globalThis.document,options);
+      return measurement?{...measurement,rect:{x:widget.x,y:widget.y,width:widget.width,height:widget.height},textAlign:widget.style.textAlign,verticalAlign:widget.style.verticalAlign??'top'}:undefined;
+    };
     session.bindControls({
       flush:()=>flushSync(()=>setRuntime(structuredClone(session.state()))),
-      anchor:(id,context,event:EventType='focus')=>{const element=control(id,context);if(!element)return;const rect=element.getBoundingClientRect(),point={x:rect.left,y:rect.bottom};eventSources.current.set(sourceKey(id,event,point),element);if(eventSources.current.size>256)eventSources.current.delete(eventSources.current.keys().next().value!);return point},
+      anchor:(id,context,event:EventType='focus')=>{const element=control(id,context);if(!element)return;const rect=controlBounds(element),point={x:rect.left,y:rect.bottom};eventSources.current.set(sourceKey(id,event,point),element);if(eventSources.current.size>256)eventSources.current.delete(eventSources.current.keys().next().value!);return point},
       focus:(id,context)=>control(id,context)?.focus(),
       selectText:(id,context)=>{const element=control(id,context);if(element instanceof HTMLInputElement||element instanceof HTMLTextAreaElement)element.select()},
-      measureShapeText:(id,context)=>{
-        const key=JSON.stringify([session.state().pageId,...context.map(item=>item.rowId),id]);
-        let widget=measuredWidgets.current.get(key);
-        if(!widget){
-          const source=measurementSources.get(id);if(!source||source.pageId!==session.state().pageId)return;
-          const effective=(source:Widget,parentDisabled=false)=>session.widget(source,context,parentDisabled);
-          widget=effective(source.widget,source.disabledParents.some(parent=>effective(parent).disabled));
-          if(widget.richText)widget={...widget,richText:session.richText(widget,undefined,context)};
-          else if(!session.hasOverride(id,'text',context))widget={...widget,text:session.text(widget.text,undefined,context)};
-        }
-        const owner=widgetElements.current.get(key),measurement=shapeTextMeasurer.measure(widget,owner,globalThis.document,{plainSetter:session.nativeTextSet(id,context)});
-        return measurement?{...measurement,rect:{x:widget.x,y:widget.y,width:widget.width,height:widget.height},textAlign:widget.style.textAlign,verticalAlign:widget.style.verticalAlign??'top'}:undefined;
-      },
+      measureShapeText:(id,context)=>measureText(id,context),
+      measureSelectionText:(id,context)=>measureText(id,context,true),
     });
     const release=()=>session.releasePointerStyles();
     window.addEventListener('mouseup',release);window.addEventListener('pointercancel',release);window.addEventListener('blur',release);window.addEventListener('dragend',release);
@@ -102,7 +109,7 @@ export function Preview({document:doc,pageId,onClose}:{document:Document;pageId:
     if((w.disabled||!w.interactions.some(item=>item.event===event))&&event!=='click'&&event!=='doubleClick')return;
     const source=element?sourceElement(element):undefined;
     if(source){
-      const rect=source.getBoundingClientRect();anchor??={x:rect.left,y:rect.bottom};
+      const rect=controlBounds(source);anchor??={x:rect.left,y:rect.bottom};
       for(const [key,element] of eventSources.current)if(!element.isConnected)eventSources.current.delete(key);
       eventSources.current.set(sourceKey(w.id,event,anchor),source);
       if(eventSources.current.size>256)eventSources.current.delete(eventSources.current.keys().next().value!);
@@ -161,7 +168,7 @@ export function Preview({document:doc,pageId,onClose}:{document:Document;pageId:
       setError('');report(api.current?.chooseOptions(w.id,indices,context,anchor));
     };
     const controlFocus=(focused:boolean,element:HTMLElement)=>{
-      const rect=element.getBoundingClientRect(),anchor={x:rect.left,y:rect.bottom};
+      const rect=controlBounds(element),anchor={x:rect.left,y:rect.bottom};
       for(const [key,source] of eventSources.current)if(!source.isConnected)eventSources.current.delete(key);
       eventSources.current.set(sourceKey(w.id,focused?'focus':'blur',anchor),element);
       if(eventSources.current.size>256)eventSources.current.delete(eventSources.current.keys().next().value!);
@@ -169,7 +176,7 @@ export function Preview({document:doc,pageId,onClose}:{document:Document;pageId:
     };
     const check=(checked:boolean,element:HTMLElement)=>{
       const session=api.current;if(!session||w.disabled)return;
-      const before=Boolean(session.widget(w,context).checked),pageBefore=session.state().pageId,rect=element.getBoundingClientRect();setError('');
+      const before=Boolean(session.widget(w,context).checked),pageBefore=session.state().pageId,rect=controlBounds(element);setError('');
       report((async()=>{await session.check(w.id,checked,context,{x:rect.left,y:rect.bottom});if(api.current===session&&session.state().pageId===pageBefore&&before!==Boolean(session.widget(w,context).checked))trigger(w,'change',row,context,element)})());
     };
     const drawn=api.current?.renderSize(w,context);
@@ -188,7 +195,7 @@ export function Preview({document:doc,pageId,onClose}:{document:Document;pageId:
         {treeInfo?.showIcons&&w.treeNode.iconSrc&&<img data-tree-node-icon={w.id} src={w.treeNode.iconSrc} alt="" style={{position:'absolute',left:Math.max(16,w.treeNode.label.x-18),top:Math.max(0,(w.height-16)/2),width:16,height:16}}/>}
         {renderWidget(w.treeNode.label,row,context,parentDisabled,false,unplaced)}
         {w.treeNode.expanded&&w.treeNode.children.map(child=>renderWidget(child,row,context,parentDisabled,false,unplaced))}
-      </>:w.menu?[w.menu.table,...w.menu.submenus].map(child=>renderWidget(child,row,context,parentDisabled,false,unplaced)):w.type==='table'&&w.table?orderedTableCells(w).map(cell=>renderWidget(cell,row,context,parentDisabled,false,unplaced)):w.type==='panel'?w.states?.flatMap(state=>{const active=state.id===(w.activeStateId??w.states?.[0]?.id);return state.widgets.filter(child=>active||containsFrame(child)).map(child=>renderWidget(child,row,context,w.disabled,hidden||!active,unplaced))}):w.type==='repeater'&&w.repeater?<>{(api.current?.rows(w,context)??[]).map(item=><div className="repeater-row" data-row-id={item.id} key={`${item.id}:${item.revision}`} style={{position:'absolute',left:item.x,top:item.y,width:item.width,height:item.height,boxSizing:'border-box',border:['layout','itemWidth','wrap','horizontalGap','verticalGap','fitToContent','padding'].some(field=>Object.hasOwn(w.repeater!,field))?0:undefined}}>{w.repeater!.template.map(child=>renderWidget(child,item.data,item.context,w.disabled,hidden,unplaced))}</div>)}</>:<WidgetContent widget={w} gradientBase={baseStyle.fillGradient} strokeGradientBase={baseStyle.strokeGradient} gradientSession={api.current??revision} linksDisabled={w.disabled} onLinkPointer={(id,phase)=>api.current?.setLinkState(w.id,id,phase,context)} onLinkClick={(id,event)=>{const element=event.currentTarget,rect=element.getBoundingClientRect(),point={x:rect.left,y:rect.bottom};eventSources.current.set(sourceKey(id,'click',point),element);if(eventSources.current.size>256)eventSources.current.delete(eventSources.current.keys().next().value!);setError('');report(api.current?.triggerLink(w.id,id,context,point))}} runtime={runtime} row={row} resolvedText={resolvedText} nativeTextSet={api.current?.nativeTextSet(w.id,context)} resolved selectedIndices={w.type==='select'?api.current?.selectedOptions(w.id,context):undefined} onSelectOptions={choose} initialValue={initialFormValue} files={w.inputType==='file'?api.current?.fileSelection(w.id,context):undefined} onFiles={files=>{api.current?.fileSelection(w.id,context,files)}} hintValue={api.current?.hint(w.id,context)} onHideHint={()=>api.current?.hideHint(w.id,context)??false} onTextCheck={element=>{if(api.current?.textChanged(w.id,context))trigger(w,'change',row,context,element)}} radioName={w.type==='radio'&&w.radioGroup?JSON.stringify([page.id,context.map(item=>[item.repeaterId,item.rowId]),w.radioGroup]):undefined} onSubmit={()=>report(api.current?.submit(w.id,context))} onInput={change} onCheck={check} onFocus={element=>controlFocus(true,element)} onBlur={element=>controlFocus(false,element)}/>}
+      </>:w.menu?[w.menu.table,...w.menu.submenus].map(child=>renderWidget(child,row,context,parentDisabled,false,unplaced)):w.type==='table'&&w.table?orderedTableCells(w).map(cell=>renderWidget(cell,row,context,parentDisabled,false,unplaced)):w.type==='panel'?w.states?.flatMap(state=>{const active=state.id===(w.activeStateId??w.states?.[0]?.id);return state.widgets.filter(child=>active||containsFrame(child)).map(child=>renderWidget(child,row,context,w.disabled,hidden||!active,unplaced))}):w.type==='repeater'&&w.repeater?<>{(api.current?.rows(w,context)??[]).map(item=><div className="repeater-row" data-row-id={item.id} key={`${item.id}:${item.revision}`} style={{position:'absolute',left:item.x,top:item.y,width:item.width,height:item.height,boxSizing:'border-box',border:['layout','itemWidth','wrap','horizontalGap','verticalGap','fitToContent','padding'].some(field=>Object.hasOwn(w.repeater!,field))?0:undefined}}>{w.repeater!.template.map(child=>renderWidget(child,item.data,item.context,w.disabled,hidden,unplaced))}</div>)}</>:<WidgetContent widget={w} selectionLayoutSource={api.current?.selectionDisplaySource(w.id)} gradientBase={baseStyle.fillGradient} strokeGradientBase={baseStyle.strokeGradient} gradientSession={api.current??revision} linksDisabled={w.disabled} onLinkPointer={(id,phase)=>api.current?.setLinkState(w.id,id,phase,context)} onLinkClick={(id,event)=>{const element=event.currentTarget,rect=element.getBoundingClientRect(),point={x:rect.left,y:rect.bottom};eventSources.current.set(sourceKey(id,'click',point),element);if(eventSources.current.size>256)eventSources.current.delete(eventSources.current.keys().next().value!);setError('');report(api.current?.triggerLink(w.id,id,context,point))}} runtime={runtime} row={row} resolvedText={resolvedText} nativeTextSet={api.current?.nativeTextSet(w.id,context)} resolved selectedIndices={w.type==='select'?api.current?.selectedOptions(w.id,context):undefined} onSelectOptions={choose} initialValue={initialFormValue} files={w.inputType==='file'?api.current?.fileSelection(w.id,context):undefined} onFiles={files=>{api.current?.fileSelection(w.id,context,files)}} hintValue={api.current?.hint(w.id,context)} onHideHint={()=>api.current?.hideHint(w.id,context)??false} onTextCheck={element=>{if(api.current?.textChanged(w.id,context))trigger(w,'change',row,context,element)}} radioName={w.type==='radio'&&w.radioGroup?JSON.stringify([page.id,context.map(item=>[item.repeaterId,item.rowId]),w.radioGroup]):undefined} onSubmit={()=>report(api.current?.submit(w.id,context))} onInput={change} onCheck={check} onFocus={element=>controlFocus(true,element)} onBlur={element=>controlFocus(false,element)}/>}
     </div>;
   }
   const contents=page.widgets.map(w=>renderWidget(w));

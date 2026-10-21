@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "stage": "selection-display-host-review",
+  "phase": "green",
+  "createdAt": "2026-10-20T10:49:03.476Z",
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "source": {
+    "path": "src/runtime/selection-display.ts",
+    "sha256": "b0ca6cf571f471dcb07758eea326dcbe6575c88be497acffb7d8ba5d603eef01",
+    "bytes": 5936
+  },
+  "snapshot": {
+    "path": ".build/selection-display-host-review-correction-source.ts.txt",
+    "sha256": "b0ca6cf571f471dcb07758eea326dcbe6575c88be497acffb7d8ba5d603eef01",
+    "bytes": 5936
+  },
+  "sourceStable": true,
+  "test": {
+    "path": "tests/selection-display-host.test.ts",
+    "sha256": "58779e48454e1b1692f6108a6f938e6423dc66bf5afcb972ed30a18c4cfa0392",
+    "bytes": 12299
+  },
+  "priorReview": {
+    "path": "research/selection-display-host-review-red.json",
+    "sha256": "070962ca4888d285b5e563c78139729564e3f7c6fa4668b284f1b5c0c4e354c9",
+    "bytes": 2244
+  },
+  "fixedFindings": [
+    "SDH-01",
+    "SDH-02",
+    "SDH-03"
+  ],
+  "blockingFindings": [],
+  "files": [
+    {
+      "path": "research/selection-display-host-review-green.md",
+      "sha256": "e6ba62cb86e9009321bf0374287a2d99f99e7bccfca760d461502c51b14955f3",
+      "bytes": 2009
+    },
+    {
+      "path": ".build/selection-display-host-review-green.json",
+      "sha256": "c79963478e4636b0ecd2fc8e0bd54217195c87a8fced7670266922278d2b757c",
+      "bytes": 9675
+    },
+    {
+      "path": ".build/selection-display-host-review-green.log",
+      "sha256": "3c285ba07a4d69ca6d8f5f59a66297a81ee8bec7ceb5e0662f28521e3e2f71b6",
+      "bytes": 433
+    }
+  ],
+  "methods": [
+    "module",
+    "bare Function#toString"
+  ],
+  "productionEditedByReviewer": false,
+  "browserExecuted": false,
+  "fontAndSvgMeasurements": false,
+  "limits": [
+    "Generic DOM and indicator facade only",
+    "No native font, SVG pixels, GUI, accessibility or iframe behavior claim"
+  ]
+}

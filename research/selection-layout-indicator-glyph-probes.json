@@ -1,0 +1,2312 @@
+{
+  "method": "Retained CIL records interpreted with JavaScript numbers and declared Point/Size/Rect, pen/brush and graphics sinks; no original DLL, GUI or rasterizer.",
+  "sources": [
+    {
+      "path": ".build/next-layer-authoring/member-tree-cil.json",
+      "sha256": "6cdb2463de1d8392a43cf4a90562c5285e52d96b192b0bb9d84878005e918dce"
+    },
+    {
+      "path": ".build/next-layer-authoring/resize-propagation-cil.json",
+      "sha256": "f32e834763dd14c7b67042db9eb84d6c99337d2ebc104e2d1d4dc3bef40d04ca"
+    },
+    {
+      "path": ".build/next-layer-authoring/pin-propagation-cil.json",
+      "sha256": "78f7461d02c1368c1457c5206183852334cf4df262a81eebfceeacd3c820bc70"
+    },
+    {
+      "path": ".build/next-layer-authoring/pin-info-cil.json",
+      "sha256": "930f2ae0612d259dfa4a14938092823b29b783165bc5b22f28541e5e9f70311f"
+    },
+    {
+      "path": ".build/next-layer-authoring/constraint-bridge-cil.json",
+      "sha256": "f1c09de16c3dbd5e65a4d8cb840182be5f5fca18460b5eaccee8c438b6a96118"
+    },
+    {
+      "path": ".build/next-layer-authoring/snapshot-inputs-cil.json",
+      "sha256": "6c96675e2e6b4da4593b101b052d295ea05032e34ef9172fe2979d65d15192b0"
+    },
+    {
+      "path": ".build/next-layer-authoring/geometry-entry-cil.json",
+      "sha256": "ef7d261601cc350c659b85f24597e921ce486d7dbfad6f6cbf6f08ed93076478"
+    },
+    {
+      "path": "research/layer-resize-controller-bridges-cil.json",
+      "sha256": "4128f0dc0b5f7542e24dd151a1ba7abaf5e0f27acc7a92f1b8891935576d499a"
+    },
+    {
+      "path": "research/layer-resize-controller-coordinate-cil.json",
+      "sha256": "cc52ec640ee62a74bcaa5f1a9978ba7e6d65f1f8d2ef1063336126156aad5744"
+    },
+    {
+      "path": "research/layer-resize-controller-parent-cil.json",
+      "sha256": "66df8d3751587f1328d41b1e321eeed2bb3aa9d54795ad23cc0a1255338a29a7"
+    },
+    {
+      "path": "research/layer-resize-controller-membership-cil.json",
+      "sha256": "81f08e42355f1527ed91569c96158b5b6c72d8bc5b5fe74b801da37d8d60cbda"
+    },
+    {
+      "path": "research/layer-resize-controller-side-effects-cil.json",
+      "sha256": "12d26d33651b9028f90bf2d83421d60522d043dda8cc68a470e804a8c185b761"
+    },
+    {
+      "path": "research/layer-resize-controller-gates-cil.json",
+      "sha256": "6fca6f2cce506170bad1a6f7fadcd3fe8e568d31b325d03a43b797adfb63eeb7"
+    },
+    {
+      "path": "research/layer-resize-controller-value-helpers-cil.json",
+      "sha256": "5c0601b96a33ac50fb9932484f2bd3946398f5983cb9d7467e46e888ab426091"
+    },
+    {
+      "path": "research/layer-resize-controller-handle-cil.json",
+      "sha256": "4578631b36b34218dc5e0f06b6e4569354e3ba75ff2946c11c75b8ff52c6eed9"
+    },
+    {
+      "path": "research/layer-resize-controller-difference-predicate-cil.json",
+      "sha256": "36c326b99346b700f78bd8305557331a5ba8a2386c46a4adeb516c7a21ae7657"
+    },
+    {
+      "path": "research/layer-resize-controller-contains-cil.json",
+      "sha256": "ab29891aa6017274bd7ed337525dffc2c9ee4466f0e27556a2556ce6af22e038"
+    },
+    {
+      "path": "research/selection-layout-indicator-draw-cil.json",
+      "sha256": "322706ff3abc49ac2eb93bf8c3868ee92cce40ecd35b1705caabad80a336f2f0"
+    },
+    {
+      "path": "research/selection-layout-indicator-dependencies-cil.json",
+      "sha256": "ce8f2da73332d23919030203e29f70cc4102b942f5f310127db5cdd735f404a6"
+    },
+    {
+      "path": "research/selection-layout-indicator-html-geometry-cil.json",
+      "sha256": "e550e0a64afec59b06fb3b58774b774c9665cdb9070e4b7e1b79071bf7309694"
+    },
+    {
+      "path": "research/layer-resize-controller-probe.mjs",
+      "sha256": "ca81115b3d6a92aabbe751b21c5427ebc7e0fe2093fe0265e988ba26c2416800"
+    },
+    {
+      "path": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128"
+    },
+    {
+      "path": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    },
+    {
+      "path": "D:\\WSCodex\\REA\\research\\selection-layout-indicator-glyph-probe.mjs",
+      "sha256": "a684593f7e5f15c1e7f9d8f20f25af1a4fda6cd3ec8f11d0a01608e936ea6683"
+    }
+  ],
+  "summary": {
+    "total": 56,
+    "passed": 56,
+    "failed": 0
+  },
+  "sinks": [
+    "Theme colors are distinct labeled inputs, not recovered ARGB defaults.",
+    "Fill-to-color/brush conversion and native pen/path/SVG graphics are captured sinks.",
+    "Arithmetic, centering and inset source instructions execute; IEEE double tolerance 1e-10.",
+    "Zero is a supplied lower-level input, not proof of native author acceptance."
+  ],
+  "results": [
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 0,
+        "height": 8,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "normal-theme",
+            "width": 0
+          },
+          "points": [
+            {
+              "x": 10,
+              "y": 24
+            },
+            {
+              "x": 10,
+              "y": 24
+            },
+            {
+              "x": 10,
+              "y": 24
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 0,
+        "height": 8,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 0
+          },
+          "points": [
+            {
+              "x": 10,
+              "y": 24
+            },
+            {
+              "x": 10,
+              "y": 24
+            },
+            {
+              "x": 10,
+              "y": 24
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 0,
+        "height": 8,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "disabled-theme",
+            "width": 0
+          },
+          "points": [
+            {
+              "x": 10,
+              "y": 24
+            },
+            {
+              "x": 10,
+              "y": 24
+            },
+            {
+              "x": 10,
+              "y": 24
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 0,
+        "height": 8,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 0
+          },
+          "points": [
+            {
+              "x": 10,
+              "y": 24
+            },
+            {
+              "x": 10,
+              "y": 24
+            },
+            {
+              "x": 10,
+              "y": 24
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 12,
+        "height": 20,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "normal-theme",
+            "width": 2.571428571428571
+          },
+          "points": [
+            {
+              "x": 12.571428571428571,
+              "y": 30
+            },
+            {
+              "x": 15.142857142857142,
+              "y": 32.57142857142858
+            },
+            {
+              "x": 19.42857142857143,
+              "y": 26.57142857142857
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 12,
+        "height": 20,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 2.571428571428571
+          },
+          "points": [
+            {
+              "x": 12.571428571428571,
+              "y": 30
+            },
+            {
+              "x": 15.142857142857142,
+              "y": 32.57142857142858
+            },
+            {
+              "x": 19.42857142857143,
+              "y": 26.57142857142857
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 12,
+        "height": 20,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "disabled-theme",
+            "width": 2.571428571428571
+          },
+          "points": [
+            {
+              "x": 12.571428571428571,
+              "y": 30
+            },
+            {
+              "x": 15.142857142857142,
+              "y": 32.57142857142858
+            },
+            {
+              "x": 19.42857142857143,
+              "y": 26.57142857142857
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 12,
+        "height": 20,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 2.571428571428571
+          },
+          "points": [
+            {
+              "x": 12.571428571428571,
+              "y": 30
+            },
+            {
+              "x": 15.142857142857142,
+              "y": 32.57142857142858
+            },
+            {
+              "x": 19.42857142857143,
+              "y": 26.57142857142857
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 13,
+        "height": 21,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "normal-theme",
+            "width": 2.7857142857142856
+          },
+          "points": [
+            {
+              "x": 12.785714285714285,
+              "y": 30.5
+            },
+            {
+              "x": 15.571428571428571,
+              "y": 33.285714285714285
+            },
+            {
+              "x": 20.214285714285715,
+              "y": 26.785714285714285
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 13,
+        "height": 21,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 2.7857142857142856
+          },
+          "points": [
+            {
+              "x": 12.785714285714285,
+              "y": 30.5
+            },
+            {
+              "x": 15.571428571428571,
+              "y": 33.285714285714285
+            },
+            {
+              "x": 20.214285714285715,
+              "y": 26.785714285714285
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 13,
+        "height": 21,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "disabled-theme",
+            "width": 2.7857142857142856
+          },
+          "points": [
+            {
+              "x": 12.785714285714285,
+              "y": 30.5
+            },
+            {
+              "x": 15.571428571428571,
+              "y": 33.285714285714285
+            },
+            {
+              "x": 20.214285714285715,
+              "y": 26.785714285714285
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 13,
+        "height": 21,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 2.7857142857142856
+          },
+          "points": [
+            {
+              "x": 12.785714285714285,
+              "y": 30.5
+            },
+            {
+              "x": 15.571428571428571,
+              "y": 33.285714285714285
+            },
+            {
+              "x": 20.214285714285715,
+              "y": 26.785714285714285
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 14,
+        "height": 22,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "normal-theme",
+            "width": 3
+          },
+          "points": [
+            {
+              "x": 13,
+              "y": 31
+            },
+            {
+              "x": 16,
+              "y": 34
+            },
+            {
+              "x": 21,
+              "y": 27
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 14,
+        "height": 22,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 3
+          },
+          "points": [
+            {
+              "x": 13,
+              "y": 31
+            },
+            {
+              "x": 16,
+              "y": 34
+            },
+            {
+              "x": 21,
+              "y": 27
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 14,
+        "height": 22,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "disabled-theme",
+            "width": 3
+          },
+          "points": [
+            {
+              "x": 13,
+              "y": 31
+            },
+            {
+              "x": 16,
+              "y": 34
+            },
+            {
+              "x": 21,
+              "y": 27
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 14,
+        "height": 22,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 3
+          },
+          "points": [
+            {
+              "x": 13,
+              "y": 31
+            },
+            {
+              "x": 16,
+              "y": 34
+            },
+            {
+              "x": 21,
+              "y": 27
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 16,
+        "height": 24,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "normal-theme",
+            "width": 3.4285714285714284
+          },
+          "points": [
+            {
+              "x": 13.428571428571429,
+              "y": 32
+            },
+            {
+              "x": 16.857142857142858,
+              "y": 35.42857142857142
+            },
+            {
+              "x": 22.571428571428573,
+              "y": 27.428571428571427
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 16,
+        "height": 24,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 3.4285714285714284
+          },
+          "points": [
+            {
+              "x": 13.428571428571429,
+              "y": 32
+            },
+            {
+              "x": 16.857142857142858,
+              "y": 35.42857142857142
+            },
+            {
+              "x": 22.571428571428573,
+              "y": 27.428571428571427
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 16,
+        "height": 24,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "disabled-theme",
+            "width": 3.4285714285714284
+          },
+          "points": [
+            {
+              "x": 13.428571428571429,
+              "y": 32
+            },
+            {
+              "x": 16.857142857142858,
+              "y": 35.42857142857142
+            },
+            {
+              "x": 22.571428571428573,
+              "y": 27.428571428571427
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 16,
+        "height": 24,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 3.4285714285714284
+          },
+          "points": [
+            {
+              "x": 13.428571428571429,
+              "y": 32
+            },
+            {
+              "x": 16.857142857142858,
+              "y": 35.42857142857142
+            },
+            {
+              "x": 22.571428571428573,
+              "y": 27.428571428571427
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 18,
+        "height": 26,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "normal-theme",
+            "width": 3.8571428571428577
+          },
+          "points": [
+            {
+              "x": 13.857142857142858,
+              "y": 33
+            },
+            {
+              "x": 17.714285714285715,
+              "y": 36.857142857142854
+            },
+            {
+              "x": 24.142857142857142,
+              "y": 27.857142857142858
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 18,
+        "height": 26,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 3.8571428571428577
+          },
+          "points": [
+            {
+              "x": 13.857142857142858,
+              "y": 33
+            },
+            {
+              "x": 17.714285714285715,
+              "y": 36.857142857142854
+            },
+            {
+              "x": 24.142857142857142,
+              "y": 27.857142857142858
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 18,
+        "height": 26,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "disabled-theme",
+            "width": 3.8571428571428577
+          },
+          "points": [
+            {
+              "x": 13.857142857142858,
+              "y": 33
+            },
+            {
+              "x": 17.714285714285715,
+              "y": 36.857142857142854
+            },
+            {
+              "x": 24.142857142857142,
+              "y": 27.857142857142858
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 18,
+        "height": 26,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 3.8571428571428577
+          },
+          "points": [
+            {
+              "x": 13.857142857142858,
+              "y": 33
+            },
+            {
+              "x": 17.714285714285715,
+              "y": 36.857142857142854
+            },
+            {
+              "x": 24.142857142857142,
+              "y": 27.857142857142858
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 25.5,
+        "height": 33.5,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "normal-theme",
+            "width": 5.464285714285714
+          },
+          "points": [
+            {
+              "x": 15.464285714285715,
+              "y": 36.75
+            },
+            {
+              "x": 20.928571428571427,
+              "y": 42.214285714285715
+            },
+            {
+              "x": 30.035714285714285,
+              "y": 29.464285714285715
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 25.5,
+        "height": 33.5,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 5.464285714285714
+          },
+          "points": [
+            {
+              "x": 15.464285714285715,
+              "y": 36.75
+            },
+            {
+              "x": 20.928571428571427,
+              "y": 42.214285714285715
+            },
+            {
+              "x": 30.035714285714285,
+              "y": 29.464285714285715
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 25.5,
+        "height": 33.5,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "disabled-theme",
+            "width": 5.464285714285714
+          },
+          "points": [
+            {
+              "x": 15.464285714285715,
+              "y": 36.75
+            },
+            {
+              "x": 20.928571428571427,
+              "y": 42.214285714285715
+            },
+            {
+              "x": 30.035714285714285,
+              "y": 29.464285714285715
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "b": 25.5,
+        "height": 33.5,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "polyline",
+          "pen": {
+            "color": "#123456",
+            "width": 5.464285714285714
+          },
+          "points": [
+            {
+              "x": 15.464285714285715,
+              "y": 36.75
+            },
+            {
+              "x": 20.928571428571427,
+              "y": 42.214285714285715
+            },
+            {
+              "x": 30.035714285714285,
+              "y": 29.464285714285715
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 0,
+        "height": 8,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "normal-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 10,
+                  "y": 24,
+                  "width": 0,
+                  "height": 0
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 0,
+        "height": 8,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 0,
+              "height": 8
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 10,
+                  "y": 24,
+                  "width": 0,
+                  "height": 0
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 0,
+        "height": 8,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "disabled-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 10,
+                  "y": 24,
+                  "width": 0,
+                  "height": 0
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 0,
+        "height": 8,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 0,
+              "height": 8
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 10,
+                  "y": 24,
+                  "width": 0,
+                  "height": 0
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 12,
+        "height": 20,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "normal-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13,
+                  "y": 27,
+                  "width": 6,
+                  "height": 6
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 12,
+        "height": 20,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 12,
+              "height": 20
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13,
+                  "y": 27,
+                  "width": 6,
+                  "height": 6
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 12,
+        "height": 20,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "disabled-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13,
+                  "y": 27,
+                  "width": 6,
+                  "height": 6
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 12,
+        "height": 20,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 12,
+              "height": 20
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13,
+                  "y": 27,
+                  "width": 6,
+                  "height": 6
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 13,
+        "height": 21,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "normal-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13.25,
+                  "y": 27.25,
+                  "width": 6.5,
+                  "height": 6.5
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 13,
+        "height": 21,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 13,
+              "height": 21
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13.25,
+                  "y": 27.25,
+                  "width": 6.5,
+                  "height": 6.5
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 13,
+        "height": 21,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "disabled-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13.25,
+                  "y": 27.25,
+                  "width": 6.5,
+                  "height": 6.5
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 13,
+        "height": 21,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 13,
+              "height": 21
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13.25,
+                  "y": 27.25,
+                  "width": 6.5,
+                  "height": 6.5
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 14,
+        "height": 22,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "normal-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13.5,
+                  "y": 27.5,
+                  "width": 7,
+                  "height": 7
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 14,
+        "height": 22,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 14,
+              "height": 22
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13.5,
+                  "y": 27.5,
+                  "width": 7,
+                  "height": 7
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 14,
+        "height": 22,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "disabled-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13.5,
+                  "y": 27.5,
+                  "width": 7,
+                  "height": 7
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 14,
+        "height": 22,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 14,
+              "height": 22
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 13.5,
+                  "y": 27.5,
+                  "width": 7,
+                  "height": 7
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 16,
+        "height": 24,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "normal-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 14,
+                  "y": 28,
+                  "width": 8,
+                  "height": 8
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 16,
+        "height": 24,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 16,
+              "height": 24
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 14,
+                  "y": 28,
+                  "width": 8,
+                  "height": 8
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 16,
+        "height": 24,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "disabled-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 14,
+                  "y": 28,
+                  "width": 8,
+                  "height": 8
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 16,
+        "height": 24,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 16,
+              "height": 24
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 14,
+                  "y": 28,
+                  "width": 8,
+                  "height": 8
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 18,
+        "height": 26,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "normal-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 14.5,
+                  "y": 28.5,
+                  "width": 9,
+                  "height": 9
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 18,
+        "height": 26,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 18,
+              "height": 26
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 14.5,
+                  "y": 28.5,
+                  "width": 9,
+                  "height": 9
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 18,
+        "height": 26,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "disabled-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 14.5,
+                  "y": 28.5,
+                  "width": 9,
+                  "height": 9
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 18,
+        "height": 26,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 18,
+              "height": 26
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 14.5,
+                  "y": 28.5,
+                  "width": 9,
+                  "height": 9
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 25.5,
+        "height": 33.5,
+        "fill": null,
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "normal-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 16.375,
+                  "y": 30.375,
+                  "width": 12.75,
+                  "height": 12.75
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 25.5,
+        "height": 33.5,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": false,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 25.5,
+              "height": 33.5
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 16.375,
+                  "y": 30.375,
+                  "width": 12.75,
+                  "height": 12.75
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 25.5,
+        "height": 33.5,
+        "fill": null,
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "color": "disabled-theme"
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 16.375,
+                  "y": 30.375,
+                  "width": 12.75,
+                  "height": 12.75
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "b": 25.5,
+        "height": 33.5,
+        "fill": {
+          "color": "#123456"
+        },
+        "disabled": true,
+        "x": 10,
+        "y": 20
+      },
+      "actual": [
+        {
+          "kind": "fill",
+          "brush": {
+            "fill": {
+              "color": "#123456"
+            },
+            "rect": {
+              "x": 10,
+              "y": 20,
+              "width": 25.5,
+              "height": 33.5
+            },
+            "flag": 0
+          },
+          "paths": [
+            {
+              "kind": "path",
+              "nullable": null,
+              "flag": 0,
+              "ellipses": [
+                {
+                  "x": 16.375,
+                  "y": 30.375,
+                  "width": 12.75,
+                  "height": 12.75
+                }
+              ]
+            }
+          ],
+          "flag": 1
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

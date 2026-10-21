@@ -9,6 +9,9 @@ import { bindRuntimeDrag } from './drag-input';
 import { vectorPathData } from '../model/vector';
 import { createShapeTextRenderer } from '../model/shape-text';
 import { createShapeTextMeasurer } from './shape-text-measure';
+import { createSelectionTextLayout } from './selection-text-layout';
+import { createSelectionDisplay } from './selection-display';
+import { createSelectionIndicatorRenderer } from '../model/selection-indicator';
 import { createShadowRenderer } from '../model/shadow';
 import { createGradientRenderer } from '../model/gradient';
 import { createLineStyleRenderer } from '../model/line-style';
@@ -41,7 +44,7 @@ ${prototypeStyles(validated)}
 const doc=JSON.parse(document.getElementById('prototype-data').textContent),runtime=(${createOfflineRuntime.toString()})(doc,undefined,(${evaluateExpression.toString()}),(${createBrowserBoxReader.toString()})(),{width:window.innerWidth,height:window.innerHeight,clampToPage:true});
 const frames=(${createInlineFrameHost.toString()})(doc,runtime,{bootstrap:${scriptJSON(inlineFrameBootstrap())},styles:document.getElementById('prototype-styles').textContent,base:location.href,fileUrl:(${frameFileUrl.toString()})});
 const shapeText=(${createShapeTextRenderer.toString()})();
-(${mountOfflinePrototype.toString()})(doc,runtime,document.getElementById('prototype'),(${vectorPathData.toString()}),{frames,dragInput:(${bindRuntimeDrag.toString()}),shapeText,shapeTextMeasure:(${createShapeTextMeasurer.toString()})(shapeText),shadows:(${createShadowRenderer.toString()})(),lines:(${createLineStyleRenderer.toString()})(),gradients:(${createGradientRenderer.toString()})((${createLineStyleRenderer.toString()})())});
+(${mountOfflinePrototype.toString()})(doc,runtime,document.getElementById('prototype'),(${vectorPathData.toString()}),{frames,dragInput:(${bindRuntimeDrag.toString()}),shapeText,shapeTextMeasure:(${createShapeTextMeasurer.toString()})(shapeText),selectionDisplay:(${createSelectionDisplay.toString()})((${createSelectionTextLayout.toString()})(shapeText),(${createSelectionIndicatorRenderer.toString()})()),shadows:(${createShadowRenderer.toString()})(),lines:(${createLineStyleRenderer.toString()})(),gradients:(${createGradientRenderer.toString()})((${createLineStyleRenderer.toString()})())});
 </script></body></html>`;
 }
 
@@ -55,7 +58,7 @@ ${caseMenuStyles}
 
 /** The child carries source factories, never parent globals or a desktop bridge. */
 export function inlineFrameBootstrap(): string {
-  return `function(doc,options,pageId){options.fileUrl=(${frameFileUrl.toString()});const runtime=(${createOfflineRuntime.toString()})(doc,pageId,(${evaluateExpression.toString()}),(${createBrowserBoxReader.toString()})(),{width:window.innerWidth,height:window.innerHeight,clampToPage:true});const frames=(${createInlineFrameHost.toString()})(doc,runtime,options),shapeText=(${createShapeTextRenderer.toString()})();(${mountOfflinePrototype.toString()})(doc,runtime,document.getElementById('prototype'),(${vectorPathData.toString()}),{frames,dragInput:(${bindRuntimeDrag.toString()}),embedded:true,shapeText,shapeTextMeasure:(${createShapeTextMeasurer.toString()})(shapeText),shadows:(${createShadowRenderer.toString()})(),lines:(${createLineStyleRenderer.toString()})(),gradients:(${createGradientRenderer.toString()})((${createLineStyleRenderer.toString()})())});}`;
+  return `function(doc,options,pageId){options.fileUrl=(${frameFileUrl.toString()});const runtime=(${createOfflineRuntime.toString()})(doc,pageId,(${evaluateExpression.toString()}),(${createBrowserBoxReader.toString()})(),{width:window.innerWidth,height:window.innerHeight,clampToPage:true});const frames=(${createInlineFrameHost.toString()})(doc,runtime,options),shapeText=(${createShapeTextRenderer.toString()})();(${mountOfflinePrototype.toString()})(doc,runtime,document.getElementById('prototype'),(${vectorPathData.toString()}),{frames,dragInput:(${bindRuntimeDrag.toString()}),embedded:true,shapeText,shapeTextMeasure:(${createShapeTextMeasurer.toString()})(shapeText),selectionDisplay:(${createSelectionDisplay.toString()})((${createSelectionTextLayout.toString()})(shapeText),(${createSelectionIndicatorRenderer.toString()})()),shadows:(${createShadowRenderer.toString()})(),lines:(${createLineStyleRenderer.toString()})(),gradients:(${createGradientRenderer.toString()})((${createLineStyleRenderer.toString()})())});}`;
 }
 
 export function previewFrameOptions(doc: Document, external: NonNullable<InlineFrameOptions['external']>): InlineFrameOptions { return { bootstrap: inlineFrameBootstrap(), styles: prototypeStyles(doc), base: location.href, fileUrl: frameFileUrl, external, playerUrl: new URL('frame-player.html', location.href).href }; }

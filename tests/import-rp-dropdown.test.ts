@@ -37,9 +37,9 @@ describe('native ordered SelectObject conversion', () => {
       const issue = imported.report.issues.find(i => i.sourceId === id && i.code === 'select-options-recovery')!;
       expect(issue.details).toMatchObject({ storedSelectedIndices: id === countryId ? [0] : [], effectiveSelectedIndices: [0] });
     }
-    // The 129 complete native Layers change structure/count classification only;
-    // the full-corpus oracle proves every earlier leaf is byte-for-byte unchanged.
-    expect(imported.report).toMatchObject({ widgetsImported: 246, widgetsSkipped: 66, nestedWidgetsImported: 885, nestedWidgetsSkipped: 10 });
+    // The new 18 checkboxes close 10 more Layers (139 total). Ownership moves
+    // existing leaves into those groups; the corpus projection preserves them.
+    expect(imported.report).toMatchObject({ widgetsImported: 238, widgetsSkipped: 48, nestedWidgetsImported: 921, nestedWidgetsSkipped: 0 });
     expect(imported.document.pages.flatMap(p => diagramWidgets(p.widgets)).filter(w => w.rotation === 180).map(w => w.id.split('-').at(-1)).sort()).toEqual(['04005c928fed455a82ac701931df9a59','2df36c7e04ab487784dc961a588e4db4','79b2d50ac4c04841a57cff1dc51d52b2','800340e5a16440f3874fc504ef278439']);
     expect(parseDocument(serializeDocument(imported.document))).toEqual(imported.document);
   });
