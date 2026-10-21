@@ -209,4 +209,14 @@ describe.each(modes)('%s selection display layout', (_name, factory) => {
     (doc as unknown as { fonts: unknown }).fonts = undefined;
     await expect(create().fontsReady(fixture(), realm(doc))).rejects.toThrow(/font/i);
   });
+  it('prepares candidate fonts before P94 geometry correction while measure still validates geometry', async () => {
+    const widget = fixture(), doc = new TestDocument(), layout = create();
+    widget.style.selectionButtonSize = widget.width + 50;
+    widget.selectionText!.autoFitWidth = false;
+    const before = structuredClone(widget);
+    await expect(layout.fontsReady(widget, realm(doc))).resolves.toBeUndefined();
+    expect(doc.fonts.load).toHaveBeenCalled();
+    expect(() => layout.measure(widget, realm(doc))).toThrow(/constraint/i);
+    expect(widget).toEqual(before); expect(doc.created).toEqual([]);
+  });
 });

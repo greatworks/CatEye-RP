@@ -130,3 +130,82 @@ for (const mode of ['preview', 'offline', 'frame'] as const) test(`${mode}: SVG 
   const file = info.outputPath('unchanged.rea.json'); await (await saved).saveAs(file);
   expect(JSON.parse(await readFile(file, 'utf8'))).toEqual(doc); expect(errors).toEqual([]);
 });
+
+for (const mode of ['preview', 'offline', 'frame'] as const) test(`${mode}: initial transparent selection paint preserves explicit alpha and zero outline`, async ({ page, browser }, info) => {
+  const { doc, check } = fixture(), errors: string[] = [];
+  const colors = [
+    { fill: 'transparent', stroke: '#12345600', fillCss: 'rgba(0, 0, 0, 0)', strokeCss: 'rgba(18, 52, 86, 0)' },
+    { fill: '#ffffff00', stroke: 'rgba(18, 52, 86, 0.5)', fillCss: 'rgba(255, 255, 255, 0)', strokeCss: 'rgba(18, 52, 86, 0.5)' },
+    { fill: 'rgba(18, 52, 86, .35)', stroke: '#123456', fillCss: 'rgba(18, 52, 86, 0.35)', strokeCss: 'rgb(18, 52, 86)' },
+    { fill: '#fff0', stroke: 'rgba(18,52,86,0)', fillCss: 'rgba(255, 255, 255, 0)', strokeCss: 'rgba(18, 52, 86, 0)' },
+  ];
+  const cases = (['checkbox', 'radio'] as const).flatMap((type, column) => colors.map((color, row) => {
+    const widget = structuredClone(check);
+    Object.assign(widget, { id: `alpha-${type}-${row}`, name: `${type} alpha ${row}`, type,
+      x: 60 + column * 360, y: 50 + row * 100, checked: true, disabled: row % 2 === 1, interactions: [] });
+    Object.assign(widget.style, { fill: color.fill, stroke: color.stroke, strokeWidth: 0 });
+    return { widget, color };
+  }));
+  doc.pages[0].widgets = cases.map(item => item.widget);
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/');
+  await page.locator('.menubar').getByRole('button', { name: 'File', exact: true }).click();
+  const chooser = page.waitForEvent('filechooser');
+  await page.locator('.dropdown-menu').getByRole('button', { name: 'Open… Ctrl+O', exact: true }).click();
+  await (await chooser).setFiles({ name: 'selection-alpha.rea.json', mimeType: 'application/json', buffer: Buffer.from(serializeDocument(doc)) });
+  await expect(page.locator('.titlebar')).toContainText(doc.name);
+
+  async function assertPaint(scope: Locator | FrameLocator, editor = false) {
+    for (const [index, { widget, color }] of cases.entries()) {
+      const owner = editor ? scope.locator('.editor-widget').nth(index) : scope.locator(`[data-widget-id="${widget.id}"]`);
+      await expect(owner.locator('label')).toHaveAttribute('data-selection-display', 'browser-derived');
+      await expect(owner.locator('[data-selection-fill]')).toHaveCSS('fill', color.fillCss);
+      await expect(owner.locator('[data-selection-outline]')).toHaveCSS('stroke', color.strokeCss);
+      await expect(owner.locator('[data-selection-outline]')).toHaveCSS('stroke-width', '0px');
+      const mark = owner.locator('[data-selection-mark]');
+      await expect(mark).toHaveCSS('display', 'inline');
+      if (widget.type === 'checkbox') {
+        await expect(mark).toHaveCSS('stroke', color.strokeCss);
+        await expect(mark).toHaveCSS('stroke-width', '3px');
+      } else {
+        await expect(mark).toHaveCSS('fill', color.strokeCss);
+        // The authored asset is fill-only. Prototype initialization forces a
+        // selected SVG apply unless the earlier disabled entry blocks it.
+        await expect(mark).toHaveCSS('stroke', editor || widget.disabled ? 'none' : color.strokeCss);
+        if (editor || widget.disabled) await expect(mark).not.toHaveAttribute('stroke-width');
+        else await expect(mark).toHaveCSS('stroke-width', '1px');
+      }
+      await expect(owner.locator('input')).toBeChecked();
+      if (widget.disabled) await expect(owner.locator('input')).toBeDisabled();
+      else await expect(owner.locator('input')).toBeEnabled();
+    }
+  }
+  await assertPaint(page.locator('.canvas-surface'), true);
+  if (mode === 'offline') {
+    const download = page.waitForEvent('download'); await page.getByRole('button', { name: 'Export HTML', exact: true }).click();
+    const file = info.outputPath('selection-alpha.html'); await (await download).saveAs(file);
+    const context = await browser.newContext({ offline: true, viewport: { width: 1600, height: 1000 } });
+    try {
+      const player = await context.newPage(), requests: string[] = [];
+      player.on('pageerror', error => errors.push(error.message));
+      player.on('request', request => { if (/^https?:/.test(request.url())) requests.push(request.url()) });
+      await player.goto(pathToFileURL(file).href); await assertPaint(player.locator('body'));
+      await player.getByRole('button', { name: 'Selection display frame', exact: true }).click();
+      await assertPaint(player.frameLocator('[data-inline-frame="selection-display-frame"]'));
+      await player.screenshot({ path: info.outputPath('selection-alpha-offline.png') });
+      expect(requests).toEqual([]);
+    } finally { await context.close() }
+  } else {
+    await page.getByTitle('Preview (F5)', { exact: true }).click();
+    if (mode === 'frame') {
+      await page.locator('.preview-overlay').getByRole('button', { name: 'Selection display frame', exact: true }).click();
+      await assertPaint(page.frameLocator('[data-inline-frame="selection-display-frame"]'));
+    } else await assertPaint(page.locator('.preview-overlay'));
+    await page.screenshot({ path: info.outputPath(`selection-alpha-${mode}.png`) });
+    await page.getByRole('button', { name: 'Close preview', exact: true }).click();
+  }
+  const saved = page.waitForEvent('download'); await page.getByTitle('Save', { exact: true }).click();
+  const file = info.outputPath('unchanged-alpha.rea.json'); await (await saved).saveAs(file);
+  expect(JSON.parse(await readFile(file, 'utf8'))).toEqual(doc);
+  expect(errors).toEqual([]);
+});

@@ -1,0 +1,99 @@
+{
+  "kind": "independent product session coordination checks",
+  "source": {
+    "file": "src/runtime/selection-pointer-session.ts",
+    "sha256": "b96d5c256d33438c6bf89002ad018653b9d8ccd754c6f6bb04ed5cabc0da04fb"
+  },
+  "sourceStableDuringProbe": true,
+  "nativeExecution": false,
+  "browserExecution": false,
+  "planner": "Explicit deterministic state sink, not native geometry or browser text metrics",
+  "results": [
+    {
+      "name": "Preparing preserves every immutable frame and its modifiers through finish",
+      "passed": true,
+      "detail": {
+        "order": [
+          20,
+          0,
+          40
+        ],
+        "fit": false,
+        "publicationCount": 1,
+        "undoCount": 1
+      }
+    },
+    {
+      "name": "Ready frames and delayed frames retain the same persistent state",
+      "passed": true,
+      "detail": {
+        "readyPublications": 3,
+        "delayedPublications": 1,
+        "final": {
+          "width": 140,
+          "fit": false,
+          "frames": [
+            20,
+            0,
+            40
+          ]
+        }
+      }
+    },
+    {
+      "name": "Losing ownership between queued plans cannot publish or undo a foreign document",
+      "passed": true,
+      "detail": {
+        "plans": 1,
+        "foreignWidth": 999,
+        "publicationCount": 0,
+        "undoCount": 0
+      }
+    },
+    {
+      "name": "Later queued planner failure prevents an earlier partial publication",
+      "passed": true,
+      "detail": {
+        "plans": 2,
+        "publicationCount": 0,
+        "undoCount": 0,
+        "failures": 1
+      }
+    },
+    {
+      "name": "A no-frame finish calls completion once but does not manufacture undo",
+      "passed": true,
+      "detail": {
+        "completes": 1,
+        "plans": 0,
+        "undoCount": 0
+      }
+    },
+    {
+      "name": "Explicit finishing cancellation survives a late preparation rejection",
+      "passed": true,
+      "detail": {
+        "phase": "cancelled",
+        "failures": 0,
+        "plans": 0,
+        "undoCount": 0
+      }
+    },
+    {
+      "name": "finish(lastRequest) appends an actual frame and must not be used to duplicate a prior event",
+      "passed": true,
+      "detail": {
+        "observedOrder": [
+          20,
+          20
+        ],
+        "boundary": "Host should use finish() when the final event was already sent through update"
+      }
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  }
+}

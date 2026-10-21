@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const resultPath='research/selection-state-dispatch-probes-extended.json';
+const result=JSON.parse(fs.readFileSync(resultPath,'utf8'));
+for(const entry of result.sources)assert.equal(sha(entry.path),entry.sha256,entry.path);
+assert.equal(result.summary.sequences,144);assert.equal(result.summary.steps,520);assert.equal(result.summary.svgCalls,220);assert.equal(result.summary.failed,0);
+const paths=[...result.sources.map(x=>x.path),resultPath,'research/selection-state-dispatch-probe.mjs','research/selection-state-dispatch-probes.json','research/selection-state-dispatch-evidence.md',import.meta.filename];
+const sources=[...new Set(paths)].map(path=>({path,sha256:sha(path)}));
+const manifest='research/selection-state-dispatch-manifest.json';
+fs.writeFileSync(manifest,JSON.stringify({target:'Axure RP 11.0.0.4150',scope:'Original JavaScript selection dispatch in controlled Edge fixtures',vendorDllExecuted:false,originalGuiCompared:false,productEdited:false,sources},null,2)+'\n',{flag:'wx'});
+fs.writeFileSync('research/selection-state-dispatch-evidence.json',JSON.stringify({target:'Axure RP 11.0.0.4150',summary:result.summary,vendorDllExecuted:false,originalGuiCompared:false,productEdited:false,report:{path:'research/selection-state-dispatch-evidence.md',sha256:sha('research/selection-state-dispatch-evidence.md')},result:{path:resultPath,sha256:sha(resultPath)},manifest:{path:manifest,sha256:sha(manifest)},contract:['Initialization binding forces apply for selected enabled controls even without selected state style.','Public selected compares native checked, direct style selected has a separate gate and changed-event deduplication.','Base empty state does not qualify, adaptive empty state does qualify.','Ordered synchronous width3 then width0 retains width3 attribute.','Disabled blocks selected/down/focus/error but qualifying hover can apply disabled style.','Full style passed to SVG includes base defaults and resolved state overrides; partial lower-level paint probes do not define caller behavior.'],boundaries:['No original DLL or GUI execution.','No full generated project or complete initialization event environment.','No groups/contained parents/repeaters/master chains/image overrides/applied-style actions.','No original pixel equivalence.']},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({sources:sources.length,summary:result.summary,manifestSha256:sha(manifest)}));

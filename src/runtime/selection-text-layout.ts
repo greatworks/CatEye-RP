@@ -147,7 +147,10 @@ export function createSelectionTextLayout(
   };
   const fontsReady = async (widget: Widget, document: Document): Promise<void> => {
     if (!supports(widget)) return;
-    validate(widget); requireDocument(document);
+    // Font preparation also serves an uncommitted author candidate. P94 may
+    // exceed its old owner width until the native preflight expands it, so
+    // geometry validation belongs to measure/project, after that correction.
+    requireDocument(document);
     const requests = new Map<string, string>();
     for (const paragraph of paragraphs(widget)) for (const run of paragraph.runs) {
       const style = run.style, base = widget.style;

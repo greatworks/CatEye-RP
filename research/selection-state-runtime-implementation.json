@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "status": "implemented-focused-verified",
+  "fullAxureParity": false,
+  "originalGuiCompared": false,
+  "published": false,
+  "sources": [
+    {
+      "path": "src/runtime/export-runtime.ts",
+      "sha256": "d4b5478c9d5578646e17ca733e7548e320787de1fb61f2628ac1744a6e1859d7",
+      "bytes": 336529
+    },
+    {
+      "path": "tests/selection-state-runtime.test.ts",
+      "sha256": "baa3f8b67e4a07f99b2c3c593182c352443f18bb395b5e690314d117a343c433",
+      "bytes": 12648
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/selection-paint-evidence.md",
+      "sha256": "edd58e4aedcfa7634081cde86455998a17966cd1d02347e101cc5defa838957a"
+    },
+    {
+      "path": "research/selection-state-dispatch-evidence.md",
+      "sha256": "afaa20a00913cb9c9e958f17620f5bbafe62a4207ae239dc5dc2ec3c7cf40581"
+    },
+    {
+      "path": "research/selection-state-dispatch-probes-extended.json",
+      "sha256": "a06b0dcbbc8964efb9b13fedff3dad0dae0042970cb3fb2920f097eae2245ce7"
+    },
+    {
+      "path": "research/selection-state-dispatch-callback-evidence.md",
+      "sha256": "a87bfda052db47975fde99fde35713519a18f1a25ae231ce192499a370cc59d7"
+    },
+    {
+      "path": "research/selection-state-dispatch-callback-probes.json",
+      "sha256": "f13bb031eecaef8748b8efdb1368a210ec863e98abb3041e6ee00d6f0ef00635"
+    },
+    {
+      "path": "research/selection-state-dispatch-style-action-evidence.md",
+      "sha256": "7fa5646e3f5e6bd2f210a110728f5db123548b1ea4432adea219c466335bf0d0"
+    },
+    {
+      "path": "research/selection-state-assets-evidence.md",
+      "sha256": "20f24b5069974594e25ae060798e24df8efe4a9803b9190ef62bbfb277185fc2"
+    },
+    {
+      "path": "research/selection-state-assets-probes.json",
+      "sha256": "de1b5b4f054add4c6857c4268038ff7c8adbc31340668e011462978557ae5f07"
+    },
+    {
+      "path": "research/selection-state-assets-initial-probes.json",
+      "sha256": "26b91958641d0cbd790e60152ecf42b747ea912b88dde93ac56ec2aaef0ca55c"
+    }
+  ],
+  "results": [
+    {
+      "path": ".build/selection-state-runtime-red.json",
+      "passed": 0,
+      "failed": 21,
+      "sha256": "fa7d6132e4976b9e68b5e1768506725dfb070e6b733c40675e1a7ec611981716"
+    },
+    {
+      "path": ".build/selection-state-runtime-first.json",
+      "passed": 12,
+      "failed": 9,
+      "sha256": "c99e4cb790f0ddecc9c29947f9c8ed061b2f2996c4e9d3530d49740218327622"
+    },
+    {
+      "path": ".build/selection-state-runtime-second.json",
+      "passed": 21,
+      "failed": 0,
+      "sha256": "90483be8bacbe285b8873d19fbe31dd6467eee075ab07ee34cbd538d4b4d3c90"
+    },
+    {
+      "path": ".build/selection-state-runtime-attributes-red.json",
+      "passed": 21,
+      "failed": 6,
+      "sha256": "23875b62ce20114fd1b86897d644ad6ce48fa6469171be55023ae8139afda867"
+    },
+    {
+      "path": ".build/selection-state-runtime-third.json",
+      "passed": 38,
+      "failed": 0,
+      "sha256": "41b3233b9a90c1da300805526b1e7b25b706e802d0d0b1efc390470cc3b235b5"
+    },
+    {
+      "path": ".build/selection-state-runtime-action-red.json",
+      "passed": 29,
+      "failed": 2,
+      "sha256": "80147fcde2ce3e409f9bc0938da4580552fac3110e890b4b3221be8a0bcbce50"
+    },
+    {
+      "path": ".build/selection-state-runtime-fourth.json",
+      "passed": 42,
+      "failed": 0,
+      "sha256": "e6c64ff453a92d20c63d18d5eb30de11b2a0b4c500cfaf62bb309fd4338896a4"
+    },
+    {
+      "path": ".build/selection-state-runtime-focused-green.json",
+      "passed": 136,
+      "failed": 0,
+      "sha256": "8545b4d7b25f442c95749273506463d76e38ff91d5e372a68a10b2c4c84144b7"
+    }
+  ],
+  "checks": {
+    "focusedPassed": 136,
+    "newTests": 35,
+    "relatedTests": 101,
+    "typecheckExit": 0
+  },
+  "boundary": [
+    "Ordinary unrotated checkbox/radio solid-color inline assets only. Explicit finite P94 and nonnegative outline width with assetSize > assetStrokeWidth; initial linePattern must be absent or solid.",
+    "Runtime alpha solid colors and linePattern none are supported. Gradient, partial border, corner, shadow and other unknown paints return undefined and hosts explicitly use null for runtime fallback.",
+    "Action style accumulation is modeled; the saved Action schema has no clearPrevious/className carrier. Do not infer full native ApplyStyleInfo equivalence.",
+    "The product repeater rebuild lifecycle creates fresh assets. Native itemsPregen reuse is not modeled and persist alone is not claimed to imply native DOM replacement.",
+    "Ledger API returns a detached paint. Initial getter creation may register immutable authored asset state, but it never infers missed event paints from final widget style.",
+    "Runtime state snapshots carry optional selectionPaintState; Document serialization is unchanged. No original GUI, full exported-project, raster, theme, complete provider or unsupported paint parity is claimed.",
+    "No browser/full-suite/package checks were run by this owner. Parent owns integration/render/browser/release verification."
+  ],
+  "notes": [
+    "Initial red 0/21 included 4 invalid fixture selected carriers before API invocation. The fixture was corrected to legal checked; exact old test and both logs remain.",
+    "First intermediate 12/21: the shell python App Execution Alias did not execute the intended narrow edits; source grep exposed this and edits were applied using Node. No false green was accepted.",
+    "Radio mark width and outline width are independent. Additional 21/27 red exposed four mark-width cases and two error-removal force-state cases; corrected before final green.",
+    "Additional action-layer test produced 29/31 red before overlaying accumulated action paint after state style.",
+    "Final 136 green ran before two parent-requested mount-only edits: null runtime fallback and disabled selection mouseenter gate. Latest source typecheck is recorded; parent production browser owns host verification."
+  ]
+}

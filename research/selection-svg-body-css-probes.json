@@ -1,0 +1,3600 @@
+{
+  "method": "Browser CSS and clipping controls over the retained inline-root envelope, with a declared synthetic oversized body; no native body/pixel-parity claim, original DLL execution or product imports.",
+  "environment": {
+    "channel": "msedge",
+    "version": "155.0.4283.62",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "devicePixelRatio": 1
+  },
+  "summary": {
+    "cases": 24,
+    "passed": 24,
+    "failed": 0,
+    "pageErrors": 0
+  },
+  "sources": [
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/css/axure_rp_page.css",
+      "sha256": "595bfcd275dc80732aeecbb8365067ccecc4f0277df316ea47656816939ece4a"
+    },
+    {
+      "path": "research/selection-svg-bounds-probes.json",
+      "sha256": "4cbac1e3c6bfd401b6874f8a70eabfa92cdaf96c72a8d89a510ea534f565f15f"
+    },
+    {
+      "path": "D:\\WSCodex\\REA\\research\\selection-svg-body-css-probe.mjs",
+      "sha256": "d5f631817c340248be85dcb0b174a704abb8a888a285440868b55c7eecdfa7b7"
+    }
+  ],
+  "screenshot": {
+    "path": ".build/selection-svg-body-css-control.png",
+    "sha256": "895f477c700edf38c811d4d7f12a0db19d6c7a18b22fe104419db1f53eb5f0be"
+  },
+  "results": [
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 0,
+        "alignRight": false,
+        "scaled": false,
+        "cssRect": {
+          "x": 0,
+          "y": 2,
+          "width": 15,
+          "height": 15
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 0,
+        "alignRight": false,
+        "scaled": true,
+        "cssRect": {
+          "x": 0,
+          "y": 2,
+          "width": 15,
+          "height": 15
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 30,
+          "height": 45
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 30,
+          "height": 45
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 0,
+        "alignRight": true,
+        "scaled": false,
+        "cssRect": {
+          "x": 86,
+          "y": 2,
+          "width": 15,
+          "height": 15
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 0,
+        "alignRight": true,
+        "scaled": true,
+        "cssRect": {
+          "x": 86,
+          "y": 2,
+          "width": 15,
+          "height": 15
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 30,
+          "height": 45
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 30,
+          "height": 45
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 1,
+        "alignRight": false,
+        "scaled": false,
+        "cssRect": {
+          "x": 0,
+          "y": 2,
+          "width": 15,
+          "height": 15
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 1,
+        "alignRight": false,
+        "scaled": true,
+        "cssRect": {
+          "x": 0,
+          "y": 2,
+          "width": 15,
+          "height": 15
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 30,
+          "height": 45
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 30,
+          "height": 45
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 1,
+        "alignRight": true,
+        "scaled": false,
+        "cssRect": {
+          "x": 86,
+          "y": 2,
+          "width": 15,
+          "height": 15
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 1,
+        "alignRight": true,
+        "scaled": true,
+        "cssRect": {
+          "x": 86,
+          "y": 2,
+          "width": 15,
+          "height": 15
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "7.5px 7.5px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 15,
+          "height": 15
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 30,
+          "height": 45
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 186,
+          "y": 82,
+          "width": 30,
+          "height": 45
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 25,
+          "height": 25
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 3,
+        "alignRight": false,
+        "scaled": false,
+        "cssRect": {
+          "x": -1.5,
+          "y": 0.5,
+          "width": 18,
+          "height": 18
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 3,
+        "alignRight": false,
+        "scaled": true,
+        "cssRect": {
+          "x": -1.5,
+          "y": 0.5,
+          "width": 18,
+          "height": 18
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 36,
+          "height": 54
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 36,
+          "height": 54
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 3,
+        "alignRight": true,
+        "scaled": false,
+        "cssRect": {
+          "x": 84.5,
+          "y": 0.5,
+          "width": 18,
+          "height": 18
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 184.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 184.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 184.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 184.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 14,
+        "strokeWidth": 3,
+        "alignRight": true,
+        "scaled": true,
+        "cssRect": {
+          "x": 84.5,
+          "y": 0.5,
+          "width": 18,
+          "height": 18
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 184.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9px 9px",
+        "viewport": {
+          "x": 184.5,
+          "y": 80.5,
+          "width": 18,
+          "height": 18
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 184.5,
+          "y": 80.5,
+          "width": 36,
+          "height": 54
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 184.5,
+          "y": 80.5,
+          "width": 36,
+          "height": 54
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 28,
+          "height": 28
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 0,
+        "alignRight": false,
+        "scaled": false,
+        "cssRect": {
+          "x": 0,
+          "y": 2,
+          "width": 19,
+          "height": 19
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 0,
+        "alignRight": false,
+        "scaled": true,
+        "cssRect": {
+          "x": 0,
+          "y": 2,
+          "width": 19,
+          "height": 19
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 38,
+          "height": 57
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 38,
+          "height": 57
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 0,
+        "alignRight": true,
+        "scaled": false,
+        "cssRect": {
+          "x": 82,
+          "y": 2,
+          "width": 19,
+          "height": 19
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 0,
+        "alignRight": true,
+        "scaled": true,
+        "cssRect": {
+          "x": 82,
+          "y": 2,
+          "width": 19,
+          "height": 19
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 38,
+          "height": 57
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 38,
+          "height": 57
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 1,
+        "alignRight": false,
+        "scaled": false,
+        "cssRect": {
+          "x": 0,
+          "y": 2,
+          "width": 19,
+          "height": 19
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 1,
+        "alignRight": false,
+        "scaled": true,
+        "cssRect": {
+          "x": 0,
+          "y": 2,
+          "width": 19,
+          "height": 19
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 38,
+          "height": 57
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 100,
+          "y": 82,
+          "width": 38,
+          "height": 57
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 1,
+        "alignRight": true,
+        "scaled": false,
+        "cssRect": {
+          "x": 82,
+          "y": 2,
+          "width": 19,
+          "height": 19
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 1,
+        "alignRight": true,
+        "scaled": true,
+        "cssRect": {
+          "x": 82,
+          "y": 2,
+          "width": 19,
+          "height": 19
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "9.5px 9.5px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 19,
+          "height": 19
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 38,
+          "height": 57
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 182,
+          "y": 82,
+          "width": 38,
+          "height": 57
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 29,
+          "height": 29
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 3,
+        "alignRight": false,
+        "scaled": false,
+        "cssRect": {
+          "x": -1.5,
+          "y": 0.5,
+          "width": 22,
+          "height": 22
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 3,
+        "alignRight": false,
+        "scaled": true,
+        "cssRect": {
+          "x": -1.5,
+          "y": 0.5,
+          "width": 22,
+          "height": 22
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 44,
+          "height": 66
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 98.5,
+          "y": 80.5,
+          "width": 44,
+          "height": 66
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 3,
+        "alignRight": true,
+        "scaled": false,
+        "cssRect": {
+          "x": 80.5,
+          "y": 0.5,
+          "width": 22,
+          "height": 22
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 180.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 180.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 180.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 180.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    },
+    {
+      "input": {
+        "b": 18,
+        "strokeWidth": 3,
+        "alignRight": true,
+        "scaled": true,
+        "cssRect": {
+          "x": 80.5,
+          "y": 0.5,
+          "width": 22,
+          "height": 22
+        }
+      },
+      "beforePageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 180.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "afterPageCss": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "none",
+        "origin": "11px 11px",
+        "viewport": {
+          "x": 180.5,
+          "y": 80.5,
+          "width": 22,
+          "height": 22
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "clipped": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3);"
+        },
+        "overflow": {
+          "svg": "hidden",
+          "x": "hidden",
+          "y": "hidden",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 180.5,
+          "y": 80.5,
+          "width": 44,
+          "height": 66
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "",
+          "right": ""
+        }
+      },
+      "visibleControl": {
+        "attributes": {
+          "data": "source.svg",
+          "id": "u_img",
+          "class": "img",
+          "style": "transform-origin: left top; transform: scale(2, 3); overflow: visible;"
+        },
+        "overflow": {
+          "svg": "visible",
+          "x": "visible",
+          "y": "visible",
+          "label": "visible",
+          "owner": "visible"
+        },
+        "transform": "matrix(2, 0, 0, 3, 0, 0)",
+        "origin": "0px 0px",
+        "viewport": {
+          "x": 180.5,
+          "y": 80.5,
+          "width": 44,
+          "height": 66
+        },
+        "bodyBBox": {
+          "x": -5,
+          "y": -5,
+          "width": 32,
+          "height": 32
+        },
+        "hits": {
+          "inside": "overpaint",
+          "left": "overpaint",
+          "right": "overpaint"
+        }
+      },
+      "passed": true
+    }
+  ],
+  "errors": []
+}

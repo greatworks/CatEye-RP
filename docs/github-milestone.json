@@ -1,54 +1,74 @@
 {
   "snapshotDate": "2026-10-21",
-  "stage": "Validated selection author, display and runtime source milestone",
-  "base": "5000ef371a1a513f81924f9e4219c214184037fb",
-  "previousMilestone": "b3254d8e6b7ca3291c6cdcff861766530307003d",
-  "sourceFilesMatched": 628,
-  "sourceEvidenceFiles": 190,
-  "priorChecks": {
+  "stage": "Verified selection SVG bounds, clipping and adaptive/state source milestone",
+  "base": "a862093d21ea8b73f3345349fbc57702f1fbb967",
+  "previousMilestone": "a862093d21ea8b73f3345349fbc57702f1fbb967",
+  "sourceFilesMatched": 653,
+  "verification": "research/selection-svg-body-verification.json",
+  "checks": {
+    "typecheck": {
+      "result": "passed",
+      "log": ".build/selection-svg-body-typecheck-final.log"
+    },
+    "productionBuild": {
+      "result": "passed",
+      "log": ".build/selection-svg-body-build-corrected.log",
+      "dist": ".build/selection-svg-body-corrected-dist"
+    },
+    "testedInputs": {
+      "file": ".build/selection-svg-body-inputs-final.json",
+      "verifiedEntries": 649
+    },
     "unit": {
-      "passed": 5469,
+      "report": ".build/selection-svg-body-unit-final.json",
+      "passed": 6192,
       "failed": 0,
-      "pending": 0,
-      "inputsUnchanged": true
+      "maxWorkers": 4,
+      "timeoutChanged": false
     },
-    "typecheck": true,
-    "build": ".build/selection-layout-author-second-dist",
-    "focusedProductionBrowser": {
-      "passed": 29,
+    "browser": {
+      "report": "test-results/selection-svg-body-corrected.json",
+      "passed": 21,
       "failed": 0,
-      "flaky": 0,
-      "skipped": 0
+      "fullApplicationSuiteRerun": false
     },
-    "fullBrowserRegressionOnThisBuild": false,
-    "reader": {
-      "reusedUnchangedInputs": true,
-      "passed": 856
+    "desktop": {
+      "report": ".build/selection-svg-body-corrected-desktop-audit.json",
+      "passedGroups": 3,
+      "nativePickerResponsesMocked": true,
+      "fullHistoricalSuiteRerun": false
     },
-    "sourceServices": {
-      "passed": 73,
-      "failed": 0,
-      "rehashedFiles": 56
-    },
-    "inspectedFinalScreenshots": [
-      ".build/selection-author-final-results/selection-author-selection-c1046-dicator-side-is-independent/selection-author-fit.png"
+    "screenshotsVisuallyReviewed": [
+      {
+        "file": "D:\\WSCodex\\REA\\.build\\selection-svg-body-corrected-desktop\\adaptive-preview.png",
+        "sha256": "3417968caf16b671e69f8722906153298064ce6dd243a9ed82af0c6422696948"
+      },
+      {
+        "file": "D:\\WSCodex\\REA\\.build\\selection-svg-body-corrected-desktop\\adaptive-offline.png",
+        "sha256": "cd85ef0628294e078de341b101f5f6d1a8339435e92dee7ff0ee817259cd5a06"
+      },
+      {
+        "file": "D:\\WSCodex\\REA\\.build\\selection-svg-body-corrected-desktop\\adaptive-offline-frame.png",
+        "sha256": "f66a62fd5c5123f6927bc0b42abd43de2b5e5b12a503d2557b913b45e38febcf"
+      }
     ],
-    "historicalEvidencePreserved": 1535
+    "bundle": {
+      "report": ".build/selection-svg-body-corrected-bundle-audit.json",
+      "appFilesMatched": 15,
+      "licensedFonts": 22,
+      "proprietaryVendorAssetsPackaged": false
+    }
   },
-  "sourceStageOnly": true,
-  "windowsPackagePublished": false,
+  "evidenceHashesMatched": 654,
+  "protectedArtifactsMatched": 8,
   "fullAxureParity": false,
-  "verification": "research/selection-author-verification.json",
-  "uploadValidation": {
-    "unit": {
-      "total": 5469,
-      "passed": 5469,
-      "failed": 0,
-      "pending": 0
-    },
+  "sourceStageOnly": true,
+  "windowsTestPackageVerified": true,
+  "windowsReleasePublished": false,
+  "unitTestsReexecutedForUpload": false,
+  "unitEvidenceReuse": "Exact source/snapshot hashes matched; prior 6192/6192 result retained.",
+  "uploadRebuild": {
     "typecheck": true,
-    "rebuiltProductionFilesMatched": 6,
-    "focusedBrowser": "29 prior checks reused after exact production-byte match",
-    "newWindowsPackage": false
+    "productionFilesMatched": 6
   }
 }

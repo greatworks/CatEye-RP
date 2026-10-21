@@ -1,0 +1,707 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-21T04:56:26.057Z",
+  "scope": "Independent selection pointer host review, session coordination probes, production browser E2E and visual follow-up",
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "fullAxureParity": false,
+  "productEditedByReviewer": false,
+  "summary": {
+    "blockingFindings": 0,
+    "unresolvedConfirmedProductDefects": 0
+  },
+  "sources": [
+    {
+      "file": "src/App.tsx",
+      "sha256": "41e1eda64886a959f3fd876cf2ff945b39547297be8c53a97548789d17dc4669",
+      "snapshot": {
+        "file": ".build/selection-pointer-host-final-source/src/App.tsx",
+        "sha256": "41e1eda64886a959f3fd876cf2ff945b39547297be8c53a97548789d17dc4669"
+      }
+    },
+    {
+      "file": "src/runtime/selection-pointer-session.ts",
+      "sha256": "b96d5c256d33438c6bf89002ad018653b9d8ccd754c6f6bb04ed5cabc0da04fb",
+      "snapshot": {
+        "file": ".build/selection-pointer-host-final-source/src/runtime/selection-pointer-session.ts",
+        "sha256": "b96d5c256d33438c6bf89002ad018653b9d8ccd754c6f6bb04ed5cabc0da04fb"
+      }
+    },
+    {
+      "file": "src/model/selection-pointer-resize.ts",
+      "sha256": "d502dfd682dcc1baa4197e7d8ed80722a28682a441df665bb3ecd23743de6869",
+      "snapshot": {
+        "file": ".build/selection-pointer-host-final-source/src/model/selection-pointer-resize.ts",
+        "sha256": "d502dfd682dcc1baa4197e7d8ed80722a28682a441df665bb3ecd23743de6869"
+      }
+    },
+    {
+      "file": "src/model/selection-layout.ts",
+      "sha256": "6ef087714d00160ad45fa39ed03a009a6a5d51d1679d45497087265230dc49f8",
+      "snapshot": {
+        "file": ".build/selection-pointer-host-final-source/src/model/selection-layout.ts",
+        "sha256": "6ef087714d00160ad45fa39ed03a009a6a5d51d1679d45497087265230dc49f8"
+      }
+    },
+    {
+      "file": "src/model/selection-author-edits.ts",
+      "sha256": "ec025356b9a4d40b61d15a186f6dd44bbd8b4c58c0419ad43855ef163e21dc78",
+      "snapshot": {
+        "file": ".build/selection-pointer-host-final-source/src/model/selection-author-edits.ts",
+        "sha256": "ec025356b9a4d40b61d15a186f6dd44bbd8b4c58c0419ad43855ef163e21dc78"
+      }
+    },
+    {
+      "file": "src/runtime/selection-author-measure.ts",
+      "sha256": "7df2ddf8f060b6f60c9b9185cc0e80f488f3230420e75b93d57ea208ff5e5bba",
+      "snapshot": {
+        "file": ".build/selection-pointer-host-final-source/src/runtime/selection-author-measure.ts",
+        "sha256": "7df2ddf8f060b6f60c9b9185cc0e80f488f3230420e75b93d57ea208ff5e5bba"
+      }
+    },
+    {
+      "file": "tests/selection-pointer-session.test.ts",
+      "sha256": "b22d1247091a07d9d79faad7603128451e6e1e117fdbb267d5f7b0d488f59ad8",
+      "snapshot": {
+        "file": ".build/selection-pointer-host-final-source/tests/selection-pointer-session.test.ts",
+        "sha256": "b22d1247091a07d9d79faad7603128451e6e1e117fdbb267d5f7b0d488f59ad8"
+      }
+    },
+    {
+      "file": "tests/e2e/selection-pointer-resize.spec.ts",
+      "sha256": "c4055dcdfaecf3a697289e1840fd3a24abec6bc32fab7b79a8c06c137a3ecaae",
+      "snapshot": {
+        "file": ".build/selection-pointer-host-final-source/tests/e2e/selection-pointer-resize.spec.ts",
+        "sha256": "c4055dcdfaecf3a697289e1840fd3a24abec6bc32fab7b79a8c06c137a3ecaae"
+      }
+    }
+  ],
+  "validation": {
+    "independentSession": {
+      "file": "research/selection-pointer-host-session-probes.json",
+      "sha256": "afef90703f2f3852500d5aadf1e768e8f3b330b3fa0d59bdb67cce70d37fb4e8",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "sourceStableDuringProbe": true,
+      "numericalPlannerStubbed": true
+    },
+    "fourthBuildIndependentBrowser": {
+      "file": ".build/selection-pointer-host-final.json",
+      "sha256": "d667289c6c66ef9e661c82316b0fb4ca234aa5b58f514c13ac1d807f888520d0",
+      "stats": {
+        "startTime": "2026-10-21T04:49:07.575Z",
+        "duration": 53038.39,
+        "expected": 16,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "checkbox exposes only west/east handles and anchors the unchanged side",
+          "ok": true
+        },
+        {
+          "title": "radio exposes only west/east handles and anchors the unchanged side",
+          "ok": true
+        },
+        {
+          "title": "font preparation retains ordered frames after pointer-up and completes with one undo",
+          "ok": true
+        },
+        {
+          "title": "an out-and-back pointer gesture retains the first width-fit transition",
+          "ok": true
+        },
+        {
+          "title": "Escape cancels a finishing gesture and ignores late fonts",
+          "ok": true
+        },
+        {
+          "title": "Control+z cancels a finishing gesture and ignores late fonts",
+          "ok": true
+        },
+        {
+          "title": "Escape restores an already published preview and cancels all fit changes",
+          "ok": true
+        },
+        {
+          "title": "a view round trip while fonts are pending invalidates the gesture monotonically",
+          "ok": true
+        },
+        {
+          "title": "zoom and snap convert pointer distance once and preserve the untouched dimension",
+          "ok": true
+        },
+        {
+          "title": "a pending font property blocks pointer start without losing the accepted font intent",
+          "ok": true
+        },
+        {
+          "title": "mixed selection controls and ordinary widgets reject the entire resize",
+          "ok": true
+        },
+        {
+          "title": "failure measuring the second selected control rolls back both targets and creates no undo",
+          "ok": true
+        },
+        {
+          "title": "pointer geometry stays in the current view despite Affect all views, while fit is shared",
+          "ok": true
+        },
+        {
+          "title": "abnormal pointer capture loss restores an already published preview",
+          "ok": true
+        },
+        {
+          "title": "locked controls participate in the group frame but are never measured or changed",
+          "ok": true
+        },
+        {
+          "title": "legacy selection controls retain their existing eight-handle resize policy",
+          "ok": true
+        }
+      ]
+    },
+    "fourthBuildParentRegression": {
+      "file": ".build/selection-pointer-final-regression.json",
+      "sha256": "e36386696a6fac0fa3956baeacfbdd6b671009b836f0c158064192391c4125d4",
+      "stats": {
+        "startTime": "2026-10-21T04:47:49.124Z",
+        "duration": 206661.346,
+        "expected": 72,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "all-view X and W edits use the native whole point and size without touching other declarations",
+          "ok": true
+        },
+        {
+          "title": "all-view drag derives each frame from the original document and cancellation preserves local declarations",
+          "ok": true
+        },
+        {
+          "title": "editing one effect applies the complete current effect map to all views while preserving normal styles",
+          "ok": true
+        },
+        {
+          "title": "the first effect in an empty current map follows the original local write path before later global edits",
+          "ok": true
+        },
+        {
+          "title": "preview: all-view padding clears one side and keeps later inheritance live",
+          "ok": true
+        },
+        {
+          "title": "offline: all-view padding clears one side and keeps later inheritance live",
+          "ok": true
+        },
+        {
+          "title": "preview: Affect All Views changes fill across branches without copying the current layout",
+          "ok": true
+        },
+        {
+          "title": "offline: Affect All Views changes fill across branches without copying the current layout",
+          "ok": true
+        },
+        {
+          "title": "mixed selection edits only the requested padding side, preserving equal targets; all views false",
+          "ok": true
+        },
+        {
+          "title": "mixed selection edits only the requested padding side, preserving equal targets; all views true",
+          "ok": true
+        },
+        {
+          "title": "library drag, move, resize, text, undo/redo, copy and page switching",
+          "ok": true
+        },
+        {
+          "title": "interaction editor persists disabled state, conditions, multiple actions and page navigation",
+          "ok": true
+        },
+        {
+          "title": "panel states, repeater JSON validation, notes and saved project import roundtrip",
+          "ok": true
+        },
+        {
+          "title": "linked components sync content, preserve placement, roundtrip without duplicate IDs and detach independently",
+          "ok": true
+        },
+        {
+          "title": "authors independent font style and removable effect overrides, with adaptive normal reset, undo and save/reopen",
+          "ok": true
+        },
+        {
+          "title": "preview: italic composes by property, normal resets reused DOM and container typography never leaks to legacy children",
+          "ok": true
+        },
+        {
+          "title": "offline: italic composes by property, normal resets reused DOM and container typography never leaks to legacy children",
+          "ok": true
+        },
+        {
+          "title": "Layer handle and Inspector resize use the same paired geometry and one undo",
+          "ok": true
+        },
+        {
+          "title": "out-back, Escape and adaptive context switches discard the entire gesture",
+          "ok": true
+        },
+        {
+          "title": "nested Layers keep panel-local coordinates and do not apply the Layer degree as a frame rotation",
+          "ok": true
+        },
+        {
+          "title": "resizing remains current-view with Affect all views checked and preserves inactive declarations",
+          "ok": true
+        },
+        {
+          "title": "multiple Layers use each target width and preserve a no-op target in one numeric command",
+          "ok": true
+        },
+        {
+          "title": "mixed selections and unsupported descendants fail atomically without losing selection",
+          "ok": true
+        },
+        {
+          "title": "pin edits preserve heterogeneous targets and clear only the edited All-views field",
+          "ok": true
+        },
+        {
+          "title": "multiple Layer handle plans are atomic and crossing the opposite side cannot flip members",
+          "ok": true
+        },
+        {
+          "title": "real text selection authors independent mixed runs and paragraphs with one Apply undo, Cancel and save/reopen",
+          "ok": true
+        },
+        {
+          "title": "rich edits stay current-only and adaptive explicit normal survives movement, shared content and reopen without flattening Base",
+          "ok": true
+        },
+        {
+          "title": "plain clipboard, Enter and Chromium composition retain run styles and literal mode with local undo and no document edit before Apply",
+          "ok": true
+        },
+        {
+          "title": "canvas WYSIWYG uses actual glyph selection, pending caret marks, soft breaks and backward cross-paragraph replacement",
+          "ok": true
+        },
+        {
+          "title": "rotated nested adaptive inline editing keeps the canvas geometry and shared rich baseline, and commits on leaving while Escape cancels",
+          "ok": true
+        },
+        {
+          "title": "canvas adaptive and temporary effect decorations compose once and editing unchanged plain text is a history no-op",
+          "ok": true
+        },
+        {
+          "title": "rotated east resize follows its visible axis and keeps the opposite edge fixed, with one undo",
+          "ok": true
+        },
+        {
+          "title": "marquee intersects the rotated visible rectangle rather than the unrotated layout box",
+          "ok": true
+        },
+        {
+          "title": "offline: runtime text AutoFit measures native setter DOM, hidden and row instances without changing design",
+          "ok": true
+        },
+        {
+          "title": "fixed-frame: runtime text AutoFit measures native setter DOM, hidden and row instances without changing design",
+          "ok": true
+        },
+        {
+          "title": "preview measures SetText after painting, preserves first rich formatting, and exposes resize before alignment move",
+          "ok": true
+        },
+        {
+          "title": "preview measures hidden shapes safely and repeater mutations keep row-local text and geometry",
+          "ok": true
+        },
+        {
+          "title": "adaptive view changes remeasure registered text only and leave initial AutoFit owners untouched",
+          "ok": true
+        },
+        {
+          "title": "P94 larger than the old owner uses the old panel before measuring the new indicator layout",
+          "ok": true
+        },
+        {
+          "title": "named-view font edits measure projected runs and preserve raw shared rich text",
+          "ok": true
+        },
+        {
+          "title": "all-view P94 style cleanup leaves internal Size current-only and inactive geometry intact",
+          "ok": true
+        },
+        {
+          "title": "mixed selection measurement failure commits no ordinary styles; retry is one undoable command",
+          "ok": true
+        },
+        {
+          "title": "font-delayed different property fields and continuous plain text survive FIFO with per-command undo",
+          "ok": true
+        },
+        {
+          "title": "rich Done waits for new-content measurement then closes and saves one shared-content transaction",
+          "ok": true
+        },
+        {
+          "title": "an untouched focused X draft cannot overwrite the font-fit Location or add an undo entry",
+          "ok": true
+        },
+        {
+          "title": "a width command queued behind font preparation preserves both intents and their undo order",
+          "ok": true
+        },
+        {
+          "title": "pending rich application blocks an outside selection change until its content is accepted",
+          "ok": true
+        },
+        {
+          "title": "rich measurement failure retains an editable draft for retry and pending Cancel cannot commit later",
+          "ok": true
+        },
+        {
+          "title": "font-delayed author command stays cancelled after a view round trip and reselect",
+          "ok": true
+        },
+        {
+          "title": "Undo cancels font-delayed author work with either populated or empty history",
+          "ok": true
+        },
+        {
+          "title": "a later ordinary property patch cancels waiting layout and owns the only undo entry",
+          "ok": true
+        },
+        {
+          "title": "the newest font-delayed size command commits once and preserves other declarations",
+          "ok": true
+        },
+        {
+          "title": "adaptive font declarations project into measurement runs without changing saved rich text",
+          "ok": true
+        },
+        {
+          "title": "second-target measurement failure discards the first plan and retry commits both in one undo",
+          "ok": true
+        },
+        {
+          "title": "selection text fit is one undoable command, persists through reopen, and indicator side is independent",
+          "ok": true
+        },
+        {
+          "title": "all-view Size and internal current-view correction preserve their ordered scopes",
+          "ok": true
+        },
+        {
+          "title": "current-view fit changes shared flags without overwriting sibling geometry",
+          "ok": true
+        },
+        {
+          "title": "preview: SVG indicator, authored text layout and native input activation stay separate",
+          "ok": true
+        },
+        {
+          "title": "offline: SVG indicator, authored text layout and native input activation stay separate",
+          "ok": true
+        },
+        {
+          "title": "frame: SVG indicator, authored text layout and native input activation stay separate",
+          "ok": true
+        },
+        {
+          "title": "preview: a fitted long selection label keeps the indicator visible and clickable",
+          "ok": true
+        },
+        {
+          "title": "offline: a fitted long selection label keeps the indicator visible and clickable",
+          "ok": true
+        },
+        {
+          "title": "preview: selection layout data survives save and native SetText paints structural breaks",
+          "ok": true
+        },
+        {
+          "title": "offline: selection layout data survives save and native SetText paints structural breaks",
+          "ok": true
+        },
+        {
+          "title": "preview: selection measures actual DOM, preserves owner size, moves alignment and rolls back unsupported height",
+          "ok": true
+        },
+        {
+          "title": "offline: selection measures actual DOM, preserves owner size, moves alignment and rolls back unsupported height",
+          "ok": true
+        },
+        {
+          "title": "frame: selection measures actual DOM, preserves owner size, moves alignment and rolls back unsupported height",
+          "ok": true
+        },
+        {
+          "title": "preview: selected styles, groups and real form clicks use the shared selection dispatch",
+          "ok": true
+        },
+        {
+          "title": "offline: selected styles, groups and real form clicks use the shared selection dispatch",
+          "ok": true
+        },
+        {
+          "title": "Inspector saves and reopens selection fields, action values and panel fit, and removes style overrides",
+          "ok": true
+        },
+        {
+          "title": "preview: grouped radios support Tab, arrows and Space with one selection dispatch path",
+          "ok": true
+        },
+        {
+          "title": "offline: grouped radios support Tab, arrows and Space with one selection dispatch path",
+          "ok": true
+        }
+      ],
+      "executedByParent": true,
+      "notCountedAsIndependentNewCases": true
+    },
+    "fifthBuildLabelOnly": {
+      "file": ".build/selection-pointer-label-qa.json",
+      "sha256": "cc498e485bb7a767b6b581efb852df31ec75644cd89c6bd0a396b45171b404cd",
+      "stats": {
+        "startTime": "2026-10-21T04:52:16.683Z",
+        "duration": 5994.226000000001,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "failure measuring the second selected control rolls back both targets and creates no undo",
+          "ok": true
+        }
+      ],
+      "executedByParent": true,
+      "fullSixteenNotRerunOnFifth": true
+    },
+    "fifthFinalTypecheck": {
+      "file": ".build/selection-layout-pointer-label-final-typecheck-run.json",
+      "sha256": "446c0cf8989a57914e198856970cb0c94acc0bf660e27866cf60a827cb37056f",
+      "exitCode": 0,
+      "changedInputs": []
+    }
+  },
+  "fifthBuildDelta": {
+    "previousApp": {
+      "file": ".build/selection-pointer-app-before-label-qa.tsx",
+      "sha256": "93ee3357bb2915b06603db9bcd29d1a6c3247dd2e6751f52617da94cee62e65c"
+    },
+    "currentApp": {
+      "file": "src/App.tsx",
+      "sha256": "41e1eda64886a959f3fd876cf2ff945b39547297be8c53a97548789d17dc4669"
+    },
+    "changedBuildInputs": [
+      "src/App.tsx"
+    ],
+    "exactSingleTextReplacement": true,
+    "oldText": "<span className=\"selection-label\">{w.name} {w.locked?'🔒':''}</span>",
+    "newText": "{!selectionGroup&&<span className=\"selection-label\">{w.name} {w.locked?'🔒':''}</span>}",
+    "scope": "Suppress individual leaf label when shared selection group exists; no geometry change"
+  },
+  "blockingFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "native-text-drag-cancels-handle-retry",
+      "evidence": {
+        "file": ".build/selection-pointer-host-capture-diagnostic.json",
+        "sha256": "81947cf1d05d2bc78c6675c044fa374eb28027e5ded002bac3445406110d315a",
+        "explanation": "1/2: checked locked fixture passes; native dragstart/pointercancel reproduced without intermediate Save or window blur"
+      },
+      "fix": "Handle pointerdown preventDefault before pending gates",
+      "green": {
+        "file": ".build/selection-pointer-host-final.json",
+        "sha256": "d667289c6c66ef9e661c82316b0fb4ca234aa5b58f514c13ac1d807f888520d0"
+      },
+      "downloadBlurHypothesisDisproved": true
+    },
+    {
+      "id": "context-roundtrip-and-snap",
+      "proof": "Read-only static review; monotonic serial ownership and snap snapshot added before second build",
+      "redExecutionClaimed": false
+    },
+    {
+      "id": "multi-label-overlap",
+      "proof": "Actually observed fourth image, exact-only label source delta and reviewed fifth image",
+      "green": {
+        "file": ".build/selection-pointer-label-qa.json",
+        "sha256": "cc498e485bb7a767b6b581efb852df31ec75644cd89c6bd0a396b45171b404cd"
+      }
+    }
+  ],
+  "preservedFailures": [
+    {
+      "file": ".build/selection-pointer-second.json",
+      "sha256": "f7ec82993a1764738d81910cbdbe9651158882e3945acc6dd895e704fa01be72",
+      "explanation": "10/13: zoom hit-point and invalid adaptive notes fixture errors; font retry is a real product defect"
+    },
+    {
+      "file": ".build/selection-pointer-host-second-recheck.json",
+      "sha256": "b8b262769b40a7598f14ca952984eb1108ed5ece19bd3a6783d112b571918329",
+      "explanation": "2/3: two corrected fixtures pass; font retry still fails"
+    },
+    {
+      "file": ".build/selection-pointer-host-third.json",
+      "sha256": "df98b9c1abd2667cb455eb47433598017293f4e84cdfc44ac89b9651fa3ec996",
+      "explanation": "14/16: native browser drag cancellation and invalid selected checkbox fixture"
+    },
+    {
+      "file": ".build/selection-pointer-host-capture-diagnostic.json",
+      "sha256": "81947cf1d05d2bc78c6675c044fa374eb28027e5ded002bac3445406110d315a",
+      "explanation": "1/2: checked locked fixture passes; native dragstart/pointercancel reproduced without intermediate Save or window blur"
+    },
+    {
+      "file": ".build/selection-pointer-host-fourth.json",
+      "sha256": "dff3625641f7f88fba6116db4ba86e0ca170fd88043322bd00625ec565cfc15d",
+      "explanation": "15/16: product behavior is fixed; remaining defaultPrevented microtask assertion is an instrumentation error"
+    },
+    {
+      "file": ".build/selection-pointer-host-event-order-probe.json",
+      "sha256": "ba529dbaaa6f6237bf63742456e75064db0c85dc997c2eea6c68d09a48a47dd4",
+      "explanation": "first independent event-order observation did not wait for timer; retained incomplete output"
+    },
+    {
+      "file": ".build/selection-pointer-host-event-order-probe-complete.json",
+      "sha256": "004f1cc881ba90dd0933403a500eb1e1827140d4849442f4673151b15d657b0e",
+      "explanation": "completed actual Edge event dispatch: capture false, microtask false, target prevents default, timer true"
+    }
+  ],
+  "runRoot": ".build/selection-pointer-host-e2e/1792558148552-80524",
+  "screenshots": [
+    {
+      "role": "fourth-single-east",
+      "file": ".build/selection-pointer-host-e2e/1792558148552-80524/38bea3133dbcbf8e4324-e34adb8be876384caee8/retry-0/east.png",
+      "sha256": "b1048d50ec4abdc1ef3ce0b2bf626d2b3f490ca6d820ca5d6d8c4ed770f20fbe",
+      "actuallyReviewed": true,
+      "originalAxureGuiCompared": false
+    },
+    {
+      "role": "fourth-multi-label-overlap-retained",
+      "file": ".build/selection-pointer-host-e2e/1792558148552-80524/38bea3133dbcbf8e4324-1906ec4473167052a5be/retry-0/multi-retry.png",
+      "sha256": "4b234bf7befa9b29506d5cc32a29654aa72f8a516b6e89c3ba989540425428d7",
+      "actuallyReviewed": true,
+      "originalAxureGuiCompared": false
+    },
+    {
+      "role": "fourth-current-view-aav",
+      "file": ".build/selection-pointer-host-e2e/1792558148552-80524/38bea3133dbcbf8e4324-bc4c0dac7fbea1c3b77a/retry-0/current-view-aav.png",
+      "sha256": "e9b4eef0c25ea2a57387a3a914469f3bcabac5bf314ec464bcf22b00e305e60e",
+      "actuallyReviewed": true,
+      "originalAxureGuiCompared": false
+    },
+    {
+      "role": "fourth-zoom-snap",
+      "file": ".build/selection-pointer-host-e2e/1792558148552-80524/38bea3133dbcbf8e4324-80cdb1834510621b9163/retry-0/zoom-snap.png",
+      "sha256": "8e50d2625cabfafa1a1e83568fa9b841030bcc2285226c40b3255f87b675068b",
+      "actuallyReviewed": true,
+      "originalAxureGuiCompared": false
+    },
+    {
+      "role": "fifth-multi-label-fixed",
+      "file": ".build/selection-pointer-host-e2e/1792558338131-120296/38bea3133dbcbf8e4324-1906ec4473167052a5be/retry-0/multi-retry.png",
+      "sha256": "8f66fce6eefe02cb6730f978d54b99ca3e5ee097b7b45ddb69b20f66a63de0b8",
+      "actuallyReviewed": true,
+      "originalAxureGuiCompared": false
+    }
+  ],
+  "evidence": [
+    {
+      "file": "research/selection-pointer-host-review.md",
+      "sha256": "a883a16295ca708af7c52219e7a706b3e1d390ec2ca1ae0f09dfebf5eeaaee10"
+    },
+    {
+      "file": "research/selection-pointer-host-review.json",
+      "sha256": "506e8868407f195ca84925d38ba7671696b85042e913fcef455c078d73a6dca0"
+    },
+    {
+      "file": "research/selection-pointer-host-session-review.md",
+      "sha256": "6ca419ad5d66b28e1338311a48bd5d8908732507a2950e3d83b490acbbac5a79"
+    },
+    {
+      "file": "research/selection-pointer-host-session-review.json",
+      "sha256": "826ca9af002cce043fc0aa3abc1e5a1a479a67e9376835a75a4dcb6aee1b218a"
+    },
+    {
+      "file": ".build/selection-pointer-host-session-review.mjs",
+      "sha256": "cbfa4a4b5e04df58d6f256d3152cec8ac89415291ff5359e720bfeef95d7f42e"
+    },
+    {
+      "file": ".build/selection-pointer-host-event-order-probe.mjs",
+      "sha256": "c5316f10835b5dd31c6dcad3e217c12f8857b72f679709431c1291127b431252"
+    },
+    {
+      "file": ".build/selection-pointer-host-event-order-probe-complete.mjs",
+      "sha256": "e6b3d07a0874b61b4af2189c328463b4409874b7c5c704ace7843070a4ae3c98"
+    },
+    {
+      "file": ".build/selection-pointer-host-before-test-adjustments/selection-pointer-resize.spec.ts",
+      "sha256": "2e1e49c6cd70541d211097cd518656aeaae56b9e706114bcfdd22067544dd6ff"
+    },
+    {
+      "file": ".build/selection-pointer-host-e2e/1792557943940-120824/38bea3133dbcbf8e4324-5a6daeabb0360874e8e2/retry-0/font-retry-events.json",
+      "sha256": "f3554bfbe783f20eb4561379bc4342d2a4895318edfcd829242bdb3f42066c31"
+    },
+    {
+      "file": "research/selection-pointer-evidence.md",
+      "sha256": "1d4addef8236e872f2101778e075bc8e4b412a509c4c15e10623e29ae18a544f"
+    },
+    {
+      "file": "research/selection-pointer-evidence.json",
+      "sha256": "c08adf9252d12af9600c51611cca4bce0c3394adf33724276082d328f0723d77"
+    },
+    {
+      "file": "research/selection-pointer-manifest.json",
+      "sha256": "48817f74752559816d8b6d1072d2041fd4a715a6bab148079a835b08e75c805d"
+    },
+    {
+      "file": "research/selection-pointer-model-implementation.md",
+      "sha256": "d12c3a99ebdacd55f353fd70b94ab48785b7e76c2818eb45253ed3f547fdf313"
+    },
+    {
+      "file": "research/selection-pointer-model-implementation.json",
+      "sha256": "3adea4935a8fa68064c1a9804a1bc046505079443d344bfec128b95d128cf466"
+    },
+    {
+      "file": ".build/selection-pointer-host-final.config.ts",
+      "sha256": "a3e396549803fbe1af9ad7a8345568d109328d20b9ede2693fce43bd3a0f5c9a"
+    },
+    {
+      "file": ".build/selection-pointer-host-final.log",
+      "sha256": "e7baea9191feb5221d55dd5447e1c03b6025f9fc49bcc1548fc165ef81caf524"
+    },
+    {
+      "file": ".build/selection-layout-pointer-fourth-build-inputs.json",
+      "sha256": "d3f1012283b80623acb16710f21d35ddf5bec5d4b8988a06c65eb6ed476f54c9"
+    },
+    {
+      "file": ".build/selection-layout-pointer-fifth-build-inputs.json",
+      "sha256": "2abc0deff5d8aa4096f2413d14a7b02533f640e68946bad2e89d2db2bf9d63d6"
+    }
+  ],
+  "limits": [
+    "Monospace browser measurement fixture is not native Axure font/DPI/GUI equivalence.",
+    "The source session probes use explicit measurement/layout services; no original DLL methods were executed.",
+    "Legacy eight-handle/minimum-eight route is preserved independent product behavior.",
+    "Ordinary unrotated page/Layer coordinates only; mixed types and unsupported modifiers reject atomically.",
+    "Saved readback is parsed exported project data, not a claim of re-opening every file in the app.",
+    "Fourth full behavior and fifth label-only validation remain separate."
+  ],
+  "report": {
+    "file": "research/selection-pointer-host-final-review.md",
+    "sha256": "f2527ee6470236ee3179fd25820217d4f8422f78b16bb26dd883f9db4c95328e"
+  },
+  "sourceStableDuringFreeze": true
+}

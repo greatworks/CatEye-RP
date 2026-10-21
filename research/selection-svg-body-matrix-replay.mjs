@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+const input='research/selection-svg-body-matrix-probe.mjs';
+const suffix=process.argv[2];
+if(!suffix||!/^[a-z0-9][a-z0-9-]*$/.test(suffix))throw Error('Supply a unique lowercase alphanumeric/hyphen output suffix');
+const output=`research/selection-svg-body-matrix-${suffix}.json`;
+if(fs.existsSync(output))throw Error('Refusing to overwrite '+output);
+let code=fs.readFileSync(input,'utf8');
+code=code.replace("'./gradient-angle-static-flow.mjs'",JSON.stringify(pathToFileURL('research/gradient-angle-static-flow.mjs').href));
+code=code.replaceAll('import.meta.filename',JSON.stringify(input));
+code=code.replaceAll("'research/selection-svg-body-matrix-probes.json'",JSON.stringify(output));
+const sourceSha256=createHash('sha256').update(fs.readFileSync(input)).digest('hex');
+console.log(JSON.stringify({source:input,sourceSha256,output}));
+await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));

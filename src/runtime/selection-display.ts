@@ -1,20 +1,23 @@
 import type { Widget } from '../model/types';
 import type { SelectionTextLayout, SelectionDisplayRect } from './selection-text-layout';
+import type { SelectionIndicatorPaint } from '../model/selection-indicator';
 
 export interface SelectionIndicatorPainter {
-  supports(widget: Widget): boolean;
-  paint(svg: SVGSVGElement, source: Widget, current: Widget, rect: SelectionDisplayRect): void;
+  supports(widget: Widget, paint?: SelectionIndicatorPaint): boolean;
+  paint(svg: SVGSVGElement, source: Widget, current: Widget, rect: SelectionDisplayRect, paint?: SelectionIndicatorPaint): void;
 }
 
 /** Portable DOM host. All computed panels are transient browser substitutes.
  * Its source is an authored template, never the text after a runtime setter. */
 export function createSelectionDisplay(layout: SelectionTextLayout, indicator: SelectionIndicatorPainter) {
   type Entry = {
-    key: string; source: Widget; current: Widget; text: HTMLElement; input: HTMLInputElement;
+    key: string; source: Widget; current: Widget; text: HTMLElement; input: HTMLInputElement; paint?: SelectionIndicatorPaint;
     result: NonNullable<ReturnType<SelectionTextLayout['measure']>>;
   };
   const entries = new WeakMap<HTMLLabelElement, Entry>();
-  const supports = (widget: Widget) => layout.supports(widget) && indicator.supports(widget);
+  // Undefined denotes authoring. Null explicitly denotes a runtime cascade
+  // outside the supported subset and must never become stateless SVG paint.
+  const supports = (widget: Widget, paint?: SelectionIndicatorPaint | null) => paint !== null && layout.supports(widget) && indicator.supports(widget, paint);
   const apply = (label: HTMLLabelElement, entry: Entry) => {
     const { source, current, result, text, input } = entry, document = label.ownerDocument;
     Object.assign(label.style, { position: 'absolute', display: 'block', left: '0px', top: '0px',
@@ -35,7 +38,7 @@ export function createSelectionDisplay(layout: SelectionTextLayout, indicator: S
       svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       svg.dataset.selectionIndicator = ''; svg.setAttribute('aria-hidden', 'true'); label.prepend(svg);
     }
-    indicator.paint(svg, source, current, result.indicator);
+    indicator.paint(svg, source, current, result.indicator, entry.paint);
     const owner = label.parentElement;
     if (owner) Object.assign(owner.style, { backgroundColor: 'transparent', backgroundImage: 'none',
       borderWidth: '0px', borderRadius: '0px', boxShadow: 'none', overflow: 'visible' });
@@ -54,8 +57,8 @@ export function createSelectionDisplay(layout: SelectionTextLayout, indicator: S
       borderWidth: (style.borderWidths ?? [style.strokeWidth,style.strokeWidth,style.strokeWidth,style.strokeWidth]).map(value => `${value}px`).join(' '),
       borderColor: style.stroke, borderRadius: (style.cornerRadii ?? [style.radius,style.radius,style.radius,style.radius]).map(value => `${value}px`).join(' ') });
   };
-  const update = (label: HTMLLabelElement, text: HTMLElement, input: HTMLInputElement, source: Widget, current: Widget) => {
-    if (!supports(source) || !indicator.supports(current)) {
+  const update = (label: HTMLLabelElement, text: HTMLElement, input: HTMLInputElement, source: Widget, current: Widget, paint?: SelectionIndicatorPaint | null) => {
+    if (paint === null || !supports(source, paint) || !indicator.supports(current, paint)) {
       entries.delete(label); fallback(label, text, input, current, 'Unsupported selection display source'); return false;
     }
     const key = JSON.stringify([source.type, source.width, source.height, source.rotation,
@@ -63,12 +66,12 @@ export function createSelectionDisplay(layout: SelectionTextLayout, indicator: S
     let entry = entries.get(label);
     try {
       if (entry?.key === key) {
-        entry.current = current; entry.text = text; entry.input = input; apply(label, entry); return true;
+        entry.current = current; entry.text = text; entry.input = input; entry.paint = paint; apply(label, entry); return true;
       }
       entries.delete(label);
       const result = layout.measure(source, label.ownerDocument);
       if (!result) { fallback(label, text, input, current, 'No selection display measurement'); return false; }
-      entry = { key, source, current, text, input, result }; entries.set(label, entry); apply(label, entry);
+      entry = { key, source, current, text, input, result, paint }; entries.set(label, entry); apply(label, entry);
       label.dataset.selectionFonts = 'pending';
       const pending = entry;
       void layout.fontsReady(source, label.ownerDocument).then(() => {

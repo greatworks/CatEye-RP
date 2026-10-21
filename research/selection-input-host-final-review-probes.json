@@ -1,0 +1,229 @@
+{
+  "kind": "read-only actual product module/session integration; controlled services and frozen original-CIL numerical observations",
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "browserStarted": false,
+  "productEdited": false,
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  },
+  "sources": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "d82eb1a5a0eed1d13ae2f4129acc6138093e45da070b2c9c0925dd97745c26c6"
+    },
+    {
+      "path": "src/runtime/selection-pointer-session.ts",
+      "sha256": "b3e812e35ccda2e368aeefd0d5702879329e11e1b196ead18a5074d6d1879602"
+    },
+    {
+      "path": "src/model/selection-pointer-input.ts",
+      "sha256": "b15ed45f68c83bc3c5f866a9d259eca6b68f534ae8bbb2d6b96811af5aceaba5"
+    },
+    {
+      "path": "src/model/selection-pointer-resize.ts",
+      "sha256": "47faed383b225239f16db1cd323e1a5648a6822b4680cca2c5afcd4cde89cbef"
+    },
+    {
+      "path": "src/model/selection-layout.ts",
+      "sha256": "6ef087714d00160ad45fa39ed03a009a6a5d51d1679d45497087265230dc49f8"
+    },
+    {
+      "path": "src/model/author-resize-solver.ts",
+      "sha256": "95d2b05236c850976cc2f1230319ad6bd23b468b6de7fb4fffb2b7ed2bb6fb10"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/selection-input-grid-live-session-probes.json",
+      "sha256": "1a6e83d3ea5f1fafde0745b1c49ed6084776c37a0c27f11f7d53a8b988a7a7aa"
+    },
+    {
+      "path": "research/selection-input-keys-evidence.json",
+      "sha256": "b21676bab2677a097a8388e95d578a75e570b445b7bf61a815c9521e3903f4ae"
+    },
+    {
+      "path": "research/selection-input-grid-evidence.json",
+      "sha256": "f6353d1608ee8ac86ac9491db457943bc1269fe7a1aaf853ee9e3344244cecc7"
+    },
+    {
+      "path": "research/selection-input-host-final-review-probe.mjs",
+      "sha256": "ffe63cd11803ffcbccd5090ac38e04b59e810c1392be95f84af1fed47bf4680a"
+    }
+  ],
+  "sourceStable": true,
+  "results": [
+    {
+      "name": "queued raw points with live owner bounds match source two-frame composition",
+      "passed": true,
+      "planned": [
+        {
+          "request": {
+            "point": {
+              "x": 736,
+              "y": 124
+            },
+            "modifiers": {
+              "control": false,
+              "alt": false,
+              "shift": true
+            }
+          },
+          "bounds": {
+            "x": 100,
+            "y": 100,
+            "width": 530,
+            "height": 20
+          },
+          "projected": {
+            "ok": true,
+            "rawDelta": {
+              "x": 106,
+              "y": 4
+            },
+            "delta": {
+              "x": 106,
+              "y": 4
+            },
+            "layoutModifiers": {
+              "shift": true,
+              "control": false,
+              "alt": false
+            },
+            "trace": {
+              "mode": "resize",
+              "rawModifiers": {
+                "control": false,
+                "alt": false,
+                "shift": true
+              },
+              "snap": "grid",
+              "correction": {
+                "x": 0,
+                "y": 0
+              },
+              "candidate": {
+                "x": 100,
+                "y": 100,
+                "width": 636,
+                "height": 24
+              }
+            }
+          },
+          "owners": [
+            {
+              "x": 100,
+              "y": 100,
+              "width": 288,
+              "height": 20
+            },
+            {
+              "x": 520,
+              "y": 100,
+              "width": 216,
+              "height": 20
+            }
+          ]
+        },
+        {
+          "request": {
+            "point": {
+              "x": 752,
+              "y": 125
+            },
+            "modifiers": {
+              "control": false,
+              "alt": false,
+              "shift": true
+            }
+          },
+          "bounds": {
+            "x": 100,
+            "y": 100,
+            "width": 636,
+            "height": 20
+          },
+          "projected": {
+            "ok": true,
+            "rawDelta": {
+              "x": 122,
+              "y": 5
+            },
+            "delta": {
+              "x": 123,
+              "y": 5.031446540880509
+            },
+            "layoutModifiers": {
+              "shift": true,
+              "control": false,
+              "alt": false
+            },
+            "trace": {
+              "mode": "resize",
+              "rawModifiers": {
+                "control": false,
+                "alt": false,
+                "shift": true
+              },
+              "snap": "grid",
+              "correction": {
+                "x": 1,
+                "y": 0.031446540880503145
+              },
+              "candidate": {
+                "x": 100,
+                "y": 100,
+                "width": 795,
+                "height": 25
+              }
+            }
+          },
+          "owners": [
+            {
+              "x": 100,
+              "y": 100,
+              "width": 300.3773584905661,
+              "height": 20
+            },
+            {
+              "x": 538.0503144654089,
+              "y": 100,
+              "width": 225.28301886792457,
+              "height": 20
+            }
+          ]
+        }
+      ],
+      "publications": 1,
+      "completeCalls": 1,
+      "releaseAddedFrames": 0,
+      "sourceStaleCounterfactual": {
+        "x": 119.5,
+        "y": 4.905660377358487
+      }
+    },
+    {
+      "name": "failure in queued preparation batch rolls back without partial publication",
+      "passed": true,
+      "plans": 2,
+      "publishes": 0,
+      "rollbacks": 1,
+      "failed": 1
+    },
+    {
+      "name": "initial exact-Control rotation mode is not reselected from later modifiers",
+      "passed": true,
+      "rejected": {
+        "ok": false,
+        "reason": "Selection rotation controller input is not supported"
+      }
+    }
+  ],
+  "limits": [
+    "App event handlers are separately read-only reviewed, not executed by this Node probe",
+    "Constant text metrics, minimum1x1 and CSS inset2 are explicit service inputs",
+    "No real browser pointer capture, fonts, OS keyboard state or original native graphics executes"
+  ]
+}

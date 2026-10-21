@@ -1,0 +1,79 @@
+{
+  "target": "Axure RP 11.0.0.4150 ordinary uncontained noncompound Checkbox/Radio inline SVG, original JavaScript in controlled Edge",
+  "environment": {
+    "channel": "msedge",
+    "headless": true,
+    "version": "155.0.4283.62",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+    "devicePixelRatio": 1
+  },
+  "summary": {
+    "main": {
+      "sequences": 58,
+      "steps": 292,
+      "svgCalls": 306,
+      "exceptions": 0,
+      "pageErrors": 0
+    },
+    "verified": {
+      "sequences": 58,
+      "passed": 58,
+      "failed": 0,
+      "steps": 292
+    },
+    "numeric": {
+      "sequences": 8,
+      "steps": 36,
+      "pageErrors": 0,
+      "exceptions": 0,
+      "svgCalls": 44,
+      "passed": 8
+    },
+    "cssControls": {
+      "originSnapshots": 2,
+      "assignmentCases": 6
+    },
+    "roundingControls": {
+      "cases": 21,
+      "raw6Matches": 11,
+      "fround6Matches": 19,
+      "pageErrors": 0
+    },
+    "midpointControls": {
+      "cases": 6,
+      "raw6Matches": 3,
+      "fround6Matches": 3,
+      "pageErrors": 0
+    }
+  },
+  "gates": {
+    "baseInitialization": "No view change and no helper call; separate state initialization is outside this probe.",
+    "namedInitialization": "One actual switch and adaptive helper call per ordinary object.",
+    "sameNamedView": "Public setAdaptiveView returns without helper or SVG call.",
+    "differentNamedView": "Reset owner and immediate children, clear prior adaptive paint, add new view class, compute sparse state/adaptive overrides, invoke helper.",
+    "returnBase": "Clear adaptive paint and old class, but no setAdaptiveStyle call; nested SVG transform and origin survive.",
+    "directApplyView": "Invokes helper again even for the same view; unlike public same-view setter."
+  },
+  "arithmetic": {
+    "denominator": "computeFullStyle(id, NORMAL, emptyViewId).size; not SVG viewport or live owner size",
+    "operation": "rawX=(argumentSize.width/baseSize.width)*oldComputedMatrix.m11; rawY analogously",
+    "origin": "Every truthy size sets inline transformOrigin top left before reading the current computed matrix.",
+    "writeGate": "Write Scale(rawX, rawY) only when either raw component differs from its old computed component.",
+    "readback": "Observed finite float32-range Chromium: float32 value serialized to six significant digits with ties-to-even. JavaScript toPrecision(6) matches the non-midpoint module fixtures but is NOT equivalent at exact midpoint controls. Keep raw submit values separately for DOM paint.",
+    "nonfinite": "Invalid Infinity/NaN CSS scale text is rejected as a pair, preserving prior transform after origin update.",
+    "extremeFinite": "Observed 1e40 and 1e308 are accepted and clamped to float32 maximum, not rejected; generic unbounded equivalence not claimed."
+  },
+  "boundaries": [
+    "CSS absolute positions and body geometry are declared carriers; native CSS envelope and DOM ancestry are independently cited.",
+    "Native generator emission of sparse half-axis JSON size is not established; product companion-axis reconstruction is a schema bridge.",
+    "Hidden/unplaced/inactive-panel/master/repeater-combined lifecycle and queued Resize animations were not executed.",
+    "No original GUI, vendor DLL execution, product code import, product/configuration edit, or full-page native export comparison."
+  ],
+  "data": {
+    "main": "research/selection-adaptive-svg-probes-final.json",
+    "numerics": "research/selection-adaptive-svg-numerics-probes.json",
+    "rounding": "research/selection-adaptive-svg-rounding-controls.json",
+    "midpoint": "research/selection-adaptive-svg-midpoint-controls.json",
+    "css": "research/selection-adaptive-svg-css-controls.json"
+  }
+}

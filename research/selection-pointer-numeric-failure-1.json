@@ -1,0 +1,163 @@
+{
+  "kind": "Original CIL-record numeric replay; effective angle and 1x1 minimum supplied; ordinary Selection only",
+  "sources": [
+    {
+      "path": "research/layer-resize-numeric-replay.mjs",
+      "sha256": "5c7de39285e87c7ea4492666b38decf096873a8c0d9ce23898a8174027d6a20f"
+    },
+    {
+      "path": ".build/next-layer-authoring/constraint-bridge-cil.json",
+      "sha256": "f1c09de16c3dbd5e65a4d8cb840182be5f5fca18460b5eaccee8c438b6a96118"
+    },
+    {
+      "path": ".build/next-layer-authoring/pin-info-cil.json",
+      "sha256": "930f2ae0612d259dfa4a14938092823b29b783165bc5b22f28541e5e9f70311f"
+    },
+    {
+      "path": "research/layer-resize-numeric-solver-cil.json",
+      "sha256": "b3a1114f772affefbe0dcba191223a1c23b8c2839e608a095b7c9d9e011f5319"
+    },
+    {
+      "path": "research/layer-resize-numeric-primitives-cil.json",
+      "sha256": "828fc56c9b472a1b9a99f456d26f9a6301065d2c4353b27e632c42a2031d62a3"
+    },
+    {
+      "path": "research/layer-resize-numeric-sizing-cil.json",
+      "sha256": "328df0201c00a38a2d95763316198830a2d4504067eddcd1be54398c8c2beb63"
+    },
+    {
+      "path": "research/layer-resize-numeric-extra-cil.json",
+      "sha256": "b49258d6dbd969b204a695fab8543be30ad128e239083c90b7ff0e416e682a97"
+    },
+    {
+      "path": "research/layer-resize-numeric-dependencies-cil.json",
+      "sha256": "7470eb8abe73c17826f77b3c64c22aeddfae2e459a0e6aa2cf5e51ca3c3f1df9"
+    },
+    {
+      "path": "research/selection-pointer-single-cil.json",
+      "sha256": "0881bf1ffdff30f9d08ed9ca64c48c9bd8e528de122f4ecc0039dff17c33765b"
+    },
+    {
+      "path": "research/selection-pointer-dependencies-cil.json",
+      "sha256": "97ca58da2d117919bfb4123bbfaf740691c88d96781a33696d2ddc248af84807"
+    },
+    {
+      "path": "research/selection-layout-transaction-rect-values-cil.json",
+      "sha256": "9a446f523135105c7f196ced020d568ee12623ce6aa80cd2bea405571338db22"
+    },
+    {
+      "path": "research/font-size-runtime-round-cil.json",
+      "sha256": "e237d4566483d6c29125685feb4bafd7e307a4a51bd0e1a772596b7276589008"
+    }
+  ],
+  "cases": [
+    {
+      "input": {
+        "rect": {
+          "x": 20,
+          "y": 30,
+          "width": 100,
+          "height": 20
+        },
+        "angle": 0,
+        "handle": 1,
+        "delta": {
+          "x": -120,
+          "y": 7
+        }
+      },
+      "passed": false,
+      "error": "Missing call 100720577 T5pS.d5pN::Rotate from 100686258:74"
+    },
+    {
+      "input": {
+        "rect": {
+          "x": 20,
+          "y": 30,
+          "width": 100,
+          "height": 20
+        },
+        "angle": 0,
+        "handle": 4,
+        "delta": {
+          "x": -120,
+          "y": 7
+        }
+      },
+      "passed": false,
+      "error": "Missing call 100720577 T5pS.d5pN::Rotate from 100686258:74"
+    },
+    {
+      "input": {
+        "rect": {
+          "x": 20,
+          "y": 30,
+          "width": 100,
+          "height": 20
+        },
+        "angle": 30,
+        "handle": 1,
+        "delta": {
+          "x": -120,
+          "y": 7
+        }
+      },
+      "passed": false,
+      "error": "Missing call 100720577 T5pS.d5pN::Rotate from 100686258:74"
+    },
+    {
+      "input": {
+        "rect": {
+          "x": 20,
+          "y": 30,
+          "width": 100,
+          "height": 20
+        },
+        "angle": 30,
+        "handle": 4,
+        "delta": {
+          "x": -120,
+          "y": 7
+        }
+      },
+      "passed": false,
+      "error": "Missing call 100720577 T5pS.d5pN::Rotate from 100686258:74"
+    },
+    {
+      "input": {
+        "rect": {
+          "x": 20,
+          "y": 30,
+          "width": 100,
+          "height": 20
+        },
+        "angle": 90,
+        "handle": 1,
+        "delta": {
+          "x": -120,
+          "y": 7
+        }
+      },
+      "passed": false,
+      "error": "Missing call 100720577 T5pS.d5pN::Rotate from 100686258:74"
+    },
+    {
+      "input": {
+        "rect": {
+          "x": 20,
+          "y": 30,
+          "width": 100,
+          "height": 20
+        },
+        "angle": 90,
+        "handle": 4,
+        "delta": {
+          "x": -120,
+          "y": 7
+        }
+      },
+      "passed": false,
+      "error": "Missing call 100720577 T5pS.d5pN::Rotate from 100686258:74"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+// Additions are only a retained-CIL host, never product code or DLL execution.
+for(const t of [721424309,721424684,721424687])bind(t,1,([a])=>a.length>0);
+bind(167791856,2,([self,f])=>({self,fn:f.fn}));
+bind(721424685,2,([a,d])=>a.map(x=>execute(d.fn,[d.self,x])));bind(721424686,1,([a])=>a);
+for(const [t,k] of [[100722465,'fill'],[100722455,'rect'],[100722461,'width'],[100722459,'shape']])bind(t,1,([g])=>g[k]);
+bind(100722475,1,([g])=>{assert([0,15].includes(g.shape));return false;});
+bind(100720811,3,([fill])=>fill);
+bind(100721048,3,a=>execute(100723562,a));bind(100721040,3,a=>execute(100723529,a));bind(100721050,4,a=>execute(100723564,a));
+bind(100717814,1,()=>null);bind(100717816,1,()=>null);
+bind(100721085,4,([g,a,b,r])=>{assert.equal(a,null);assert.equal(b,null);sinks.push({kind:'ordinary-no-effects-style',rect:r});return VOID;});
+bind(100722444,2,([a,b])=>a!==b);
+// PixelAlignMultiple executes its actual MoveNext and i57e CIL. CLR enum/list only are facades.
+bind(167772735,0,()=>1);
+bind(100721975,2,([a,b])=>a.x===b.x&&a.y===b.y);
+bind(100721950,2,([p,n])=>point(p.x+n,p.y+n));
+bind(100721980,2,([a,b])=>deref(a).x===b.x);bind(100721982,2,([a,b])=>deref(a).y===b.y);
+bind(721424303,1,([a])=>{const e=execute(100720010,[a]),out=[];while(execute(100720006,[e]))out.push(execute(100720007,[e]));return out;});
+bind(167785099,2,([a,i])=>a[i]);bind(721424304,1,([a])=>a.slice(1));bind(721424305,1,([a])=>a.length>0);
+bind(167791276,1,([a])=>({items:a,index:-1}));bind(167791275,1,([e])=>deref(e).items[deref(e).index]);
+// Bounds are a declared sink; this phase verifies path/attribute/writer output only.
+bind(100720527,1,([pts])=>rect(Math.min(...pts.map(p=>p.x)),Math.min(...pts.map(p=>p.y)),Math.max(...pts.map(p=>p.x))-Math.min(...pts.map(p=>p.x)),Math.max(...pts.map(p=>p.y))-Math.min(...pts.map(p=>p.y))));
+bind(100723621,0,()=>({}));
+bind(167775440,2,([self,f])=>({self,fn:f.fn}));
+bind(721424379,2,([a,d])=>a.map(p=>{const m=d.self[67135419];assert(m);return point(m.a*p.x+m.c*p.y+m.e,m.b*p.x+m.d*p.y+m.f);}));bind(721424278,1,([a])=>a);
+// Radio r57L receives the independent I57m BoxModel0/w0 proof as its boundary.
+bind(100719867,5,([p,r,out,pixel,box])=>{assert.equal(p.penWidth,0);assert.equal(box,0);assert.equal(pixel,1);const value={...r,__type:'g5s7',struct:undefined};assign(out,value);sinks.push({kind:'I57m-bounded-identity',input:r,output:value});return value;});
+for(const [t,f] of [[100722188,r=>point(r.x,r.y)],[100722190,r=>point(r.x+r.width,r.y)],[100722192,r=>point(r.x,r.y+r.height)],[100722194,r=>point(r.x+r.width,r.y+r.height)],[100722196,r=>point(r.x+r.width/2,r.y)],[100722197,r=>point(r.x+r.width/2,r.y+r.height)],[100722198,r=>point(r.x,r.y+r.height/2)],[100722199,r=>point(r.x+r.width,r.y+r.height/2)]])bind(t,1,([r])=>f(r));
+const geometry=read('research/selection-layout-border-geometry-probes.json').results;
+const results=[];
+const fill={r:255,g:255,b:255,a:1},outline={r:18,g:52,b:86,a:1},mark={r:18,g:52,b:86,a:1};
+function runCase(type,b,width,alpha=1){
+ records=[];calls=[];sinks=[];const origin=[100,70],mg=matrixApi.graphics(),mo=matrixApi.point(...origin);const scope=matrixApi.run(100720505,[mg,mo,1,NaN]);
+ const pm=matrixApi.run(100723595,[mg]);matrixApi.run(100723479,[mg,mo]);const outer=matrixApi.run(100723482,[mg]);
+ const pathMatrix=matrixApi.components(pm),outerMatrix=matrixApi.components(outer),netMatrix=matrixApi.components(matrixApi.multiply(outer,pm));
+ const g=writer([0,0]);g.commandMatrix=matrix(...pathMatrix);const shape=type==='checkbox'?0:15;
+ const geom=geometry.find(r=>r.input.shape===shape&&r.input.b===b&&r.input.width===width&&(type==='checkbox'?Array.isArray(r.actual.segments):r.actual.template))?.actual;
+ assert(geom,'geometry input');const fillSegments=type==='checkbox'?geom.fillSegments:geom.fillPath,strokeSegments=type==='checkbox'?geom.segments:geom.strokePath;
+ const carrier={shape,width,rect:rect(0,0,b,b),fill:{...fill,a:alpha},67134841:fillSegments.map(command),67134844:[],67134843:[strokeSegments.map(command)],67134858:0,67134862:{67135311:null}};
+ execute(100722532,[carrier,{67134834:g},{width,color:{...outline,a:alpha},67133748:0},null,null,false,true,true,{}]);
+ if(type==='checkbox'){
+  const u=b/14,pts=[point(3*u,b/2),point(6*u,10*u),point(11*u,3*u)];
+  execute(100723527,[g,{width:3*u,color:{...mark,a:alpha},67133748:0},pts,true]);
+ }else{
+  const p=invoke(100719836,[null,false],'newobj');execute(100719853,[p,rect(b/4,b/4,b/2,b/2)]);execute(100723564,[g,{...mark,a:alpha},[p],true]);
+ }
+ const elements=g[67135332][0];assert.equal(elements.length,3);assert.deepEqual(netMatrix,[1,0,0,1,0,0]);
+ assert.equal(elements[0].attrs.class,'fill');assert.equal(elements[0].attrs.stroke,'none');
+ assert.equal(elements[1].attrs.class,'stroke');assert.equal(elements[1].attrs['stroke-width'],String(width));assert.equal(elements[1].attrs.fill,'none');
+ assert.equal(elements[2].attrs.class,'stroke btn_check');assert.equal(elements[2].attrs[type==='checkbox'?'fill':'stroke'],'none');
+ for(const e of elements)assert.equal(e.attrs.transform,'matrix(1 0 0 1 100 70 )');
+ matrixApi.callback(scope);
+ results.push({input:{type,b,width,origin,alpha},matrix:{path:pathMatrix,outer:outerMatrix,net:netMatrix},elements,trace:records,calls,sinks});
+}
+process.on('uncaughtException',error=>{let n=1;while(fs.existsSync(`research/selection-svg-body-paint-failure-${n}.json`))n++;const message=String(error.stack);fs.writeFileSync(`research/selection-svg-body-paint-failure-${n}.json`,JSON.stringify({message,sourceSha256:sha(import.meta.filename)},null,2)+'\n',{flag:'wx'});console.error(message);process.exitCode=1;});
+for(const type of ['checkbox','radio'])for(const b of [14,18])for(const width of [0,1,3])runCase(type,b,width);
+for(const type of ['checkbox','radio'])for(const alpha of [0,.375])runCase(type,14,1,alpha);
+fs.writeFileSync('research/selection-svg-body-paint-probes-fourth.json',JSON.stringify({sources:sourceFiles.map(path=>({path,sha256:sha(path)})),results},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({cases:results.length,elements:results.reduce((n,x)=>n+x.elements.length,0)}));

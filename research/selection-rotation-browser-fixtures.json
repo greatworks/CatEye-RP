@@ -1,0 +1,1474 @@
+{
+  "kind": "Retained original CIL input to controller composition; no product imports or original DLL execution",
+  "sources": [
+    {
+      "path": "research/selection-rotation-browser-fixtures.mjs",
+      "sha256": "ae679c7abc6e210ddd59f42ea7d6c2dc2795a941dfb3c2342855aaa3b8476fb8"
+    },
+    {
+      "path": "research/selection-rotation-input-replay.mjs",
+      "sha256": "357031d00364427e65cc147626860240382a15ec88805fa135ba7e4b2e2f8747"
+    },
+    {
+      "path": "research/selection-rotation-controller-replay.mjs",
+      "sha256": "ec9b7b1f817d5c0d2273aef3ebc7364bd6c8f2443de1f3166c0f0aea5ef6f603"
+    }
+  ],
+  "cases": [
+    {
+      "name": "free-angle",
+      "moves": [
+        {
+          "point": {
+            "x": 600,
+            "y": 342
+          },
+          "keys": 0
+        }
+      ],
+      "down": {
+        "x": 630,
+        "y": 309.5
+      },
+      "start": {
+        "x": 630,
+        "y": 309.5
+      },
+      "bounds": {
+        "x": 100,
+        "y": 300,
+        "width": 530,
+        "height": 20
+      },
+      "widgets": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100,
+            "y": 300,
+            "width": 240,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        }
+      ],
+      "observations": [
+        {
+          "input": {
+            "delta": {
+              "x": -30,
+              "y": 32.5
+            },
+            "correction": {
+              "x": 0,
+              "y": 0
+            },
+            "currentBounds": {
+              "x": 100,
+              "y": 300,
+              "width": 530,
+              "height": 20
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 101.3630769928005,
+                "y": 280.16482041866396,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 448.3549070776545,
+                "y": 323.9390098395435,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": 7.862390811903126
+        }
+      ],
+      "expected": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 101.3630769928005,
+            "y": 280.16482041866396,
+            "width": 240,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 226,
+            "height": 20
+          }
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 448.3549070776545,
+            "y": 323.9390098395435,
+            "width": 180,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 166,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "shift-angle",
+      "moves": [
+        {
+          "point": {
+            "x": 600,
+            "y": 342
+          },
+          "keys": 65536
+        }
+      ],
+      "down": {
+        "x": 630,
+        "y": 309.5
+      },
+      "start": {
+        "x": 630,
+        "y": 309.5
+      },
+      "bounds": {
+        "x": 100,
+        "y": 300,
+        "width": 530,
+        "height": 20
+      },
+      "widgets": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100,
+            "y": 300,
+            "width": 240,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        }
+      ],
+      "observations": [
+        {
+          "input": {
+            "delta": {
+              "x": -30,
+              "y": 32.5
+            },
+            "correction": {
+              "x": 0,
+              "y": 0
+            },
+            "currentBounds": {
+              "x": 100,
+              "y": 300,
+              "width": 530,
+              "height": 20
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 104.94075518808509,
+                "y": 262.4712384601345,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 444.037019600587,
+                "y": 345.2933328929411,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": 15
+        }
+      ],
+      "expected": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 104.94075518808509,
+            "y": 262.4712384601345,
+            "width": 240,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 226,
+            "height": 20
+          }
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 444.037019600587,
+            "y": 345.2933328929411,
+            "width": 180,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 166,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "actual-down-offset",
+      "down": {
+        "x": 632,
+        "y": 311.5
+      },
+      "moves": [
+        {
+          "point": {
+            "x": 600,
+            "y": 342
+          },
+          "keys": 0
+        }
+      ],
+      "start": {
+        "x": 630,
+        "y": 309.5
+      },
+      "bounds": {
+        "x": 100,
+        "y": 300,
+        "width": 530,
+        "height": 20
+      },
+      "widgets": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100,
+            "y": 300,
+            "width": 240,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        }
+      ],
+      "observations": [
+        {
+          "input": {
+            "delta": {
+              "x": -30,
+              "y": 32.5
+            },
+            "correction": {
+              "x": 0,
+              "y": 0
+            },
+            "currentBounds": {
+              "x": 100,
+              "y": 300,
+              "width": 530,
+              "height": 20
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 101.35604844901502,
+                "y": 280.21578450334016,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 448.36338980291293,
+                "y": 323.877501461486,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": 7.842062087044212
+        }
+      ],
+      "expected": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 101.35604844901502,
+            "y": 280.21578450334016,
+            "width": 240,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 226,
+            "height": 20
+          }
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 448.36338980291293,
+            "y": 323.877501461486,
+            "width": 180,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 166,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "grid",
+      "grid": true,
+      "moves": [
+        {
+          "point": {
+            "x": 603,
+            "y": 342
+          },
+          "keys": 131072
+        }
+      ],
+      "down": {
+        "x": 630,
+        "y": 309.5
+      },
+      "start": {
+        "x": 630,
+        "y": 309.5
+      },
+      "bounds": {
+        "x": 100,
+        "y": 300,
+        "width": 530,
+        "height": 20
+      },
+      "widgets": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100,
+            "y": 300,
+            "width": 240,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        }
+      ],
+      "observations": [
+        {
+          "input": {
+            "delta": {
+              "x": -30,
+              "y": 32.5
+            },
+            "correction": {
+              "x": -3,
+              "y": 0
+            },
+            "currentBounds": {
+              "x": 100,
+              "y": 300,
+              "width": 530,
+              "height": 20
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 101.3630769928005,
+                "y": 280.16482041866396,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 448.3549070776545,
+                "y": 323.9390098395435,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": 7.862390811903126
+        }
+      ],
+      "expected": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 101.3630769928005,
+            "y": 280.16482041866396,
+            "width": 240,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 226,
+            "height": 20
+          }
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 448.3549070776545,
+            "y": 323.9390098395435,
+            "width": 180,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 166,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "grid-alt",
+      "grid": true,
+      "moves": [
+        {
+          "point": {
+            "x": 603,
+            "y": 342
+          },
+          "keys": 393216
+        }
+      ],
+      "down": {
+        "x": 630,
+        "y": 309.5
+      },
+      "start": {
+        "x": 630,
+        "y": 309.5
+      },
+      "bounds": {
+        "x": 100,
+        "y": 300,
+        "width": 530,
+        "height": 20
+      },
+      "widgets": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100,
+            "y": 300,
+            "width": 240,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        }
+      ],
+      "observations": [
+        {
+          "input": {
+            "delta": {
+              "x": -27,
+              "y": 32.5
+            },
+            "correction": {
+              "x": 0,
+              "y": 0
+            },
+            "currentBounds": {
+              "x": 100,
+              "y": 300,
+              "width": 530,
+              "height": 20
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 101.32984748706403,
+                "y": 280.4069584568983,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 448.3950116535434,
+                "y": 323.6467742761573,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": 7.765814809794094
+        }
+      ],
+      "expected": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 101.32984748706403,
+            "y": 280.4069584568983,
+            "width": 240,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 226,
+            "height": 20
+          }
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 448.3950116535434,
+            "y": 323.6467742761573,
+            "width": 180,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 166,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "grid-live-bounds",
+      "grid": true,
+      "moves": [
+        {
+          "point": {
+            "x": 603,
+            "y": 342
+          },
+          "keys": 131072
+        },
+        {
+          "point": {
+            "x": 520,
+            "y": 324
+          },
+          "keys": 131072
+        }
+      ],
+      "down": {
+        "x": 630,
+        "y": 309.5
+      },
+      "start": {
+        "x": 630,
+        "y": 309.5
+      },
+      "bounds": {
+        "x": 100,
+        "y": 300,
+        "width": 530,
+        "height": 20
+      },
+      "widgets": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100,
+            "y": 300,
+            "width": 240,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        }
+      ],
+      "observations": [
+        {
+          "input": {
+            "delta": {
+              "x": -30,
+              "y": 32.5
+            },
+            "correction": {
+              "x": -3,
+              "y": 0
+            },
+            "currentBounds": {
+              "x": 100,
+              "y": 300,
+              "width": 530,
+              "height": 20
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 101.3630769928005,
+                "y": 280.16482041866396,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 448.3549070776545,
+                "y": 323.9390098395435,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": 7.862390811903126
+        },
+        {
+          "input": {
+            "delta": {
+              "x": -110,
+              "y": 14.560990160456527
+            },
+            "correction": {
+              "x": 0,
+              "y": 0.06099016045652661
+            },
+            "currentBounds": {
+              "x": 101.3630769928005,
+              "y": 280.16482041866396,
+              "width": 526.991830084854,
+              "height": 63.77418942087951
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 100.61794850948655,
+                "y": 286.62752052195555,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 449.2542000747576,
+                "y": 316.13919937005363,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": 5.291564946659051
+        }
+      ],
+      "expected": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100.61794850948655,
+            "y": 286.62752052195555,
+            "width": 240,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 226,
+            "height": 20
+          }
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 449.2542000747576,
+            "y": 316.13919937005363,
+            "width": 180,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 166,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "negative-quarter",
+      "moves": [
+        {
+          "point": {
+            "x": 364.5,
+            "y": 45
+          },
+          "keys": 0
+        }
+      ],
+      "down": {
+        "x": 630,
+        "y": 309.5
+      },
+      "start": {
+        "x": 630,
+        "y": 309.5
+      },
+      "bounds": {
+        "x": 100,
+        "y": 300,
+        "width": 530,
+        "height": 20
+      },
+      "widgets": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100,
+            "y": 300,
+            "width": 240,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        }
+      ],
+      "observations": [
+        {
+          "input": {
+            "delta": {
+              "x": -265.5,
+              "y": -264.5
+            },
+            "correction": {
+              "x": 0,
+              "y": 0
+            },
+            "currentBounds": {
+              "x": 100,
+              "y": 300,
+              "width": 530,
+              "height": 20
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 245,
+                "y": 445,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 275.00000000000006,
+                "y": 125,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": -90
+        }
+      ],
+      "expected": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 245,
+            "y": 445,
+            "width": 240,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 226,
+            "height": 20
+          }
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 275.00000000000006,
+            "y": 125,
+            "width": 180,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 166,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "locked-pivot",
+      "locked": true,
+      "moves": [
+        {
+          "point": {
+            "x": 365.5,
+            "y": 575
+          },
+          "keys": 0
+        }
+      ],
+      "down": {
+        "x": 630,
+        "y": 309.5
+      },
+      "start": {
+        "x": 630,
+        "y": 309.5
+      },
+      "bounds": {
+        "x": 100,
+        "y": 300,
+        "width": 530,
+        "height": 20
+      },
+      "widgets": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100,
+            "y": 300,
+            "width": 240,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": true
+        }
+      ],
+      "observations": [
+        {
+          "input": {
+            "delta": {
+              "x": -264.5,
+              "y": 265.5
+            },
+            "correction": {
+              "x": 0,
+              "y": 0
+            },
+            "currentBounds": {
+              "x": 100,
+              "y": 300,
+              "width": 530,
+              "height": 20
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 245,
+                "y": 155.00000000000003,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 450,
+                "y": 300,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": 90
+        }
+      ],
+      "expected": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 245,
+            "y": 155.00000000000003,
+            "width": 240,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 226,
+            "height": 20
+          }
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 166,
+            "height": 20
+          }
+        }
+      ]
+    },
+    {
+      "name": "out-and-back",
+      "moves": [
+        {
+          "point": {
+            "x": 365.5,
+            "y": 575
+          },
+          "keys": 0
+        },
+        {
+          "point": {
+            "x": 630,
+            "y": 309.5
+          },
+          "keys": 0
+        }
+      ],
+      "down": {
+        "x": 630,
+        "y": 309.5
+      },
+      "start": {
+        "x": 630,
+        "y": 309.5
+      },
+      "bounds": {
+        "x": 100,
+        "y": 300,
+        "width": 530,
+        "height": 20
+      },
+      "widgets": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100,
+            "y": 300,
+            "width": 240,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "autoFitWidth": true,
+          "locked": false
+        }
+      ],
+      "observations": [
+        {
+          "input": {
+            "delta": {
+              "x": -264.5,
+              "y": 265.5
+            },
+            "correction": {
+              "x": 0,
+              "y": 0
+            },
+            "currentBounds": {
+              "x": 100,
+              "y": 300,
+              "width": 530,
+              "height": 20
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 245,
+                "y": 155.00000000000003,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 275.00000000000006,
+                "y": 475,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": 90
+        },
+        {
+          "input": {
+            "delta": {
+              "x": 0,
+              "y": 0
+            },
+            "correction": {
+              "x": 0,
+              "y": 0
+            },
+            "currentBounds": {
+              "x": 245,
+              "y": 155.00000000000003,
+              "width": 240,
+              "height": 340
+            }
+          },
+          "after": [
+            {
+              "id": "orbit-0",
+              "rect": {
+                "x": 100,
+                "y": 300,
+                "width": 240,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 226,
+                "height": 20
+              }
+            },
+            {
+              "id": "orbit-1",
+              "rect": {
+                "x": 450,
+                "y": 300,
+                "width": 180,
+                "height": 20
+              },
+              "angle": 0,
+              "autoFitWidth": true,
+              "autoFitHeight": false,
+              "panel": {
+                "x": 14,
+                "y": 0,
+                "width": 166,
+                "height": 20
+              }
+            }
+          ],
+          "angle": 0
+        }
+      ],
+      "expected": [
+        {
+          "id": "orbit-0",
+          "rect": {
+            "x": 100,
+            "y": 300,
+            "width": 240,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 226,
+            "height": 20
+          }
+        },
+        {
+          "id": "orbit-1",
+          "rect": {
+            "x": 450,
+            "y": 300,
+            "width": 180,
+            "height": 20
+          },
+          "angle": 0,
+          "autoFitWidth": true,
+          "autoFitHeight": false,
+          "panel": {
+            "x": 14,
+            "y": 0,
+            "width": 166,
+            "height": 20
+          }
+        }
+      ]
+    }
+  ]
+}

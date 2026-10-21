@@ -1,0 +1,442 @@
+{
+  "method": "Browser CSS numeric controls, no original target or product code. Assign the raw finite double to scale, read exact computed transform through original-source-equivalent WebKitCSSMatrix, and compare raw six-significant-digit and float32-then-six-digit candidates. Extreme values are intentionally outside ordinary owner-size support.",
+  "environment": {
+    "channel": "msedge",
+    "headless": true,
+    "version": "155.0.4283.62",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0"
+  },
+  "source": {
+    "path": "D:\\WSCodex\\REA\\research\\selection-adaptive-svg-rounding-controls.mjs",
+    "sha256": "5a1d2ac068312d025b162faeacceec6e0ef6f159093647030c90e77c682faee3"
+  },
+  "summary": {
+    "cases": 21,
+    "raw6Matches": 11,
+    "fround6Matches": 19,
+    "pageErrors": 0
+  },
+  "results": [
+    {
+      "input": 1.2345649,
+      "raw6": 1.23456,
+      "fround": 1.2345649003982544,
+      "fround6": 1.23456,
+      "actual": {
+        "inline": "scale(1.23456, 1.23456)",
+        "computed": "matrix(1.23456, 0, 0, 1.23456, 0, 0)",
+        "parsed": {
+          "m11": 1.23456,
+          "m22": 1.23456
+        },
+        "screenCTM": {
+          "a": 1.2345649003982544,
+          "d": 1.2345649003982544
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    },
+    {
+      "input": 1.234565,
+      "raw6": 1.23456,
+      "fround": 1.234565019607544,
+      "fround6": 1.23457,
+      "actual": {
+        "inline": "scale(1.23456, 1.23456)",
+        "computed": "matrix(1.23457, 0, 0, 1.23457, 0, 0)",
+        "parsed": {
+          "m11": 1.23457,
+          "m22": 1.23457
+        },
+        "screenCTM": {
+          "a": 1.234565019607544,
+          "d": 1.234565019607544
+        }
+      },
+      "raw6Matches": false,
+      "fround6Matches": true
+    },
+    {
+      "input": 1.2345651,
+      "raw6": 1.23457,
+      "fround": 1.2345651388168335,
+      "fround6": 1.23457,
+      "actual": {
+        "inline": "scale(1.23457, 1.23457)",
+        "computed": "matrix(1.23457, 0, 0, 1.23457, 0, 0)",
+        "parsed": {
+          "m11": 1.23457,
+          "m22": 1.23457
+        },
+        "screenCTM": {
+          "a": 1.2345651388168335,
+          "d": 1.2345651388168335
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    },
+    {
+      "input": 1.234575,
+      "raw6": 1.23457,
+      "fround": 1.2345750331878662,
+      "fround6": 1.23458,
+      "actual": {
+        "inline": "scale(1.23457, 1.23457)",
+        "computed": "matrix(1.23458, 0, 0, 1.23458, 0, 0)",
+        "parsed": {
+          "m11": 1.23458,
+          "m22": 1.23458
+        },
+        "screenCTM": {
+          "a": 1.2345750331878662,
+          "d": 1.2345750331878662
+        }
+      },
+      "raw6Matches": false,
+      "fround6Matches": true
+    },
+    {
+      "input": 1.0000049,
+      "raw6": 1,
+      "fround": 1.0000048875808716,
+      "fround6": 1,
+      "actual": {
+        "inline": "scale(1, 1)",
+        "computed": "matrix(1, 0, 0, 1, 0, 0)",
+        "parsed": {
+          "m11": 1,
+          "m22": 1
+        },
+        "screenCTM": {
+          "a": 1.0000048875808716,
+          "d": 1.0000048875808716
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    },
+    {
+      "input": 1.000005,
+      "raw6": 1.00001,
+      "fround": 1.0000050067901611,
+      "fround6": 1.00001,
+      "actual": {
+        "inline": "scale(1.00001, 1.00001)",
+        "computed": "matrix(1.00001, 0, 0, 1.00001, 0, 0)",
+        "parsed": {
+          "m11": 1.00001,
+          "m22": 1.00001
+        },
+        "screenCTM": {
+          "a": 1.0000050067901611,
+          "d": 1.0000050067901611
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    },
+    {
+      "input": 1.0000051,
+      "raw6": 1.00001,
+      "fround": 1.0000051259994507,
+      "fround6": 1.00001,
+      "actual": {
+        "inline": "scale(1.00001, 1.00001)",
+        "computed": "matrix(1.00001, 0, 0, 1.00001, 0, 0)",
+        "parsed": {
+          "m11": 1.00001,
+          "m22": 1.00001
+        },
+        "screenCTM": {
+          "a": 1.0000051259994507,
+          "d": 1.0000051259994507
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    },
+    {
+      "input": 2.000005,
+      "raw6": 2,
+      "fround": 2.000005006790161,
+      "fround6": 2.00001,
+      "actual": {
+        "inline": "scale(2, 2)",
+        "computed": "matrix(2.00001, 0, 0, 2.00001, 0, 0)",
+        "parsed": {
+          "m11": 2.00001,
+          "m22": 2.00001
+        },
+        "screenCTM": {
+          "a": 2.000005006790161,
+          "d": 2.000005006790161
+        }
+      },
+      "raw6Matches": false,
+      "fround6Matches": true
+    },
+    {
+      "input": -1.2345649,
+      "raw6": -1.23456,
+      "fround": -1.2345649003982544,
+      "fround6": -1.23456,
+      "actual": {
+        "inline": "scale(-1.23456, -1.23456)",
+        "computed": "matrix(-1.23456, 0, 0, -1.23456, 0, 0)",
+        "parsed": {
+          "m11": -1.23456,
+          "m22": -1.23456
+        },
+        "screenCTM": {
+          "a": -1.2345649003982544,
+          "d": -1.2345649003982544
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    },
+    {
+      "input": -1.234565,
+      "raw6": -1.23456,
+      "fround": -1.234565019607544,
+      "fround6": -1.23457,
+      "actual": {
+        "inline": "scale(-1.23456, -1.23456)",
+        "computed": "matrix(-1.23457, 0, 0, -1.23457, 0, 0)",
+        "parsed": {
+          "m11": -1.23457,
+          "m22": -1.23457
+        },
+        "screenCTM": {
+          "a": -1.234565019607544,
+          "d": -1.234565019607544
+        }
+      },
+      "raw6Matches": false,
+      "fround6Matches": true
+    },
+    {
+      "input": -1.2345651,
+      "raw6": -1.23457,
+      "fround": -1.2345651388168335,
+      "fround6": -1.23457,
+      "actual": {
+        "inline": "scale(-1.23457, -1.23457)",
+        "computed": "matrix(-1.23457, 0, 0, -1.23457, 0, 0)",
+        "parsed": {
+          "m11": -1.23457,
+          "m22": -1.23457
+        },
+        "screenCTM": {
+          "a": -1.2345651388168335,
+          "d": -1.2345651388168335
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    },
+    {
+      "input": -1.000005,
+      "raw6": -1.00001,
+      "fround": -1.0000050067901611,
+      "fround6": -1.00001,
+      "actual": {
+        "inline": "scale(-1.00001, -1.00001)",
+        "computed": "matrix(-1.00001, 0, 0, -1.00001, 0, 0)",
+        "parsed": {
+          "m11": -1.00001,
+          "m22": -1.00001
+        },
+        "screenCTM": {
+          "a": -1.0000050067901611,
+          "d": -1.0000050067901611
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    },
+    {
+      "input": 0.1234565,
+      "raw6": 0.123456,
+      "fround": 0.12345650047063828,
+      "fround6": 0.123457,
+      "actual": {
+        "inline": "scale(0.123456, 0.123456)",
+        "computed": "matrix(0.123457, 0, 0, 0.123457, 0, 0)",
+        "parsed": {
+          "m11": 0.123457,
+          "m22": 0.123457
+        },
+        "screenCTM": {
+          "a": 0.12345650047063828,
+          "d": 0.12345650047063828
+        }
+      },
+      "raw6Matches": false,
+      "fround6Matches": true
+    },
+    {
+      "input": 0.0001234565,
+      "raw6": 0.000123457,
+      "fround": 0.00012345649884082377,
+      "fround6": 0.000123456,
+      "actual": {
+        "inline": "scale(0.000123457, 0.000123457)",
+        "computed": "matrix(0.000123456, 0, 0, 0.000123456, 0, 0)",
+        "parsed": {
+          "m11": 0.000123456,
+          "m22": 0.000123456
+        },
+        "screenCTM": {
+          "a": 0.00012345649884082377,
+          "d": 0.00012345649884082377
+        }
+      },
+      "raw6Matches": false,
+      "fround6Matches": true
+    },
+    {
+      "input": 1.234565e-20,
+      "raw6": 1.23456e-20,
+      "fround": 1.2345649639721197e-20,
+      "fround6": 1.23456e-20,
+      "actual": {
+        "inline": "scale(1.23456e-20, 1.23456e-20)",
+        "computed": "matrix(1.23456e-20, 0, 0, 1.23456e-20, 0, 0)",
+        "parsed": {
+          "m11": 1.23456e-20,
+          "m22": 1.23456e-20
+        },
+        "screenCTM": {
+          "a": 1.2345649639721197e-20,
+          "d": 1.2345649639721197e-20
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    },
+    {
+      "input": 123456500000000000000,
+      "raw6": 123457000000000000000,
+      "fround": 123456499285944700000,
+      "fround6": 123456000000000000000,
+      "actual": {
+        "inline": "scale(1.23456e+20, 1.23456e+20)",
+        "computed": "matrix(1.23456e+20, 0, 0, 1.23456e+20, 0, 0)",
+        "parsed": {
+          "m11": 123456000000000000000,
+          "m22": 123456000000000000000
+        },
+        "screenCTM": {
+          "a": 123456499285944700000,
+          "d": 123456499285944700000
+        }
+      },
+      "raw6Matches": false,
+      "fround6Matches": true
+    },
+    {
+      "input": 1e-40,
+      "raw6": 1e-40,
+      "fround": 9.99994610111476e-41,
+      "fround6": 9.99995e-41,
+      "actual": {
+        "inline": "scale(1e-40, 1e-40)",
+        "computed": "matrix(9.99995e-41, 0, 0, 9.99995e-41, 0, 0)",
+        "parsed": {
+          "m11": 9.99995e-41,
+          "m22": 9.99995e-41
+        },
+        "screenCTM": {
+          "a": 9.99994610111476e-41,
+          "d": 9.99994610111476e-41
+        }
+      },
+      "raw6Matches": false,
+      "fround6Matches": true
+    },
+    {
+      "input": 1e+40,
+      "raw6": 1e+40,
+      "fround": "Infinity",
+      "fround6": "Infinity",
+      "actual": {
+        "inline": "scale(3.40282e+38, 3.40282e+38)",
+        "computed": "matrix(3.40282e+38, 0, 0, 3.40282e+38, 0, 0)",
+        "parsed": {
+          "m11": 3.40282e+38,
+          "m22": 3.40282e+38
+        },
+        "screenCTM": {
+          "a": 3.4028234663852886e+38,
+          "d": 3.4028234663852886e+38
+        }
+      },
+      "raw6Matches": false,
+      "fround6Matches": false
+    },
+    {
+      "input": 1e+308,
+      "raw6": 1e+308,
+      "fround": "Infinity",
+      "fround6": "Infinity",
+      "actual": {
+        "inline": "scale(3.40282e+38, 3.40282e+38)",
+        "computed": "matrix(3.40282e+38, 0, 0, 3.40282e+38, 0, 0)",
+        "parsed": {
+          "m11": 3.40282e+38,
+          "m22": 3.40282e+38
+        },
+        "screenCTM": {
+          "a": 3.4028234663852886e+38,
+          "d": 3.4028234663852886e+38
+        }
+      },
+      "raw6Matches": false,
+      "fround6Matches": false
+    },
+    {
+      "input": 0,
+      "raw6": 0,
+      "fround": 0,
+      "fround6": 0,
+      "actual": {
+        "inline": "scale(0, 0)",
+        "computed": "matrix(0, 0, 0, 0, 0, 0)",
+        "parsed": {
+          "m11": 0,
+          "m22": 0
+        },
+        "screenCTM": {
+          "a": 0,
+          "d": 0
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    },
+    {
+      "input": 0,
+      "raw6": 0,
+      "fround": 0,
+      "fround6": 0,
+      "actual": {
+        "inline": "scale(0, 0)",
+        "computed": "matrix(0, 0, 0, 0, 0, 0)",
+        "parsed": {
+          "m11": 0,
+          "m22": 0
+        },
+        "screenCTM": {
+          "a": 0,
+          "d": 0
+        }
+      },
+      "raw6Matches": true,
+      "fround6Matches": true
+    }
+  ],
+  "errors": []
+}

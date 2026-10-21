@@ -1,0 +1,17 @@
+{
+  "kind": "Harness development observations, retained honestly without reconstructed old source bytes",
+  "productFailure": false,
+  "entries": [
+    {
+      "observation": "First ad-hoc replay produced wrong Location.request (-120,-10), then stopped at 100695350 IL34: unproved call 100695494 XJdz.",
+      "cause": "The reused interpreter copy helper dereferenced and copied managed this/byref arguments, so matrix setter instructions changed temporary structs. The ordinary containment gate also lacked a facade binding.",
+      "correction": "Preserve managed reference carriers through call/load; copy only actual value structs. Add explicit ordinary non-contained XJdz=false facade. Original matrix instructions and setter flow then produce quarter-turn locations (245,-45) and (275,275).",
+      "preservation": "The original ad-hoc tool output is in the chat; no initial replay source-byte snapshot or machine-readable first-result artifact was captured. This record does not assert one exists. Final probes independently check all numerical results."
+    },
+    {
+      "observation": "An apply_patch attempt failed its context check while adding source capability/coverage checks.",
+      "cause": "A requested replacement only supplied a prefix of a long report line.",
+      "correction": "Verified no edits applied, then used exact context. No executed source case or product file changed due to the failed attempt."
+    }
+  ]
+}

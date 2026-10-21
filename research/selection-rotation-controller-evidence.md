@@ -1,0 +1,46 @@
+# Ordinary multi-SelectionButton rotation controller
+
+This is retained Axure RP 11.0.0.4150 metadata/CIL interpretation with explicit services, not execution of its DLL or GUI. It closes the ordinary, same-diagram, multiple Checkbox/Radio mode-2 consumer. No product or historical evidence was changed. Upstream initialization/snapping is independently bound by `selection-rotation-input-evidence.md`.
+
+Pinned `AxureRP11.dll` SHA-256: `dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7`. Original extraction evidence ID: `ev_ceacbf6838c7910ac5abb083528eae30fd831b34f6a9fdd3a4dd37c2891555b7`. The manifest binds the exact retained instruction records, interpreter sources, probe outputs, and original artifact. New missing geometry/equality records were read with the existing PEReader extractor; no assembly loading or method invocation occurred.
+
+## Implementable contract
+
+Multiple SelectionButtons orbit around the captured selection center while remaining upright. Lack of individual Rotation capability does not disable this multiple-selection operation.
+
+1. `CbNX` **100686248**, IL 106–414, selects mode 2 and takes the multiple-owner branch. The pivot is `PbSc.center` (IL 165–176), where `PbSc` is the initial selection union captured by the separately proved initialization. Locked selected roots remain in that union; their individual writes are skipped later.
+2. There are two distinct captured input points: actual mouse-down `YbSE` and logical hot-zone start `DFQ8`. The controller uses `YbSE + (dx,dy)` (IL 178–198), not its absolute-point argument 3. The input stage supplies `dx,dy = correctedAbsolutePoint − DFQ8`. Thus replacing the angle point by raw absolute mouse position is incorrect when the actual down point differs from the logical anchor.
+3. `K5wb` **100721956** computes `atan2(other.y−pivot.y, other.x−pivot.x) * 57.29577951308232 + 90`. The degree unit is explicit. Raw angle is the current result minus the initial down result (IL 203–216). There is no accumulated turn counter or live-center substitution.
+4. `abNY` **100686257** computes `nearest = RoundAwayFromZero(raw/15) * 15`. With current Shift, use `nearest`; without Shift, use it only when `abs(raw−nearest) <= 5`, otherwise use raw. Exact half-intervals use AwayFromZero. The platform Shift predicate is read anew here. Control and Alt have no further branch in this consumer; Alt/grid effects belong to the upstream delta producer.
+5. Degrees are converted by `jbxa` **100688805**, multiplying by `0.017453292519943295`. `c5wd` **100722000** constructs the pivot rotation matrix; its original matrix setters/composition and `op_Multiply` **100721995** are interpreted. This is not a generic SVG/CSS rotation substituted for the native matrix.
+6. Iterate selected objects in stored order. `IbNU` **100686255** returns immediately when `CJdv` reports locked. Otherwise it reads the original geometry and angle from `kSct.UScH` / `NScg`. For ordinary page coordinates, with original location `L`, original center `C`, captured pivot `P`, and matrix `R`, the location request is `L + R(C) − C`. The retained source adds `JI8n` context offset to `C` before this calculation; a nonzero offset is a controlled numerical case, not proof of general nested-diagram host support.
+7. The per-owner order is Rotation request, Location request, editor-member notification. Rotation request is normalized integer `Sbe5(RoundAwayFromZero(originalAngle+snappedAngle))`, but `kJ0t` **100695382** checks `Capabilities.Rotation` and returns before writing for Checkbox/Radio. The orbit itself uses the unrounded snapped/fractional angle. The two original capability getters **100699783** and **100702019**, exact Int64 carriers, and Rotation predicate **100725016** are executed in the replay.
+8. The Location call is exactly `xJ0B(point, false, true, null)` (IbNU IL 181–187). In ordinary AllowAdaptiveLocation=true / temporary-override=false context it writes the current-view provider, not All Views. `xJ0B` **100695349** compares the requested location with the **live current** location; equality is both axis absolute differences strictly below `1e-5`. Equality returns without invalidation, provider write or OnLocationChanged. The later editor `FFOC` notification still happens, so editor refresh is not evidence of a data change.
+9. This mode-2 path does not call `JbNd`, Size, AutoFitWidth/Height setters, or OI8Z. Separately executing the actual Selection/TextRect `MIue` path with changed keys exactly `[101]` yields only its base notification: no BNZT, text refresh, measurements or OI8Z. This is a direct notification-consumer result; the complete property/provider event graph is not silently substituted into the controller replay.
+
+`kSct` is lazily captured on the first CbNX execution and reused. Every later frame projects from that original rect/angle while comparing its proposed result to the accepted live location. Returning to the initial point returns to the original geometry, not a cumulative transformation of the preceding frame. Auto-fit flags and text-panel rectangles persist unchanged through the bounded sessions. Original history scopes and final UI repaint are recorded services; this report does not claim complete native undo internals or exception rollback.
+
+## Concrete fixture
+
+Initial A `(100,100,240,20)`, B `(450,100,180,20)`, union `(100,100,530,20)`, actual down `(630,120)`. A controller delta `(-265,255)` yields raw `87.83892051177362°`, default magnetic snap `90°`, pivot `(365,110)`:
+
+| Owner | Result | Rotation / text layout |
+|---|---|---|
+| Checkbox A | `(245,-45,240,20)` | angle remains 0; fit and panel unchanged |
+| Radio B | `(275,275,180,20)` | angle remains 0; fit and panel unchanged |
+
+This is a source-instruction/facade numeric fixture, not an original-GUI screenshot. A product whose saved coordinate domain excludes a negative result may reject it atomically as its explicit safety policy; it must not present such a rejection as an original controller rule.
+
+`selection-rotation-controller-probes.json` has **236/236** checks: 47 sessions / 125 frames plus 189 numeric/capability checks. It covers positive/negative fractional and large/full-turn angles, exact snap boundaries, all live three-key masks at the snap primitive, Shift toggling at identical delta, four locked combinations, four fit combinations, original/live snapshot distinction, equality thresholds, ignored absolute-point argument, context-offset arithmetic, singular pivot service behavior, and a capability-positive control for rotation write ordering. Formula expectations were written independently of product code and compared at `1e-9`.
+
+`selection-rotation-controller-composed-probes.json` has **40/40** checks: 32 original input/controller sessions with 128 frames across all eight handles, grid on/off, and logical/actual-down offsets, plus eight exact `[101]` MIue cases. Each input frame reads a controlled union of the previous accepted owners; captured pivot and original geometry remain fixed. The combined report records projected input, downstream events and accepted geometry, so upstream grid effects are not conflated with the angle snap. Grid value 8, uniform zoom, visible ordinary owners and disabled guide/object providers are explicit fixture services, not inferred native defaults.
+
+## Services and remaining boundaries
+
+- Original instructions are interpreted from retained PE records. JavaScript `Math.sin/cos/atan2/abs` and asserted AwayFromZero rounding stand in for BCL numerical services; this is not CLR bit-for-bit verification. The `atan2(0,0)` fixture explicitly inherits this service's result and is not a GUI-observed singularity policy.
+- Current unrounded-location reads, provider writes, editor notifications, history/connection brackets, collection enumerators and post-write repaint are explicit facades. Normal capability getter, lock gate, actual angle/matrix arithmetic, equality, setter decision flow, source key tests and controller branching execute retained instructions. Control-flow-obfuscation constants come from the pinned initializer evidence, not guessed branch choices.
+- No fonts, browser text measurement or selection Size transaction is needed for this bounded geometry-only branch. This does not prove all unrelated notifications in the full application are side-effect free.
+- General rotated/transformed selection initialization, single rotatable shapes, Connectors, Layers, contained/special diagrams, masters, guide/object snapping, platform key-only re-dispatch and full original history/exception handling are outside this contract. The capability-positive control is a numerical comparison, not full shape support.
+- Metadata/PE failure during harness construction and the correction of managed by-reference value handling are recorded in `selection-rotation-controller-development.json`. Those were harness defects, not product regressions or failed original-GUI behavior.
+
+Reproduce with `node research/selection-rotation-controller-probe.mjs` and `node research/selection-rotation-controller-composed-probe.mjs`. Both write only the new stage's own outputs. Prior source evidence and released artifacts remain unchanged.

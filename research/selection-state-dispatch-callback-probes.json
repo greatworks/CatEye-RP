@@ -1,0 +1,4537 @@
+{
+  "method": "Complete original style module plus retained original raiseSelectedEvents/raiseErrorEvents/raiseSyntheticEvent/handleEvent/handleCaseGroup/dispatchAction/wait; controlled marker and setter action handlers, case-description/suppression/environment facades.",
+  "sources": [
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/style.js",
+      "sha256": "f19830b3fe20d1460c64cada136b8f1aeb38ad7aa67d89dc6b034d0d4689f14c"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/events.js",
+      "sha256": "a4af00772806e3951b0cfaa849361c7481613cc4b361038ccbbd52221c850bb3"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/axQuery.std.js",
+      "sha256": "0427b0387fdb1c5ef29b77f830a61422bb136a502002c7e9326cd4561e4830cd"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/jquery-3.7.1.min.js",
+      "sha256": "8b1788d702786569c261f39244ec0e4a96fa25e5c59a10e9adae04895f3e2d85"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/css/axure_rp_page.css",
+      "sha256": "595bfcd275dc80732aeecbb8365067ccecc4f0277df316ea47656816939ece4a"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/scripts/axure/action.js",
+      "sha256": "c3c051ceb20b76128619df0f3a691f2cf59539c48eb28c7bec311907010c44c3"
+    },
+    {
+      "path": "research/selection-state-dispatch-probe-extended.mjs",
+      "sha256": "9aad4c3d2943c0a9c3bf1503f97f332c0be631ff9326214f442f34be73ed6b80"
+    },
+    {
+      "path": "D:\\WSCodex\\REA\\research\\selection-state-dispatch-callback-probe-third.mjs",
+      "sha256": "c57e51475f8928bf415456a2040994f40aec227107c6b34585b114e63ff7c6e0"
+    }
+  ],
+  "ranges": [
+    {
+      "source": "events.js",
+      "start": 281,
+      "end": 415
+    },
+    {
+      "source": "events.js",
+      "start": 544,
+      "end": 591
+    },
+    {
+      "source": "events.js",
+      "start": 1688,
+      "end": 1717
+    },
+    {
+      "source": "action.js",
+      "start": 351,
+      "end": 368
+    }
+  ],
+  "summary": {
+    "sequences": 12,
+    "passed": 12,
+    "failed": 0
+  },
+  "errors": [],
+  "results": [
+    {
+      "type": "checkbox",
+      "mode": "selected-log",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        },
+        "error": {
+          "borderWidth": 6
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": true,
+            "disabled": false,
+            "error": false,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "selected",
+            "state": "selected",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "none",
+              "width": "3px",
+              "widthAttribute": "3"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetSelected",
+              "args": [
+                "u",
+                true,
+                true
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selected",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selected",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 3,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelectedChange",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "change",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelect",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "select",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": true,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "selected",
+          "state": "selected",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selected",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selected",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelectedChange",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "change",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelect",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "select",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selected",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selected",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "checkbox",
+      "mode": "selected-nested-inline",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        },
+        "error": {
+          "borderWidth": 6
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": true,
+            "disabled": true,
+            "error": false,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "selected disabled",
+            "state": "selectedDisabled",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "none",
+              "width": "3px",
+              "widthAttribute": "3"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetSelected",
+              "args": [
+                "u",
+                true,
+                true
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selected",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selected",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 3,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelectedChange",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "change-before",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "request",
+              "method": "SetWidgetEnabled",
+              "args": [
+                "u",
+                false,
+                null
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selectedDisabled",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selectedDisabled",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 0,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "change-after",
+              "visible": {
+                "selected": true,
+                "disabled": true,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected disabled",
+                "state": "selectedDisabled",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelect",
+              "visible": {
+                "selected": true,
+                "disabled": true,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected disabled",
+                "state": "selectedDisabled",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "select",
+              "visible": {
+                "selected": true,
+                "disabled": true,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected disabled",
+                "state": "selectedDisabled",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": true,
+          "disabled": true,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "selected disabled",
+          "state": "selectedDisabled",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selected",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selected",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelectedChange",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "change-before",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetEnabled",
+            "args": [
+              "u",
+              false,
+              null
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedDisabled",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedDisabled",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 0,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "change-after",
+            "visible": {
+              "selected": true,
+              "disabled": true,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected disabled",
+              "state": "selectedDisabled",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelect",
+            "visible": {
+              "selected": true,
+              "disabled": true,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected disabled",
+              "state": "selectedDisabled",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "select",
+            "visible": {
+              "selected": true,
+              "disabled": true,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected disabled",
+              "state": "selectedDisabled",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "checkbox",
+      "mode": "selected-nested-deferred",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        },
+        "error": {
+          "borderWidth": 6
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": true,
+            "disabled": false,
+            "error": false,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "selected",
+            "state": "selected",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "none",
+              "width": "3px",
+              "widthAttribute": "3"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetSelected",
+              "args": [
+                "u",
+                true,
+                true
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selected",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selected",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 3,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelectedChange",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelect",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "select",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": true,
+          "disabled": true,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "selected disabled",
+          "state": "selectedDisabled",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selected",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selected",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelectedChange",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelect",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "select",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "change-before",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetEnabled",
+            "args": [
+              "u",
+              false,
+              null
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedDisabled",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedDisabled",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 0,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "deferred-done",
+            "visible": {
+              "selected": true,
+              "disabled": true,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected disabled",
+              "state": "selectedDisabled",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "checkbox",
+      "mode": "error-nested-inline",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        },
+        "error": {
+          "borderWidth": 6
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": true,
+            "disabled": false,
+            "error": true,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "selected error",
+            "state": "selectedError",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "none",
+              "width": "3px",
+              "widthAttribute": "6"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetError",
+              "args": [
+                "u",
+                true
+              ]
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnErrorSet",
+              "visible": {
+                "selected": false,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "",
+                "state": "error",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "error-before",
+              "visible": {
+                "selected": false,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "",
+                "state": "error",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "request",
+              "method": "SetWidgetSelected",
+              "args": [
+                "u",
+                true,
+                true
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selectedError",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selectedError",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 6,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "error-after",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected error",
+                "state": "selectedError",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "6"
+                }
+              }
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selectedError",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selectedError",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 6,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": true,
+          "disabled": false,
+          "error": true,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "selected error",
+          "state": "selectedError",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "6"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetError",
+            "args": [
+              "u",
+              true
+            ]
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnErrorSet",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "",
+              "state": "error",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "error-before",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "",
+              "state": "error",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedError",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedError",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 6,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "error-after",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected error",
+              "state": "selectedError",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "6"
+              }
+            }
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedError",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedError",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 6,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "checkbox",
+      "mode": "error-nested-deferred",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        },
+        "error": {
+          "borderWidth": 6
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": false,
+            "disabled": false,
+            "error": true,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "error",
+            "state": "error",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "none",
+              "width": "3px",
+              "widthAttribute": "6"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetError",
+              "args": [
+                "u",
+                true
+              ]
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnErrorSet",
+              "visible": {
+                "selected": false,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "",
+                "state": "error",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "error",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "error",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 6,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": false,
+          "disabled": true,
+          "error": true,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "error disabled",
+          "state": "errorDisabled",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "6"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetError",
+            "args": [
+              "u",
+              true
+            ]
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnErrorSet",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "",
+              "state": "error",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "error",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "error",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 6,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "error-before",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "error",
+              "state": "error",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "6"
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetEnabled",
+            "args": [
+              "u",
+              false,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "errorDisabled",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "errorDisabled",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 0,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "deferred-done",
+            "visible": {
+              "selected": false,
+              "disabled": true,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "error disabled",
+              "state": "errorDisabled",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "6"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "checkbox",
+      "mode": "error-without-state-nested",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": true,
+            "disabled": false,
+            "error": true,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "selected error",
+            "state": "selectedError",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "none",
+              "width": "3px",
+              "widthAttribute": "3"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetError",
+              "args": [
+                "u",
+                true
+              ]
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnErrorSet",
+              "visible": {
+                "selected": false,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "",
+                "state": "error",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "error-before",
+              "visible": {
+                "selected": false,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "",
+                "state": "error",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "request",
+              "method": "SetWidgetSelected",
+              "args": [
+                "u",
+                true,
+                true
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selectedError",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selectedError",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 3,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  }
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "error-after",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected error",
+                "state": "selectedError",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "none",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selectedError",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selectedError",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 3,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": true,
+          "disabled": false,
+          "error": true,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "selected error",
+          "state": "selectedError",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "none",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetError",
+            "args": [
+              "u",
+              true
+            ]
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnErrorSet",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "",
+              "state": "error",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "error-before",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "",
+              "state": "error",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedError",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedError",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "error-after",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected error",
+              "state": "selectedError",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "none",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedError",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedError",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "radioButton",
+      "mode": "selected-log",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        },
+        "error": {
+          "borderWidth": 6
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "none",
+            "fill": "rgb(18, 52, 86)",
+            "width": "1px",
+            "widthAttribute": null
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": true,
+            "disabled": false,
+            "error": false,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "selected",
+            "state": "selected",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "rgb(18, 52, 86)",
+              "width": "3px",
+              "widthAttribute": "3"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetSelected",
+              "args": [
+                "u",
+                true,
+                true
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selected",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selected",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 3,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelectedChange",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "change",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelect",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "select",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": true,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "selected",
+          "state": "selected",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "rgb(18, 52, 86)",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selected",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selected",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelectedChange",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "change",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelect",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "select",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selected",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selected",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "radioButton",
+      "mode": "selected-nested-inline",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        },
+        "error": {
+          "borderWidth": 6
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "none",
+            "fill": "rgb(18, 52, 86)",
+            "width": "1px",
+            "widthAttribute": null
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": true,
+            "disabled": true,
+            "error": false,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "selected disabled",
+            "state": "selectedDisabled",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "rgb(18, 52, 86)",
+              "width": "3px",
+              "widthAttribute": "3"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetSelected",
+              "args": [
+                "u",
+                true,
+                true
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selected",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selected",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 3,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelectedChange",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "change-before",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "request",
+              "method": "SetWidgetEnabled",
+              "args": [
+                "u",
+                false,
+                null
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selectedDisabled",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selectedDisabled",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 0,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "change-after",
+              "visible": {
+                "selected": true,
+                "disabled": true,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected disabled",
+                "state": "selectedDisabled",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelect",
+              "visible": {
+                "selected": true,
+                "disabled": true,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected disabled",
+                "state": "selectedDisabled",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "select",
+              "visible": {
+                "selected": true,
+                "disabled": true,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected disabled",
+                "state": "selectedDisabled",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": true,
+          "disabled": true,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "selected disabled",
+          "state": "selectedDisabled",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "rgb(18, 52, 86)",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selected",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selected",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelectedChange",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "change-before",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetEnabled",
+            "args": [
+              "u",
+              false,
+              null
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedDisabled",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedDisabled",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 0,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "change-after",
+            "visible": {
+              "selected": true,
+              "disabled": true,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected disabled",
+              "state": "selectedDisabled",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelect",
+            "visible": {
+              "selected": true,
+              "disabled": true,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected disabled",
+              "state": "selectedDisabled",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "select",
+            "visible": {
+              "selected": true,
+              "disabled": true,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected disabled",
+              "state": "selectedDisabled",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "radioButton",
+      "mode": "selected-nested-deferred",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        },
+        "error": {
+          "borderWidth": 6
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "none",
+            "fill": "rgb(18, 52, 86)",
+            "width": "1px",
+            "widthAttribute": null
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": true,
+            "disabled": false,
+            "error": false,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "selected",
+            "state": "selected",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "rgb(18, 52, 86)",
+              "width": "3px",
+              "widthAttribute": "3"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetSelected",
+              "args": [
+                "u",
+                true,
+                true
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selected",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selected",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 3,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelectedChange",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnSelect",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "select",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": false,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected",
+                "state": "selected",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": true,
+          "disabled": true,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "selected disabled",
+          "state": "selectedDisabled",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "rgb(18, 52, 86)",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selected",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selected",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelectedChange",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnSelect",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "select",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "change-before",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected",
+              "state": "selected",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetEnabled",
+            "args": [
+              "u",
+              false,
+              null
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedDisabled",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedDisabled",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 0,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "deferred-done",
+            "visible": {
+              "selected": true,
+              "disabled": true,
+              "error": false,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected disabled",
+              "state": "selectedDisabled",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "radioButton",
+      "mode": "error-nested-inline",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        },
+        "error": {
+          "borderWidth": 6
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "none",
+            "fill": "rgb(18, 52, 86)",
+            "width": "1px",
+            "widthAttribute": null
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": true,
+            "disabled": false,
+            "error": true,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "selected error",
+            "state": "selectedError",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "rgb(18, 52, 86)",
+              "width": "6px",
+              "widthAttribute": "6"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetError",
+              "args": [
+                "u",
+                true
+              ]
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnErrorSet",
+              "visible": {
+                "selected": false,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "",
+                "state": "error",
+                "mark": {
+                  "stroke": "none",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "1px",
+                  "widthAttribute": null
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "error-before",
+              "visible": {
+                "selected": false,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "",
+                "state": "error",
+                "mark": {
+                  "stroke": "none",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "1px",
+                  "widthAttribute": null
+                }
+              }
+            },
+            {
+              "kind": "request",
+              "method": "SetWidgetSelected",
+              "args": [
+                "u",
+                true,
+                true
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selectedError",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selectedError",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 6,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "error-after",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected error",
+                "state": "selectedError",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "6px",
+                  "widthAttribute": "6"
+                }
+              }
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selectedError",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selectedError",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 6,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": true,
+          "disabled": false,
+          "error": true,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "selected error",
+          "state": "selectedError",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "rgb(18, 52, 86)",
+            "width": "6px",
+            "widthAttribute": "6"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetError",
+            "args": [
+              "u",
+              true
+            ]
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnErrorSet",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "",
+              "state": "error",
+              "mark": {
+                "stroke": "none",
+                "fill": "rgb(18, 52, 86)",
+                "width": "1px",
+                "widthAttribute": null
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "error-before",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "",
+              "state": "error",
+              "mark": {
+                "stroke": "none",
+                "fill": "rgb(18, 52, 86)",
+                "width": "1px",
+                "widthAttribute": null
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedError",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedError",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 6,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "error-after",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected error",
+              "state": "selectedError",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "6px",
+                "widthAttribute": "6"
+              }
+            }
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedError",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedError",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 6,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "radioButton",
+      "mode": "error-nested-deferred",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        },
+        "error": {
+          "borderWidth": 6
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "none",
+            "fill": "rgb(18, 52, 86)",
+            "width": "1px",
+            "widthAttribute": null
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": false,
+            "disabled": false,
+            "error": true,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "error",
+            "state": "error",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "rgb(18, 52, 86)",
+              "width": "6px",
+              "widthAttribute": "6"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetError",
+              "args": [
+                "u",
+                true
+              ]
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnErrorSet",
+              "visible": {
+                "selected": false,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "",
+                "state": "error",
+                "mark": {
+                  "stroke": "none",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "1px",
+                  "widthAttribute": null
+                }
+              }
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "error",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "error",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 6,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  },
+                  "error": {
+                    "borderWidth": 6
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": false,
+          "disabled": true,
+          "error": true,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "error disabled",
+          "state": "errorDisabled",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "rgb(18, 52, 86)",
+            "width": "6px",
+            "widthAttribute": "6"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetError",
+            "args": [
+              "u",
+              true
+            ]
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnErrorSet",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "",
+              "state": "error",
+              "mark": {
+                "stroke": "none",
+                "fill": "rgb(18, 52, 86)",
+                "width": "1px",
+                "widthAttribute": null
+              }
+            }
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "error",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "error",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 6,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "error-before",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "error",
+              "state": "error",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "6px",
+                "widthAttribute": "6"
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetEnabled",
+            "args": [
+              "u",
+              false,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "errorDisabled",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "errorDisabled",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 0,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                },
+                "error": {
+                  "borderWidth": 6
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "deferred-done",
+            "visible": {
+              "selected": false,
+              "disabled": true,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "error disabled",
+              "state": "errorDisabled",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "6px",
+                "widthAttribute": "6"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "radioButton",
+      "mode": "error-without-state-nested",
+      "states": {
+        "selected": {
+          "borderWidth": 3
+        },
+        "disabled": {
+          "borderWidth": 0
+        }
+      },
+      "actual": {
+        "initial": {
+          "selected": false,
+          "disabled": false,
+          "error": false,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "",
+          "state": "normal",
+          "mark": {
+            "stroke": "none",
+            "fill": "rgb(18, 52, 86)",
+            "width": "1px",
+            "widthAttribute": null
+          }
+        },
+        "afterReturn": {
+          "visible": {
+            "selected": true,
+            "disabled": false,
+            "error": true,
+            "checked": false,
+            "nativeDisabled": false,
+            "classes": "selected error",
+            "state": "selectedError",
+            "mark": {
+              "stroke": "rgb(18, 52, 86)",
+              "fill": "rgb(18, 52, 86)",
+              "width": "3px",
+              "widthAttribute": "3"
+            }
+          },
+          "trace": [
+            {
+              "kind": "request",
+              "method": "SetWidgetError",
+              "args": [
+                "u",
+                true
+              ]
+            },
+            {
+              "kind": "event-enter",
+              "event": "OnErrorSet",
+              "visible": {
+                "selected": false,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "",
+                "state": "error",
+                "mark": {
+                  "stroke": "none",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "1px",
+                  "widthAttribute": null
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "error-before",
+              "visible": {
+                "selected": false,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "",
+                "state": "error",
+                "mark": {
+                  "stroke": "none",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "1px",
+                  "widthAttribute": null
+                }
+              }
+            },
+            {
+              "kind": "request",
+              "method": "SetWidgetSelected",
+              "args": [
+                "u",
+                true,
+                true
+              ]
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selectedError",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selectedError",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 3,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  }
+                }
+              }
+            },
+            {
+              "kind": "handler-action",
+              "label": "error-after",
+              "visible": {
+                "selected": true,
+                "disabled": false,
+                "error": true,
+                "checked": false,
+                "nativeDisabled": false,
+                "classes": "selected error",
+                "state": "selectedError",
+                "mark": {
+                  "stroke": "rgb(18, 52, 86)",
+                  "fill": "rgb(18, 52, 86)",
+                  "width": "3px",
+                  "widthAttribute": "3"
+                }
+              }
+            },
+            {
+              "kind": "apply",
+              "id": "u",
+              "event": "selectedError",
+              "blockTransition": false
+            },
+            {
+              "kind": "svg",
+              "id": "u",
+              "event": "selectedError",
+              "style": {
+                "size": {
+                  "width": 100,
+                  "height": 24
+                },
+                "buttonSize": 14,
+                "borderWidth": 3,
+                "linePattern": "solid",
+                "fill": {
+                  "fillType": "solid",
+                  "color": 4294967295,
+                  "opacity": 1
+                },
+                "borderFill": {
+                  "fillType": "solid",
+                  "color": 4279383126,
+                  "opacity": 1
+                },
+                "stateStyles": {
+                  "selected": {
+                    "borderWidth": 3
+                  },
+                  "disabled": {
+                    "borderWidth": 0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "final": {
+          "selected": true,
+          "disabled": false,
+          "error": true,
+          "checked": false,
+          "nativeDisabled": false,
+          "classes": "selected error",
+          "state": "selectedError",
+          "mark": {
+            "stroke": "rgb(18, 52, 86)",
+            "fill": "rgb(18, 52, 86)",
+            "width": "3px",
+            "widthAttribute": "3"
+          }
+        },
+        "trace": [
+          {
+            "kind": "request",
+            "method": "SetWidgetError",
+            "args": [
+              "u",
+              true
+            ]
+          },
+          {
+            "kind": "event-enter",
+            "event": "OnErrorSet",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "",
+              "state": "error",
+              "mark": {
+                "stroke": "none",
+                "fill": "rgb(18, 52, 86)",
+                "width": "1px",
+                "widthAttribute": null
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "error-before",
+            "visible": {
+              "selected": false,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "",
+              "state": "error",
+              "mark": {
+                "stroke": "none",
+                "fill": "rgb(18, 52, 86)",
+                "width": "1px",
+                "widthAttribute": null
+              }
+            }
+          },
+          {
+            "kind": "request",
+            "method": "SetWidgetSelected",
+            "args": [
+              "u",
+              true,
+              true
+            ]
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedError",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedError",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                }
+              }
+            }
+          },
+          {
+            "kind": "handler-action",
+            "label": "error-after",
+            "visible": {
+              "selected": true,
+              "disabled": false,
+              "error": true,
+              "checked": false,
+              "nativeDisabled": false,
+              "classes": "selected error",
+              "state": "selectedError",
+              "mark": {
+                "stroke": "rgb(18, 52, 86)",
+                "fill": "rgb(18, 52, 86)",
+                "width": "3px",
+                "widthAttribute": "3"
+              }
+            }
+          },
+          {
+            "kind": "apply",
+            "id": "u",
+            "event": "selectedError",
+            "blockTransition": false
+          },
+          {
+            "kind": "svg",
+            "id": "u",
+            "event": "selectedError",
+            "style": {
+              "size": {
+                "width": 100,
+                "height": 24
+              },
+              "buttonSize": 14,
+              "borderWidth": 3,
+              "linePattern": "solid",
+              "fill": {
+                "fillType": "solid",
+                "color": 4294967295,
+                "opacity": 1
+              },
+              "borderFill": {
+                "fillType": "solid",
+                "color": 4279383126,
+                "opacity": 1
+              },
+              "stateStyles": {
+                "selected": {
+                  "borderWidth": 3
+                },
+                "disabled": {
+                  "borderWidth": 0
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

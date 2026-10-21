@@ -5,6 +5,7 @@ import type { GradientRenderer } from '../model/gradient';
 import type { LineStyleRenderer } from '../model/line-style';
 import type { ShapeTextRenderer } from '../model/shape-text';
 import type { BorderWidths, BoxMetrics } from './browser-box';
+import type { SelectionIndicatorPaint } from '../model/selection-indicator';
 
 type Row = Record<string, string>;
 type QueryFilter = { name: string; expression: string; column?: string; mode: 'smart' | 'all' | 'any'; sourceId?: string; source: { repeaterId: string; index: number }[] };
@@ -30,6 +31,10 @@ export interface ControlHost {
   selectText(id: string, context: RowContext): void;
 }
 type ExportState = RuntimeState & {
+  /** Runtime SVG attributes/cascade, never saved in a prototype document. */
+  selectionPaintState?: Record<string, { asset: { size: number; width: number; fill: string; stroke: string }; width: number; markWidth?: number; paintedError?: boolean; unsupported?: boolean; applied?: Partial<WidgetStyle>; paint?: SelectionIndicatorPaint;
+    svgTransform?: Pick<SelectionIndicatorPaint, 'svgScaleX' | 'svgScaleY' | 'svgTransformOrigin'>;
+    svgReadback?: { x: number; y: number } }>;
   sourceRows: Record<string, Row[]>;
   sourceRowIds: Record<string, string[]>;
   visibleRowIds: Record<string, string[]>;
@@ -92,6 +97,7 @@ export interface OfflineRuntime {
   /** Authored selection template for display measurement. Never reads action
    * overrides, row values or runtime expressions; generated text CSS predates them. */
   selectionDisplaySource(id: string): Widget | undefined;
+  selectionIndicatorPaint(id: string, context?: RowContext): SelectionIndicatorPaint | undefined;
   /** Own physical placement; descendant suppression is supplied by its DOM ancestor. */
   placementHidden(id: string, context?: RowContext): boolean;
   releasePointerStyles(): void;
@@ -124,8 +130,15 @@ export interface OfflineRuntime {
   dispose(): void;
 }
 
-/** Self-contained by design: the SAME function is embedded in the offline HTML and exercised by tests. */
-export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: string, expressionEvaluator?: (expression: string, read: (name: string) => string | number | boolean | undefined, mode?: 'errorState'|'motion') => string, measureBox?: (width: number, height: number, borders: BorderWidths, position?: { x: number; y: number }) => BoxMetrics, viewport?: RuntimeViewport): OfflineRuntime {
+/** Self-contained by design: the SAME function is embedded in the offline HTML and exercised by tests.
+ * A snapshot can only be supplied when constructing a fresh runtime. It restores
+ * committed state and adaptive identity, not active timers or DOM registrations. */
+export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: string, expressionEvaluator?: (expression: string, read: (name: string) => string | number | boolean | undefined, mode?: 'errorState'|'motion') => string, measureBox?: (width: number, height: number, borders: BorderWidths, position?: { x: number; y: number }) => BoxMetrics, viewport?: RuntimeViewport, restoredState?: RuntimeState): OfflineRuntime {
+  if (restoredState !== undefined && (!restoredState || typeof restoredState !== 'object' || Array.isArray(restoredState) || typeof restoredState.pageId !== 'string')) throw new Error('Invalid runtime snapshot');
+  if (restoredState !== undefined && viewport !== undefined) throw new Error('A restored runtime snapshot cannot also specify a viewport');
+  if (restoredState && initialPageId !== undefined && initialPageId !== restoredState.pageId) throw new Error('Runtime snapshot page does not match the requested page');
+  const snapshot = restoredState === undefined ? undefined : structuredClone(restoredState);
+  initialPageId ??= snapshot?.pageId;
   if (initialPageId && !doc.pages.some(page => page.id === initialPageId)) throw new Error('Cannot preview a missing page');
   const copyViewport = (policy: RuntimeViewport): RuntimeViewport => {
     if (!policy || typeof policy !== 'object' || Array.isArray(policy)) throw new Error('Viewport policy must be an object');
@@ -135,7 +148,11 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     if (clampToPage !== undefined && typeof clampToPage !== 'boolean') throw new Error('Viewport clampToPage must be a boolean');
     return { ...(width === undefined ? {} : { width }), ...(height === undefined ? {} : { height }), ...(clampToPage === undefined ? {} : { clampToPage }) };
   };
-  let viewportPolicy = viewport === undefined ? undefined : copyViewport(viewport);
+  const savedAdaptive = snapshot?.adaptiveState;
+  if (savedAdaptive !== undefined && (!savedAdaptive || typeof savedAdaptive !== 'object' || Array.isArray(savedAdaptive) ||
+    Object.keys(savedAdaptive).some(key => !['viewport', 'mode', 'selectedViewId', 'pageInitialized', 'repeatersInitialized'].includes(key)) ||
+    savedAdaptive.mode !== 'auto' && savedAdaptive.mode !== 'forced' || typeof savedAdaptive.pageInitialized !== 'boolean' || typeof savedAdaptive.repeatersInitialized !== 'boolean')) throw new Error('Invalid runtime adaptive snapshot');
+  let viewportPolicy = savedAdaptive !== undefined ? copyViewport(savedAdaptive.viewport) : viewport === undefined ? undefined : copyViewport(viewport);
   // Keep this projection in sync with resolveAdaptivePage. The portable factory
   // must remain callable after bare toString(), without hidden module imports.
   const adaptivePage = (pageId: string): PrototypeDocument['pages'][number] => {
@@ -155,8 +172,9 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     if (target.kind !== 'view' || typeof target.viewId !== 'string' || !target.viewId.trim() || target.viewId.length > 256 || ['__proto__', 'prototype', 'constructor'].includes(target.viewId) || /[\u0000-\u001f\u007f]/.test(target.viewId) || Object.keys(target).some(key => key !== 'kind' && key !== 'viewId')) throw new Error('Invalid adaptive view target');
     return { kind: 'view', viewId: target.viewId };
   };
-  let selectionMode: 'auto' | 'forced' = 'auto';
-  let loadFinished = false, repeatersReady = true;
+  if (savedAdaptive?.selectedViewId !== undefined) copyAdaptiveTarget({ kind: 'view', viewId: savedAdaptive.selectedViewId });
+  let selectionMode: 'auto' | 'forced' = savedAdaptive?.mode ?? 'auto';
+  let loadFinished = savedAdaptive?.pageInitialized ?? false, repeatersReady = savedAdaptive?.repeatersInitialized ?? true;
   let adaptiveDepth = 0;
   const chooseView = (pageId: string) => {
     if (viewportPolicy === undefined) return undefined;
@@ -188,10 +206,11 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     }
     return chain.reverse();
   };
-  let activeView = chooseView(initialPageId ?? doc.pages[0].id);
+  let activeView = savedAdaptive === undefined ? chooseView(initialPageId ?? doc.pages[0].id)
+    : adaptivePage(initialPageId ?? doc.pages[0].id).adaptiveViews.find(view => view.id === savedAdaptive.selectedViewId);
   // Native force accepts a deleted/unknown ID. Keep its identity separately
   // from metadata: it selects an empty declaration chain, not a fabricated view.
-  let activeSelectionId = activeView?.id;
+  let activeSelectionId = savedAdaptive === undefined ? activeView?.id : savedAdaptive.selectedViewId;
   const widgets = new Map<string, Widget>();
   const owners = new Map<string, string[]>();
   const pageOwners = new Map<string, string>();
@@ -293,6 +312,13 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     return value;
   };
   const runtime: ExportState = { pageId: initialPageId ?? doc.pages[0].id, variables: { ...doc.variables }, widgetOverrides: {}, repeaterRows: {}, sourceRows: {}, sourceRowIds: {}, visibleRowIds: {}, scopes: {}, nextRowId: 1, rowRevisions: {}, pendingRepeaters: {}, filters: {}, sorts: {}, queryFilters: {}, querySorts: {}, markedRowIds: {}, filteredRowIds: {}, pagination: {}, pageItemCounts: {}, committedItemCounts: {}, committedVisibleCounts: {}, committedVisibleRowIds: {}, itemLayouts: {}, itemCssLayouts: {}, itemGeometry: {}, repeaterBounds: {}, repeaterLayoutBounds: {}, repeaterCssBounds: {}, resizedRepeaters: {} };
+  if (snapshot) Object.assign(runtime, snapshot);
+  const saveAdaptiveState = () => {
+    if (viewportPolicy === undefined) { delete runtime.adaptiveState; return; }
+    runtime.adaptiveState = { viewport: { ...viewportPolicy }, mode: selectionMode,
+      ...(activeSelectionId === undefined ? {} : { selectedViewId: activeSelectionId }),
+      pageInitialized: loadFinished, repeatersInitialized: repeatersReady };
+  };
   const visit = (items: Widget[], pageId: string, ancestors: string[] = [], parent?: { id: string; stateId?: string }) => { for (const w of items) { widgets.set(w.id, w); owners.set(w.id, ancestors); pageOwners.set(w.id, pageId); if (parent) containers.set(w.id, parent); if (w.layer) visit(w.layer.widgets, pageId, ancestors, { id: w.id }); for (const s of w.states ?? []) visit(s.widgets, pageId, ancestors, { id: w.id, stateId: s.id }); if (w.repeater) visit(w.repeater.template, pageId, [...ancestors, w.id], { id: w.id }); if (w.table) visit(tableCells(w), pageId, ancestors, { id: w.id }); if (w.menu) visit(menuChildren(w), pageId, ancestors, { id: w.id }); if (w.tree || w.treeNode) visit(treeChildren(w), pageId, ancestors, { id: w.id }); } };
   doc.pages.forEach(p => visit(p.widgets, p.id));
   const flatGroups = new Map<string, Widget[]>();
@@ -340,7 +366,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     });
   };
   const cancelWaits = () => { for (const cancel of [...waits]) cancel(); };
-  const changePage = (id: string) => { navigationVersion++; clearShapeTextState(); menuLayers.clear(); interactionStates.clear(); linkPaints.clear(); adaptiveTextStyles.clear(); richBeforeStyle.clear(); adaptiveRefreshes.clear(); persistedHintPaint.clear(); hintStates.clear(); errorPaint.clear(); textChangeValues.clear(); selectedFiles.clear(); initialControlValues.clear(); focusedControl = undefined; runtime.pageId = id; selectionMode = 'auto'; loadFinished = false; repeatersReady = false; activeView = chooseView(id); activeSelectionId = activeView?.id; };
+  const changePage = (id: string) => { navigationVersion++; delete runtime.selectionPaintState; clearShapeTextState(); menuLayers.clear(); interactionStates.clear(); linkPaints.clear(); adaptiveTextStyles.clear(); richBeforeStyle.clear(); adaptiveRefreshes.clear(); persistedHintPaint.clear(); hintStates.clear(); errorPaint.clear(); textChangeValues.clear(); selectedFiles.clear(); initialControlValues.clear(); focusedControl = undefined; runtime.pageId = id; selectionMode = 'auto'; loadFinished = false; repeatersReady = false; activeView = chooseView(id); activeSelectionId = activeView?.id; saveAdaptiveState(); };
   const commitNavigation = () => {
     committedNavigation = navigationVersion; pageEpoch++;
     for (const job of motions.values()) job.status = 'done';
@@ -575,7 +601,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     ensureTextCache(w, context);
     updateHint(w, context, false); repaintError(w, context); notify(); return true;
   };
-  const isError = (w: Widget, context: RowContext) => Boolean(baseWidget(w, context).error || errorPaint.get(instanceKey(w.id, context)));
+  const isError = (w: Widget, context: RowContext) => Boolean(baseWidget(w, context).error || errorPaint.get(instanceKey(w.id, context)) || runtime.selectionPaintState?.[instanceKey(w.id, context)]?.paintedError);
   const repaintError = (w: Widget, context: RowContext) => { const key = instanceKey(w.id, context); if (errorPaint.has(key) || hasInteractionStyle(w.id, 'error')) errorPaint.set(key, isError(w, context)); };
   // Keep this portable equivalent in agreement with resolveInteractionStyle.
   // Disabled and a nonempty focus effect suppress pointer effects. Selection
@@ -596,6 +622,109 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     if (w.disabled) style = mergeStyle(style, w.disabledStyle);
     return style;
   };
+  // The inline SVG is an asset plus an event-driven cascade. In particular,
+  // _applySvg's falsy borderWidth does not erase an earlier presentation
+  // attribute. Never reconstruct that history from a render-time Widget.
+  const selectionSolid = (value: unknown): value is string => {
+    if (typeof value !== 'string') return false;
+    const text = value.trim();
+    if (/^(?:#(?:[0-9a-f]{3}|[0-9a-f]{4}|[0-9a-f]{6}|[0-9a-f]{8})|black|white|transparent)$/i.test(text)) return true;
+    const match = /^(rgb|rgba)\(([^()]*)\)$/i.exec(text); if (!match) return false;
+    const parts = match[2].split(',').map(part => part.trim());
+    return parts.length === (match[1].toLowerCase() === 'rgba' ? 4 : 3) && parts.every((part, index) => /^(?:\d+(?:\.\d*)?|\.\d+)$/.test(part) && Number(part) >= 0 && Number(part) <= (index === 3 ? 1 : 255));
+  };
+  const selectionPaintStyleSupported = (s: WidgetStyle) => Number.isFinite(s.strokeWidth) && s.strokeWidth >= 0 && s.radius === 0
+    && (!s.linePattern || s.linePattern === 'solid' || s.linePattern === 'none') && !s.fillGradient && !s.strokeGradient
+    && !s.outerShadow?.on && !s.innerShadow?.on && (s.fill == null || selectionSolid(s.fill)) && (s.stroke == null || selectionSolid(s.stroke))
+    && (!s.borderVisibility || s.borderVisibility.every(Boolean)) && (!s.borderWidths || s.borderWidths.every(value => value === s.strokeWidth))
+    && (!s.cornerRadii || s.cornerRadii.every(value => value === 0));
+  const ensureSelectionPaint = (w: Widget, context: RowContext) => {
+    if (!isCheck(w) || w.rotation !== 0 || !validContext(context) || !(owners.get(w.id) ?? []).every((owner, index) => context[index]?.repeaterId === owner) || pageOwners.get(w.id) !== runtime.pageId) return;
+    const key = instanceKey(w.id, context), existing = runtime.selectionPaintState?.[key]; if (existing) return existing;
+    const source = widgets.get(w.id) ?? w, s = source.style, size = s.selectionButtonSize;
+    if (typeof size !== 'number' || !Number.isFinite(size) || size <= s.strokeWidth || s.linePattern && s.linePattern !== 'solid' || !selectionPaintStyleSupported(s) || !selectionSolid(s.fill) || !selectionSolid(s.stroke)) return;
+    const asset = { size, width: s.strokeWidth, fill: s.fill, stroke: s.stroke };
+    const paint: SelectionIndicatorPaint = { assetSize: size, assetStrokeWidth: asset.width, fill: asset.fill, stroke: asset.stroke, outlineWidth: asset.width,
+      markFill: w.type === 'radio' ? asset.stroke : 'none', markStroke: w.type === 'radio' ? 'none' : asset.stroke,
+      ...(w.type === 'checkbox' ? { markWidth: size / 14 * 3 } : {}) };
+    runtime.scopes[key] = widgetContext(w.id, context);
+    return (runtime.selectionPaintState ??= {})[key] = { asset, width: asset.width, paint };
+  };
+  const paintSelection = (w: Widget, context: RowContext, selected?: boolean, requestedError?: boolean, forcedPointer?: InteractionStyleState) => {
+    const ledger = ensureSelectionPaint(w, context); if (!ledger) return;
+    const key = instanceKey(w.id, context), current = baseWidget(w, context);
+    if (selected !== undefined) current.selected = selected;
+    const error = requestedError ?? isError(w, context);
+    // Unlike the editor's generic style projection, the SVG consumer overlays
+    // its accumulated action style after computing normal/adaptive/state style.
+    const s = mergeStyle(interactionStyle(current, { ...interactionStates.get(key)?.state, ...forcedPointer }, error), ledger.applied);
+    ledger.paintedError = error;
+    // An unsupported branch may itself mutate SVG attributes in the original.
+    // Keep this asset on explicit fallback until it is recreated; returning to
+    // solid paint cannot recover that unobserved history from the final style.
+    if (ledger.unsupported || !selectionPaintStyleSupported(s)) { ledger.unsupported = true; delete ledger.paint; return; }
+    const none = s.linePattern === 'none';
+    if (!none && s.strokeWidth) { ledger.width = s.strokeWidth; ledger.markWidth = s.strokeWidth; }
+    const width = none ? 0 : ledger.width;
+    const fill = s.fill ?? ledger.asset.fill, stroke = s.stroke ?? ledger.asset.stroke;
+    ledger.paint = { assetSize: ledger.asset.size, assetStrokeWidth: ledger.asset.width, fill, stroke, outlineWidth: width,
+      markFill: w.type === 'radio' ? stroke : 'none', markStroke: w.type === 'radio' && s.stroke == null ? 'none' : stroke,
+      markWidth: w.type === 'checkbox' ? 3 * ledger.asset.size / 14 : none ? 0 : ledger.markWidth ?? 1, ...ledger.svgTransform };
+  };
+  // Retained setAdaptiveStyle reads the browser's computed matrix, not the raw
+  // previous CSS submission. The Chromium oracle uses float32 then six useful
+  // digits, clamping finite overflow to float32 max. Keep raw paint separately.
+  const selectionScaleBits = new DataView(new ArrayBuffer(4));
+  const selectionScaleReadback = (value: number) => {
+    const scalar = Math.fround(Math.max(-3.4028234663852886e38, Math.min(3.4028234663852886e38, value)));
+    if (scalar === 0) return 0;
+    const magnitude = Math.abs(scalar);
+    let exponent = Math.floor(Math.log10(magnitude));
+    if (magnitude < 10 ** exponent) exponent--;
+    else if (magnitude >= 10 ** (exponent + 1)) exponent++;
+    const decimalPlace = exponent - 5;
+    // Extract the exact float32 rational before decimal rounding. Multiplying
+    // a double by 10^n can move an exact midpoint; toPrecision rounds ties away
+    // whereas the observed computed CSS matrix uses nearest-even.
+    selectionScaleBits.setFloat32(0, magnitude);
+    const bits = selectionScaleBits.getUint32(0), binaryExponent = bits >>> 23;
+    let numerator = BigInt((bits & 0x7fffff) | (binaryExponent ? 0x800000 : 0)), denominator = 1n;
+    const power = binaryExponent ? binaryExponent - 150 : -149;
+    if (power >= 0) numerator <<= BigInt(power); else denominator <<= BigInt(-power);
+    if (decimalPlace >= 0) denominator *= 10n ** BigInt(decimalPlace); else numerator *= 10n ** BigInt(-decimalPlace);
+    let rounded = numerator / denominator;
+    const twiceRemainder = numerator % denominator * 2n;
+    if (twiceRemainder > denominator || twiceRemainder === denominator && (rounded & 1n) !== 0n) rounded++;
+    return Number(`${scalar < 0 ? '-' : ''}${rounded}e${decimalPlace}`);
+  };
+  const applySelectionAdaptiveScale = (w: Widget, context: RowContext) => {
+    if (!activeSelectionId) return; // Returning to Base repaints but does not call setAdaptiveStyle.
+    const declaration = adaptiveOverride(w);
+    if (!declaration || declaration.width === undefined && declaration.height === undefined) return;
+    const ledger = ensureSelectionPaint(w, context); if (!ledger) return;
+    const source = widgets.get(w.id) ?? w;
+    // REA stores width/height independently. A declared axis authorizes a full
+    // native size carrier; fill its companion from declarations/Base, not live
+    // SetText/Resize/action geometry. Native malformed half-size JSON is not this bridge.
+    const width = declaration.width ?? source.width, height = declaration.height ?? source.height;
+    const transform = ledger.svgTransform ??= {};
+    transform.svgTransformOrigin = 'top left';
+    const oldX = ledger.svgReadback?.x ?? selectionScaleReadback(transform.svgScaleX ?? 1);
+    const oldY = ledger.svgReadback?.y ?? selectionScaleReadback(transform.svgScaleY ?? 1);
+    const x = (width / source.width) * oldX, y = (height / source.height) * oldY;
+    // CSS rejects the entire Scale(NaN/Infinity, ...) assignment. Origin was
+    // already written, but the previous finite pair survives unchanged.
+    if (Number.isFinite(x) && Number.isFinite(y) && (x !== oldX || y !== oldY)) {
+      transform.svgScaleX = x; transform.svgScaleY = y;
+      ledger.svgReadback = { x: selectionScaleReadback(x), y: selectionScaleReadback(y) };
+    }
+    if (ledger.paint) Object.assign(ledger.paint, transform);
+  };
+  const selectionIndicatorPaint = (id: string, context: RowContext = []) => {
+    const w = widgets.get(id); if (disposed || !w) return;
+    const ledger = ensureSelectionPaint(w, context);
+    return ledger?.paint && { ...ledger.paint };
+  };
   const writeInteractionState = (id: string, state: InteractionStyleState, context: RowContext = []) => {
     const original = widgets.get(id);
     if (disposed || !original || pageOwners.get(id) !== runtime.pageId || !validContext(context)) return;
@@ -607,6 +736,9 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     if (state.mouseOver !== undefined && hasInteractionStyle(w.id, 'mouseOver') || state.mouseDown !== undefined && hasInteractionStyle(w.id, 'mouseDown') || state.focused !== undefined && hasInteractionStyle(w.id, 'focused')) linkPaints.delete(key);
     runtime.scopes[key] = widgetContext(id, context);
     repaintError(w, context);
+    if (state.mouseOver !== undefined && hasInteractionStyle(w.id, 'mouseOver')
+      || !w.disabled && (state.mouseDown !== undefined && hasInteractionStyle(w.id, 'mouseDown') || state.focused !== undefined && hasInteractionStyle(w.id, 'focused'))) paintSelection(original, context, undefined, undefined,
+        state.mouseDown !== undefined && hasInteractionStyle(w.id, 'mouseDown') && !w.disabled ? { mouseOver: true } : undefined);
     // The rendered adaptive base may differ from the authored base. Even an
     // equal-to-authored effect can change the visible result, so publish the
     // state transition rather than comparing colors from the wrong view.
@@ -632,7 +764,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
   };
   const releasePointerStyles = () => {
     let changed = false;
-    for (const entry of interactionStates.values()) if (entry.state.mouseDown) { entry.state.mouseDown = false; const w = widgets.get(entry.id); if (w) { if (hasInteractionStyle(w.id, 'mouseDown')) linkPaints.delete(instanceKey(w.id, entry.context)); repaintError(w, entry.context); } changed = true; }
+    for (const entry of interactionStates.values()) if (entry.state.mouseDown) { entry.state.mouseDown = false; const w = widgets.get(entry.id); if (w) { if (hasInteractionStyle(w.id, 'mouseDown')) { linkPaints.delete(instanceKey(w.id, entry.context)); if (!baseWidget(w, entry.context).disabled) paintSelection(w, entry.context, undefined, undefined, { mouseOver: true }); } repaintError(w, entry.context); } changed = true; }
     if (changed && !disposed) notify();
   };
   const clearBranchInteractionStates = (id: string, context: RowContext, includeRoot = true, focusOnly = false) => {
@@ -1153,6 +1285,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     return includeUnplaced || !target ? contexts : contexts.filter(context => !isUnplaced(target, context));
   };
   const forgetInstance = (key: string, persist = false) => {
+    if (runtime.selectionPaintState) { delete runtime.selectionPaintState[key]; if (!Object.keys(runtime.selectionPaintState).length) delete runtime.selectionPaintState; }
     motionGenerations.set(key, (motionGenerations.get(key) ?? 0) + 1); rotationTargets.delete(key); rotationLocations.delete(key); resizeTargets.delete(key); transformZeroSizes.delete(key);
     sourceMoves.delete(key);
     const dragging = runtime.motionState?.drag; if (dragging?.sourceId && instanceKey(dragging.sourceId, dragging.context ?? []) === key) cancelDrag();
@@ -2361,6 +2494,11 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
         break;
       }
       case 'setStyle': if (a.style) {
+        const ledger = ensureSelectionPaint(original, scope);
+        if (ledger) {
+          const fields = ['fill','stroke','strokeWidth','linePattern','radius','fillGradient','strokeGradient','outerShadow','innerShadow','borderVisibility','borderWidths','cornerRadii'] as const;
+          ledger.applied = { ...ledger.applied, ...structuredClone(Object.fromEntries(fields.filter(field => Object.hasOwn(a.style!, field)).map(field => [field, a.style![field]]))) };
+        }
         const key = instanceKey(w.id, scope);
         if (!richBeforeStyle.has(key)) richBeforeStyle.set(key, w.richText ? structuredClone(w.richText) : undefined);
         runtime.richTextStyleOverrides ??= {};
@@ -2370,6 +2508,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
         // restore it; do not corrupt that baseline with the raw booleans.
         const { underline: _underline, strikethrough: _strike, ...baselinePatch } = a.style;
         apply({ style: mergeStyle(w.style, baselinePatch), ...(w.richText ? { richText: richStyle(w.richText, baselinePatch) } : {}) });
+        paintSelection(widgets.get(w.id) ?? w, scope);
       } break;
       case 'setState': case 'nextState': case 'previousState': {
         const states = w.states; if (!states?.length) break;
@@ -2519,6 +2658,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     waits.add(cancel);
   };
   const atomic = (operation: () => void): void => {
+    saveAdaptiveState();
     const before = structuredClone(runtime), beforeNavigation = navigationVersion;
     const beforeActiveDragMap = runtime.motionState?.drag?.movedWidgets;
     const beforeMotions = new Map([...motions].map(([id, job]) => [id, { ...job, channels: [...job.channels], pivot: job.pivot && { ...job.pivot }, members: job.members?.map(member => ({ ...member })), transform: job.transform && structuredClone(job.transform), tweens: job.tweens && structuredClone(job.tweens), layerChildren: job.layerChildren && [...job.layerChildren], layerPlan: job.layerPlan && structuredClone(job.layerPlan), layerMove: job.layerMove?.map(member => ({ ...member, from: { ...member.from } })) }]));
@@ -2561,6 +2701,8 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
       if (!Object.hasOwn(before, 'frameNavigations')) delete runtime.frameNavigations;
       if (!Object.hasOwn(before, 'pendingNavigation')) delete runtime.pendingNavigation;
       Object.assign(runtime, before);
+      if (!Object.hasOwn(before, 'adaptiveState')) delete runtime.adaptiveState;
+      if (!Object.hasOwn(before, 'selectionPaintState')) delete runtime.selectionPaintState;
       if (!Object.hasOwn(before, 'motionState')) delete runtime.motionState;
       if (!Object.hasOwn(before, 'richTextStyleOverrides')) delete runtime.richTextStyleOverrides;
       navigationVersion = beforeNavigation;
@@ -2838,6 +2980,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
   const setEnabled = (w: Widget, enabled: boolean, context: RowContext): void => {
     if (isUnplaced(w, context) || ['inlineFrame','table','tableCell','menu','tree','treeNode'].includes(w.type)) return;
     patch(w, { disabled: !enabled }, context);
+    if (hasInteractionStyle(w.id, 'disabled')) paintSelection(w, context);
     if (w.layer) for (const child of w.layer.widgets) setEnabled(child, enabled, context);
   };
   const setError = (w: Widget, value: boolean | 'toggle', context: RowContext, group: TaskGroup, anchor?: { x: number; y: number }): void => {
@@ -2852,6 +2995,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
         if (changed) dispatch(w.interactions, desired ? 'errorSet' : 'errorRemoved', w.id, group, rowData(context), context, anchor);
         if (disposed || !validContext(context) || epoch !== pageEpoch || navigation !== navigationVersion) return;
         const key = instanceKey(w.id, context);
+        if (hasInteractionStyle(w.id, 'error') || runtime.selectionPaintState?.[key]?.paintedError) paintSelection(w, context, undefined, desired);
         if (hasInteractionStyle(w.id, 'error') || errorPaint.get(key)) errorPaint.set(key, desired);
         notify();
       } finally { errorDepth--; }
@@ -2890,6 +3034,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     if (++selectionDepth > 64 || ++group.selectionChanges > 10000) { selectionDepth--; throw new Error('Selection event cycle limit exceeded'); }
     try {
       if (value && !isCheck(w)) for (const other of selectionPeers(w, context, 'selectionGroup')) if (other.id !== w.id) applySelected(other, false, context, group, anchor);
+      paintSelection(w, context, value);
       patch(w, { selected: value }, context); notify();
       if (changed) {
         const epoch = pageEpoch, navigation = navigationVersion;
@@ -2932,7 +3077,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     const collect = (items: Widget[], withinLayer: boolean) => {
       for (const widget of items) {
         const inside = withinLayer || Boolean(widget.layer);
-        if (inside && !isUnplaced(widget, context, true)) {
+        if ((inside || ensureSelectionPaint(widget, context)) && !isUnplaced(widget, context, true)) {
           const current = baseWidget(widget, context);
           records.push({ widget, selected: Boolean(current.selected), error: Boolean(current.error), disabled: Boolean(current.disabled) });
         }
@@ -2947,7 +3092,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     // parent's actual disable then blocks a later child's Selected declaration.
     for (const record of records) {
       const reset: Partial<Widget> = {};
-      if (record.selected) reset.selected = false;
+      if (record.selected && !isCheck(record.widget)) reset.selected = false;
       if (record.error) reset.error = false;
       if (record.disabled) reset.disabled = false;
       if (Object.keys(reset).length) patch(record.widget, reset, context);
@@ -2958,6 +3103,16 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
       if (record.error) setError(record.widget, true, context, group);
       if (record.selected) setSelected(record.widget, true, context, group);
       if (record.disabled) setEnabled(record.widget, false, context);
+    }
+    initializeSelectionPaints(items, context);
+  };
+  const initializeSelectionPaints = (items: Widget[], context: RowContext): void => {
+    for (const w of items) {
+      const current = baseWidget(w, context);
+      if (ensureSelectionPaint(w, context) && (activeSelectionId || selectedState(current) && !current.disabled)) paintSelection(w, context);
+      applySelectionAdaptiveScale(w, context);
+      if (w.layer) initializeSelectionPaints(w.layer.widgets, context);
+      for (const state of w.states ?? []) initializeSelectionPaints(state.widgets, context);
     }
   };
   const loadWidgets = (items: Widget[], group: TaskGroup, context: RowContext = []): void => {
@@ -3041,6 +3196,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
         for (const item of rows) {
           if (disposed || navigationVersion !== navigation) return;
           if (!persist) initializeLayerStates(widget.repeater!.template, group, item.context);
+          else initializeSelectionPaints(widget.repeater!.template, item.context);
           if (navigationVersion !== navigation) return;
           dispatch(widget.interactions, 'itemLoad', widget.id, group, item.data, item.context);
           if (navigationVersion !== navigation) return;
@@ -3057,6 +3213,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
       // Native loadFinished and repeater.initRefresh are separate barriers.
       // Wait continuations release this synchronous initialization sequence.
       repeatersReady = false;
+      saveAdaptiveState();
       if (!loadFinished) initializeLayerStates(page.widgets, group);
       if (!loadFinished && activeSelectionId) refreshLayerCaches(group);
       if (navigationVersion !== navigation) { commitNavigation(); continue; }
@@ -3064,16 +3221,18 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
       if (navigationVersion === navigation) loadWidgets(page.widgets, group);
       if (navigationVersion === navigation && !loadFinished) {
         loadFinished = true;
+        saveAdaptiveState();
         try { if (activeSelectionId) adaptiveChanged(group); }
         catch (error) {
           // A rejected initialization dispatch must not make a later retry
           // silently skip this barrier. Earlier committed action segments keep
           // their existing rollback contract; this only restores the phase.
           loadFinished = false;
+          saveAdaptiveState();
           throw error;
         }
       }
-      if (navigationVersion === navigation) { repeatersReady = true; flushRepeaters(group); }
+      if (navigationVersion === navigation) { repeatersReady = true; saveAdaptiveState(); flushRepeaters(group); }
       if (navigationVersion === navigation) { notify(); return; }
       commitNavigation();
     }
@@ -3265,6 +3424,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     if (disposed) return;
     const previous = activeSelectionId, navigation = navigationVersion;
     activeView = next; activeSelectionId = nextId;
+    saveAdaptiveState();
     // Resizing within the same breakpoint updates the policy for future pages,
     // without replaying declarations or resetting live action state.
     if (wasManaged && previous === activeSelectionId) return;
@@ -3305,6 +3465,12 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     for (const key of Object.keys(runtime.richTextStyleOverrides ?? {})) if (belongs(key)) delete runtime.richTextStyleOverrides![key];
     for (const key of adaptiveTextStyles.keys()) if (belongs(key)) adaptiveTextStyles.delete(key);
     for (const key of linkPaints.keys()) if (belongs(key)) linkPaints.delete(key);
+    for (const [key, ledger] of Object.entries(runtime.selectionPaintState ?? {})) if (belongs(key)) delete ledger.applied;
+    // Existing non-row inline SVG assets survive adaptive repaint. Repeater
+    // DOM rebuilds below receive fresh assets and their persisted state paint.
+    for (const w of widgets.values()) if (isCheck(w) && !owners.get(w.id)?.length && pageOwners.get(w.id) === runtime.pageId) {
+      paintSelection(w, []); applySelectionAdaptiveScale(w, []);
+    }
     // Adaptive refresh is native persist=2, distinct from data-action refresh.
     // Nested datasets use this model's full row identities; no state is borrowed
     // from another row that happens to have the same data or local index.
@@ -3329,6 +3495,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
     if (disposed) return;
     const wasManaged = viewportPolicy !== undefined;
     viewportPolicy = policy;
+    saveAdaptiveState();
     if (selectionMode === 'auto') applyAdaptiveView(chooseView(runtime.pageId), group, wasManaged);
     settle(group); if (!disposed) notify();
   });
@@ -3398,7 +3565,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
       setSelected(node, true, context, group, anchor); settle(group);
     }),
     menuChild, menuLayer: (id, context = []) => menuLayers.get(instanceKey(id, context)), menuPointer,
-    state: () => runtime, widget: renderWidget, richText: resolvedRich, setInteractionState, setLinkState, hint, hideHint, textChanged, releasePointerStyles, renderSize, text: resolve, rows: rowsFor, repeaterInfo, hasOverride, matches: allowed,
+    state: () => { saveAdaptiveState(); return runtime; }, widget: renderWidget, richText: resolvedRich, setInteractionState, setLinkState, hint, hideHint, textChanged, releasePointerStyles, renderSize, text: resolve, rows: rowsFor, repeaterInfo, hasOverride, matches: allowed, selectionIndicatorPaint,
     frame: (id, context = []) => {
       const w = widgets.get(id); if (!w?.inlineFrame || !validContext(context)) return undefined;
       const key = instanceKey(id, context), state = runtime.frameNavigations?.[key];
@@ -3521,7 +3688,7 @@ export function createOfflineRuntime(doc: PrototypeDocument, initialPageId?: str
       dispatchWidget(w,event,group,row,context,anchor);
       settle(group);
     }),
-    dispose: () => { disposed = true; sourceMoves.clear(); if (runtime.motionState) { delete runtime.motionState.drag; if (!Object.keys(runtime.motionState).length) delete runtime.motionState; } for (const job of motions.values()) job.status = 'done'; commitMotions(); motionGenerations.clear(); rotationTargets.clear(); rotationLocations.clear(); resizeTargets.clear(); transformZeroSizes.clear(); transformBatches.clear(); transformRequests.clear(); transformMoveResults.clear(); groupAngles.clear(); clearShapeTextState(); notify = () => {}; controlHost = undefined; navigationHost = undefined; parentFrameHost = undefined; focusedControl = undefined; menuLayers.clear(); interactionStates.clear(); linkPaints.clear(); adaptiveTextStyles.clear(); richBeforeStyle.clear(); adaptiveRefreshes.clear(); repeaterInstances.clear(); persistedHintPaint.clear(); hintStates.clear(); errorPaint.clear(); textChangeValues.clear(); selectedFiles.clear(); initialControlValues.clear(); valueControls.clear(); cancelWaits(); deferredWaitCancellations.clear(); cancelCaseMenus(); },
+    dispose: () => { disposed = true; delete runtime.selectionPaintState; sourceMoves.clear(); if (runtime.motionState) { delete runtime.motionState.drag; if (!Object.keys(runtime.motionState).length) delete runtime.motionState; } for (const job of motions.values()) job.status = 'done'; commitMotions(); motionGenerations.clear(); rotationTargets.clear(); rotationLocations.clear(); resizeTargets.clear(); transformZeroSizes.clear(); transformBatches.clear(); transformRequests.clear(); transformMoveResults.clear(); groupAngles.clear(); clearShapeTextState(); notify = () => {}; controlHost = undefined; navigationHost = undefined; parentFrameHost = undefined; focusedControl = undefined; menuLayers.clear(); interactionStates.clear(); linkPaints.clear(); adaptiveTextStyles.clear(); richBeforeStyle.clear(); adaptiveRefreshes.clear(); repeaterInstances.clear(); persistedHintPaint.clear(); hintStates.clear(); errorPaint.clear(); textChangeValues.clear(); selectedFiles.clear(); initialControlValues.clear(); valueControls.clear(); cancelWaits(); deferredWaitCancellations.clear(); cancelCaseMenus(); },
   };
 }
 
@@ -3737,7 +3904,7 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
         report(pending); void pending.then(() => sourceFocus.delete(key), () => sourceFocus.delete(key));
       };
       for (const [domEvent, event] of [['onclick', 'click'], ['ondblclick', 'doubleClick']] as const) element[domEvent] = e => { e.stopPropagation(); if(event==='click' && e.target instanceof Element && e.target.closest('[data-rich-link-id]'))return; fire(event, event === 'click' && !e.detail ? undefined : { x: e.clientX, y: e.clientY }); };
-      element.onmouseenter = e => { if (!w.disabled) runtime.setInteractionState(w.id, { mouseOver: true }, context); fire('mouseEnter', { x: e.clientX, y: e.clientY }); report(runtime.menuPointer(w.id, 'enter', context)); };
+      element.onmouseenter = e => { if (!w.disabled || w.type === 'checkbox' || w.type === 'radio') runtime.setInteractionState(w.id, { mouseOver: true }, context); fire('mouseEnter', { x: e.clientX, y: e.clientY }); report(runtime.menuPointer(w.id, 'enter', context)); };
       element.onmouseleave = e => { runtime.setInteractionState(w.id, { mouseOver: false }, context); fire('mouseLeave', { x: e.clientX, y: e.clientY }); const child = runtime.menuChild(w.id), target = child ? [...nodes.values()].find(node => node.dataset.widgetId === child && node.dataset.rowContext === JSON.stringify(context)) : undefined; const rect = target?.getBoundingClientRect(), css = target && getComputedStyle(target), contentSize = (axis:'width'|'height') => { if (!css) return 0; const sides = axis === 'width' ? ['Left','Right'] : ['Top','Bottom']; return Math.max(0, parseFloat(css[axis]) - (css.boxSizing === 'border-box' ? sides.reduce((n,side) => n + parseFloat(css.getPropertyValue(`padding-${side.toLowerCase()}`) || '0') + parseFloat(css.getPropertyValue(`border-${side.toLowerCase()}-width`) || '0'), 0) : 0)); }; report(runtime.menuPointer(w.id, 'leave', context, {x:e.clientX,y:e.clientY}, rect && {left:rect.left,top:rect.top,width:contentSize('width'),height:contentSize('height')})); };
       const dragPolicy = { moveCursor: w.interactions.some(item => item.enabled && item.event === 'drag'), preventTouch: w.interactions.some(item => item.enabled && ['drag','swipeUp','swipeDown'].includes(item.event)) };
       element.onmousedown = e => { e.stopPropagation(); if (!w.disabled) { runtime.setInteractionState(w.id, { mouseDown: true }, context); drag?.start(e, w.id, context, element, dragPolicy); } };
@@ -3990,7 +4157,8 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
       else if (w.type === 'select') { const select = content('select'); select.multiple = Boolean(w.multiple); if (w.selectMode === 'listbox') select.size = 2; else select.removeAttribute('size'); if (JSON.stringify(Array.from(select.options, o => o.value)) !== JSON.stringify(w.options ?? [])) { select.replaceChildren(); for (const option of w.options ?? []) { const o = document.createElement('option'); o.textContent = option; o.value = option; select.append(o); } } control(select); }
       else if (w.type === 'checkbox' || w.type === 'radio') {
         const displaySource = options.selectionDisplay && runtime.selectionDisplaySource(w.id);
-        const svgLayout = !!displaySource && !!options.selectionDisplay?.supports(displaySource);
+        const indicatorPaint = runtime.selectionIndicatorPaint(w.id, context) ?? null;
+        const svgLayout = !!displaySource && !!options.selectionDisplay?.supports(displaySource, indicatorPaint ?? undefined);
         let label: HTMLLabelElement, input: HTMLInputElement, span: HTMLSpanElement;
         if (svgLayout) {
           label = element.querySelector<HTMLLabelElement>(':scope > label.selection-control-label')!;
@@ -4016,7 +4184,7 @@ export function mountOfflinePrototype(doc: PrototypeDocument, runtime: OfflineRu
           lineHeight: selectionLayout ? String(s.lineHeight ?? 'normal') : '',
           whiteSpace: selectionLayout ? w.selectionText!.autoFitWidth ? 'nowrap' : 'normal' : '',
           overflowWrap: selectionLayout ? w.selectionText!.autoFitWidth ? 'normal' : 'break-word' : '' });
-        if (svgLayout) options.selectionDisplay!.update(label, span, input, displaySource!, w);
+        if (svgLayout) options.selectionDisplay!.update(label, span, input, displaySource!, w, indicatorPaint);
       }
       else if (w.type === 'image') { if (w.imageSrc && (/^data:image\/(png|jpeg|webp|gif);base64,[A-Za-z0-9+/=\r\n]+$/.test(w.imageSrc) || options.previewImages && /^https?:\/\//i.test(w.imageSrc))) { const image = content('img'); if (image.getAttribute('src') !== w.imageSrc) image.src = w.imageSrc; image.alt = w.name; } else content('span').textContent = 'Image'; }
       else if (w.type === 'line') {

@@ -1,0 +1,7 @@
+param([string]$AssemblyPath='C:\Users\Administrator\AppData\Local\Temp\rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc\Axure RP 11\AxureRP11.dll')
+$ErrorActionPreference='Stop';$s=[IO.File]::OpenRead($AssemblyPath);$p=[System.Reflection.PortableExecutable.PEReader]::new($s)
+try {$m=[System.Reflection.Metadata.PEReaderExtensions]::GetMetadataReader($p)
+ $events=foreach($th in $m.TypeDefinitions){$t=$m.GetTypeDefinition($th);if($m.GetString($t.Name) -ne 'htNZ'){continue};foreach($eh in $t.GetEvents()){$e=$m.GetEventDefinition($eh);$a=$e.GetAccessors();[pscustomobject]@{type='UtNY.htNZ';name=$m.GetString($e.Name);adder=[System.Reflection.Metadata.Ecma335.MetadataTokens]::GetToken([System.Reflection.Metadata.EntityHandle]$a.Adder);remover=[System.Reflection.Metadata.Ecma335.MetadataTokens]::GetToken([System.Reflection.Metadata.EntityHandle]$a.Remover)}}}
+ $mh=[System.Reflection.Metadata.Ecma335.MetadataTokens]::MethodDefinitionHandle(100731465-band 0xffffff);$d=$m.GetMethodDefinition($mh);$i=$d.GetImport();$mod=$m.GetModuleReference($i.Module)
+ [pscustomobject]@{assembly=$AssemblyPath;sha256=(Get-FileHash -LiteralPath $AssemblyPath -Algorithm SHA256).Hash.ToLowerInvariant();kind='PEReader event accessor and PInvoke metadata only';pinvoke=@{token=100731465;name=$m.GetString($i.Name);module=$m.GetString($mod.Name);attributes=$i.Attributes.ToString()};events=@($events)}|ConvertTo-Json -Depth 6
+}finally{$p.Dispose();$s.Dispose()}

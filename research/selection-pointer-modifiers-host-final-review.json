@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-21T05:07:51.042Z",
+  "status": "frozen-readonly-review",
+  "scope": "Final per-pointer Shift implementation and target-set correction; no stationary key-only callback",
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "fullAxureParity": false,
+  "productEdited": false,
+  "testsEdited": false,
+  "newTestsExecuted": 0,
+  "browserExecuted": false,
+  "sources": [
+    {
+      "file": "src/App.tsx",
+      "sha256": "9272a15ed362d7a5089d8ed8691ace22efe46c3e4d939f0d1281acf9dceec7cd"
+    },
+    {
+      "file": "src/runtime/selection-pointer-session.ts",
+      "sha256": "b96d5c256d33438c6bf89002ad018653b9d8ccd754c6f6bb04ed5cabc0da04fb"
+    },
+    {
+      "file": "src/model/selection-pointer-resize.ts",
+      "sha256": "47faed383b225239f16db1cd323e1a5648a6822b4680cca2c5afcd4cde89cbef"
+    },
+    {
+      "file": "src/model/author-resize-solver.ts",
+      "sha256": "95d2b05236c850976cc2f1230319ad6bd23b468b6de7fb4fffb2b7ed2bb6fb10"
+    },
+    {
+      "file": "src/model/selection-layout.ts",
+      "sha256": "6ef087714d00160ad45fa39ed03a009a6a5d51d1679d45497087265230dc49f8"
+    },
+    {
+      "file": "src/model/selection-author-edits.ts",
+      "sha256": "ec025356b9a4d40b61d15a186f6dd44bbd8b4c58c0419ad43855ef163e21dc78"
+    },
+    {
+      "file": "src/model/author-layer-resize.ts",
+      "sha256": "2d578f9151299197e9efb0e0f690449705991331f97a091860932e483e620bc6"
+    },
+    {
+      "file": "tests/selection-pointer-session.test.ts",
+      "sha256": "b22d1247091a07d9d79faad7603128451e6e1e117fdbb267d5f7b0d488f59ad8"
+    },
+    {
+      "file": "tests/selection-pointer-resize.test.ts",
+      "sha256": "823dca68a304fa4abca07c20faff96091abd085d5f8be32da9008b12ac12d9f2"
+    },
+    {
+      "file": "tests/e2e/selection-pointer-resize.spec.ts",
+      "sha256": "7c7b0bc0c35cf0b3cd95543c52b7ae5ab1ce3c13a2292d8fd05750e977b73fb1"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "research/selection-pointer-modifiers-host-review.md",
+      "sha256": "c2ab77f25761dc4a0ea984e24b2f37c73aa4ec41d472c761e4cd8e1616fc40d5"
+    },
+    {
+      "file": "research/selection-pointer-modifiers-host-review.json",
+      "sha256": "c58a7e2be6b20c831856e7a741f0ca2be8fdd73168c4ec8b480c9122bd4afd04"
+    },
+    {
+      "file": "research/selection-pointer-modifiers-model-analysis.md",
+      "sha256": "21f0cd9ba33b842a299cec3fcf0b95b110c80f7cdd0b1f453f0dff99035a1945"
+    },
+    {
+      "file": "research/selection-pointer-modifiers-model-implementation.json",
+      "sha256": "e8459b48544ea0f40a9a49ee56121c7f36ac545a6128bf3a04ea4874020b79c8"
+    },
+    {
+      "file": "research/selection-pointer-modifiers-probes.json",
+      "sha256": "ae4dce01f8d6012cd47f36f8f1263aea72c34e1d074cf90a3997b84c5b1f80bb"
+    },
+    {
+      "file": "research/selection-pointer-evidence.md",
+      "sha256": "1d4addef8236e872f2101778e075bc8e4b412a509c4c15e10623e29ae18a544f"
+    },
+    {
+      "file": "research/layer-resize-controller-evidence.md",
+      "sha256": "40560698d225fc4a8cb85d2bcdfe8219133acfa42d809e2dd64be97ddec53000"
+    },
+    {
+      "file": ".build/selection-layout-pointer-modifiers-final-build-inputs.json",
+      "sha256": "595f18b4835ac84dacedc8549983b506528cca231680d3d8c39faa06c362b14c"
+    },
+    {
+      "file": ".build/selection-layout-pointer-modifiers-final-build-run.json",
+      "sha256": "676fcea2ba7ee06433c15561d231ecff6f9dc501343a3b05f3a51a0ad6b36ecb"
+    },
+    {
+      "file": ".build/selection-pointer-modifiers-red.json",
+      "sha256": "1507521972f8a306dafca230accec8e9dc8e82b3afd974aef8c8dc7739a39807"
+    },
+    {
+      "file": ".build/selection-pointer-modifiers-first.json",
+      "sha256": "095e6d89cf58df2dcbdbb966fd3646ecd7b2c23a5e47e730a4c5afe30f520c35"
+    }
+  ],
+  "checks": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0,
+    "kind": "source-review checks, not executable test cases",
+    "results": [
+      {
+        "id": "fixed-targets",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Handle target selection no longer uses Shift additive legacy group expansion"
+      },
+      {
+        "id": "body-additive-unchanged",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Widget body Shift additive selection remains separate"
+      },
+      {
+        "id": "immutable-request",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Session copies per-frame delta and modifiers; source unchanged from prior validated session"
+      },
+      {
+        "id": "single-handle-gate",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Single Left/Right accepts Shift without an unavailable orthogonal aspect handle"
+      },
+      {
+        "id": "shared-aspect",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Multiple roots use each frame Shift and the original common frame in solver"
+      },
+      {
+        "id": "original-fit-freedom",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Fit mutation remains based on original handle freedom before aspect solver"
+      },
+      {
+        "id": "state-continuity",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Original geometry fixed, live panel/fit/hot-zone retained"
+      },
+      {
+        "id": "size-location-order",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Selection text correction followed by requested Location, without reanchoring corrected size"
+      },
+      {
+        "id": "atomic-negative",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Ctrl/Alt reject before targets; later measurement failure does not expose partial candidate"
+      },
+      {
+        "id": "final-up",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Same-delta modifier change at up is captured; finish receives no duplicate final request"
+      },
+      {
+        "id": "finishing",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "No keyboard-only code added; session ignores updates after finishing and keeps queued modifier values"
+      },
+      {
+        "id": "ownership",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "Existing capture/context/serial/snap and owned rollback remain unchanged"
+      },
+      {
+        "id": "source-tests",
+        "result": "confirmed-by-readonly-source-review",
+        "conclusion": "New tests compare retained source fields/effects and full saved project plus Undo; this reviewer did not run them"
+      }
+    ]
+  },
+  "blockingFindings": [],
+  "unresolvedConfirmedProductDefects": [],
+  "resolvedFindings": [
+    {
+      "id": "SPMH-01",
+      "finding": "Shift handle expanded legacy group target set",
+      "resolution": "Additive rule requires e.shiftKey && !handle",
+      "parentRed": {
+        "file": ".build/selection-pointer-modifiers-first.json",
+        "sha256": "095e6d89cf58df2dcbdbb966fd3646ecd7b2c23a5e47e730a4c5afe30f520c35"
+      },
+      "proof": "Parent run 3 passed / 1 failed; inspected source now preserves existing handle IDs",
+      "finalBrowserStatus": "Parent final run pending at this review freeze; not claimed passed"
+    }
+  ],
+  "reportedModelValidation": {
+    "executedBy": "editor_core, not reviewer",
+    "dedicated": 88,
+    "focused": 374,
+    "admittedScenarios": 31,
+    "admittedFrames": 91,
+    "report": {
+      "file": "research/selection-pointer-modifiers-model-implementation.json",
+      "sha256": "e8459b48544ea0f40a9a49ee56121c7f36ac545a6128bf3a04ea4874020b79c8"
+    }
+  },
+  "reviewedE2EContract": {
+    "totalCases": 21,
+    "newShiftCases": 5,
+    "finalRunNotExecutedByReviewer": true,
+    "newCases": [
+      "checkbox horizontal Shift",
+      "radio horizontal Shift",
+      "legacy group individual handle target",
+      "multi common-frame Shift plus text correction",
+      "queued Shift and final up while fonts pending"
+    ]
+  },
+  "remainingBoundaries": [
+    {
+      "id": "key-only-dispatch",
+      "classification": "unclosed native upstream evidence, not verified product defect",
+      "behavior": "No active frame refresh from stationary Shift keydown/keyup; pointerMove/Up still sample modifiers"
+    },
+    {
+      "id": "control-alt",
+      "classification": "explicit unsupported domain",
+      "behavior": "Whole gesture fails atomically when a sampled request contains Ctrl or Alt"
+    },
+    {
+      "id": "snap",
+      "classification": "independent captured host policy",
+      "behavior": "No modifier bypass; native upstream snap pipeline not fully reproduced"
+    },
+    {
+      "id": "layer-descendants",
+      "classification": "separate future adapter",
+      "behavior": "Whole Layer recursive selection resize still rejects; direct controls within unrotated Layer remain separate"
+    }
+  ],
+  "report": {
+    "file": "research/selection-pointer-modifiers-host-final-review.md",
+    "sha256": "628e239196bf77fad601d6d8fe8b83a39e53883f3a406709500635c6e6cd0361"
+  },
+  "sourceStableDuringFreeze": true
+}

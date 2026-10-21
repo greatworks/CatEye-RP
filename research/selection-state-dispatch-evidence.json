@@ -1,0 +1,39 @@
+{
+  "target": "Axure RP 11.0.0.4150",
+  "summary": {
+    "sequences": 144,
+    "steps": 520,
+    "svgCalls": 220,
+    "passed": 144,
+    "failed": 0
+  },
+  "vendorDllExecuted": false,
+  "originalGuiCompared": false,
+  "productEdited": false,
+  "report": {
+    "path": "research/selection-state-dispatch-evidence.md",
+    "sha256": "afaa20a00913cb9c9e958f17620f5bbafe62a4207ae239dc5dc2ec3c7cf40581"
+  },
+  "result": {
+    "path": "research/selection-state-dispatch-probes-extended.json",
+    "sha256": "a06b0dcbbc8964efb9b13fedff3dad0dae0042970cb3fb2920f097eae2245ce7"
+  },
+  "manifest": {
+    "path": "research/selection-state-dispatch-manifest.json",
+    "sha256": "dcee9ee1b2b02fc5f7c239784f0a6281a408c33160f72e8aadba700dfb5802fd"
+  },
+  "contract": [
+    "Initialization binding forces apply for selected enabled controls even without selected state style.",
+    "Public selected compares native checked, direct style selected has a separate gate and changed-event deduplication.",
+    "Base empty state does not qualify, adaptive empty state does qualify.",
+    "Ordered synchronous width3 then width0 retains width3 attribute.",
+    "Disabled blocks selected/down/focus/error but qualifying hover can apply disabled style.",
+    "Full style passed to SVG includes base defaults and resolved state overrides; partial lower-level paint probes do not define caller behavior."
+  ],
+  "boundaries": [
+    "No original DLL or GUI execution.",
+    "No full generated project or complete initialization event environment.",
+    "No groups/contained parents/repeaters/master chains/image overrides/applied-style actions.",
+    "No original pixel equivalence."
+  ]
+}

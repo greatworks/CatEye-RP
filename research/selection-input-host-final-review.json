@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "stage": "selection-input-host-final-review",
+  "status": "no-unresolved-blocking-findings-in-reviewed-domain",
+  "kind": "read-only host review and bounded actual-product SSR checks against frozen original-CIL observations",
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "browserStarted": false,
+  "productEdited": false,
+  "summary": {
+    "originalKeyFacadeCases": {
+      "total": 16,
+      "passed": 16,
+      "failed": 0
+    },
+    "actualProductCompositionCases": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "unresolvedBlockingFindings": 0
+  },
+  "findings": [
+    {
+      "id": "SIHR-01",
+      "severity": "resolved-boundary",
+      "title": "The Windows platform mask can append a separate SpaceModifier",
+      "native": [
+        {
+          "token": 100727662
+        },
+        {
+          "token": 100726677,
+          "il": [
+            26,
+            32,
+            90,
+            98
+          ]
+        },
+        {
+          "token": 100726678,
+          "il": [
+            0,
+            6
+          ]
+        },
+        {
+          "token": 100691312
+        }
+      ],
+      "productLocations": [
+        {
+          "path": "src/App.tsx",
+          "line": 112
+        },
+        {
+          "path": "src/App.tsx",
+          "line": 776
+        },
+        {
+          "path": "src/App.tsx",
+          "line": 791
+        }
+      ],
+      "resolution": "Host rejects/cancels observed browser Space/Meta; not a claim about native physical Space binding or key-only behavior",
+      "intermediateFailingProductBytesCaptured": false,
+      "finalVerified": "read-only final App bytes plus 16 source-record cases"
+    }
+  ],
+  "implementation": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "d82eb1a5a0eed1d13ae2f4129acc6138093e45da070b2c9c0925dd97745c26c6",
+      "snapshot": {
+        "path": "research/selection-input-host-final-review-source/src_App.tsx",
+        "sha256": "d82eb1a5a0eed1d13ae2f4129acc6138093e45da070b2c9c0925dd97745c26c6"
+      }
+    },
+    {
+      "path": "src/runtime/selection-pointer-session.ts",
+      "sha256": "b3e812e35ccda2e368aeefd0d5702879329e11e1b196ead18a5074d6d1879602",
+      "snapshot": {
+        "path": "research/selection-input-host-final-review-source/src_runtime_selection-pointer-session.ts",
+        "sha256": "b3e812e35ccda2e368aeefd0d5702879329e11e1b196ead18a5074d6d1879602"
+      }
+    },
+    {
+      "path": "src/model/selection-pointer-input.ts",
+      "sha256": "b15ed45f68c83bc3c5f866a9d259eca6b68f534ae8bbb2d6b96811af5aceaba5",
+      "snapshot": {
+        "path": "research/selection-input-host-final-review-source/src_model_selection-pointer-input.ts",
+        "sha256": "b15ed45f68c83bc3c5f866a9d259eca6b68f534ae8bbb2d6b96811af5aceaba5"
+      }
+    },
+    {
+      "path": "src/model/selection-pointer-resize.ts",
+      "sha256": "47faed383b225239f16db1cd323e1a5648a6822b4680cca2c5afcd4cde89cbef",
+      "snapshot": {
+        "path": "research/selection-input-host-final-review-source/src_model_selection-pointer-resize.ts",
+        "sha256": "47faed383b225239f16db1cd323e1a5648a6822b4680cca2c5afcd4cde89cbef"
+      }
+    },
+    {
+      "path": "src/model/selection-layout.ts",
+      "sha256": "6ef087714d00160ad45fa39ed03a009a6a5d51d1679d45497087265230dc49f8",
+      "snapshot": {
+        "path": "research/selection-input-host-final-review-source/src_model_selection-layout.ts",
+        "sha256": "6ef087714d00160ad45fa39ed03a009a6a5d51d1679d45497087265230dc49f8"
+      }
+    },
+    {
+      "path": "src/model/author-resize-solver.ts",
+      "sha256": "95d2b05236c850976cc2f1230319ad6bd23b468b6de7fb4fffb2b7ed2bb6fb10",
+      "snapshot": {
+        "path": "research/selection-input-host-final-review-source/src_model_author-resize-solver.ts",
+        "sha256": "95d2b05236c850976cc2f1230319ad6bd23b468b6de7fb4fffb2b7ed2bb6fb10"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": ".build/next-layer-authoring/member-tree-cil.json",
+      "sha256": "6cdb2463de1d8392a43cf4a90562c5285e52d96b192b0bb9d84878005e918dce"
+    },
+    {
+      "path": ".build/next-layer-authoring/resize-propagation-cil.json",
+      "sha256": "f32e834763dd14c7b67042db9eb84d6c99337d2ebc104e2d1d4dc3bef40d04ca"
+    },
+    {
+      "path": ".build/next-layer-authoring/pin-propagation-cil.json",
+      "sha256": "78f7461d02c1368c1457c5206183852334cf4df262a81eebfceeacd3c820bc70"
+    },
+    {
+      "path": ".build/next-layer-authoring/pin-info-cil.json",
+      "sha256": "930f2ae0612d259dfa4a14938092823b29b783165bc5b22f28541e5e9f70311f"
+    },
+    {
+      "path": ".build/next-layer-authoring/constraint-bridge-cil.json",
+      "sha256": "f1c09de16c3dbd5e65a4d8cb840182be5f5fca18460b5eaccee8c438b6a96118"
+    },
+    {
+      "path": ".build/next-layer-authoring/snapshot-inputs-cil.json",
+      "sha256": "6c96675e2e6b4da4593b101b052d295ea05032e34ef9172fe2979d65d15192b0"
+    },
+    {
+      "path": ".build/next-layer-authoring/geometry-entry-cil.json",
+      "sha256": "ef7d261601cc350c659b85f24597e921ce486d7dbfad6f6cbf6f08ed93076478"
+    },
+    {
+      "path": "research/layer-resize-controller-bridges-cil.json",
+      "sha256": "4128f0dc0b5f7542e24dd151a1ba7abaf5e0f27acc7a92f1b8891935576d499a"
+    },
+    {
+      "path": "research/layer-resize-controller-coordinate-cil.json",
+      "sha256": "cc52ec640ee62a74bcaa5f1a9978ba7e6d65f1f8d2ef1063336126156aad5744"
+    },
+    {
+      "path": "research/layer-resize-controller-parent-cil.json",
+      "sha256": "66df8d3751587f1328d41b1e321eeed2bb3aa9d54795ad23cc0a1255338a29a7"
+    },
+    {
+      "path": "research/layer-resize-controller-membership-cil.json",
+      "sha256": "81f08e42355f1527ed91569c96158b5b6c72d8bc5b5fe74b801da37d8d60cbda"
+    },
+    {
+      "path": "research/layer-resize-controller-side-effects-cil.json",
+      "sha256": "12d26d33651b9028f90bf2d83421d60522d043dda8cc68a470e804a8c185b761"
+    },
+    {
+      "path": "research/layer-resize-controller-gates-cil.json",
+      "sha256": "6fca6f2cce506170bad1a6f7fadcd3fe8e568d31b325d03a43b797adfb63eeb7"
+    },
+    {
+      "path": "research/layer-resize-controller-value-helpers-cil.json",
+      "sha256": "5c0601b96a33ac50fb9932484f2bd3946398f5983cb9d7467e46e888ab426091"
+    },
+    {
+      "path": "research/layer-resize-controller-handle-cil.json",
+      "sha256": "4578631b36b34218dc5e0f06b6e4569354e3ba75ff2946c11c75b8ff52c6eed9"
+    },
+    {
+      "path": "research/layer-resize-controller-difference-predicate-cil.json",
+      "sha256": "36c326b99346b700f78bd8305557331a5ba8a2386c46a4adeb516c7a21ae7657"
+    },
+    {
+      "path": "research/layer-resize-controller-contains-cil.json",
+      "sha256": "ab29891aa6017274bd7ed337525dffc2c9ee4466f0e27556a2556ce6af22e038"
+    },
+    {
+      "path": "research/layer-resize-controller-planner-host-cil.json",
+      "sha256": "b89512f7215cde03b19c52d3e28ea00f60607869f253ff4cae8c067410ece73c"
+    },
+    {
+      "path": "research/selection-pointer-modifiers-key-tests-cil.json",
+      "sha256": "4f91709a0336adb7a97b579716774e78a8fadd168ddfb8e8ddac59fe59a0699f"
+    },
+    {
+      "path": "research/selection-pointer-modifiers-upstream-cil.json",
+      "sha256": "8cdb5000d1c94a3592cf19f2c6ebcea9d7422805951edf8dcacc5340ef0625dc"
+    },
+    {
+      "path": "research/selection-pointer-modifiers-platform-dispatch-cil.json",
+      "sha256": "2e35ede16719ceb8a48d1370a1723ad247416e5f5a16804c3771f7b7efb976dd"
+    },
+    {
+      "path": "research/selection-author-resize-class-cil.json",
+      "sha256": "6672d99cc9dd6cb8282b9938a611d7bbf7be9902c0d7035ea13e7dfc42f14bda"
+    },
+    {
+      "path": "research/selection-input-keys-platform-cil.json",
+      "sha256": "3de52f674984e74c8d24f8499627e3f470b8df2ffcff2bd1173ff44d25cec997"
+    },
+    {
+      "path": "research/selection-input-keys-platform-owner-cil.json",
+      "sha256": "ed7a0a9b865499fd53c44e7d3413dd766b6e5e0a7ce54e5a73075116114fdc73"
+    },
+    {
+      "path": "research/selection-input-keys-dispatch-entry-cil.json",
+      "sha256": "920f27e9277c5a4df7a0e2004497aed946895424ab61e99804cc4e6ebb208d21"
+    },
+    {
+      "path": "research/selection-input-keys-rotation-cil.json",
+      "sha256": "357204f4aafd0391c9601ef234005bc83eeabba65eb8500d683e375b8fcc1ce6"
+    },
+    {
+      "path": "research/selection-input-keys-release-cil.json",
+      "sha256": "43bde03065a6647e66e1505f9382d7673205d6d94314b7593263df9a8c16513f"
+    },
+    {
+      "path": "research/selection-input-keys-base-moved-cil.json",
+      "sha256": "14261072a76b311604d05808f0bd5a544d440a66bb555a1b8ed4eaab8e97cd13"
+    },
+    {
+      "path": "research/gradient-angle-static-flow.mjs",
+      "sha256": "eb4c4a210dbfd546b4dee49011f77809f4fc1676fca862e61c4752f1b5c15128"
+    },
+    {
+      "path": "research/gradient-angle-flow-init-cil.json",
+      "sha256": "bd450d5d4d9ca0c78ba8b14c751700b814e394dd45ec5a2128494c7fa87d7c8f"
+    },
+    {
+      "path": "research/selection-input-keys-probe.mjs",
+      "sha256": "716fb46529b7bb3ee98e5fddbb11b8262d4eb8256cca5d4d968632bb0aedc01c"
+    },
+    {
+      "path": "research/selection-pointer-modifiers-snap-entry-cil.json",
+      "sha256": "9ad1948045f1f7d52c97c4c82af4df14ed530558df1b7df3d8fa17fca7cc59b7"
+    },
+    {
+      "path": "research/selection-input-host-review-keys-probe.mjs",
+      "sha256": "718b8083b0ad2e4183227e0f5539faef1a11efabfa8c8ebe95ebfd64e02cb73d"
+    },
+    {
+      "path": "research/selection-input-grid-live-session-probes.json",
+      "sha256": "1a6e83d3ea5f1fafde0745b1c49ed6084776c37a0c27f11f7d53a8b988a7a7aa"
+    },
+    {
+      "path": "research/selection-input-keys-evidence.json",
+      "sha256": "b21676bab2677a097a8388e95d578a75e570b445b7bf61a815c9521e3903f4ae"
+    },
+    {
+      "path": "research/selection-input-grid-evidence.json",
+      "sha256": "f6353d1608ee8ac86ac9491db457943bc1269fe7a1aaf853ee9e3344244cecc7"
+    },
+    {
+      "path": "research/selection-input-host-final-review-probe.mjs",
+      "sha256": "ffe63cd11803ffcbccd5090ac38e04b59e810c1392be95f84af1fed47bf4680a"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/selection-input-host-final-review.md",
+      "sha256": "ddbbb8b0ad17f69ec38900600260fb9ce1fbb2217a4e0c241c36b4b9290de1ab"
+    },
+    {
+      "path": "research/selection-input-host-final-review-probes.json",
+      "sha256": "868365121627a108a98c75131402fe28d3eac91b3f5891397265689da54f1cc8"
+    },
+    {
+      "path": "research/selection-input-host-review-keys-probes.json",
+      "sha256": "2ae514c6b4e2e9b392acd9a24a79ed207598901fc3ac635f7f552569fd5e80b4"
+    },
+    {
+      "path": "research/selection-input-keys-evidence.json",
+      "sha256": "b21676bab2677a097a8388e95d578a75e570b445b7bf61a815c9521e3903f4ae"
+    },
+    {
+      "path": "research/selection-input-grid-evidence.md",
+      "sha256": "778e288a9e637d34d03e867a9d4c9ba04a603aba0b5eabac367533f55be51f7f"
+    },
+    {
+      "path": "research/selection-input-grid-evidence.json",
+      "sha256": "f6353d1608ee8ac86ac9491db457943bc1269fe7a1aaf853ee9e3344244cecc7"
+    },
+    {
+      "path": "research/selection-input-grid-live-session-probes.json",
+      "sha256": "1a6e83d3ea5f1fafde0745b1c49ed6084776c37a0c27f11f7d53a8b988a7a7aa"
+    }
+  ],
+  "tests": [
+    {
+      "path": "research/selection-input-host-final-review-probe.mjs",
+      "sha256": "ffe63cd11803ffcbccd5090ac38e04b59e810c1392be95f84af1fed47bf4680a"
+    },
+    {
+      "path": "research/selection-input-host-final-review-freeze.mjs",
+      "sha256": "313eff8119eed63714c47dfffc5c8e921e9079de55e99a7a9b4febe93194edde"
+    },
+    {
+      "path": "research/selection-input-host-review-keys-probe.mjs",
+      "sha256": "718b8083b0ad2e4183227e0f5539faef1a11efabfa8c8ebe95ebfd64e02cb73d"
+    }
+  ],
+  "previousManifestsVerified": [
+    {
+      "path": "research/selection-input-keys-manifest.json",
+      "sha256": "503129b5d74ff1a7a1c9325b66c76f6e208e137ce5780a9434cc744ed84dd12b",
+      "filesVerified": 95
+    },
+    {
+      "path": "research/selection-pointer-modifiers-manifest.json",
+      "sha256": "57841c8baf99ffd5ec149f00086292782dd5394198aebc3b13a61d2d0bd71cfc",
+      "filesVerified": 96
+    }
+  ],
+  "checks": [
+    "Initial modifier capture and immutable mode/settings before asynchronous preparation",
+    "Absolute diagram point and event-time keys copied into ordered queue",
+    "Every frame projects against preceding accepted owner bounds; resize geometry snapshot remains separate",
+    "Ctrl/Alt consumed in input; Shift passed to prior resize model without weakening its direct guard",
+    "Release finishes history without another layout frame",
+    "Current document/context ownership and failure/cancel rollback",
+    "Locked owners retained in union and skipped by layout",
+    "Space/Meta protection at press, move and active keydown; stopImmediatePropagation on cancellation"
+  ],
+  "limitations": [
+    "App event handlers are read-only reviewed, not executed by the Node probe",
+    "Physical Space-to-n1Nh mapping, Mac behavior and key-only recompute remain unclosed",
+    "Rotation-mode gestures remain rejected; unrotated ordinary Selection roots only",
+    "Fonts/minimum/inset/measurement are explicit composition services, not original graphics execution",
+    "Guides/object snapping and arbitrary nested/rotated scope transforms are outside this review",
+    "Grid8 and uniform tolerance5/zoom are explicit host policies/services",
+    "No intermediate failing-product snapshot was captured for the extra-modifier observation"
+  ],
+  "sourceStableDuringProductProbe": true
+}

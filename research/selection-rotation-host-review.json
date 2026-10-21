@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "status": "frozen",
+  "kind": "Independent readonly source/model/host integration review",
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "browserStarted": false,
+  "productEdited": false,
+  "fullAxureParity": false,
+  "summary": {
+    "total": 74,
+    "passed": 74,
+    "failed": 0,
+    "integration": 73,
+    "angleBoundary": 1,
+    "unresolvedConfirmedProductDefects": 0
+  },
+  "sourceComposition": {
+    "sessions": 64,
+    "frames": 256,
+    "constructorDerivedFreedoms": true
+  },
+  "blockingFindings": [],
+  "fixedFindings": [
+    {
+      "id": "K5wb-operation-order",
+      "status": "resolved",
+      "description": "K5wb multiplies its fixed 57.29577951308232 literal. Reassociating to *180/PI incorrectly snapped this source fixture to 15.",
+      "regression": {
+        "path": "research/selection-rotation-model-angle-unit-probes.json",
+        "sha256": "1193653b1123258c446500bd65728dd435addf5d77eb6e24b31d8e13ff26e5aa"
+      },
+      "red": {
+        "path": ".build/selection-rotation-model-angle-red.json",
+        "sha256": "016334e9642318752bc04e61030c7e98f4b91b5b52bf1ec97ea58598531de500"
+      }
+    }
+  ],
+  "clarifications": [
+    "Upstream freedom is actual obNM constructor MSON(handle), matching existing App. Prior 256/32 fixtures had explicit freedom3 facade; they were not rewritten.",
+    "The first 73-case review predated the angle-boundary fix and did not cover that boundary. Its bytes remain retained and are not claimed to bind final product."
+  ],
+  "sourceStableDuringProbe": true,
+  "artifact": {
+    "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/AxureRP11.dll",
+    "sha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7"
+  },
+  "sources": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "1d5ea3cde18a0b5047988807f5cdbc94653b35b1aa3e476160f5028728518d6b"
+    },
+    {
+      "path": "src/model/selection-pointer-input.ts",
+      "sha256": "2a9b9063641958c9226094111ea3ec9d36e9ff6e8bcdf2e26e86e49cbc024312"
+    },
+    {
+      "path": "src/model/selection-pointer-rotate.ts",
+      "sha256": "5fa3a1b0de75898a28784e094b7b3dbf7dc85e144db551e03c88302d366a0e66"
+    },
+    {
+      "path": "src/model/selection-author-edits.ts",
+      "sha256": "b6f827bf4aed8b6c857f6dbca141d45c3b8d2331d3a0e7ab6241b8cba6942771"
+    },
+    {
+      "path": "src/runtime/selection-pointer-session.ts",
+      "sha256": "b3e812e35ccda2e368aeefd0d5702879329e11e1b196ead18a5074d6d1879602"
+    },
+    {
+      "path": "src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "ce058f7fb26e2ab8658ae3d637981770143b9fd68d1717ad1210460439f53079"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "b599acec94bb5cf552073f6a84649b31c4dd4b2e9e2c53a749ce7c98091d5441"
+    },
+    {
+      "path": "src/model/layer-geometry.ts",
+      "sha256": "3d5e5638d0956cbcb80f201b9714823cfe2a9c3cbe152708f06550c669d46994"
+    },
+    {
+      "path": "tests/selection-pointer-rotate.test.ts",
+      "sha256": "b4642f21755d4446e0059b784795c3328bc94addbd645f1bb8961dc33fb3fa28"
+    },
+    {
+      "path": "tests/selection-pointer-input.test.ts",
+      "sha256": "a9c6d61393bf6aafd316088cb5622f8e25dfcec8b5643d71d8d6a5b73fe64185"
+    },
+    {
+      "path": "tests/selection-author-edits.test.ts",
+      "sha256": "b33c4c2584eed887454ee880c4c2edcb381c48ae105e186ab3a0b1446240cd10"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "research/selection-rotation-host-review.md",
+      "sha256": "580fa3f7971b62165dc1343f93965e875f0ed001cb93378b531c4aafffc2ca14"
+    },
+    {
+      "path": "research/selection-rotation-host-review-probe.mjs",
+      "sha256": "3dce0abc062985241831db997f45810666e305705921e85ee26b0ad20910b4c4"
+    },
+    {
+      "path": "research/selection-rotation-host-review-probes.json",
+      "sha256": "5e8b06e4ce89c7227cfb805edb5d453c9f8128395ca107c2cd8cd0eb32777c24"
+    },
+    {
+      "path": "research/selection-rotation-host-review-final-probe.mjs",
+      "sha256": "5f6f4ab6804bed67cb57ca87441efc77d68032336064c80bf6a79444aee5787b"
+    },
+    {
+      "path": "research/selection-rotation-host-review-final-probes.json",
+      "sha256": "8c4fd0a61d4527997b8969de703b8792b5d51c7f0a47fc07d95fc435fc9eeb7b"
+    },
+    {
+      "path": "research/selection-rotation-host-review-oracle.mjs",
+      "sha256": "176f7d6fcd3dc6e2b8f8fff9c4e25a28e8eb161bed6f06364860218b68de4207"
+    },
+    {
+      "path": "research/selection-rotation-host-review-source-probe.mjs",
+      "sha256": "008905b7b4a92e2632e2ef9b8e9c153e8676746550053a36d4162e67260dc9d3"
+    },
+    {
+      "path": "research/selection-rotation-host-review-source-probes.json",
+      "sha256": "c28ea86f1a792d09b093c289ec1b77cf0259935d1d315638d49e6ca992a60ed1"
+    },
+    {
+      "path": "research/selection-rotation-host-review-constructor.mjs",
+      "sha256": "bb909de912cdff7dc054c3fe09e83347a0209fe5f13aced297cf82a5f9aabce5"
+    },
+    {
+      "path": "research/selection-rotation-host-review-freedom-cil.json",
+      "sha256": "16afaaa1aeb35fb132293475d7051abbe0c1538c96fafe70bc5e31b60021dfb9"
+    },
+    {
+      "path": "research/selection-rotation-host-review-freedom-callers.json",
+      "sha256": "97f62ff601737be81c4d0ffff439632a0ab8d6d265413482b75d9c8b10f9add5"
+    },
+    {
+      "path": "research/selection-rotation-host-review-freedom-set-callers.json",
+      "sha256": "1b701a24a970ed740ba646d1e07bb018bc8bf15e04b0b0733b672958f4b51003"
+    },
+    {
+      "path": "research/selection-rotation-host-review-freeze.mjs",
+      "sha256": "32145edfd8d0adc9c86f25b60a67cdb2c3b9ccd2dd7125f88866b053b4a12e19"
+    },
+    {
+      "path": "research/selection-rotation-input-evidence.md",
+      "sha256": "8c06da52ebb02c116d46faa6c49750d9295052026126f198d2325831a04b95b5"
+    },
+    {
+      "path": "research/selection-rotation-input-evidence.json",
+      "sha256": "956c82d0618b691f43ee9c5498ee89585e7f1d752b864b9a1e335e1ff1656eba"
+    },
+    {
+      "path": "research/selection-rotation-input-manifest.json",
+      "sha256": "6db1576eace50d2d6bed0a488fa1a1b6069dbfddd87b59d5aa65fb66fee783f5"
+    },
+    {
+      "path": "research/selection-rotation-controller-evidence.md",
+      "sha256": "4f348db473c9da310aeec9dfa2126c424726ac6b93c1776bf07ffed7ccf405d8"
+    },
+    {
+      "path": "research/selection-rotation-controller-evidence.json",
+      "sha256": "c0c7a8d78d8c7073a3683e18085994bdb95539207fd9d829dd514443263dc621"
+    },
+    {
+      "path": "research/selection-rotation-model-angle-unit-probes.json",
+      "sha256": "1193653b1123258c446500bd65728dd435addf5d77eb6e24b31d8e13ff26e5aa"
+    },
+    {
+      "path": ".build/selection-rotation-model-angle-red.json",
+      "sha256": "016334e9642318752bc04e61030c7e98f4b91b5b52bf1ec97ea58598531de500"
+    },
+    {
+      "path": ".build/selection-rotation-model-before-angle-constant/src/model/selection-pointer-rotate.ts",
+      "sha256": "448ede7faa008cd87460a62acab009a7deedbf4d1beb85f72bd246c10ee0da59"
+    }
+  ],
+  "limits": [
+    "Readonly App handlers; actual browser/capture/OS keys verified separately by parent",
+    "Ordinary unrotated multi Selection scope and explicit grid-only services",
+    "Original union/provider/graphics/history facades and no DLL/GUI execution",
+    "Current-view Location only; product atomic rollback and saved-document bounds are explicit product policies"
+  ]
+}

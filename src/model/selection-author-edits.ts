@@ -68,13 +68,22 @@ export function applySelectionAuthorEffects(
   page: Page, viewId: string | null | undefined, widgetId: string, result: SelectionLayoutResult,
 ): Page {
   if (!result.ok) throw new Error(`Selection layout failed: ${result.reason}`);
+  return applySelectionAuthorWriteEffects(page, viewId, widgetId, result.effects);
+}
+
+/** Persist a successful controller's ordered writes. Location-only gestures
+ * have no text-layout state; their owner transaction still validates every
+ * target before publishing any returned Page. */
+export function applySelectionAuthorWriteEffects(
+  page: Page, viewId: string | null | undefined, widgetId: string, writes: readonly SelectionLayoutEffect[],
+): Page {
   if (page.adaptiveViewSetId && page.adaptiveSelection !== 'native-size')
     throw new Error('Resolve the shared adaptive page before applying selection author effects');
   if (viewId && !page.adaptiveViews.some(view => view.id === viewId)) throw new Error('Adaptive view does not exist');
   target(page, widgetId);
   // Validate every persistent write, including later ones, before preparing a
   // candidate. A native partial-write trace on failure is never committable.
-  const effects = result.effects.map(persistentEffect).filter((effect): effect is PersistentEffect => effect !== undefined);
+  const effects = writes.map(persistentEffect).filter((effect): effect is PersistentEffect => effect !== undefined);
   if (!effects.length) return page;
   const next = structuredClone(page), widget = target(next, widgetId);
   const view = viewId ? next.adaptiveViews.find(view => view.id === viewId)! : undefined;

@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const resultPath='research/selection-state-dispatch-style-action-probes.json',result=JSON.parse(fs.readFileSync(resultPath,'utf8'));
+for(const s of result.sources)assert.equal(sha(s.path),s.sha256,s.path);assert.equal(result.summary.passed,8);
+const actionPath=result.sources.find(s=>s.path.endsWith('/style.js')).path.replace('/style.js','/action.js');
+const paths=[...result.sources.map(s=>s.path),actionPath,resultPath,'research/selection-state-dispatch-style-action-evidence.md','research/selection-state-dispatch-style-action-probe.mjs',import.meta.filename];
+const manifest='research/selection-state-dispatch-style-action-manifest.json';
+fs.writeFileSync(manifest,JSON.stringify({target:'Axure RP 11.0.0.4150',originalGuiCompared:false,vendorDllExecuted:false,sources:[...new Set(paths)].map(path=>({path,sha256:sha(path)}))},null,2)+'\n',{flag:'wx'});
+fs.writeFileSync('research/selection-state-dispatch-style-action-evidence.json',JSON.stringify({summary:result.summary,report:{path:'research/selection-state-dispatch-style-action-evidence.md',sha256:sha('research/selection-state-dispatch-style-action-evidence.md')},result:{path:resultPath,sha256:sha(resultPath)},manifest:{path:manifest,sha256:sha(manifest)},correction:'Original isLastAppliedStyle reads array-shaped length/index but ordinary applyWidgetStyle carrier is {classList,style}; same named class does not suppress repeated SVG in observed complete original module.',firstAttempt:{path:'research/selection-state-dispatch-style-action-probe.mjs',expected:[1,0,1,1],actual:[1,1,1,1],kind:'Incorrect harness/static inference, not product failure'}},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({passed:8,resultSha256:sha(resultPath),manifestSha256:sha(manifest)}));

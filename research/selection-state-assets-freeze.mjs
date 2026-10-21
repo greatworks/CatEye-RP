@@ -1,0 +1,14 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import path from 'node:path';import{createHash}from'node:crypto';
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const root='C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/';
+const files=new Set(fs.readdirSync('research').filter(f=>f.startsWith('selection-state-assets-')).map(f=>'research/'+f));
+for(const p of ['research/selection-state-assets-probes.json','research/selection-state-assets-initial-probes.json','research/selection-state-assets-literals.json','research/selection-layout-indicator-asset-probes.json']){
+ files.add(p);for(const s of JSON.parse(fs.readFileSync(p)).sources??[])files.add(s.path??s.file);
+}
+for(const p of ['resources/scripts/axure/style.js','resources/scripts/axure/doc.js','resources/scripts/axure/math.js','resources/scripts/axure/adaptive.js','resources/scripts/axure/repeater.js','resources/scripts/axure/events.js'])files.add(root+'DefaultSettings/Prototype_Files/'+p);
+for(const p of ['research/selection-layout-render-writer-cil.json','research/selection-layout-render-literals.json','research/selection-author-resize-class-cil.json','research/text-autofit-dom-classes-cil.json','research/text-autofit-dom-literals.json','research/rp-selection-layout-radio-html-cil.json','research/rp-selection-layout-radio-name-writer-cil.json','research/selected-style-filter-widget-entry.json','research/selection-layout-indicator-style-bridge-cil.json','research/adaptive-placement-authoring-owner-cil.json','research/rp-selection-layout-base-properties-cil.json','research/selection-layout-border-chain-cil.json','research/selection-layout-border-asset-cil.json','research/selection-paint-evidence.md','research/selection-paint-runtime-probes-second.json','research/scripts/inspect-rp-serialization.ps1'])files.add(p);
+files.add(root+'AxureRP11.dll');
+const manifest={target:'Axure RP 11.0.0.4150',scope:'ordinary inline selection asset identity, style projection, initial selected/disabled generation boundary',originalGuiCompared:false,productModified:false,validation:{originalJsSequences:6,originalJsObservations:102,retainedHtmlEntryCases:8},files:[...files].sort().map(p=>({path:path.resolve(p),bytes:fs.statSync(p).size,sha256:sha(p)}))};
+fs.writeFileSync('research/selection-state-assets-manifest.json',JSON.stringify(manifest,null,2)+'\n',{flag:'wx'});
+for(const f of manifest.files){assert.equal(fs.statSync(f.path).size,f.bytes);assert.equal(sha(f.path),f.sha256);}
+console.log(JSON.stringify({verified:manifest.files.length,report:sha('research/selection-state-assets-evidence.md'),manifest:sha('research/selection-state-assets-manifest.json'),runtime:sha('research/selection-state-assets-probes.json'),initial:sha('research/selection-state-assets-initial-probes.json')}));
