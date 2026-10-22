@@ -1,8 +1,12 @@
 # CatEye-RP
 
-对照 Axure RP 11 研究并独立实现的 Windows 原型编辑器。当前为 **0.1.0 开发版**。
+Axure RP 11 完全免费开源的替代品，对照 Axure RP 11 拆解并独立实现的免费开源 Windows 产品原型设计工具。当前为 .1.0 开发版**。**0
 
 本分支保存截至 2026-10-21 已完成并验证的源码，新增选择控件文字测量、SVG 显示、Inspector 尺寸、文字自适应及指示器左右切换。本轮源码尚未完成 Windows 打包和全量浏览器验收；此前已验收的组缩放 Windows 发行仍为上一阶段。
+
+<img width="2560" height="1519" alt="CatEye RP_17926446259633" src="https://github.com/user-attachments/assets/ea2a9681-f221-484d-8eae-e85eee202659" />
+
+
 
 ## 运行
 
