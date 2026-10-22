@@ -25,7 +25,7 @@ export function PageTabs({ pages, ids, activeId, onOpen, onClose, onCloseOthers,
   }}>
     <div className="open-page-tabs" role="tablist" aria-label="Open pages" onKeyDown={event => {
       const target = event.target as HTMLElement, id = target.dataset.tabId;
-      if (!id) return;
+      if (!id || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
       if (event.key === 'Delete') { event.preventDefault(); event.stopPropagation(); onClose(id); }
       else if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
         event.preventDefault(); event.stopPropagation(); const index = valid.indexOf(id);

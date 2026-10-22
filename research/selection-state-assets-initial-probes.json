@@ -1,0 +1,423 @@
+{
+  "method": "Retained pNPt CIL replay with original static obfuscation fields; zNUD effect facade follows retained token100702045. Captures calls before actual aNP5/HTML class/input sinks. Native rasterizer, full provider lifecycle, disposal and complete HTML generator are not executed.",
+  "sources": [
+    {
+      "path": "research/text-autofit-dom-writer-cil.json",
+      "sha256": "65d5c845980610c7f1a34edf9894016bc94dbc28297b9ab9a186eab4ce58b346"
+    },
+    {
+      "path": "research/text-autofit-dom-attributes-cil.json",
+      "sha256": "4481e25c2824c4370e107f550080eec265a32b619658381ce5e0782e3f7a7746"
+    },
+    {
+      "path": "research/text-autofit-dom-close-cil.json",
+      "sha256": "b709d5bf602323c47e80e163d9dcf1f6343355407245d8a8d1e8c2a8737d97e9"
+    },
+    {
+      "path": "research/text-autofit-dom-shape-dispatch-cil.json",
+      "sha256": "425489e28aeb422f9fb4a7282d06f8ffe4ab61b83f8c05ade8143ef33a688037"
+    },
+    {
+      "path": "research/text-autofit-native-text-callers-cil.json",
+      "sha256": "f83d4bf2230a0db5423fe30e0a08a0d78562394fcd8d0498a29c21c4bf338ce1"
+    },
+    {
+      "path": "research/rp-selection-layout-radio-html-cil.json",
+      "sha256": "75f3f31b862354b9bc8d3c3e46bcbc57af9902d399ec2e805dcb4374bc53bd09"
+    },
+    {
+      "path": "research/selection-layout-render-tags-cil.json",
+      "sha256": "f3a9fcfafd89004ecfa86625244262d3c153486dc34d23759920f62aa17b6264"
+    },
+    {
+      "path": "research/selection-layout-render-input-id-cil.json",
+      "sha256": "c966aeb929fa40ee068264bfc028d4f423c63bd8cf85c207eacbdb32f1dedfe0"
+    },
+    {
+      "path": "research/selection-layout-render-dom-probe.mjs",
+      "sha256": "6b73e85422fba5002a03f1784624f99d03f772d522eb795ca9f96b1a75c5bb04"
+    },
+    {
+      "path": "research/text-autofit-dom-replay.mjs",
+      "sha256": "e30c68e52011a8e3680f1bece8d6787bb7270f73e1b0f19401b2af1beba7ebde"
+    },
+    {
+      "path": "research/selection-author-resize-class-cil.json",
+      "sha256": "6672d99cc9dd6cb8282b9938a611d7bbf7be9902c0d7035ea13e7dfc42f14bda"
+    },
+    {
+      "path": "research/selection-layout-indicator-asset-probes.json",
+      "sha256": "fdfa663b11e71b95a389699ca3a5151cf8817c83f9f1236b2ec698e099e291af"
+    },
+    {
+      "path": "D:\\WSCodex\\REA\\research\\selection-state-assets-initial-probe.mjs",
+      "sha256": "7dec18d95e98272593515bebfdcf2a2a21351380e3592dbc25b15ae1828c55e2"
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 0
+  },
+  "results": [
+    {
+      "input": {
+        "kind": "checkbox",
+        "selected": false,
+        "disabled": false
+      },
+      "events": [
+        {
+          "kind": "trap",
+          "selected": 0,
+          "disabled": 0,
+          "priorSelected": false,
+          "priorDisabled": false
+        },
+        {
+          "kind": "class-call",
+          "disabled": false,
+          "selected": false
+        },
+        {
+          "kind": "asset-call",
+          "state": 0,
+          "selected": false,
+          "disabled": false,
+          "trapping": true
+        },
+        {
+          "kind": "input-sink",
+          "args": [
+            "u1_input",
+            "checkbox",
+            "checkbox",
+            "",
+            null,
+            "label",
+            0,
+            0,
+            2147483647,
+            false,
+            null
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "selected": false,
+        "disabled": true
+      },
+      "events": [
+        {
+          "kind": "trap",
+          "selected": 0,
+          "disabled": 0,
+          "priorSelected": false,
+          "priorDisabled": true
+        },
+        {
+          "kind": "class-call",
+          "disabled": true,
+          "selected": false
+        },
+        {
+          "kind": "asset-call",
+          "state": 0,
+          "selected": false,
+          "disabled": false,
+          "trapping": true
+        },
+        {
+          "kind": "input-sink",
+          "args": [
+            "u1_input",
+            "checkbox",
+            "checkbox",
+            "",
+            null,
+            "label",
+            0,
+            0,
+            2147483647,
+            false,
+            null
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "selected": true,
+        "disabled": false
+      },
+      "events": [
+        {
+          "kind": "trap",
+          "selected": 0,
+          "disabled": 0,
+          "priorSelected": true,
+          "priorDisabled": false
+        },
+        {
+          "kind": "class-call",
+          "disabled": false,
+          "selected": true
+        },
+        {
+          "kind": "asset-call",
+          "state": 0,
+          "selected": false,
+          "disabled": false,
+          "trapping": true
+        },
+        {
+          "kind": "input-sink",
+          "args": [
+            "u1_input",
+            "checkbox",
+            "checkbox",
+            "",
+            null,
+            "label",
+            0,
+            0,
+            2147483647,
+            true,
+            null
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "checkbox",
+        "selected": true,
+        "disabled": true
+      },
+      "events": [
+        {
+          "kind": "trap",
+          "selected": 0,
+          "disabled": 0,
+          "priorSelected": true,
+          "priorDisabled": true
+        },
+        {
+          "kind": "class-call",
+          "disabled": true,
+          "selected": true
+        },
+        {
+          "kind": "asset-call",
+          "state": 0,
+          "selected": false,
+          "disabled": false,
+          "trapping": true
+        },
+        {
+          "kind": "input-sink",
+          "args": [
+            "u1_input",
+            "checkbox",
+            "checkbox",
+            "",
+            null,
+            "label",
+            0,
+            0,
+            2147483647,
+            true,
+            null
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "selected": false,
+        "disabled": false
+      },
+      "events": [
+        {
+          "kind": "trap",
+          "selected": 0,
+          "disabled": 0,
+          "priorSelected": false,
+          "priorDisabled": false
+        },
+        {
+          "kind": "class-call",
+          "disabled": false,
+          "selected": false
+        },
+        {
+          "kind": "asset-call",
+          "state": 0,
+          "selected": false,
+          "disabled": false,
+          "trapping": true
+        },
+        {
+          "kind": "input-sink",
+          "args": [
+            "u1_input",
+            "radio",
+            "radio",
+            "",
+            null,
+            "label",
+            0,
+            0,
+            2147483647,
+            false,
+            "u1"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "selected": false,
+        "disabled": true
+      },
+      "events": [
+        {
+          "kind": "trap",
+          "selected": 0,
+          "disabled": 0,
+          "priorSelected": false,
+          "priorDisabled": true
+        },
+        {
+          "kind": "class-call",
+          "disabled": true,
+          "selected": false
+        },
+        {
+          "kind": "asset-call",
+          "state": 0,
+          "selected": false,
+          "disabled": false,
+          "trapping": true
+        },
+        {
+          "kind": "input-sink",
+          "args": [
+            "u1_input",
+            "radio",
+            "radio",
+            "",
+            null,
+            "label",
+            0,
+            0,
+            2147483647,
+            false,
+            "u1"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "selected": true,
+        "disabled": false
+      },
+      "events": [
+        {
+          "kind": "trap",
+          "selected": 0,
+          "disabled": 0,
+          "priorSelected": true,
+          "priorDisabled": false
+        },
+        {
+          "kind": "class-call",
+          "disabled": false,
+          "selected": true
+        },
+        {
+          "kind": "asset-call",
+          "state": 0,
+          "selected": false,
+          "disabled": false,
+          "trapping": true
+        },
+        {
+          "kind": "input-sink",
+          "args": [
+            "u1_input",
+            "radio",
+            "radio",
+            "",
+            null,
+            "label",
+            0,
+            0,
+            2147483647,
+            true,
+            "u1"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "input": {
+        "kind": "radio",
+        "selected": true,
+        "disabled": true
+      },
+      "events": [
+        {
+          "kind": "trap",
+          "selected": 0,
+          "disabled": 0,
+          "priorSelected": true,
+          "priorDisabled": true
+        },
+        {
+          "kind": "class-call",
+          "disabled": true,
+          "selected": true
+        },
+        {
+          "kind": "asset-call",
+          "state": 0,
+          "selected": false,
+          "disabled": false,
+          "trapping": true
+        },
+        {
+          "kind": "input-sink",
+          "args": [
+            "u1_input",
+            "radio",
+            "radio",
+            "",
+            null,
+            "label",
+            0,
+            0,
+            2147483647,
+            true,
+            "u1"
+          ]
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

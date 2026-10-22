@@ -1,9 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import type { CSSProperties, PointerEvent as ReactPointerEvent } from 'react';
 import { MousePointer2, Type, Square, Circle, Image as ImageIcon, Layers, PenTool, GitBranch, Zap, Play, Upload, ChevronDown, ChevronRight, Search, Plus, FilePlus2, FolderPlus, ChevronsUpDown, FileText, Grip, Undo2, Redo2, Group, Ungroup, ArrowUpToLine, ArrowDownToLine, AlignLeft, AlignCenter, AlignRight, AlignStartVertical, AlignCenterVertical, AlignEndVertical, Eye, EyeOff, Lock, Unlock, Save, FolderOpen, Download, Grid2X2, X, Trash2, PanelTop, List, SlidersHorizontal, CheckSquare, Minus, Hand, Copy, Check, Monitor, Braces } from 'lucide-react';
 import type { Document, Page, Widget, WidgetType, WidgetStyle, RichText } from './model/types';
 import { createDocument, createDemoDocument, createWidget, cloneWidgets, groupIntoLayer, ungroupLayers, ungroupWidgets, parseDocument, parseRichText, serializeDocument, updateWidgetTree, deleteWidgetTree, findWidget, uid, mergeWidgetStyle, resolveSelectedStyle, resolveInteractionStylePatch } from './model/document';
 import { addPageNode } from './model/page-tree';
+import { createLibraryWidget } from './model/library-widget';
+import { resolveEditorShortcut, type EditorCommand } from './model/editor-shortcuts';
+import { adjacentPageTab, pageVisitHistory, retainPageHistory, resolvePageTabShortcut, stepPageHistory, visitPage, type PageTabCommand } from './model/page-tab-navigation';
 import { WidgetContent, widgetStyle, getStaticRepeaterLayout, type MenuAuthoringProps, type TreeAuthoringProps } from './components/WidgetView';
 import { Inspector, type InteractionStyleField } from './components/Inspector';
 import { LineStyleToolbar, filterLineStylePatch } from './components/LineStyleEditor';
@@ -32,11 +36,15 @@ import { translateWidget, widgetOwnershipPath } from './model/widget-structure';
 import { fitLayerTree, layerAuthoringBounds, moveLayer } from './model/layer-geometry';
 import { planAuthorLayerResize } from './model/author-layer-resize';
 import { planSelectionAuthorCommand, type SelectionAuthorCommand } from './model/selection-author-command';
-import { applySelectionAuthorEffects } from './model/selection-author-edits';
+import { applySelectionAuthorEffects, applySelectionAuthorWriteEffects } from './model/selection-author-edits';
 import { selectionAuthorGeometry } from './model/selection-author-geometry';
 import { createShapeTextRenderer } from './model/shape-text';
 import { createSelectionTextLayout } from './runtime/selection-text-layout';
 import { createSelectionAuthorMeasurer } from './runtime/selection-author-measure';
+import { createSelectionPointerSession, type SelectionPointerRequest } from './runtime/selection-pointer-session';
+import { prepareSelectionPointerResize, planSelectionPointerResize } from './model/selection-pointer-resize';
+import { prepareSelectionPointerRotate, planSelectionPointerRotate } from './model/selection-pointer-rotate';
+import { prepareSelectionPointerInput, planSelectionPointerInput, selectionPointerBounds, selectionPointerHotzonePoint, type SelectionPointerInputModifiers } from './model/selection-pointer-input';
 import { PageTabs } from './components/PageTabs';
 import { RichTextEditor } from './components/RichTextEditor';
 import { FrameTargetEditor } from './components/FrameTargetEditor';
@@ -58,15 +66,25 @@ const LIBRARY: {type:WidgetType;name:string;icon:typeof Square;key?:string;orien
 const CACHE_KEY='rea-prototype-document-v1';
 function initialDocument(){try{const saved=localStorage.getItem(CACHE_KEY);return saved?parseDocument(saved):createDocument()}catch{return createDocument()}}
 type LayerResizeContext={pageId:string;viewId:string|null;scopeId:string|null;stateId?:string;zoom:number;documentId:string};
-type Drag={kind:'move'|'resize'|'marquee';startX:number;startY:number;original:Widget[];ids:string[];handle?:string;initialSelection?:string[];document?:Document;wasSaved?:boolean;layerResize?:LayerResizeContext};
+type SelectionResizeGesture={context:LayerResizeContext;contextKey:string;lastPublished:Document;session:{update(request:SelectionPointerRequest):void;finish():void;cancel():void;readonly phase:string}};
+type Drag={kind:'move'|'resize'|'marquee';startX:number;startY:number;original:Widget[];ids:string[];handle?:string;initialSelection?:string[];document?:Document;wasSaved?:boolean;layerResize?:LayerResizeContext;selectionResize?:SelectionResizeGesture};
 const LAYER_RESIZE_HANDLES={w:1,n:2,nw:3,e:4,ne:6,s:8,sw:9,se:12} as const;
 const RESIZE_PIN_FIELDS=['pinHorizontal','pinVertical','fixedWidth','fixedHeight'] as const;
 const selectionAuthorShapeText=createShapeTextRenderer();
 const selectionAuthorMeasurer=createSelectionAuthorMeasurer(selectionAuthorShapeText,createSelectionTextLayout(selectionAuthorShapeText));
+function ToolbarFontSize({value,onChange}:{value:number;onChange:(value:number)=>void}){
+  const [draft,setDraft]=useState(String(value)),focused=useRef(false);
+  useEffect(()=>{if(!focused.current)setDraft(String(value))},[value]);
+  return <input aria-label="Font size" type="number" min="1" max="512" value={draft} onFocus={()=>{focused.current=true}} onBlur={()=>{focused.current=false;if(!draft.trim())setDraft(String(value))}} onChange={event=>{
+    const text=event.target.value;setDraft(text);const size=Number(text);
+    if(text.trim()&&Number.isFinite(size))onChange(Math.min(512,Math.max(1,size)));
+  }}/>;
+}
 export default function App(){
   const {prompt}=useDialogs();
   const [doc,setDoc]=useState<Document>(initialDocument);const [pageId,setPageId]=useState(doc.pages[0].id);
   const [pageNodeId,setPageNodeId]=useState(doc.pages[0].id);const [openPageIds,setOpenPageIds]=useState([doc.pages[0].id]);
+  const pageVisits=useRef(pageVisitHistory(doc.pages[0].id)),pageNavigationEpoch=useRef(0);
   const [selected,setSelected]=useState<string[]>([]);const [past,setPast]=useState<Document[]>([]);const [future,setFuture]=useState<Document[]>([]);
   const [zoom,setZoom]=useState(1);const [grid,setGrid]=useState(false);const [snap,setSnap]=useState(false);const [tool,setTool]=useState<WidgetType|'select'|'hand'|'pen'>('select');
   const [pointEditingId,setPointEditingId]=useState<string|null>(null);
@@ -90,15 +108,36 @@ export default function App(){
   const tableResize=useRef<{document:Document;table:Widget;wasSaved:boolean}|null>(null);
   const tableClipboard=useRef<string|null>(null);
   const [recovery,setRecovery]=useState<'pending'|'saved'|'failed'>('pending');
+  const [selectionGestureVersion,setSelectionGestureVersion]=useState(0);
   const [panelPath,setPanelPath]=useState<string|null>(null);const [marquee,setMarquee]=useState<{x:number;y:number;width:number;height:number}|null>(null);
   const [adaptiveViewId,setAdaptiveViewId]=useState<string|null>(null);
   const [placementAllViews,setPlacementAllViews]=useState(false);
   const [effectPreview,setEffectPreview]=useState<{widgetId:string;field:InteractionStyleField}|null>(null);
   const [rpReport,setRpReport]=useState<{name:string;report:RpImportReport;opened:boolean}|null>(null);
+  const pageNavigationContext=useRef('');
+  const navigationContext=JSON.stringify([doc.id,pageId,preview,gallery,quick,variables,prototypeSettings,Boolean(tablePaste),Boolean(rpReport),frameTargetEditing,menu]);
+  if(pageNavigationContext.current!==navigationContext){++pageNavigationEpoch.current;pageNavigationContext.current=navigationContext;}
   const docRef=useRef(doc);docRef.current=doc;const drag=useRef<Drag|null>(null);const clipboard=useRef<Widget[]>([]);const surface=useRef<HTMLDivElement>(null);const fileInput=useRef<HTMLInputElement>(null);const imageInput=useRef<HTMLInputElement>(null);
+  const selectionSpaceHeld=useRef(false);
+  useEffect(()=>{
+    // The native platform has a separate SpaceModifier flag whose physical
+    // key binding is not yet established. Reject this browser combination
+    // instead of misclassifying Ctrl+Space as the proven Ctrl-only mode.
+    const down=(event:KeyboardEvent)=>{
+      if(event.code==='Space'||event.key===' ')selectionSpaceHeld.current=true;
+      const gesture=drag.current?.selectionResize;
+      if(gesture&&(selectionSpaceHeld.current||event.metaKey)){
+        event.preventDefault();event.stopImmediatePropagation();gesture.session.cancel();setNotice('Selection resize with Space or Meta is not available yet');
+      }
+    };
+    const up=(event:KeyboardEvent)=>{if(event.code==='Space'||event.key===' ')selectionSpaceHeld.current=false};
+    const blur=()=>{selectionSpaceHeld.current=false};
+    window.addEventListener('keydown',down,true);window.addEventListener('keyup',up,true);window.addEventListener('blur',blur);
+    return()=>{window.removeEventListener('keydown',down,true);window.removeEventListener('keyup',up,true);window.removeEventListener('blur',blur)};
+  },[]);
   const page=resolveAdaptivePage(doc,doc.pages.find(p=>p.id===pageId)??doc.pages[0]);
-  useEffect(()=>{setOpenPageIds([doc.pages[0].id]);setPageNodeId(doc.pages[0].id);setPageId(doc.pages[0].id);setSearch('')},[doc.id]);
-  useEffect(()=>{const missing=!doc.pages.some(p=>p.id===pageId);setOpenPageIds(ids=>{const next=ids.filter(id=>doc.pages.some(p=>p.id===id));if(missing&&!gallery&&!next.includes(doc.pages[0].id))next.push(doc.pages[0].id);return next.length===ids.length&&next.every((id,index)=>id===ids[index])?ids:next});if(missing){setPageId(doc.pages[0].id);setPageNodeId(doc.pages[0].id);setPanelPath(null);setAdaptiveViewId(null);setSelected([]);setEditing(null)}},[doc.pages,pageId,gallery]);
+  useEffect(()=>{++pageNavigationEpoch.current;pageVisits.current=pageVisitHistory(doc.pages[0].id);setOpenPageIds([doc.pages[0].id]);setPageNodeId(doc.pages[0].id);setPageId(doc.pages[0].id);setSearch('')},[doc.id]);
+  useEffect(()=>{const missing=!doc.pages.some(p=>p.id===pageId);pageVisits.current=retainPageHistory(pageVisits.current,doc.pages.map(p=>p.id));setOpenPageIds(ids=>{const next=ids.filter(id=>doc.pages.some(p=>p.id===id));if(missing&&!gallery&&!next.includes(doc.pages[0].id))next.push(doc.pages[0].id);return next.length===ids.length&&next.every((id,index)=>id===ids[index])?ids:next});if(missing){++pageNavigationEpoch.current;if(!gallery)pageVisits.current=visitPage(pageVisits.current,doc.pages[0].id);setPageId(doc.pages[0].id);setPageNodeId(doc.pages[0].id);setPanelPath(null);setAdaptiveViewId(null);setSelected([]);setEditing(null)}},[doc.pages,pageId,gallery]);
   const activeView=page.adaptiveViews.find(view=>view.id===adaptiveViewId);
   const viewId=activeView?.id??null;const canvasWidth=activeView?.width||page.width;const canvasHeight=activeView?.height||page.height;
   const pageWidgets=resolveAdaptiveWidgets(page,viewId);
@@ -111,13 +150,18 @@ export default function App(){
   // A Layer gesture is tied to one immutable view/scope. Live previews must
   // never become the input for the next frame or survive a context switch.
   useEffect(()=>{
-    const context=drag.current?.layerResize;
+    const active=drag.current,context=active?.selectionResize?.context??active?.layerResize;
     if(!context)return;
-    if(context.documentId!==doc.id){drag.current=null;return;}
+    if(context.documentId!==doc.id){if(active?.selectionResize)active.selectionResize.session.cancel();else drag.current=null;return;}
     if(context.pageId!==page.id||context.viewId!==viewId||context.scopeId!==(panel?.id??null)||context.stateId!==activeState?.id||context.zoom!==zoom||preview||gallery||tool!=='select')pointerCancel();
   },[doc.id,page.id,viewId,panel?.id,activeState?.id,zoom,preview,gallery,tool]);
   const scopePlaced=!panel||isAdaptiveWidgetPlaced(pageWidgets,panel.id);
   const canvasWidgets=scopePlaced?widgets.filter(w=>w.placed!==false):[];
+  const selectedControls=canvasWidgets.filter(widget=>selected.includes(widget.id));
+  const selectionGroup=selectedControls.length>1&&selectedControls.length===selected.length&&selectedControls.every(widget=>widget.selectionText&&(widget.type==='checkbox'||widget.type==='radio')&&widget.rotation===0)
+    ? {x:Math.min(...selectedControls.map(widget=>widget.x)),y:Math.min(...selectedControls.map(widget=>widget.y)),
+      right:Math.max(...selectedControls.map(widget=>widget.x+widget.width)),bottom:Math.max(...selectedControls.map(widget=>widget.y+widget.height)),
+      target:selectedControls.find(widget=>!widget.locked)}:undefined;
   useEffect(()=>{if(panel&&!scopePlaced){setPanelPath(null);setSelected([]);setEditing(null);setRichEditing(null)}},[panel?.id,scopePlaced]);
   const selectedTable=tableSelection&&selected.includes(tableSelection.tableId)?widgets.find(w=>w.id===tableSelection.tableId&&w.type==='table'):undefined;
   const selectedMenuRoot=menuSelection&&selected.includes(menuSelection.rootMenuId)?widgets.find(w=>w.id===menuSelection.rootMenuId&&w.type==='menu'):undefined;
@@ -133,6 +177,8 @@ export default function App(){
   const treeCurrent=selectedTreeNode?(treeSelection?.part==='label'?selectedTreeNode.treeNode!.label:selectedTreeNode):undefined;
   const current=treeCurrent??menuCurrent??selectedTable?.table?.cells.find(cell=>cell.id===(tableSelection?.focusCellId??tableSelection?.cellIds[0]))??rootCurrent;
   const selectionCommandSerial=useRef(0);
+  const selectionPropertyQueue=useRef<{serial:number;context:string;expected:Document;chain:Promise<boolean|void>}|null>(null);
+  const selectionLayoutPending=useRef<{serial:number;context:string;source:Document}|null>(null);
   const selectionCommandContext=useRef('');
   const nextSelectionCommandContext=JSON.stringify([doc.id,page.id,viewId,panel?.id,activeState?.id,zoom,selected,preview,gallery,tool,editing,richEditing,placementAllViews,effectPreview?.field]);
   // Switching away and back is still cancellation, even when the final
@@ -140,6 +186,7 @@ export default function App(){
   if(selectionCommandContext.current!==nextSelectionCommandContext){
     ++selectionCommandSerial.current;selectionCommandContext.current=nextSelectionCommandContext;
   }
+  useEffect(()=>{const gesture=drag.current?.selectionResize;if(gesture&&gesture.contextKey!==nextSelectionCommandContext)gesture.session.cancel()},[nextSelectionCommandContext]);
   const activeTable=selectedTable??(rootCurrent?.type==='table'?rootCurrent:undefined);
   useEffect(()=>{setTreeSelection(null);setRevealedTreeIds([]);setMenuSelection(null);setExpandedMenuIds([]);setTableSelection(null);tableSelectionDrag.current=null},[page.id,panel?.id,activeState?.id,viewId,preview,gallery,doc.id,tool]);
   useEffect(()=>{if(!tableSelection)return;if(!selectedTable){setTableSelection(null);return}const ids=tableSelection.cellIds.filter(id=>selectedTable.table!.cells.some(cell=>cell.id===id));if(ids.length!==tableSelection.cellIds.length)setTableSelection(ids.length?{...tableSelection,cellIds:ids,anchorCellId:ids.includes(tableSelection.anchorCellId??'')?tableSelection.anchorCellId:ids[0],focusCellId:ids.includes(tableSelection.focusCellId??'')?tableSelection.focusCellId:ids[0]}:null)},[selectedTable,tableSelection]);
@@ -166,8 +213,8 @@ export default function App(){
   function enterPointEditing(widget:Widget){if(!widget.vectorPath||widget.locked||widget.hidden||widget.placed===false||rootCurrent?.placed===false||vectorEditPathUnsupportedReason(widget))return;setEditing(null);setRichEditing(null);setEffectPreview(null);setTool('select');setPointEditingId(widget.id)}
   function editPoints(){if(current)enterPointEditing(current)}
   const linkedInstance=panel?.componentInstance?panel:current?.componentInstance?current:undefined;
-  const commit=useCallback((next:Document)=>{if(next===docRef.current)return;setPast(p=>[...p.slice(-99),docRef.current]);setFuture([]);setDoc(next);setSaved(false)},[]);
-  function changeWidgets(next:Widget[],history=true,explicitViewTextStyle?:Partial<WidgetStyle>,sourceDocument=docRef.current,structureAcrossViews=false){
+  const commit=useCallback((next:Document)=>{if(drag.current?.selectionResize){setNotice('Finish or cancel the selection resize before editing.');return;}const previous=docRef.current;if(next===previous)return;setPast(p=>[...p.slice(-99),previous]);setFuture([]);docRef.current=next;setDoc(next);setSaved(false)},[]);
+  function planWidgetChanges(next:Widget[],explicitViewTextStyle?:Partial<WidgetStyle>,sourceDocument=docRef.current,structureAcrossViews=false){
     const p=resolveAdaptivePage(sourceDocument,sourceDocument.pages.find(p=>p.id===page.id)!);const full=resolveAdaptiveWidgets(p,viewId);
     const list=panel?updateWidgetTree(full,panel.id,w=>panel.type==='layer'?{layer:{...w.layer!,widgets:next}}:panel.type==='repeater'?{repeater:{...w.repeater!,template:next}}:{states:w.states!.map(s=>s.id===activeState?.id?{...s,widgets:next}:s)}):next;
     let changed=applyAdaptiveWidgetEdits(p,viewId,list,{placementAllViews:structureAcrossViews||placementAllViews,allViews:placementAllViews,explicitTextStyle:explicitViewTextStyle,explicitTextWidgetIds:selected});
@@ -175,9 +222,17 @@ export default function App(){
       const patch=Object.fromEntries([...RICH_TEXT_STYLE_KEYS,'textAlign','lineHeight'].filter(key=>Object.hasOwn(explicitViewTextStyle,key)).map(key=>[key,explicitViewTextStyle[key as keyof WidgetStyle]??(key==='fontStyle'?'normal':key==='lineHeight'?1.35:key==='underline'||key==='strikethrough'?false:undefined)]));
       if(Object.keys(patch).length)changed={...changed,adaptiveViews:changed.adaptiveViews.map(view=>view.id!==viewId?view:{...view,overrides:{...view.overrides,...Object.fromEntries(next.filter(w=>selected.includes(w.id)&&w.richText).map(w=>[w.id,{...view.overrides[w.id],style:{...view.overrides[w.id]?.style,...patch}}]))}})};
     }
-    const result=changed===p?sourceDocument:commitAdaptivePage(sourceDocument,changed);
+    return changed===p?sourceDocument:commitAdaptivePage(sourceDocument,changed);
+  }
+  function changeWidgets(next:Widget[],history=true,explicitViewTextStyle?:Partial<WidgetStyle>,sourceDocument=docRef.current,structureAcrossViews=false){
+    const result=planWidgetChanges(next,explicitViewTextStyle,sourceDocument,structureAcrossViews);
     if(result===docRef.current||JSON.stringify(result)===JSON.stringify(docRef.current))return;
     if(history)commit(result);else{docRef.current=result;setDoc(result);setSaved(false)}
+  }
+  function scopedWidgets(source:Document){
+    const p=resolveAdaptivePage(source,source.pages.find(item=>item.id===page.id)!);
+    const full=resolveAdaptiveWidgets(p,viewId),owner=panel?findWidget({widgets:full},panel.id):undefined;
+    return owner?.layer?.widgets??owner?.repeater?.template??owner?.states?.find(state=>state.id===activeState?.id)?.widgets??full;
   }
   function changePointPath(widgetId:string,vectorPath:VectorPath){
     try{const source=docRef.current,p=resolveAdaptivePage(source,source.pages.find(p=>p.id===page.id)!);const changed=applyAdaptivePointEdit(p,viewId,widgetId,vectorPath);if(changed!==p)commit(commitAdaptivePage(source,changed))}catch(error){setNotice(error instanceof Error?error.message:String(error))}
@@ -187,7 +242,13 @@ export default function App(){
   function beginTextEdit(w:Widget){if(w.placed===false||rootCurrent?.placed===false)return;if(w.layer){if(!w.locked){setPanelPath(w.id);setSelected([])}return}if(w.type==='inlineFrame'){setFrameTargetEditing(w.id);return}if(['table','menu','tree','treeNode'].includes(w.type)){setNotice('Select an item to edit its text');return}if((RICH_TEXT_WIDGET_TYPES as readonly string[]).includes(w.type))editRichText(w.id);else setEditing(w.id)}
   function applyRichText(richText:RichText){
     if(!richEditingWidget)return;
-    if(JSON.stringify(richText)!==JSON.stringify(parseRichText(richEditingWidget.richText??richTextFromPlainText(richEditingWidget.text))))changeWidgets(updateWidgetTree(widgets,richEditingWidget.id,{text:richTextPlainText(richText),richText}));
+    if(JSON.stringify(richText)!==JSON.stringify(parseRichText(richEditingWidget.richText??richTextFromPlainText(richEditingWidget.text)))){
+      if(richEditingWidget.selectionText){
+        const id=richEditingWidget.id,content=structuredClone(richText);
+        return queueSelectionProperties(source=>planWidgetChanges(updateWidgetTree(scopedWidgets(source),id,{text:richTextPlainText(content),richText:content}),undefined,source),[id],()=>({kind:'textChanged'}),()=>setRichEditing(null));
+      }
+      changeWidgets(updateWidgetTree(widgets,richEditingWidget.id,{text:richTextPlainText(richText),richText}));
+    }
     setRichEditing(null);
   }
   function selectTree(root:Widget,nodeId?:string,part:'node'|'label'='node',reveal=false){
@@ -338,7 +399,7 @@ export default function App(){
     return {widget,displayPatch};
   }
   useEffect(()=>{
-    const owns=(event:ClipboardEvent)=>{const element=event.target as HTMLElement|null;return selectedTable&&tableSelection&&!preview&&!gallery&&!tablePaste&&!element?.closest('input,textarea,select,[contenteditable="true"]')};
+    const owns=(event:ClipboardEvent)=>{const element=event.target as HTMLElement|null;return selectedTable&&tableSelection&&!preview&&!gallery&&!tablePaste&&!quick&&!variables&&!element?.closest('input,textarea,select,[contenteditable="true"],[role="dialog"],.modal-backdrop')};
     const onPaste=(event:ClipboardEvent)=>{if(!owns(event))return;event.preventDefault();try{pasteTableClipboard(event.clipboardData?.getData('text/plain')??'')}catch(error){setNotice(String(error))}};
     const onCopy=(event:ClipboardEvent)=>{if(!owns(event))return;event.preventDefault();const text=copyTableText(selectedTable!,tableSelection!.cellIds);tableClipboard.current=text;event.clipboardData?.setData('text/plain',text);if(event.type==='cut')removeSelected()};
     document.addEventListener('paste',onPaste);document.addEventListener('copy',onCopy);document.addEventListener('cut',onCopy);
@@ -398,15 +459,8 @@ export default function App(){
       return JSON.stringify(result)===JSON.stringify(source)?source:result;
     }catch(error){setNotice(`Group resize unavailable: ${error instanceof Error?error.message:String(error)}`);return;}
   }
-  async function editSelectionLayout(command:SelectionAuthorCommand){
-    const serial=++selectionCommandSerial.current,source=docRef.current,context=selectionCommandContext.current;
-    const stillCurrent=()=>serial===selectionCommandSerial.current&&docRef.current===source&&selectionCommandContext.current===context&&!drag.current&&!tableResize.current;
-    try{
-      const targets=widgets.filter(widget=>selected.includes(widget.id));
-      if(!targets.length||targets.length!==selected.length||targets.some(widget=>!widget.selectionText||!['checkbox','radio'].includes(widget.type)))
-        throw Error('Edit selection control layout separately from other widget types');
-      const sessions=targets.map(widget=>{
-        const ancestors=(widgetOwnershipPath(pageWidgets,widget.id)??[]).slice(0,-1);
+  function prepareSelectionMeasurement(widget:Widget,p:Page,full:Widget[]){
+        const ancestors=(widgetOwnershipPath(full,widget.id)??[]).slice(0,-1);
         if(ancestors.some(owner=>!owner.layer||owner.rotation!==0))
           throw Error('Selection text fitting inside containers is not available yet');
         if(widget.rotation!==0)throw Error('Text fitting for rotated selection controls is not available');
@@ -415,35 +469,198 @@ export default function App(){
         // The effective declaration has its view style on the owner, while
         // stored rich runs remain shared. Project only the explicit view text
         // patch into this measurement snapshot; never persist that projection.
-        const textPatch=projectTextStyleOverride(resolveAdaptiveOverride(page,viewId,widget.id)?.style??{});
+        const textPatch=projectTextStyleOverride(resolveAdaptiveOverride(p,viewId,widget.id)?.style??{});
         const measuredSource=widget.richText?{...widget,richText:applyRichTextStyle(widget.richText,textPatch)}:widget;
         const session=selectionAuthorMeasurer.prepare(measuredSource,document);
         if(!session)throw Error('Selection text layout requires explicit padding, alignment and indicator size');
         return session;
+  }
+  function startSelectionResize(d:Drag,handle:keyof typeof LAYER_RESIZE_HANDLES,initialModifiers:SelectionPointerInputModifiers,downPoint:{x:number;y:number}){
+    const source=d.document!,context=layerResizeContext(),contextKey=selectionCommandContext.current,serial=selectionCommandSerial.current;
+    type Resize=ReturnType<typeof prepareSelectionPointerResize>;
+    type Rotate=ReturnType<typeof prepareSelectionPointerRotate>;
+    type Prepared={mode:'resize';original:Resize['original'];input:ReturnType<typeof prepareSelectionPointerInput>}
+      |{mode:'rotate';original:Rotate['original']};
+    type State={mode:'resize';model:Resize['state'];document:Document}|{mode:'rotate';model:Rotate['state'];document:Document};
+    let gesture:SelectionResizeGesture;
+    const finishHost=()=>{if(drag.current===d)drag.current=null;setSelectionGestureVersion(value=>value+1)};
+    const session=createSelectionPointerSession<Prepared,State>({
+      prepare:async()=>{
+        const p=resolveAdaptivePage(source,source.pages.find(item=>item.id===context.pageId)!);
+        const full=resolveAdaptiveWidgets(p,context.viewId);
+        const owners=d.ids.map(id=>{
+          const widget=findWidget({widgets:full},id);
+          if(!widget||!widget.selectionText||(widget.type!=='checkbox'&&widget.type!=='radio'))
+            throw Error('Resize selection controls separately from other widget types');
+          return widget;
+        });
+        const pointerHandle=LAYER_RESIZE_HANDLES[handle];
+        const bounds=selectionPointerBounds(owners);
+        const input=prepareSelectionPointerInput({targetCount:owners.length,handle:pointerHandle,
+          freedom:((pointerHandle&5?1:0)|(pointerHandle&10?2:0)) as 1|2|3,initialModifiers,
+          initialHotzonePoint:selectionPointerHotzonePoint(bounds,pointerHandle),
+          // Eight is this editor's explicit grid. Five device units are
+          // converted with its captured uniform zoom, not a native DPI claim.
+          grid:{enabled:snap,spacing:{width:8,height:8},tolerance:5/context.zoom}});
+        if(input.mode==='rotate'){
+          const targets=owners.map(widget=>{
+            if(widget.rotation!==0||(widgetOwnershipPath(full,widget.id)??[]).slice(0,-1).some(owner=>!owner.layer||owner.rotation!==0))
+              throw Error('Selection rotation requires unrotated page or group coordinates');
+            return {id:widget.id,type:widget.type as 'checkbox'|'radio',locked:widget.locked,rotation:0 as const,
+              ownerRect:{x:widget.x,y:widget.y,width:widget.width,height:widget.height}};
+          });
+          // Multi-Selection rotation writes only Location. It needs neither
+          // text-panel snapshots nor font readiness, and preserves fit flags.
+          const initial=prepareSelectionPointerRotate({targets,input,downPoint});
+          return {prepared:{mode:'rotate',original:initial.original},state:{mode:'rotate',model:initial.state,document:source}};
+        }
+        const targets=owners.map(widget=>{
+          const id=widget.id;
+          if(widget.locked&&(widget.rotation!==0||(widgetOwnershipPath(full,id)??[]).slice(0,-1).some(owner=>!owner.layer||owner.rotation!==0)))
+            throw Error('Selection resize requires unrotated page or group coordinates');
+          return {widget,measurement:widget.locked?undefined:prepareSelectionMeasurement(widget,p,full)};
+        });
+        await Promise.all(targets.flatMap(target=>target.measurement?[target.measurement.fontsReady()]:[]));
+        const inputs=targets.map(({widget,measurement})=>{
+          // A locked root contributes its geometry to the common bounds but
+          // native jbNm skips its layout. This unused panel is an opaque host
+          // placeholder, not a measurement or inference of its native cache.
+          const panel=measurement?.capturePanel()?.panel??(widget.locked?{x:0,y:0,width:0,height:0}:undefined);
+          if(!panel)throw Error('Selection text measurement is unavailable');
+          const flags=widget.selectionText!,text=widget.richText?richTextPlainText(widget.richText):widget.text;
+          return {id:widget.id,type:widget.type as 'checkbox'|'radio',locked:widget.locked,input:{
+            ownerRect:{x:widget.x,y:widget.y,width:widget.width,height:widget.height},textPanelRect:panel,
+            coordinateContext:{kind:'translation' as const,ownerRotation:0 as const,textRotation:0 as const,locationInDiagram:{x:widget.x,y:widget.y}},
+            rawFit:{width:flags.autoFitWidth,height:flags.autoFitHeight},effectiveFit:{width:flags.autoFitWidth,height:flags.autoFitHeight},
+            alignRight:flags.alignRight,empty:text==='',guard:false,padding:widget.style.textPadding!,
+            indicatorSize:widget.style.selectionButtonSize!,horizontalAlignment:widget.style.textAlign,verticalAlignment:widget.style.verticalAlign!,
+          },services:{...selectionAuthorGeometry,measureText:measurement?.measureText??(()=>{throw Error('Locked selection controls must not be measured')})}};
+        });
+        const initial=prepareSelectionPointerResize(inputs,LAYER_RESIZE_HANDLES[handle]);
+        return {prepared:{mode:'resize',original:initial.original,input},state:{mode:'resize',model:initial.state,document:source}};
+      },
+      plan:(prepared,state,request)=>{
+        if(prepared.mode==='rotate'&&state.mode==='rotate'){
+          const planned=planSelectionPointerRotate(prepared.original,state.model,request);
+          if(!planned.ok)throw Error(planned.reason);
+          let p=resolveAdaptivePage(state.document,state.document.pages.find(item=>item.id===context.pageId)!);
+          for(const target of planned.results)p=applySelectionAuthorWriteEffects(p,context.viewId,target.id,target.effects);
+          return {mode:'rotate',model:planned.state,document:commitAdaptivePage(state.document,p)};
+        }
+        if(prepared.mode!=='resize'||state.mode!=='resize')throw Error('Selection gesture mode changed after capture');
+        // Native xFY0 reads the live accepted bounds. Project each queued raw
+        // move here, after earlier frames and text-height corrections, not at
+        // event capture or against the gesture's immutable geometry snapshot.
+        const input=planSelectionPointerInput(prepared.input,{absolutePoint:request.point,
+          currentBounds:selectionPointerBounds(state.model.targets.map(target=>target.layout.ownerRect)),modifiers:request.modifiers});
+        if(!input.ok)throw Error(input.reason);
+        const planned=planSelectionPointerResize(prepared.original,state.model,{delta:input.delta,modifiers:input.layoutModifiers});
+        if(!planned.ok)throw Error(planned.reason);
+        let p=resolveAdaptivePage(state.document,state.document.pages.find(item=>item.id===context.pageId)!);
+        for(const target of planned.results)p=applySelectionAuthorEffects(p,context.viewId,target.id,target.result);
+        return {mode:'resize',model:planned.state,document:commitAdaptivePage(state.document,p)};
+      },
+      isCurrent:()=>drag.current===d&&docRef.current===gesture.lastPublished&&selectionCommandContext.current===contextKey&&selectionCommandSerial.current===serial,
+      publish:state=>{
+        if(JSON.stringify(state.document)!==JSON.stringify(gesture.lastPublished)){
+          gesture.lastPublished=state.document;docRef.current=state.document;setDoc(state.document);setSaved(false);
+        }
+      },
+      complete:state=>{
+        if(JSON.stringify(source)!==JSON.stringify(state.document)){
+          setPast(history=>[...history.slice(-99),source]);setFuture([]);setSaved(false);
+        }else setSaved(d.wasSaved??false);
+        finishHost();setNotice(state.mode==='rotate'?'Selection rotated':'Selection resized');
+      },
+      rollback:()=>{
+        if(docRef.current===gesture.lastPublished){docRef.current=source;setDoc(source);setSaved(d.wasSaved??false)}
+        finishHost();
+      },
+      failed:error=>setNotice(`Selection resize unavailable: ${error instanceof Error?error.message:String(error)}`),
+    });
+    gesture={context,contextKey,lastPublished:source,session};d.selectionResize=gesture;
+    setSelectionGestureVersion(value=>value+1);
+  }
+  async function planSelectionDocument(source:Document,candidate:Document,ids:string[],command:(before:Widget,after:Widget)=>SelectionAuthorCommand|undefined,stillCurrent:()=>boolean){
+      const beforePage=resolveAdaptivePage(source,source.pages.find(item=>item.id===page.id)!);
+      let next=resolveAdaptivePage(candidate,candidate.pages.find(item=>item.id===page.id)!);
+      const beforeWidgets=resolveAdaptiveWidgets(beforePage,viewId),afterWidgets=resolveAdaptiveWidgets(next,viewId);
+      const sessions=ids.flatMap(id=>{
+        const before=findWidget({widgets:beforeWidgets},id),after=findWidget({widgets:afterWidgets},id);
+        if(!before||!after)throw Error('Selection widget no longer exists');
+        const entry=command(before,after);if(!entry)return [];
+        return [{entry,before:prepareSelectionMeasurement(before,beforePage,beforeWidgets),after:prepareSelectionMeasurement(after,next,afterWidgets)}];
       });
-      await Promise.all(sessions.map(session=>session.fontsReady()));
+      await Promise.all(sessions.flatMap(session=>[session.before.fontsReady(),session.after.fontsReady()]));
       if(!stillCurrent())return;
       // Plan every target before touching the page. One measurement failure
       // must not persist an earlier target or create an undo entry.
       const plans=sessions.map(session=>{
-        const snapshot=session.sourceSnapshot(),panel=session.capturePanel();
+        const snapshot=session.after.sourceSnapshot(),panel=session.before.capturePanel();
         if(!panel)throw Error('Selection text measurement is unavailable');
-        const result=planSelectionAuthorCommand(snapshot,panel.panel,command,{
-          ...selectionAuthorGeometry,measureText:session.measureText,
+        const result=planSelectionAuthorCommand(snapshot,panel.panel,session.entry,{
+          ...selectionAuthorGeometry,measureText:session.after.measureText,
         });
         if(!result.ok)throw Error(result.reason);
         return {id:snapshot.id,result};
       });
-      let next=resolveAdaptivePage(source,source.pages.find(item=>item.id===page.id)!);
       for(const plan of plans)next=applySelectionAuthorEffects(next,viewId,plan.id,plan.result);
-      const result=commitAdaptivePage(source,next);
+      return commitAdaptivePage(candidate,next);
+  }
+  async function editSelectionLayout(command:SelectionAuthorCommand){
+    if(drag.current?.selectionResize){setNotice('Finish or cancel the selection resize before editing.');return;}
+    const pending=selectionPropertyQueue.current;
+    if(pending&&pending.serial===selectionCommandSerial.current&&pending.context===selectionCommandContext.current&&pending.expected===docRef.current){
+      const targets=widgets.filter(widget=>selected.includes(widget.id));
+      if(!targets.length||targets.length!==selected.length||targets.some(widget=>!widget.selectionText||!['checkbox','radio'].includes(widget.type))){setNotice('Selection layout unavailable: Edit selection control layout separately from other widget types');return;}
+      queueSelectionProperties(source=>source,selected,()=>command,undefined,true);return;
+    }
+    const serial=++selectionCommandSerial.current,source=docRef.current,context=selectionCommandContext.current;
+    const pendingLayout={serial,source,context};selectionLayoutPending.current=pendingLayout;
+    const stillCurrent=()=>serial===selectionCommandSerial.current&&docRef.current===source&&selectionCommandContext.current===context&&!drag.current&&!tableResize.current;
+    try{
+      const targets=widgets.filter(widget=>selected.includes(widget.id));
+      if(!targets.length||targets.length!==selected.length||targets.some(widget=>!widget.selectionText||!['checkbox','radio'].includes(widget.type)))
+        throw Error('Edit selection control layout separately from other widget types');
+      const result=await planSelectionDocument(source,source,selected,()=>command,stillCurrent);
+      if(!result)return;
       if(!stillCurrent())return;
       if(JSON.stringify(result)!==JSON.stringify(source))commit(result);
       setNotice('Selection layout updated');
     }catch(error){if(stillCurrent())setNotice(`Selection layout unavailable: ${error instanceof Error?error.message:String(error)}`)}
+    finally{if(selectionLayoutPending.current===pendingLayout)selectionLayoutPending.current=null;}
+  }
+  function queueSelectionProperties(build:(source:Document)=>Document,ids:string[],command:(before:Widget,after:Widget)=>SelectionAuthorCommand|undefined,onAccepted?:()=>void,planUnchanged=false){
+    if(drag.current?.selectionResize){setNotice('Finish or cancel the selection resize before editing.');return Promise.resolve(false);}
+    const context=selectionCommandContext.current;
+    let group=selectionPropertyQueue.current;
+    if(!group||group.serial!==selectionCommandSerial.current||group.context!==context||group.expected!==docRef.current){
+      group={serial:++selectionCommandSerial.current,context,expected:docRef.current,chain:Promise.resolve()};
+      selectionPropertyQueue.current=group;
+    }
+    const queue=group;
+    const valid=()=>queue.serial===selectionCommandSerial.current&&queue.context===selectionCommandContext.current&&queue.expected===docRef.current&&!drag.current&&!tableResize.current;
+    const run=queue.chain.then(async()=>{
+      if(!valid())return false;
+      const source=queue.expected,candidate=build(source);
+      const result=!planUnchanged&&JSON.stringify(candidate)===JSON.stringify(source)?source:await planSelectionDocument(source,candidate,ids,command,valid);
+      if(!result||!valid())return false;
+      const accept=()=>{if(JSON.stringify(result)!==JSON.stringify(source)){commit(result);queue.expected=result;}setNotice('Selection layout updated');onAccepted?.();};
+      // A rich draft's successful Promise must acknowledge both its document
+      // commit and editor teardown before a waiting navigation checks the DOM.
+      if(onAccepted)flushSync(accept);else accept();return true;
+    }).catch(error=>{if(valid()){++selectionCommandSerial.current;setNotice(`Selection layout unavailable: ${error instanceof Error?error.message:String(error)}`)}return false;});
+    queue.chain=run;
+    void run.then(()=>{if(selectionPropertyQueue.current===queue&&queue.chain===run)selectionPropertyQueue.current=null;});
+    return run;
   }
   function patchSelected(patch:Partial<Widget>,explicitTextStyle?:Partial<WidgetStyle>,styleIntent?:WidgetStyleEditIntent){
-    ++selectionCommandSerial.current;
+    if(drag.current?.selectionResize){setNotice('Finish or cancel the selection resize before editing.');return;}
+    const selectionPropertyIds=widgets.filter(widget=>selected.includes(widget.id)&&widget.selectionText&&['checkbox','radio'].includes(widget.type)).map(widget=>widget.id);
+    const textProperty=Object.hasOwn(patch,'text')||Object.hasOwn(patch,'richText');
+    const propertyEdit=selectionPropertyIds.length>0&&!selectedTable&&!localMenuSelection&&!localTreeSelection&&!(styleIntent?.kind==='corners'&&styleIntent.effect)&&(textProperty||Boolean(patch.style||explicitTextStyle));
+    const pendingProperties=selectionPropertyQueue.current?.serial===selectionCommandSerial.current&&selectionPropertyQueue.current?.context===selectionCommandContext.current&&selectionPropertyQueue.current?.expected===docRef.current;
+    if(!propertyEdit&&!pendingProperties)++selectionCommandSerial.current;
     const sizeEdit=Object.hasOwn(patch,'width')||Object.hasOwn(patch,'height');
     if(patch.selectionText&&current?.selectionText){
       const keys=(['autoFitWidth','autoFitHeight','alignRight'] as const).filter(key=>patch.selectionText![key]!==current.selectionText![key]);
@@ -467,12 +684,13 @@ export default function App(){
       if(selectedTree&&selectedTreeNode&&treeSelection){changeTree(selectedTree,root=>treeSelection.part==='label'?patchTreeLabel(root,selectedTreeNode.id,edit):updateTreeNode(root,selectedTreeNode.id,edit));return;}
       if(activeMenuRoot&&activeMenu&&localMenuSelection){changeMenu(activeMenuRoot,activeMenu.id,menu=>menuSelection?.cellId?patchMenuItems(menu,[menuSelection.cellId],edit):edit(menu));return;}
       if(selectedTable&&tableSelection){changeTable(patchTableCells(selectedTable,tableSelection.cellIds,edit));return;}
+      if(propertyEdit||pendingProperties){queueSelectionProperties(source=>planWidgetChanges(scopedWidgets(source).map(widget=>selected.includes(widget.id)?edit(widget):widget),undefined,source),selectionPropertyIds,(before,after)=>JSON.stringify(before)===JSON.stringify(after)?undefined:{kind:'properties',indicatorChanged:false});return;}
       changeWidgets(widgets.map(widget=>selected.includes(widget.id)?edit(widget):widget));return;
     }
     // Point geometry is a current-widget-only shared-content command, including the first box-to-path conversion.
     if(Object.hasOwn(patch,'vectorPath')){if(current&&patch.vectorPath)changePointPath(current.id,patch.vectorPath);return;}
     const targetStylePatch=(target:Widget,command:Partial<WidgetStyle>)=>filterLineStylePatch(target,resolveWidgetStyleCommand(target,command,styleIntent));
-    if(styleIntent?.kind==='corners'){
+    if(styleIntent?.kind==='corners'&&!propertyEdit){
       const edit=(target:Widget):Widget=>{
         if(!supportsCornerEditing(target))return target;
         if(styleIntent.effect){
@@ -512,7 +730,7 @@ export default function App(){
     const framePatch=Object.hasOwn(patch,'inlineFrame')?{inlineFrame}:undefined;
 
     const selectPatch=Object.fromEntries(Object.entries({options,selectMode,multiple,selectedIndices}).filter(([key])=>Object.hasOwn(patch,key)));
-    changeWidgets(widgets.map(w=>{
+    const editWidget=(w:Widget)=>{
       if(!selected.includes(w.id))return w;
       if(w.layer){const moved=moveLayer(w,patch.x??w.x,patch.y??w.y);return {...moved,...sharedPatch,x:moved.x,y:moved.y,width:moved.width,height:moved.height,rotation:w.rotation,text:'',richText:undefined,style:w.style,layer:w.id===current?.id&&layer?{...moved.layer!,propagate:layer.propagate}:moved.layer}}
       if(w.type==='inlineFrame')return {...w,...sharedPatch,...(w.id===current?.id?framePatch:undefined),text:'',richText:undefined,style:styleChanges?mergeWidgetStyle(w.style,targetStylePatch(w,styleChanges)):w.style};
@@ -523,15 +741,66 @@ export default function App(){
       if(Object.hasOwn(patch,'text'))next=replaceWidgetText(next,patch.text!);
       if(explicitTextStyle&&!viewId&&!placementAllViews)next=patchWidgetTextStyle(next,targetStylePatch(w,explicitTextStyle));
       return next;
-    }),true,explicitTextStyle);
+    };
+    if(propertyEdit||pendingProperties){
+      queueSelectionProperties(source=>planWidgetChanges(scopedWidgets(source).map(editWidget),explicitTextStyle,source),selectionPropertyIds,(before,after)=>{
+        if(!propertyEdit||JSON.stringify(before)===JSON.stringify(after))return;
+        return textProperty?{kind:'textChanged'}:{kind:'properties',indicatorChanged:before.style.selectionButtonSize!==after.style.selectionButtonSize};
+      });
+    }else changeWidgets(widgets.map(editWidget),true,explicitTextStyle);
   }
   function undo(){++selectionCommandSerial.current;if(drag.current||tableResize.current){pointerCancel();return}if(!past.length)return;resetVectorTools();const previous=past[past.length-1];setFuture(f=>[docRef.current,...f]);setPast(p=>p.slice(0,-1));setDoc(previous);setSelected([]);setSaved(false)}
   function redo(){++selectionCommandSerial.current;if(drag.current||tableResize.current){pointerCancel();return}if(!future.length)return;resetVectorTools();setPast(p=>[...p,docRef.current]);setDoc(future[0]);setFuture(f=>f.slice(1));setSelected([]);setSaved(false)}
-  function switchPage(id:string){resetVectorTools();setEditing(null);setPageId(id);setPageNodeId(id);setOpenPageIds(ids=>ids.includes(id)?ids:[...ids,id]);setPanelPath(null);setAdaptiveViewId(null);setSelected([]);setGallery(false)}
+  function switchPage(id:string,recordVisit=true){++pageNavigationEpoch.current;if(recordVisit)pageVisits.current=visitPage(pageVisits.current,id);resetVectorTools();setEditing(null);setPageId(id);setPageNodeId(id);setOpenPageIds(ids=>ids.includes(id)?ids:[...ids,id]);setPanelPath(null);setAdaptiveViewId(null);setSelected([]);setGallery(false)}
   function changePageTree(next:Document){if(next===docRef.current)return;resetVectorTools();commit(next);if(!next.pages.some(p=>p.id===page.id))switchPage(next.pages[0].id)}
-  function showGallery(){resetVectorTools();setSelected([]);setEditing(null);setPanelPath(null);setGallery(true)}
-  function closePageTab(id:string){const tabs=openPageIds.filter(value=>value!==id&&doc.pages.some(p=>p.id===value));setOpenPageIds(tabs);if(page.id===id&&!gallery){if(tabs.length)switchPage(tabs[Math.min(openPageIds.indexOf(id),tabs.length-1)]);else showGallery()}}
-  function addWidget(type:WidgetType,x=100,y=100,orientation:MenuOrientation=menuOrientation){if(gallery)switchPage(page.id);const w=type==='menu'?createMenu(orientation,x,y):type==='tree'?createTree(x,y):createWidget(type,x,y);changeWidgets([...widgets,w]);setSelected([w.id]);setTool('select');setNotice(`${w.name} added`)}
+  function showGallery(){++pageNavigationEpoch.current;resetVectorTools();setSelected([]);setEditing(null);setPanelPath(null);setGallery(true)}
+  function closePageTab(id:string){++pageNavigationEpoch.current;const tabs=openPageIds.filter(value=>value!==id&&doc.pages.some(p=>p.id===value));pageVisits.current=retainPageHistory(pageVisits.current,tabs);if(!pageVisits.current.ids.length&&tabs.length)pageVisits.current=pageVisitHistory(tabs[0]);setOpenPageIds(tabs);if(page.id===id&&!gallery){const next=pageVisits.current.ids[pageVisits.current.cursor];if(next)switchPage(next,false);else showGallery()}}
+  function closeAllPageTabs(){pageVisits.current=pageVisitHistory();setOpenPageIds([]);showGallery()}
+  function closeOtherPageTabs(id:string){pageVisits.current=retainPageHistory(pageVisits.current,[id]);setOpenPageIds([id]);switchPage(id)}
+  function pageTabDestination(command:PageTabCommand){
+    if(command==='historyForward'||command==='historyBack'){
+      const history=stepPageHistory(pageVisits.current,command==='historyForward'?1:-1);
+      return history===pageVisits.current?undefined:history.ids[history.cursor];
+    }
+    return gallery?undefined:adjacentPageTab(openPageIds,page.id,command==='visualNext'?1:-1);
+  }
+  function pageNavigationBlocked(){return preview||quick||variables||prototypeSettings||tablePaste||rpReport||frameTargetEditing||menu||Boolean(document.querySelector('[role="dialog"],.modal-backdrop,.page-context-menu,.dropdown-menu'))}
+  async function navigatePageTabs(command:PageTabCommand){
+    const closing=command==='close'||command==='closeAll';
+    if(pageNavigationBlocked()||!openPageIds.length||command==='close'&&gallery)return;
+    const destination=closing?undefined:pageTabDestination(command);
+    if(!closing&&!destination)return;
+    if(!closing&&destination===page.id&&!gallery){
+      // Removing intervening closed tabs can leave adjacent visits to the
+      // same page. Advance that cursor without resetting the active editor.
+      if(command==='historyForward'||command==='historyBack'){++pageNavigationEpoch.current;pageVisits.current=stepPageHistory(pageVisits.current,command==='historyForward'?1:-1);}
+      return;
+    }
+    const epoch=++pageNavigationEpoch.current,documentId=docRef.current.id;
+    if(drag.current||tableResize.current)flushSync(()=>pointerCancel());
+    // Numeric/plain drafts commit on blur. Rich drafts use their existing
+    // focusin guard, which may keep the editor mounted while fonts are measured.
+    if(document.querySelector('.rich-inline-editor'))surface.current?.focus({preventScroll:true});
+    else flushSync(()=>{if(document.activeElement instanceof HTMLElement)document.activeElement.blur()});
+    const layout=selectionLayoutPending.current;
+    if(layout&&layout.serial===selectionCommandSerial.current&&layout.context===selectionCommandContext.current&&layout.source===docRef.current){setNotice('Wait for the selection layout update before switching pages');return;}
+    const pending=selectionPropertyQueue.current;
+    if(pending){
+      if(pending.serial!==selectionCommandSerial.current||pending.context!==selectionCommandContext.current||pending.expected!==docRef.current)return;
+      let chain;
+      do{chain=pending.chain;if(await chain!==true)return;}while(chain!==pending.chain);
+      if(pending.expected!==docRef.current)return;
+    }
+    if(epoch!==pageNavigationEpoch.current||docRef.current.id!==documentId||pageNavigationBlocked()||document.querySelector('.rich-inline-editor'))return;
+    if(command==='close')closePageTab(page.id);
+    else if(command==='closeAll')closeAllPageTabs();
+    else if(destination&&docRef.current.pages.some(item=>item.id===destination)&&openPageIds.includes(destination)){
+      if(command==='historyForward'||command==='historyBack')pageVisits.current=stepPageHistory(pageVisits.current,command==='historyForward'?1:-1);
+      switchPage(destination,command==='visualNext'||command==='visualPrevious');
+    }
+    requestAnimationFrame(()=>surface.current?.focus({preventScroll:true}));
+  }
+  function addWidget(type:WidgetType,x=100,y=100,orientation:MenuOrientation=menuOrientation){if(gallery)switchPage(page.id);const w=type==='menu'?createMenu(orientation,x,y):type==='tree'?createTree(x,y):createLibraryWidget(type,x,y);changeWidgets([...widgets,w]);setSelected([w.id]);setTool('select');setNotice(`${w.name} added`)}
   function placeSelection(placed:boolean,allViews=placementAllViews,ids=selected){
     if(ids===selected&&(localTreeSelection||localMenuSelection||selectedTable)){setNotice('Select the whole table, menu or tree to change placement');return}
     try{const p=resolveAdaptivePage(docRef.current,docRef.current.pages.find(p=>p.id===page.id)!);const next=setAdaptivePlacement(p,viewId,ids,placed,allViews);if(next!==p){resetVectorTools();commit(commitAdaptivePage(docRef.current,next));setNotice(placed?'Placed in '+(allViews?'all views':'this view'):'Unplaced from '+(allViews?'all views':'this view'))}}catch(error){setNotice(String(error))}
@@ -572,12 +841,68 @@ export default function App(){
   async function makeComponent(){const list=widgets.filter(w=>selected.includes(w.id));if(!list.length)return;const name=await prompt('Component name','Component 1');if(!name)return;try{commit({...doc,components:[...doc.components,createComponent(list,name)]});setLibraryTab('Components');setNotice('Component created. Click its name to insert a linked copy.')}catch(e){setNotice(String(e))}}
   function publishComponent(){if(!linkedInstance)return;try{commit(applyComponentInstanceChanges(doc,linkedInstance.id));setNotice('Component changes applied to all linked copies')}catch(e){setNotice(String(e))}}
   function detachComponent(){if(!linkedInstance)return;const next=detachComponentInstance(linkedInstance);commit({...doc,pages:doc.pages.map(p=>p.id===page.id?{...p,widgets:updateWidgetTree(p.widgets,linkedInstance.id,()=>({...next,componentId:undefined,componentInstance:undefined}))}:p)});setNotice('Component detached; this copy is now a regular panel')}
-  function startDrag(e:ReactPointerEvent,w:Widget,handle?:string){++selectionCommandSerial.current;if(e.button!==0||w.placed===false||!scopePlaced)return;setTreeSelection(null);setMenuSelection(null);setTableSelection(null);e.stopPropagation();if(editing===w.id)return;if(pointEditing){setPointEditingId(null);setVectorDraft(null)}const groupIds=w.groupId?canvasWidgets.filter(a=>a.groupId===w.groupId).map(a=>a.id):[w.id];const ids=(e.shiftKey?[...new Set([...selected,...groupIds])]:selected.includes(w.id)?selected:groupIds).filter(id=>canvasWidgets.some(w=>w.id===id));const layerResize=Boolean(handle&&widgets.some(widget=>ids.includes(widget.id)&&widget.layer));if(layerResize&&ids.some(id=>!widgets.find(widget=>widget.id===id)?.layer)){setNotice('Resize groups separately from ordinary widgets. No widgets were changed.');return;}setSelected(ids);if(w.locked)return;drag.current={kind:handle?'resize':'move',startX:e.clientX,startY:e.clientY,original:structuredClone(widgets),ids,handle,document:docRef.current,wasSaved:saved,...(layerResize?{layerResize:layerResizeContext()}:{})};e.currentTarget.setPointerCapture(e.pointerId)}
+  function startDrag(e:ReactPointerEvent,w:Widget,handle?:string){
+    if(e.button!==0||w.placed===false||!scopePlaced)return;
+    e.stopPropagation();
+    // A rejected handle press must not select the frame label. Otherwise the
+    // next press can start a native text drag and cancel our pointer capture.
+    if(handle)e.preventDefault();
+    const pending=selectionPropertyQueue.current;
+    if(pending&&pending.serial===selectionCommandSerial.current&&pending.context===selectionCommandContext.current&&pending.expected===docRef.current){setNotice('Wait for the selection property edit to finish, then drag again.');return;}
+    const pendingLayout=selectionLayoutPending.current;
+    if(pendingLayout&&pendingLayout.serial===selectionCommandSerial.current&&pendingLayout.context===selectionCommandContext.current&&pendingLayout.source===docRef.current){setNotice('Wait for the selection layout edit to finish, then drag again.');return;}
+    if(drag.current?.selectionResize){setNotice('Finish or cancel the selection resize before starting another gesture.');return;}
+    if(editing===w.id)return;
+    const groupIds=w.groupId?canvasWidgets.filter(a=>a.groupId===w.groupId).map(a=>a.id):[w.id];
+    // A handle operates on the existing selection. Shift is a resize modifier
+    // here; additive group selection belongs to presses on widget bodies.
+    const ids=(e.shiftKey&&!handle?[...new Set([...selected,...groupIds])]:selected.includes(w.id)?selected:groupIds).filter(id=>canvasWidgets.some(w=>w.id===id));
+    const targets=widgets.filter(widget=>ids.includes(widget.id));
+    const selectionResize=Boolean(handle&&targets.some(widget=>widget.selectionText));
+    if(selectionResize&&(selectionSpaceHeld.current||e.metaKey)){setNotice('Selection resize with Space or Meta is not available yet');return;}
+    if(selectionResize&&targets.some(widget=>!widget.selectionText||(widget.type!=='checkbox'&&widget.type!=='radio'))){setNotice('Resize selection controls separately from other widget types. No widgets were changed.');return;}
+    if(selectionResize&&ids.length===1&&handle!=='w'&&handle!=='e')return;
+    const layerResize=Boolean(handle&&targets.some(widget=>widget.layer));
+    if(layerResize&&targets.some(widget=>!widget.layer)){setNotice('Resize groups separately from ordinary widgets. No widgets were changed.');return;}
+    ++selectionCommandSerial.current;setTreeSelection(null);setMenuSelection(null);setTableSelection(null);
+    if(pointEditing){setPointEditingId(null);setVectorDraft(null)}
+    setSelected(ids);if(w.locked)return;
+    const d:Drag={kind:handle?'resize':'move',startX:e.clientX,startY:e.clientY,original:structuredClone(widgets),ids,handle,document:docRef.current,wasSaved:saved,...(layerResize?{layerResize:layerResizeContext()}:{})};
+    drag.current=d;
+    if(selectionResize)startSelectionResize(d,handle as keyof typeof LAYER_RESIZE_HANDLES,{control:e.ctrlKey,alt:e.altKey,shift:e.shiftKey},point(e));
+    e.currentTarget.setPointerCapture(e.pointerId);
+  }
   function point(e:ReactPointerEvent){const rect=surface.current!.getBoundingClientRect();return{x:(e.clientX-rect.left)/zoom,y:(e.clientY-rect.top)/zoom}}
   function canvasDown(e:ReactPointerEvent){if(e.button!==0)return;setTreeSelection(null);setRevealedTreeIds([]);setTableSelection(null);if(tool==='hand'||tool==='pen')return;const p=point(e);if(tool!=='select'){addWidget(tool,p.x,p.y);return}setPointEditingId(null);if(!e.shiftKey)setSelected([]);drag.current={kind:'marquee',startX:p.x,startY:p.y,original:widgets,ids:[],initialSelection:e.shiftKey?selected.filter(id=>canvasWidgets.some(w=>w.id===id)):[]};setMarquee({x:p.x,y:p.y,width:0,height:0});e.currentTarget.setPointerCapture(e.pointerId)}
-  function pointerMove(e:ReactPointerEvent){const gridDrag=tableSelectionDrag.current;if(gridDrag){const table=widgets.find(w=>w.id===gridDrag.tableId),id=document.elementFromPoint(e.clientX,e.clientY)?.closest<HTMLElement>('[data-table-cell-id]')?.dataset.tableCellId;if(table&&id&&table.table!.cells.some(cell=>cell.id===id))setTableSelection({tableId:table.id,anchorCellId:gridDrag.anchor,focusCellId:id,cellIds:[...new Set([...gridDrag.initial,...tableRectangleIds(table,gridDrag.anchor,id)])]});return}const d=drag.current;if(!d)return;if(d.kind==='marquee'){const p=point(e);const r={x:Math.min(p.x,d.startX),y:Math.min(p.y,d.startY),width:Math.abs(p.x-d.startX),height:Math.abs(p.y-d.startY)};setMarquee(r);setSelected([...new Set([...(d.initialSelection??[]),...d.original.filter(w=>w.placed!==false&&rotatedBoundsIntersect(w.layer?{...w,rotation:0}:w,r)).map(w=>w.id)])]);return}let dx=(e.clientX-d.startX)/zoom,dy=(e.clientY-d.startY)/zoom;if(snap){dx=Math.round(dx/8)*8;dy=Math.round(dy/8)*8}if(e.shiftKey&&d.kind==='move'){if(Math.abs(dx)>Math.abs(dy))dy=0;else dx=0}if(d.layerResize&&d.document){const result=planLayerResizeDocument(d.document,d.original,d.ids,(d.handle??'se') as keyof typeof LAYER_RESIZE_HANDLES,()=>({x:dx,y:dy}),d.layerResize,{control:e.ctrlKey,alt:e.altKey,shift:e.shiftKey},true);const next=result??d.document;if(JSON.stringify(next)!==JSON.stringify(docRef.current)){docRef.current=next;setDoc(next);}setSaved(next===d.document?(d.wasSaved??false):false);return;}if(dx===0&&dy===0){changeWidgets(d.original,false,undefined,d.document);return}changeWidgets(d.original.map(w=>{if(!d.ids.includes(w.id)||w.locked||w.placed===false)return w;if(d.kind==='move')return translateWidget(w,Math.round(w.x+dx)-w.x,Math.round(w.y+dy)-w.y);if(w.layer)return w;const h=d.handle??'se';const {width,height}=resizeRotatedBounds(w,h,{x:dx,y:dy});const resized=w.type==='menu'?resizeMenu(w,Math.max(w.menu!.padding[1]+w.menu!.padding[3]+w.menu!.table.table!.columnWidths.length,width),Math.max(w.menu!.padding[0]+w.menu!.padding[2]+w.menu!.table.table!.rowHeights.length,height)):w.type==='table'?resizeTable(w,Math.max(w.table!.columnWidths.length,width),Math.max(w.table!.rowHeights.length,height)):{...w,width:width,height:height};return{...resized,...anchorRotatedResize(w,h,resized.width,resized.height)}}),false,undefined,d.document)}
-  function pointerUp(){tableSelectionDrag.current=null;const d=drag.current;drag.current=null;setMarquee(null);if(d?.document){if(JSON.stringify(d.document)!==JSON.stringify(docRef.current)){setPast(p=>[...p.slice(-99),d.document!]);setFuture([])}else setSaved(d.wasSaved??false)}}
-  function pointerCancel(){tableSelectionDrag.current=null;const tableDrag=tableResize.current;tableResize.current=null;if(tableDrag){docRef.current=tableDrag.document;setDoc(tableDrag.document);setSaved(tableDrag.wasSaved)}const d=drag.current;drag.current=null;setMarquee(null);if(d?.document){docRef.current=d.document;setDoc(d.document);setSaved(d.wasSaved??false)}}
+  function pointerMove(e:ReactPointerEvent){const gridDrag=tableSelectionDrag.current;if(gridDrag){const table=widgets.find(w=>w.id===gridDrag.tableId),id=document.elementFromPoint(e.clientX,e.clientY)?.closest<HTMLElement>('[data-table-cell-id]')?.dataset.tableCellId;if(table&&id&&table.table!.cells.some(cell=>cell.id===id))setTableSelection({tableId:table.id,anchorCellId:gridDrag.anchor,focusCellId:id,cellIds:[...new Set([...gridDrag.initial,...tableRectangleIds(table,gridDrag.anchor,id)])]});return}const d=drag.current;if(!d)return;if(d.selectionResize){if(selectionSpaceHeld.current||e.metaKey){d.selectionResize.session.cancel();setNotice('Selection resize with Space or Meta is not available yet');return;}const request=selectionPointerRequest(e,d);d.selectionResize.session.update(request);return;}if(d.kind==='marquee'){const p=point(e);const r={x:Math.min(p.x,d.startX),y:Math.min(p.y,d.startY),width:Math.abs(p.x-d.startX),height:Math.abs(p.y-d.startY)};setMarquee(r);setSelected([...new Set([...(d.initialSelection??[]),...d.original.filter(w=>w.placed!==false&&rotatedBoundsIntersect(w.layer?{...w,rotation:0}:w,r)).map(w=>w.id)])]);return}let dx=(e.clientX-d.startX)/zoom,dy=(e.clientY-d.startY)/zoom;if(snap){dx=Math.round(dx/8)*8;dy=Math.round(dy/8)*8}if(e.shiftKey&&d.kind==='move'){if(Math.abs(dx)>Math.abs(dy))dy=0;else dx=0}if(d.layerResize&&d.document){const result=planLayerResizeDocument(d.document,d.original,d.ids,(d.handle??'se') as keyof typeof LAYER_RESIZE_HANDLES,()=>({x:dx,y:dy}),d.layerResize,{control:e.ctrlKey,alt:e.altKey,shift:e.shiftKey},true);const next=result??d.document;if(JSON.stringify(next)!==JSON.stringify(docRef.current)){docRef.current=next;setDoc(next);}setSaved(next===d.document?(d.wasSaved??false):false);return;}if(dx===0&&dy===0){changeWidgets(d.original,false,undefined,d.document);return}changeWidgets(d.original.map(w=>{if(!d.ids.includes(w.id)||w.locked||w.placed===false)return w;if(d.kind==='move')return translateWidget(w,Math.round(w.x+dx)-w.x,Math.round(w.y+dy)-w.y);if(w.layer)return w;const h=d.handle??'se';const {width,height}=resizeRotatedBounds(w,h,{x:dx,y:dy});const resized=w.type==='menu'?resizeMenu(w,Math.max(w.menu!.padding[1]+w.menu!.padding[3]+w.menu!.table.table!.columnWidths.length,width),Math.max(w.menu!.padding[0]+w.menu!.padding[2]+w.menu!.table.table!.rowHeights.length,height)):w.type==='table'?resizeTable(w,Math.max(w.table!.columnWidths.length,width),Math.max(w.table!.rowHeights.length,height)):{...w,width:width,height:height};return{...resized,...anchorRotatedResize(w,h,resized.width,resized.height)}}),false,undefined,d.document)}
+  function selectionPointerRequest(e:ReactPointerEvent,d:Drag):SelectionPointerRequest{
+    const rect=surface.current!.getBoundingClientRect(),scale=d.selectionResize!.context.zoom;
+    return {point:{x:(e.clientX-rect.left)/scale,y:(e.clientY-rect.top)/scale},modifiers:{control:e.ctrlKey,alt:e.altKey,shift:e.shiftKey}};
+  }
+  function pointerUp(){
+    tableSelectionDrag.current=null;const d=drag.current;
+    if(d?.selectionResize){
+      // PF4p -> Moved ends history without another hInw/CbNX size frame.
+      d.selectionResize.session.finish();return;
+    }
+    drag.current=null;setMarquee(null);if(d?.document){if(JSON.stringify(d.document)!==JSON.stringify(docRef.current)){setPast(p=>[...p.slice(-99),d.document!]);setFuture([])}else setSaved(d.wasSaved??false)}
+  }
+  function pointerCancel(){tableSelectionDrag.current=null;const tableDrag=tableResize.current;tableResize.current=null;if(tableDrag){docRef.current=tableDrag.document;setDoc(tableDrag.document);setSaved(tableDrag.wasSaved)}const d=drag.current;if(d?.selectionResize){d.selectionResize.session.cancel();return;}drag.current=null;setMarquee(null);if(d?.document){docRef.current=d.document;setDoc(d.document);setSaved(d.wasSaved??false)}}
+  function blockSelectionGestureAction(event:{preventDefault():void;stopPropagation():void}){
+    if(!drag.current?.selectionResize)return;
+    event.preventDefault();event.stopPropagation();setNotice('Finish or cancel the selection resize before editing.');
+  }
+  function beforeCanvasPointerDown(event:ReactPointerEvent){
+    if(drag.current?.selectionResize){blockSelectionGestureAction(event);return;}
+    // Commit a focused Inspector draft before reading the gesture baseline.
+    // If that commit changed the document, a second press starts from the new
+    // render instead of capturing stale geometry from this event's closure.
+    const active=document.activeElement;
+    if((event.target as HTMLElement).closest('.resize-handle')&&active instanceof HTMLElement&&active!==event.target&&active.matches('input,textarea,select,[contenteditable="true"]')){
+      const before=docRef.current;active.blur();
+      if(before!==docRef.current){event.preventDefault();event.stopPropagation();setNotice('Property updated. Drag again to resize.');}
+    }
+  }
   function widgetDoubleClick(event:React.MouseEvent,w:Widget){
     event.stopPropagation();
     if(w.layer){if(!w.locked){setPanelPath(w.id);setSelected([]);setEditing(null);setRichEditing(null)}return}
@@ -588,8 +913,80 @@ export default function App(){
     if(editPath&&!normal.locked&&!normal.hidden){const rect=surface.current!.getBoundingClientRect();const p=canvasToVectorPoint({x:(event.clientX-rect.left)/zoom,y:(event.clientY-rect.top)/zoom},normal);const border=vectorSegments(editPath).some(segment=>{const q=vectorSegmentPoint(segment,closestVectorT(segment,p,normal.width,normal.height));return Math.hypot((p.x-q.x)*normal.width,(p.y-q.y)*normal.height)*zoom<=10});if(border){setSelected([normal.id]);enterPointEditing(normal);return}}
     if(w.type==='panel'||w.type==='repeater'){setPanelPath(w.id);setSelected([])}else{setPointEditingId(null);beginTextEdit(w)}
   }
-  useEffect(()=>{setRecovery('pending');const timer=setTimeout(()=>{try{localStorage.setItem(CACHE_KEY,serializeDocument(doc));setRecovery('saved')}catch{setRecovery('failed');setNotice('Autosave unavailable. Save a project file to keep your work.')}},500);return()=>clearTimeout(timer)},[doc]);
-  useEffect(()=>{const handler=(e:KeyboardEvent)=>{const target=e.target as HTMLElement;if(['INPUT','TEXTAREA','SELECT'].includes(target.tagName)||target.isContentEditable)return;const mod=e.ctrlKey||e.metaKey;const key=e.key.toLowerCase();if(key==='escape'&&drag.current?.layerResize){e.preventDefault();pointerCancel();setNotice('Group resize cancelled');return;}if(preview){if(key==='escape')setPreview(false);return}if(gallery&&!(mod&&['n','s','o','z','y'].includes(key))&&key!=='f5')return;if(mod&&key==='p'){e.preventDefault();if(e.altKey)editPoints();else if(e.shiftKey)setTool('pen');return}if(treeKeyDown(e))return;if(menuKeyDown(e))return;if(tableKeyDown(e))return;if(vectorTools.current?.keyDown(e))return;if(!mod&&key==='p'){e.preventDefault();setEditing(null);setTool('pen');return}if(pointEditing&&key==='enter'){e.preventDefault();setPointEditingId(null);beginTextEdit(current!);return}if(mod){if(['n','s','o','z','y','a','c','v','x','d','g'].includes(key))e.preventDefault();if(key==='n')newDocument();if(key==='s')void save();if(key==='o')void open();if(key==='z')e.shiftKey?redo():undo();if(key==='y')redo();if(key==='a')setSelected(canvasWidgets.map(w=>w.id));if(key==='c')copy();if(key==='v')paste();if(key==='x'){if(copy()!==false)removeSelected()}if(key==='d')duplicate();if(key==='g')e.shiftKey?ungroup():group();return}if(key==='delete'||key==='backspace'){e.preventDefault();removeSelected()}if(key==='escape'){setSelected([]);setQuick(false);setMenu(null);setTool('select')}if(key==='/'){e.preventDefault();setQuick(true)}if(key==='f5'){e.preventDefault();setPreview(true)}if(key==='enter'&&current)beginTextEdit(current);if(['arrowup','arrowdown','arrowleft','arrowright'].includes(key)&&selected.length){e.preventDefault();if(!canvasWidgets.some(w=>selected.includes(w.id)&&!w.locked))return;const n=e.shiftKey?10:1;changeWidgets(widgets.map(w=>selected.includes(w.id)&&!w.locked&&w.placed!==false&&scopePlaced?translateWidget(w,key==='arrowright'?n:key==='arrowleft'?-n:0,key==='arrowdown'?n:key==='arrowup'?-n:0):w))}if(key==='v')setTool('select');if(key==='r')setTool('box');if(key==='o')setTool('ellipse');if(key==='t')setTool('text')};window.addEventListener('keydown',handler);return()=>window.removeEventListener('keydown',handler)});
+  useEffect(()=>{setRecovery('pending');const timer=setTimeout(()=>{try{const durable=drag.current?.selectionResize?drag.current.document!:docRef.current;localStorage.setItem(CACHE_KEY,serializeDocument(durable));setRecovery('saved')}catch{setRecovery('failed');setNotice('Autosave unavailable. Save a project file to keep your work.')}},500);return()=>clearTimeout(timer)},[doc,selectionGestureVersion]);
+  function runEditorCommand(command:EditorCommand){
+    const actions:Record<EditorCommand,()=>void>={
+      new:()=>newDocument(),open:()=>void open(),save:()=>void save(),exportHtml:()=>void exportHtml(),
+      undo,redo,copy,paste,cut:()=>{if(copy()!==false)removeSelected()},duplicate,
+      selectAll:()=>setSelected(canvasWidgets.map(w=>w.id)),group,ungroup,
+      select:()=>setTool('select'),box:()=>setTool('box'),ellipse:()=>setTool('ellipse'),text:()=>setTool('text'),
+      pen:()=>{setEditing(null);setTool('pen')},line:()=>setTool('line'),input:()=>setTool('input'),
+      panel:()=>setTool('panel'),hotspot:()=>setTool('hotspot'),editPoints,
+      alignLeft:()=>align('left'),alignCenter:()=>align('center'),alignRight:()=>align('right'),
+      alignTop:()=>align('top'),alignMiddle:()=>align('middle'),alignBottom:()=>align('bottom'),
+      front:()=>arrange('front'),back:()=>arrange('back'),
+      quick:()=>setQuick(true),preview:()=>setPreview(true),grid:()=>setGrid(value=>!value),resetZoom:()=>setZoom(1),
+    };
+    actions[command]();
+  }
+  useEffect(()=>{
+    const handler=(event:KeyboardEvent)=>{
+      if(event.defaultPrevented)return;
+      const command=resolvePageTabShortcut(event);if(!command)return;
+      // Own only these exact chords before Pages, tabs and inline editors can
+      // interpret Tab/Arrow as a local edit. Modals consume them without navigation.
+      event.preventDefault();event.stopImmediatePropagation();void navigatePageTabs(command);
+    };
+    window.addEventListener('keydown',handler,true);return()=>window.removeEventListener('keydown',handler,true);
+  });
+  useEffect(()=>{
+    const handler=(e:KeyboardEvent)=>{
+      if(e.defaultPrevented||e.isComposing||e.getModifierState('AltGraph'))return;
+      const command=resolveEditorShortcut(e),key=e.key.toLowerCase();
+      const mod=e.ctrlKey||e.metaKey,plain=!mod&&!e.altKey;
+      if(drag.current?.selectionResize){
+        e.preventDefault();
+        if(plain&&!e.shiftKey&&key==='escape'||command==='undo'||command==='redo'){
+          pointerCancel();setNotice('Selection resize cancelled');
+        }
+        return;
+      }
+      const target=e.target;
+      if(quick||variables){
+        if(plain&&!e.shiftKey&&key==='escape'){e.preventDefault();setQuick(false);setVariables(false)}
+        return;
+      }
+      if(target instanceof HTMLElement&&(target.isContentEditable||target.closest('input,textarea,select,[contenteditable="true"],[role="dialog"],.modal-backdrop')))return;
+      if(plain&&!e.shiftKey&&key==='escape'&&drag.current?.layerResize){
+        e.preventDefault();pointerCancel();setNotice('Group resize cancelled');return;
+      }
+      if(preview){if(plain&&!e.shiftKey&&key==='escape')setPreview(false);return}
+      if(gallery&&(!command||!['new','save','open','undo','redo','preview'].includes(command)))return;
+      const arrows=['arrowup','arrowdown','arrowleft','arrowright'];
+      // Local editors receive their supported exact chords only. In particular,
+      // Ctrl/Alt+Delete and Ctrl+Arrow must not fall through to plain cell edits.
+      const localKey=plain&&(!e.shiftKey||[...arrows,'tab'].includes(key))||
+        mod&&!e.altKey&&!e.shiftKey&&!(e.ctrlKey&&e.metaKey)&&['a','c','v','x','d','g'].includes(key);
+      if(localKey&&(treeKeyDown(e)||menuKeyDown(e)||tableKeyDown(e)))return;
+      if(localKey&&vectorTools.current?.keyDown(e))return;
+      if(command){e.preventDefault();runEditorCommand(command);return}
+      // Do not let an unsupported modified chord dispatch a browser clipboard
+      // command, which could otherwise mutate a selected table via ClipboardEvent.
+      if(mod||e.altKey){e.preventDefault();return}
+      if(e.shiftKey&&['delete','backspace','enter','escape'].includes(key)){e.preventDefault();return}
+      if(pointEditing&&key==='enter'){e.preventDefault();setPointEditingId(null);beginTextEdit(current!);return}
+      if(key==='delete'||key==='backspace'){e.preventDefault();removeSelected();return}
+      if(key==='escape'){setSelected([]);setQuick(false);setMenu(null);setTool('select');return}
+      if(key==='enter'&&current){beginTextEdit(current);return}
+      if(arrows.includes(key)&&selected.length){
+        e.preventDefault();if(!canvasWidgets.some(w=>selected.includes(w.id)&&!w.locked))return;
+        const n=e.shiftKey?10:1;
+        changeWidgets(widgets.map(w=>selected.includes(w.id)&&!w.locked&&w.placed!==false&&scopePlaced?
+          translateWidget(w,key==='arrowright'?n:key==='arrowleft'?-n:0,key==='arrowdown'?n:key==='arrowup'?-n:0):w));
+      }
+    };
+    window.addEventListener('keydown',handler);return()=>window.removeEventListener('keydown',handler);
+  });
   const menuItems:Record<string,[string,()=>void,string?][]>= {
     File:[['New',()=>newDocument(),'Ctrl+N'],['Open…',()=>void open(),'Ctrl+O'],['Import Axure .rp (experimental)…',()=>void importRp()],['Save as…',()=>void save(),'Ctrl+S'],['Export HTML…',()=>void exportHtml()],['Open interactive example',()=>newDocument(createDemoDocument())]],
     Edit:[['Undo',undo,'Ctrl+Z'],['Redo',redo,'Ctrl+Y'],['Copy',copy,'Ctrl+C'],['Cut',()=>{if(copy()!==false)removeSelected()},'Ctrl+X'],['Paste',paste,'Ctrl+V'],['Paste as table…',()=>setTablePaste({existing:false})],['Duplicate',duplicate,'Ctrl+D'],['Delete',()=>removeSelected(),'Del'],['Place in View',()=>placeSelection(true,false)],['Unplace from View',()=>placeSelection(false,false)],['Place in All Views',()=>placeSelection(true,true)],['Unplace from All Views',()=>placeSelection(false,true)],['Delete from All Views',()=>removeSelected(true)]],
@@ -598,7 +995,7 @@ export default function App(){
     Project:[['Rename project',async()=>{const name=await prompt('Project name',doc.name);if(name?.trim())commit({...doc,name:name.trim()})}],['Global variables',()=>setVariables(true)],['Prototype settings…',()=>setPrototypeSettings(true)],['Preview',()=>setPreview(true),'F5']],
     Help:[['Keyboard shortcuts',()=>setNotice('V select · R rectangle · O ellipse · T text · / quick actions · F5 preview · Ctrl+S save')],['Implementation status',()=>setNotice('Work in progress. RP import is partial; native write-back and cloud collaboration are unavailable.')]],
   };
-  return <div className="application" onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={pointerCancel}>
+  return <div className="application" onPointerDownCapture={beforeCanvasPointerDown} onClickCapture={blockSelectionGestureAction} onDoubleClickCapture={blockSelectionGestureAction} onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={pointerCancel} onLostPointerCapture={()=>{const gesture=drag.current?.selectionResize;if(gesture&&gesture.session.phase!=='finishing')gesture.session.cancel()}}>
     <input type="file" accept=".json" hidden ref={fileInput} onChange={async e=>{const f=e.target.files?.[0];if(f){if(f.size>25*1024*1024)setNotice('File exceeds 25 MB');else load(await f.text())}e.target.value=''}}/>
     <input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden ref={imageInput} onChange={async e=>{const f=e.target.files?.[0];if(f){if(f.size>8*1024*1024){setNotice('Image exceeds 8 MB');return}if(f.type==='image/svg+xml'){setNotice('Use PNG, JPEG or WebP images for now');return}const reader=new FileReader();reader.onload=()=>{const w={...createWidget('image',80,80),imageSrc:String(reader.result),name:f.name};changeWidgets([...widgets,w]);setSelected([w.id])};reader.readAsDataURL(f)}e.target.value=''}}/>
     <header className="titlebar"><span className="app-mark">R<span>P</span></span><span>{doc.name}{saved?'':' •'} — REA Prototype Studio</span><span className="title-hint">RP 11 reconstruction · development</span></header>
@@ -615,16 +1012,16 @@ export default function App(){
       <i className="separator"/><button title="Bring to front" disabled={!selected.length} onClick={()=>arrange('front')}><ArrowUpToLine size={19}/></button><button title="Send to back" disabled={!selected.length} onClick={()=>arrange('back')}><ArrowDownToLine size={19}/></button><button title="Group" disabled={selected.length<2} onClick={group}><Group size={20}/></button><button title="Ungroup" disabled={!current?.groupId&&!current?.layer} onClick={ungroup}><Ungroup size={20}/></button>
       <div className="toolbar-spacer"/><select aria-label="Zoom" value={zoom} onChange={e=>setZoom(Number(e.target.value))}>{[.25,.5,.75,1,1.25,1.5,2].map(z=><option key={z} value={z}>{z*100}%</option>)}</select><button title="Save" onClick={()=>void save()}><Save size={19}/></button><button className="preview-button" title="Preview (F5)" onClick={()=>setPreview(true)}><Play size={17} fill="currentColor"/></button><button className="share-button" onClick={()=>void exportHtml()}><Upload size={17}/> Export HTML <ChevronDown size={12}/></button>
     </div>
-    <div className="style-toolbar">{current?.layer?<span>{current.name} · {current.layer.widgets.length} members · Double-click to edit group</span>:current&&!['table','menu','tree','treeNode','inlineFrame'].includes(current.type)?<><label>Style <select aria-label="Widget style preset" onChange={e=>{const s=doc.styles.find(x=>x.id===e.target.value);if(s)patchSelected({style:s.style},s.style)}} defaultValue=""><option value="">Default</option>{doc.styles.map(s=><option key={s.id} value={s.id}>{s.name}</option>)}</select></label><i className="separator"/><select aria-label="Font family" value={current.style.fontFamily} onChange={e=>patchSelected({style:{...current.style,fontFamily:e.target.value}},{fontFamily:e.target.value})}>{[...new Set(['Arial','Roboto','Open Sans','Inter','Segoe UI','Georgia','Times New Roman','Courier New',current.style.fontFamily])].map(f=><option key={f}>{f}</option>)}</select><input aria-label="Font size" type="number" min="1" max="512" value={current.style.fontSize} onChange={e=>patchSelected({style:{...current.style,fontSize:Math.max(1,Number(e.target.value))}},{fontSize:Math.max(1,Number(e.target.value))})}/><button className={current.style.fontWeight>=600?'active':''} onClick={()=>patchSelected({style:{...current.style,fontWeight:current.style.fontWeight>=600?400:700}},{fontWeight:current.style.fontWeight>=600?400:700})}><b>B</b></button>{(['left','center','right'] as const).map((a,i)=>{const Icon=[AlignLeft,AlignCenter,AlignRight][i];return <button key={a} onClick={()=>patchSelected({style:{...current.style,textAlign:a}},{textAlign:a})}><Icon size={16}/></button>})}<i className="separator"/><label>Fill <input type="color" aria-label="Fill color" value={current.style.fill.startsWith('#')?current.style.fill:'#ffffff'} onChange={e=>patchSelected({style:{...current.style,fill:e.target.value}},{fill:e.target.value})}/></label><label>Border <input type="color" aria-label="Border color" value={current.style.stroke.startsWith('#')?current.style.stroke:'#cccccc'} onChange={e=>patchSelected({style:{...current.style,stroke:e.target.value}},{stroke:e.target.value})}/></label><LineStyleToolbar key={`${current.id}/${page.id}/${viewId??'base'}`} widget={current} onChange={command=>patchSelected({style:mergeWidgetStyle(current.style,command)},command)}/><i className="separator"/><span>{selected.length} selected</span></>:<><label>Dimensions <select aria-label="Page dimensions" value={`${page.width}`} onChange={e=>patchPage({width:Number(e.target.value)})}>{[...new Set([1440,1280,1200,1024,768,390,page.width])].sort((a,b)=>b-a).map(n=><option key={n} value={n}>{n===1440?'Desktop':n===390?'Mobile':n} · {n}px</option>)}</select></label><button onClick={async()=>{const name=await prompt('Adaptive view name','Mobile');if(name){try{const next=createAdaptiveView(page,name,390,{baseViewId:viewId??undefined});commit(commitAdaptivePage(docRef.current,next));setAdaptiveViewId(next.adaptiveViews.at(-1)!.id);setSelected([])}catch(error){setNotice(String(error))}}}}><Plus size={14}/> Adaptive views</button><i className="separator"/><label>Page fill <input type="color" value={page.background} onChange={e=>patchPage({background:e.target.value})}/></label></>}<span className="toolbar-spacer"/><button className={grid?'active':''} onClick={()=>setGrid(!grid)} title="Show grid"><Grid2X2 size={16}/></button><label><input type="checkbox" checked={snap} onChange={e=>setSnap(e.target.checked)}/> Snap</label></div>
+    <div className="style-toolbar">{current?.layer?<span>{current.name} · {current.layer.widgets.length} members · Double-click to edit group</span>:current&&!['table','menu','tree','treeNode','inlineFrame'].includes(current.type)?<><label>Style <select aria-label="Widget style preset" onChange={e=>{const s=doc.styles.find(x=>x.id===e.target.value);if(s)patchSelected({style:s.style},s.style)}} defaultValue=""><option value="">Default</option>{doc.styles.map(s=><option key={s.id} value={s.id}>{s.name}</option>)}</select></label><i className="separator"/><select aria-label="Font family" value={current.style.fontFamily} onChange={e=>patchSelected({style:{...current.style,fontFamily:e.target.value}},{fontFamily:e.target.value})}>{[...new Set(['Arial','Roboto','Open Sans','Inter','Segoe UI','Georgia','Times New Roman','Courier New',current.style.fontFamily])].map(f=><option key={f}>{f}</option>)}</select><ToolbarFontSize key={current.id} value={current.style.fontSize} onChange={fontSize=>patchSelected({style:{...current.style,fontSize}},{fontSize})}/><button className={current.style.fontWeight>=600?'active':''} onClick={()=>patchSelected({style:{...current.style,fontWeight:current.style.fontWeight>=600?400:700}},{fontWeight:current.style.fontWeight>=600?400:700})}><b>B</b></button>{(['left','center','right'] as const).map((a,i)=>{const Icon=[AlignLeft,AlignCenter,AlignRight][i];return <button key={a} onClick={()=>patchSelected({style:{...current.style,textAlign:a}},{textAlign:a})}><Icon size={16}/></button>})}<i className="separator"/><label>Fill <input type="color" aria-label="Fill color" value={current.style.fill.startsWith('#')?current.style.fill:'#ffffff'} onChange={e=>patchSelected({style:{...current.style,fill:e.target.value}},{fill:e.target.value})}/></label><label>Border <input type="color" aria-label="Border color" value={current.style.stroke.startsWith('#')?current.style.stroke:'#cccccc'} onChange={e=>patchSelected({style:{...current.style,stroke:e.target.value}},{stroke:e.target.value})}/></label><LineStyleToolbar key={`${current.id}/${page.id}/${viewId??'base'}`} widget={current} onChange={command=>patchSelected({style:mergeWidgetStyle(current.style,command)},command)}/><i className="separator"/><span>{selected.length} selected</span></>:<><label>Dimensions <select aria-label="Page dimensions" value={`${page.width}`} onChange={e=>patchPage({width:Number(e.target.value)})}>{[...new Set([1440,1280,1200,1024,768,390,page.width])].sort((a,b)=>b-a).map(n=><option key={n} value={n}>{n===1440?'Desktop':n===390?'Mobile':n} · {n}px</option>)}</select></label><button onClick={async()=>{const name=await prompt('Adaptive view name','Mobile');if(name){try{const next=createAdaptiveView(page,name,390,{baseViewId:viewId??undefined});commit(commitAdaptivePage(docRef.current,next));setAdaptiveViewId(next.adaptiveViews.at(-1)!.id);setSelected([])}catch(error){setNotice(String(error))}}}}><Plus size={14}/> Adaptive views</button><i className="separator"/><label>Page fill <input type="color" value={page.background} onChange={e=>patchPage({background:e.target.value})}/></label></>}<span className="toolbar-spacer"/><button className={grid?'active':''} onClick={()=>setGrid(!grid)} title="Show grid"><Grid2X2 size={16}/></button><label><input type="checkbox" checked={snap} onChange={e=>setSnap(e.target.checked)}/> Snap</label></div>
     <main className="workspace" onClick={()=>menu&&setMenu(null)}>
       <aside className="left-pane"><section className="pages-pane"><div className="pane-tabs">{['Pages','Outline'].map(t=><button key={t} className={leftTab===t?'selected':''} onClick={()=>setLeftTab(t)}>{t}</button>)}</div>
       {leftTab==='Pages'?<PageTree key={doc.id} document={doc} selectedId={pageNodeId} activePageId={page.id} search={search} onSearch={setSearch} onSelect={setPageNodeId} onOpen={switchPage} onChange={changePageTree} onNotice={setNotice}/>:<><div className="pane-actions"><Search size={15}/><input aria-label="Search pages and widgets" placeholder="Search" value={search} onChange={e=>setSearch(e.target.value)}/></div><label className="outline-placement-filter">Placement <select aria-label="Outline placement filter" value={placementFilter} onChange={e=>setPlacementFilter(e.target.value as typeof placementFilter)}><option value="all">All widgets</option><option value="placed">Placed</option><option value="unplaced">Unplaced</option></select></label><div className="tree-list">{widgets.filter(w=>w.name.toLowerCase().includes(search.toLowerCase())&&(placementFilter==='all'||(w.placed!==false)===(placementFilter==='placed'))).slice().reverse().map(w=><div key={w.id}><div data-outline-widget-id={w.id} data-placed={w.placed!==false} className={'tree-row '+(w.placed===false?'is-unplaced ':'')+(selected.includes(w.id)&&!selectedTable?'selected':'')} onClick={()=>{setTreeSelection(null);setRevealedTreeIds([]);setMenuSelection(null);setTableSelection(null);setSelected([w.id])}}><Square size={13}/><span>{w.name}{w.placed===false&&<small> · Unplaced</small>}</span><button title={w.placed===false?'Place in view':'Unplace from view'} onClick={e=>{e.stopPropagation();placeSelection(w.placed===false,placementAllViews,[w.id])}}>{w.placed===false?<Plus size={12}/>:<Minus size={12}/>}</button><button title="Toggle hidden" onClick={e=>{e.stopPropagation();changeWidgets(widgets.map(x=>x.id===w.id?{...x,hidden:!x.hidden}:x))}}>{w.hidden?<EyeOff size={12}/>:<Eye size={12}/>}</button><button title="Toggle lock" onClick={e=>{e.stopPropagation();changeWidgets(widgets.map(x=>x.id===w.id?{...x,locked:!x.locked}:x))}}>{w.locked?<Lock size={12}/>:<Unlock size={12}/>}</button></div>{w.layer&&<LayerOutlineEntries layer={w} onSelect={(parent,child)=>{if(parent.locked)return;resetVectorTools();setPanelPath(parent.id);setSelected([child.id])}}/>}{w.tree&&<TreeOutlineEntries tree={w} selection={selectedTree?.id===w.id?treeSelection:null} onSelect={(node,part)=>selectTree(w,node.id,part,true)}/>} {w.menu&&<MenuOutlineEntries menu={w} selection={selectedMenuRoot?.id===w.id?menuSelection:null} onSelect={(menu,cellId)=>selectMenu(w,menu,cellId)}/>} {w.table&&<TableOutlineEntries table={w} selection={selectedTable?.id===w.id?tableSelection:null} onSelect={(cell,additive)=>selectTableCells(w,[cell.id],cell.id,additive)}/>}</div>)}</div></>}</section>
       <section className="library-pane"><div className="pane-tabs">{['Libraries','Components'].map(t=><button key={t} className={libraryTab===t?'selected':''} onClick={()=>setLibraryTab(t)}>{t}</button>)}</div>{libraryTab==='Libraries'?<><div className="library-heading"><span>Default</span><ChevronDown size={13}/></div><div className="library-label">Common widgets</div><div className="widget-library">{LIBRARY.map(({type,name,icon:Icon,key,orientation})=><button draggable key={key??type} title={`Drag ${name} onto the canvas`} onDragStart={e=>e.dataTransfer.setData('application/x-rea-widget',orientation?JSON.stringify({type,orientation}):type)} onDoubleClick={()=>addWidget(type,100,100,orientation)} onClick={()=>{if(orientation)setMenuCreationOrientation(orientation);setTool(type)}} className={tool===type&&(!orientation||orientation===menuOrientation)?'chosen':''}><Icon size={29} strokeWidth={1.15}/><span>{name}</span></button>)}</div><p className="library-tip">Drag to canvas · double-click to insert</p></>:<div className="component-list"><button className="create-component" onClick={makeComponent} disabled={!selected.length}><Plus size={14}/> Create from selection</button><button disabled={!linkedInstance} onClick={publishComponent}>Update linked copies</button><button disabled={!linkedInstance} onClick={detachComponent}>Detach selected instance</button>{doc.components.map(c=><button key={c.id} onClick={()=>{try{const instance=createComponentInstance(c);changeWidgets([...widgets,instance]);setSelected([instance.id])}catch(e){setNotice(String(e))}}}><Layers size={23}/><span>{c.name}</span></button>)}</div>}</section></aside>
-      <section className="canvas-pane"><div className="page-tabs"><button className={gallery?'selected':''} onClick={showGallery}><Grip size={13}/> Gallery</button><PageTabs pages={doc.pages} ids={openPageIds} activeId={gallery?null:page.id} onOpen={switchPage} onClose={closePageTab} onReorder={setOpenPageIds} onCloseOthers={id=>{setOpenPageIds([id]);switchPage(id)}} onCloseAll={()=>{setOpenPageIds([]);showGallery()}}/>{panel&&<><ChevronRight size={12}/><button aria-label={`Exit ${panel.name}`} onClick={exitScope}>{panel.name} / {panel.layer?'Group':panel.type==='repeater'?'Item template':activeState?.name}<X size={12}/></button></>}<span className="toolbar-spacer"/><span className="canvas-size">{canvasWidth} × {canvasHeight}</span></div><AdaptiveSetControls document={doc} page={page} onChange={commit} onAssign={()=>{setAdaptiveViewId(null);setSelected([]);setEffectPreview(null)}}/><label className="placement-scope"><input type="checkbox" checked={placementAllViews} onChange={e=>setPlacementAllViews(e.target.checked)}/>Affect all views</label><AdaptiveControls page={page} viewId={viewId} onSelectView={id=>{setAdaptiveViewId(id);setSelected([])}} onChange={next=>commit(commitAdaptivePage(docRef.current,next))}/>
+      <section className="canvas-pane"><div className="page-tabs"><button className={gallery?'selected':''} onClick={showGallery}><Grip size={13}/> Gallery</button><PageTabs pages={doc.pages} ids={openPageIds} activeId={gallery?null:page.id} onOpen={switchPage} onClose={closePageTab} onReorder={setOpenPageIds} onCloseOthers={closeOtherPageTabs} onCloseAll={closeAllPageTabs}/>{panel&&<><ChevronRight size={12}/><button aria-label={`Exit ${panel.name}`} onClick={exitScope}>{panel.name} / {panel.layer?'Group':panel.type==='repeater'?'Item template':activeState?.name}<X size={12}/></button></>}<span className="toolbar-spacer"/><span className="canvas-size">{canvasWidth} × {canvasHeight}</span></div><AdaptiveSetControls document={doc} page={page} onChange={commit} onAssign={()=>{setAdaptiveViewId(null);setSelected([]);setEffectPreview(null)}}/><label className="placement-scope"><input type="checkbox" checked={placementAllViews} onChange={e=>setPlacementAllViews(e.target.checked)}/>Affect all views</label><AdaptiveControls page={page} viewId={viewId} onSelectView={id=>{setAdaptiveViewId(id);setSelected([])}} onChange={next=>commit(commitAdaptivePage(docRef.current,next))}/>
       {gallery?<div className="gallery"><div className="gallery-title"><h2>Pages</h2><button onClick={addPage}><Plus size={16}/> Add page</button></div><div className="gallery-grid">{doc.pages.map(p=><button key={p.id} onDoubleClick={()=>switchPage(p.id)} onClick={()=>switchPage(p.id)}><div className="page-thumbnail"><div style={{width:p.width,height:p.height,transform:`scale(${220/p.width})`,transformOrigin:'0 0',background:p.background}}>{p.widgets.filter(w=>w.placed!==false).map(w=><div key={w.id} className={`widget ${w.type}`} style={widgetStyle(w)}><WidgetContent widget={w}/></div>)}</div></div><span><FileText size={14}/>{p.name}</span></button>)}</div></div>:<div className="canvas-scroll" onWheel={e=>{if(e.ctrlKey){e.preventDefault();setZoom(z=>Math.max(.25,Math.min(2,z+(e.deltaY<0?.1:-.1))))}}}><div className="canvas-extent" style={{width:Math.max(1500,canvasWidth*zoom+160),height:Math.max(1100,canvasHeight*zoom+180)}}><div className="ruler-x">{Array.from({length:Math.ceil(canvasWidth/100)+3},(_,i)=><span key={i} style={{left:20+i*100*zoom}}>{i*100}</span>)}</div><div className="ruler-y">{Array.from({length:Math.ceil(canvasHeight/100)+3},(_,i)=><span key={i} style={{top:20+i*100*zoom}}>{i*100}</span>)}</div><div ref={surface} tabIndex={-1} className={`canvas-surface ${grid?'grid-visible':''} ${tool!=='select'?'drawing':''}`} style={{width:canvasContainer?.width??canvasWidth,height:canvasContainer?.height??canvasHeight,backgroundColor:page.background,transform:`scale(${zoom})`}} onPointerDown={canvasDown} onDragOver={e=>e.preventDefault()} onDrop={e=>{e.preventDefault();const payload=e.dataTransfer.getData('application/x-rea-widget');let type=payload as WidgetType,orientation:MenuOrientation|undefined;try{if(payload.startsWith('{')){const data=JSON.parse(payload);type=data.type;orientation=data.orientation==='vertical'?'vertical':'horizontal'}}catch{return}if(!LIBRARY.some(w=>w.type===type))return;const rect=surface.current!.getBoundingClientRect();addWidget(type,(e.clientX-rect.left)/zoom,(e.clientY-rect.top)/zoom,orientation)}}>
         {canvasWidgets.map(source=>{const editingPoints=pointEditing&&source.id===current?.id;const {widget:w,displayPatch}=resolveCanvasDisplay(source,editingPoints);const editPath=editingPoints?(vectorDraft?.id===w.id?vectorDraft.path:preparedVectorPath):undefined;const staticLayout=getStaticRepeaterLayout(w);return <div key={w.id} className={`widget editor-widget ${w.type} ${selected.includes(w.id)?'is-selected':''} ${w.hidden?'is-hidden':''}`} style={{...widgetStyle(w,true,staticLayout&&!staticLayout.error?staticLayout:undefined),...(staticLayout&&!staticLayout.error?{width:staticLayout.width,height:staticLayout.height}:{}),outline:w.locked&&selected.includes(w.id)?'1px solid #d38d32':undefined}} onPointerDown={e=>startDrag(e,source)} onDoubleClick={e=>widgetDoubleClick(e,source)}><WidgetContent widget={editPath?{...w,type:'path',vectorPath:editPath}:w} resolved={true} resolveChildDisplay={child=>resolveCanvasDisplay(child).widget} tableAuthoring={w.type==='table'?{onCellPointerDown:(cell,event)=>cellPointerDown(source,cell,event),onCellDoubleClick:(cell,event)=>{event.stopPropagation();if(source.locked||cell.locked)return;selectTableCells(source,[cell.id],cell.id);beginTextEdit(cell)},resolveCell:resolveTableCell,textEditor:cell=>richEditingWidget?.id===cell.id?<RichTextEditor key={cell.id} widget={richEditingWidget} document={doc} page={page} displayStyle={resolveTableCell(cell).style} styleOverride={projectTextStyleOverride(effectPreview?.widgetId===cell.id?cell[effectPreview.field]??{}:resolveInteractionStylePatch(cell))} onApply={applyRichText} onCancel={()=>setRichEditing(null)}/>:undefined}:undefined} treeAuthoring={w.type==='tree'?treeAuthoring(source):undefined} menuAuthoring={w.type==='menu'?menuAuthoring(source):undefined} textEditor={richEditingWidget?.id===w.id?<RichTextEditor key={w.id} widget={richEditingWidget} document={doc} page={page} displayStyle={w.style} styleOverride={displayPatch} onApply={applyRichText} onCancel={()=>setRichEditing(null)}/>:undefined}/>{editing===w.id&&<textarea className="inline-text-editor" autoFocus defaultValue={w.text} onPointerDown={e=>e.stopPropagation()} onBlur={e=>{changeWidgets(widgets.map(x=>x.id===w.id?replaceWidgetText(x,e.target.value):x));setEditing(null)}} onKeyDown={e=>{if(e.key==='Escape'){setEditing(null)}if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();e.currentTarget.blur()}}}/>}</div>})}
         {activeTable&&activeTable.placed!==false&&scopePlaced&&!richEditing&&tool==='select'&&<TableCanvasControls key={[page.id,panel?.id,activeState?.id,viewId,activeTable.id,zoom,activeTable.rotation].join(':')} table={activeTable} selection={selectedTable?tableSelection:null} zoom={zoom} onOwnerPointerDown={event=>startDrag(event,activeTable)} onSelect={(ids,anchor,additive)=>selectTableCells(activeTable,ids,anchor,additive)} onSelectOwner={()=>{setSelected([activeTable.id]);setTableSelection(null)}} onOperation={operation=>tableOperation(activeTable,operation)} onResizeStart={()=>startTableResize(activeTable)} onResize={resizeTableTrack} onResizeEnd={endTableResize} onResizeCancel={pointerCancel}/>}
-        {canvasWidgets.filter(w=>selected.includes(w.id)&&w.id!==selectedTable?.id&&w.id!==(localMenuSelection?selectedMenuRoot?.id:undefined)&&w.id!==(localTreeSelection?selectedTree?.id:undefined)&&w.id!==richEditing&&!(pointEditing&&w.id===current?.id)).map(w=><div key={`selection-${w.id}`} className="selection-frame" style={{left:w.x,top:w.y,width:w.width,height:w.height,transform:w.layer?'none':`rotate(${w.rotation}deg)`}}><span className="selection-label">{w.name} {w.locked?'🔒':''}</span>{!w.locked&&['nw','n','ne','e','se','s','sw','w'].map(h=><i key={h} className={`resize-handle ${h}`} onPointerDown={e=>startDrag(e,w,h)}/>)}</div>)}{marquee&&<div className="marquee" style={marquee}/>}{(tool==='pen'||pointEditing)&&!preview&&!gallery&&<CanvasVectorTools key={vectorSessionContext} ref={vectorTools} mode={tool==='pen'?'pen':'points'} widget={tool==='pen'?undefined:current} zoom={zoom} surface={surface} onCreate={geometry=>{const w={...createWidget('path'),...geometry};changeWidgets([...widgets,w]);setSelected([w.id]);setNotice('Path created')}} onPathChange={vectorPath=>{if(current)changePointPath(current.id,vectorPath)}} onPreview={path=>setVectorDraft(path&&current?{id:current.id,path}:null)} onDone={()=>{setTool('select');setPointEditingId(null);setVectorDraft(null)}} onNotice={setNotice}/>}</div></div></div>}
+        {canvasWidgets.filter(w=>selected.includes(w.id)&&w.id!==selectedTable?.id&&w.id!==(localMenuSelection?selectedMenuRoot?.id:undefined)&&w.id!==(localTreeSelection?selectedTree?.id:undefined)&&w.id!==richEditing&&!(pointEditing&&w.id===current?.id)).map(w=><div key={`selection-${w.id}`} className="selection-frame" style={{left:w.x,top:w.y,width:w.width,height:w.height,transform:w.layer?'none':`rotate(${w.rotation}deg)`}}>{!selectionGroup&&<span className="selection-label">{w.name} {w.locked?'🔒':''}</span>}{!selectionGroup&&!w.locked&&(selected.length===1&&w.selectionText&&(w.type==='checkbox'||w.type==='radio')?['e','w']:['nw','n','ne','e','se','s','sw','w']).map(h=><i key={h} className={`resize-handle ${h}`} onPointerDown={e=>startDrag(e,w,h)}/>)}</div>)}{selectionGroup&&!richEditing&&!pointEditing&&<div className="selection-frame selection-group-frame" style={{left:selectionGroup.x,top:selectionGroup.y,width:selectionGroup.right-selectionGroup.x,height:selectionGroup.bottom-selectionGroup.y}}><span className="selection-label">{selectedControls.length} controls</span>{selectionGroup.target&&['nw','n','ne','e','se','s','sw','w'].map(h=><i key={h} className={`resize-handle ${h}`} onPointerDown={e=>startDrag(e,selectionGroup.target!,h)}/>)}</div>}{marquee&&<div className="marquee" style={marquee}/>}{(tool==='pen'||pointEditing)&&!preview&&!gallery&&<CanvasVectorTools key={vectorSessionContext} ref={vectorTools} mode={tool==='pen'?'pen':'points'} widget={tool==='pen'?undefined:current} zoom={zoom} surface={surface} onCreate={geometry=>{const w={...createWidget('path'),...geometry};changeWidgets([...widgets,w]);setSelected([w.id]);setNotice('Path created')}} onPathChange={vectorPath=>{if(current)changePointPath(current.id,vectorPath)}} onPreview={path=>setVectorDraft(path&&current?{id:current.id,path}:null)} onDone={()=>{setTool('select');setPointEditingId(null);setVectorDraft(null)}} onNotice={setNotice}/>}</div></div></div>}
       </section><Inspector adaptiveEffects={viewId&&current&&!activeTable&&!activeMenuRoot&&!activeTree?{local:activeView?.overrides[current.id]?.stateStyles!==undefined,onInherit:()=>{commit(commitAdaptivePage(docRef.current,clearAdaptiveStateStyles(page,viewId,[current.id])));setEffectPreview(null)}}:undefined} styleContextKey={[page.id,panel?.id,activeState?.id,viewId].join(':')} treeContext={activeTree?{tree:activeTree,selection:selectedTree?treeSelection:null,onSelect:(nodeId,part)=>selectTree(activeTree,nodeId,part,true),onOperation:operation=>treeOperation(activeTree,operation),onProperties:patch=>changeTree(activeTree,tree=>setTreeProperties(tree,patch)),onExpanded:(nodeId,expanded)=>toggleTree(activeTree,nodeId,expanded)}:undefined} menuContext={activeMenuRoot&&activeMenu?{menu:activeMenu,cellId:menuSelection?.cellId,onSelectMenu:()=>selectMenu(activeMenuRoot,activeMenu),onEditSubmenu:child=>selectMenu(activeMenuRoot,child),onOperation:operation=>menuOperation(activeMenuRoot,activeMenu,operation),onOrientation:orientation=>changeMenu(activeMenuRoot,activeMenu.id,menu=>setMenuOrientation(menu,orientation)),onPadding:padding=>changeMenu(activeMenuRoot,activeMenu.id,menu=>setMenuPadding(menu,padding))}:undefined} tableContext={activeTable?{table:activeTable,onSelectAllCells:()=>selectTableCells(activeTable,activeTable.table!.cells.map(cell=>cell.id)),selection:selectedTable?tableSelection:null,onOperation:operation=>tableOperation(activeTable,operation),onSelectOwner:()=>{setSelected([activeTable.id]);setTableSelection(null)}}:undefined} document={doc} page={page} widget={current} onWidgetChange={patchSelected} onPageChange={patchPage} onStylePreview={setEffectPreview} onEditRichText={editRichText} onEditPoints={editPoints} onEditFrameTarget={setFrameTargetEditing}/>
     </main><footer className="statusbar"><span>{notice}</span><span className="toolbar-spacer"/><span>{widgets.length} widgets</span><span>{selected.length?'Selection: '+selected.length:'No selection'}</span><span>{Math.round(zoom*100)}%</span></footer>
     {frameTargetWidget?.inlineFrame&&<FrameTargetEditor key={frameTargetWidget.id} value={frameTargetWidget.inlineFrame.target} pages={doc.pages} allowBlank onApply={target=>{const fresh=findWidget(docRef.current.pages.find(p=>p.id===page.id)!,frameTargetWidget.id);if(fresh?.inlineFrame&&JSON.stringify(fresh.inlineFrame.target)!==JSON.stringify(target))changeWidgets(updateWidgetTree(widgets,fresh.id,{inlineFrame:{...fresh.inlineFrame,target}}));setFrameTargetEditing(null)}} onClose={()=>setFrameTargetEditing(null)}/>}

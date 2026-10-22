@@ -1,0 +1,4440 @@
+{
+  "mode": "Retained CIL control replay with explicit geometry value facades; no target execution",
+  "sourceDllSha256": "dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7",
+  "count": 2,
+  "passed": 2,
+  "sourceFiles": [
+    {
+      "path": "research/selection-svg-body-paint-R57t-extra-cil.json",
+      "sha256": "b30f1c0020c04d638858f29073668576bd6dbc2065c5d09baae9396b2952aa06"
+    },
+    {
+      "path": "research/native-point-contours-rotation-angle-cil.json",
+      "sha256": "752b295485b06a56db24add57838b8b68860dbeed2843a5b6222a7f86f2b6e58"
+    },
+    {
+      "path": "research/line-style-platform-functions-cil.json",
+      "sha256": "ca5210505036e11116a0418b47fa1d393ed84d402da93e7e318f768a42183a01"
+    },
+    {
+      "path": "research/selection-svg-body-matrix-upstream-check-cil.json",
+      "sha256": "2dcc64bc784dca2d97371ce82a57d382ddcbfd5b49ff971dbc8e5b4af4042257"
+    },
+    {
+      "path": "research/gradient-angle-zero-cil.json",
+      "sha256": "72dd76a56a2735ee9943f313497f4db64015fd848f5cd24808d79e8e6c316e71"
+    },
+    {
+      "path": "research/layer-resize-controller-coordinate-cil.json",
+      "sha256": "cc52ec640ee62a74bcaa5f1a9978ba7e6d65f1f8d2ef1063336126156aad5744"
+    }
+  ],
+  "engine": {
+    "path": "research/layer-resize-controller-probe.mjs",
+    "sha256": "ca81115b3d6a92aabbe751b21c5427ebc7e0fe2093fe0265e988ba26c2416800",
+    "changes": [
+      "Remove imports and historical harness after binding helpers",
+      "Replace source file list",
+      "Preserve out refs",
+      "Trace each reached IL",
+      "Implement rem, clt.un, floating unordered branches, stind.ref and zero size",
+      "Point/size ctor call includes receiver"
+    ]
+  },
+  "probe": {
+    "path": "research/selection-svg-body-matrix-radio-dot-probe.mjs",
+    "sha256": "6ddccea78f33d1c3bd2ea38cd9e2abcfb1b7ab29fdab8b9b9e53fb6d67f63b4b"
+  },
+  "facades": [
+    {
+      "id": 100719831,
+      "meaning": "Injected ordinary R57t zero-width pen getter"
+    },
+    {
+      "id": 100720344,
+      "meaning": "Pen width value getter"
+    },
+    {
+      "id": 100719833,
+      "meaning": "Injected ordinary R57t BoxModel0 getter"
+    },
+    {
+      "id": 100722214,
+      "meaning": "Geometry value getter angle"
+    },
+    {
+      "id": 100722205,
+      "meaning": "Geometry value getter height"
+    },
+    {
+      "id": 100722204,
+      "meaning": "Geometry value getter width"
+    },
+    {
+      "id": 100721934,
+      "meaning": "Geometry value getter x"
+    },
+    {
+      "id": 100721936,
+      "meaning": "Geometry value getter y"
+    },
+    {
+      "id": 100722956,
+      "meaning": "Geometry value getter width"
+    },
+    {
+      "id": 100722200,
+      "meaning": "Geometry value getter rotationOrigin"
+    },
+    {
+      "id": 100722202,
+      "meaning": "Location getter"
+    },
+    {
+      "id": 100722203,
+      "meaning": "Size getter"
+    },
+    {
+      "id": 100722025,
+      "meaning": "Size getter"
+    },
+    {
+      "id": 100721950,
+      "meaning": "Point/size arithmetic value operation"
+    },
+    {
+      "id": 100721951,
+      "meaning": "Point/size arithmetic value operation"
+    },
+    {
+      "id": 100721944,
+      "meaning": "Point/size arithmetic value operation"
+    },
+    {
+      "id": 100721945,
+      "meaning": "Point/size arithmetic value operation"
+    },
+    {
+      "id": 100722969,
+      "meaning": "Point/size arithmetic value operation"
+    },
+    {
+      "id": 100722970,
+      "meaning": "Point/size arithmetic value operation"
+    },
+    {
+      "id": 100721941,
+      "meaning": "Point/size constructor (value copy and ref forms)"
+    },
+    {
+      "id": 100722966,
+      "meaning": "Point/size constructor (value copy and ref forms)"
+    },
+    {
+      "id": 100722093,
+      "meaning": "Rectangle constructor"
+    },
+    {
+      "id": 100722221,
+      "meaning": "Rotated-rectangle container constructor; ordinary angle0 only"
+    },
+    {
+      "id": 100722222,
+      "meaning": "Rotated-rectangle container constructor preserving rotation origin and angle"
+    }
+  ],
+  "cases": [
+    {
+      "b": 14,
+      "input": {
+        "x": 3.5,
+        "y": 3.5,
+        "width": 7,
+        "height": 7
+      },
+      "penWidth": 0,
+      "boxModel": 0,
+      "angle": 0,
+      "arg3": false,
+      "arg4": 0,
+      "result": {
+        "x": 3.5,
+        "y": 3.5,
+        "width": 7,
+        "height": 7
+      },
+      "outRect": {
+        "x": 3.5,
+        "y": 3.5,
+        "width": 7,
+        "height": 7
+      },
+      "passed": true,
+      "executedMethods": [
+        100719867,
+        100688813,
+        100688807,
+        100688812,
+        100688810,
+        100708190,
+        100688827
+      ],
+      "trace": [
+        {
+          "method": 100719867,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100719867,
+          "il": 7,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100719867,
+          "il": 8,
+          "op": "isinst"
+        },
+        {
+          "method": 100719867,
+          "il": 13,
+          "op": "dup"
+        },
+        {
+          "method": 100719867,
+          "il": 14,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 24,
+          "op": "pop"
+        },
+        {
+          "method": 100719867,
+          "il": 25,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100719867,
+          "il": 26,
+          "op": "unbox.any"
+        },
+        {
+          "method": 100719867,
+          "il": 31,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 40,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 45,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 47,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100719867,
+          "il": 48,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 53,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 55,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 57,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 62,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 64,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 66,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 71,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 80,
+          "op": "rem"
+        },
+        {
+          "method": 100719867,
+          "il": 81,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 83,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 85,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 90,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 99,
+          "op": "rem"
+        },
+        {
+          "method": 100719867,
+          "il": 100,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 109,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688813,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688813,
+          "il": 8,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 13,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688813,
+          "il": 14,
+          "op": "clt"
+        },
+        {
+          "method": 100688813,
+          "il": 16,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 114,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100719867,
+          "il": 115,
+          "op": "ceq"
+        },
+        {
+          "method": 100719867,
+          "il": 117,
+          "op": "dup"
+        },
+        {
+          "method": 100719867,
+          "il": 118,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 123,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 125,
+          "op": "call"
+        },
+        {
+          "method": 100688807,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688807,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688807,
+          "il": 8,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 17,
+          "op": "rem"
+        },
+        {
+          "method": 100688807,
+          "il": 18,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 27,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 36,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688812,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688812,
+          "il": 8,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688812,
+          "il": 9,
+          "op": "sub"
+        },
+        {
+          "method": 100688812,
+          "il": 10,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 15,
+          "op": "ldarg.2"
+        },
+        {
+          "method": 100688812,
+          "il": 16,
+          "op": "clt"
+        },
+        {
+          "method": 100688812,
+          "il": 18,
+          "op": "ret"
+        },
+        {
+          "method": 100688807,
+          "il": 41,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 130,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 136,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 138,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 143,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 145,
+          "op": "call"
+        },
+        {
+          "method": 100688810,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688810,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688810,
+          "il": 8,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 17,
+          "op": "rem"
+        },
+        {
+          "method": 100688810,
+          "il": 18,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 27,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 36,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688812,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688812,
+          "il": 8,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688812,
+          "il": 9,
+          "op": "sub"
+        },
+        {
+          "method": 100688812,
+          "il": 10,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 15,
+          "op": "ldarg.2"
+        },
+        {
+          "method": 100688812,
+          "il": 16,
+          "op": "clt"
+        },
+        {
+          "method": 100688812,
+          "il": 18,
+          "op": "ret"
+        },
+        {
+          "method": 100688810,
+          "il": 41,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 150,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 156,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 158,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 160,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 165,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 174,
+          "op": "rem"
+        },
+        {
+          "method": 100719867,
+          "il": 175,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 184,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688813,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688813,
+          "il": 8,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 13,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688813,
+          "il": 14,
+          "op": "clt"
+        },
+        {
+          "method": 100688813,
+          "il": 16,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 189,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100719867,
+          "il": 190,
+          "op": "ceq"
+        },
+        {
+          "method": 100719867,
+          "il": 192,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 194,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 196,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 206,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 208,
+          "op": "call"
+        },
+        {
+          "method": 100688807,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688807,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688807,
+          "il": 8,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 17,
+          "op": "rem"
+        },
+        {
+          "method": 100688807,
+          "il": 18,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 27,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 36,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688812,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688812,
+          "il": 8,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688812,
+          "il": 9,
+          "op": "sub"
+        },
+        {
+          "method": 100688812,
+          "il": 10,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 15,
+          "op": "ldarg.2"
+        },
+        {
+          "method": 100688812,
+          "il": 16,
+          "op": "clt"
+        },
+        {
+          "method": 100688812,
+          "il": 18,
+          "op": "ret"
+        },
+        {
+          "method": 100688807,
+          "il": 41,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 213,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 219,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 221,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 223,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 233,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 235,
+          "op": "call"
+        },
+        {
+          "method": 100688810,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688810,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688810,
+          "il": 8,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 17,
+          "op": "rem"
+        },
+        {
+          "method": 100688810,
+          "il": 18,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 27,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 36,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688812,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688812,
+          "il": 8,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688812,
+          "il": 9,
+          "op": "sub"
+        },
+        {
+          "method": 100688812,
+          "il": 10,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 15,
+          "op": "ldarg.2"
+        },
+        {
+          "method": 100688812,
+          "il": 16,
+          "op": "clt"
+        },
+        {
+          "method": 100688812,
+          "il": 18,
+          "op": "ret"
+        },
+        {
+          "method": 100688810,
+          "il": 41,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 240,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 246,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 248,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 250,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 259,
+          "op": "rem"
+        },
+        {
+          "method": 100719867,
+          "il": 260,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 269,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688813,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688813,
+          "il": 8,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 13,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688813,
+          "il": 14,
+          "op": "clt"
+        },
+        {
+          "method": 100688813,
+          "il": 16,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 274,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 297,
+          "op": "ldc.i4.1"
+        },
+        {
+          "method": 100719867,
+          "il": 298,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 300,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 302,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 304,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 305,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 307,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 308,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 318,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 320,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 322,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 323,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 328,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 330,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 332,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 333,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 335,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 336,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 346,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 348,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 350,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 351,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 356,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 358,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 360,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 361,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 371,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 373,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 383,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 385,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 387,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 388,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 393,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 395,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 400,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 402,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 404,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 405,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 410,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 412,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 417,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 419,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 421,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 422,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 432,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 434,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 444,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 446,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 465,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 474,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 642,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 644,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 646,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 651,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 666,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 675,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 684,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 689,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 691,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 700,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 702,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 704,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 713,
+          "op": "ble.un"
+        },
+        {
+          "method": 100719867,
+          "il": 818,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 820,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 829,
+          "op": "clt.un"
+        },
+        {
+          "method": 100719867,
+          "il": 831,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100719867,
+          "il": 832,
+          "op": "ceq"
+        },
+        {
+          "method": 100719867,
+          "il": 834,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 836,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 838,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 847,
+          "op": "bgt"
+        },
+        {
+          "method": 100719867,
+          "il": 852,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 854,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 863,
+          "op": "bge"
+        },
+        {
+          "method": 100719867,
+          "il": 868,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 870,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 879,
+          "op": "bgt"
+        },
+        {
+          "method": 100719867,
+          "il": 884,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100719867,
+          "il": 885,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 903,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 905,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 907,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 912,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 914,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 919,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 921,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 922,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 927,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 929,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 931,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 933,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 938,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 940,
+          "op": "add"
+        },
+        {
+          "method": 100719867,
+          "il": 941,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 943,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 948,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 950,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 951,
+          "op": "add"
+        },
+        {
+          "method": 100719867,
+          "il": 952,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 957,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 959,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 961,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 962,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 964,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 965,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 970,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 972,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 974,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 975,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 980,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 982,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 984,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 985,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 987,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 988,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 993,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 995,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 997,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 998,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 1003,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1005,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1007,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 1008,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1018,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1020,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1030,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1032,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1034,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 1035,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1045,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1047,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 1052,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1054,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1056,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 1057,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 1062,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1064,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1074,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1076,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1078,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 1079,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 1084,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1086,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1096,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1105,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 1273,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1275,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1277,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1286,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1295,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1300,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1302,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 1307,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1309,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1314,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1316,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1317,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1322,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1324,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1326,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1328,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1333,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1335,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1340,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1342,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1343,
+          "op": "add"
+        },
+        {
+          "method": 100719867,
+          "il": 1344,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1349,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100719867,
+          "il": 1350,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1355,
+          "op": "call"
+        },
+        {
+          "method": 100708190,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100708190,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100708190,
+          "il": 8,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100708190,
+          "il": 9,
+          "op": "ceq"
+        },
+        {
+          "method": 100708190,
+          "il": 11,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 1360,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1365,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1367,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1376,
+          "op": "bgt.un"
+        },
+        {
+          "method": 100719867,
+          "il": 1381,
+          "op": "ldsfld"
+        },
+        {
+          "method": 100719867,
+          "il": 1386,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1388,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100719867,
+          "il": 1389,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 1394,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1396,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1398,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1403,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1412,
+          "op": "blt"
+        },
+        {
+          "method": 100719867,
+          "il": 1417,
+          "op": "ldc.i4.1"
+        },
+        {
+          "method": 100719867,
+          "il": 1418,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 1424,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1426,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1428,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100719867,
+          "il": 1429,
+          "op": "clt"
+        },
+        {
+          "method": 100719867,
+          "il": 1431,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1433,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1435,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1444,
+          "op": "sub"
+        },
+        {
+          "method": 100719867,
+          "il": 1445,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1454,
+          "op": "div"
+        },
+        {
+          "method": 100719867,
+          "il": 1455,
+          "op": "call"
+        },
+        {
+          "method": 100688827,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688827,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688827,
+          "il": 8,
+          "op": "call"
+        },
+        {
+          "method": 100688827,
+          "il": 13,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 1460,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1462,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1464,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1466,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1468,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1469,
+          "op": "mul"
+        },
+        {
+          "method": 100719867,
+          "il": 1470,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1472,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1473,
+          "op": "sub"
+        },
+        {
+          "method": 100719867,
+          "il": 1474,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1476,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 1481,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1486,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1488,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1490,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1499,
+          "op": "beq"
+        },
+        {
+          "method": 100719867,
+          "il": 1504,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1513,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1515,
+          "op": "mul"
+        },
+        {
+          "method": 100719867,
+          "il": 1516,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1525,
+          "op": "add"
+        },
+        {
+          "method": 100719867,
+          "il": 1526,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 1540,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1542,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1544,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1546,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1548,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1549,
+          "op": "mul"
+        },
+        {
+          "method": 100719867,
+          "il": 1550,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1552,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 1557,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1562,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1564,
+          "op": "ldarg.3"
+        },
+        {
+          "method": 100719867,
+          "il": 1565,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1674,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1676,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1685,
+          "op": "ble.un"
+        },
+        {
+          "method": 100719867,
+          "il": 1774,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1776,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1785,
+          "op": "ble.un"
+        },
+        {
+          "method": 100719867,
+          "il": 2042,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2044,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2046,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2051,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2053,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 2058,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 2063,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2065,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2070,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2072,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2077,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 2082,
+          "op": "ldarg.2"
+        },
+        {
+          "method": 100719867,
+          "il": 2083,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2085,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2087,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2092,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2094,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 2099,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 2104,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2106,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2111,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2113,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2118,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 2123,
+          "op": "stind.ref"
+        },
+        {
+          "method": 100719867,
+          "il": 2124,
+          "op": "ret"
+        }
+      ]
+    },
+    {
+      "b": 18,
+      "input": {
+        "x": 4.5,
+        "y": 4.5,
+        "width": 9,
+        "height": 9
+      },
+      "penWidth": 0,
+      "boxModel": 0,
+      "angle": 0,
+      "arg3": false,
+      "arg4": 0,
+      "result": {
+        "x": 4.5,
+        "y": 4.5,
+        "width": 9,
+        "height": 9
+      },
+      "outRect": {
+        "x": 4.5,
+        "y": 4.5,
+        "width": 9,
+        "height": 9
+      },
+      "passed": true,
+      "executedMethods": [
+        100719867,
+        100688813,
+        100688807,
+        100688812,
+        100688810,
+        100708190,
+        100688827
+      ],
+      "trace": [
+        {
+          "method": 100719867,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100719867,
+          "il": 7,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100719867,
+          "il": 8,
+          "op": "isinst"
+        },
+        {
+          "method": 100719867,
+          "il": 13,
+          "op": "dup"
+        },
+        {
+          "method": 100719867,
+          "il": 14,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 24,
+          "op": "pop"
+        },
+        {
+          "method": 100719867,
+          "il": 25,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100719867,
+          "il": 26,
+          "op": "unbox.any"
+        },
+        {
+          "method": 100719867,
+          "il": 31,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 40,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 45,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 47,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100719867,
+          "il": 48,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 53,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 55,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 57,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 62,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 64,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 66,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 71,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 80,
+          "op": "rem"
+        },
+        {
+          "method": 100719867,
+          "il": 81,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 83,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 85,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 90,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 99,
+          "op": "rem"
+        },
+        {
+          "method": 100719867,
+          "il": 100,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 109,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688813,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688813,
+          "il": 8,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 13,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688813,
+          "il": 14,
+          "op": "clt"
+        },
+        {
+          "method": 100688813,
+          "il": 16,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 114,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100719867,
+          "il": 115,
+          "op": "ceq"
+        },
+        {
+          "method": 100719867,
+          "il": 117,
+          "op": "dup"
+        },
+        {
+          "method": 100719867,
+          "il": 118,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 123,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 125,
+          "op": "call"
+        },
+        {
+          "method": 100688807,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688807,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688807,
+          "il": 8,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 17,
+          "op": "rem"
+        },
+        {
+          "method": 100688807,
+          "il": 18,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 27,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 36,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688812,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688812,
+          "il": 8,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688812,
+          "il": 9,
+          "op": "sub"
+        },
+        {
+          "method": 100688812,
+          "il": 10,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 15,
+          "op": "ldarg.2"
+        },
+        {
+          "method": 100688812,
+          "il": 16,
+          "op": "clt"
+        },
+        {
+          "method": 100688812,
+          "il": 18,
+          "op": "ret"
+        },
+        {
+          "method": 100688807,
+          "il": 41,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 130,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 136,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 138,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 143,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 145,
+          "op": "call"
+        },
+        {
+          "method": 100688810,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688810,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688810,
+          "il": 8,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 17,
+          "op": "rem"
+        },
+        {
+          "method": 100688810,
+          "il": 18,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 27,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 36,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688812,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688812,
+          "il": 8,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688812,
+          "il": 9,
+          "op": "sub"
+        },
+        {
+          "method": 100688812,
+          "il": 10,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 15,
+          "op": "ldarg.2"
+        },
+        {
+          "method": 100688812,
+          "il": 16,
+          "op": "clt"
+        },
+        {
+          "method": 100688812,
+          "il": 18,
+          "op": "ret"
+        },
+        {
+          "method": 100688810,
+          "il": 41,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 150,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 156,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 158,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 160,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 165,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 174,
+          "op": "rem"
+        },
+        {
+          "method": 100719867,
+          "il": 175,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 184,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688813,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688813,
+          "il": 8,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 13,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688813,
+          "il": 14,
+          "op": "clt"
+        },
+        {
+          "method": 100688813,
+          "il": 16,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 189,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100719867,
+          "il": 190,
+          "op": "ceq"
+        },
+        {
+          "method": 100719867,
+          "il": 192,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 194,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 196,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 206,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 208,
+          "op": "call"
+        },
+        {
+          "method": 100688807,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688807,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688807,
+          "il": 8,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 17,
+          "op": "rem"
+        },
+        {
+          "method": 100688807,
+          "il": 18,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 27,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688807,
+          "il": 36,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688812,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688812,
+          "il": 8,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688812,
+          "il": 9,
+          "op": "sub"
+        },
+        {
+          "method": 100688812,
+          "il": 10,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 15,
+          "op": "ldarg.2"
+        },
+        {
+          "method": 100688812,
+          "il": 16,
+          "op": "clt"
+        },
+        {
+          "method": 100688812,
+          "il": 18,
+          "op": "ret"
+        },
+        {
+          "method": 100688807,
+          "il": 41,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 213,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 219,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 221,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 223,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 233,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 235,
+          "op": "call"
+        },
+        {
+          "method": 100688810,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688810,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688810,
+          "il": 8,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 17,
+          "op": "rem"
+        },
+        {
+          "method": 100688810,
+          "il": 18,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 27,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100688810,
+          "il": 36,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688812,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688812,
+          "il": 8,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688812,
+          "il": 9,
+          "op": "sub"
+        },
+        {
+          "method": 100688812,
+          "il": 10,
+          "op": "call"
+        },
+        {
+          "method": 100688812,
+          "il": 15,
+          "op": "ldarg.2"
+        },
+        {
+          "method": 100688812,
+          "il": 16,
+          "op": "clt"
+        },
+        {
+          "method": 100688812,
+          "il": 18,
+          "op": "ret"
+        },
+        {
+          "method": 100688810,
+          "il": 41,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 240,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 246,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 248,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 250,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 259,
+          "op": "rem"
+        },
+        {
+          "method": 100719867,
+          "il": 260,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 269,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688813,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688813,
+          "il": 8,
+          "op": "call"
+        },
+        {
+          "method": 100688813,
+          "il": 13,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100688813,
+          "il": 14,
+          "op": "clt"
+        },
+        {
+          "method": 100688813,
+          "il": 16,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 274,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 297,
+          "op": "ldc.i4.1"
+        },
+        {
+          "method": 100719867,
+          "il": 298,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 300,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 302,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 304,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 305,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 307,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 308,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 318,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 320,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 322,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 323,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 328,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 330,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 332,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 333,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 335,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 336,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 346,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 348,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 350,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 351,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 356,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 358,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 360,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 361,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 371,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 373,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 383,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 385,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 387,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 388,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 393,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 395,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 400,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 402,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 404,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 405,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 410,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 412,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 417,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 419,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 421,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 422,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 432,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 434,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 444,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 446,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 465,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 474,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 642,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 644,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 646,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 651,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 666,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 675,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 684,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 689,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 691,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 700,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 702,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 704,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 713,
+          "op": "ble.un"
+        },
+        {
+          "method": 100719867,
+          "il": 818,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 820,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 829,
+          "op": "clt.un"
+        },
+        {
+          "method": 100719867,
+          "il": 831,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100719867,
+          "il": 832,
+          "op": "ceq"
+        },
+        {
+          "method": 100719867,
+          "il": 834,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 836,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 838,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 847,
+          "op": "bgt"
+        },
+        {
+          "method": 100719867,
+          "il": 852,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 854,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 863,
+          "op": "bge"
+        },
+        {
+          "method": 100719867,
+          "il": 868,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 870,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 879,
+          "op": "bgt"
+        },
+        {
+          "method": 100719867,
+          "il": 884,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100719867,
+          "il": 885,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 903,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 905,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 907,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 912,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 914,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 919,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 921,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 922,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 927,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 929,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 931,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 933,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 938,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 940,
+          "op": "add"
+        },
+        {
+          "method": 100719867,
+          "il": 941,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 943,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 948,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 950,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 951,
+          "op": "add"
+        },
+        {
+          "method": 100719867,
+          "il": 952,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 957,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 959,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 961,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 962,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 964,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 965,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 970,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 972,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 974,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 975,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 980,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 982,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 984,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 985,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 987,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 988,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 993,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 995,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 997,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 998,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 1003,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1005,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1007,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 1008,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1018,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1020,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1030,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1032,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1034,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 1035,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1045,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1047,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 1052,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1054,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1056,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 1057,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 1062,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1064,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1074,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1076,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1078,
+          "op": "and"
+        },
+        {
+          "method": 100719867,
+          "il": 1079,
+          "op": "brtrue"
+        },
+        {
+          "method": 100719867,
+          "il": 1084,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1086,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1096,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1105,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 1273,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1275,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1277,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1286,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1295,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1300,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1302,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 1307,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1309,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1314,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1316,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1317,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1322,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1324,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1326,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1328,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1333,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1335,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1340,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1342,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1343,
+          "op": "add"
+        },
+        {
+          "method": 100719867,
+          "il": 1344,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1349,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100719867,
+          "il": 1350,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1355,
+          "op": "call"
+        },
+        {
+          "method": 100708190,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100708190,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100708190,
+          "il": 8,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100708190,
+          "il": 9,
+          "op": "ceq"
+        },
+        {
+          "method": 100708190,
+          "il": 11,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 1360,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1365,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1367,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1376,
+          "op": "bgt.un"
+        },
+        {
+          "method": 100719867,
+          "il": 1381,
+          "op": "ldsfld"
+        },
+        {
+          "method": 100719867,
+          "il": 1386,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1388,
+          "op": "ldarg.1"
+        },
+        {
+          "method": 100719867,
+          "il": 1389,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 1394,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1396,
+          "op": "ldloca.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1398,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1403,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1412,
+          "op": "blt"
+        },
+        {
+          "method": 100719867,
+          "il": 1417,
+          "op": "ldc.i4.1"
+        },
+        {
+          "method": 100719867,
+          "il": 1418,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 1424,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1426,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1428,
+          "op": "ldc.i4.0"
+        },
+        {
+          "method": 100719867,
+          "il": 1429,
+          "op": "clt"
+        },
+        {
+          "method": 100719867,
+          "il": 1431,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1433,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1435,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1444,
+          "op": "sub"
+        },
+        {
+          "method": 100719867,
+          "il": 1445,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1454,
+          "op": "div"
+        },
+        {
+          "method": 100719867,
+          "il": 1455,
+          "op": "call"
+        },
+        {
+          "method": 100688827,
+          "il": 0,
+          "op": "br.s"
+        },
+        {
+          "method": 100688827,
+          "il": 7,
+          "op": "ldarg.0"
+        },
+        {
+          "method": 100688827,
+          "il": 8,
+          "op": "call"
+        },
+        {
+          "method": 100688827,
+          "il": 13,
+          "op": "ret"
+        },
+        {
+          "method": 100719867,
+          "il": 1460,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1462,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1464,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1466,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1468,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1469,
+          "op": "mul"
+        },
+        {
+          "method": 100719867,
+          "il": 1470,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1472,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1473,
+          "op": "sub"
+        },
+        {
+          "method": 100719867,
+          "il": 1474,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1476,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 1481,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1486,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1488,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1490,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1499,
+          "op": "beq"
+        },
+        {
+          "method": 100719867,
+          "il": 1504,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1513,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1515,
+          "op": "mul"
+        },
+        {
+          "method": 100719867,
+          "il": 1516,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1525,
+          "op": "add"
+        },
+        {
+          "method": 100719867,
+          "il": 1526,
+          "op": "br"
+        },
+        {
+          "method": 100719867,
+          "il": 1540,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1542,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1544,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1546,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1548,
+          "op": "conv.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1549,
+          "op": "mul"
+        },
+        {
+          "method": 100719867,
+          "il": 1550,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1552,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 1557,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 1562,
+          "op": "stloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1564,
+          "op": "ldarg.3"
+        },
+        {
+          "method": 100719867,
+          "il": 1565,
+          "op": "brfalse"
+        },
+        {
+          "method": 100719867,
+          "il": 1674,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1676,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1685,
+          "op": "ble.un"
+        },
+        {
+          "method": 100719867,
+          "il": 1774,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 1776,
+          "op": "ldc.r8"
+        },
+        {
+          "method": 100719867,
+          "il": 1785,
+          "op": "ble.un"
+        },
+        {
+          "method": 100719867,
+          "il": 2042,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2044,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2046,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2051,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2053,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 2058,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 2063,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2065,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2070,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2072,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2077,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 2082,
+          "op": "ldarg.2"
+        },
+        {
+          "method": 100719867,
+          "il": 2083,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2085,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2087,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2092,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2094,
+          "op": "call"
+        },
+        {
+          "method": 100719867,
+          "il": 2099,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 2104,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2106,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2111,
+          "op": "ldloc.s"
+        },
+        {
+          "method": 100719867,
+          "il": 2113,
+          "op": "callvirt"
+        },
+        {
+          "method": 100719867,
+          "il": 2118,
+          "op": "newobj"
+        },
+        {
+          "method": 100719867,
+          "il": 2123,
+          "op": "stind.ref"
+        },
+        {
+          "method": 100719867,
+          "il": 2124,
+          "op": "ret"
+        }
+      ]
+    }
+  ],
+  "conclusion": "Both b14 and b18 ordinary dot return and outRect retain b/4,b/4,b/2,b/2. BoxModel0 computes Ceil(-0.5)=0 then local10 (1,1)-(1,1)=(0,0); no +1 enlargement.",
+  "unknowns": [
+    "Only w0, BoxModel0, angle0 and b14/b18 tested",
+    "Container/value facades do not execute original geometry type constructors",
+    "Not original GUI or generated-page observation"
+  ]
+}

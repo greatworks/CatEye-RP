@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+const sha=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const read=file=>JSON.parse(fs.readFileSync(file,'utf8').replace(/^\uFEFF/,''));
+const probe=read('research/selection-rotation-input-probes.json');
+const assembly={file:'C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/AxureRP11.dll',sha256:'dae5748f6be3e69c063ef117bab0b400586d94adf119f5a9ba260df59dc4e4a7'};
+if(sha(assembly.file)!==assembly.sha256)throw Error('Assembly changed');
+for(const source of probe.sources)if(sha(source.file)!==source.sha256)throw Error('Source changed after probe: '+source.file);
+if(probe.summary.failed)throw Error('Probe failure');
+const newFiles=fs.readdirSync('research').filter(file=>file.startsWith('selection-rotation-input-')&&!['selection-rotation-input-evidence.json','selection-rotation-input-manifest.json'].includes(file)).map(file=>'research/'+file);
+const files=[...new Set([...probe.sources.map(x=>x.file),...newFiles,'research/selection-input-grid-host-cil.json','research/selection-input-grid-size-constants-cil.json','research/selection-input-grid-empty-cil.json','research/selection-input-grid-evidence.json'])].sort().map(file=>({file,sha256:sha(file)}));
+const evidence={kind:'ordinary multi-SelectionButton rotation upstream static contract',frozenAt:new Date().toISOString(),originalDllExecuted:false,originalGuiCompared:false,productSourceUsedAsOracle:false,assembly,summary:probe.summary,report:'research/selection-rotation-input-evidence.md',probe:'research/selection-rotation-input-probes.json',contract:{mode:2,initialPoints:['logicalHotzonePoint','actualDiagramDownPoint'],pivot:'center(initial selection diagram bounds), downstream contract',gridCandidateBounds:'current accepted owners union',dispatch:'hInw(correctedAbsolute.x-logicalStart.x,correctedAbsolute.y-logicalStart.y,rawAbsolute,graphics)',controllerAnglePoint:'actualDownPoint + correctedDelta (source handoff; downstream effects excluded)',guides:false,objects:false},sources:files,unknowns:['native GUI/font/pixels','general transformed/initially rotated owner contexts','guide/object providers','nested/master/active-panel special selection scopes','complete cache and transaction behavior','native grid default and key-only dispatch timing','downstream angle/member-write parity is separate evidence']};
+fs.writeFileSync('research/selection-rotation-input-evidence.json',JSON.stringify(evidence,null,2)+'\n');
+const manifest={kind:'selection-rotation-input source/evidence hashes',originalGuiCompared:false,assembly,sources:[...files,{file:'research/selection-rotation-input-evidence.json',sha256:sha('research/selection-rotation-input-evidence.json')}]};
+fs.writeFileSync('research/selection-rotation-input-manifest.json',JSON.stringify(manifest,null,2)+'\n');
+for(const file of manifest.sources)if(sha(file.file)!==file.sha256)throw Error('Freeze hash mismatch');
+console.log(JSON.stringify({files:manifest.sources.length,summary:probe.summary,evidenceSha256:sha('research/selection-rotation-input-evidence.json'),manifestSha256:sha('research/selection-rotation-input-manifest.json')}));

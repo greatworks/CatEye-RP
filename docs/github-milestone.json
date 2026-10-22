@@ -1,54 +1,73 @@
 {
-  "snapshotDate": "2026-10-21",
-  "stage": "Validated selection author, display and runtime source milestone",
-  "base": "5000ef371a1a513f81924f9e4219c214184037fb",
-  "previousMilestone": "b3254d8e6b7ca3291c6cdcff861766530307003d",
-  "sourceFilesMatched": 628,
-  "sourceEvidenceFiles": 190,
-  "priorChecks": {
+  "snapshotDate": "2026-10-22",
+  "stage": "Verified editor shortcuts and ordinary page-tab navigation",
+  "base": "acba65ed024fb42760f6910bea6971886634c6fb",
+  "main": "a38448d4caf04799a94124035d059afa4d42aac5",
+  "sourceFilesMatched": 662,
+  "evidenceHashesMatched": 1549,
+  "protectedArtifactsMatched": 10,
+  "verification": "research/page-tabs-final-verification.json",
+  "checks": {
+    "typecheck": {
+      "result": "passed",
+      "log": ".build/page-tabs-typecheck-final.log"
+    },
+    "productionBuild": {
+      "result": "passed",
+      "log": ".build/page-tabs-build-final.log",
+      "dist": ".build/page-tabs-final-dist"
+    },
+    "testedInputs": {
+      "file": ".build/page-tabs-inputs-final.json",
+      "verifiedEntries": 656
+    },
+    "nativeEvidence": {
+      "file": "research/page-tabs-native-manifest.json",
+      "passed": 22,
+      "vendorExecution": false
+    },
     "unit": {
-      "passed": 5469,
+      "report": ".build/page-tabs-unit-final.json",
+      "passed": 6219,
       "failed": 0,
-      "pending": 0,
-      "inputsUnchanged": true
+      "maxWorkers": 4,
+      "timeoutChanged": false
     },
-    "typecheck": true,
-    "build": ".build/selection-layout-author-second-dist",
-    "focusedProductionBrowser": {
-      "passed": 29,
+    "browser": {
+      "report": "test-results/page-tabs-final.json",
+      "passed": 86,
       "failed": 0,
-      "flaky": 0,
-      "skipped": 0
+      "fullApplicationSuiteRerun": false
     },
-    "fullBrowserRegressionOnThisBuild": false,
-    "reader": {
-      "reusedUnchangedInputs": true,
-      "passed": 856
+    "desktop": {
+      "report": ".build/page-tabs-desktop-audit.json",
+      "passedGroups": 3,
+      "nativePickerResponsesMocked": true,
+      "fullHistoricalSuiteRerun": false
     },
-    "sourceServices": {
-      "passed": 73,
-      "failed": 0,
-      "rehashedFiles": 56
-    },
-    "inspectedFinalScreenshots": [
-      ".build/selection-author-final-results/selection-author-selection-c1046-dicator-side-is-independent/selection-author-fit.png"
+    "screenshotsVisuallyReviewed": [
+      {
+        "file": "D:\\WSCodex\\REA\\.build\\page-tabs-desktop\\visual-order-alpha.png",
+        "sha256": "598441f809213abc777550c5be19fd8cb95ef0873ef726b115157010916afe7f"
+      },
+      {
+        "file": "D:\\WSCodex\\REA\\.build\\page-tabs-desktop\\rich-draft-accepted.png",
+        "sha256": "d6572015eaeea4412dff6e384ad4cfcf7c347871951a1eb56ba409ff98d12b7d"
+      }
     ],
-    "historicalEvidencePreserved": 1535
+    "bundle": {
+      "file": ".build/page-tabs-bundle-audit.json",
+      "allPackagedAppFilesMatchSource": true
+    }
   },
   "sourceStageOnly": true,
-  "windowsPackagePublished": false,
+  "windowsTestPackageVerified": true,
+  "windowsReleasePublished": false,
   "fullAxureParity": false,
-  "verification": "research/selection-author-verification.json",
-  "uploadValidation": {
-    "unit": {
-      "total": 5469,
-      "passed": 5469,
-      "failed": 0,
-      "pending": 0
-    },
+  "unitTestsReexecutedForUpload": false,
+  "excludedInProgress": "Gallery navigation and visibility",
+  "uploadRebuild": {
     "typecheck": true,
-    "rebuiltProductionFilesMatched": 6,
-    "focusedBrowser": "29 prior checks reused after exact production-byte match",
-    "newWindowsPackage": false
+    "productionFilesMatched": 6
   }
 }

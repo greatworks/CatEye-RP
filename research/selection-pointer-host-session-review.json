@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-21T04:44:38.481Z",
+  "scope": "Independent asynchronous product session review with explicit deterministic planner/host sinks",
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "browserExecutedByThisProbe": false,
+  "sources": [
+    {
+      "file": "src/runtime/selection-pointer-session.ts",
+      "sha256": "b96d5c256d33438c6bf89002ad018653b9d8ccd754c6f6bb04ed5cabc0da04fb"
+    },
+    {
+      "file": "tests/selection-pointer-session.test.ts",
+      "sha256": "b22d1247091a07d9d79faad7603128451e6e1e117fdbb267d5f7b0d488f59ad8"
+    }
+  ],
+  "evidence": [
+    {
+      "file": ".build/selection-pointer-host-session-review.mjs",
+      "sha256": "cbfa4a4b5e04df58d6f256d3152cec8ac89415291ff5359e720bfeef95d7f42e"
+    },
+    {
+      "file": "research/selection-pointer-host-session-probes.json",
+      "sha256": "afef90703f2f3852500d5aadf1e768e8f3b330b3fa0d59bdb67cce70d37fb4e8"
+    },
+    {
+      "file": "research/selection-pointer-host-review.md",
+      "sha256": "a883a16295ca708af7c52219e7a706b3e1d390ec2ca1ae0f09dfebf5eeaaee10"
+    },
+    {
+      "file": "research/selection-pointer-host-review.json",
+      "sha256": "506e8868407f195ca84925d38ba7671696b85042e913fcef455c078d73a6dca0"
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "blockingFindings": [],
+  "supersedes": [
+    "Old provisional latest-frame coalescing recommendation: native persistent fit/cache state requires ordered frames."
+  ],
+  "hostRequirements": [
+    "Monotonic context invalidation and document ownership in isCurrent",
+    "No duplicate final frame",
+    "Rollback only owned last publication",
+    "One undo only for successful changed document"
+  ],
+  "limitations": [
+    "No original DLL, GUI or browser execution in the seven helper probes",
+    "Planner is an explicit deterministic sink, not native geometry or font measurement",
+    "Host callbacks and real pointer capture are tested separately"
+  ],
+  "report": {
+    "file": "research/selection-pointer-host-session-review.md",
+    "sha256": "6ca419ad5d66b28e1338311a48bd5d8908732507a2950e3d83b490acbbac5a79"
+  }
+}

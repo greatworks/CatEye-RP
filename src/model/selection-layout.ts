@@ -1,5 +1,6 @@
 /** Ordinary, unrotated SelectionButton author layout. This is not runtime SetText.
- * Source boundaries: research/selection-layout-transaction-evidence.md.
+ * Source boundaries: research/selection-layout-transaction-evidence.md and
+ * research/selection-author-properties-probes.json (MIue/BNZT refresh chain).
  * Fonts, graphics units, rectangle-union semantics and minimum-size policy belong
  * to explicit services. No original assembly, graphics library or DOM is used.
  */
@@ -30,12 +31,18 @@ export interface SelectionLayoutInput {
   /** KNYS from the style-editor scope. Undefined is missing; NaN is invalid input. */
   styleEditorReference?: SelectionLayoutRect
   editingText?: boolean
+  /** RichTextPanel pNOC content-change guard; distinct from the owner guard. */
+  panelChangeGuard?: boolean
 }
 export type SelectionLayoutEntry =
   | { kind: 'layout'; recalculateFit: boolean }
   | { kind: 'size'; size: SelectionLayoutSize; allViews: boolean; notify: boolean }
   | { kind: 'fit'; axis: 'width' | 'height'; value: boolean }
   | { kind: 'alignRight'; value: boolean }
+  | { kind: 'styleChanged'; changedKeys: number[]; notify: boolean; contained: boolean }
+  /** Post-synchronization RNO1 tail only: host has stored/normalized text and
+   * completed any style/inline-link synchronization. Not the text setter. */
+  | { kind: 'textChanged' }
 export interface SelectionLayoutState {
   ownerRect: SelectionLayoutRect
   textPanelRect: SelectionLayoutRect
@@ -53,7 +60,7 @@ export interface SelectionLayoutServiceContext {
 }
 export interface SelectionLayoutServices {
   measureText(request: {
-    pass: number; constraint: SelectionLayoutSize; width: number; flag: true
+    pass: number; constraint: SelectionLayoutSize; width: number; flag: boolean
   }, context: SelectionLayoutServiceContext): SelectionLayoutSize
   readEditorHeight?(context: SelectionLayoutServiceContext): number
   readMinimumSize(context: SelectionLayoutServiceContext): SelectionLayoutSize
@@ -134,6 +141,7 @@ export function planSelectionLayout(
     }
     boolean(input.guard, 'guard'); boolean(input.empty, 'empty'); boolean(input.alignRight, 'alignRight')
     if (input.editingText !== undefined) boolean(input.editingText, 'editingText')
+    if (input.panelChangeGuard !== undefined) boolean(input.panelChangeGuard, 'panelChangeGuard')
     if (!['left', 'center', 'right'].includes(input.horizontalAlignment) ||
         !['top', 'middle', 'bottom'].includes(input.verticalAlignment)) throw Error('Invalid text alignment')
     if (input.padding.length !== 4) throw Error('Four padding values are required')
@@ -147,8 +155,13 @@ export function planSelectionLayout(
       if (entry.axis !== 'width' && entry.axis !== 'height') throw Error('Invalid fit axis')
       boolean(entry.value, 'fit value')
     } else if (entry.kind === 'alignRight') boolean(entry.value, 'alignRight value')
+    else if (entry.kind === 'styleChanged') {
+      boolean(entry.notify, 'notify'); boolean(entry.contained, 'contained')
+      if (!Array.isArray(entry.changedKeys) || entry.changedKeys.some(key => !Number.isSafeInteger(key) || key < 0))
+        throw Error('Changed property keys must be nonnegative safe integers')
+    }
     else if (entry.kind === 'layout') boolean(entry.recalculateFit, 'recalculateFit')
-    else throw Error('Invalid selection layout entry')
+    else if (entry.kind !== 'textChanged') throw Error('Invalid selection layout entry')
     for (const method of ['measureText', 'readMinimumSize', 'convertIndicatorInset', 'unionRectangles'] as const)
       if (typeof services[method] !== 'function') throw Error(`${method} service is required`)
     if (input.editingText && typeof services.readEditorHeight !== 'function') throw Error('readEditorHeight service is required')
@@ -217,8 +230,9 @@ export function planSelectionLayout(
       emit('measure', { index: pass, constraint: { ...constraint } })
       let measured: SelectionLayoutSize
       if (current.effectiveFit.width) {
-        emit('graphics.measure', { index: pass, width: 10000, flag: true })
-        measured = services.measureText({ pass, constraint: { ...constraint }, width: 10000, flag: true }, context())
+        const flag = !input.editingText
+        emit('graphics.measure', { index: pass, width: 10000, flag })
+        measured = services.measureText({ pass, constraint: { ...constraint }, width: 10000, flag }, context())
         size(measured, 'graphics measurement')
       } else {
         let height: number
@@ -333,6 +347,35 @@ export function planSelectionLayout(
         placePanel()
         emit('VJm0', { value: false, property: null })
       }
+    } else if (entry.kind === 'textChanged') {
+      // RNO1 has restored its temporary pNOC by this point. Unlike vNOg,
+      // its iIyW(false) tail is not skipped by an already-set pNOC flag.
+      // The following VJm0 belongs to RNO1, not to iIyW(false).
+      emit('panel.style-refresh', { notify: false })
+      enterLayout(true)
+      emit('VJm0', { value: false, property: null })
+    } else if (entry.kind === 'styleChanged') {
+      // SelectionButton.MIue checks P94 before TextRectObject's notify,
+      // recursion, containment and singleton-Location gates. It requests the
+      // previous panel width, then the ordinary Size validator uses new style.
+      if (entry.changedKeys.includes(94) && !input.empty && button > current.ownerRect.width) {
+        const requested = { width: button + current.textPanelRect.width, height: current.ownerRect.height }
+        emit('uJ0j.request', { ...requested, guard: current.guard })
+        setSize(requested, false, true)
+      }
+      if (entry.notify && !current.guard && !entry.contained &&
+          !(entry.changedKeys.length === 1 && entry.changedKeys[0] === 101)) {
+        // BNZT -> vNOg clears native panel caches and invokes iIyW(false)
+        // only outside editing/pNOC. Services here are fresh reads, not those
+        // native caches. The virtual callback forces layout before INOc(true).
+        if (!input.editingText && !input.panelChangeGuard) {
+          emit('panel.style-refresh', { notify: false })
+          enterLayout(true)
+          emit('panel.invalidate', { deep: true })
+        }
+        enterLayout(false)
+      }
+      emit('style.changed.base')
     } else layout(entry.recalculateFit)
     return { ok: true, state: copyState(current), effects, measurementPasses }
   } catch (error) {

@@ -1,0 +1,5101 @@
+{
+  "kind": "Independent readonly actual product/source composition, persistence and lifecycle review",
+  "originalDllExecuted": false,
+  "originalGuiCompared": false,
+  "browserStarted": false,
+  "productEdited": false,
+  "summary": {
+    "total": 73,
+    "passed": 73,
+    "failed": 0
+  },
+  "angleBoundaryReview": {
+    "passed": true,
+    "sourceRaw": 9.999999999999972,
+    "sourceAngle": 9.999999999999972,
+    "productRaw": 9.999999999999972,
+    "productAngle": 9.999999999999972,
+    "fixedDefect": "K5wb multiplies its fixed 57.29577951308232 literal. Reassociating to *180/PI incorrectly snapped this source fixture to 15."
+  },
+  "sources": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "1d5ea3cde18a0b5047988807f5cdbc94653b35b1aa3e476160f5028728518d6b"
+    },
+    {
+      "path": "src/model/selection-pointer-input.ts",
+      "sha256": "2a9b9063641958c9226094111ea3ec9d36e9ff6e8bcdf2e26e86e49cbc024312"
+    },
+    {
+      "path": "src/model/selection-pointer-rotate.ts",
+      "sha256": "5fa3a1b0de75898a28784e094b7b3dbf7dc85e144db551e03c88302d366a0e66"
+    },
+    {
+      "path": "src/model/selection-author-edits.ts",
+      "sha256": "b6f827bf4aed8b6c857f6dbca141d45c3b8d2331d3a0e7ab6241b8cba6942771"
+    },
+    {
+      "path": "src/runtime/selection-pointer-session.ts",
+      "sha256": "b3e812e35ccda2e368aeefd0d5702879329e11e1b196ead18a5074d6d1879602"
+    },
+    {
+      "path": "src/model/adaptive-view-sets.ts",
+      "sha256": "b96220b65d1568569ed6f66aa41a9cdfcd92a894adb7668b885375eaa6ea6309"
+    },
+    {
+      "path": "src/model/adaptive.ts",
+      "sha256": "ce058f7fb26e2ab8658ae3d637981770143b9fd68d1717ad1210460439f53079"
+    },
+    {
+      "path": "src/model/document.ts",
+      "sha256": "b599acec94bb5cf552073f6a84649b31c4dd4b2e9e2c53a749ce7c98091d5441"
+    },
+    {
+      "path": "src/model/layer-geometry.ts",
+      "sha256": "3d5e5638d0956cbcb80f201b9714823cfe2a9c3cbe152708f06550c669d46994"
+    },
+    {
+      "path": "research/selection-rotation-host-review-source-probes.json",
+      "sha256": "c28ea86f1a792d09b093c289ec1b77cf0259935d1d315638d49e6ca992a60ed1"
+    },
+    {
+      "path": "research/selection-rotation-host-review-probe.mjs",
+      "sha256": "3dce0abc062985241831db997f45810666e305705921e85ee26b0ad20910b4c4"
+    },
+    {
+      "path": "research/selection-rotation-host-review-final-probe.mjs",
+      "sha256": "5f6f4ab6804bed67cb57ca87441efc77d68032336064c80bf6a79444aee5787b"
+    },
+    {
+      "path": "research/selection-rotation-model-angle-unit-probes.json",
+      "sha256": "1193653b1123258c446500bd65728dd435addf5d77eb6e24b31d8e13ff26e5aa"
+    }
+  ],
+  "sourceStableDuringProbe": true,
+  "drift": [],
+  "blockingFindings": [],
+  "results": [
+    {
+      "name": "constructor h1 gridfalse offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 119.42631645125644,
+              "y": 172.50000000000006,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h1 gridfalse offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h1 gridfalse offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": -30,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 119.42631645125638,
+              "y": 172.5,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.500000000000014,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h1 gridfalse offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": -30,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.500000000000014,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h1 gridtrue offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 119.42631645125644,
+              "y": 172.50000000000006,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28,
+            "y": 56.49999999999994
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 1.2933328929411232
+          },
+          "angle": 360,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100.00000000000003,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 99.99999999999996,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h1 gridtrue offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h1 gridtrue offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 255
+          },
+          "angle": -30,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 119.42631645125638,
+              "y": 172.5,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.500000000000014,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28,
+            "y": 56.5
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 1.2933328929411232
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h1 gridtrue offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 255
+          },
+          "angle": -30,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.500000000000014,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h2 gridfalse offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 230.16197964003175,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 337.8898095855626,
+              "y": 211.33949557617873,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 162.89160912087272,
+              "y": -34.375253281595036,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 150,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 370.5736835487436,
+              "y": 27.500000000000014,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 123.44555433772325,
+              "y": 187.5,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 150,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h2 gridfalse offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 230.16197964003175,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 162.89160912087272,
+              "y": -34.375253281595036,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 150,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 123.44555433772325,
+              "y": 187.5,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 150,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h2 gridfalse offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 225,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 347.5304832720494,
+              "y": 202.53048327204937,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 151.25631329235415,
+              "y": -23.743686707645807,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 135,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 347.53048327204937,
+              "y": -2.530483272049395,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 151.2563132923542,
+              "y": 223.74368670764582,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 135,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h2 gridfalse offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 225,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 151.25631329235415,
+              "y": -23.743686707645807,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 135,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 151.2563132923542,
+              "y": 223.74368670764582,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 135,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h2 gridtrue offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 230.16197964003175,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 337.8898095855626,
+              "y": 211.33949557617873,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 162.89160912087272,
+              "y": -34.375253281595036,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 29.110190414437398,
+            "y": 60
+          },
+          "angle": 150,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 370.5736835487436,
+              "y": 27.500000000000014,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 123.44555433772325,
+              "y": 187.5,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 150,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": -2.5736835487435883,
+            "y": 4
+          },
+          "angle": -24.262777368470168,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 112.80778798853135,
+              "y": 159.58371491871685,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 434.54232484142767,
+              "y": 28.088619925686572,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h2 gridtrue offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 230.16197964003175,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 162.89160912087272,
+              "y": -34.375253281595036,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 150,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 123.44555433772325,
+              "y": 187.5,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 150,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 4
+          },
+          "angle": 30,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 187.5,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h2 gridtrue offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 225,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 347.5304832720494,
+              "y": 202.53048327204937,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 151.25631329235415,
+              "y": -23.743686707645807,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31.74368670764585,
+            "y": 60
+          },
+          "angle": 135,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 347.53048327204937,
+              "y": -2.530483272049395,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 151.2563132923542,
+              "y": 223.74368670764582,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 135,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0.7436867076457929,
+            "y": 4
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h2 gridtrue offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 225,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 151.25631329235415,
+              "y": -23.743686707645807,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 135,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 151.2563132923542,
+              "y": 223.74368670764582,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 135,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 4
+          },
+          "angle": 45,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 398.7436867076458,
+              "y": 223.7436867076458,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h3 gridfalse offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 119.42631645125644,
+              "y": 172.50000000000006,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h3 gridfalse offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h3 gridfalse offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 119.42631645125644,
+              "y": 172.50000000000006,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h3 gridfalse offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h3 gridtrue offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 119.42631645125644,
+              "y": 172.50000000000006,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28.89825229702646,
+            "y": 56.223377662160516
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 4
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h3 gridtrue offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28,
+            "y": 56.363345830321634
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 4
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h3 gridtrue offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 119.42631645125644,
+              "y": 172.50000000000006,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28.89825229702646,
+            "y": 56.223377662160516
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 4
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h3 gridtrue offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 255
+          },
+          "angle": 330,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.499999999999929,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28,
+            "y": 56.363345830321634
+          },
+          "angle": 345,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 345,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 4
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h4 gridfalse offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h4 gridfalse offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h4 gridfalse offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h4 gridfalse offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h4 gridtrue offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 34,
+            "y": 58
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 1.5287615398655134
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h4 gridtrue offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 34,
+            "y": 58
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 2.706667107058877
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h4 gridtrue offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 34,
+            "y": 58
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 1.5287615398655134
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h4 gridtrue offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 34,
+            "y": 58
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 2.706667107058877
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h6 gridfalse offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h6 gridfalse offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h6 gridfalse offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h6 gridfalse offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h6 gridtrue offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 32.17647058823525,
+            "y": 55.33333333333337
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 4
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h6 gridtrue offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 34,
+            "y": 55.35211267605635
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 4
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h6 gridtrue offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 32.17647058823525,
+            "y": 55.33333333333337
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 4
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h6 gridtrue offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 34,
+            "y": 55.35211267605635
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 4
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h8 gridfalse offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 45,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 142.46951672795058,
+              "y": -2.5304832720493806,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 398.7436867076458,
+              "y": 223.7436867076458,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -30,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 119.42631645125638,
+              "y": 172.5,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.500000000000014,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -30,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h8 gridfalse offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 45,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 398.7436867076458,
+              "y": 223.7436867076458,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -30,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.500000000000014,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -30,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h8 gridfalse offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 45,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 142.46951672795058,
+              "y": -2.5304832720493806,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 398.7436867076458,
+              "y": 223.7436867076458,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -20.07004359156565,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 108.80529870061304,
+              "y": 149.75945475958076,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 439.3729153613291,
+              "y": 39.94548563498874,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h8 gridfalse offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 45,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 398.7436867076458,
+              "y": 223.7436867076458,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -20.07004359156565,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 439.3729153613291,
+              "y": 39.94548563498874,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h8 gridtrue offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -263,
+            "y": 256
+          },
+          "angle": 45,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 142.46951672795058,
+              "y": -2.5304832720493806,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 398.7436867076458,
+              "y": 223.7436867076458,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 32.53048327204942,
+            "y": 56
+          },
+          "angle": -30,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 119.42631645125638,
+              "y": 172.5,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.500000000000014,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -30,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0.5736835487435883,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h8 gridtrue offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -263,
+            "y": 256
+          },
+          "angle": 45,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 398.7436867076458,
+              "y": 223.7436867076458,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28.256313292354207,
+            "y": 56
+          },
+          "angle": -30,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 426.55444566227675,
+              "y": 12.500000000000014,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -30,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 1.4455543377232516,
+            "y": 0
+          },
+          "angle": -8.263972727679118,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 448.18286367040025,
+              "y": 74.84655628110642,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h8 gridtrue offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -263,
+            "y": 256
+          },
+          "angle": 45,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 142.46951672795058,
+              "y": -2.5304832720493806,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 398.7436867076458,
+              "y": 223.7436867076458,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 32.53048327204942,
+            "y": 56
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -20.07004359156565,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 108.80529870061304,
+              "y": 149.75945475958076,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 439.3729153613291,
+              "y": 39.94548563498874,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 3.1947012993869635,
+            "y": 0
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h8 gridtrue offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -263,
+            "y": 256
+          },
+          "angle": 45,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 398.7436867076458,
+              "y": 223.7436867076458,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28.256313292354207,
+            "y": 56
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -20.07004359156565,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 439.3729153613291,
+              "y": 39.94548563498874,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": -3.372915361329092,
+            "y": 0
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h9 gridfalse offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": -24.403971688851612,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 112.95502172115823,
+              "y": 159.9092957005856,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 434.36462895722275,
+              "y": 27.69567760274151,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h9 gridfalse offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": -24.403971688851612,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 434.36462895722275,
+              "y": 27.69567760274151,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h9 gridfalse offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": -24.260871420103683,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 112.80580600496344,
+              "y": 159.5793175019876,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 434.5447168905614,
+              "y": 28.093927152773617,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h9 gridfalse offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": -24.260871420103683,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 434.5447168905614,
+              "y": 28.093927152773617,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h9 gridtrue offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 256
+          },
+          "angle": -24.360956847448733,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 112.91008199713042,
+              "y": 159.81014597871493,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 434.4188665551874,
+              "y": 27.815341060171633,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 28.817805742379278,
+            "y": 57.661368655334144
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h9 gridtrue offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 256
+          },
+          "angle": -24.360956847448733,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 434.4188665551874,
+              "y": 27.815341060171633,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 33.07760348481543,
+            "y": 56.62769023239284
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h9 gridtrue offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 256
+          },
+          "angle": -24.216783548525655,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 112.7600001403828,
+              "y": 159.47757928100674,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 434.59999983057253,
+              "y": 28.216714660853953,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 30.02010511860044,
+            "y": 57.295352596622166
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 137.5287615398655,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h9 gridtrue offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -268,
+            "y": 256
+          },
+          "angle": -24.216783548525655,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 434.59999983057253,
+              "y": 28.216714660853953,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 34.581064046225606,
+            "y": 56.361286779477865
+          },
+          "angle": -15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 54.70666710705888,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": -15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 4,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h12 gridfalse offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h12 gridfalse offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h12 gridfalse offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h12 gridfalse offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -265,
+            "y": 255
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h12 gridtrue offset0 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 256
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 30.764705882352928,
+            "y": 56.66666666666663
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h12 gridtrue offset0 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 256
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 30.717948717948616,
+            "y": 56.84507042253517
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h12 gridtrue offset1.5 lockedfalse",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 256
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 245,
+              "y": -45,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 30.764705882352928,
+            "y": 56.66666666666663
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 104.94075518808509,
+              "y": 62.47123846013449,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "check",
+              "name": "style.Location",
+              "x": 100,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            },
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "constructor h12 gridtrue offset1.5 lockedtrue",
+      "passed": true,
+      "frames": [
+        {
+          "delta": {
+            "x": -262,
+            "y": 256
+          },
+          "angle": 90,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 275,
+              "y": 275,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 30.717948717948616,
+            "y": 56.84507042253517
+          },
+          "angle": 15,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 444.037019600587,
+              "y": 145.29333289294112,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        },
+        {
+          "delta": {
+            "x": 31,
+            "y": 57
+          },
+          "angle": 15,
+          "writes": []
+        },
+        {
+          "delta": {
+            "x": 2,
+            "y": 0
+          },
+          "angle": 0,
+          "writes": [
+            {
+              "id": "radio",
+              "name": "style.Location",
+              "x": 450,
+              "y": 100,
+              "allViews": false,
+              "notify": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "current paired Location shared=false nested=false",
+      "passed": true,
+      "pairedWrites": 2
+    },
+    {
+      "name": "current paired Location shared=false nested=true",
+      "passed": true,
+      "pairedWrites": 2
+    },
+    {
+      "name": "current paired Location shared=true nested=false",
+      "passed": true,
+      "pairedWrites": 2
+    },
+    {
+      "name": "current paired Location shared=true nested=true",
+      "passed": true,
+      "pairedWrites": 2
+    },
+    {
+      "name": "no move and repeated zero-angle frame do not materialize a location patch",
+      "passed": true
+    },
+    {
+      "name": "invalid later target write cannot mutate earlier accepted candidate or source",
+      "passed": true
+    },
+    {
+      "name": "queued original requests replay live state; finish adds no frame and one completion",
+      "passed": true,
+      "frames": 4,
+      "completed": 1
+    },
+    {
+      "name": "published rotation rolls back atomically after a later malformed frame",
+      "passed": true
+    },
+    {
+      "name": "ownership cancellation does not overwrite an external replacement",
+      "passed": true
+    }
+  ]
+}

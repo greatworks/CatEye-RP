@@ -1,0 +1,235 @@
+{
+  "stage": "selection-properties-model",
+  "createdAt": "2026-10-21T04:07:26.161Z",
+  "status": "numeric-model-focused-verified",
+  "published": false,
+  "originalGuiCompared": false,
+  "fullAxureParity": false,
+  "ownedChanges": [
+    "src/model/selection-layout.ts",
+    "tests/selection-layout-properties.test.ts"
+  ],
+  "api": {
+    "entries": [
+      "styleChanged",
+      "textChanged"
+    ],
+    "input": "panelChangeGuard?: boolean",
+    "measurement": "flag: boolean; AFW uses !editingText",
+    "textBoundary": "post-synchronization RNO1 tail, not native text setter"
+  },
+  "results": {
+    "passed": 276,
+    "failed": 0,
+    "total": 276,
+    "newTests": 62,
+    "existingGeometry": 194,
+    "existingAuthorMeasure": 20,
+    "typecheckExitCode": 0,
+    "sourceConfirmationCases": 8
+  },
+  "before": {
+    "path": ".build/selection-properties-before/editor-core/selection-layout.ts.txt",
+    "sha256": "fe18d99c7b85f17435fe668a3cb720183f82d34b113cefe790e32fa086605c94",
+    "bytes": 17970
+  },
+  "sources": [
+    {
+      "path": "src/model/selection-layout.ts",
+      "sha256": "6ef087714d00160ad45fa39ed03a009a6a5d51d1679d45497087265230dc49f8",
+      "bytes": 20566
+    },
+    {
+      "path": "tests/selection-layout-properties.test.ts",
+      "sha256": "6b1ceef50a35bfaa211dc5e13692053975d89d362c843b8210313adcffed9526",
+      "bytes": 16382
+    },
+    {
+      "path": "tests/selection-layout-geometry.test.ts",
+      "sha256": "8db3c5f3558da802d40d0d3378db995342c37307e114f997f2055b28f23f4d83",
+      "bytes": 12680
+    },
+    {
+      "path": "tests/selection-author-measure.test.ts",
+      "sha256": "ab68b2771e917c981c02f0eeaf4d130e8c2aabcb471577bbef3ebab3829e1119",
+      "bytes": 14659
+    }
+  ],
+  "snapshots": [
+    {
+      "path": ".build/selection-properties-before/editor-core/selection-layout.ts.txt",
+      "sha256": "fe18d99c7b85f17435fe668a3cb720183f82d34b113cefe790e32fa086605c94",
+      "bytes": 17970
+    },
+    {
+      "path": ".build/selection-properties-before/editor-core/selection-layout-geometry.test.ts.txt",
+      "sha256": "8db3c5f3558da802d40d0d3378db995342c37307e114f997f2055b28f23f4d83",
+      "bytes": 12680
+    },
+    {
+      "path": ".build/selection-properties-final/editor-core/selection-author-properties-probes.json",
+      "sha256": "abd74c220ebd01fd221d42545e66dccb1136667af0e98574c2ea661be57d0e4f",
+      "bytes": 249093
+    },
+    {
+      "path": ".build/selection-properties-final/editor-core/selection-author-properties-replay.mjs.txt",
+      "sha256": "06eb59555177a7f06ffcd7d28b639db484f24054a0662cc6dfd1606d9f4da88c",
+      "bytes": 10478
+    },
+    {
+      "path": ".build/selection-properties-final/editor-core/selection-layout-properties.test.ts.txt",
+      "sha256": "6b1ceef50a35bfaa211dc5e13692053975d89d362c843b8210313adcffed9526",
+      "bytes": 16382
+    },
+    {
+      "path": ".build/selection-properties-final/editor-core/selection-layout.ts.txt",
+      "sha256": "6ef087714d00160ad45fa39ed03a009a6a5d51d1679d45497087265230dc49f8",
+      "bytes": 20566
+    }
+  ],
+  "evidence": [
+    {
+      "path": ".build/selection-properties-model-baseline.json",
+      "sha256": "cba9278f036e1470b3771693c1cc2e270002cd7e3e1eacd404b08dccdff43007",
+      "bytes": 62552
+    },
+    {
+      "path": ".build/selection-properties-model-baseline.log",
+      "sha256": "8602488734aa054074c87c27467797bbed43c6364475a820af402feb0bc212f9",
+      "bytes": 433
+    },
+    {
+      "path": ".build/selection-properties-model-green-final.json",
+      "sha256": "6a8426e630c005cf4cae443a9bb6f65ef1a25327a872d60db4a65513f23c2ac7",
+      "bytes": 93317
+    },
+    {
+      "path": ".build/selection-properties-model-green-final.log",
+      "sha256": "083b24279c9e27d6aab04f4089674bc87386d99585e52dc006860000bd10b108",
+      "bytes": 436
+    },
+    {
+      "path": ".build/selection-properties-model-green-first.json",
+      "sha256": "0f0300feb9e69af96d558da54d70ac5ce8daa4834fdd94b343d51f304754cb26",
+      "bytes": 83053
+    },
+    {
+      "path": ".build/selection-properties-model-green-first.log",
+      "sha256": "a712b3c7075cfde29dc2e84dc30f1ae19905a6a926768c6c6cddd3b45894636a",
+      "bytes": 436
+    },
+    {
+      "path": ".build/selection-properties-model-green-second.json",
+      "sha256": "9d0e96918a67b55eb8244c0b8ab56f732abb5842730f6b2fd1560df8549e5206",
+      "bytes": 87829
+    },
+    {
+      "path": ".build/selection-properties-model-green-second.log",
+      "sha256": "46efdf3fdc689773b0263469af8f5bc1a11a87bc844feae7280e84a7fdb13320",
+      "bytes": 437
+    },
+    {
+      "path": ".build/selection-properties-model-green-third.json",
+      "sha256": "a4896242e711880f5b6298a24c1b473c44d9cda3e6d002e5f87f3751be9fa6bd",
+      "bytes": 92229
+    },
+    {
+      "path": ".build/selection-properties-model-green-third.log",
+      "sha256": "82b08669946ae2fb642efc84e178c80969ff792434c7db3f512779dcf9c63cc8",
+      "bytes": 436
+    },
+    {
+      "path": ".build/selection-properties-model-red-second.json",
+      "sha256": "e442622d5d6f5607f32c6c9a1bd07329ea47dab947d3e140bc8110c524be2261",
+      "bytes": 15021
+    },
+    {
+      "path": ".build/selection-properties-model-red-second.log",
+      "sha256": "ef92280c0d52313905ec30df8bdb26773525499a1f99cb6e20b26a7b6703666e",
+      "bytes": 435
+    },
+    {
+      "path": ".build/selection-properties-model-red-third.json",
+      "sha256": "ceee9f6ae2c33f5c2b1df81a20c75ad00ca58b059db4fb6135b6a35896a79f27",
+      "bytes": 52177
+    },
+    {
+      "path": ".build/selection-properties-model-red-third.log",
+      "sha256": "0d0c05258bf843845a767a5d202f805f5d62f059564b65c9325a10ec099690a1",
+      "bytes": 434
+    },
+    {
+      "path": ".build/selection-properties-model-red.json",
+      "sha256": "62f7a24c67dbbcdee82175411a139d0ad0b3fd39f5f8dc1e5d9b76f988b2e140",
+      "bytes": 12443
+    },
+    {
+      "path": ".build/selection-properties-model-red.log",
+      "sha256": "e90f57338db53d3eaff2604222b694368ab47c0a50ce5ea5282d9bd6a5540a56",
+      "bytes": 428
+    },
+    {
+      "path": ".build/selection-properties-model-text-red-second.json",
+      "sha256": "f2e6f8e796c97901b17cc8a85531db079d739769544ac08c3997155befe66c1c",
+      "bytes": 29634
+    },
+    {
+      "path": ".build/selection-properties-model-text-red-second.log",
+      "sha256": "d98e31d6170f583d62719f80ecccf47fc80fbeb1f0efcc67277edf2a57b599f4",
+      "bytes": 440
+    },
+    {
+      "path": ".build/selection-properties-model-text-red.json",
+      "sha256": "fd7a005dbfff86c187c9d297d9c29e52af13ace394c2d563bdbd587e28727a4d",
+      "bytes": 43025
+    },
+    {
+      "path": ".build/selection-properties-model-text-red.log",
+      "sha256": "d2c64c13f0c0dc6485a84610849d1aad3bb51a41e1f09050c56a6767a7b5bade",
+      "bytes": 433
+    },
+    {
+      "path": ".build/selection-properties-model-typecheck-final.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217",
+      "bytes": 60
+    },
+    {
+      "path": ".build/selection-properties-model-typecheck-first.log",
+      "sha256": "78b4ed337f44ca3afef4512ee88f8728293e9c5c172b77a02d097127bb841217",
+      "bytes": 60
+    },
+    {
+      "path": "research/selection-properties-model-implementation.md",
+      "sha256": "c4a8b7b6fd67e5836988647d62297ee985ce5249b6e26f3196fdd4dca4d40017",
+      "bytes": 7182
+    },
+    {
+      "path": "research/selection-properties-model-source-fixtures.mjs",
+      "sha256": "7cf8e89a9850125c9048168ceb523044832e778ce1d5cd952961d35f06dc96f0",
+      "bytes": 2240
+    },
+    {
+      "path": "research/selection-properties-model-source-fixtures.json",
+      "sha256": "2c4fc8e2525d70a29ac50405a2978dbd8881fd06cccf8a4da9fbe12f1d0c83a0",
+      "bytes": 52191
+    },
+    {
+      "path": "research/selection-properties-model-source-confirmation.mjs",
+      "sha256": "a30465237c826fcd6e492fc3a0510e71f8d70ab9135e575575bda6a972b927be",
+      "bytes": 1509
+    },
+    {
+      "path": "research/selection-properties-model-source-confirmation.json",
+      "sha256": "bb5bbfaad8acfb845c9d3efa2254007c0aa58264a106ed75a8c1a004b0b6f3ee",
+      "bytes": 52893
+    }
+  ],
+  "limitations": [
+    "ordinary unrotated numeric domain",
+    "explicit font/graphics/unit/union/minimum services",
+    "atomic product commit differs from native partial writes on failure",
+    "text storage/normalization/style-sync/inline-link operations remain host responsibility",
+    "browser author service excludes active inline editor false-flag graphics",
+    "no browser or native GUI verification in this agent increment"
+  ]
+}

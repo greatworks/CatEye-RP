@@ -235,7 +235,8 @@ test('adaptive font declarations project into measurement runs without changing 
 test('second-target measurement failure discards the first plan and retry commits both in one undo', async ({ page }, info) => {
   const original = fixture(); await open(page, original); await selectFirst(page);
   await page.keyboard.press('Control+a');
-  await expect(page.locator('.selection-frame')).toHaveCount(2);
+  await expect(page.locator('.selection-frame:not(.selection-group-frame)')).toHaveCount(2);
+  await expect(page.locator('.selection-group-frame')).toHaveCount(1);
   await instrument(page, { failText: 'SECOND_LABEL' });
   await inspector(page).getByLabel('Fit selection width to text', { exact: true }).click();
   await expect(page.locator('.statusbar')).toContainText('Intentional second selection measurement failure');
@@ -244,7 +245,8 @@ test('second-target measurement failure discards the first plan and retry commit
   expect(observed.failures).toBe(1);
   expect(await save(page, info, 'multi-target-rejected')).toEqual(original);
   await expect(page.getByTitle('Undo', { exact: true })).toBeDisabled();
-  await expect(page.locator('.selection-frame')).toHaveCount(2);
+  await expect(page.locator('.selection-frame:not(.selection-group-frame)')).toHaveCount(2);
+  await expect(page.locator('.selection-group-frame')).toHaveCount(1);
   await clean(page);
   await page.evaluate(() => (window as unknown as InstrumentedWindow).selectionAuthorProbe.restore());
   await inspector(page).getByLabel('Fit selection width to text', { exact: true }).click();

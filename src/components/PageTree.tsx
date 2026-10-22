@@ -106,6 +106,9 @@ export function PageTree({ document: doc, selectedId, activePageId, search, onSe
     const mod = event.ctrlKey || event.metaKey, key = event.key.toLowerCase();
     if (mod && ['s', 'o', 'z', 'y', 'n'].includes(key) || key === 'f5') return;
     event.stopPropagation();
+    // Page-tab chords are handled in window capture. Extra modifiers must not
+    // turn an unsupported navigation chord into a page hierarchy mutation.
+    if ((mod || event.altKey) && key === 'tab' || event.altKey && ['arrowleft', 'arrowright'].includes(key)) { event.preventDefault(); return; }
     if (key === 'f2') { event.preventDefault(); void rename(selection); }
     else if (key === 'delete' || key === 'backspace') { event.preventDefault(); remove(selection); }
     else if (key === 'enter') { event.preventDefault(); if (byId.get(selection)?.kind === 'page') onOpen(selection); else toggle(selection); }

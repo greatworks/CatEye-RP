@@ -339,4 +339,12 @@ export interface RuntimeMotionState {
   };
   moveInfos?: Record<string, { deltaX: number; deltaY: number; easing: typeof ROTATION_EASINGS[number]; duration: number }>;
 }
-export interface RuntimeState { motionState?: RuntimeMotionState; frameNavigations?: Record<string, { target: FrameTarget; revision: number }>; pageId: string; variables: Record<string, string>; widgetOverrides: Record<string, Partial<Widget>>; repeaterRows: Record<string, Record<string, string>[]>; pendingNavigation?: string; caseMenus?: CaseMenu[]; richTextStyleOverrides?: Record<string, Partial<WidgetStyle>> }
+/** Runtime-only adaptive identity. Restoring it must not dispatch a view change. */
+export interface RuntimeAdaptiveState {
+  viewport: { width?: number; height?: number; clampToPage?: boolean };
+  mode: 'auto' | 'forced';
+  selectedViewId?: string;
+  pageInitialized: boolean;
+  repeatersInitialized: boolean;
+}
+export interface RuntimeState { adaptiveState?: RuntimeAdaptiveState; motionState?: RuntimeMotionState; frameNavigations?: Record<string, { target: FrameTarget; revision: number }>; pageId: string; variables: Record<string, string>; widgetOverrides: Record<string, Partial<Widget>>; repeaterRows: Record<string, Record<string, string>[]>; pendingNavigation?: string; caseMenus?: CaseMenu[]; richTextStyleOverrides?: Record<string, Partial<WidgetStyle>> }

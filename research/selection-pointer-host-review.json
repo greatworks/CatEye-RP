@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "kind": "read-only pre-integration host review",
+  "generatedAt": "2026-10-21T04:23:42.556Z",
+  "sources": [
+    {
+      "file": "src/App.tsx",
+      "sha256": "f889438647378f9bfc669f848c7070d5dd0b8778df5c683022f4133e555909db"
+    },
+    {
+      "file": "src/model/rotation-geometry.ts",
+      "sha256": "8749f3fb6ef037b1a75d59e848096be8312ce985b32ba583aea77c85ca587334"
+    },
+    {
+      "file": "src/model/selection-author-command.ts",
+      "sha256": "c7c383d51adbff406a1668a65b99c4b4dbed7dbce5815a5abad548659f85db48"
+    },
+    {
+      "file": "src/model/selection-author-edits.ts",
+      "sha256": "ec025356b9a4d40b61d15a186f6dd44bbd8b4c58c0419ad43855ef163e21dc78"
+    },
+    {
+      "file": "src/model/selection-layout.ts",
+      "sha256": "6ef087714d00160ad45fa39ed03a009a6a5d51d1679d45497087265230dc49f8"
+    },
+    {
+      "file": "src/runtime/selection-author-measure.ts",
+      "sha256": "7df2ddf8f060b6f60c9b9185cc0e80f488f3230420e75b93d57ea208ff5e5bba"
+    },
+    {
+      "file": "src/runtime/selection-text-layout.ts",
+      "sha256": "a78e70066506567db12d64687d1a561e4d5eec0c9ec20e2d3650ab09cf3ff9bf"
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "ce058f7fb26e2ab8658ae3d637981770143b9fd68d1717ad1210460439f53079"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "startDrag",
+      "file": "src/App.tsx",
+      "line": 648,
+      "excerpt": "function startDrag(e:ReactPointerEvent,w:Widget,handle?:string){++selectionCommandSerial.current;if(e.button!==0||w.placed===false||!scopePlaced)return;setTreeSelection(null);setMenuSelection(null);setTableSelection(null);e.stopPropagation();if(editing===w.id)return;if(pointEditing){setPointEditingId(null);setVectorDraft(null)}const groupIds=w.groupId?canvasWidgets.filter(a=>a.groupId===w.groupId).map(a=>a.id):[w.id];const ids=(e.shiftKey?[...new Set([...selected,...groupIds])]:selected.includes(w.id)?selected:groupIds).filter(id=>canvasWidgets.some(w=>w.id===id));const layerResize=Boolean(handle&&widgets.some(widget=>ids.includes(widget.id)&&widget.layer));if(layerResize&&ids.some(id=>!widgets.find(widget=>widget.id===id)?.layer)){setNotice('Resize groups separately from ordinary widgets. No widgets were changed.');return;}setSelected(ids);if(w.locked)return;drag.current={kind:handle?'resize':'move',startX:e.clientX,startY:e.clientY,original:structuredClone(widgets),ids,handle,document:docRef.current,wasSaved:saved,...(layerResize?{layerResize:layerResizeContext()}:{})};e.currentTarget.setPointerCapture(e.pointerId)}",
+      "sha256": "69322c78bdaecab211ab36d0c5f665758cec9699017836b4efe3e0f179c17b55"
+    },
+    {
+      "name": "pointerMove",
+      "file": "src/App.tsx",
+      "line": 651,
+      "excerpt": "function pointerMove(e:ReactPointerEvent){const gridDrag=tableSelectionDrag.current;if(gridDrag){const table=widgets.find(w=>w.id===gridDrag.tableId),id=document.elementFromPoint(e.clientX,e.clientY)?.closest<HTMLElement>('[data-table-cell-id]')?.dataset.tableCellId;if(table&&id&&table.table!.cells.some(cell=>cell.id===id))setTableSelection({tableId:table.id,anchorCellId:gridDrag.anchor,focusCellId:id,cellIds:[...new Set([...gridDrag.initial,...tableRectangleIds(table,gridDrag.anchor,id)])]});return}const d=drag.current;if(!d)return;if(d.kind==='marquee'){const p=point(e);const r={x:Math.min(p.x,d.startX),y:Math.min(p.y,d.startY),width:Math.abs(p.x-d.startX),height:Math.abs(p.y-d.startY)};setMarquee(r);setSelected([...new Set([...(d.initialSelection??[]),...d.original.filter(w=>w.placed!==false&&rotatedBoundsIntersect(w.layer?{...w,rotation:0}:w,r)).map(w=>w.id)])]);return}let dx=(e.clientX-d.startX)/zoom,dy=(e.clientY-d.startY)/zoom;if(snap){dx=Math.round(dx/8)*8;dy=Math.round(dy/8)*8}if(e.shiftKey&&d.kind==='move'){if(Math.abs(dx)>Math.abs(dy))dy=0;else dx=0}if(d.layerResize&&d.document){const result=planLayerResizeDocument(d.document,d.original,d.ids,(d.handle??'se') as keyof typeof LAYER_RESIZE_HANDLES,()=>({x:dx,y:dy}),d.layerResize,{control:e.ctrlKey,alt:e.altKey,shift:e.shiftKey},true);const next=result??d.document;if(JSON.stringify(next)!==JSON.stringify(docRef.current)){docRef.current=next;setDoc(next);}setSaved(next===d.document?(d.wasSaved??false):false);return;}if(dx===0&&dy===0){changeWidgets(d.original,false,undefined,d.document);return}changeWidgets(d.original.map(w=>{if(!d.ids.includes(w.id)||w.locked||w.placed===false)return w;if(d.kind==='move')return translateWidget(w,Math.round(w.x+dx)-w.x,Math.round(w.y+dy)-w.y);if(w.layer)return w;const h=d.handle??'se';const {width,height}=resizeRotatedBounds(w,h,{x:dx,y:dy});const resized=w.type==='menu'?resizeMenu(w,Math.max(w.menu!.padding[1]+w.menu!.padding[3]+w.menu!.table.table!.columnWidths.length,width),Math.max(w.menu!.padding[0]+w.menu!.padding[2]+w.menu!.table.table!.rowHeights.length,height)):w.type==='table'?resizeTable(w,Math.max(w.table!.columnWidths.length,width),Math.max(w.table!.rowHeights.length,height)):{...w,width:width,height:height};return{...resized,...anchorRotatedResize(w,h,resized.width,resized.height)}}),false,undefined,d.document)}",
+      "sha256": "8e21870bab2bd183a819f94038c1c410e10a7566e1b8fd259d92e1e4a5daf657"
+    },
+    {
+      "name": "pointerUp",
+      "file": "src/App.tsx",
+      "line": 652,
+      "excerpt": "function pointerUp(){tableSelectionDrag.current=null;const d=drag.current;drag.current=null;setMarquee(null);if(d?.document){if(JSON.stringify(d.document)!==JSON.stringify(docRef.current)){setPast(p=>[...p.slice(-99),d.document!]);setFuture([])}else setSaved(d.wasSaved??false)}}",
+      "sha256": "3b472c1760f5483b61ca4e8d75e14ea209f69f14ecb52e7b21bcd7854e4f5e69"
+    },
+    {
+      "name": "pointerCancel",
+      "file": "src/App.tsx",
+      "line": 653,
+      "excerpt": "function pointerCancel(){tableSelectionDrag.current=null;const tableDrag=tableResize.current;tableResize.current=null;if(tableDrag){docRef.current=tableDrag.document;setDoc(tableDrag.document);setSaved(tableDrag.wasSaved)}const d=drag.current;drag.current=null;setMarquee(null);if(d?.document){docRef.current=d.document;setDoc(d.document);setSaved(d.wasSaved??false)}}",
+      "sha256": "f01f34958b3a0560f29acddbc042caa69f38440431da0faa8a7c8b451bf7152c"
+    },
+    {
+      "name": "selection planner",
+      "file": "src/App.tsx",
+      "line": 424,
+      "excerpt": "async function planSelectionDocument(source:Document,candidate:Document,ids:string[],command:(before:Widget,after:Widget)=>SelectionAuthorCommand|undefined,stillCurrent:()=>boolean){",
+      "sha256": "2a8d19d7b3a0465f9a3a7667a85665f7d10ce30aa80eb317aef5ba66272c19bd"
+    },
+    {
+      "name": "property queue",
+      "file": "src/App.tsx",
+      "line": 486,
+      "excerpt": "function queueSelectionProperties(build:(source:Document)=>Document,ids:string[],command:(before:Widget,after:Widget)=>SelectionAuthorCommand|undefined,onAccepted?:()=>void,planUnchanged=false){",
+      "sha256": "c35195fae2597020c41e1726551ce92d09a2d32d1c0af13eddcd403c2bd2e214"
+    },
+    {
+      "name": "generic adaptive commit",
+      "file": "src/App.tsx",
+      "line": 179,
+      "excerpt": "function planWidgetChanges(next:Widget[],explicitViewTextStyle?:Partial<WidgetStyle>,sourceDocument=docRef.current,structureAcrossViews=false){",
+      "sha256": "e0fec914ee2a764b5a7693c507dad62b66220f979c302279f3c2bf1c529368fe"
+    },
+    {
+      "name": "layer context cancellation",
+      "file": "src/App.tsx",
+      "line": 122,
+      "excerpt": "const context=drag.current?.layerResize;",
+      "sha256": "0ccb4d572c9a27dee944ed127d7857214580f42acf2dcbc9035286f645656802"
+    },
+    {
+      "name": "history",
+      "file": "src/App.tsx",
+      "line": 178,
+      "excerpt": "const commit=useCallback((next:Document)=>{const previous=docRef.current;if(next===previous)return;setPast(p=>[...p.slice(-99),previous]);setFuture([]);docRef.current=next;setDoc(next);setSaved(false)},[]);",
+      "sha256": "796a9a32fe13076796951c5ff1079019b97f6ed3e177b41c4875609b2d5e6a04"
+    },
+    {
+      "name": "application pointer listeners",
+      "file": "src/App.tsx",
+      "line": 674,
+      "excerpt": "return <div className=\"application\" onPointerMove={pointerMove} onPointerUp={pointerUp} onPointerCancel={pointerCancel}>",
+      "sha256": "a1fef5b33ddbe8e960c1c8ebb9031569056e668aff4b49b857a48de44ed21820"
+    },
+    {
+      "name": "autosave",
+      "file": "src/App.tsx",
+      "line": 664,
+      "excerpt": "useEffect(()=>{setRecovery('pending');const timer=setTimeout(()=>{try{localStorage.setItem(CACHE_KEY,serializeDocument(doc));setRecovery('saved')}catch{setRecovery('failed');setNotice('Autosave unavailable. Save a project file to keep your work.')}},500);return()=>clearTimeout(timer)},[doc]);",
+      "sha256": "ed56d3cf42c404b14666a251c85466027f2c2432bd157aab1a3c72d6b32b8349"
+    }
+  ],
+  "report": {
+    "file": "research/selection-pointer-host-review.md",
+    "sha256": "a883a16295ca708af7c52219e7a706b3e1d390ec2ca1ae0f09dfebf5eeaaee10"
+  },
+  "sourceStableDuringFreeze": true,
+  "productModified": false,
+  "testsModified": false,
+  "browserExecuted": false,
+  "originalDllExecuted": false,
+  "originalAxureGuiCompared": false,
+  "observedGaps": [
+    "generic pointer bypasses selection transaction",
+    "startDrag invalidates property intent before admission",
+    "synchronous pointerUp cannot finalize a later measured result",
+    "Escape/context protection is Layer-specific",
+    "unconditional cancel rollback can overwrite an external mutation",
+    "live zoom/snap can reinterpret pending input",
+    "no explicit capture-loss policy"
+  ],
+  "agreedHostDecisions": [
+    "independent gesture lifecycle",
+    "property pending blocks pointer start before serial/context mutation",
+    "properties blocked while gesture owns preview/finishing"
+  ],
+  "proposedNotImplemented": [
+    "latest request revision",
+    "finishing survives pointerUp until final readiness",
+    "single original-document undo snapshot",
+    "owned-preview rollback",
+    "guard before constructing unrelated candidates"
+  ],
+  "unresolvedSourceContracts": [
+    "native TextPanelRect lifetime across pointer frames",
+    "Size/Location/fit order and actual-size anchoring",
+    "native modifier and allViews semantics"
+  ],
+  "browserSpec": "tests/e2e/selection-pointer-resize.spec.ts",
+  "browserSpecCreated": false
+}

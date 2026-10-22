@@ -1,0 +1,32 @@
+{
+  "target": "Axure RP 11.0.0.4150",
+  "summary": {
+    "sequences": 12,
+    "passed": 12,
+    "failed": 0
+  },
+  "originalGuiCompared": false,
+  "vendorDllExecuted": false,
+  "report": {
+    "path": "research/selection-state-dispatch-callback-evidence.md",
+    "sha256": "a87bfda052db47975fde99fde35713519a18f1a25ae231ce192499a370cc59d7"
+  },
+  "result": {
+    "path": "research/selection-state-dispatch-callback-probes.json",
+    "sha256": "f13bb031eecaef8748b8efdb1368a210ec863e98abb3041e6ee00d6f0ef00635"
+  },
+  "manifest": {
+    "path": "research/selection-state-dispatch-callback-manifest.json",
+    "sha256": "bb90a8362c4e8f539969032a41cf02293aea7b9a690f6654c87da1770b61557b"
+  },
+  "facts": [
+    "Selected paint then selected dictionary then selected-change and select/unselect callbacks.",
+    "Error dictionary then callback then error gate/state/paint.",
+    "Actual original Wait schedules continuation after the immediate following synthetic event.",
+    "Intermediate paint calls persist across synchronous and deferred callback actions."
+  ],
+  "facades": [
+    "Marker and setter terminal actions, event-info and document sources.",
+    "No suppression or proxying; no case-description display; no repeater refresh."
+  ]
+}

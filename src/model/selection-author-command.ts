@@ -7,7 +7,9 @@ import {
 export type SelectionAuthorCommand =
   | { kind: 'size'; width?: number; height?: number; allViews: boolean }
   | { kind: 'fit'; axis: 'width' | 'height'; value: boolean }
-  | { kind: 'alignRight'; value: boolean };
+  | { kind: 'alignRight'; value: boolean }
+  | { kind: 'properties'; indicatorChanged: boolean }
+  | { kind: 'textChanged' };
 
 /** The author host supplies one pre-edit browser panel and explicit geometry
  * services. This wrapper neither measures fonts nor writes a document. */
@@ -24,7 +26,11 @@ export function planSelectionAuthorCommand(
   const entry: SelectionLayoutEntry = command.kind === 'size'
     ? { kind: 'size', size: { width: command.width ?? source.width, height: command.height ?? source.height },
       allViews: command.allViews, notify: true }
-    : command;
+    : command.kind === 'properties'
+      // These commands never represent Location/P101. The native MIue gate
+      // accepts other/empty key sets; only P94 needs an explicit key identity.
+      ? { kind: 'styleChanged', changedKeys: command.indicatorChanged ? [94] : [], notify: true, contained: false }
+      : command;
   const text = source.richText?.paragraphs.map(p => p.runs.map(run => run.text).join('')).join('\n') ?? source.text;
   return planSelectionLayout({
     ownerRect: { x: source.x, y: source.y, width: source.width, height: source.height },

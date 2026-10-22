@@ -11,8 +11,7 @@ type Row = Record<string, string>;
 function fromSnapshot(doc: Document, state: RuntimeState): OfflineRuntime {
   // These noninteractive helpers return one computed snapshot, so they execute
   // directly. Live preview/export retain the document's menu policy and session.
-  const session = createOfflineRuntime({ ...doc, caseSelection: 'never' }, state.pageId, evaluateExpression, browserBoxReader);
-  Object.assign(session.state(), structuredClone(state));
+  const session = createOfflineRuntime({ ...doc, caseSelection: 'never' }, state.pageId, evaluateExpression, browserBoxReader, undefined, state);
   delete session.state().pendingNavigation;
   delete session.state().caseMenus;
   return session;

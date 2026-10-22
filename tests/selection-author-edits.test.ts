@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { applySelectionAuthorEffects } from '../src/model/selection-author-edits';
+import { applySelectionAuthorEffects, applySelectionAuthorWriteEffects } from '../src/model/selection-author-edits';
 import { planSelectionLayout, type SelectionLayoutEffect, type SelectionLayoutInput, type SelectionLayoutResult, type SelectionLayoutServices } from '../src/model/selection-layout';
 import { createDocument, createLayer, createPage, createWidget, findWidget, parseDocument, serializeDocument } from '../src/model/document';
 import { resolveAdaptiveWidgets } from '../src/model/adaptive';
@@ -64,6 +64,22 @@ function effective(page: Page, id: string, viewId?: string) {
 }
 
 describe('ordered SelectionButton author effect persistence', () => {
+  it('persists Location-only controller writes without inventing a text-layout state', () => {
+    const { page, widget } = fixture('radio');
+    widget.selectionText!.autoFitWidth = true;
+    page.adaptiveViews[0].overrides[widget.id] = { y: 70, width: 80 };
+    page.adaptiveViews[1].overrides[widget.id] = { hidden: true, style: { color: '#123456' } };
+    page.adaptiveOverrides = { inactive: { [widget.id]: { x: 600, y: 900 } } };
+    const before = structuredClone(page);
+    const effects: SelectionLayoutEffect[] = [{ name: 'style.Location', x: 245.25, y: 155.5, allViews: false, notify: true }];
+    const next = applySelectionAuthorWriteEffects(page, 'phone', widget.id, effects);
+    expect(next.adaptiveViews[1].overrides[widget.id]).toEqual({ hidden: true, style: { color: '#123456' }, x: 245.25, y: 155.5 });
+    expect(next.widgets).toEqual(before.widgets);expect(next.adaptiveViews[0]).toEqual(before.adaptiveViews[0]);
+    expect(next.adaptiveOverrides).toEqual(before.adaptiveOverrides);expect(roundTrip(next)).toEqual(next);
+    expect(() => applySelectionAuthorWriteEffects(page, 'phone', widget.id,
+      [...effects, { name: 'style.Location', x: Infinity, y: 5, allViews: false }])).toThrow(/Location.x/);
+    expect(page).toEqual(before);
+  });
   it('applies external all-view Size before the current internal correction, clearing inactive pairs only', () => {
     const { page, widget } = fixture();
     page.adaptiveViews[0].overrides[widget.id] = { width: 91, height: 21, x: 7, style: { color: '#123456' } };

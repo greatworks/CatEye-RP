@@ -1,0 +1,55 @@
+{
+  "method": "Corrected visual control only. Original 24-case result retained; this does not execute the original DLL or claim native path geometry.",
+  "correction": "Original screenshot cloned an owner whose #u and #u label CSS did not apply to the clone. The 24 independent case assertions were unaffected. Each new control has explicit independent inline positioning.",
+  "controls": [
+    {
+      "id": "clipped",
+      "overflow": "hidden",
+      "rect": {
+        "x": 100,
+        "y": 150,
+        "width": 44,
+        "height": 66
+      },
+      "hits": {
+        "inside": "clipped-body",
+        "left": "",
+        "right": ""
+      }
+    },
+    {
+      "id": "visible",
+      "overflow": "visible",
+      "rect": {
+        "x": 440,
+        "y": 150,
+        "width": 44,
+        "height": 66
+      },
+      "hits": {
+        "inside": "visible-body",
+        "left": "visible-body",
+        "right": "visible-body"
+      }
+    }
+  ],
+  "screenshot": {
+    "path": ".build/selection-svg-body-css-control-corrected.png",
+    "sha256": "e2379398e5db7316020a9d4bce4c21e751ebd4108ed7f86378302be5e9138a9a"
+  },
+  "sources": [
+    {
+      "path": "research/selection-svg-body-css-probes.json",
+      "sha256": "10a4cce8a9d891ca60adc22dd297fc1e312ef1a1b69751f1e0c98505bbd52ecf"
+    },
+    {
+      "path": "C:/Users/Administrator/AppData/Local/Temp/rea-extracted-bd88e221-f5ba-43d0-9c75-0403885109dc/Axure RP 11/DefaultSettings/Prototype_Files/resources/css/axure_rp_page.css",
+      "sha256": "595bfcd275dc80732aeecbb8365067ccecc4f0277df316ea47656816939ece4a"
+    },
+    {
+      "path": "D:\\WSCodex\\REA\\research\\selection-svg-body-css-visual-control.mjs",
+      "sha256": "b8736f851df183c80ca3189835b76a50c8d39ded9998bb2b6100c50b4c08eeca"
+    }
+  ],
+  "passed": true
+}

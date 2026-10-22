@@ -1,0 +1,60 @@
+{
+  "target": "Axure RP 11.0.0.4150",
+  "vendorDllExecuted": false,
+  "originalGuiCompared": false,
+  "productFilesEdited": false,
+  "summary": {
+    "retainedCilCases": 40,
+    "originalJsSequences": 24,
+    "svgObservations": 216,
+    "colorCarrierCases": 12,
+    "passed": 76,
+    "failed": 0
+  },
+  "methodTokens": [
+    100702041,
+    100699787,
+    100701393,
+    100710703,
+    100710704,
+    100723090,
+    100723099,
+    100720817
+  ],
+  "report": {
+    "path": "research/selection-paint-evidence.md",
+    "sha256": "edd58e4aedcfa7634081cde86455998a17966cd1d02347e101cc5defa838957a"
+  },
+  "manifest": {
+    "path": "research/selection-paint-manifest.json",
+    "sha256": "2ff384058e470bd97690ba464beb4f150580f3289d9c6b6203f0bbcc8381f815"
+  },
+  "claims": [
+    "Opaque-only is implementation boundary, not source paint restriction.",
+    "Non-null transparent color retains alpha in initial glyph and bypasses theme fallback.",
+    "Initial radio dot is fill-only; later original generic SVG consumer may stroke it.",
+    "Runtime nonzero width writes path attributes; later zero retains last written width.",
+    "Runtime CSS replacement removes omitted-color overrides while transparent nonnull remains explicit.",
+    "Disabled attribute alone does not change supplied nonnull paint in these bounded routes."
+  ],
+  "limits": [
+    "Transparent nonnull color data is retained by concrete solid fill getter and brush route; it is not a null theme request.",
+    "Theme values are labeled controlled inputs. Full theme, caller effective style and native rasterization not evaluated.",
+    "Zero border width does not enter either glyph method; geometry source b controls checkbox pen width.",
+    "Alpha is represented as explicit struct field payload; final SVG color serialization is separate."
+  ],
+  "attemptFailures": [
+    {
+      "path": "research/selection-paint-runtime-failure-1.json",
+      "kind": "Incorrect harness assumption that runtime preserves all initial attributes"
+    },
+    {
+      "path": "research/selection-paint-glyph-probe.mjs",
+      "kind": "Incorrect exact expected arithmetic order at b18; actual 3.8571428571428577 vs expected 3.857142857142857; corrected separate second script"
+    },
+    {
+      "path": "research/selection-paint-fill-cil.json",
+      "kind": "Empty output from rejected array argument to single-TypeName extractor; no positive evidence"
+    }
+  ]
+}

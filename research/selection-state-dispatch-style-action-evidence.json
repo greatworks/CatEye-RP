@@ -1,0 +1,36 @@
+{
+  "summary": {
+    "sequences": 8,
+    "passed": 8,
+    "failed": 0
+  },
+  "report": {
+    "path": "research/selection-state-dispatch-style-action-evidence.md",
+    "sha256": "7fa5646e3f5e6bd2f210a110728f5db123548b1ea4432adea219c466335bf0d0"
+  },
+  "result": {
+    "path": "research/selection-state-dispatch-style-action-probes.json",
+    "sha256": "430c32c4443870cfc12a383fdc2bab9372743ced32d4c2f0c866b6befb3b1dd7"
+  },
+  "manifest": {
+    "path": "research/selection-state-dispatch-style-action-manifest.json",
+    "sha256": "c481eb881fe3c5f9d31267df3c48eb7e32ceb56da3b76fb8cd9a0eadf6ec8ac1"
+  },
+  "correction": "Original isLastAppliedStyle reads array-shaped length/index but ordinary applyWidgetStyle carrier is {classList,style}; same named class does not suppress repeated SVG in observed complete original module.",
+  "firstAttempt": {
+    "path": "research/selection-state-dispatch-style-action-probe.mjs",
+    "expected": [
+      1,
+      0,
+      1,
+      1
+    ],
+    "actual": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "kind": "Incorrect harness/static inference, not product failure"
+  }
+}

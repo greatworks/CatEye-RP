@@ -59,6 +59,31 @@ describe('selection author commands', () => {
     widget.selectionText = source().selectionText; widget.rotation = 10;
     expect(() => planSelectionAuthorCommand(widget, panel, { kind: 'fit', axis: 'height', value: true }, services())).toThrow(/rotated/);
   });
+  it('expands P94 from the previous text panel before measuring the new declaration', () => {
+    const widget=source(); widget.style.selectionButtonSize=150;
+    const before=structuredClone(widget), service=services();
+    const result=planSelectionAuthorCommand(widget,panel,{kind:'properties',indicatorChanged:true},service);
+    expect(result.ok).toBe(true); if(!result.ok)return;
+    expect(result.state.ownerRect).toMatchObject({width:236,height:150});
+    expect(service.measureText).toHaveBeenCalled();
+    expect(result.effects.filter(effect=>effect.name==='style.Size').every(effect=>!effect.allViews)).toBe(true);
+    expect(widget).toEqual(before);
+  });
+  it('uses candidate rich text emptiness and its new metrics for the post-sync text entry', () => {
+    const widget=source(); widget.selectionText!.autoFitWidth=true;
+    widget.text='';widget.richText={paragraphs:[{runs:[{text:'Rich candidate'}]}]};
+    const result=planSelectionAuthorCommand(widget,panel,{kind:'textChanged'},services());
+    expect(result.ok).toBe(true); if(!result.ok)return;
+    expect(result.state.ownerRect.width).toBe(52);
+    expect(result.effects.at(-1)).toEqual({name:'VJm0',value:false,property:null});
+  });
+  it('rejects a style transaction if a later measurement fails after its first correction', () => {
+    const widget=source();widget.selectionText!.autoFitWidth=true;
+    const before=structuredClone(widget), service=services();
+    service.measureText.mockImplementationOnce(()=>({width:80,height:16})).mockImplementationOnce(()=>{throw Error('Later font failure');});
+    const result=planSelectionAuthorCommand(widget,panel,{kind:'properties',indicatorChanged:false},service);
+    expect(result.ok).toBe(false);expect(result).not.toHaveProperty('state');expect(widget).toEqual(before);
+  });
 });
 
 describe('finite author rectangle union', () => {

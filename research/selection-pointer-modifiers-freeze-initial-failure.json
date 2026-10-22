@@ -1,0 +1,10 @@
+{
+  "kind": "manifest harness expected-hash attribution error; no probe bytes changed",
+  "script": "research/selection-pointer-modifiers-freeze-initial.mjs",
+  "failedAt": "line 10: frozen probes SHA-256 assertion",
+  "expectedIncorrectly": "47faed383b225239f16db1cd323e1a5648a6822b4680cca2c5afcd4cde89cbef",
+  "actual": "ae4dce01f8d6012cd47f36f8f1263aea72c34e1d074cf90a3997b84c5b1f80bb",
+  "cause": "Expected value was the product selection-pointer-resize.ts SHA, not the original-source fixture SHA.",
+  "verification": "Existing selection-pointer-modifiers-model-implementation.json already records the same ae4dce fixture hash and its retained byte snapshot. The 64 source hashes in the fixture also match current bytes.",
+  "resolution": "Correct the new freeze script expected fixture hash; preserve this failure and initial script; do not regenerate or change frozen probes."
+}

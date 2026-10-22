@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "review": "selection-author-properties-host-final",
+  "generatedAt": "2026-10-21T04:16:11.226Z",
+  "scope": "Read-only source review and exact NumberField body replay; browser execution belongs to the parent runner",
+  "originalAxureGuiCompared": false,
+  "originalDllExecuted": false,
+  "productionModifiedByReviewer": false,
+  "sources": [
+    {
+      "file": "src/App.tsx",
+      "sha256": "f889438647378f9bfc669f848c7070d5dd0b8778df5c683022f4133e555909db"
+    },
+    {
+      "file": "src/components/Inspector.tsx",
+      "sha256": "274bbdf7ddaae019a9bf778ef5f75e77221f09c54dcb42046f791f68278abdc3"
+    },
+    {
+      "file": "src/components/RichTextEditor.tsx",
+      "sha256": "0288e34725ac0812e6ec6e40dcd4540914d60a7bbc88e3b930114036ce4c8eed"
+    },
+    {
+      "file": "src/components/WidgetView.tsx",
+      "sha256": "3c6f341f646879d77f7fba03075bfe675e3006d249b6145da858805153820587"
+    },
+    {
+      "file": "src/model/adaptive.ts",
+      "sha256": "ce058f7fb26e2ab8658ae3d637981770143b9fd68d1717ad1210460439f53079"
+    },
+    {
+      "file": "src/model/rich-text.ts",
+      "sha256": "01fa723e9e158cb16125753c5993fd2e86a370133b0a246cccced8d578d6863f"
+    },
+    {
+      "file": "src/components/widget-style-command.ts",
+      "sha256": "7c258dae1c7b0b504705a9ca46be2a9558f775949ee9fbd201983627552a7e2e"
+    },
+    {
+      "file": "src/model/selection-author-command.ts",
+      "sha256": "c7c383d51adbff406a1668a65b99c4b4dbed7dbce5815a5abad548659f85db48"
+    },
+    {
+      "file": "src/model/selection-author-edits.ts",
+      "sha256": "ec025356b9a4d40b61d15a186f6dd44bbd8b4c58c0419ad43855ef163e21dc78"
+    },
+    {
+      "file": "src/model/selection-layout.ts",
+      "sha256": "6ef087714d00160ad45fa39ed03a009a6a5d51d1679d45497087265230dc49f8"
+    },
+    {
+      "file": "src/runtime/selection-text-layout.ts",
+      "sha256": "a78e70066506567db12d64687d1a561e4d5eec0c9ec20e2d3650ab09cf3ff9bf"
+    },
+    {
+      "file": "src/runtime/selection-author-measure.ts",
+      "sha256": "7df2ddf8f060b6f60c9b9185cc0e80f488f3230420e75b93d57ea208ff5e5bba"
+    }
+  ],
+  "sourceStableDuringFreeze": true,
+  "evidence": [
+    {
+      "file": "research/selection-author-properties-host-final-review.md",
+      "sha256": "1be22fb49eed5f64b68bca5c59563965d31861aea29da281076530a5c0cd4a3a"
+    },
+    {
+      "file": "research/selection-author-properties-host-review.md",
+      "sha256": "05cc02697fce3abf9c840d4e46d784b547c35f1a2fb25a052d86b30fd3ab5117"
+    },
+    {
+      "file": "research/selection-author-properties-evidence.json",
+      "sha256": "14fc8b667ceaefeaeb3ce8ab903835b3e5f4ba89eb25785b1710a2e0af2c8f10"
+    },
+    {
+      "file": "research/selection-author-services-evidence.json",
+      "sha256": "9e2c324dc95d1a39d07d6515ce3a949a915f860772adf7b828de5f0ab21d6388"
+    },
+    {
+      "file": ".build/selection-author-properties-field-review.mjs",
+      "sha256": "a51bd5b0a998d602e2d7904aa68c74a5d4581597dd51c827183db01a4260dd08"
+    },
+    {
+      "file": ".build/selection-author-properties-field-red.json",
+      "sha256": "444e8753f5e4d7f30ea6a6ece8f44aab4d95d9e4d347471bf209a8aef9ae30cf"
+    },
+    {
+      "file": ".build/selection-author-properties-field-red.tsx",
+      "sha256": "868324a6d6946b405ee334ea20f9dd20b665c4e35fe4a3a1f6518ae21e8a2a09"
+    },
+    {
+      "file": ".build/selection-author-properties-field-independent-green.json",
+      "sha256": "c834759fa2d3d0cec5a1ebd959b33b2661b864f6eb76f04c3b3ca35cb4ff80ce"
+    },
+    {
+      "file": ".build/selection-author-properties-field-independent-green.tsx",
+      "sha256": "274bbdf7ddaae019a9bf778ef5f75e77221f09c54dcb42046f791f68278abdc3"
+    },
+    {
+      "file": ".build/selection-properties-blur-red.json",
+      "sha256": "0b8d5eb77a9313518c414ec52c05e53320b079528b878464bb69ceeb38503e7b"
+    },
+    {
+      "file": ".build/selection-properties-draft/selection-author-properties.spec.ts",
+      "sha256": "ac8296292b90959de6bdd834378da415c0a32ce5c98ad3abb4302fd550c5b833"
+    },
+    {
+      "file": ".build/selection-properties-draft/selection-author-properties-v2.spec.ts",
+      "sha256": "2cee7e751f0c90df69d07abe1a3f0d96d9222aee01fbe0e070ed73f8479fc743"
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "untouched-focused-number-draft",
+      "discoveredBy": "independent reviewer",
+      "initial": {
+        "total": 4,
+        "passed": 3,
+        "failed": 1
+      },
+      "final": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0
+      },
+      "correction": "Return without a command when modified is false; refresh canonical draft",
+      "browserRed": ".build/selection-properties-blur-red.json"
+    },
+    {
+      "id": "selection-label-default-activation-during-rich-edit",
+      "discoveredBy": "parent production browser run",
+      "correction": "Remove editing htmlFor on the split label; cancel contenteditable default activation in the legacy wrapper",
+      "independentEvidence": "Read-only source routing check; no independent browser execution"
+    }
+  ],
+  "checks": {
+    "independentBodyReplay": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "draftSyntax": "Node stripTypeScriptTypes transform passed",
+    "handoffBrowserCases": 10,
+    "browserPassClaim": false,
+    "inspectedContracts": [
+      "candidate-before-measurement; previous panel plus new source",
+      "adaptive text projection detached from shared run storage",
+      "P94 font readiness precedes candidate geometry validation",
+      "all-target planning before effects; mixed-selection atomicity",
+      "external allViews style versus internal current geometry",
+      "pending size/fit/side commands join FIFO",
+      "serial/context/document/drag cancellation and expected-document advancement",
+      "one accepted command per undo snapshot",
+      "dedicated textChanged source entry",
+      "Promise acceptance and success-only rich editor closing",
+      "pending read-only/format guards and outside pointer/focus blocking",
+      "failure retains draft and Cancel invalidates late async completion",
+      "supported and legacy label editing guards"
+    ]
+  },
+  "blockingFindings": [],
+  "pendingValidation": [
+    "Parent final production/browser/desktop verification, including the ten-case handoff"
+  ],
+  "limitations": [
+    "Browser measurement substitutes for native font/graphics metrics",
+    "No native DLL or original GUI execution",
+    "No parity claim beyond source branches and explicit host domain",
+    "Snapshot hashes bind this review; later source changes need separate review"
+  ]
+}

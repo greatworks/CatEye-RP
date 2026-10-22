@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const resultPath='research/selection-state-dispatch-callback-probes.json',result=JSON.parse(fs.readFileSync(resultPath,'utf8'));
+assert.equal(result.summary.passed,12);assert.equal(result.summary.failed,0);
+for(const s of result.sources)assert.equal(sha(s.path),s.sha256,s.path);
+const paths=[...result.sources.map(s=>s.path),resultPath,'research/selection-state-dispatch-callback-evidence.md','research/selection-state-dispatch-callback-probe.mjs','research/selection-state-dispatch-callback-probe-second.mjs','research/selection-state-dispatch-callback-failure.json','research/selection-state-dispatch-evidence.json','research/selection-state-dispatch-evidence.md','research/selection-state-dispatch-manifest.json',import.meta.filename];
+const manifest='research/selection-state-dispatch-callback-manifest.json';
+fs.writeFileSync(manifest,JSON.stringify({target:'Axure RP 11.0.0.4150',vendorDllExecuted:false,originalGuiCompared:false,sources:[...new Set(paths)].map(path=>({path,sha256:sha(path)}))},null,2)+'\n',{flag:'wx'});
+fs.writeFileSync('research/selection-state-dispatch-callback-evidence.json',JSON.stringify({target:'Axure RP 11.0.0.4150',summary:result.summary,originalGuiCompared:false,vendorDllExecuted:false,report:{path:'research/selection-state-dispatch-callback-evidence.md',sha256:sha('research/selection-state-dispatch-callback-evidence.md')},result:{path:resultPath,sha256:sha(resultPath)},manifest:{path:manifest,sha256:sha(manifest)},facts:['Selected paint then selected dictionary then selected-change and select/unselect callbacks.','Error dictionary then callback then error gate/state/paint.','Actual original Wait schedules continuation after the immediate following synthetic event.','Intermediate paint calls persist across synchronous and deferred callback actions.'],facades:['Marker and setter terminal actions, event-info and document sources.','No suppression or proxying; no case-description display; no repeater refresh.']},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({passed:12,resultSha256:sha(resultPath),manifestSha256:sha(manifest)}));

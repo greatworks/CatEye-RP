@@ -4,6 +4,7 @@ import { createWidget } from '../src/model/document';
 import { createSelectionDisplay } from '../src/runtime/selection-display';
 import type { SelectionDisplayLayout, SelectionTextLayout } from '../src/runtime/selection-text-layout';
 import type { Widget } from '../src/model/types';
+import type { SelectionIndicatorPaint } from '../src/model/selection-indicator';
 
 // Host lifecycle only. This DOM/painter facade does not test fonts or SVG pixels.
 class Element {
@@ -71,18 +72,44 @@ function harness(factory: typeof createSelectionDisplay) {
   const fontsReady = vi.fn((_source: Widget, _document: Document) => {
     const request = deferred(); requests.push(request); return request.promise;
   });
-  const paint = vi.fn((svg: SVGSVGElement, source: Widget, current: Widget) => {
+  const paint = vi.fn((svg: SVGSVGElement, source: Widget, current: Widget, _rect: unknown, _paint?: SelectionIndicatorPaint) => {
     svg.setAttribute('data-test-source', source.text);
     svg.setAttribute('data-test-current', current.text);
   });
   const layout = { supports, measure, fontsReady, project: vi.fn() } as SelectionTextLayout;
   const host = factory(layout, { supports: () => true, paint });
-  const update = (dom: ReturnType<typeof nodes>, source: Widget, current = source) =>
-    host.update(labelNode(dom.label), textNode(dom.text), inputNode(dom.input), source, current);
+  const update = (dom: ReturnType<typeof nodes>, source: Widget, current = source, paint?: SelectionIndicatorPaint | null) =>
+    host.update(labelNode(dom.label), textNode(dom.text), inputNode(dom.input), source, current, paint);
   return { host, update, requests, measure, fontsReady, paint };
 }
 
 describe.each(modes)('%s selection display host', (_mode, factory) => {
+  it('keeps an unsupported runtime cascade on fallback even when the author source is supported', async () => {
+    const h = harness(factory), dom = nodes(), source = widget();
+    h.update(dom, source); const count = h.paint.mock.calls.length;
+    expect(h.host.supports(source, null)).toBe(false);
+    expect(h.update(dom, source, source, null)).toBe(false);
+    h.requests[0].resolve(); await turn();
+    expect(h.paint).toHaveBeenCalledTimes(count);
+    expect(dom.label.dataset.selectionDisplay).toBe('fallback'); expect(dom.input.style.opacity).toBe('1');
+  });
+  it('forwards the latest immutable runtime paint through cache hits and late font measurement', async () => {
+    const h = harness(factory), dom = nodes(), source = widget();
+    const first: SelectionIndicatorPaint = Object.freeze({ assetSize: 14, assetStrokeWidth: 1, fill: '#ffffff', stroke: '#123456', outlineWidth: 3,
+      markFill: '#123456', markStroke: '#123456', markWidth: 3, svgScaleX: 2, svgScaleY: 3, svgTransformOrigin: 'top left' });
+    const next: SelectionIndicatorPaint = Object.freeze({ ...first, fill: 'transparent', stroke: '#654321', markFill: '#654321', markStroke: '#654321',
+      svgScaleX: 6, svgScaleY: 9 });
+    h.update(dom, source, source, first);
+    expect(h.paint.mock.calls.at(-1)?.[4]).toBe(first);
+    h.update(dom, source, source, next);
+    h.requests[0].resolve(); await turn();
+    expect(h.paint.mock.calls.at(-1)?.[4]).toBe(next);
+    expect(h.paint.mock.calls.at(-1)?.[4]).toMatchObject({ svgScaleX: 6, svgScaleY: 9, svgTransformOrigin: 'top left' });
+    expect(first.svgScaleX).toBe(2); expect(next.svgScaleX).toBe(6);
+    expect(h.measure).toHaveBeenCalledTimes(2); expect(h.fontsReady).toHaveBeenCalledOnce();
+    h.update(dom, source);
+    expect(h.paint.mock.calls.at(-1)?.[4]).toBeUndefined();
+  });
   it('applies transient child geometry without committing owner/model geometry or replacing live text', () => {
     const h = harness(factory), dom = nodes(), source = widget(), current = { ...source, text: 'Runtime' };
     const original = structuredClone(source), ownerBefore = { ...dom.owner.style };

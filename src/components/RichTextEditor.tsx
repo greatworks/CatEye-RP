@@ -99,7 +99,7 @@ function runStyleAt(rich: RichText, offset: number): RichTextRunStyle {
 }
 
 export function RichTextEditor({ widget, document: project, page, displayStyle, styleOverride, onApply, onCancel }: {
-  widget: Widget; document: PrototypeDocument; page: Page; displayStyle?: WidgetStyle; styleOverride?: Partial<WidgetStyle>; onApply: (rich: RichText) => void; onCancel: () => void;
+  widget: Widget; document: PrototypeDocument; page: Page; displayStyle?: WidgetStyle; styleOverride?: Partial<WidgetStyle>; onApply: (rich: RichText) => void | Promise<boolean>; onCancel: () => void;
 }) {
   const [rich, setRich] = useState<RichText>(() => structuredClone(widget.richText ?? richTextFromPlainText(widget.text)));
   const [selection, setSelection] = useState<Selection>({ start: 0, end: 0 });
@@ -107,6 +107,7 @@ export function RichTextEditor({ widget, document: project, page, displayStyle, 
   const [paragraphIndex, setParagraphIndex] = useState(0);
   const [family, setFamily] = useState(widget.style.fontFamily), [size, setSize] = useState(String(widget.style.fontSize)), [color, setColor] = useState(widget.style.color.startsWith('#') ? widget.style.color : '#263348');
   const [error, setError] = useState('');
+  const [applying,setApplying]=useState(false),applyingRef=useRef(false);
   const [linkDraft, setLinkDraft] = useState<LinkDraft | null>(null), linkDraftRef = useRef<LinkDraft | null>(null);
   const [history, setHistory] = useState<{ past: Snapshot[]; future: Snapshot[] }>({ past: [], future: [] });
   const root = useRef<HTMLSpanElement>(null), toolbar = useRef<HTMLElement>(null), richRef = useRef(rich), selectionRef = useRef(selection), insertionRef = useRef(insertion), historyRef = useRef(history);
@@ -213,13 +214,25 @@ export function RichTextEditor({ widget, document: project, page, displayStyle, 
     attempt(() => { const index = paragraphIndex; commit({ ...richRef.current, paragraphs: richRef.current.paragraphs.map((value, at) => at === index ? { ...value, ...patch } : value) }, selectionRef.current, true, false); setParagraphIndex(index); });
   }
   function apply(): boolean {
+    if(applyingRef.current)return false;
     if (composition.current) finishComposition();
-    try { onApply(parseRichText(draftRichText())); return true; }
+    try {
+      const result=onApply(parseRichText(draftRichText()));
+      if(result){
+        applyingRef.current=true;setApplying(true);setError('');
+        void result.then(accepted=>{if(mounted.current&&!accepted)setError('Text could not be applied. Your draft is still available; retry or cancel.');},cause=>{if(mounted.current)setError(String(cause));}).finally(()=>{applyingRef.current=false;if(mounted.current)setApplying(false);});
+        // An outside pointer/focus action must not replace the document or
+        // cancel this asynchronous commit before its measurements finish.
+        return false;
+      }
+      return true;
+    }
     catch (cause) { setError(String(cause)); toolbar.current?.focus({ preventScroll: true }); return false; }
   }
   function keyDown(event: KeyboardEvent) {
     event.stopPropagation(); if (event.nativeEvent.isComposing) return;
     if (event.key === 'Escape') { event.preventDefault(); if (linkDraftRef.current) cancelLink(); else onCancel(); return; }
+    if(applyingRef.current){event.preventDefault();return;}
     const mod = event.ctrlKey || event.metaKey, key = event.key.toLowerCase();
     if (mod && ['z', 'y'].includes(key) && !linkDraftRef.current) { event.preventDefault(); restore(key === 'y' || event.shiftKey ? 'redo' : 'undo'); }
     if (mod && event.key === 'Enter') { event.preventDefault(); apply(); }
@@ -247,13 +260,13 @@ export function RichTextEditor({ widget, document: project, page, displayStyle, 
   }, []);
   // Keep the text-node editor's offset model: pre preserves soft LF during
   // editing without replacing characters with zero-length BR DOM nodes.
-  return <><span ref={root} className="rich-inline-editor" style={shapeText.supports({ ...widget, style: base }) ? { whiteSpace: widget.shapeText!.autoFitWidth ? 'pre' : 'pre-wrap', overflowWrap: 'break-word' } : undefined} contentEditable={!linkDraft} aria-readonly={Boolean(linkDraft)} suppressContentEditableWarning role="textbox" aria-label="Formatted text content" aria-multiline="true" spellCheck={false}
+  return <><span ref={root} className="rich-inline-editor" style={shapeText.supports({ ...widget, style: base }) ? { whiteSpace: widget.shapeText!.autoFitWidth ? 'pre' : 'pre-wrap', overflowWrap: 'break-word' } : undefined} contentEditable={!linkDraft&&!applying} aria-readonly={Boolean(linkDraft)||applying} suppressContentEditableWarning role="textbox" aria-label="Formatted text content" aria-multiline="true" spellCheck={false}
     onPointerDown={event => event.stopPropagation()} onClick={event => event.stopPropagation()} onDoubleClick={event => event.stopPropagation()} onKeyDown={keyDown}
     onPaste={event => { event.preventDefault(); attempt(() => insert(event.clipboardData.getData('text/plain'))); }} onDrop={event => { event.preventDefault(); event.stopPropagation(); }}
     onCompositionStart={() => { composition.current = snapshot(); }} onCompositionEnd={() => queueMicrotask(() => { if (mounted.current) finishComposition(); })}/>
     {createPortal(<section ref={toolbar} tabIndex={-1} className="rich-editor-tools" role="region" aria-label="Text editing tools" onKeyDown={keyDown} onPointerDown={event => event.stopPropagation()} onDoubleClick={event => event.stopPropagation()}>
-      <div className="rich-editor-heading"><strong>{widget.name}</strong><span>Select and edit text on the canvas · Shift+Enter adds a line break</span><button onClick={onCancel}>Cancel</button><button className="primary-button" onClick={apply}>Done editing text</button></div>
-      <fieldset disabled={Boolean(linkDraft)} className="rich-editor-toolbar" role="toolbar" aria-label="Text selection formatting">
+      <div className="rich-editor-heading"><strong>{widget.name}</strong><span>{applying?'Applying text…':'Select and edit text on the canvas · Shift+Enter adds a line break'}</span><button onClick={onCancel}>Cancel</button><button className="primary-button" disabled={applying} onClick={apply}>Done editing text</button></div>
+      <fieldset disabled={Boolean(linkDraft)||applying} className="rich-editor-toolbar" role="toolbar" aria-label="Text selection formatting">
         <label>Font<input aria-label="Selection font family" value={family} onChange={event => setFamily(event.target.value)}/></label><button disabled={!family.trim()} onClick={() => format({ fontFamily: family })}>Apply font</button>
         <label>Size<input aria-label="Selection font size" type="number" min="1" max="512" value={size} onChange={event => setSize(event.target.value)}/></label><button disabled={!Number.isFinite(Number(size)) || Number(size) < 1 || Number(size) > 512} onClick={() => format({ fontSize: Number(size) })}>Apply size</button>
         <button aria-label="Bold selection" aria-pressed={activeStyle.fontWeight >= 600} onClick={() => format({ fontWeight: 700 })}><b>B</b></button><button onClick={() => format({ fontWeight: 400 })}>Regular weight</button>
@@ -262,7 +275,7 @@ export function RichTextEditor({ widget, document: project, page, displayStyle, 
         <label>Color<input aria-label="Selection text color" type="color" value={color} onChange={event => setColor(event.target.value)}/></label><button onClick={() => format({ color })}>Apply color</button>
         <button disabled={!activeLink && selection.start === selection.end} onClick={openLink}>{activeLink ? 'Edit hyperlink' : 'Add hyperlink'}</button><button disabled={!activeLink && !hasSelectedLinks} onClick={unlink}>Remove hyperlink</button>
       </fieldset>
-      <fieldset disabled={Boolean(linkDraft)} className="rich-editor-paragraph">
+      <fieldset disabled={Boolean(linkDraft)||applying} className="rich-editor-paragraph">
         <label><input aria-label="Text expressions" type="checkbox" checked={rich.expressionMode !== 'literal'} onChange={event => { const next = { ...rich }; if (event.target.checked) delete next.expressionMode; else next.expressionMode = 'literal'; attempt(() => commit(next, selectionRef.current, true, false)); }}/>Text expressions</label>
         <label>Paragraph<select aria-label="Formatted text paragraph" value={Math.min(paragraphIndex, rich.paragraphs.length - 1)} onChange={event => setParagraphIndex(Number(event.target.value))}>{rich.paragraphs.map((_, index) => <option key={index} value={index}>Paragraph {index + 1}</option>)}</select></label>
         <label>Alignment<select aria-label="Paragraph alignment" value={paragraph.textAlign ?? ''} onChange={event => paragraphStyle({ textAlign: (event.target.value || undefined) as typeof paragraph.textAlign })}><option value="">Inherit</option><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></label>

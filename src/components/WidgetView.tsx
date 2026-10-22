@@ -15,7 +15,7 @@ import { createLineStyleRenderer } from '../model/line-style';
 import { createShapeTextRenderer } from '../model/shape-text';
 import { createSelectionTextLayout } from '../runtime/selection-text-layout';
 import { createSelectionDisplay } from '../runtime/selection-display';
-import { createSelectionIndicatorRenderer } from '../model/selection-indicator';
+import { createSelectionIndicatorRenderer, type SelectionIndicatorPaint } from '../model/selection-indicator';
 const shapeText = createShapeTextRenderer();
 const selectionDisplay = createSelectionDisplay(createSelectionTextLayout(shapeText), createSelectionIndicatorRenderer());
 const shadows = createShadowRenderer();
@@ -137,15 +137,15 @@ export function WidgetContent(props: Parameters<typeof WidgetContentBody>[0]): R
   return <>{!widget.vectorPath&&(gradients.supports(widget.type)||gradients.supportsStroke(widget.type))&&gradients.needsComputedColor(widget.style)&&<GradientContextPaint widget={widget}/>}<WidgetContentBody {...props}/></>;
 }
 
-function SelectionControl({source,current,inputProps,textStyle,children}:{source:Widget;current:Widget;inputProps:React.ComponentProps<'input'>;textStyle:CSSProperties;children:ReactNode}) {
+function SelectionControl({source,current,paint,inputProps,textStyle,children,editing}:{source:Widget;current:Widget;paint?:SelectionIndicatorPaint|null;inputProps:React.ComponentProps<'input'>;textStyle:CSSProperties;children:ReactNode;editing:boolean}) {
   const id=useId(),label=useRef<HTMLLabelElement>(null),text=useRef<HTMLSpanElement>(null),input=useRef<HTMLInputElement>(null);
-  useLayoutEffect(()=>{if(label.current&&text.current&&input.current)selectionDisplay.update(label.current,text.current,input.current,source,current)});
-  return <><label ref={label} htmlFor={id} className="selection-control-label" onClick={event=>event.stopPropagation()}>
+  useLayoutEffect(()=>{if(label.current&&text.current&&input.current)selectionDisplay.update(label.current,text.current,input.current,source,current,paint)});
+  return <><label ref={label} htmlFor={editing?undefined:id} className="selection-control-label" onClick={event=>event.stopPropagation()}>
     <span ref={text} className="selection-text" style={textStyle}>{children}</span>
   </label><input {...inputProps} ref={input} id={id}/></>;
 }
 
-function WidgetContentBody({widget,selectionLayoutSource,gradientBase,strokeGradientBase,gradientSession,textEditor,tableAuthoring,menuAuthoring,treeAuthoring,resolveChildDisplay,onLinkClick,onLinkPointer,linksDisabled,runtime,row,resolvedText,nativeTextSet=false,resolved=false,radioName,hintValue,initialValue,files,selectedIndices,onSelectOptions,onFiles,onHideHint,onTextCheck,onSubmit,onInput,onCheck,onFocus,onBlur}:{widget:Widget;selectionLayoutSource?:Widget;gradientBase?:GradientFill;strokeGradientBase?:GradientFill;gradientSession?:unknown;textEditor?:ReactNode;tableAuthoring?:TableAuthoringProps;menuAuthoring?:MenuAuthoringProps;treeAuthoring?:TreeAuthoringProps;resolveChildDisplay?:(source:Widget)=>Widget;runtime?:RuntimeState;row?:Record<string,string>;resolvedText?:string;nativeTextSet?:boolean;resolved?:boolean;radioName?:string;hintValue?:string;initialValue?:string;files?:readonly File[];selectedIndices?:readonly number[];onSelectOptions?:(indices:number[],element:HTMLSelectElement)=>void;onFiles?:(files:readonly File[])=>void;onHideHint?:()=>boolean;onTextCheck?:(element:HTMLElement)=>void;onSubmit?:(element:HTMLElement)=>void;onInput?:(value:string,valid?:boolean)=>void;onCheck?:(checked:boolean,element:HTMLElement)=>void;onFocus?:(element:HTMLElement)=>void;onBlur?:(element:HTMLElement)=>void} & RichLinkHandlers) {
+function WidgetContentBody({widget,selectionLayoutSource,selectionPaint,gradientBase,strokeGradientBase,gradientSession,textEditor,tableAuthoring,menuAuthoring,treeAuthoring,resolveChildDisplay,onLinkClick,onLinkPointer,linksDisabled,runtime,row,resolvedText,nativeTextSet=false,resolved=false,radioName,hintValue,initialValue,files,selectedIndices,onSelectOptions,onFiles,onHideHint,onTextCheck,onSubmit,onInput,onCheck,onFocus,onBlur}:{widget:Widget;selectionLayoutSource?:Widget;selectionPaint?:SelectionIndicatorPaint|null;gradientBase?:GradientFill;strokeGradientBase?:GradientFill;gradientSession?:unknown;textEditor?:ReactNode;tableAuthoring?:TableAuthoringProps;menuAuthoring?:MenuAuthoringProps;treeAuthoring?:TreeAuthoringProps;resolveChildDisplay?:(source:Widget)=>Widget;runtime?:RuntimeState;row?:Record<string,string>;resolvedText?:string;nativeTextSet?:boolean;resolved?:boolean;radioName?:string;hintValue?:string;initialValue?:string;files?:readonly File[];selectedIndices?:readonly number[];onSelectOptions?:(indices:number[],element:HTMLSelectElement)=>void;onFiles?:(files:readonly File[])=>void;onHideHint?:()=>boolean;onTextCheck?:(element:HTMLElement)=>void;onSubmit?:(element:HTMLElement)=>void;onInput?:(value:string,valid?:boolean)=>void;onCheck?:(checked:boolean,element:HTMLElement)=>void;onFocus?:(element:HTMLElement)=>void;onBlur?:(element:HTMLElement)=>void} & RichLinkHandlers) {
   const renderId=useId(), shadowId = shadows.filterId(renderId), gradientId=gradients.id(renderId+'/fill'), strokeGradientId=gradients.id(renderId+'/stroke');
   const checkActivation=useRef<{checked:boolean}|undefined>(undefined);
   const gradientPaint = useRef<{session:unknown;paint:ReturnType<typeof gradients.paintSession>;stroke:ReturnType<typeof gradients.paintSession>} | null>(null);
@@ -252,8 +252,8 @@ function WidgetContentBody({widget,selectionLayoutSource,gradientBase,strokeGrad
       whiteSpace:w.selectionText!.autoFitWidth?'nowrap':'normal',overflowWrap:w.selectionText!.autoFitWidth?'normal':'break-word',
     }: {})};
     const source=selectionLayoutSource??widget;
-    if(selectionDisplay.supports(source))return <SelectionControl source={source} current={w} inputProps={inputProps} textStyle={selectionStyle}>{textContent}</SelectionControl>;
-    return <label className="check-widget"><input {...inputProps} style={selectionTextLayout?{flex:'none'}:undefined}/><span className={selectionTextLayout?'selection-text':undefined} style={selectionStyle}>{textContent}</span></label>;
+    if(selectionDisplay.supports(source,selectionPaint??undefined))return <SelectionControl source={source} current={w} paint={selectionPaint} inputProps={inputProps} textStyle={selectionStyle} editing={Boolean(textEditor)}>{textContent}</SelectionControl>;
+    return <label className="check-widget" onClickCapture={event=>{if(textEditor&&(event.target as HTMLElement).closest('[contenteditable]'))event.preventDefault()}}><input {...inputProps} style={selectionTextLayout?{flex:'none'}:undefined}/><span className={selectionTextLayout?'selection-text':undefined} style={selectionStyle}>{textContent}</span></label>;
   }
   if (w.type==='select') return <SelectControl widget={w} text={text} style={paddingStyle} indices={selectedIndices} onSelectOptions={onSelectOptions} {...focusEvents}/>;
   if (w.type==='image') return w.imageSrc?<img src={w.imageSrc} alt={w.name} draggable={false}/>:<div className="image-empty"><ImageIcon size={32}/><span>Image</span></div>;
